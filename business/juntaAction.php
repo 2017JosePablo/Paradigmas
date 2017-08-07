@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 include './juntaBusiness.php';
 include '../domain/junta.php';
 
@@ -7,6 +8,15 @@ include '../domain/junta.php';
      isset($_POST['tesorerojunta']) && isset($_POST['secretariojunta'])
             && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta']) && 
             isset($_POST['vocal3junta'])) {
+=======
+
+include './juntaBusiness.php';
+
+if (isset($_POST['update'])) {
+
+    if (isset($_POST['idjunta']) && isset($_POST['presidentejunta']) && isset($_POST['vicepresidentejunta']) && isset($_POST['tesorerojunta']) && isset($_POST['secretariojunta'])
+            && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta']) && isset($_POST['vocal3junta'])) {
+>>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
             
         $idjunta = $_POST['idjunta'];
         $presidentejunta = $_POST['presidentejunta'];
@@ -16,6 +26,7 @@ include '../domain/junta.php';
         $vocal1junta = $_POST['vocal1junta'];
         $vocal2junta = $_POST['vocal2junta'];
         $vocal3junta = $_POST['vocal3junta'];
+<<<<<<< HEAD
 */
         $idjunta = "Junta01";
         $presidentejunta = "Luis GUI";
@@ -26,20 +37,85 @@ include '../domain/junta.php';
         $vocal2junta = "Cristian";
         $vocal3junta = "Marcos";
 
+=======
+        
+
+        if (strlen($idjunta) > 0 && strlen($presidentejunta) > 0 && strlen($vicepresidentejunta) > 0 && strlen($tesorerojunta) > 0  && strlen($secretariojunta) > 0 && strlen($vocal1junta) > 0 
+                && strlen($vocal2junta) > 0 && strlen($vocal3junta) > 0) {
+            if (!is_numeric($idjunta)) {
+                $junta = new junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta, $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
+
+                $juntaBusiness = new JuntaBusiness();
+
+                $result = $bullBusiness->updateTBJunta($junta);
+                if ($result == 1) {
+                    header("location: ../view/juntaView.php?success=updated");
+                } else {
+                    //echo $idSickness." - ".$bullName;
+                    header("location: ../view/juntaView.php?error=dbError");
+                }
+            } else {
+                header("location: ../view/juntaView.php?error=numberFormat");
+            }
+        } else {
+            header("location: ../view/juntaView.php?error=emptyField");
+        }
+    } else {
+        header("location: ../view/juntaView.php?error=error");
+    }
+} else if (isset($_POST['delete'])) {
+
+    if (isset($_POST['idJunta'])) {
+
+        $idJunta = $_POST['idJunta'];
+
+        $juntaBusiness = new JuntaBusiness();
+        $result = $juntaBusiness->deleteTBJunta($idJunta);
+
+        if ($result == 1) {
+            header("location: ../view/juntaView.php?success=deleted");
+        } else {
+            header("location: ../view/juntaView.php?error=dbError");
+        }
+    } else {
+        header("location: ../view/juntaView.php?error=error");
+    }
+
+    ////Parte para insertar a la base de datos un nueva Junta ....
+} else if (isset($_POST['create'])) {
+
+    if (isset($_POST['idjunta']) && isset($_POST['presidentejunta']) && isset($_POST['vicepresidentejunta']) && isset($_POST['tesorerojunta'])
+            && isset($_POST['secretariojunta']) && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta'])  && isset($_POST['vocal3junta'])) {
+            
+        $idjunta = $_POST['idjunta'];
+        $presidentejunta = $_POST['presidentejunta'];
+        $vicepresidentejunta = $_POST['vicepresidentejunta'];
+        $tesorerojunta = $_POST['tesorerojunta'];
+        $secretariojunta = $_POST['secretariojunta'];
+        $vocal1junta = $_POST['vocal1junta'];
+        $vocal2junta = $_POST['vocal2junta'];
+        $vocal3junta = $_POST['vocal3junta'];
+>>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
 
         if (strlen($idjunta) > 0 && strlen($presidentejunta) > 0 && strlen($vicepresidentejunta) > 0 
                 && strlen($tesorerojunta) > 0 && strlen($secretariojunta) > 0 
                 && strlen($vocal1junta) > 0  && strlen($vocal2junta) > 0 && strlen($vocal3junta) > 0) {
 
+<<<<<<< HEAD
                 $junta = new Junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta,
                  $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
 
+=======
+
+                $junta = new junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta, $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
+>>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
 
                 $juntaBusiness = new JuntaBusiness();
 
                 $result = $juntaBusiness->insertTBJunta($junta);
 
                 if ($result == 1) {
+<<<<<<< HEAD
                    // header("location: ../view/juntaView.php?success=inserted");
                     echo "Se inserto";
                 } else {
@@ -56,3 +132,17 @@ include '../domain/junta.php';
 
 
 ?>
+=======
+                    header("location: ../view/juntaView.php?success=inserted");
+                } else {
+                    header("location: ../view/juntaView.php?error=dbError");
+                }
+           
+        } else {
+            header("location: ../view/juntaView.php?error=emptyField");
+        }
+    } else {
+        header("location: ../view/juntaView.php?error=errorCamposNoConocidos");
+    }
+}
+>>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
