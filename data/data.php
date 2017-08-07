@@ -12,12 +12,26 @@ class Data {
     /* constructor */
 
     public function Data() {
-        $this->isActive = false;
         $this->server = "localhost";
         $this->user = "root";
         $this->password = "";
-        $this->db = "dbcamaraganadera";
+        $this->db = "dbparadigma";
 
     }
+    public function getServer(){
+        return $this->server;
+    }
+     public function getUser(){
+        return $this->user;
+    }
+
+    public function getPass(){
+        return $this->password;
+    }
+
+    public function getDbName(){
+        return $this->db;
+    }
+
 
 }
