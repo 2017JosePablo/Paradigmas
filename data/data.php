@@ -13,7 +13,7 @@ class Data {
 
     public function Data() {
         $this->isActive = false;
-        $this->server = "127.0.0.1";
+        $this->server = "localhost";
         $this->user = "root";
         $this->password = "";
         $this->db = "dbcamaraganadera";
