@@ -1,12 +1,7 @@
 <?php
-<<<<<<< HEAD
-class Junta {
-=======
 
 class Junta {
-
->>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
-    private $idTBJunta;
+   private $idTBJunta;
     private $presidenteTBJunta;
     private $vicepresidenteTBJunta;
     private $tesoreroTBJunta;
@@ -59,7 +54,4 @@ class Junta {
         return $this->vocal3TBJunta;
     }
 }
-<<<<<<< HEAD
 ?>
-=======
->>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3

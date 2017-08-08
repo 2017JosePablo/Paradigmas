@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -8,6 +8,6 @@
 </head>
 <body>
 
-	<a href="view/juntaView.php">Junta</a>
+	<a href="view/juntaView.php" >Junta</a>
 </body>
 </html>

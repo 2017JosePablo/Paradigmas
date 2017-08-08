@@ -1,23 +1,11 @@
 <?php
-<<<<<<< HEAD
 include './juntaBusiness.php';
-include '../domain/junta.php';
-
-//if (isset($_POST['create'])) {
-  /*     if (isset($_POST['idjunta']) && isset($_POST['presidentejunta']) && isset($_POST['vicepresidentejunta']) &&
-     isset($_POST['tesorerojunta']) && isset($_POST['secretariojunta'])
-            && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta']) && 
-            isset($_POST['vocal3junta'])) {
-=======
-
-include './juntaBusiness.php';
-
+//Si se preciona el boton de Actualizar
 if (isset($_POST['update'])) {
-
+//Validar si los campos existe
     if (isset($_POST['idjunta']) && isset($_POST['presidentejunta']) && isset($_POST['vicepresidentejunta']) && isset($_POST['tesorerojunta']) && isset($_POST['secretariojunta'])
             && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta']) && isset($_POST['vocal3junta'])) {
->>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
-            
+        //capturar los datos que vienen de la interfaz
         $idjunta = $_POST['idjunta'];
         $presidentejunta = $_POST['presidentejunta'];
         $vicepresidentejunta = $_POST['vicepresidentejunta'];
@@ -26,28 +14,18 @@ if (isset($_POST['update'])) {
         $vocal1junta = $_POST['vocal1junta'];
         $vocal2junta = $_POST['vocal2junta'];
         $vocal3junta = $_POST['vocal3junta'];
-<<<<<<< HEAD
-*/
-        $idjunta = "Junta01";
-        $presidentejunta = "Luis GUI";
-        $vicepresidentejunta = "Laura";
-        $tesorerojunta = "Carlos";
-        $secretariojunta = "Pablo";
-        $vocal1junta = "Adan";
-        $vocal2junta = "Cristian";
-        $vocal3junta = "Marcos";
-
-=======
-        
-
+     
+            //funcion para saber la longitud del atributo
         if (strlen($idjunta) > 0 && strlen($presidentejunta) > 0 && strlen($vicepresidentejunta) > 0 && strlen($tesorerojunta) > 0  && strlen($secretariojunta) > 0 && strlen($vocal1junta) > 0 
                 && strlen($vocal2junta) > 0 && strlen($vocal3junta) > 0) {
+            // funcion para saber si es un numero o no
             if (!is_numeric($idjunta)) {
+                //creo el objeto
                 $junta = new junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta, $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
-
+                //creo una instancia
                 $juntaBusiness = new JuntaBusiness();
-
-                $result = $bullBusiness->updateTBJunta($junta);
+                //igualo al valor que devolvio el sql
+                $result = $juntaBusiness->updateTBJunta($junta);
                 if ($result == 1) {
                     header("location: ../view/juntaView.php?success=updated");
                 } else {
@@ -68,10 +46,8 @@ if (isset($_POST['update'])) {
     if (isset($_POST['idJunta'])) {
 
         $idJunta = $_POST['idJunta'];
-
         $juntaBusiness = new JuntaBusiness();
         $result = $juntaBusiness->deleteTBJunta($idJunta);
-
         if ($result == 1) {
             header("location: ../view/juntaView.php?success=deleted");
         } else {
@@ -95,54 +71,43 @@ if (isset($_POST['update'])) {
         $vocal1junta = $_POST['vocal1junta'];
         $vocal2junta = $_POST['vocal2junta'];
         $vocal3junta = $_POST['vocal3junta'];
->>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
 
         if (strlen($idjunta) > 0 && strlen($presidentejunta) > 0 && strlen($vicepresidentejunta) > 0 
                 && strlen($tesorerojunta) > 0 && strlen($secretariojunta) > 0 
                 && strlen($vocal1junta) > 0  && strlen($vocal2junta) > 0 && strlen($vocal3junta) > 0) {
-
-<<<<<<< HEAD
                 $junta = new Junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta,
-                 $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
-
-=======
-
+                $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
                 $junta = new junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta, $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
->>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
-
                 $juntaBusiness = new JuntaBusiness();
-
                 $result = $juntaBusiness->insertTBJunta($junta);
-
                 if ($result == 1) {
-<<<<<<< HEAD
                    // header("location: ../view/juntaView.php?success=inserted");
-                    echo "Se inserto";
+                     header("location: ../business/juntaAction.php?success=inserted");
+                  //  echo "Se inserto";
                 } else {
                     //header("location: ../view/juntaView.php?error=dbError: ");
-                    echo "Error en la Base datos:  ".$result;
-                }
-           
+                    header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
+                }        
         } else {
            // header("location: ../view/juntaView.php?error=emptyField");
-            echo "Campos repetidos";
+            header("location: ../business/juntaAction.php?error=Campos");
         }
-    
-//}
-
-
-?>
-=======
-                    header("location: ../view/juntaView.php?success=inserted");
-                } else {
-                    header("location: ../view/juntaView.php?error=dbError");
-                }
-           
+    }
+    // Escucha el boton de Buscar una junta
+} else if (isset($_POST['read'])) {
+    if (isset($_POST['idjunta']) ) {
+        $idjunta = $_POST['idjunta'];
+        if (strlen($idjunta) > 0){
+            $juntaBusiness = new JuntaBusiness();
+            $result = $juntaBusiness->insertTBJunta($junta);
+            if ($result == 1) {
+               header("location: ../view/juntaView.php?success=inserted");
+            } else {
+                header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
+            }
         } else {
-            header("location: ../view/juntaView.php?error=emptyField");
+            header("location: ../business/juntaAction.php?error=Campos");
         }
-    } else {
-        header("location: ../view/juntaView.php?error=errorCamposNoConocidos");
     }
 }
->>>>>>> 412cecbe9483896030f2a21a76a65695bf55f1b3
+?>
