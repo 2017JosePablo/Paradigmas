@@ -11,22 +11,22 @@
 
         include '../data/juntaData.php';
 
-        $junt = new Junta("ee","parra","xxxxx","Juja","adam","v1","v2","xxxx");
+        $junt = new Junta("dd","Jose","JUANANANA","Juja","adam","v1","v2","DSDSD");
 
 
         $juntaD = new JuntaData();
 
         //echo($juntaD->insertTBJunta($junt));
-        //$juntaD->updateTBJunta($junt);
+        $juntaD->updateTBJunta($junt);
        // echo($juntaD->deleteTBJunta($junt->getIdTBJunta())." <"); 
 
 
 
-        $arr = $juntaD->getAllTBJunta();
+        //$arr = $juntaD->getAllTBJunta();
 
-        foreach ($arr as &$value) {
-            echo ($value->getIdTBJunta()."<br>");
-        }
+        //foreach ($arr as &$value) {
+           // echo ($value->getIdTBJunta()."<br>");
+       // }
 
 
 

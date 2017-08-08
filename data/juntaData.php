@@ -27,7 +27,7 @@ class JuntaData extends Data {
                 $junta->getVocal2Junta() . "','" .
                 $junta->getVocal3Junta() . "');";
 
-<<<<<<< HEAD
+
         $result = $conn->query($sql);
         $conn->close();
         return  $result;
@@ -46,9 +46,15 @@ class JuntaData extends Data {
             juntavocal1='" . $junta->getVocal1Junta() ."',
             juntavocal2='" . $junta->getVocal2Junta() ."',
             juntavocal3='".$junta->getVocal3Junta()."' 
-            WHERE idjunta=" . $junta->getIdTBJunta() . ";";
+            WHERE idjunta='" . $junta->getIdTBJunta() . "';";
 
         $result = $conn->query($sql);
+        if ($conn->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $conn->error;
+}
+
         $conn->close();
         return $result;
     }
@@ -114,12 +120,8 @@ class JuntaData extends Data {
         
     }
 
-=======
-        $result = mysqli_query($conn, $queryInsert);
-        mysqli_close($conn);
-        return $result;
-    }
->>>>>>> 91c1509513c951041cad0f8cd569b3347321e39f
+    
+
 }
 
 ?>
