@@ -18,13 +18,11 @@ class JuntaBusiness {
         return $this->juntaData->updateTBJunta($junta);
     }
 
-    public function deleteTBBull($idJunta) {
+    public function deleteTBJunta($idJunta) {
         return $this->juntaData->deleteTBJunta($idJunta);
     }
-
     public function getAllTBJunta() {
         return $this->juntaData->getAllTBJunta();
-    }
-    
-    
+    }    
 }
+?>
