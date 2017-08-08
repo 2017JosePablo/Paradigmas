@@ -3,7 +3,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Area Administrativa de Juntas</title>
+    <title>Crear Junta</title>
     <link rel="icon" href="../resources/icons/bull.png">
     <link rel="stylesheet" href="../resources/css/css.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,42 +16,32 @@
 
 <body>
 
-    <section id="form">
-        <table>
-            <tr>
-                <th>ID Junta</th>
-                <th>Precidente</th>
-                <th>Vicepresidente</th>
-                <th>Tesorero</th>
-                <th>Secretario</th>
-                <th>Vocal 1</th>
-                <th>Vocal 2</th>
-                <th>Vocal 3</th>
-                <th></th>
-            </tr>
+  
+        <h1>Crear Junta</h1>
+        
+            
             <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
-                <tr>
+                
                     
-                    <td><input required type="text" name="idjunta" id="idjunta"/></td>
+                   <p>Id Junta: </p> <input required type="text" name="idjunta" id="idjunta"/><p>
 
-                    <td><input required type="text" name="presidentejunta" id="presidentejunta"/></td>
+                   <p>Presidente</p> <input required type="text" name="presidentejunta" id="presidentejunta"/><p>
 
-                    <td><input required type="text" name="vicepresidentejunta" id="vicepresidentejunta"/></td>
+                    <p>VicePresidente</p> <input required type="text" name="vicepresidentejunta" id="vicepresidentejunta"/><p>
 
-                    <td><input required type="text" name="tesorerojunta" id="tesorerojunta"/></td>
+                     <p>Tesorero</p><input required type="text" name="tesorerojunta" id="tesorerojunta"/><p>
+                    <p>Secretario</p><input required type="text" name="secretariojunta" id="secretariojunta"/><p>
 
-                    <td><input required type="text" name="secretariojunta" id="secretariojunta"/></td>
+                     <p>Vocal1</p><input required type="text" name="vocal1junta" id="vocal1junta"/><p>
 
-                    <td><input required type="text" name="vocal1junta" id="vocal1junta"/></td>
+                     <p>Vocal3</p><input required type="text" name="vocal2junta" id="vocal2junta"/><p>
 
-                    <td><input required type="text" name="vocal2junta" id="vocal2junta"/></td>
+                     <p>Vocal3</p><input required type="text" name="vocal3junta" id="vocal3junta"/><p>
+                     <input type="submit" value="Crear Junta" name="create" id="create"/><p>
 
-                    <td><input required type="text" name="vocal3junta" id="vocal3junta"/></td>
-
-                    <td><input type="submit" value="Crear Junta" name="create" id="create"/></td>
-
-                </tr>
+                    
             </form>
+             
 
             <!--<?php
             $juntaBusiness = new JuntaBusiness();
@@ -75,9 +65,7 @@
             ?>
 -->
 
-            <tr>
-                <td></td>
-                <td>
+             
                     <?php
                     if (isset($_GET['error'])) {
                         if ($_GET['error'] == "emptyField") {
@@ -91,13 +79,9 @@
                         echo '<p style="color: green">Transacción realizada</p>';
                     }
                     ?>
-                </td>
-            </tr>
-        </table>
-    </section>
+        
 
-    <footer>
-    </footer>
+
 
 </body>
 </html>
