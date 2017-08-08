@@ -33,51 +33,54 @@ class JuntaData extends Data {
         return  $result;
     }
 
-
-
-    public function updateTBBull($bull) {
-        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
-        $conn->set_charset('utf8');
-        $queryUpdate = "UPDATE tbbull SET codebull='" . $bull->getCodeTBBull() .
-                "', namebull='" . $bull->getNameTBBull() .
-                "', commercialcase='" . $bull->getCommercialCaseTBBull() .
-                "', buydate='" . $bull->getBuyDateTBBull() .
-                "',strawsquantity=" . $bull->getStrawsQuantityTBBull() .
-                ",strawsprice=" . $bull->getStrawsPriceTBBull() .
-                " WHERE idtbbull=" . $bull->getIdTBBull() . ";";
-
-        $result = mysqli_query($conn, $queryUpdate);
-        mysqli_close($conn);
-
-        return $result;
-    }
-
-    public function deleteTBBull($idBull) {
-        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
-        $conn->set_charset('utf8');
-
-        $queryUpdate = "DELETE from tbbull where idtbbull=" . $idBull . ";";
-        $result = mysqli_query($conn, $queryUpdate);
-        mysqli_close($conn);
-
-        return $result;
-    }
-
-    public function getAllTBBull() {
-        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
-        $conn->set_charset('utf8');
-
-        $querySelect = "SELECT * FROM tbbull;";
-        $result = mysqli_query($conn, $querySelect);
-        mysqli_close($conn);
-        $bulls = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $currentBull = new Bull($row['idtbbull'], $row['codebull'], $row['ranch'], $row['namebull'], $row['commercialcase'], $row['buydate'], $row['strawsquantity'], $row['strawsprice']);
-            array_push($bulls, $currentBull);
+    public function updateTBJunta($junta) {
+        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
         }
-        return $bulls;
+        $sql = "UPDATE tbjunta SET idjunta='".$junta->getIdTBJunta() . "',
+            juntapresidente='" . $junta->getPresidenteTBJunta() ."',
+            juntavicepresidente='" . $junta->getVicepresidenteJunta() ."',
+            juntatesorero='" . $junta->getTesoreroJunta() ."',
+            juntasecretario='" . $junta->getSecretarioJunta() ."',
+            juntavocal1='" . $junta->getVocal1Junta() ."',
+            juntavocal2='" . $junta->getVocal2Junta() ."',
+            juntavocal3='".$junta->getVocal3Junta()."' 
+            WHERE idjunta=" . $junta->getIdTBJunta() . ";";
+
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
     }
-    
+
+    public function deleteTBJunta($idjunta) {
+        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        $sql = "DELETE from tbjunta where idjunta='".$idjunta."';";
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+    }
+    //(idjunta, juntapresidente, juntavicepresidente,juntatesorero,juntasecretario,juntavocal1,juntavocal2,juntavocal3)
+    public function getAllTBJunta() {
+        //dos  parametros
+        $junta = array();
+
+        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());  
+        $sql = "SELECT * FROM tbjunta";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($junta, new Junta($row["idjunta"],$row["juntapresidente"],$row["juntavicepresidente"],$row["juntatesorero"],$row["juntasecretario"],$row["juntavocal1"],$row["juntavocal2"],$row["juntavocal3"]));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        return $junta;
+    }
     public function getBullsInventary() {
         $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
