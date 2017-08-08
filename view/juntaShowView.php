@@ -3,7 +3,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Eliminar Junta</title>
+    <title>Mostrar Junta</title>
     <link rel="icon" href="../resources/icons/bull.png">
     <link rel="stylesheet" href="../resources/css/css.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,18 +15,42 @@
 </head>
 
 <body>
-
+                    <?php
+                    if (isset($_GET['error'])) {
+                        if ($_GET['error'] == "emptyField") {
+                            echo '<p style="color: red">Campo(s) vacio(s)</p>';
+                        } else if ($_GET['error'] == "numberFormat") {
+                            echo '<p style="color: red">Error, formato de numero</p>';
+                        } else if ($_GET['error'] == "dbError") {
+                            echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
+                        }
+                    } else if (isset($_GET['success'])) {
+                        echo '<p style="color: green">Transacción realizada</p>';
+                    }
+                    ?>
   
-        <h1>Eliminar Junta</h1>
+        <h1>Mostrar Junta</h1>
         
             
             <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
                 
                     
                    <p>Id Junta: </p> <input required type="text" name="idjunta" id="idjunta"/> 
-                   <input type="submit" value="Eliminar Junta" name="delete" id="delete"/><p>
+                   <input type="submit" value="Consultar Junta" name="consult" id="consult"/><p>
 
-                  
+                   <p>Presidente</p> <input required type="text" name="presidentejunta" id="presidentejunta"/><p>
+
+                    <p>VicePresidente</p> <input required type="text" name="vicepresidentejunta" id="vicepresidentejunta"/><p>
+
+                     <p>Tesorero</p><input required type="text" name="tesorerojunta" id="tesorerojunta"/><p>
+                    <p>Secretario</p><input required type="text" name="secretariojunta" id="secretariojunta"/><p>
+
+                     <p>Vocal1</p><input required type="text" name="vocal1junta" id="vocal1junta"/><p>
+
+                     <p>Vocal3</p><input required type="text" name="vocal2junta" id="vocal2junta"/><p>
+
+                     <p>Vocal3</p><input required type="text" name="vocal3junta" id="vocal3junta"/><p>
+
      
             </form>
              
@@ -54,19 +78,7 @@
 -->
 
              
-                    <?php
-                    if (isset($_GET['error'])) {
-                        if ($_GET['error'] == "emptyField") {
-                            echo '<p style="color: red">Campo(s) vacio(s)</p>';
-                        } else if ($_GET['error'] == "numberFormat") {
-                            echo '<p style="color: red">Error, formato de numero</p>';
-                        } else if ($_GET['error'] == "dbError") {
-                            echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
-                        }
-                    } else if (isset($_GET['success'])) {
-                        echo '<p style="color: green">Transacción realizada</p>';
-                    }
-                    ?>
+
         
 
 

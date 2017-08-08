@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	<a href="juntaCrearView.php">Crear Junta</a><br>
-	<a href="juntaActualizarView.php">Actualizar Junta</a><br>
-	<a href="juntaViewEliminar.php">Eliminar Junta</a><br>
-	<a href="juntaViewMostrar.php">Mostrar Junta</a><br>
+	<a href="juntaCreateView.php">Crear Junta</a><br>
+	<a href="juntaUpdateView.php">Actualizar Junta</a><br>
+	<a href="juntaDeleteView.php">Eliminar Junta</a><br>
+	<a href="juntaShowView.php">Mostrar Junta</a><br>
 </body>
 </html>

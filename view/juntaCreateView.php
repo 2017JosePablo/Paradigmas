@@ -16,6 +16,19 @@
 
 <body>
 
+                    <?php
+                    if (isset($_GET['error'])) {
+                        if ($_GET['error'] == "emptyField") {
+                            echo '<p style="color: red">Campo(s) vacio(s)</p>';
+                        } else if ($_GET['error'] == "numberFormat") {
+                            echo '<p style="color: red">Error, formato de numero</p>';
+                        } else if ($_GET['error'] == "dbError") {
+                            echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
+                        }
+                    } else if (isset($_GET['success'])) {
+                        echo '<p style="color: green">Transacción realizada</p>';
+                    }
+                    ?>
   
         <h1>Crear Junta</h1>
         
@@ -66,19 +79,6 @@
 -->
 
              
-                    <?php
-                    if (isset($_GET['error'])) {
-                        if ($_GET['error'] == "emptyField") {
-                            echo '<p style="color: red">Campo(s) vacio(s)</p>';
-                        } else if ($_GET['error'] == "numberFormat") {
-                            echo '<p style="color: red">Error, formato de numero</p>';
-                        } else if ($_GET['error'] == "dbError") {
-                            echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
-                        }
-                    } else if (isset($_GET['success'])) {
-                        echo '<p style="color: green">Transacción realizada</p>';
-                    }
-                    ?>
         
 
 
