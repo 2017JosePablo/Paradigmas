@@ -70,6 +70,7 @@
                 echo '<td><input type="submit" value="Actualizar" name="update" id="update"/></td>';
                 echo '<td><input type="submit" value="Eliminar" name="delete" id="delete"/></td>';
                 echo '</tr>';
+               
                 echo '</form>';
             }
             ?>
