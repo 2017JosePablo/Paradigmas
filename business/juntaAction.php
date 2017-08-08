@@ -27,34 +27,34 @@ if (isset($_POST['update'])) {
                 //igualo al valor que devolvio el sql
                 $result = $juntaBusiness->updateTBJunta($junta);
                 if ($result == 1) {
-                    header("location: ../view/juntaView.php?success=updated");
+                    header("location: ../view/juntaCRUDView.php?success=updated");
                 } else {
                     //echo $idSickness." - ".$bullName;
-                    header("location: ../view/juntaView.php?error=dbError");
+                    header("location: ../view/juntaUpdateView.php?error=dbError");
                 }
             } else {
-                header("location: ../view/juntaView.php?error=numberFormat");
+                header("location: ../view/juntaUpdateView.php?error=numberFormat");
             }
         } else {
-            header("location: ../view/juntaView.php?error=emptyField");
+            header("location: ../view/juntaUpdateView.php?error=emptyField");
         }
     } else {
-        header("location: ../view/juntaView.php?error=error");
+        header("location: ../view/juntaUpdateView.php?error=error");
     }
 } else if (isset($_POST['delete'])) {
 
-    if (isset($_POST['idJunta'])) {
+    if (isset($_POST['idjunta'])) {
 
-        $idJunta = $_POST['idJunta'];
+        $idJunta = $_POST['idjunta'];
         $juntaBusiness = new JuntaBusiness();
         $result = $juntaBusiness->deleteTBJunta($idJunta);
         if ($result == 1) {
-            header("location: ../view/juntaView.php?success=deleted");
+            header("location: ../view/juntaCRUDView.php?success=deleted");
         } else {
-            header("location: ../view/juntaView.php?error=dbError");
+            header("location: ../view/juntaDeleteView.php?error=dbError");
         }
     } else {
-        header("location: ../view/juntaView.php?error=error");
+        header("location: ../view/juntaDeleteView.php?error=error");
     }
 
     ////Parte para insertar a la base de datos un nueva Junta ....
@@ -81,33 +81,28 @@ if (isset($_POST['update'])) {
                 $juntaBusiness = new JuntaBusiness();
                 $result = $juntaBusiness->insertTBJunta($junta);
                 if ($result == 1) {
-                   // header("location: ../view/juntaView.php?success=inserted");
-                     header("location: ../business/juntaAction.php?success=inserted");
+                    header("location: ../view/juntaCRUDView.php?success=inserted");
+                //     header("location: ../business/juntaAction.php?success=inserted");
                   //  echo "Se inserto";
                 } else {
-                    //header("location: ../view/juntaView.php?error=dbError: ");
-                    header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
+                    header("location: ../view/juntaCreateView.php?error=dbError: ");
+                    //header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
                 }        
         } else {
-           // header("location: ../view/juntaView.php?error=emptyField");
-            header("location: ../business/juntaAction.php?error=Campos");
+            header("location: ../view/juntaCreateView.php?error=emptyField");
+        //    header("location: ../business/juntaAction.php?error=Campos");
         }
     }
     // Escucha el boton de Buscar una junta
-} else if (isset($_POST['read'])) {
-    if (isset($_POST['idjunta']) ) {
-        $idjunta = $_POST['idjunta'];
-        if (strlen($idjunta) > 0){
-            $juntaBusiness = new JuntaBusiness();
-            $result = $juntaBusiness->insertTBJunta($junta);
-            if ($result == 1) {
-               header("location: ../view/juntaView.php?success=inserted");
-            } else {
-                header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
-            }
+} else if (isset($_POST['consult'])) {
+        $juntaBusiness = new JuntaBusiness();
+        $result = $juntaBusiness->getAllTBJunta();
+        if ($result == 1) {
+             header("location: ../view/juntaShowView.php?success=inserted");
         } else {
-            header("location: ../business/juntaAction.php?error=Campos");
-        }
-    }
-}
+                   header("location: ../view/juntaCRUDView.php?success=inserted");
+            }
+        } 
+    
+
 ?>

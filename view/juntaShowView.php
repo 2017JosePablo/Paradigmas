@@ -31,57 +31,28 @@
   
         <h1>Mostrar Junta</h1>
         
-            
-            <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
-                
-                    
-                   <p>Id Junta: </p> <input required type="text" name="idjunta" id="idjunta"/> 
-                   <input type="submit" value="Consultar Junta" name="consult" id="consult"/><p>
+      
 
-                   <p>Presidente</p> <input required type="text" name="presidentejunta" id="presidentejunta"/><p>
-
-                    <p>VicePresidente</p> <input required type="text" name="vicepresidentejunta" id="vicepresidentejunta"/><p>
-
-                     <p>Tesorero</p><input required type="text" name="tesorerojunta" id="tesorerojunta"/><p>
-                    <p>Secretario</p><input required type="text" name="secretariojunta" id="secretariojunta"/><p>
-
-                     <p>Vocal1</p><input required type="text" name="vocal1junta" id="vocal1junta"/><p>
-
-                     <p>Vocal3</p><input required type="text" name="vocal2junta" id="vocal2junta"/><p>
-
-                     <p>Vocal3</p><input required type="text" name="vocal3junta" id="vocal3junta"/><p>
-
-     
-            </form>
-             
-
-            <!--<?php
+            <?php
             $juntaBusiness = new JuntaBusiness();
-            $allJuntas = $juntasBusiness->getAllTBJunta();
-            foreach ($allJuntas as $current) {
-                echo '<form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">';
-                echo '<input type="hidden" name="idjunta" value="' . $current->getJu() . '">';
+            $allJuntas = $juntaBusiness->getAllTBJunta();
+            echo '<table> <tr><td>Id</td>  <td>Presidiente</td><td>Vicepresidente</td><td>Tesorero</td><td>Secretario</td><td>Vocal 1</td><td>Vocal 2</td> <td>Vocal 3</td></tr>';
+            foreach ($allJuntas as $current) {     
                 echo '<tr>';
-                echo '<input type="hidden" name="ranch" id="ranch" value="' . $current->getRanchTBBull() . '"/>';
-                echo '<td><input type="text" name="code" id="code" value="' . $current->getCodeTBBull() . '"/></td>';
-                echo '<td><input type="text" name="name" id="name" value="' . $current->getNameTBBull() . '"/></td>';
-                echo '<td><input type="text" name="commercialcase" id="commercialcase" value="' . $current->getCommercialCaseTBBull() . '"/></td>';
-                echo '<td><input type="date" name="buydate" id="buydate" value="' . $current->getBuyDateTBBull() . '"/></td>';
-                echo '<td><input type="number" name="strawsquantity" id="sstrawsquantity" value="' . $current->getStrawsQuantityTBBull() . '"/></td>';
-                echo '<td><input type="number" name="strawsprice" id="sstrawsprice" value="' . $current->getStrawsPriceTBBull() . '"/></td>';
-                echo '<td><input type="submit" value="Actualizar" name="update" id="update"/></td>';
-                echo '<td><input type="submit" value="Eliminar" name="delete" id="delete"/></td>';
+                echo '<td>  '.$current->getIdTBJunta() . ' </td>';
+                echo '<td> '.$current->getPresidenteTBJunta().'</td>';
+                echo '<td> '.$current->getVicepresidenteJunta().' </td>';
+                echo '<td> '.$current->getTesoreroJunta() .
+                ' </td>';
+                echo '<td> '.$current->getSecretarioJunta().' </td>';
+                echo '<td> '.$current->getVocal1Junta().'</td>';
+                 echo '<td> '.$current->getVocal2Junta().'</td>';
+                  echo '<td> '.$current->getVocal3Junta().'</td>';
                 echo '</tr>';
-                echo '</form>';
             }
+                echo '</table>';
             ?>
--->
 
-             
-
-        
-
-
-
+            <a href="../view/juntaCRUDView.php">Regresar</a>
 </body>
 </html>
