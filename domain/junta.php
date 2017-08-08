@@ -1,8 +1,7 @@
 <?php
 
 class Junta {
-
-    private $idTBJunta;
+   private $idTBJunta;
     private $presidenteTBJunta;
     private $vicepresidenteTBJunta;
     private $tesoreroTBJunta;
@@ -55,3 +54,4 @@ class Junta {
         return $this->vocal3TBJunta;
     }
 }
+?>
