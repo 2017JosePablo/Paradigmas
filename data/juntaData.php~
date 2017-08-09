@@ -1,4 +1,3 @@
-
 <?php
 include 'data.php';
 include '../domain/junta.php';
