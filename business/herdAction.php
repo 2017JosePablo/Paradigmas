@@ -13,12 +13,10 @@
 		$sociophone = $_POST['sociophone'];
 
 		if (strlen($socioid)> 0 && strlen($socioname) > 0  &&  strlen($sociofirst)  &&  strlen($sociolast) && strlen($sociophonehome) > 0  && strlen($sociophone) > 0) {
-			# code...
+			
 		}else{	
-			header("location: ../view/censoView.php");
+			header("location: ../view/censoView.php?error=emptyField");
 		}
-
-
 
 
 	}
