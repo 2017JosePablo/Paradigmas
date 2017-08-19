@@ -12,28 +12,23 @@
         //include '../data/juntaData.php';
     include '../data/herdData.php';
 
-        $herd = new Herd("434","0","0","5","4","87","5","10");
+        $herd = new Herd("434","100","0","5","4","80","50","0");
 
         $herdD = new herdData();
 
-        echo ($herdD -> insertTBHerd($herd));
+       // echo ($herdD -> insertTBHerd($herd));
+       // $herdD -> updateTBHerd($herd);
 
-        //$junt = new Junta("122","ADAN","JUANANANA","Juja","adam","v1","v2","DSDSD");
+       // $herdD -> deleteTBHerd("504130763");
+
+        $array = $herdD->getAllTBHerd();
+
+        foreach ($array as $key) {
+
+            echo $key->getOwerId().'</br>';
+        }
 
 
-        //$juntaD = new JuntaData();
-
-        //echo($juntaD->insertTBJunta($junt));
-        //$juntaD->insertTBJunta($junt);
-       // echo($juntaD->deleteTBJunta($junt->getIdTBJunta())." <"); 
-
-
-
-        //$arr = $juntaD->getAllTBJunta();
-
-        //foreach ($arr as &$value) {
-           // echo ($value->getIdTBJunta()."<br>");
-       // }
 
 
 
