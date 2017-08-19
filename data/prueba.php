@@ -11,13 +11,13 @@
 
         include '../data/juntaData.php';
 
-        $junt = new Junta("dd","Jose","JUANANANA","Juja","adam","v1","v2","DSDSD");
+        $junt = new Junta("122","ADAN","JUANANANA","Juja","adam","v1","v2","DSDSD");
 
 
         $juntaD = new JuntaData();
 
-        //echo($juntaD->insertTBJunta($junt));
-        $juntaD->updateTBJunta($junt);
+        echo($juntaD->insertTBJunta($junt));
+        //$juntaD->insertTBJunta($junt);
        // echo($juntaD->deleteTBJunta($junt->getIdTBJunta())." <"); 
 
 
