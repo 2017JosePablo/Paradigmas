@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-<a href="view/juntaCRUDView.php">Junta</a>
+<a href="view/juntaCRUDView.php">Junta</a><br>
+<a href="view/censoView.php">Censo</a>
 </body>
 </html>
