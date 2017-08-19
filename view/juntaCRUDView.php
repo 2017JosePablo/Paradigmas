@@ -10,6 +10,7 @@
 	<a href="juntaCreateView.php">Crear Junta</a><br>
 	<a href="juntaUpdateView.php">Actualizar Junta</a><br>
 	<a href="juntaDeleteView.php">Eliminar Junta</a><br>
-	<a href="juntaShowView.php">Mostrar Junta</a><br>
+	<a href="juntaShowView.php">Mostrar Junta</a><br><br>
+	<a href="../index.php">Regresar</a>
 </body>
 </html>

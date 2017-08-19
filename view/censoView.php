@@ -6,7 +6,7 @@
 	</title>
 
     <?php
-    include '../business/heardAction.php';
+    //include '../business/heardAction.php';
     ?>
 
 </head>
@@ -16,18 +16,20 @@
     <?php
     if (isset($_GET['error'])) {
         if ($_GET['error'] == "emptyField") {
-            echo '<p style="color: red">Campo(s) vacio(s)</p>';
+            echo '<p style="color: red">Campo(s) vacio(s) debe ingresar almenos un bobino</p>';
         } else if ($_GET['error'] == "numberFormat") {
-            echo '<p style="color: red">Error, formato de numero</p>';
+            echo '<p style="color: red">Error, formato de numero al ingresar la cantidad de bobinos</p>';
         } else if ($_GET['error'] == "dbError") {
             echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
+        }else if($_GET['error'] == "emptyActivity"){
+			echo '<center><p style="color: red">No se selecciono una Actividad</p></center>';
         }
     } else if (isset($_GET['success'])) {
         echo '<p style="color: green">Transacción realizada</p>';
     }
     ?>
   
-
+<p>Advertencia: Al ingresar un daro "Erroneo" se perderan los datos temporales.</p>
 <p>Registro de hato para socios de ASOTURGA</p>
 
 <p>Datos personales:</p>
@@ -83,7 +85,10 @@
 				</td>
 				
 				<td>
-					<input type="text" name="sociophone" id="sociophonehome"  required>
+
+			
+					<input type="text" name="sociophone" id="sociophone"  required>
+
 				</td>
 			</tr>
 
@@ -94,18 +99,20 @@
 	<table>
 		<tr>
 			<td>
-			Leche:<input type="checkbox" name="milk" id="milk" value="milk">
+			Leche:</td><td><input type="checkbox" name="milk" id="milk" value="1">
 			</td>
+			</tr> <tr>
 			<td>
-			Carne Cria:<input type="checkbox" name="breedingMeat" id="breedingMeat" value="breedingMeat">
+			Carne Cria:</td><td> <input type="checkbox" name="breedingMeat" id="breedingMeat" value="2">
 			</td>
+			</tr> <tr>
 
 			<td>
-			Carne Engorde:<input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="fatteningMeat">
+			Carne Engorde:</td><td><input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="3">
 			</td>
-
+			</tr> <tr>
 			<td>
-			Doble proposito:<input type="checkbox" name="doublePurpose" id="doublePurpose" value="doublePurpose">
+			Doble proposito:</td><td><input type="checkbox" name="doublePurpose" id="doublePurpose" value="4">
 			</td>
 		</tr>
 
@@ -179,12 +186,15 @@
 
 
 
-		<input type="submit" name="registerHerd" id="registerHerd" value="Registrar Hato">
+		<input type="submit" name="registerHerd" id="registerHerd" value="Registrar Hato"> 
+
+
+		
 
 
 
 </form>
-
-
+<br> <br>
+<a href="../index.php">Regresar</a>
 </body>
 </html>
