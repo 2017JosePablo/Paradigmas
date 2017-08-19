@@ -75,15 +75,15 @@
 			Leche:<input type="checkbox" name="milk" value="milk">
 			</td>
 			<td>
-			Carne Cria:<input type="checkbox" name="breedingMeat" value="milk">
+			Carne Cria:<input type="checkbox" name="breedingMeat" value="breedingMeat">
 			</td>
 
 			<td>
-			Carne Engorde:<input type="checkbox" name="fatteningMeat" value="milk">
+			Carne Engorde:<input type="checkbox" name="fatteningMeat" value="fatteningMeat">
 			</td>
 
 			<td>
-			Doble proposito:<input type="checkbox" name="doublePurpose" value="milk">
+			Doble proposito:<input type="checkbox" name="doublePurpose" value="doublePurpose">
 			</td>
 		</tr>
 
