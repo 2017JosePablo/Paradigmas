@@ -94,18 +94,18 @@
 	<table>
 		<tr>
 			<td>
-			Leche:<input type="checkbox" name="activitymilk" value="milk">
+			Leche:<input type="checkbox" name="milk" value="milk">
 			</td>
 			<td>
-			Carne Cria:<input type="checkbox" name="activitymilk" value="milk">
-			</td>
-
-			<td>
-			Carne Engorde:<input type="checkbox" name="activitymilk" value="milk">
+			Carne Cria:<input type="checkbox" name="breedingMeat" value="milk">
 			</td>
 
 			<td>
-			Doble proposito:<input type="checkbox" name="activitymilk" value="milk">
+			Carne Engorde:<input type="checkbox" name="fatteningMeat" value="milk">
+			</td>
+
+			<td>
+			Doble proposito:<input type="checkbox" name="doublePurpose" value="milk">
 			</td>
 		</tr>
 
@@ -120,7 +120,7 @@
 			</td>
 	
 			<td>
-				<input type="text" name="activitymilk" placeholder="0">
+				<input type="text" name="calf" placeholder="0">
 			</td>
 		</tr>
 		<tr>
@@ -128,7 +128,7 @@
 				Terneras
 			</td>
 			<td>
-				<input type="text" name="activitymilk" placeholder="0" >
+				<input type="text" name="beal" placeholder="0" >
 			</td>
 	</tr>
 		<tr>
@@ -136,7 +136,7 @@
 				Novillos
 			</td>
 			<td>
-				<input type="text" name="activitymilk" placeholder="0">
+				<input type="text" name="steer" placeholder="0">
 			</td>
 	</tr>
 		<tr>
@@ -144,15 +144,15 @@
 				Novillas
 			</td>
 			<td>
-				<input type="text" name="activitymilk" placeholder="0">
+				<input type="text" name="heifer" placeholder="0">
 			</td>
 	</tr>
 		<tr>
 			<td>
-				Novillas Prenadas
+				Novillas Pregnadas
 			</td>
 			<td>
-				<input type="text" name="activitymilk" placeholder="0">
+				<input type="text" name="impregnatedHeifer" placeholder="0">
 			</td>
 	</tr>
 		<tr>
@@ -160,7 +160,7 @@
 				Toros
 			</td>
 			<td>
-				<input type="text" name="activitymilk" placeholder="0">
+				<input type="text" name="bull" placeholder="0">
 			</td>
 
 	</tr>
@@ -169,7 +169,7 @@
 				Vacas
 			</td>
 			<td>
-				<input type="text" name="activitymilk" placeholder="0">
+				<input type="text" name="cow" placeholder="0">
 			</td>
 
 
