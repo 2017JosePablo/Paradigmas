@@ -21,6 +21,8 @@
             echo '<p style="color: red">Error, formato de numero</p>';
         } else if ($_GET['error'] == "dbError") {
             echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
+        }else if($_GET['error'] == "emptyActivity"){
+			echo '<center><p style="color: red">No se selecciono una Actividad</p></center>';
         }
     } else if (isset($_GET['success'])) {
         echo '<p style="color: green">Transacción realizada</p>';
@@ -182,15 +184,15 @@
 
 
 
-		<input type="submit" name="registerHerd" id="registerHerd" value="Registrar Hato"> <br> <br>
+		<input type="submit" name="registerHerd" id="registerHerd" value="Registrar Hato"> 
 
 
-		<a href="../index.php">Regresar</a>
+		
 
 
 
 </form>
-
-
+<br> <br>
+<a href="../index.php">Regresar</a>
 </body>
 </html>
