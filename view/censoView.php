@@ -6,7 +6,7 @@
 	</title>
 
     <?php
-    include '../business/heardAction.php';
+    //include '../business/heardAction.php';
     ?>
 
 </head>
@@ -16,9 +16,9 @@
     <?php
     if (isset($_GET['error'])) {
         if ($_GET['error'] == "emptyField") {
-            echo '<p style="color: red">Campo(s) vacio(s)</p>';
+            echo '<p style="color: red">Campo(s) vacio(s) debe ingresar almenos un bobino</p>';
         } else if ($_GET['error'] == "numberFormat") {
-            echo '<p style="color: red">Error, formato de numero</p>';
+            echo '<p style="color: red">Error, formato de numero al ingresar la cantidad de bobinos</p>';
         } else if ($_GET['error'] == "dbError") {
             echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
         }else if($_GET['error'] == "emptyActivity"){
@@ -29,7 +29,7 @@
     }
     ?>
   
-
+<p>Advertencia: Al ingresar un daro "Erroneo" se perderan los datos temporales.</p>
 <p>Registro de hato para socios de ASOTURGA</p>
 
 <p>Datos personales:</p>
@@ -99,18 +99,20 @@
 	<table>
 		<tr>
 			<td>
-			Leche:<input type="checkbox" name="milk" id="milk" value="1">
+			Leche:</td><td><input type="checkbox" name="milk" id="milk" value="1">
 			</td>
+			</tr> <tr>
 			<td>
-			Carne Cria:<input type="checkbox" name="breedingMeat" id="breedingMeat" value="2">
+			Carne Cria:</td><td> <input type="checkbox" name="breedingMeat" id="breedingMeat" value="2">
 			</td>
+			</tr> <tr>
 
 			<td>
-			Carne Engorde:<input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="3">
+			Carne Engorde:</td><td><input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="3">
 			</td>
-
+			</tr> <tr>
 			<td>
-			Doble proposito:<input type="checkbox" name="doublePurpose" id="doublePurpose" value="4">
+			Doble proposito:</td><td><input type="checkbox" name="doublePurpose" id="doublePurpose" value="4">
 			</td>
 		</tr>
 
