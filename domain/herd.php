@@ -55,7 +55,7 @@ class Herd{
 		$this->pregnantheifers = $pregnantheifers;
 	}
 	public function getPregnantHeifers(){
-		return $this->setPregnantHeifers;
+		return $this->pregnantheifers;
 	}
 	public function setBulls($bulls){
 		$this->bulls = $bulls;

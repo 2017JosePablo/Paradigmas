@@ -9,14 +9,21 @@
 
     <?php
 
-        include '../data/juntaData.php';
+        //include '../data/juntaData.php';
+    include '../data/herdData.php';
 
-        $junt = new Junta("122","ADAN","JUANANANA","Juja","adam","v1","v2","DSDSD");
+        $herd = new Herd("434","0","0","5","4","87","5","10");
+
+        $herdD = new herdData();
+
+        echo ($herdD -> insertTBHerd($herd));
+
+        //$junt = new Junta("122","ADAN","JUANANANA","Juja","adam","v1","v2","DSDSD");
 
 
-        $juntaD = new JuntaData();
+        //$juntaD = new JuntaData();
 
-        echo($juntaD->insertTBJunta($junt));
+        //echo($juntaD->insertTBJunta($junt));
         //$juntaD->insertTBJunta($junt);
        // echo($juntaD->deleteTBJunta($junt->getIdTBJunta())." <"); 
 
