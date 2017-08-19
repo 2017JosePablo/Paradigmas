@@ -94,18 +94,18 @@
 	<table>
 		<tr>
 			<td>
-			Leche:<input type="checkbox" name="milk" value="milk">
+			Leche:<input type="checkbox" name="milk" id="milk" value="milk">
 			</td>
 			<td>
-			Carne Cria:<input type="checkbox" name="breedingMeat" value="breedingMeat">
-			</td>
-
-			<td>
-			Carne Engorde:<input type="checkbox" name="fatteningMeat" value="fatteningMeat">
+			Carne Cria:<input type="checkbox" name="breedingMeat" id="breedingMeat" value="breedingMeat">
 			</td>
 
 			<td>
-			Doble proposito:<input type="checkbox" name="doublePurpose" value="doublePurpose">
+			Carne Engorde:<input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="fatteningMeat">
+			</td>
+
+			<td>
+			Doble proposito:<input type="checkbox" name="doublePurpose" id="doublePurpose" value="doublePurpose">
 			</td>
 		</tr>
 
