@@ -66,24 +66,24 @@
 			<tr>
 
 				<td>
-					<input type="text" name="socioid" id="socioid">
+					<input type="text" name="socioid" id="socioid"  required>
 				</td>
 				<td>
-					<input type="text" name="socioname" id="socioname">
+					<input type="text" name="socioname" id="socioname"  required>
 				</td>
 				<td>
-					<input type="text" name="sociofirstname" id="sociofirstname">
+					<input type="text" name="sociofirstname" id="sociofirstname"  required>
 				</td>		
 				<td>
-					<input type="text" name="sociolastname" id="sociolastname">
+					<input type="text" name="sociolastname" id="sociolastname"  required>
 				</td>
 				
 				<td>
-					<input type="text" name="sociophonehome" id="sociophonehome">
+					<input type="text" name="sociophonehome" id="sociophonehome" required>
 				</td>
 				
 				<td>
-					<input type="text" name="sociophone" id="sociophonehome">
+					<input type="text" name="sociophone" id="sociophonehome"  required>
 				</td>
 			</tr>
 
@@ -94,18 +94,18 @@
 	<table>
 		<tr>
 			<td>
-			Leche:<input type="checkbox" name="milk" value="milk">
+			Leche:<input type="checkbox" name="milk" id="milk" value="milk">
 			</td>
 			<td>
-			Carne Cria:<input type="checkbox" name="breedingMeat" value="breedingMeat">
-			</td>
-
-			<td>
-			Carne Engorde:<input type="checkbox" name="fatteningMeat" value="fatteningMeat">
+			Carne Cria:<input type="checkbox" name="breedingMeat" id="breedingMeat" value="breedingMeat">
 			</td>
 
 			<td>
-			Doble proposito:<input type="checkbox" name="doublePurpose" value="doublePurpose">
+			Carne Engorde:<input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="fatteningMeat">
+			</td>
+
+			<td>
+			Doble proposito:<input type="checkbox" name="doublePurpose" id="doublePurpose" value="doublePurpose">
 			</td>
 		</tr>
 
