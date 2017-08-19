@@ -94,18 +94,18 @@
 	<table>
 		<tr>
 			<td>
-			Leche:<input type="checkbox" name="milk" id="milk" value="milk">
+			Leche:<input type="checkbox" name="milk" id="milk" value="1">
 			</td>
 			<td>
-			Carne Cria:<input type="checkbox" name="breedingMeat" id="breedingMeat" value="breedingMeat">
-			</td>
-
-			<td>
-			Carne Engorde:<input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="fatteningMeat">
+			Carne Cria:<input type="checkbox" name="breedingMeat" id="breedingMeat" value="2">
 			</td>
 
 			<td>
-			Doble proposito:<input type="checkbox" name="doublePurpose" id="doublePurpose" value="doublePurpose">
+			Carne Engorde:<input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="3">
+			</td>
+
+			<td>
+			Doble proposito:<input type="checkbox" name="doublePurpose" id="doublePurpose" value="4">
 			</td>
 		</tr>
 
@@ -179,7 +179,10 @@
 
 
 
-		<input type="submit" name="registerHerd" id="registerHerd" value="Registrar Hato">
+		<input type="submit" name="registerHerd" id="registerHerd" value="Registrar Hato"> <br> <br>
+
+
+		<a href="../index.php">Regresar</a>
 
 
 
