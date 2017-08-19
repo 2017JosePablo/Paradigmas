@@ -15,7 +15,7 @@ class Data {
         $this->server = "localhost";
         $this->user = "root";
         $this->password = "";
-        $this->db = "dbparadigma";
+        $this->db = "dbasoturga";
 
     }
     public function getServer(){
