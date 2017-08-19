@@ -66,24 +66,24 @@
 			<tr>
 
 				<td>
-					<input type="text" name="socioid" id="socioid">
+					<input type="text" name="socioid" id="socioid"  required>
 				</td>
 				<td>
-					<input type="text" name="socioname" id="socioname">
+					<input type="text" name="socioname" id="socioname"  required>
 				</td>
 				<td>
-					<input type="text" name="sociofirstname" id="sociofirstname">
+					<input type="text" name="sociofirstname" id="sociofirstname"  required>
 				</td>		
 				<td>
-					<input type="text" name="sociolastname" id="sociolastname">
+					<input type="text" name="sociolastname" id="sociolastname"  required>
 				</td>
 				
 				<td>
-					<input type="text" name="sociophonehome" id="sociophonehome">
+					<input type="text" name="sociophonehome" id="sociophonehome" required>
 				</td>
 				
 				<td>
-					<input type="text" name="sociophone" id="sociophonehome">
+					<input type="text" name="sociophone" id="sociophonehome"  required>
 				</td>
 			</tr>
 
