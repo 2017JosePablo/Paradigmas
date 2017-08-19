@@ -32,6 +32,7 @@ class Data {
     public function getDbName(){
         return $this->db;
     }
+    
 
 
 }
