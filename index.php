@@ -7,6 +7,12 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
+<<?php 
+	if(isset($_GET['success'])){
+		 echo '<p style="color: green">Censo insertado con Exito</p>';
+	}
+ ?>
+
 <a href="view/juntaCRUDView.php">Junta</a><br>
 <a href="view/censoView.php">Censo</a>
 </body>
