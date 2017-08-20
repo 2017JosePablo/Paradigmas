@@ -7,7 +7,6 @@ class Person{
 	private $phonehome;
 	private $phone;
 
-}
 
 	function Person($id,$name,$firstname,$lastname,$phonehome,$phone){
 		$this->id = $id;
@@ -66,5 +65,7 @@ class Person{
 	public function getPhone(){
 		return $this->phone;
 	}
+
+}
 
 ?>

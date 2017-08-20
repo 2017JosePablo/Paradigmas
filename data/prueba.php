@@ -10,8 +10,9 @@
     <?php
 
         //include '../data/juntaData.php';
-    include '../data/herdData.php';
+   // include '../data/herdData.php';
 
+/*
         $herd = new Herd("434","100","0","5","4","80","50","0");
 
         $herdD = new herdData();
@@ -28,8 +29,32 @@
             echo $key->getOwerId().'</br>';
         }
 
+*/
+        /*
+        include '../data/personData.php';
+
+        $person = new Person("504130763","Pablo","carranza","alfaro","24650889","50088487");
+        $personD = new personData();
+
+        //echo($personD->insertTBPerson($person));
+
+        //$personD->updateTBPerson($person);
+
+       // $personD -> deleteTBPerson("504130763");
 
 
+        $array = $personD->getAllTBPerson();
+
+        foreach ($array as $key) {
+
+            echo $key->getId().'</br>';
+        }
+        */
+        include '../data/herdActivityData.php';
+
+        $herdActivityD = new herdActivityData();
+
+        echo($herdActivityD->insertTBHerdActivity("503960368","1,2,4"));
 
 
     ?>
