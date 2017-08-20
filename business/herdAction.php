@@ -72,8 +72,9 @@
 							$herdActivityBusiness = new herdActivityBusiness();
 							$result2=$herdActivityBusiness->insertTBHerdActivity($socioid,$activitytype);
 							if ($result2==1) {
-								echo "<script> alert('Datos insertados con exito!!!')</script>"; 
-								header("location: ../index.php");	
+								//echo '<script language="javascript">alert("Datos Actualizados");</script>'; 
+
+								header("location: ../index.php?success=inserted");	
 							}
 						}else{
 								header("location: ../view/censoView.php?error=registerHerdActivity");		
