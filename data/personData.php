@@ -1,6 +1,6 @@
 <?php
 
-include 'data.php';
+require_once 'data.php';
 include '../domain/person.php';
 
 class personData extends Data{

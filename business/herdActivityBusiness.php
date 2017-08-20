@@ -1,7 +1,5 @@
 <?php
-	/**
-	* 
-	*/
+
 	include '../data/herdActivityData.php';
 
 	

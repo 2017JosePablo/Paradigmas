@@ -1,6 +1,9 @@
 <?php
-	include './herdBusiness.php';
-	include './herdActivityBusiness.php';
+
+	//include './personBusiness.php';
+//	include './herdBusiness.php';
+	
+//	include './herdActivityBusiness.php';
 
 	if (isset($_POST['registerHerd'])) {
 // Personal information
@@ -10,7 +13,6 @@
 		$sociolast = $_POST['sociolastname'];
 		$sociophonehome = $_POST['sociophonehome'];
 		$sociophone = $_POST['sociophone'];
-
 
 		////  Quantity Animals
 		$calf = $_POST['calf'];
@@ -24,7 +26,6 @@
 		$activitytype = "";
 
 
- 
 		if (strlen($socioid)> 0 && strlen($socioname) > 0  &&  strlen($sociofirst)  &&  strlen($sociolast) && strlen($sociophonehome) > 0  && strlen($sociophone) > 0) {
 
 
@@ -48,27 +49,44 @@
 						is_numeric($steer) && $steer > 0 || is_numeric($heifer) && $heifer > 0 || 
 						is_numeric($impregnatedHeifer) && $impregnatedHeifer > 0 || is_numeric($bull)&& $bull > 0  || is_numeric($cow) && $cow > 0 ) {
 
-						$herd = new Herd($socioid,$calf ,$beal,$steer,$heifer,$impregnatedHeifer,$bull,$cow);
-					//	$hearBusiness = new herdBusiness();
+//include './herdBusiness.php';
+						require './personBusiness.php';
+						$person = new Person($socioid,$socioname,$sociofirst,$sociolast,$sociophonehome,$sociophone);
+						$personBusiness = new personBusiness();
+						$result = $personBusiness->insertTBPerson($person);
 
-				//		$result = $hearBusiness->insertTBHerd($herd);
-					/*	if ($result ==1) {
-							echo "Insertado con exitooo";
-						/*	$herdActivityBusiness = new herdActivityBusiness();
+
+						echo "resultado: ".$result;
+						if ($result == 1) {
+
+						require './herdBusiness.php';
+						$herd = new Herd($socioid,$calf ,$beal,$steer,$heifer,$impregnatedHeifer,$bull,$cow);
+						
+						//	$herd = new Herd("503930363",49,0,0,1,1,0,0);
+
+						$herdBusiness = new herdBusiness();		
+
+						$result2 = $herdBusiness->insertTBHerd($herd);
+						if ($result2 == 1) {
+							require './herdActivityBusiness.php';
+							$herdActivityBusiness = new herdActivityBusiness();
 							$result2=$herdActivityBusiness->insertTBHerdActivity($socioid,$activitytype);
 							if ($result2==1) {
-								header("location: ../index.php");		
-							}else{
+								echo "<script> alert('Datos insertados con exito!!!')</script>"; 
+								header("location: ../index.php");	
+							}
+						}else{
 								header("location: ../view/censoView.php?error=registerHerdActivity");		
 							}
 						
 						}else{
 							header("location: ../view/censoView.php?error=registerHerd");	
 						}
-					*/
+
+					
 					echo "Datos totalmente correctos: activitytype: ".$activitytype;
 
-
+					
 					}else{
 						header("location: ../view/censoView.php?error=numberFormat");	
 					}
@@ -82,5 +100,7 @@
 			header("location: ../view/censoView.php?error=emptyField");
 		}
 	}
+
+
 
 ?>

@@ -1,6 +1,7 @@
 <?php
 
-include 'data.php';
+//include 'data.php';
+require_once 'data.php';
 include '../domain/herd.php';
 
 class herdData extends Data{
@@ -8,6 +9,7 @@ class herdData extends Data{
 	 private $data;
 
     function __construct(){ 
+
         $this->data = new Data();
     }
      public function insertTBHerd($herd) {
