@@ -1,6 +1,6 @@
 <?php
 
-include '../data/juntaData.php';
+require '../data/juntaData.php';
 
 class JuntaBusiness {
 

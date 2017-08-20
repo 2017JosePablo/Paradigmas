@@ -1,7 +1,7 @@
 
 <?php
-include 'data.php';
-include '../domain/junta.php';
+require_once  'data.php';
+require_once'../domain/junta.php';
 
 class JuntaData extends Data {
 
@@ -122,7 +122,6 @@ class JuntaData extends Data {
     }
 
     
-
 }
 
 ?>

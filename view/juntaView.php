@@ -5,11 +5,41 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de las Juntas</title>
 	<link rel="stylesheet" href="">
+
+
+    <script type="text/javascript">
+        function loadJunta(idjunta) {
+
+     //   if (str.length == 0) {
+        //document.getElementById("txtHint").innerHTML = "";
+       // return;
+    //} else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                alert("Aqui estoy");
+                document.getElementById("txtHint").innerHTML = this.responseText;
+
+
+            }
+        };
+        xmlhttp.open("post", "../business/juntaAction.php?idUpdate="+idjunta, true);
+        xmlhttp.send();
+    }
+
+     
+        }
+
+    </script>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
-	 <?php
 
+<input type="text" id="txtHint">
+
+   
+   <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
+	 <?php
+ 
 	 include '../business/juntaBusiness.php';
             $juntaBusiness = new JuntaBusiness();
             $allJuntas = $juntaBusiness->getAllTBJunta();
@@ -23,15 +53,20 @@
                 ' </td>';
                 echo '<td> '.$current->getSecretarioJunta().' </td>';
                 echo '<td> '.$current->getVocal1Junta().'</td>';
-                 echo '<td> '.$current->getVocal2Junta().'</td>';
-                  echo '<td> '.$current->getVocal3Junta().'</td>';
-                  echo '<td> <input type="submit" value="Actualizar" name="update" id="update"/></td>';
-                  echo '<td>  <input type="submit" value="Eliminar" name="delete" id="delete"/></td>';
+                echo '<td> '.$current->getVocal2Junta().'</td>';
+                echo '<td> '.$current->getVocal3Junta().'</td>';
+                echo '<td> <a href="../business/juntaAction.php?idDelete='.$current->getIdTBJunta().'"> Eliminar</a> </td>';
+                 echo "<td> <a href='' onclick=loadJunta('".$current->getIdTBJunta()."') > Modificar</a> </td>";
+              //  echo '<td> <a href="" onclick=loadJunta(123) "> Modificar</a> </td>';
+              //  echo '<td> <a href="" onclick="> Modificar</a> </td>';
                 echo '</tr>';
             }
                 echo '</table>';
+
+                 //name='.$current->getIdTBJunta().'
             ?>
-</form>
+            
+        </form>
 
             <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
                 
