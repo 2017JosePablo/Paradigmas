@@ -13,11 +13,20 @@
 <script type='text/javascript'>
 
 function validar(){
-var todo_correcto = true;
+var todo_correcto = false;
 
 /*Para comprobar la edad, utilizaremos la función isNaN(), que nos dirá si el valor 
 ingresado NO es un número (NaN son las siglas de Not a Number). Si la edad no es un 
 número, todo_correcto será false.*/
+if(document.getElementById('terneros').value.length > 1 || document.getElementById('terneras').value.length > 1
+	|| document.getElementById('novillos').value.length > 1 || document.getElementById('novillas').value.length > 1
+	|| document.getElementById('novillospregnadas').value.length > 1 || document.getElementById('toros').value.length > 1
+	|| document.getElementById('vacas').value.length > 1){
+
+	todo_correcto = true
+
+}
+
 if(isNaN(document.getElementById('terneros').value) && document.getElementById('terneros').value.length < 1 ){
     todo_correcto = false;
 }
