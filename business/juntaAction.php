@@ -50,7 +50,7 @@ if (isset($_POST['actualizar'])) {
                 //creo una instancia
                 $juntaBusiness = new JuntaBusiness();
                 //igualo al valor que devolvio el sql
-                $result = $juntaBusiness->updateTBJunta($junta);
+                $result = $juntaBusiness->actualizarTBJunta($junta);
                 if ($result == 1) {
                     header("location: ../view/juntaView.php?success=updated");
                 } else {
@@ -91,7 +91,7 @@ if (isset($_POST['actualizar'])) {
                 $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
                 $junta = new junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta, $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
                 $juntaBusiness = new JuntaBusiness();
-                $result = $juntaBusiness->insertTBJunta($junta);
+                $result = $juntaBusiness->insertarTBJunta($junta);
                 if ($result == 1) {
                     header("location: ../view/juntaView.php?success=inserted");
                 //     header("location: ../business/juntaAction.php?success=inserted");

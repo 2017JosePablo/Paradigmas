@@ -21,7 +21,7 @@ class JuntaBusiness {
     public function eliminarTBJunta($idJunta) {
         return $this->juntaData->eliminarTBJunta($idJunta);
     }
-    public function obtenerTodasTBJunta() {
+    public function obtenerTodosTBJunta() {
         return $this->juntaData->obtenerTodosTBJunta();
     }    
 }
