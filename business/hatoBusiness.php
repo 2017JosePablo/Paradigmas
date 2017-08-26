@@ -28,9 +28,9 @@
 			return $this->hato->eliminarTBHato($hato);
 		}
 
-		public function obtenerTodosTBHato($hato)
+		public function obtenerTodosTBHato()
 		{
-			return $this->hato->obtenerTodosTBHato($hato);
+			return $this->hato->obtenerTodosTBHato();
 		}
 
 	}

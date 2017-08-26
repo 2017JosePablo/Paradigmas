@@ -22,7 +22,7 @@ class JuntaBusiness {
         return $this->juntaData->eliminarTBJunta($idJunta);
     }
     public function obtenerTodasTBJunta() {
-        return $this->juntaData->obtenerTodasTBJunta();
+        return $this->juntaData->obtenerTodosTBJunta();
     }    
 }
 ?>

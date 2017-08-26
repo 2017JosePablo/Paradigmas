@@ -42,7 +42,7 @@
  
 	 include '../business/juntaBusiness.php';
             $juntaBusiness = new JuntaBusiness();
-            $allJuntas = $juntaBusiness->getAllTBJunta();
+            $allJuntas = $juntaBusiness->obtenerTodosTBHato();
             echo '<table> <tr><td>Id</td>  <td>Presidiente</td><td>Vicepresidente</td><td>Tesorero</td><td>Secretario</td><td>Vocal 1</td><td>Vocal 2</td> <td>Vocal 3</td> <td colspan="2">Acciones</td> </tr>';
             foreach ($allJuntas as $current) {     
                 echo '<tr>';
