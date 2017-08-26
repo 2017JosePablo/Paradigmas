@@ -5,7 +5,7 @@
 	
 //	include './herdActivityBusiness.php';
 
-	if (isset($_POST['registrarHato'])) {
+	if (isset($_POST['registrarhato'])) {
 // Personal information
 		$socioid = $_POST['socioid'];
 		$socionombre = $_POST['socionombre'];
