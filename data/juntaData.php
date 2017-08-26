@@ -71,7 +71,7 @@ class JuntaData extends Data {
         return $result;
     }
     //(idjunta, juntapresidente, juntavicepresidente,juntatesorero,juntasecretario,juntavocal1,juntavocal2,juntavocal3)
-    public function getAllTBJunta() {
+    public function obtenerTodosTBJunta() {
         //dos  parametros
         $junta = array();
 
@@ -88,39 +88,6 @@ class JuntaData extends Data {
         $conn->close();
         return $junta;
     }
-    public function getBullsInventary() {
-        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
-        $conn->set_charset('utf8');
-
-        $querySelect = "select tbbull.idtbbull as 'idtbbull', CONCAT(tbbull.namebull, "
-                . "' - ', tbbull.codebull) as 'bull', tbbull.strawsquantity as "
-                . "'strawsquantity' from tbbull group by tbbull.idtbbull; ";
-        $result = mysqli_query($conn, $querySelect);
-        
-        $bulls = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $currentBull = array('idtbbull' => $row['idtbbull'], 
-                'bull' => $row['bull'], 
-                'strawsquantity' => $row['strawsquantity']);
-            array_push($bulls, $currentBull);
-        }
-        
-        $newBulls = [];
-        foreach ($bulls as $currentBull) {
-            $querySelect = "select sum(tbinsemination.strawsquantity) as 'strawsquantity' " .
-            "from tbinsemination where bull =" . $currentBull['idtbbull'] . " group by tbinsemination.bull;";
-            $result = mysqli_query($conn, $querySelect);
-            $row = mysqli_fetch_array($result);
-            $quantityStrawsUse = $row[0];
-            $currentBull['strawsquantity'] = $currentBull['strawsquantity'] - $quantityStrawsUse;
-            array_push($newBulls, $currentBull);
-        }
-        
-        mysqli_close($conn);
-        return $newBulls;
-        
-    }
-
     
 }
 
