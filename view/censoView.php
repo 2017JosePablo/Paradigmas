@@ -13,44 +13,51 @@
 <script type='text/javascript'>
 
 function validar(){
-var todo_correcto = false;
+
+
+var todo_correcto = true;
 
 /*Para comprobar la edad, utilizaremos la función isNaN(), que nos dirá si el valor 
 ingresado NO es un número (NaN son las siglas de Not a Number). Si la edad no es un 
 número, todo_correcto será false.*/
-if(document.getElementById('terneros').value.length > 1 || document.getElementById('terneras').value.length > 1
-	|| document.getElementById('novillos').value.length > 1 || document.getElementById('novillas').value.length > 1
-	|| document.getElementById('novillospregnadas').value.length > 1 || document.getElementById('toros').value.length > 1
-	|| document.getElementById('vacas').value.length > 1){
+if(document.getElementById('terneros').value.length > 0 || document.getElementById('terneras').value.length > 0
+	|| document.getElementById('novillos').value.length > 0 || document.getElementById('novillas').value.length > 0
+	|| document.getElementById('novillaspregnadas').value.length > 0 || document.getElementById('toros').value.length > 0
+	|| document.getElementById('vacas').value.length > 0){
 
-	todo_correcto = true
+	todo_correcto = true;
 
-}
-
-if(isNaN(document.getElementById('terneros').value) && document.getElementById('terneros').value.length < 1 ){
-    todo_correcto = false;
-}
-if(isNaN(document.getElementById('terneras').value) && document.getElementById('terneras').value.length < 1 ){
-    todo_correcto = false;
-}
-if(isNaN(document.getElementById('novillos').value) && document.getElementById('novillos').value.length < 1 ){
-    todo_correcto = false;
-}
-if(isNaN(document.getElementById('novillas').value)  && document.getElementById('novillas').value.length < 1 ){
-    todo_correcto = false;
-}
-if(isNaN(document.getElementById('novillospregnadas').value) && document.getElementById('Novillaspregnadas').value.length < 1 ){
-    todo_correcto = false;
-}
-if(isNaN(document.getElementById('toros').value) && document.getElementById('toros').value.length < 1 ){
-    todo_correcto = false;
+alert('Algunos campos no están correctos, vuelva a revisarlos'+ todo_correcto);
 }
 
-if(isNaN(document.getElementById('vacas').value) && document.getElementById('vacas').value.length < 1 ){
+if(todo_correcto){
+
+
+if(!isNaN(document.getElementById('terneros').value) && document.getElementById('terneros').value.length > 0){
+    todo_correcto = false;
+}
+if(!isNaN(document.getElementById('terneras').value)&& document.getElementById('terneras').value.length > 0 ){
+    todo_correcto = false;
+}
+if(!isNaN(document.getElementById('novillos').value)&& document.getElementById('novillos').value.length > 0){
+    todo_correcto = false;
+}
+if(!isNaN(document.getElementById('novillas').value)  && document.getElementById('novillas').value.length > 0){
+    todo_correcto = false;
+}
+if(!isNaN(document.getElementById('novillaspregnadas').value) && document.getElementById('novillaspregnadas').value.length > 0){
+    todo_correcto = false;
+}
+if(isNaN(document.getElementById('toros').value) && document.getElementById('toros').value.length > 0){
     todo_correcto = false;
 }
 
-if(!todo_correcto){
+if(isNaN(document.getElementById('vacas').value) && document.getElementById('vacas').value.length > 0 ){
+    todo_correcto = false;
+}
+}
+
+if(todo_correcto==false){
 alert('Algunos campos no están correctos, vuelva a revisarlos');
 }
 
@@ -87,7 +94,7 @@ return todo_correcto;
 
 <p>Datos personales:</p>
 
-<form method="post" onsubmit='return validar()' action="../business/hatoAction.php">
+<form method="post" onsubmit="return validar()" action="../business/hatoAction.php">
 
 		<table>
 			<tr>
@@ -152,7 +159,7 @@ return todo_correcto;
 	<table>
 		<tr>
 			<td>
-			<input type="radio" name="tipoactividad" selected value="leche"> Leche<br>	
+			<input type="radio" name="tipoactividad" checked="" value="leche"> Leche<br>	
 			</td>
 			</tr> <tr>
 			<td>
@@ -211,7 +218,7 @@ return todo_correcto;
 				Novillas Pregnadas
 			</td>
 			<td>
-				<input type="text" id="Novillaspregnadas" name="Novillaspregnadas" placeholder="0">
+				<input type="text" id="novillaspregnadas" name="novillaspregnadas" placeholder="0">
 			</td>
 	</tr>
 		<tr>
