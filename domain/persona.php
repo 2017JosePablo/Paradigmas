@@ -26,43 +26,43 @@ class Persona{
 		return $this->id;
 	}
 
-	public function setnombre($nombre){
+	public function setNombre($nombre){
 		$this->nombre = $nombre;
 	}
 
-	public function getnombre(){
+	public function getNombre(){
 		return $this->nombre;
 	}
 
-	public function setprimerApellido($primerApellido){
+	public function setPrimerApellido($primerApellido){
 		$this->primerApellido = $primerApellido;
 	}
 
-	public function getprimerApellido(){
+	public function getPrimerApellido(){
 		return $this->primerApellido;
 	}
 
-	public function setsegundoApellido($segundoApellido){
+	public function setSegundoApellido($segundoApellido){
 		$this->segundoApellido = $segundoApellido;
 	}
 
-	public function getsegundoApellido(){
+	public function getSegundoApellido(){
 		return $this->segundoApellido;
 	}
 
-	public function settelCasa($telCasa){
+	public function setTelCasa($telCasa){
 		$this->telCasa = $telCasa;
 	}
 
-	public function gettelCasa(){
+	public function getTelCasa(){
 		return $this->telCasa;
 	}
 
-	public function settelMovil($telMovil){
+	public function setTelMovil($telMovil){
 		$this->telMovil = $telMovil;
 	}
 
-	public function gettelMovil(){
+	public function getTelMovil(){
 		return $this->telMovil;
 	}
 
