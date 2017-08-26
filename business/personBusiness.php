@@ -1,35 +1,35 @@
 <?php
-	include '../data/personData.php';
+	include '../data/personaData.php';
 
-	class personBusiness 
+	class personaBusiness 
 	{
-		private $person;
+		private $persona;
 		
 
-		function personBusiness()
+		function personaBusiness()
 		{
-			$this->person = new personData();
+			$this->persona = new personaData();
 
 		}
 
-		public function insertTBPerson($personTemp)
+		public function insertarTBpersona($personaTemp)
 		{
-			return $this->person->insertTBPerson($personTemp);
+			return $this->persona->insertarTBpersona($personaTemp);
 		}
 
-		public function updateTBPerson($personTemp)
+		public function actualizarTBpersona($personaTemp)
 		{
-			return $this->person->updateTBPerson($personTemp);
+			return $this->persona->actualizarTBpersona($personaTemp);
 		}
 
-		public function deleteTBPerson($personTemp)
+		public function eliminarTBpersona($personaTemp)
 		{
-			return $this->person->deleteTBPerson($personTemp);
+			return $this->persona->eliminarTBpersona($personaTemp);
 		}
 
-		public function getAllTBPerson()
+		public function obtenerTodosTBpersona()
 		{
-			return $this->person->getAllTBPerson();
+			return $this->persona->obtenerTodosTBpersona();
 		}
 
 	}
