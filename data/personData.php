@@ -1,51 +1,51 @@
 <?php
 
 require_once 'data.php';
-include '../domain/person.php';
+include '../domain/persona.php';
 
-class personData extends Data{
+class personaData extends Data{
 
 	public $data;
 
     function __construct(){ 
         $this->data = new Data();
     }
-     public function insertTBPerson($person) {
+     public function insertarTBpersona($persona) {
 
-       $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());
+       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbperson (personidentification,personname,personfirstname,personlastname,personphonehome,personphone)
+        $sql = "INSERT INTO tbpersona (personaaidentificacion,personaanombre,personaaprimerapellido,personaasegundoapellido,personaatelefonofjo,personaacelular)
         VALUES ('" .
 
-                $person->getId() . "','" .
-                $person->getName() . "','" .
-                $person->getFirstname() . "','" .
-                $person->getLastName() . "','" .
-                $person->getPhonehome() . "','" . 
-                $person->getPhone() . "');";
+                $persona->getId() . "','" .
+                $persona->getNombre() . "','" .
+                $persona->getPrimerApellido() . "','" .
+                $persona->getSegundoApellido() . "','" .
+                $persona->getTelCasa() . "','" . 
+                $persona->getTelMovil() . "');";
 
         $result = $conn->query($sql);
         $conn->close();
         return $result;
 
 	}
-	 public function updateTBPerson($person) {
-        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());
+	 public function actualizarTBpersona($persona) {
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "UPDATE tbperson SET personidentification ='".$person-> getId(). "',
-            personname='" . $person-> getName()."',
-            personfirstname='" . $person-> getFirstname()."',
-            personlastname='" . $person-> getLastName()."',
-            personphonehome='" . $person-> getPhonehome()."',
-            personphone='" . $person-> getPhone()."'
-            WHERE personidentification 	 ='" . $person-> getId(). "';";
+        $sql = "UPDATE tbpersona SET personaaidentificacion ='".$persona-> getId(). "',
+            personaanombre='" . $persona-> getNombre()."',
+            personaaprimerapellido='" . $persona-> getPrimerApellido()."',
+            personaasegundoapellido='" . $persona-> getSegundoApellido()."',
+            personaatelefonofjo='" . $persona-> getTelCasa()."',
+            personaacelular='" . $persona-> getTelMovil()."'
+            WHERE personaaidentificacion 	 ='" . $persona-> getId(). "';";
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {
@@ -56,36 +56,36 @@ class personData extends Data{
         $conn->close();
         return $result;
      }
-      public function deleteTBPerson($idperson) {
-        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());
+      public function eliminarTBpersona($idpersona) {
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
      
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
      
-        $sql = "DELETE from tbperson where personidentification='".$idperson."';";
+        $sql = "DELETE from tbpersona where personaaidentificacion='".$idpersona."';";
         $result = $conn->query($sql);
         $conn->close();
      
         return $result;
      }
 
-      public function getAllTBPerson() {
-        $person = array();
+      public function obtenerTodosTBpersona() {
+        $persona = array();
 
-        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());  
-        $sql = "SELECT * FROM tbperson";
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $sql = "SELECT * FROM tbpersona";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($person, new Person($row["personidentification"],$row["personname"],$row["personfirstname"],$row["personlastname"],$row["personphonehome"],$row["personphone"]));
+                array_push($persona, new persona($row["personaaidentificacion"],$row["personaanombre"],$row["personaaprimerapellido"],$row["personaasegundoapellido"],$row["personaatelefonofjo"],$row["personaacelular"]));
             }
         }else{
             echo "0 results";
         }
         $conn->close();
         
-        return $person;
+        return $persona;
     }
 
 
