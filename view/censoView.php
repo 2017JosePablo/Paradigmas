@@ -152,7 +152,7 @@ return todo_correcto;
 	<table>
 		<tr>
 			<td>
-			<input type="radio" name="tipoactividad" value="leche"> Leche<br>	
+			<input type="radio" name="tipoactividad" selected value="leche"> Leche<br>	
 			</td>
 			</tr> <tr>
 			<td>
