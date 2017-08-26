@@ -15,13 +15,13 @@
 		$sociotelefono = $_POST['sociotelefono'];
 
 		////  Quantity Animals
-		$ternero = $_POST['ternero'];
-		$ternera = $_POST['ternera'];
-		$novillo = $_POST['novillo'];
-		$novilla = $_POST['novilla'];
-		$novillaprenada = $_POST['novillaprenada'];
-		$toro =$_POST['toro'];
-		$vaca =$_POST['vaca'];
+		$ternero = $_POST['terneros'];
+		$ternera = $_POST['terneras'];
+		$novillo = $_POST['novillos'];
+		$novilla = $_POST['novillas'];
+		$novillaprenada = $_POST['novillapregnadas'];
+		$toro =$_POST['toros'];
+		$vaca =$_POST['vacas'];
 		//Variable para saber el tipo de actividad...
 		$tipoActividad = "";
 
@@ -81,7 +81,7 @@
 						}else{
 							header("location: ../view/censoView.php?error=registerHerd");	
 						}
-							
+
 					}else{
 						header("location: ../view/censoView.php?error=numberFormat");	
 					}

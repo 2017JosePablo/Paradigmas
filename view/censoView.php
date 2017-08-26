@@ -10,6 +10,50 @@
     ?>
 
 </head>
+<script type='text/javascript'>
+
+function validar(){
+var todo_correcto = true;
+
+/*Para comprobar la edad, utilizaremos la función isNaN(), que nos dirá si el valor 
+ingresado NO es un número (NaN son las siglas de Not a Number). Si la edad no es un 
+número, todo_correcto será false.*/
+if(isNaN(document.getElementById('terneros').value) && document.getElementById('terneros').value.length < 1 ){
+    todo_correcto = false;
+}
+if(isNaN(document.getElementById('terneras').value) && document.getElementById('terneras').value.length < 1 ){
+    todo_correcto = false;
+}
+if(isNaN(document.getElementById('novillos').value) && document.getElementById('novillos').value.length < 1 ){
+    todo_correcto = false;
+}
+if(isNaN(document.getElementById('novillas').value)  && document.getElementById('novillas').value.length < 1 ){
+    todo_correcto = false;
+}
+if(isNaN(document.getElementById('novillospregnadas').value) && document.getElementById('Novillaspregnadas').value.length < 1 ){
+    todo_correcto = false;
+}
+if(isNaN(document.getElementById('toros').value) && document.getElementById('toros').value.length < 1 ){
+    todo_correcto = false;
+}
+
+if(isNaN(document.getElementById('vacas').value) && document.getElementById('vacas').value.length < 1 ){
+    todo_correcto = false;
+}
+
+if(!todo_correcto){
+alert('Algunos campos no están correctos, vuelva a revisarlos');
+}
+
+return todo_correcto;
+}
+
+</script>
+
+
+
+
+
 
 <body>
 
@@ -34,7 +78,7 @@
 
 <p>Datos personales:</p>
 
-<form method="post" action="../business/herdAction.php">
+<form method="post" onsubmit='return validar()' action="../business/hatoAction.php">
 
 		<table>
 			<tr>
@@ -71,23 +115,23 @@
 					<input type="text" name="socioid" id="socioid"  required>
 				</td>
 				<td>
-					<input type="text" name="sicionombre" id="sicionombre"  required>
+					<input type="text" name="socionombre" id="socionombre"  required>
 				</td>
 				<td>
-					<input type="text" name="sicioprimerapellido" id="sicioprimerapellido"  required>
+					<input type="text" name="socioprimerapellido" id="socioprimerapellido"  required>
 				</td>		
 				<td>
-					<input type="text" name="siciosegundoapellido" id="siciosegundoapellido"  required>
+					<input type="text" name="sociosegundoapellido" id="sociosegundoapellido"  required>
 				</td>
 				
 				<td>
-					<input type="text" name="siciotelcasa" id="siciotelcasa" required>
+					<input type="text" name="sociotelcasa" id="sociotelcasa">
 				</td>
 				
 				<td>
 
 			
-					<input type="text" name="siciotelmovil" id="siciotelmovil"  required>
+					<input type="text" name="sociotelmovil" id="sociotelmovil">
 
 				</td>
 			</tr>
@@ -126,7 +170,7 @@
 			</td>
 	
 			<td>
-				<input type="text" name="terneros" placeholder="0">
+				<input type="text" id="terneros" name="terneros" placeholder="0">
 			</td>
 		</tr>
 		<tr>
@@ -134,7 +178,7 @@
 				Terneras
 			</td>
 			<td>
-				<input type="text" name="terneras" placeholder="0" >
+				<input type="text" id="terneras" name="terneras" placeholder="0" >
 			</td>
 	</tr>
 		<tr>
@@ -142,7 +186,7 @@
 				Novillos
 			</td>
 			<td>
-				<input type="text" name="novillos" placeholder="0">
+				<input type="text" id="novillos"  name="novillos" placeholder="0">
 			</td>
 	</tr>
 		<tr>
@@ -150,7 +194,7 @@
 				Novillas
 			</td>
 			<td>
-				<input type="text" name="novillas" placeholder="0">
+				<input type="text" id="novillas" name="novillas" placeholder="0">
 			</td>
 	</tr>
 		<tr>
@@ -158,7 +202,7 @@
 				Novillas Pregnadas
 			</td>
 			<td>
-				<input type="text" name="Novillaspregnadas" placeholder="0">
+				<input type="text" id="Novillaspregnadas" name="Novillaspregnadas" placeholder="0">
 			</td>
 	</tr>
 		<tr>
@@ -166,7 +210,7 @@
 				Toros
 			</td>
 			<td>
-				<input type="text" name="toros" placeholder="0">
+				<input type="text" id="toros"  name="toros" placeholder="0">
 			</td>
 
 	</tr>
@@ -175,7 +219,7 @@
 				Vacas
 			</td>
 			<td>
-				<input type="text" name="vacas" placeholder="0">
+				<input type="text" id="vacas" name="vacas" placeholder="0">
 			</td>
 
 
