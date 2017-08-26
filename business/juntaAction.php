@@ -3,18 +3,18 @@
 require './juntaBusiness.php';
 
 //Optener valores de un URLLLL
-if (isset($_GET['idDelete'])){
+if (isset($_GET['ideliminar'])){
  
-    $idJunta = $_GET['idDelete'];
+    $idJunta = $_GET['ideliminar'];
     $juntaBusiness = new JuntaBusiness();
-    $result = $juntaBusiness->deleteTBJunta($idJunta);
-        if ($result == 1) {
+    $resultado = $juntaBusiness->eliminarTBJunta($idJunta);
+        if ($resultado == 1) {
 
             header("location: ../view/juntaView.php?success=deleted");
         } else {
             header("location: ../view/juntaView.php?error=dbError");
         }
-    } else if (isset($_GET['idUpdate'])){
+    } else if (isset($_GET['idactualizar'])){
         
             return "DAN";
 
@@ -26,7 +26,7 @@ if (isset($_GET['idDelete'])){
 
 //include './juntaBusiness.php';
 //Si se preciona el boton de Actualizar
-if (isset($_POST['update'])) {
+if (isset($_POST['actualizar'])) {
 //Validar si los campos existe
     if (isset($_POST['idjunta']) && isset($_POST['presidentejunta']) && isset($_POST['vicepresidentejunta']) && isset($_POST['tesorerojunta']) && isset($_POST['secretariojunta'])
             && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta']) && isset($_POST['vocal3junta'])) {
@@ -70,7 +70,7 @@ if (isset($_POST['update'])) {
 
     ///////////////////////METODO PARA ELIMINAR
     ////Parte para insertar a la base de datos un nueva Junta ....
-} else if (isset($_POST['create'])) {
+} else if (isset($_POST['crear'])) {
 
     if (isset($_POST['idjunta']) && isset($_POST['presidentejunta']) && isset($_POST['vicepresidentejunta']) && isset($_POST['tesorerojunta'])
             && isset($_POST['secretariojunta']) && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta'])  && isset($_POST['vocal3junta'])) {
@@ -106,15 +106,6 @@ if (isset($_POST['update'])) {
         }
     }
     // Escucha el boton de Buscar una junta
-} else if (isset($_POST['consult'])) {
-        $juntaBusiness = new JuntaBusiness();
-        $result = $juntaBusiness->getAllTBJunta();
-        if ($result == 1) {
-             header("location: ../view/juntaView.php?success=inserted");
-        } else {
-                   header("location: ../view/juntaView.php?success=inserted");
-            }
-        } 
-    
+}   
 
 ?>

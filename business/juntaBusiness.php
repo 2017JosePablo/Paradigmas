@@ -10,19 +10,19 @@ class JuntaBusiness {
         $this->juntaData = new JuntaData();
     }
 
-    public function insertTBJunta($junta) {
-        return $this->juntaData->insertTBJunta($junta);
+    public function insertarTBJunta($junta) {
+        return $this->juntaData->insertarTBJunta($junta);
     }
 
-    public function updateTBJunta($junta) {
-        return $this->juntaData->updateTBJunta($junta);
+    public function actualizarTBJunta($junta) {
+        return $this->juntaData->actualizarTBJunta($junta);
     }
 
-    public function deleteTBJunta($idJunta) {
-        return $this->juntaData->deleteTBJunta($idJunta);
+    public function eliminarTBJunta($idJunta) {
+        return $this->juntaData->eliminarTBJunta($idJunta);
     }
-    public function getAllTBJunta() {
-        return $this->juntaData->getAllTBJunta();
+    public function obtenerTodasTBJunta() {
+        return $this->juntaData->obtenerTodasTBJunta();
     }    
 }
 ?>

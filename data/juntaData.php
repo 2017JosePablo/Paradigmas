@@ -11,8 +11,8 @@ class JuntaData extends Data {
         $this->data = new Data();
     }
 
-    public function insertTBJunta($junta) {
-       $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());
+    public function insertarTBJunta($junta) {
+       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -34,8 +34,8 @@ class JuntaData extends Data {
         return  $result;
     }
 
-    public function updateTBJunta($junta) {
-        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());
+    public function actualizarTBJunta($junta) {
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -60,8 +60,8 @@ class JuntaData extends Data {
         return $result;
     }
 
-    public function deleteTBJunta($idjunta) {
-        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());
+    public function eliminarTBJunta($idjunta) {
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -75,7 +75,7 @@ class JuntaData extends Data {
         //dos  parametros
         $junta = array();
 
-        $conn = new mysqli($this->data->getServer(), $this->data->getUser(), $this->data->getPass(), $this->data->getDbName());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
         $sql = "SELECT * FROM tbjunta";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
