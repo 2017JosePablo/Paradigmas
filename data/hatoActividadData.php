@@ -18,7 +18,7 @@ class hatoActividadData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbherdactivity (hatoactividadpersonaid,hatoactividadtipo)
+        $sql = "INSERT INTO tbhatoactividad (hatoactividadpersonaid,hatoactividadtipo)
         VALUES ('" .
 
                 $personaId . "','" .
