@@ -71,23 +71,23 @@
 					<input type="text" name="socioid" id="socioid"  required>
 				</td>
 				<td>
-					<input type="text" name="socioname" id="socioname"  required>
+					<input type="text" name="sicionombre" id="sicionombre"  required>
 				</td>
 				<td>
-					<input type="text" name="sociofirstname" id="sociofirstname"  required>
+					<input type="text" name="sicioprimerapellido" id="sicioprimerapellido"  required>
 				</td>		
 				<td>
-					<input type="text" name="sociolastname" id="sociolastname"  required>
+					<input type="text" name="siciosegundoapellido" id="siciosegundoapellido"  required>
 				</td>
 				
 				<td>
-					<input type="text" name="sociophonehome" id="sociophonehome" required>
+					<input type="text" name="siciotelcasa" id="siciotelcasa" required>
 				</td>
 				
 				<td>
 
 			
-					<input type="text" name="sociophone" id="sociophone"  required>
+					<input type="text" name="siciotelmovil" id="siciotelmovil"  required>
 
 				</td>
 			</tr>
@@ -99,20 +99,19 @@
 	<table>
 		<tr>
 			<td>
-			Leche:</td><td><input type="checkbox" name="milk" id="milk" value="1">
+			<input type="radio" name="tipoactividad" value="leche"> Leche<br>	
 			</td>
 			</tr> <tr>
 			<td>
-			Carne Cria:</td><td> <input type="checkbox" name="breedingMeat" id="breedingMeat" value="2">
-			</td>
-			</tr> <tr>
-
-			<td>
-			Carne Engorde:</td><td><input type="checkbox" name="fatteningMeat"  id="fatteningMeat" value="3">
+			<input type="radio" name="tipoactividad" value="leche"> Carne Cría<br>
 			</td>
 			</tr> <tr>
 			<td>
-			Doble proposito:</td><td><input type="checkbox" name="doublePurpose" id="doublePurpose" value="4">
+			<input type="radio" name="tipoactividad" value="leche"> Carne Engorde<br>
+			</td>
+			</tr> <tr>
+			<td>
+			<input type="radio" name="tipoactividad" value="leche"> Doble Proposito<br>
 			</td>
 		</tr>
 
@@ -127,7 +126,7 @@
 			</td>
 	
 			<td>
-				<input type="text" name="calf" placeholder="0">
+				<input type="text" name="terneros" placeholder="0">
 			</td>
 		</tr>
 		<tr>
@@ -135,7 +134,7 @@
 				Terneras
 			</td>
 			<td>
-				<input type="text" name="beal" placeholder="0" >
+				<input type="text" name="terneras" placeholder="0" >
 			</td>
 	</tr>
 		<tr>
@@ -143,7 +142,7 @@
 				Novillos
 			</td>
 			<td>
-				<input type="text" name="steer" placeholder="0">
+				<input type="text" name="novillos" placeholder="0">
 			</td>
 	</tr>
 		<tr>
@@ -151,7 +150,7 @@
 				Novillas
 			</td>
 			<td>
-				<input type="text" name="heifer" placeholder="0">
+				<input type="text" name="novillas" placeholder="0">
 			</td>
 	</tr>
 		<tr>
@@ -159,7 +158,7 @@
 				Novillas Pregnadas
 			</td>
 			<td>
-				<input type="text" name="impregnatedHeifer" placeholder="0">
+				<input type="text" name="Novillaspregnadas" placeholder="0">
 			</td>
 	</tr>
 		<tr>
@@ -167,7 +166,7 @@
 				Toros
 			</td>
 			<td>
-				<input type="text" name="bull" placeholder="0">
+				<input type="text" name="toros" placeholder="0">
 			</td>
 
 	</tr>
@@ -176,7 +175,7 @@
 				Vacas
 			</td>
 			<td>
-				<input type="text" name="cow" placeholder="0">
+				<input type="text" name="vacas" placeholder="0">
 			</td>
 
 
@@ -186,7 +185,7 @@
 
 
 
-		<input type="submit" name="registerHerd" id="registerHerd" value="Registrar Hato"> 
+		<input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
 
 
 		

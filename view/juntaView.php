@@ -55,7 +55,7 @@
                 echo '<td> '.$current->getVocal1Junta().'</td>';
                 echo '<td> '.$current->getVocal2Junta().'</td>';
                 echo '<td> '.$current->getVocal3Junta().'</td>';
-                echo '<td> <a href="../business/juntaAction.php?idDelete='.$current->getIdTBJunta().'"> Eliminar</a> </td>';
+                echo '<td> <a href="../business/juntaAction.php?ideliminar='.$current->getIdTBJunta().'"> Eliminar</a> </td>';
                  echo "<td> <a href='' onclick=loadJunta('".$current->getIdTBJunta()."') > Modificar</a> </td>";
               //  echo '<td> <a href="" onclick=loadJunta(123) "> Modificar</a> </td>';
               //  echo '<td> <a href="" onclick="> Modificar</a> </td>';
@@ -85,7 +85,7 @@
                      <p>Vocal3</p><input required type="text" name="vocal2junta" id="vocal2junta"/><p>
 
                      <p>Vocal3</p><input required type="text" name="vocal3junta" id="vocal3junta"/><p>
-                     <input type="submit" value="Crear Junta" name="create" id="create"/><p>
+                     <input type="submit" value="Crear Junta" name="crear" id="crear"/><p>
 
                     
             </form>
