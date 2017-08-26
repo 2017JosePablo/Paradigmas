@@ -87,13 +87,5 @@ class personaData extends Data{
         
         return $persona;
     }
-
-
-	
-
 }
-
-
-
-
 ?>
