@@ -30,8 +30,6 @@ class actividadData extends Data{
         $conn->close();
         return $result;
 
-	
-
     }
  	public function actualizarTBActividad($actividad) {
 
@@ -91,16 +89,11 @@ class actividadData extends Data{
 	        echo "0 results";
 
 	    }
-	    
+
 	    $conn->close();
 	    
         return $actividad;
     }
-
-
-
-
-
 
 }
 
