@@ -32,11 +32,7 @@
 
     </script>
 </head>
-<body>
-
-<input type="text" id="txtHint">
-
-   
+<body>   
    <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
 	 <?php
  
