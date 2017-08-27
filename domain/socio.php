@@ -116,9 +116,6 @@ class Socio{
 	public function getCorreo(){
 		return $this->correo;
 	}
-	public function setFechaIngreso($fechaIngreso){
-		$this->fechaIngreso = $fechaIngreso;
-	}
 
 }
 
