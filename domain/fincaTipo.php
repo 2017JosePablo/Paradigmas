@@ -3,7 +3,7 @@ class fincaTipo{
 private $id;
 private $fincaTipoActividad;
 
-function Actividad($id,$fincaTipoActividad){
+function fincaTipo($id,$fincaTipoActividad){
 	$this->id=$id;
 	$this->fincaTipoActividad=$fincaTipoActividad;
 }

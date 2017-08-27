@@ -9,13 +9,13 @@
 
 		public function socioBusiness()
 		{
-			$this->dataSocio = new dataSocio();
+			$this->dataSocio = new socioData();
 		}
 
 
 		public function insertarTBSocio($socio)
 		{
-			return $this->dataSocio ->insertarSocio($socio);
+			return $this->dataSocio ->insertarTBSocio($socio);
 		}
 
 		public function modificarTBSocio($socio)
