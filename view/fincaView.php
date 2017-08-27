@@ -114,10 +114,14 @@
 <input type="hidden" id="provincia" name="fincarovincia" value="">
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
+<<<<<<< HEAD
 
 <form method="post" onsubmit="return validar()" action="../business/fincaAction.php">      
 
 
+=======
+      
+>>>>>>> a72c340234e166cd52158c6fe99b5315beda6c47
       <p>Cedula del Dueño de la Finca:<input type="text" required="" readonly name="idsocio" value=<?php echo $idsocio;  ?>></p>
 
     <p>Datos de la finca:</p>
