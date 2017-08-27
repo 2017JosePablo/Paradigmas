@@ -217,7 +217,7 @@
             </tr>
             </table>
             <br><br><br>
-        <input type="submit" value="Agrerar Socio" name="agrerarsocio" id="agrerarsocio"/><p>
+        <input type="submit" value="Agrerar Socio" name="agregarsocio" id="agregarsocio"/><p>
     </form>
  
 
