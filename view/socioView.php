@@ -278,7 +278,7 @@
                         echo '<tr>';
                          echo '<td> <input type="radio" name="socioestado" value='.$curren->getSocioEstadoId().'</td>'; 
 
-                        echo '<td>'.$curren->getSocioEstadoDetalle.'</td>'; 
+                        echo '<td>'.$curren->getSocioEstadoDetalle().'</td>'; 
                                   
                         echo '</tr>';
                     }
