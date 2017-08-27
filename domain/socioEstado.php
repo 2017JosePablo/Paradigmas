@@ -22,7 +22,7 @@
 			$this->socioestadoid = $socioestadoid;
 		}
 			
-		public function getSocioEstadoDetalles()
+		public function getSocioEstadoDetalle()
 		{
 			return $this->socioestadodetalle;
 		}
