@@ -37,6 +37,11 @@
 			return $this ->dataSocio->insertarTBSocioDireccion($provincia,$canton,$distrito, $pueblo);
 		}
 
+		public function obtenerSocioEstado(){
+			return $this->dataSocio->obtenerSocioEstado();
+		}
+
+
 	}
 
 

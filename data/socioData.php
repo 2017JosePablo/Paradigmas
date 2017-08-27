@@ -118,5 +118,24 @@ class socioData extends Data{
         
         return $socio;
     }
+
+
+     public function obtenerSocioEstado() {
+        $socio = array();
+        require '../domain/estadoSocio.php';
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $sql = "SELECT * FROM tbsocioestado";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($socio, new socioEstado($row["socioestadoid"],$row["socioestadodetalle"]));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        
+        return $socio;
+    }
 }
 ?>
