@@ -14,7 +14,7 @@ class Persona{
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
 		$this->telCasa = $telCasa;
-		$this->telMovil = $telMovil;
+		$this->telMovil = $phone;
 		
 	}
 

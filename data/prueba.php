@@ -62,6 +62,8 @@
 
         echo($herdActivityD->insertTBHerdActivity("111111111","1,2,4"));
   */
+        
+/*
         include '../data/actividadData.php';;
 
 
@@ -71,6 +73,10 @@
         $inser = new actividadData();
 
         echo $inser->insertarTBActividad($actividad);
+
+*/
+         include '../data/fincaData.php';;
+         $finca = new Finca(25,"546546546","256");
 
 
     ?>
