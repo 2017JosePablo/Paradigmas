@@ -13,7 +13,7 @@
 				$actividadid = '';
 				$actividad = new Actividad($actividadid,$nombreactividad);
 
-				$resultado = $actividadBusiness->insertarActividadTBActividad($actividad);
+				$resultado = $actividadBusiness->insertarTBActividad($actividad);
 
 				if ($resultado ==1) {
 					header ('location: ../view/actividadView.php?success=inserted');
