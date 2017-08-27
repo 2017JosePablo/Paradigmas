@@ -15,9 +15,9 @@
 
 		}
 
-		public function insertarActividad($actividad)
+		public function insertarActividadTBActividad($actividad)
 		{
-			return $this->insertarActividad($actividad);
+			return $this->insertarActividadTBActividad($actividad);
 		}
 
 		public function eliminarTBActividad($actividad)
