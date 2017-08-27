@@ -87,7 +87,7 @@ class actividadData extends Data{
         }
         $conn->close();
         
-        return $hato;
+        return $actividad;
     }
 
 
