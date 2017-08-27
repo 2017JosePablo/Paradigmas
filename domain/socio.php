@@ -13,7 +13,7 @@ class Socio{
 
 
 	function Socio($cedula,$nombre,$primerApellido,$segundoApellido,$phone,$correo,$fechaIngreso,$tipoActividad,$tipoFinca,$detalle){
-		$this->cedula = $id;
+		$this->cedula = $cedula;
 		$this->nombre = $nombre;
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
