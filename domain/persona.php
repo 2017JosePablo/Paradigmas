@@ -8,7 +8,7 @@ class Persona{
 	private $telMovil;
 
 
-	function Persona($id,$nombre,$primerApellido,$segundoApellido,$telCasa,$phone){
+	function Persona($id,$nombre,$primerApellido,$segundoApellido,$telCasa,$telMovil){
 		$this->id = $id;
 		$this->nombre = $nombre;
 		$this->primerApellido =  $primerApellido;
