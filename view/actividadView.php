@@ -12,8 +12,8 @@
 <body>
 
 <p>Tipos de Actividad</p>
-    
 
+ <form method="post" enctype="multipart/form-data" action="../business/actividadAction.php">
          <?php
  
              include '../business/actividadBusiness.php';
@@ -22,14 +22,23 @@
              echo '<table> <tr><td>Actividad</td>  <td colspan="2">Acciones</td> </tr>';
             foreach ($actividades as $current) {     
                 echo '<tr>';
-                echo '<td> ".$current->getNombreActividad().'<br>" </td>';
-                echo '<td> <a href="../business/actividadAction.php?ideliminar='.$current->getId.'"> Eliminar</a> </td>';
-                 echo "<td> <a href=''> Modificar</a> </td>";
+                     if($current->getId()==1){
+                     echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
+                     //echo '<td> <a href="../business/actividadAction.php?ideliminar='.$current->getId().'"> Eliminar</a> </td>';
+                     //echo "<td> <a href=''> Modificar</a> </td>";
+                }else{
+                     echo '<td> <input type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
+                  //  echo '<td> <a href="../business/actividadAction.php?ideliminar='.$current->getId().'"> Eliminar</a> </td>';
+                   //  echo "<td> <a href=''> Modificar</a> </td>";
+                }
+
+                 echo '</tr>';
             }
                 echo '</table>';
 
             ?>
-      
+            <br><br><br>
+       </form>
 
 <form method="post" action="../business/actividadAction.php">
     Tipo de Actividad: <input type="text" name="tipoactividad" required=""><br>
