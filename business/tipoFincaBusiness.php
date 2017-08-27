@@ -1,18 +1,19 @@
 <?php
-		
+	include '../data/tipoFincaData.php';
 	class tipoFincaBusiness
 	{
-		require '../data/tipoFincaData.php';
-		private  $tipoFinca;
+		private  $tipoFincaData;
+
 		function tipoFincaBusiness()
-		{
-			$tipoFinca = new fincaTipoData();
+		{	
+		
+			$tipoFincaData = new tipoFincaData();
 
 		}
 
-		public function obtenerTodosTBTipos()
+		public function getAllTBTiposFincas()
 		{
-			return $this->tipoFinca->obtenerTodosTBTipos();
+			return $this->tipoFincaData->obtenerTodosTB();
 		}
 
 

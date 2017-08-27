@@ -245,7 +245,7 @@
          
              include '../business/tipoFincaBusiness.php';
                     $tipoFincaBusiness = new tipoFincaBusiness();
-                    $tipoFinca = $tipoFincaBusiness->obtenerTodosTBTipos();
+                    $tipoFinca = $tipoFincaBusiness->getAllTBTiposFincas("2000");
                     
                     foreach ($tipoFinca as $current) {     
                         echo '<tr>';
@@ -254,6 +254,8 @@
                         echo '</tr>';
                     }
                         echo '</table>';
+
+                        
 
             ?>
 
