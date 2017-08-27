@@ -46,7 +46,7 @@ class Socio{
 		$this->detalle = $detalle;
 	}
 
-	public function getDetalle((){
+	public function getDetalle(){
 		return $this->detalle;
 	}
 
