@@ -181,7 +181,7 @@
 
 		 <?php
  
-	 include '../business/juntaBusiness.php';
+	 include '../business/actividadBusiness.php';
             $actividadBusiness = new actividadBusiness();
             $actividades = $actividadBusiness->obtenerTodosTBActividad();
    			
