@@ -95,11 +95,21 @@
    
 </head>
 <body>
+
+<?php
+  include '../business/socioBusiness.php';
+  $consulta = new socioBusiness();
+  $idsocio = $consulta->getSocioId($_GET['cedula']);
+
+
+?>
+
+
 <input type="hidden" id="provincia" name="fincarovincia" value="">
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
       
-      <p>Cedula del Dueño de la Finca:<input type="text" required="" name="ceduladueño"></p>
+      <p>Cedula del Dueño de la Finca:<input type="text" required="" readonly name="ceduladueño" value=<?php echo $idsocio;  ?>></p>
 
     <p>Datos de la finca:</p>
 

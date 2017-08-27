@@ -41,6 +41,11 @@
 			return $this->dataSocio->obtenerSocioEstado();
 		}
 
+		public function getSocioId($cedula)
+		{
+			return $this->dataSocio->getSocioId($cedula);
+		}
+
 
 	}
 

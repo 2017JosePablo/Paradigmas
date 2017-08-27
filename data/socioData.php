@@ -137,5 +137,24 @@ class socioData extends Data{
         
         return $socio;
     }
+
+
+    public function getSocioId($cedula) {
+        
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $consulta = "SELECT * FROM tbsocio ";
+        
+        $sql= $conn->query($consulta);
+        $idsocio =0;
+
+        while ($row = $sql->fetch_assoc()) {
+            if ($row['sociocedula'] ==$cedula) {
+                $idsocio  = $row['socioid'];
+            }
+        }
+        $conn->close();
+        
+        return $idsocio;
+    }
 }
 ?>

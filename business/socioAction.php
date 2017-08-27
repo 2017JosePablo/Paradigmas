@@ -21,7 +21,11 @@
 		$tipoactividad = $_POST['tipoactividad'];
 		$tipofinca =  $_POST['tipofinca'];
 		$fechaingreso = $_POST['fecha'];
-		$sociodetalle = $_POST['sociodetalle'];		
+
+		$sociodetalle = $_POST['socioestado'];		
+
+
+		echo "Estado: ".$sociodetalle;
 
 
 		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telcasa) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
@@ -32,15 +36,15 @@
 
 			$socio = new Socio($cedula,$nombre,$primerapellido,$segundoapellido,$telcasa,$telmovil,$correo,$fechaingreso,$tipoactividad, $tipofinca , $sociodetalle);
 
-	//	$socio = new Socio('123','Adan','Carranza','Adaro','1244-1345','4353-5422','DDaa@g.com','2017-02-12','1','1','1');
-
+	
+	//		$resultado = "";
 			$resultado = $socioBusiness->insertarTBSocio($socio);
 			$resultado = $socioBusiness-> insertarTBSocioDireccion($provincia,$canton,$distrito,$pueblo);
 
 
 
-				if ($resultado ==1) {
-					header("location: ../view/fincaView.php");
+			if ($resultado ==1) {
+					header("location: ../view/fincaView.php?cedula=$cedula");
 				}else{
 
 				//	echo "Error al insertar un socio: ".@$resultado;
@@ -49,7 +53,7 @@
 
 		}else{
 			//echo " Algunos campos no existen...";
-			header("location: ../view/socioView.php?error=emptyFile");
+			//header("location: ../view/socioView.php?error=emptyFile");
 		}
 
 

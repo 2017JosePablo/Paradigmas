@@ -252,9 +252,11 @@
                     echo '<table>';
                     foreach ($tipoFinca as $curren) {     
                         echo '<tr>';
-                         echo '<td> <input type="radio" name="tipofinca" value='.$curren->getId().'</td>'; 
+
+                            echo '<td> <input type="radio" checked="" name="tipofinca" value='.$curren->getId().'</td>'; 
 
                         echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
+                        
                                   
                         echo '</tr>';
                     }
@@ -272,14 +274,16 @@
             $temp = new socioBusiness();
             $estados = $temp->obtenerSocioEstado();
 
-
                     echo '<table>';
                     foreach ($estados as $curren) {     
                         echo '<tr>';
-                         echo '<td> <input type="radio" name="socioestado" value='.$curren->getSocioEstadoId().'</td>'; 
+
+                        
+                         echo '<td> <input type="radio" name="socioestado" checked="" value='.$curren->getSocioEstadoId().'</td>'; 
 
                         echo '<td>'.$curren->getSocioEstadoDetalle().'</td>'; 
-                                  
+                        
+
                         echo '</tr>';
                     }
                         echo '</table>';
