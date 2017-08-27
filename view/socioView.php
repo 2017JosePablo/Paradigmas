@@ -243,9 +243,12 @@
 
             <?php
          
-             include '../business/tipoFincaBusiness.php';
-                    $tipoFincaBusiness = new tipoFincaBusiness();
-                    $tipoFinca = $tipoFincaBusiness->getAllTBTiposFincas("2000");
+           //  require '../business/tipoFincaBusiness.php';
+             //       $tipoFincaBusiness = new tipoFincaBusiness();
+            //$tipoFinca = $tipoFincaBusiness->getAllTBTiposFincas();
+            require '../data/tipoFincaData.php';
+            $temp = new tipoFincaData();
+            $tipoFinca = $temp->getAllTBTiposFincas();
                     
                     foreach ($tipoFinca as $current) {     
                         echo '<tr>';

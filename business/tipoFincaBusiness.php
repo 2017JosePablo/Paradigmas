@@ -13,7 +13,7 @@
 
 		public function getAllTBTiposFincas()
 		{
-			return $this->tipoFincaData->obtenerTodosTB();
+			return $this->tipoFincaData->getAllTBTiposFincas();
 		}
 
 
