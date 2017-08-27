@@ -34,6 +34,7 @@ class fincaData extends Data{
         return $result;
 
     }
+
  	public function actualizarTBfinca($finca) {
 
 	    $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
