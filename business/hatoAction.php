@@ -27,20 +27,12 @@
 
 
 		if (strlen($socioid)> 0 && strlen($socionombre) > 0  &&  strlen($socioprimerapellido)  &&  strlen($sociosegundoapellido) && strlen($sociotelefonocasa) > 0  && strlen($sociotelefono) > 0) {
+			$valor = $_POST['tipoactividad'];
 
-
-			if (isset($_POST['leche'])) {
-				$tipoActividad.="1,";	# code...
+			if (isset($_POST['tipoactividad'])) {
+				$tipoActividad = $valor;	# code...
+				echo "Valor: ".$valor;
 			}
-			if (isset($_POST['criacarne'])) {
-				$tipoActividad.="2,";	# code...	
-			}
-			if (isset($_POST['engorde'])) {
-				$tipoActividad.="3,";	# code...	
-			}
-			if (isset($_POST['dobleproposito'])) {
-				$tipoActividad.="4,";	# code...	
-			}		
 			// Valido para saber si selecciono almenos una actividad..
 			if (strlen($tipoActividad) != 0) {
 				if (strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($toro) > 0  || strlen($vaca) > 0 ) {
@@ -75,24 +67,24 @@
 								header("location: ../index.php?success=inserted");	
 							}
 						}else{
-								header("location: ../view/censoView.php?error=registerHerdActivity");		
+						//		header("location: ../view/censoView.php?error=registerHerdActivity");		
 							}
 						
 						}else{
-							header("location: ../view/censoView.php?error=registerHerd");	
+				//			header("location: ../view/censoView.php?error=registerHerd");	
 						}
 
 					}else{
-						header("location: ../view/censoView.php?error=numberFormat");	
+				//		header("location: ../view/censoView.php?error=numberFormat");	
 					}
 				}else{
-					header("location: ../view/censoView.php?error=emptyField");	
+				//	header("location: ../view/censoView.php?error=emptyField");	
 				}
 			}else{
-				header("location: ../view/censoView.php?error=emptyActivity");	
+		//		header("location: ../view/censoView.php?error=emptyActivity");	
 			}
 		}else{	
-			header("location: ../view/censoView.php?error=emptyField");
+		//	header("location: ../view/censoView.php?error=emptyField");
 		}
 	}
 
