@@ -122,7 +122,7 @@ class socioData extends Data{
 
      public function obtenerSocioEstado() {
         $socio = array();
-        require '../domain/estadoSocio.php';
+        require '../domain/socioEstado.php';
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
         $sql = "SELECT * FROM tbsocioestado";
         $result = $conn->query($sql);
