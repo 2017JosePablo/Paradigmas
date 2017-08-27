@@ -14,7 +14,7 @@ class actividadData extends Data{
     }
 
 
-    public function insertarActividadTBActividad($actividad){
+    public function insertarTBActividad($actividad){
 
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
 
