@@ -112,7 +112,7 @@
 	    }
 	    ?>
 	  
-	<p>Advertencia: Al ingresar un daro "Erroneo" se perderan los datos temporales.</p>
+
 	<p>Registro de hato para socios de ASOTURGA</p>
 
 	<p>Datos personales:</p>
