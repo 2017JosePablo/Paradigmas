@@ -59,7 +59,7 @@ class Socio{
 	public function getCedula(){
 		return $this->cedula;
 	
-
+	}
 	public function setNombre($nombre){
 		$this->nombre = $nombre;
 	}
