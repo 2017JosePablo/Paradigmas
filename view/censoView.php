@@ -151,7 +151,7 @@
 				<tr>
 
 					<td>
-						<input type="text" name="socioid" id="socioid"  required>
+						<input type="text" name="sociocedula" id="sociocedula"  required>
 					</td>
 					<td>
 						<input type="text" name="socionombre" id="socionombre"  required>
@@ -178,26 +178,25 @@
 			</table>		
 		
 		<p>Tipo de Actividad</p>
-		<table>
-			<tr>
-				<td>
-				<input type="radio" name="tipoactividad" checked="" value="1"> Leche<br>	
-				</td>
-				</tr> <tr>
-				<td>
-				<input type="radio" name="tipoactividad" value="2"> Carne Cría<br>
-				</td>
-				</tr> <tr>
-				<td>
-				<input type="radio" name="tipoactividad" value="3"> Carne Engorde<br>
-				</td>
-				</tr> <tr>
-				<td>
-				<input type="radio" name="tipoactividad" value="4"> Doble Proposito<br>
-				</td>
-			</tr>
 
-		</table>
+		 <?php
+ 
+	 include '../business/juntaBusiness.php';
+            $actividadBusiness = new actividadBusiness();
+            $actividades = $actividadBusiness->obtenerTodosTBActividad();
+   			
+            foreach ($actividades as $current) {     
+                echo '<tr>';
+                if($current->getId()==1){
+                	 echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
+                }else{
+                	 echo '<td> <input type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
+                }            
+                echo '</tr>';
+            }
+                echo '</table>';
+
+            ?>
 
 			<p>Cantidad de animales</p>
 

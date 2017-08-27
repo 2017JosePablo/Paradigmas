@@ -1,6 +1,6 @@
 <?php
 class Persona{
-	private $id;
+	private $cedula;
 	private $nombre;
 	private $primerApellido;
 	private $segundoApellido;
@@ -8,8 +8,8 @@ class Persona{
 	private $telMovil;
 
 
-	function Persona($id,$nombre,$primerApellido,$segundoApellido,$telCasa,$telMovil){
-		$this->id = $id;
+	function Persona($cedula,$nombre,$primerApellido,$segundoApellido,$telCasa,$phone){
+		$this->cedula = $id;
 		$this->nombre = $nombre;
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
@@ -18,12 +18,12 @@ class Persona{
 		
 	}
 
-	public function setId($id){
-		$this->id = $id;
+	public function setCedula($cedula){
+		$this->cedula = $cedula;
 	}
 
-	public function getId(){
-		return $this->id;
+	public function getCedula(){
+		return $this->cedula;
 	}
 
 	public function setNombre($nombre){
