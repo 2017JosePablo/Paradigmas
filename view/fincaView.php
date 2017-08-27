@@ -199,7 +199,5 @@
     </form>
 
  
-
-    <a href="../index.php">Regresar</a>
 </body>
 </html>
