@@ -10,15 +10,25 @@
    
 </head>
 <body>
-    <?php
-        if (isset($_GET['error'])) {
-            if ($_GET['error'] == "emptyField") {
-                echo '<p style="color: red">Campo(s) vacio(s)</p>';
+
+<p>Tipos de Actividad</p>
+    
+
+         <?php
+ 
+             include '../business/actividadBusiness.php';
+            $actividadBusiness = new actividadBusiness();
+            $actividades = $actividadBusiness->obtenerTodosTBActividad();
+             echo '<table> <tr><td>Actividad</td>  <td colspan="2">Acciones</td> </tr>';
+            foreach ($actividades as $current) {     
+                echo '<tr>';
+                echo '<td> ".$current->getNombreActividad().'<br>" </td>';
+                echo '<td> <a href="../business/actividadAction.php?ideliminar='.$current->getId.'"> Eliminar</a> </td>';
+                 echo "<td> <a href=''> Modificar</a> </td>";
             }
-        } else if (isset($_GET['success'])) {
-            echo '<p style="color: green">Transacción realizada</p>';
-        }
-    ?>
+                echo '</table>';
+
+            ?>
       
 
 <form method="post" action="../business/actividadAction.php">

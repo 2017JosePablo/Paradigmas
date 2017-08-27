@@ -216,7 +216,48 @@
 
             </tr>
             </table>
-            <br><br><br>
+            <br>
+            <p>Tipo de Actividad</p>
+
+            <?php
+         
+             include '../business/actividadBusiness.php';
+                    $actividadBusiness = new actividadBusiness();
+                    $actividades = $actividadBusiness->obtenerTodosTBActividad();
+                    
+                    foreach ($actividades as $current) {     
+                        echo '<tr>';
+                        if($current->getId()==1){
+                             echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
+                        }else{
+                             echo '<td> <input type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
+                        }            
+                        echo '</tr>';
+                    }
+                        echo '</table>';
+
+            ?>
+
+            <br><br>
+            <p>Tipo de Finca</p>
+
+            <?php
+         
+             include '../business/tipoFincaBusiness.php';
+                    $tipoFincaBusiness = new tipoFincaBusiness();
+                    $tipoFinca = $tipoFincaBusiness->obtenerTodosTBTipos();
+                    
+                    foreach ($tipoFinca as $current) {     
+                        echo '<tr>';
+                             echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current.'> '.$current.'<br> </td>';
+                                  
+                        echo '</tr>';
+                    }
+                        echo '</table>';
+
+            ?>
+
+            <br><br>
         <input type="submit" value="Agrerar Socio" name="agregarsocio" id="agregarsocio"/><p>
     </form>
  
