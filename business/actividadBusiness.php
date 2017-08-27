@@ -2,6 +2,7 @@
 
 <?php
 	include '../data/actividadData.php';
+	ini_set("memory_limit", '512M');
 	/**
 	* 
 	*/
