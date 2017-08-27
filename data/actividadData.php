@@ -80,7 +80,7 @@ class actividadData extends Data{
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                array_push($actividad,new actividad($row['tipoactividadid'],$row['tipoactividadnombre ']));
+                array_push($actividad,new actividad($row['tipoactividadid'],$row['tipoactividadnombre']));
             }
         }else{
             echo "0 results";
