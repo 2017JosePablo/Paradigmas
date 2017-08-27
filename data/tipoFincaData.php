@@ -2,10 +2,10 @@
 
 //include 'data.php';
 require_once 'data.php';
-include '../domain/actividad.php';
+include '../domain/fincaTipo.php';
 
 
-class actividadData extends Data{
+class tipoFincaData extends Data{
 
 	 private $data;
 
@@ -72,7 +72,7 @@ class actividadData extends Data{
 
 
     public function obtenerTodosTBTipos() {
-        $actividad = array();
+        $actividades = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
         $sql = "SELECT * FROM tbfincatipo";
@@ -80,14 +80,14 @@ class actividadData extends Data{
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                array_push($actividad,new actividad($row['fincatipoid'],$row['fincatiponombre']));
+                array_push($actividades,new fincaTipo($row['fincatipoid'],$row['fincatiponombre']));
             }
         }else{
             echo "0 results";
         }
         $conn->close();
         
-        return $actividad;
+        return $actividades;
     }
 
 

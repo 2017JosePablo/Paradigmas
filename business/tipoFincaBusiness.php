@@ -1,12 +1,12 @@
 <?php
-		
+	include '../data/tipoFincaData.php';	
 	class tipoFincaBusiness
 	{
-		require '../data/tipoFincaData.php';
+	
 		private  $tipoFinca;
 		function tipoFincaBusiness()
 		{
-			$tipoFinca = new fincaTipoData();
+			$tipoFinca = new tipoFincaData();
 
 		}
 
