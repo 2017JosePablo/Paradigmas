@@ -6,10 +6,7 @@
 			Censo de ASOTURGA
 		</title>
 
-	    <?php
-	    //include '../business/heardAction.php';
-	    ?>
-
+	 
 	</head>
 	<script type='text/javascript'>
 
@@ -115,7 +112,7 @@
 	    }
 	    ?>
 	  
-	<p>Advertencia: Al ingresar un daro "Erroneo" se perderan los datos temporales.</p>
+
 	<p>Registro de hato para socios de ASOTURGA</p>
 
 	<p>Datos personales:</p>
