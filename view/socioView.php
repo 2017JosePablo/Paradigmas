@@ -263,7 +263,8 @@
                         
 
             ?>
-
+             <br><br>
+             Estado Socio Detalle: <input type="text" name="sociodetalle" required="">
             <br><br>
         <input type="submit" value="Agrerar Socio" name="agregarsocio" id="agregarsocio"/><p>
     </form>

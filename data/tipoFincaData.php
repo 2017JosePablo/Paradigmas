@@ -5,7 +5,7 @@ require_once 'data.php';
 class tipoFincaData extends  Data {
     public $data;
 
-    function__construct(){
+    function __construct(){
         $this->data= new Data();
     }
  public function getAllTBTiposFincas() {
