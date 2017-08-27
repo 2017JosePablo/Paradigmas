@@ -99,6 +99,7 @@
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
       
+      <p>Cedula del Dueño de la Finca:<input type="text" required="" name="ceduladueño"></p>
 
     <p>Datos de la finca:</p>
 
