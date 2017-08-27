@@ -55,11 +55,22 @@
         /*
         
         */
+        /*
         include '../data/herdActivityData.php';
 
         $herdActivityD = new herdActivityData();
 
         echo($herdActivityD->insertTBHerdActivity("111111111","1,2,4"));
+  */
+        include '../data/actividadData.php';;
+
+
+        $actividad = new Actividad('',"Carne Carranza");
+        echo $actividad->getNombreActividad();
+
+        $inser = new actividadData();
+
+        echo $inser->insertarTBActividad($actividad);
 
 
     ?>

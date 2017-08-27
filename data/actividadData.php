@@ -4,6 +4,7 @@
 require_once 'data.php';
 include '../domain/actividad.php';
 
+
 class actividadData extends Data{
 
 	 private $data;
