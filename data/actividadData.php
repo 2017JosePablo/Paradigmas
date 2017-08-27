@@ -71,30 +71,25 @@ class actividadData extends Data{
 	}
 
 
-    public function obtenerTodosTBActividades() {
+    public function obtenerTodosTBActividad() {
+        $actividad = array();
 
-	    $actividad = array();
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $sql = "SELECT * FROM tbtipoactividad";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
 
-	    $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-	    $sql = "SELECT * FROM tbactividad";
-	    $result = $conn->query($sql);
-	    if($result->num_rows > 0) {
-
-	        while($row = $result->fetch_assoc()) {
-
-	            array_push($actividad,new Actividad($row['actividadid'],$row['actividadtipo']));
-	        }
-
-	    }else{
-
-	        echo "0 results";
-
-	    }
-
-	    $conn->close();
-	    
-        return $actividad;
+                array_push($actividad,new actividad($row['tipoactividadid'],$row['tipoactividadnombre ']));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        
+        return $hato;
     }
+
 
 }
 
