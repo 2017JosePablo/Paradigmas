@@ -184,7 +184,7 @@
 	 include '../business/actividadBusiness.php';
             $actividadBusiness = new actividadBusiness();
             $actividades = $actividadBusiness->obtenerTodosTBActividad();
-   			
+   			     echo '<table>';
             foreach ($actividades as $current) {     
                 echo '<tr>';
                 if($current->getId()==1){
