@@ -35,13 +35,10 @@
 		if (strlen($socioid)> 0 && strlen($socionombre) > 0  &&  strlen($socioprimerapellido)  &&  strlen($sociosegundoapellido) ) {
 			$valor = $_POST['tipoactividad'];
 
-			if (isset($_POST['tipoactividad'])) {
-				$tipoActividad = $valor;	# code...
-				echo "Valor: ".$valor;
-			}
-			// Valido para saber si selecciono almenos una actividad..
-			if (strlen($tipoActividad) != 0) {
-				if (strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($toro) > 0  || strlen($vaca) > 0 ) {
+			
+			if (strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($toro) > 0  || strlen($vaca) > 0 ) {
+
+
 				/// consultA PARA sabeer si el valor digitado es valido
 					if (is_numeric($ternero) &&  $ternero >  0 || is_numeric($ternera) && $ternera > 0 ||
 						is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 || 
@@ -55,10 +52,11 @@
 						$personaBusiness = new personaBusiness();
 						$resultado = $personaBusiness->insertarTBPersona($persona);
 
-
+						
 						if ($resultado == 1) {
 
 						require './hatoBusiness.php';
+					
 						$hato = new Hato($socioid,$ternero ,$ternera,$novillo,$novilla,$novillaprenada,$toro,$vaca);
 						
 						//	$herd = new Herd("503930363",49,0,0,1,1,0,0);
@@ -70,16 +68,15 @@
 							require './hatoActividadBusiness.php';
 							$hatoActividadBusiness = new hatoActividadBusiness();
 							$resultado2=$hatoActividadBusiness->insertarTBHatoActividad($socioid,$tipoActividad);
-							if ($resultado2==1) {
-
+						
 								header("location: ../index.php?success=inserted");	
-							}
+						
 						}else{
-								header("location: ../view/censoView.php?error=registerHerdActivity");		
+								header("location: ../view/censoView.php?error=error");			
 							}
 						
 						}else{
-							header("location: ../view/censoView.php?error=registerHerd");	
+							header("location: ../view/censoView.php?error=registerPerson");	
 						}
 
 					}else{
@@ -94,8 +91,7 @@
 		}else{	
 			header("location: ../view/censoView.php?error=emptyField");
 		}
-	}
-
+	
 
 
 ?>
