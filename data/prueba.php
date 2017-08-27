@@ -76,9 +76,10 @@
 
 */
          include '../data/fincaData.php';;
-         $finca = new Finca(25,"546546546","256");
+         $finca = new Finca("25","546546546","256");
          $inser = new fincaData();
-         $inser->insertarTBfinca($finca);
+         echo $inser->insertarTBfinca($finca);
+
 
 
     ?>

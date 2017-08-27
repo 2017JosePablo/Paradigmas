@@ -5,13 +5,23 @@ class SocioDireccion{
 	private $Canton;
 	private $Distrito;
 	private $Pueblo;
+	private $idSocioDir;
 
-	function Direccion($Provincia,$Canton,$Distrito,$Pueblo){
+	function SocioDireccion($idSocioDir,$Provincia,$Canton,$Distrito,$Pueblo){
+
+		$this->idSocioDir = $idSocioDir;
 		$this->Provincia = $Provincia;
 		$this->Canton = $Canton;
 		$this->Distrito = $Distrito;
 		$this->Pueblo = $Pueblo;
 	}
+	public function setIdSocioDir($idSocioDir){
+		$this->idSocioDir = $idSocioDir;
+	}
+	public function getIdSocioDir(){
+		return $this->idSocioDir;
+	}
+		
 	public function setProvincia($provincia){
 		$this->provincia = $provincia;
 	}

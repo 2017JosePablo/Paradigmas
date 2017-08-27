@@ -25,7 +25,11 @@ class socioData extends Data{
                 $socio->getPrimerApellido() . "','" .
                 $socio->getSegundoApellido() . "','" .
                 $socio->getTelCasa() . "','" . 
-                $socio->getTelMovil() . "');";
+                $socio->getCorreo() . "','" . 
+                $socio->getTipoActividadId() . "','" . 
+                $socio->getFincaTipo() . "','" . 
+                $socio->getFechaIngreso() . "','".
+                $socio->getEstadoSocioDetalle(). "');";
 
         $result = $conn->query($sql);
         $conn->close();
