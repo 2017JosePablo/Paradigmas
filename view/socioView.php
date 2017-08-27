@@ -224,7 +224,7 @@
              include '../business/actividadBusiness.php';
                     $actividadBusiness = new actividadBusiness();
                     $actividades = $actividadBusiness->obtenerTodosTBActividad();
-                    
+                     echo '<table>';
                     foreach ($actividades as $current) {     
                         echo '<tr>';
                         if($current->getId()==1){
@@ -254,7 +254,7 @@
                     
                     foreach ($tipoFinca as $current) {     
                         echo '<tr>';
-                             echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current.'> '.$current.'<br> </td>';
+                             echo '<td> <input type="radio" name="tipofinca" checked="" value='.$current.'> '.$current.'<br> </td>';
                                   
                         echo '</tr>';
                     }
