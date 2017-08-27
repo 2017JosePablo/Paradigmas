@@ -2,7 +2,7 @@
 		
 	class tipoFincaBusiness
 	{
-		require '../data/fincaTipoData.php';
+		require '../data/tipoFincaData.php';
 		private  $tipoFinca;
 		function tipoFincaBusiness()
 		{
