@@ -38,7 +38,7 @@ class Socio{
 		$this->tipoFinca = $tipoFinca;
 	}
 
-	public function getTipoFinca((){
+	public function getTipoFinca(){
 		return $this->tipoFinca;
 	}
 
