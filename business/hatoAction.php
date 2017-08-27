@@ -14,6 +14,12 @@
 		$sociotelefonocasa = $_POST['sociotelcasa'];
 		$sociotelefono = $_POST['sociotelmovil'];
 
+		if (strlen($sociotelefonocasa)==0) {
+			$sociotelefonocasa = '';
+		}
+		if (strlen($sociotelefono)==0) {
+			$sociotelefono = '';
+		}
 		////  Quantity Animals
 		$ternero = $_POST['terneros'];
 		$ternera = $_POST['terneras'];
@@ -26,7 +32,7 @@
 		$tipoActividad = "";
 
 
-		if (strlen($socioid)> 0 && strlen($socionombre) > 0  &&  strlen($socioprimerapellido)  &&  strlen($sociosegundoapellido) && strlen($sociotelefonocasa) > 0  && strlen($sociotelefono) > 0) {
+		if (strlen($socioid)> 0 && strlen($socionombre) > 0  &&  strlen($socioprimerapellido)  &&  strlen($sociosegundoapellido) ) {
 			$valor = $_POST['tipoactividad'];
 
 			if (isset($_POST['tipoactividad'])) {
@@ -42,10 +48,12 @@
 						is_numeric($novillaprenada) && $novillaprenada > 0 || is_numeric($toro)&& $toro > 0  || is_numeric($vaca) && $vaca > 0 ) {
 
 //include './herdBusiness.php';
+
+
 						require './personBusiness.php';
 						$persona = new Persona($socioid,$socionombre,$socioprimerapellido,$sociosegundoapellido,$sociotelefonocasa,$sociotelefono);
 						$personaBusiness = new personaBusiness();
-						$resultado = $personaBusiness->insertTBPersona($persona);
+						$resultado = $personaBusiness->insertarTBPersona($persona);
 
 
 						if ($resultado == 1) {
@@ -57,7 +65,7 @@
 
 						$hatoBusiness = new hatoBusiness();		
 
-						$resultado2 = $hatoBusiness->insertTBHato($hato);
+						$resultado2 = $hatoBusiness->insertarTBHato($hato);
 						if ($resultado2 == 1) {
 							require './hatoActividadBusiness.php';
 							$hatoActividadBusiness = new hatoActividadBusiness();
