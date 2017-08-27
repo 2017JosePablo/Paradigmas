@@ -1,3 +1,4 @@
+
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -180,7 +181,6 @@
 			</table>		
 		
 		<p>Tipo de Actividad</p>
-
 		<table>
 			<tr>
 				<td>
@@ -273,12 +273,10 @@
 			<input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
 
 
+</form>
+<br> <br>
+<a href="../index.php">Regresar</a>
+</body>
+</html>
 			
 
-
-
-	</form>
-	<br> <br>
-	<a href="../index.php">Regresar</a>
-	</body>
-	</html>
