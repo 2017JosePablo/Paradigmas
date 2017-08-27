@@ -1,16 +1,16 @@
 <?php
 class SocioDireccion{
 
-	private $Provincia;
-	private $Canton;
-	private $Distrito;
-	private $Pueblo;
+	private $provincia;
+	private $canton;
+	private $distrito;
+	private $pueblo;
 
-	function Direccion($Provincia,$Canton,$Distrito,$Pueblo){
-		$this->Provincia = $Provincia;
-		$this->Canton = $Canton;
-		$this->Distrito = $Distrito;
-		$this->Pueblo = $Pueblo;
+	function SopioDireccion($Provincia,$Canton,$Distrito,$Pueblo){
+		$this->provincia = $Provincia;
+		$this->canton = $Canton;
+		$this->distrito = $Distrito;
+		$this->pueblo = $Pueblo;
 	}
 	public function setProvincia($provincia){
 		$this->provincia = $provincia;

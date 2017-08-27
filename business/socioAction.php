@@ -25,11 +25,12 @@
 		$sociodetalle = $_POST['socioestado'];		
 
 
-		echo "Estado: ".$sociodetalle;
-
+		
 
 		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telcasa) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
+			
 			require 'socioBusiness.php';
+			
 			$socioBusiness = new socioBusiness();
 
 
@@ -39,7 +40,11 @@
 	
 	//		$resultado = "";
 			$resultado = $socioBusiness->insertarTBSocio($socio);
-			$resultado = $socioBusiness-> insertarTBSocioDireccion($provincia,$canton,$distrito,$pueblo);
+
+			require_once '../domain/socioDireccion.php';
+			$socioDireccion = new socioDireccion($provincia,$canton,$distrito,$pueblo);
+
+			$resultado = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
 
 
 

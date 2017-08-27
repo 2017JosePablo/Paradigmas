@@ -15,7 +15,7 @@ class fincaData extends Data{
     }
 
 
-    public function insertarTBfinca($finca){
+    public function insertarFinca($finca){
 
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
 
@@ -23,10 +23,32 @@ class fincaData extends Data{
             die("Connection failed: " . mysqli_connect_error());
         }
         $sql = "INSERT INTO tbfinca (socioid,fincaarea,fincacantidadbobinos)
-        VALUES ('" .
-                $finca->getSocioId()."','".
-                $finca->getCantidadBovinos(),"','".
-                $finca->getNombrefinca() . "');";
+        VALUES ('" .$finca->getSocioId()."','".$finca->getArea()."','".$finca->getCantidadBovinos() . "');";
+
+
+        $result = $conn->query($sql);
+
+        if ($conn->query($sql) === TRUE) {
+                 echo "Record updated successfully";
+        } else {
+                 echo "Error updating record: " . $conn->error;
+        }
+
+        $conn->close();
+        return $result;
+
+    }
+
+
+      public function insertarTBFincaDireccion($fincaDireccion){
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        $sql = "INSERT INTO tbfincadireccion (fincaprovincia,fincacanton, fincadistrito,fincapueblo,fincaexacta)
+        VALUES ('".$fincaDireccion->getProvincia()."','".$fincaDireccion->getCanton()."','".$fincaDireccion->getDistrito()."','".$fincaDireccion->getPueblo()."','".$fincaDireccion->getDireccionExacta()."'');";
 
 
         $result = $conn->query($sql);
@@ -34,6 +56,8 @@ class fincaData extends Data{
         return $result;
 
     }
+
+
 
  	public function actualizarTBfinca($finca) {
 

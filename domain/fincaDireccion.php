@@ -1,17 +1,17 @@
 <?php
 class FincaDireccion{
 
-	private $Provincia;
-	private $Canton;
-	private $Distrito;
-	private $Pueblo;
+	private $provincia;
+	private $canton;
+	private $distrito;
+	private $pueblo;
 	private $dirExacta;
 
-	function Direccion($Provincia,$Canton,$Distrito,$Pueblo,$dirExacta){
-		$this->Provincia = $Provincia;
-		$this->Canton = $Canton;
-		$this->Distrito = $Distrito;
-		$this->Pueblo = $Pueblo;
+	function FincaDireccion($Provincia,$Canton,$Distrito,$Pueblo,$dirExacta){
+		$this->provincia = $Provincia;
+		$this->canton = $Canton;
+		$this->distrito = $Distrito;
+		$this->pueblo = $Pueblo;
 		$this->dirExacta = $dirExacta;
 	}
 	public function setProvincia($provincia){

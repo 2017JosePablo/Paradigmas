@@ -73,6 +73,8 @@
                 }
            }
 
+           
+
             function cargarValores(){
               document.getElementById("distrito").value =document.getElementById('listadoDistritos').options[document.getElementById('listadoDistritos').selectedIndex].value;
               document.getElementById("fech").value = document.getElementById("fecha").value;
@@ -99,7 +101,11 @@
 <?php
   include '../business/socioBusiness.php';
   $consulta = new socioBusiness();
-  $idsocio = $consulta->getSocioId($_GET['cedula']);
+  $idsocio = "";
+  if (isset($_GET['cedula'])) {
+    $idsocio = $consulta->getSocioId($_GET['cedula']);
+  }
+  
 
 
 ?>
@@ -108,13 +114,16 @@
 <input type="hidden" id="provincia" name="fincarovincia" value="">
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
-      
-      <p>Cedula del Dueño de la Finca:<input type="text" required="" readonly name="ceduladueño" value=<?php echo $idsocio;  ?>></p>
+
+<form method="post" onsubmit="return validar()" action="../business/fincaAction.php">      
+
+
+      <p>Cedula del Dueño de la Finca:<input type="text" required="" readonly name="idsocio" value=<?php echo $idsocio;  ?>></p>
 
     <p>Datos de la finca:</p>
 
 
-<form method="post" onsubmit="return validar()" action="../business/fincaAction.php">
+
 
             <table>
                 <tr>
