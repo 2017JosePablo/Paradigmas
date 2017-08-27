@@ -117,9 +117,7 @@
                         Cantidad de Bobinos
                     </td>
 
-                    <td>
-                       Finca Tipo Nombre 
-                    </td>
+                   
                     <td>Tipo de Cerca</td>
 
                 </tr>
@@ -131,10 +129,8 @@
                     <td>
                         <input type="text" name="cantidadbobinos" id="cantidadbobinos"  required>
                     </td>
-                    <td>
-                        <input type="text" name="fincatiponombre" id="fincatiponombre"  required>
-                    </td>       
                    
+
                     <td>
                         <select id="ficatipocerca" name="ficatipocerca" class="form-control" onclick="provinciaSeleccionada()">
                           <option value="-1">Seleccione un tipo cerca</option>
@@ -189,7 +185,7 @@
 
             </table>
             <br> <br> <br>
-        <input type="submit" value="Agrerar Finca" name="agregarfinca" id="agregarfinca"/><p>
+        <input type="submit" value="Finalizar" name="finalizar" id="finalizar"/><p>
     </form>
 
  

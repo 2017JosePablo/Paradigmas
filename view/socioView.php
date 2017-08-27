@@ -264,7 +264,32 @@
 
             ?>
              <br><br>
-             Estado Socio Detalle: <input type="text" name="sociodetalle" required="">
+             Estado Socio Detalle: 
+             <?php
+         
+         
+            require '../business/socioBusiness.php';
+            $temp = new socioBusiness();
+            $estados = $temp->obteneSrocioEstado();
+
+
+                    echo '<table>';
+                    foreach ($estados as $curren) {     
+                        echo '<tr>';
+                         echo '<td> <input type="radio" name="socioestado" value='.$curren->getSocioEstadoId().'</td>'; 
+
+                        echo '<td>'.$curren->getSocioEstadoDetalle.'</td>'; 
+                                  
+                        echo '</tr>';
+                    }
+                        echo '</table>';
+
+                        
+
+            ?>
+            <br><br><br>
+
+             <input type="text" name="sociodetalle" required="">
             <br><br>
         <input type="submit" value="Continuar" name="agregarsocio" id="agregarsocio"/><p>
     </form>
