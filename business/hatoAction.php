@@ -11,8 +11,8 @@
 		$socionombre = $_POST['socionombre'];
 		$socioprimerapellido = $_POST['socioprimerapellido'];
 		$sociosegundoapellido = $_POST['sociosegundoapellido'];
-		$sociotelefonocasa = $_POST['sociotelefonocasa'];
-		$sociotelefono = $_POST['sociotelefono'];
+		$sociotelefonocasa = $_POST['sociotelcasa'];
+		$sociotelefono = $_POST['sociotelmovil'];
 
 		////  Quantity Animals
 		$ternero = $_POST['terneros'];
@@ -67,24 +67,24 @@
 								header("location: ../index.php?success=inserted");	
 							}
 						}else{
-						//		header("location: ../view/censoView.php?error=registerHerdActivity");		
+								header("location: ../view/censoView.php?error=registerHerdActivity");		
 							}
 						
 						}else{
-				//			header("location: ../view/censoView.php?error=registerHerd");	
+							header("location: ../view/censoView.php?error=registerHerd");	
 						}
 
 					}else{
-				//		header("location: ../view/censoView.php?error=numberFormat");	
+						header("location: ../view/censoView.php?error=numberFormat");	
 					}
 				}else{
-				//	header("location: ../view/censoView.php?error=emptyField");	
+					header("location: ../view/censoView.php?error=emptyField");	
 				}
 			}else{
-		//		header("location: ../view/censoView.php?error=emptyActivity");	
+				header("location: ../view/censoView.php?error=emptyActivity");	
 			}
 		}else{	
-		//	header("location: ../view/censoView.php?error=emptyField");
+			header("location: ../view/censoView.php?error=emptyField");
 		}
 	}
 
