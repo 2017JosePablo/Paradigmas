@@ -270,7 +270,7 @@
          
             require '../business/socioBusiness.php';
             $temp = new socioBusiness();
-            $estados = $temp->obteneSrocioEstado();
+            $estados = $temp->obtenerSocioEstado();
 
 
                     echo '<table>';
