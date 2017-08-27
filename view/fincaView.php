@@ -188,7 +188,7 @@
 
             </table>
             <br> <br> <br>
-        <input type="submit" value="Agrerar Finca" name="agrerarfinca" id="agrerarfinca"/><p>
+        <input type="submit" value="Agrerar Finca" name="agregarfinca" id="agregarfinca"/><p>
     </form>
 
  
