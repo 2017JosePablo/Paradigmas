@@ -41,6 +41,26 @@ class socioData extends Data{
 
 	}
 
+
+
+    public function insertarTBSocioDireccion($provincia,$canton, $distrito, $pueblo){
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        $sql = "INSERT INTO tbsociodireccion (socioprovincia,sociocanton, sociodistrito,sociopueblo)
+        VALUES ('".$provincia."','".$canton."','".$distrito."','".$pueblo."');";
+
+
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+
+    }
+
+
     
 
 	 public function actualizarTBSocio($socio) {
