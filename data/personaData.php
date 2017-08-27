@@ -17,7 +17,7 @@ class personaData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbpersona (personaaidentificacion,personaanombre,personaaprimerapellido,personaasegundoapellido,personaatelefonofjo,personaacelular)
+        $sql = "INSERT INTO tbpersona (personaidentificacion,personanombre,personaprimerapellido,personasegundoapellido,personatelefonofjo,personacelular)
         VALUES ('" .
 
                 $persona->getId() . "','" .
@@ -39,13 +39,13 @@ class personaData extends Data{
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "UPDATE tbpersona SET personaaidentificacion ='".$persona-> getId(). "',
-            personaanombre='" . $persona-> getNombre()."',
-            personaaprimerapellido='" . $persona-> getPrimerApellido()."',
-            personaasegundoapellido='" . $persona-> getSegundoApellido()."',
-            personaatelefonofjo='" . $persona-> getTelCasa()."',
-            personaacelular='" . $persona-> getTelMovil()."'
-            WHERE personaaidentificacion 	 ='" . $persona-> getId(). "';";
+        $sql = "UPDATE tbpersona SET personaidentificacion ='".$persona-> getId(). "',
+            personanombre='" . $persona-> getNombre()."',
+            personaprimerapellido='" . $persona-> getPrimerApellido()."',
+            personasegundoapellido='" . $persona-> getSegundoApellido()."',
+            personatelefonofjo='" . $persona-> getTelCasa()."',
+            personacelular='" . $persona-> getTelMovil()."'
+            WHERE personaidentificacion 	 ='" . $persona-> getId(). "';";
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {
@@ -63,7 +63,7 @@ class personaData extends Data{
             die("Connection failed: " . mysqli_connect_error());
         }
      
-        $sql = "DELETE from tbpersona where personaaidentificacion='".$idpersona."';";
+        $sql = "DELETE from tbpersona where personaidentificacion='".$idpersona."';";
         $result = $conn->query($sql);
         $conn->close();
      
@@ -78,7 +78,7 @@ class personaData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($persona, new persona($row["personaaidentificacion"],$row["personaanombre"],$row["personaaprimerapellido"],$row["personaasegundoapellido"],$row["personaatelefonofjo"],$row["personaacelular"]));
+                array_push($persona, new persona($row["personaidentificacion"],$row["personanombre"],$row["personaprimerapellido"],$row["personasegundoapellido"],$row["personatelefonofjo"],$row["personacelular"]));
             }
         }else{
             echo "0 results";
