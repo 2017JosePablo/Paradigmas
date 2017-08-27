@@ -4,6 +4,7 @@ class Socio{
 	private $nombre;
 	private $primerApellido;
 	private $segundoApellido;
+	private $telCasa;
 	private $telMovil;
 	private $correo;
 	private $fechaIngreso;
@@ -12,12 +13,13 @@ class Socio{
 	private $detalle;
 
 
-	function Socio($cedula,$nombre,$primerApellido,$segundoApellido,$phone,$correo,$fechaIngreso,$tipoActividad,$tipoFinca,$detalle){
+	function Socio($cedula,$nombre,$primerApellido,$segundoApellido,$telCasa,$telMovil,$correo,$fechaIngreso,$tipoActividad,$tipoFinca,$detalle){
 		$this->cedula = $cedula;
 		$this->nombre = $nombre;
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
-		$this->telMovil = $phone;
+		$this->telCasa = $telCasa;
+		$this->telMovil = $telMovil;
 		$this->correo = $correo;
 		$this->fechaIngreso = $fechaIngreso;
 		$this->tipoActividad = $tipoActividad;
@@ -32,6 +34,15 @@ class Socio{
 	public function getTipoActividad(){
 		return $this->tipoActividad;
 	}
+
+	public function setFechaIngreso($fechaIngreso){
+		$this->fechaIngreso = $fechaIngreso;
+	}
+
+	public function getFechaIngreso(){
+		return $this->fechaIngreso;
+	}
+
 
 
 	public function setTipoFinca($tipoFinca){
