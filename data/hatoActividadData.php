@@ -29,27 +29,9 @@ class hatoActividadData extends Data{
         return $result;
 
 	}
-    public function obtenerTodosTBActividad() {
-        $actividad = array();
-
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-        $sql = "SELECT * FROM tbactividad";
-        $result = $conn->query($sql);
-        if($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-
-                array_push($actividad,new actividad($row[''],));
-            }
-        }else{
-            echo "0 results";
-        }
-        $conn->close();
-        
-        return $hato;
-    }
 
 
-    }	
+    	
 
 }
 

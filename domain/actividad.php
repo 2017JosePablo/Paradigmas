@@ -2,6 +2,7 @@
 class Actividad{
 private $id;
 private $nombreActividad;
+
 function Actividad($id,$nombreActividad){
 	$this->id=$id;
 	$this->nombreActividad=$nombreActividad;

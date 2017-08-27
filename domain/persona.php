@@ -9,12 +9,12 @@ class Persona{
 
 
 	function Persona($cedula,$nombre,$primerApellido,$segundoApellido,$telCasa,$phone){
-		$this->cedula = $id;
+		$this->cedula = $cedula;
 		$this->nombre = $nombre;
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
 		$this->telCasa = $telCasa;
-		$this->telMovil = $telMovil;
+		$this->telMovil = $phone;
 		
 	}
 
