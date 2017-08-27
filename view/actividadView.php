@@ -10,7 +10,7 @@
    
 </head>
 <body>
-<form method="post" action="../business/actividadAction">
+<form method="post" action="../business/actividadAction.php">
     Tipo de Actividad: <input type="text" name="tipoactividad"><br>
 
 <input type="submit" value="Crear Actividad" name="crearactividad" id="crearactiviad"/><p>
