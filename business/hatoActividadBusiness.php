@@ -15,9 +15,9 @@
 
 		}
 
-		public function insertTBhatoActividad($idpersona, $tipoactividad)
+		public function insertarTBHatoActividad($idpersona, $tipoactividad)
 		{
-			return $this->hatoActividadBusiness->insertTBhatoActividad($idpersona,$tipoactividad);
+			return $this->hatoActividadBusiness->insertarTBHatoActividad($idpersona,$tipoactividad);
 		}
 
 

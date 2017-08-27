@@ -15,7 +15,7 @@
 
 		public function insertarTBHato($hato)
 		{
-			return $this->hato->insertTBHato($hato);
+			return $this->hato->insertarTBHato($hato);
 		}
 
 		public function actualizarTBHato($hato)

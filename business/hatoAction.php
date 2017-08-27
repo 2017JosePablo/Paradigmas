@@ -25,15 +25,16 @@
 		$ternera = $_POST['terneras'];
 		$novillo = $_POST['novillos'];
 		$novilla = $_POST['novillas'];
-		$novillaprenada = $_POST['novillapregnadas'];
+		$novillaprenada = $_POST['novillaspregnadas'];
 		$toro =$_POST['toros'];
 		$vaca =$_POST['vacas'];
 		//Variable para saber el tipo de actividad...
-		$tipoActividad = "";
+		
 
 
 		if (strlen($socioid)> 0 && strlen($socionombre) > 0  &&  strlen($socioprimerapellido)  &&  strlen($sociosegundoapellido) ) {
-			$valor = $_POST['tipoactividad'];
+
+		//	echo "TIpo de Actividad: ".$valor;
 
 			
 			if (strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($toro) > 0  || strlen($vaca) > 0 ) {
@@ -52,7 +53,7 @@
 						$personaBusiness = new personaBusiness();
 						$resultado = $personaBusiness->insertarTBPersona($persona);
 
-						
+
 						if ($resultado == 1) {
 
 						require './hatoBusiness.php';
@@ -67,7 +68,7 @@
 						if ($resultado2 == 1) {
 							require './hatoActividadBusiness.php';
 							$hatoActividadBusiness = new hatoActividadBusiness();
-							$resultado2=$hatoActividadBusiness->insertarTBHatoActividad($socioid,$tipoActividad);
+							$resultado2=$hatoActividadBusiness->insertarTBHatoActividad($socioid,$_POST['tipoactividad']);
 						
 								header("location: ../index.php?success=inserted");	
 						
