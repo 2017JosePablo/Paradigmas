@@ -14,19 +14,23 @@ class Finca{
 	public function setSocioId($socio){
 		$this->socioId = $socio;
 	}
-	public function getSocioId(){
-		return $this->socioId;
-	}
+	
 	public function setArea($area){
 		$this->area = $area;
-		$this->cantidadBovinos = $cantidadBovinos;
 	}
-	public function getArea(){
-		return $this->area;
-	}
+	
 	public function setCantidadBovinos($cantidadBovinos){
 		$this->cantidadBovinos = $cantidadBovinos;
 	}
+
+	public function getSocioId(){
+		return $this->socioId;
+	}
+
+	public function getArea(){
+		return $this->area;
+	}
+	
 	public function getCantidadBovinos(){
 		return $this->cantidadBovinos;
 	}

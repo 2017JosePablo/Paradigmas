@@ -1,6 +1,4 @@
 <?php
-
-//include 'data.php';
 require_once 'data.php';
 include '../domain/actividad.php';
 

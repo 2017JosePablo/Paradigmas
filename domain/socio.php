@@ -5,22 +5,25 @@ class Socio{
 	private $nombre;
 	private $primerApellido;
 	private $segundoApellido;
+	private $telCasa;
 	private $telMovil;
 	private $correo;
 	private $tipoActividadId;
 	private $fincatipoId;
 	private $fechaIngreso;
+
 	private $estadosociodetalle;
 
 
 
-	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$phone,$correo,$tipoActividadId,$fincatipoId,$fechaIngreso,$estadosociodetalle){
+	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telCasa,$telMovil,$correo,$fechaIngreso,$tipoActividad,$tipoFinca,$detalle){
 		$this->socioId = $socioId;
-		$this->cedula = $id;
+		$this->cedula = $cedula;
 		$this->nombre = $nombre;
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
-		$this->telMovil = $phone;
+		$this->telCasa = $telCasa;
+		$this->telMovil = $telMovil;
 		$this->correo = $correo;
 		$this->tipoActividadId = $tipoActividadId;
 		$this->fincatipoId = $fincatipoId;
@@ -59,14 +62,50 @@ class Socio{
 		return $this->estadosociodetalle;
 	}
 
+	public function setTipoActividad($tipoActividad){
+		$this->tipoActividad = $tipoActividad;
+	}
+
+	public function getTipoActividad(){
+		return $this->tipoActividad;
+	}
+
+	public function setFechaIngreso($fechaIngreso){
+		$this->fechaIngreso = $fechaIngreso;
+	}
+
+	public function getFechaIngreso(){
+		return $this->fechaIngreso;
+	}
+
+
+
+	public function setTipoFinca($tipoFinca){
+		$this->tipoFinca = $tipoFinca;
+	}
+
+	public function getTipoFinca(){
+		return $this->tipoFinca;
+	}
+
+	public function setDetalle($detalle){
+		$this->detalle = $detalle;
+	}
+
+	public function getDetalle(){
+		return $this->detalle;
+	}
+
+
+
 	public function setCedula($cedula){
 		$this->cedula = $cedula;
 	}
 
 	public function getCedula(){
 		return $this->cedula;
+	
 	}
-
 	public function setNombre($nombre){
 		$this->nombre = $nombre;
 	}
@@ -118,7 +157,6 @@ class Socio{
 	public function getFechaIngreso(){
 		return $this->fechaIngreso;
 	}
-
 }
 
 ?>

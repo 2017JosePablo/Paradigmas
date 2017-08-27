@@ -1,6 +1,7 @@
 <?php
 class SocioDireccion{
 
+
 	private $Provincia;
 	private $Canton;
 	private $Distrito;
@@ -15,6 +16,7 @@ class SocioDireccion{
 		$this->Distrito = $Distrito;
 		$this->Pueblo = $Pueblo;
 	}
+
 	public function setIdSocioDir($idSocioDir){
 		$this->idSocioDir = $idSocioDir;
 	}

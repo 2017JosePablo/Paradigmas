@@ -96,7 +96,7 @@
    
 </head>
 <body>
-<input type="hidden" id="provincia" name="sociorovincia" value="">
+<input type="hidden" id="provincia" name="socioprovincia" value="">
 <input type="hidden" id="canton" name="sociocanton" value="">
 <input type="hidden" id="distrito" name="sociodistrito" value="">
 
@@ -216,8 +216,84 @@
 
             </tr>
             </table>
-            <br><br><br>
-        <input type="submit" value="Agrerar Socio" name="agregarsocio" id="agregarsocio"/><p>
+            <br>
+            <p>Tipo de Actividad</p>
+
+            <?php
+         
+             include '../business/actividadBusiness.php';
+                    $actividadBusiness = new actividadBusiness();
+                    $actividades = $actividadBusiness->obtenerTodosTBActividad();
+                     echo '<table>';
+                    foreach ($actividades as $current) {     
+                        echo '<tr>';
+                        if($current->getId()==1){
+                             echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
+                        }else{
+                             echo '<td> <input type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
+                        }            
+                        echo '</tr>';
+                    }
+                        echo '</table>';
+
+            ?>
+
+            <br><br>
+            <p>Tipo de Finca</p>
+
+            <?php
+         
+         
+            require '../data/tipoFincaData.php';
+            $temp = new tipoFincaData();
+            $tipoFinca = $temp->getAllTBTiposFincas();
+
+     
+                    echo '<table>';
+                    foreach ($tipoFinca as $curren) {     
+                        echo '<tr>';
+
+                            echo '<td> <input type="radio" checked="" name="tipofinca" value='.$curren->getId().'</td>'; 
+
+                        echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
+                        
+                                  
+                        echo '</tr>';
+                    }
+                        echo '</table>';
+
+                        
+
+            ?>
+             <br><br>
+             Estado Socio Detalle: 
+             <?php
+         
+         
+            require '../business/socioBusiness.php';
+            $temp = new socioBusiness();
+            $estados = $temp->obtenerSocioEstado();
+
+                    echo '<table>';
+                    foreach ($estados as $curren) {     
+                        echo '<tr>';
+
+                        
+                         echo '<td> <input type="radio" name="socioestado" checked="" value='.$curren->getSocioEstadoId().'</td>'; 
+
+                        echo '<td>'.$curren->getSocioEstadoDetalle().'</td>'; 
+                        
+
+                        echo '</tr>';
+                    }
+                        echo '</table>';
+
+                        
+
+            ?>
+            
+            <br><br>
+        <input type="submit" value="Continuar" name="agregarsocio" id="agregarsocio"/><p>
     </form>
  
 

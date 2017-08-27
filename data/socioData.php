@@ -17,13 +17,15 @@ class socioData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,sociotipoactividad,fincatipoid,sociofechaingreso,estadosociodetalle)
+
+
+        $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle)
         VALUES ('" .
 
                 $socio->getCedula() . "','" .
                 $socio->getNombre() . "','" .
                 $socio->getPrimerApellido() . "','" .
-                $socio->getSegundoApellido() . "','" .
+
                 $socio->getTelCasa() . "','" . 
                 $socio->getCorreo() . "','" . 
                 $socio->getTipoActividadId() . "','" . 
@@ -31,11 +33,34 @@ class socioData extends Data{
                 $socio->getFechaIngreso() . "','".
                 $socio->getEstadoSocioDetalle(). "');";
 
+
         $result = $conn->query($sql);
         $conn->close();
         return $result;
 
 	}
+
+
+     
+      public function insertarTBSocioDireccion($socioDireccion){
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        $sql = "INSERT INTO tbsociodireccion (socioprovincia,sociocanton, sociodistrito,sociopueblo)
+        VALUES ('".$socioDireccion->getProvincia()."','".$socioDireccion->getCanton()."','".$socioDireccion->getDistrito()."','".$socioDireccion->getPueblo()."');";
+
+
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+
+    }
+
+   
+    
 
 	 public function actualizarTBSocio($socio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
@@ -91,6 +116,44 @@ class socioData extends Data{
         $conn->close();
         
         return $socio;
+    }
+
+
+     public function obtenerSocioEstado() {
+        $socio = array();
+        require '../domain/socioEstado.php';
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $sql = "SELECT * FROM tbsocioestado";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($socio, new socioEstado($row["socioestadoid"],$row["socioestadodetalle"]));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        
+        return $socio;
+    }
+
+
+    public function getSocioId($cedula) {
+        
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $consulta = "SELECT * FROM tbsocio ";
+        
+        $sql= $conn->query($consulta);
+        $idsocio =0;
+
+        while ($row = $sql->fetch_assoc()) {
+            if ($row['sociocedula'] ==$cedula) {
+                $idsocio  = $row['socioid'];
+            }
+        }
+        $conn->close();
+        
+        return $idsocio;
     }
 }
 ?>

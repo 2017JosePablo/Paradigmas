@@ -73,6 +73,8 @@
                 }
            }
 
+           
+
             function cargarValores(){
               document.getElementById("distrito").value =document.getElementById('listadoDistritos').options[document.getElementById('listadoDistritos').selectedIndex].value;
               document.getElementById("fech").value = document.getElementById("fecha").value;
@@ -95,15 +97,37 @@
    
 </head>
 <body>
+
+<?php
+  include '../business/socioBusiness.php';
+  $consulta = new socioBusiness();
+  $idsocio = "";
+  if (isset($_GET['cedula'])) {
+    $idsocio = $consulta->getSocioId($_GET['cedula']);
+  }
+  
+
+
+?>
+
+
 <input type="hidden" id="provincia" name="fincarovincia" value="">
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
+<<<<<<< HEAD
+
+<form method="post" onsubmit="return validar()" action="../business/fincaAction.php">      
+
+
+=======
       
+>>>>>>> a72c340234e166cd52158c6fe99b5315beda6c47
+      <p>Cedula del Dueño de la Finca:<input type="text" required="" readonly name="idsocio" value=<?php echo $idsocio;  ?>></p>
 
     <p>Datos de la finca:</p>
 
 
-<form method="post" onsubmit="return validar()" action="../business/fincaAction.php">
+
 
             <table>
                 <tr>
@@ -116,9 +140,7 @@
                         Cantidad de Bobinos
                     </td>
 
-                    <td>
-                       Finca Tipo Nombre 
-                    </td>
+                   
                     <td>Tipo de Cerca</td>
 
                 </tr>
@@ -130,10 +152,8 @@
                     <td>
                         <input type="text" name="cantidadbobinos" id="cantidadbobinos"  required>
                     </td>
-                    <td>
-                        <input type="text" name="fincatiponombre" id="fincatiponombre"  required>
-                    </td>       
                    
+
                     <td>
                         <select id="ficatipocerca" name="ficatipocerca" class="form-control" onclick="provinciaSeleccionada()">
                           <option value="-1">Seleccione un tipo cerca</option>
@@ -188,11 +208,9 @@
 
             </table>
             <br> <br> <br>
-        <input type="submit" value="Agrerar Finca" name="agregarfinca" id="agregarfinca"/><p>
+        <input type="submit" value="Finalizar" name="finalizar" id="finalizar"/><p>
     </form>
 
  
-
-    <a href="../index.php">Regresar</a>
 </body>
 </html>
