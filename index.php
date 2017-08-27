@@ -15,6 +15,7 @@
  ?>
 
 <a href="view/juntaView.php">Junta</a><br>
-<a href="view/censoView.php">Censo</a>
+<a href="view/censoView.php">Censo</a><br>
+<a href="view/activiadadView.php">Actividad</a><br>
 </body>
 </html>
