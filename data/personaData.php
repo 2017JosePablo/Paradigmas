@@ -20,7 +20,7 @@ class personaData extends Data{
         $sql = "INSERT INTO tbpersona (personaidentificacion,personanombre,personaprimerapellido,personasegundoapellido,personatelefonofjo,personacelular)
         VALUES ('" .
 
-                $persona->getId() . "','" .
+                $persona->getCedula() . "','" .
                 $persona->getNombre() . "','" .
                 $persona->getPrimerApellido() . "','" .
                 $persona->getSegundoApellido() . "','" .
@@ -39,13 +39,13 @@ class personaData extends Data{
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "UPDATE tbpersona SET personaidentificacion ='".$persona-> getId(). "',
+        $sql = "UPDATE tbpersona SET personaidentificacion ='".$persona-> getCedula(). "',
             personanombre='" . $persona-> getNombre()."',
             personaprimerapellido='" . $persona-> getPrimerApellido()."',
             personasegundoapellido='" . $persona-> getSegundoApellido()."',
             personatelefonofjo='" . $persona-> getTelCasa()."',
             personacelular='" . $persona-> getTelMovil()."'
-            WHERE personaidentificacion 	 ='" . $persona-> getId(). "';";
+            WHERE personaidentificacion 	 ='" . $persona-> getCedula(). "';";
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {

@@ -7,7 +7,7 @@
 
 	if (isset($_POST['registrarhato'])) {
 // Personal information
-		$socioid = $_POST['socioid'];
+		$socioid = $_POST['sociocedula'];
 		$socionombre = $_POST['socionombre'];
 		$socioprimerapellido = $_POST['socioprimerapellido'];
 		$sociosegundoapellido = $_POST['sociosegundoapellido'];

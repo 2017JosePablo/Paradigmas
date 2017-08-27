@@ -15,16 +15,16 @@ class actividadData extends Data{
     }
 
 
-    public function insertarTBActividad($actividad){
-
+    public function insertarTBActividad($tipoactividadnombre){
+    	
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
 
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbactividad (actividadtipo)
+        $sql = "INSERT INTO tbtipoactividad (tipoactividadnombre)
         VALUES ('" .
-                $actividad->getNombreActividad() . "');";
+                $tipoactividadnombre->getNombreActividad() . "');";
 
 
         $result = $conn->query($sql);
