@@ -17,21 +17,31 @@ class socioData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,sociotipoactividad,fincatipoid,sociofechaingreso,estadosociodetalle)
+
+
+        $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle)
         VALUES ('" .
 
                 $socio->getCedula() . "','" .
                 $socio->getNombre() . "','" .
                 $socio->getPrimerApellido() . "','" .
                 $socio->getSegundoApellido() . "','" .
-                $socio->getTelCasa() . "','" . 
-                $socio->getTelMovil() . "');";
+                $socio->getTelMovil() . "','" . 
+                $socio->getCorreo() . "','" .
+                $socio->getTipoActividad() . "','" .
+                $socio->getTipoFinca() . "','" .
+                $socio->getFechaIngreso() . "','" . 
+                $socio->getDetalle() . "');";
+
 
         $result = $conn->query($sql);
+           echo "Aqui------------------------->>";
         $conn->close();
         return $result;
 
 	}
+
+    
 
 	 public function actualizarTBSocio($socio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());

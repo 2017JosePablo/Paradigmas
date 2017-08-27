@@ -96,7 +96,7 @@
    
 </head>
 <body>
-<input type="hidden" id="provincia" name="sociorovincia" value="">
+<input type="hidden" id="provincia" name="socioprovincia" value="">
 <input type="hidden" id="canton" name="sociocanton" value="">
 <input type="hidden" id="distrito" name="sociodistrito" value="">
 
@@ -248,13 +248,13 @@
             $temp = new tipoFincaData();
             $tipoFinca = $temp->getAllTBTiposFincas();
 
-         //   require '../business/tipoFincaBusiness.php';
-          //  $temp = new tipoFincaBusiness();
-           // $tipoFinca = $temp->getAllTBTiposFincas();
-                    
-                    foreach ($tipoFinca as $current) {     
+     
+                    echo '<table>';
+                    foreach ($tipoFinca as $curren) {     
                         echo '<tr>';
-                             echo '<td> <input type="radio" name="tipofinca" checked="" value='.$current.'> '.$current.'<br> </td>';
+                         echo '<td> <input type="radio" name="tipofinca" value='.$curren->getId().'</td>'; 
+
+                        echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
                                   
                         echo '</tr>';
                     }
