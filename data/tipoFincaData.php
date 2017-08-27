@@ -12,7 +12,6 @@ class tipoFincaData extends Data{
     }
 
  public function getAllTBTiposFincas() {
-    echo "Aqui";
         $fincas = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
@@ -20,7 +19,6 @@ class tipoFincaData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                echo "Fincas: ".$row["fincatiponombre"];
                $fincas[] = $row["fincatiponombre"];
             }
         }else{

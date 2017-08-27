@@ -1,5 +1,5 @@
 <?php
-	include '../data/tipoFincaData.php';
+  require '../data/tipoFincaData.php';
 	class tipoFincaBusiness
 	{
 		private  $tipoFincaData;
