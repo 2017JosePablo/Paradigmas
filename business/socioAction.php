@@ -42,7 +42,7 @@
 			$resultado = $socioBusiness->insertarTBSocio($socio);
 
 			require_once '../domain/socioDireccion.php';
-			$socioDireccion = new socioDireccion($provincia,$canton,$distrito,$pueblo);
+			$socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
 
 			$resultado = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
 

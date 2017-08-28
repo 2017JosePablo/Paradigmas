@@ -26,7 +26,7 @@ class socioData extends Data{
                 $socio->getNombre() . "','" .
                 $socio->getPrimerApellido() . "','" .
 
-                $socio->getTelCasa() . "','" . 
+                $socio->getTelMovil() . "','" . 
                 $socio->getCorreo() . "','" . 
                 $socio->getTipoActividadId() . "','" . 
                 $socio->getFincaTipo() . "','" . 
