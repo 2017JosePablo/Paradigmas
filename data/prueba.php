@@ -82,8 +82,11 @@
 */
         include '../data/socioData.php';
          $inser = new socioData();
+
          $socio = $inser->obtenerUnTBSocio("503930363");
-         echo $socio->getNombre();
+
+         $array = json_decode($socio, true);
+         echo $array["sociocedula"];
 
 
     ?>

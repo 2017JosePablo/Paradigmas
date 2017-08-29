@@ -110,8 +110,8 @@ class socioData extends Data{
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                $socio = ["idsocio"=>($row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
-                    ,"sociocorreo"=>$row["sociocorreo"],"tipoactividadnombre"=>$row["tipoactividadnombre"] , "fincatiponombre"=>$row["fincatiponombre"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"] );
+                $socio = ["idsocio"=>$row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
+                    ,"sociocorreo"=>$row["sociocorreo"],"tipoactividadnombre"=>$row["tipoactividadnombre"] , "fincatiponombre"=>$row["fincatiponombre"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"] ];
 
 
             }
