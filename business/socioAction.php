@@ -14,7 +14,7 @@
 
 		$provincia = $_POST['listaProvincias'];
 		$canton = $_POST['listadoCantones'];
-		$distrito = $_POST['listadoDistrito'];
+		$distrito = $_POST['listadoDistritos'];
 		$pueblo = $_POST['sociopueblo'];
 
 
@@ -35,8 +35,8 @@
 
 
 
-			$socio = new Socio($cedula,$nombre,$primerapellido,$segundoapellido,$telcasa,$telmovil,$correo,$fechaingreso,$tipoactividad, $tipofinca , $sociodetalle);
-
+			$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telcasa,$telmovil,$correo,$fechaingreso,$tipoactividad, $tipofinca , $sociodetalle);
+			
 	
 	//		$resultado = "";
 			$resultado = $socioBusiness->insertarTBSocio($socio);
@@ -44,20 +44,21 @@
 			require_once '../domain/socioDireccion.php';
 			$socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
 
-			$resultado = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
+			$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
 
 
 
-			if ($resultado ==1) {
+			if ($resultado ==1 && $resultado2 == 1) {
 					header("location: ../view/fincaView.php?cedula=$cedula");
-				}else{
+			}else{
 
-				//	echo "Error al insertar un socio: ".@$resultado;
-					header("location: ../view/socioView.php?error=errorinserted");
-				}
+				echo "Error al insertar un socio: ".@$resultado;
+				echo "Error al insertar un socioDireccion: ".@$resultado2;
+				header("location: ../view/socioView.php?error=errorinserted");
+			}
 
 		}else{
-			//echo " Algunos campos no existen...";
+			echo " Algunos campos no existen...";
 			//header("location: ../view/socioView.php?error=emptyFile");
 		}
 

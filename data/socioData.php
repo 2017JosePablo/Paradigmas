@@ -22,17 +22,29 @@ class socioData extends Data{
         $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle)
         VALUES ('" .
 
+<<<<<<< HEAD
                 $socio->getCedula() ."','".
                 $socio->getNombre() ."','" .
                 $socio->getPrimerApellido()."','".
                 $socio->getSegundoApellido()."','".
                 $socio->getTelMovil() ."','" . 
+=======
+                $socio->getCedula() . "','" .
+                $socio->getNombre() . "','" .
+                $socio->getPrimerApellido() . "','" .
+<<<<<<< HEAD
+                $socio->getSegundoApellido() . "','" .
+                $socio->getTelCasa() . "','" . 
+=======
+
+                $socio->getTelMovil() . "','" . 
+>>>>>>> 9d19bc06f1af32d7c6f4251a344640224dc523de
+>>>>>>> 73be02837663bb7cdd74c15f63a92ae8b3ec7e32
                 $socio->getCorreo() . "','" . 
                 $socio->getTipoActividadId() . "','" . 
                 $socio->getFincaTipo() . "','" . 
                 $socio->getFechaIngreso() . "','".
                 $socio->getEstadoSocioDetalle(). "');";
-
 
         $result = $conn->query($sql);
         $conn->close();
@@ -154,18 +166,19 @@ class socioData extends Data{
     }
 
     public function getSocioId($cedula) {
+        $idsocio = 0;
         
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
         $consulta = "SELECT * FROM tbsocio ";
-        
-        $sql= $conn->query($consulta);
-        $idsocio =0;
-
-        while ($row = $sql->fetch_assoc()) {
-            if ($row['sociocedula'] ==$cedula) {
-                $idsocio  = $row['socioid'];
+        $sql = "SELECT * FROM tbsocio";
+        $result = $conn->query($sql);
+       
+        while($row = $result->fetch_assoc()) {
+            if($row['sociocedula'] == $cedula){
+                $idsocio = $row['socioid'];
             }
         }
+        
         $conn->close();
         
         return $idsocio;

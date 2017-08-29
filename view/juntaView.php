@@ -25,7 +25,7 @@
         };
         xmlhttp.open("post", "../business/juntaAction.php?idUpdate="+idjunta, true);
         xmlhttp.send();
-    }
+        }
 
      
         }
