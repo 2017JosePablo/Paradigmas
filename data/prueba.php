@@ -79,7 +79,7 @@
          $finca = new Finca("25","546546546","256");
          $inser = new fincaData();
          echo $inser->insertarTBfinca($finca);
-*/
+
         include '../data/socioData.php';
          $inser = new socioData();
 
@@ -87,6 +87,31 @@
 
          $array = json_decode($socio, true);
          echo $array["sociocedula"];
+*/
+
+        include '../data/razaData.php';
+         $inser = new razaData();
+         //$raza = new raza('7',"Negras");
+
+//        $result = $inser->editarRaza($raza);
+
+          $result =   $inser->eliminarRazaTBRaza('7');
+        if ($result == 1) {
+            echo "Modificado con exito";
+        }else{
+            echo "No se a podido modificar";
+        }
+
+//         $inser->insertarRaza($raza);
+
+          /*$array = $inser->obtenerTodoTBRaza();
+
+        foreach ($array as $key) {
+
+            echo $key->getNombreRaza().'</br>';
+        }*/
+
+
 
 
     ?>

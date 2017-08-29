@@ -1,14 +1,12 @@
 <?php
 
-	/**
-	* 
-	*/
 	class raza
 	{
-		$idraza;
-		$nombreraza;
+		private $idraza;
+		private $razanombre;
 
-		public function($idraza,$razanombre){
+		
+		function raza($idraza , $razanombre){
 			$this->idraza = $idraza;
 			$this->razanombre = $razanombre;
 		}
@@ -18,9 +16,9 @@
 			$this->idraza = $idraza;
 		}
 
-		public function setNombreRaza($nombreraza)
+		public function setNombreRaza($razanombre)
 		{
-			$this->nombreraza = $nombreraza;
+			$this->razanombre = $razanombre;
 		}
 
 		public function getIdRaza(){
@@ -28,7 +26,7 @@
 		}
 
 		public function getNombreRaza(){
-			return $this->nombreraza;
+			return $this->razanombre;
 		}
 
 	}

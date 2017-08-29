@@ -10,7 +10,7 @@
 
 <?php 
 	if(isset($_GET['success'])){
-		 echo '<p style="color: green">Censo insertado con Exito</p>';
+		 echo '<p style="color: green">Dato insertado con Exito</p>';
 	}
  ?>
 
