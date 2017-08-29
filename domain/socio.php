@@ -5,7 +5,7 @@ class Socio{
 	private $nombre;
 	private $primerApellido;
 	private $segundoApellido;
-	private $telCasa;
+
 	private $telMovil;
 	private $correo;
 	private $tipoActividadId;
@@ -16,7 +16,11 @@ class Socio{
 
 
 
+<<<<<<< HEAD
 	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telCasa,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle){
+=======
+	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$fincatipoId,$tipoActividadId,$detalle){
+>>>>>>> 9d19bc06f1af32d7c6f4251a344640224dc523de
 		$this->socioId = $socioId;
 		$this->cedula = $cedula;
 		$this->nombre = $nombre;
@@ -29,7 +33,7 @@ class Socio{
 		$this->tipoActividadId = $tipoActividadId;
 		$this->fincatipoId = $fincatipoId;
 		$this->fechaIngreso = $fechaIngreso;
-		$this->estadosociodetalle = $estadosociodetalle;
+		$this->estadosociodetalle = $detalle;
 	}
 	public function setSocioId($socioId){
 		$this->socioId = $socioId;
@@ -131,13 +135,7 @@ class Socio{
 		return $this->segundoApellido;
 	}
 
-	public function setTelCasa($telCasa){
-		$this->telCasa = $telCasa;
-	}
 
-	public function getTelCasa(){
-		return $this->telCasa;
-	}
 
 	public function setTelMovil($telMovil){
 		$this->telMovil = $telMovil;
