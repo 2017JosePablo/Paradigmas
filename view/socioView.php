@@ -11,7 +11,9 @@
 
 
    
-        function loadJunta(idjunta) {
+        function loadSocio(socio) {
+            alert(socio);
+
         /*
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -116,64 +118,81 @@
                     return todo_correcto;
                 
             }
+            function mostrarFormularioSocio(){
+                document.getElementById("cajaFormulario").style.display='block';
+
+            }
         </script>
 
    
 </head>
 <body>
+
+<div id="mostrarInformacion" style="background: red">
+
+</div>
+
 <input type="hidden" id="provincia" name="socioprovincia" value="">
 <input type="hidden" id="canton" name="sociocanton" value="">
 <input type="hidden" id="distrito" name="sociodistrito" value="">
 
 
 
-<div id="cajaSocio">
-    
-</div>
-
-   <form method="post" enctype="multipart/form-data" action="../business/socioAction.php">
-     <?php
+  <!-- <form method="post" enctype="multipart/form-data" action="../business/socioAction.php"> -->
+    <?php
  
-     include '../business/socioBusiness.php';
-
-     $socio = array();
-      array_push($socio, new Socio("1","1","1","1","1","1","1","1","1","1","1","1"));
-      
-            //$socioBusiness = new socioBusiness();
-           // $socios = $socioBusiness->obtenerTodosTBSocio();
-            echo '<table> <tr><td>Cedula</td>  <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Telefono</td><td>Correo</td><td>Tipo de actividad</td> <td>Tipo finca</td> <td>Fecha de ingreso</td> <td>Estado Socio</td><td colspan="2">Acciones</td> </tr>';
-            foreach ($socio as $current) {     
-                echo '<tr>';
-                echo '<td>  '.$current->getCedula() . ' </td>';
-                echo '<td> '.$current->getNombre().'</td>';
-                echo '<td> '.$current->getPrimerApellido() .' </td>';
-                echo '<td> '.$current->getSegundoApellido().' </td>';
-                echo '<td> '.$current->getTelCasa().'</td>';
-                echo '<td> '.$current->getCorreo().'</td>';
-                echo '<td> '.$current->getTipoActividad().'</td>';
-                echo '<td> '.$current->getTipoFinca().'</td>';
-                echo '<td> '.$current->getFechaIngreso().'</td>';
-                echo '<td> '.$current->getEstadoSocioDetalle().'</td>';
+    include '../business/socioBusiness.php';
 
 
-                //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getIdTBJunta().'"> Eliminar</a> </td>';
-               // echo "<td> <a href='' onclick=loadJunta('".$current->getIdTBJunta()."') > Modificarw</a> </td>";
-                echo '<td> <a href=""> Eliminar</a> </td>';
-                echo '<td> <a href=""> Modificar</a> </td>';
-                echo '</tr>';
-            }
-                echo '</table>';
+    $socioBusiness = new socioBusiness();
+    $socios = $socioBusiness->obtenerTodosTBSocio();
 
-                 //name='.$current->getIdTBJunta().'
-            ?>
+
+    echo '<table> <tr><td>Cedula</td>  <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Telefono</td><td>Correo</td><td>Tipo de actividad</td> <td> Finca Tipo</td> <td>Fecha de ingreso</td> <td>Estado Socio</td><td colspan="2">Acciones</td> </tr>';
+
+    foreach ($socios as $current) {     
+        echo '<tr>';
+        echo '<td> '.$current->getCedula() . ' </td>';
+        echo '<td> '.$current->getNombre().'</td>';
+        echo '<td> '.$current->getPrimerApellido() .' </td>';
+        echo '<td> '.$current->getSegundoApellido().' </td>';
+        echo '<td> '.$current->getTelMovil().'</td>';
+        echo '<td> '.$current->getCorreo().'</td>';
+        echo '<td> '.$current->getTipoActividad().'</td>';
+        echo '<td> '.$current->getTipoFinca().'</td>';
+        echo '<td> '.$current->getFechaIngreso().'</td>';
+        echo '<td> '.$current->getEstadoSocioDetalle().'</td>';
+
+
+        //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
+        echo "<td> <button type='submit' id='modificar-submit'value='".$current->getCedula()."'>Modificar</button></td>";
+        //echo '<td> <a href=""> Eliminar</a> </td>';
+        //echo '<td> <a href=""> Modificar</a> </td>';
+        echo '</tr>';
+    }
+    echo '</table>';
+
+             //name='.$current->getIdTBJunta().'
+    ?>
+
             
-        </form>
+    <!--  </form> -->
+
+    <button onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
+
+
 
   
-    <p>Datos personales:</p>
+    <div id="cajaFormulario"  style='display:none;'>
 
-    <form method="post" onsubmit="return validar()" action="../business/socioAction.php">
-            <table>
+    <fowrm method="post" onsubmit="return validar()" action="../business/socioAction.php">
+
+
+
+        
+         <p>Datos personales:</p>
+
+             <table>
                 <tr>
                     <td>
                     Cedula
@@ -233,6 +252,9 @@
                     </td>
                    
                 </tr>
+
+     
+           
                  <tr>
                     <td>
                         <br> Fecha Ingreso <br>
@@ -303,7 +325,8 @@
                         }            
                         echo '</tr>';
                     }
-                        echo '</table>';
+                 
+       echo '</table>';
 
             ?>
 
@@ -339,7 +362,7 @@
              <?php
          
          
-            require '../business/socioBusiness.php';
+            //require '../business/socioBusiness.php';
             $temp = new socioBusiness();
             $estados = $temp->obtenerSocioEstado();
 
@@ -362,10 +385,13 @@
             ?>
             
             <br><br>
-        <input type="submit" value="Continuar" name="agregarsocio" id="agregarsocio"/><p>
+        <input type="submit" value="Agregar Socio" name="agregarsocio" id="agregarsocio"/><p>
     </form>
+    </div>
  
 
     <a href="../index.php">Regresar</a>
+    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="../js/global.js"></script>
 </body>
 </html>

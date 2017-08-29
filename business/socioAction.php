@@ -1,4 +1,13 @@
-<?php
+<?
+
+	if(isset($_POST['cedula']) == true && empty($_POST['cedula'])== false){
+		//require '../data/socioData.php';
+		//$consulta = new socioData();
+
+		echo $_POST['cedula']; 
+
+	}
+
 
 	if (isset($_POST['agregarsocio'])) {
 		
@@ -35,7 +44,7 @@
 
 
 
-			$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telcasa,$telmovil,$correo,$fechaingreso,$tipoactividad, $tipofinca , $sociodetalle);
+			$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,$tipoactividad, $tipofinca , $sociodetalle);
 			
 	
 	//		$resultado = "";

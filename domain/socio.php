@@ -5,35 +5,29 @@ class Socio{
 	private $nombre;
 	private $primerApellido;
 	private $segundoApellido;
-
 	private $telMovil;
 	private $correo;
 	private $tipoActividadId;
 	private $fincatipoId;
 	private $fechaIngreso;
-
 	private $estadosociodetalle;
 
 
 
-<<<<<<< HEAD
-	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telCasa,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle){
-=======
-	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$fincatipoId,$tipoActividadId,$detalle){
->>>>>>> 9d19bc06f1af32d7c6f4251a344640224dc523de
+	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle){
+
+
 		$this->socioId = $socioId;
 		$this->cedula = $cedula;
 		$this->nombre = $nombre;
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
 		$this->telMovil = $telMovil;
-		$this->telCasa = $telCasa;
-
 		$this->correo = $correo;
 		$this->tipoActividadId = $tipoActividadId;
 		$this->fincatipoId = $fincatipoId;
 		$this->fechaIngreso = $fechaIngreso;
-		$this->estadosociodetalle = $detalle;
+		$this->estadosociodetalle = $estadosociodetalle;
 	}
 	public function setSocioId($socioId){
 		$this->socioId = $socioId;
