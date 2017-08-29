@@ -95,6 +95,32 @@ class socioData extends Data{
         return $result;
      }
 
+    public function obtenerUnTBSocio($cedula) {
+        $socio;
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,
+        tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,
+        tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle 
+        FROM tbsocio   INNER JOIN tbtipoactividad ON  tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid INNER JOIN tbfincatipo ON tbfincatipo.fincatipoid  = tbsocio.fincatipoid 
+        INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
+        tbsocio.sociocedula = '$cedula';";
+
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $socio = new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                    ,$row["sociocorreo"],$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["sociofechaingreso"] ,$row["socioestadodetalle"] );
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        
+        return $socio;
+    }
+
+
       public function obtenerTodosTBSocio() {
         $socio = array();
 
