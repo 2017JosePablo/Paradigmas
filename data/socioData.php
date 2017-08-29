@@ -43,8 +43,6 @@ class socioData extends Data{
         return $result;
 
 	}
-
-
      
       public function insertarTBSocioDireccion($socioDireccion){
 
@@ -64,8 +62,6 @@ class socioData extends Data{
     }
 
    
-    
-
 	 public function actualizarTBSocio($socio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
