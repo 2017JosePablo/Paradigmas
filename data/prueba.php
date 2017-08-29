@@ -74,21 +74,16 @@
 
         echo $inser->insertarTBActividad($actividad);
 
-
-         include '../data/fincaData.php';;
-         $finca = new Finca("25","546546546","256");
-         $inser = new fincaData();
-         echo $inser->insertarTBfinca($finca);
-
+*/
+ 
         include '../data/socioData.php';
          $inser = new socioData();
 
          $socio = $inser->obtenerUnTBSocio("503930363");
 
          $array = json_decode($socio, true);
-         echo $array["sociocedula"];
-*/
-
+         echo $array["socionombre"];
+/*
         include '../data/razaData.php';
          $inser = new razaData();
          //$raza = new raza('7',"Negras");
