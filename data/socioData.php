@@ -21,30 +21,17 @@ class socioData extends Data{
 
         $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle)
         VALUES ('" .
-
-<<<<<<< HEAD
                 $socio->getCedula() ."','".
                 $socio->getNombre() ."','" .
                 $socio->getPrimerApellido()."','".
                 $socio->getSegundoApellido()."','".
                 $socio->getTelMovil() ."','" . 
-=======
-                $socio->getCedula() . "','" .
-                $socio->getNombre() . "','" .
-                $socio->getPrimerApellido() . "','" .
-<<<<<<< HEAD
-                $socio->getSegundoApellido() . "','" .
-                $socio->getTelCasa() . "','" . 
-=======
-
-                $socio->getTelMovil() . "','" . 
->>>>>>> 9d19bc06f1af32d7c6f4251a344640224dc523de
->>>>>>> 73be02837663bb7cdd74c15f63a92ae8b3ec7e32
                 $socio->getCorreo() . "','" . 
                 $socio->getTipoActividadId() . "','" . 
                 $socio->getFincaTipo() . "','" . 
                 $socio->getFechaIngreso() . "','".
                 $socio->getEstadoSocioDetalle(). "');";
+
 
         $result = $conn->query($sql);
         $conn->close();
