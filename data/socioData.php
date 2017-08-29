@@ -104,11 +104,16 @@ class socioData extends Data{
         $socio = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-        $sql = "SELECT * FROM tbsocio";
+        $sql = "SELECT tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle FROM tbsocio INNER JOIN tbtipoactividad ON
+            tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid  
+            INNER JOIN tbfincatipo ON tbfincatipo.fincatipoid  = tbsocio.fincatipoid 
+            INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle;";
+
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($socio, new socio($row["socioidentificacion"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefonofjo"],$row["sociocelular"]));
+                array_push($socio, new socio($row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                    ,$row["sociocorreo"],$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["sociofechaingreso"] ,$row["socioestadodetalle"] ));
             }
         }else{
             echo "0 results";
@@ -137,6 +142,20 @@ class socioData extends Data{
         return $socio;
     }
 
+    public function verificarCedula($cedula){
+        $booleano = false;
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+
+        $consulta = "SELECT  * FROM tbsocio WHERE sociocedula = '$cedula'";
+        $result = $conn->query($consulta);
+//mysqli_num_rows()
+    if(mysqli_num_rows($result) > 0){
+        $booleano = true;
+         
+    }
+        mysqli_close($conn);
+        return $booleano;
+    }
 
     public function getSocioId($cedula) {
         

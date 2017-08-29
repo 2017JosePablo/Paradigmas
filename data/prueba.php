@@ -74,12 +74,16 @@
 
         echo $inser->insertarTBActividad($actividad);
 
-*/
+
          include '../data/fincaData.php';;
          $finca = new Finca("25","546546546","256");
          $inser = new fincaData();
          echo $inser->insertarTBfinca($finca);
+*/
+        include '../data/socioData.php';
+         $inser = new socioData();
 
+         echo $inser->verificarCedula("503930363");
 
 
     ?>
