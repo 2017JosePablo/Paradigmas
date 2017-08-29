@@ -107,7 +107,7 @@ class socioData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($socio, new socio($row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
                     ,$row["sociocorreo"],$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["sociofechaingreso"] ,$row["socioestadodetalle"] ));
             }
         }else{
