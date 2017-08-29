@@ -23,6 +23,8 @@ class Socio{
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
 		$this->telMovil = $telMovil;
+
+
 		$this->correo = $correo;
 		$this->tipoActividadId = $tipoActividadId;
 		$this->fincatipoId = $fincatipoId;
