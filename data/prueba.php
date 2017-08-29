@@ -83,7 +83,7 @@
         include '../data/socioData.php';
          $inser = new socioData();
 
-         echo $inser->verificarCedula("503930363");
+         echo $inser->obtenerUnTBSocio("503930363");
 
 
     ?>
