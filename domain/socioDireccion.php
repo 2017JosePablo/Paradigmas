@@ -2,19 +2,19 @@
 class SocioDireccion{
 
 
-	private $Provincia;
-	private $Canton;
-	private $Distrito;
-	private $Pueblo;
+	private $provincia;
+	private $canton;
+	private $distrito;
+	private $pueblo;
 	private $idSocioDir;
 
 	function SocioDireccion($idSocioDir,$Provincia,$Canton,$Distrito,$Pueblo){
 
 		$this->idSocioDir = $idSocioDir;
-		$this->Provincia = $Provincia;
-		$this->Canton = $Canton;
-		$this->Distrito = $Distrito;
-		$this->Pueblo = $Pueblo;
+		$this->provincia = $Provincia;
+		$this->canton = $Canton;
+		$this->distrito = $Distrito;
+		$this->pueblo = $Pueblo;
 	}
 
 	public function setIdSocioDir($idSocioDir){

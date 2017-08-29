@@ -1,5 +1,6 @@
 <?php
 class FincaDireccion{
+	private $socioid;
 
 	private $provincia;
 	private $canton;
@@ -7,12 +8,19 @@ class FincaDireccion{
 	private $pueblo;
 	private $dirExacta;
 
-	function FincaDireccion($Provincia,$Canton,$Distrito,$Pueblo,$dirExacta){
+	function FincaDireccion($socioid,$Provincia,$Canton,$Distrito,$Pueblo,$dirExacta){
+		$this->socioid = $socioid;
 		$this->provincia = $Provincia;
 		$this->canton = $Canton;
 		$this->distrito = $Distrito;
 		$this->pueblo = $Pueblo;
 		$this->dirExacta = $dirExacta;
+	}
+	public function setSocioId($socioid){
+		$this->socioid=$socioid;
+	}
+	public function getSocioId(){
+		return $this->socioid;
 	}
 	public function setProvincia($provincia){
 		$this->provincia = $provincia;

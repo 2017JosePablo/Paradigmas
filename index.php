@@ -19,5 +19,7 @@
 <a href="view/actividadView.php">Actividad</a><br>
 <a href="view/socioView.php">Socio</a><br>
 <a href="view/fincaTipoView.php">Tipo Finca</a><br>
+<a href="view/fincaView.php">Finca</a><br>
+<a href="view/razaView.php">Raza</a><br>
 </body>
 </html>

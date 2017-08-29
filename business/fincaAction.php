@@ -1,5 +1,7 @@
 <?php
 
+	
+
 if(isset($_POST['finalizar'])){
 
 	$idsocio = $_POST['idsocio'];
@@ -13,37 +15,42 @@ if(isset($_POST['finalizar'])){
 	$fincaexacta =$_POST['fincaexacta'];
 
 
-	if(isset($idsocio) && isset($fincaarea) &&isset($cantidadbobinos) &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)  ){
-			require 'fincaBusiness.php';
+	if(isset($idsocio) && isset($fincaarea) &&isset($cantidadbobinos) &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)){
 
-			$finca = new Finca($idsocio,$fincaarea,$cantidadbobinos);
-
+			require './fincaBusiness.php';
+			include '../domain/fincaDireccion.php';
+			
 			$fincaBusiness = new fincaBusiness();
+							//Valor AI
+			$finca = new Finca('',$idsocio,$fincaarea,$cantidadbobinos);
 
-			require_once '../domain/fincaDireccion.php';
-
-			$fincaDireccion = new FincaDireccion($listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
-
+			$fincaDireccion = new FincaDireccion('',$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
+			
+		
 			$resultado2 = $fincaBusiness ->insertarFinca($finca);
-			
 			$resultado1 = $fincaBusiness->insertarTBFincaDireccion($fincaDireccion);
+
 			
+	
 
-
-			if ($resultado1 == 1 && $resultado2 ==1) {
+			if ($resultado2 == 1 && $resultado2 == 1) {
+				echo "Finca insertada con exito";
 				header("location: ../index.php?success=inserted");
 			}else{
-				echo "Error";
-			//	header("location: ../view/fincaView.php?error=error");
+				if($resultado2!=1){
+					header("location: ../view/fincaView.php?error=errorInsertFinca");
+
+				}else{
+					if($resultado1!=1){
+						header("location: ../view/fincaView.php?error=errorInsertDireccion");
+					}
+				}
+				
 			}
-
-
 
 	}else{
 		echo "Datos vacios...</br>";
 	}
-
-
 
 
 }

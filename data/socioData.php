@@ -25,14 +25,13 @@ class socioData extends Data{
                 $socio->getCedula() . "','" .
                 $socio->getNombre() . "','" .
                 $socio->getPrimerApellido() . "','" .
-
+                $socio->getSegundoApellido() . "','" .
                 $socio->getTelCasa() . "','" . 
                 $socio->getCorreo() . "','" . 
                 $socio->getTipoActividadId() . "','" . 
                 $socio->getFincaTipo() . "','" . 
                 $socio->getFechaIngreso() . "','".
                 $socio->getEstadoSocioDetalle(). "');";
-
 
         $result = $conn->query($sql);
         $conn->close();
@@ -139,18 +138,19 @@ class socioData extends Data{
 
 
     public function getSocioId($cedula) {
+        $idsocio = 0;
         
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
         $consulta = "SELECT * FROM tbsocio ";
-        
-        $sql= $conn->query($consulta);
-        $idsocio =0;
-
-        while ($row = $sql->fetch_assoc()) {
-            if ($row['sociocedula'] ==$cedula) {
-                $idsocio  = $row['socioid'];
+        $sql = "SELECT * FROM tbsocio";
+        $result = $conn->query($sql);
+       
+        while($row = $result->fetch_assoc()) {
+            if($row['sociocedula'] == $cedula){
+                $idsocio = $row['socioid'];
             }
         }
+        
         $conn->close();
         
         return $idsocio;

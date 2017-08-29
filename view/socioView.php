@@ -6,7 +6,32 @@
 	<title>Area Administrativa de Socios</title>
 	<link rel="stylesheet" href="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-        <script>
+        <script type="text/javascript">
+
+
+
+   
+        function loadJunta(idjunta) {
+        /*
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                alert("Aqui estoy");
+                document.getElementById("txtHint").innerHTML = this.responseText;
+
+
+            }
+        };
+        xmlhttp.open("post", "../business/juntaAction.php?idUpdate="+idjunta, true);
+        xmlhttp.send();
+        */
+        }
+
+     
+        
+
+
+
 
             function provinciaSeleccionada(){
                 var valor = document.getElementById("listaProvincias") .value ;
@@ -57,7 +82,7 @@
 
                         data: {},
                         success: function (data) {
-                            var html = "<select class='form-control' id='listadoDistritos' name = 'listadoDistrito'  >";
+                            var html = "<select class='form-control' id='listadoDistritos' name = 'listadoDistritos'  >";
                          
                             for(key in data) {
 
@@ -99,6 +124,50 @@
 <input type="hidden" id="provincia" name="socioprovincia" value="">
 <input type="hidden" id="canton" name="sociocanton" value="">
 <input type="hidden" id="distrito" name="sociodistrito" value="">
+
+
+
+<div id="cajaSocio">
+    
+</div>
+
+   <form method="post" enctype="multipart/form-data" action="../business/socioAction.php">
+     <?php
+ 
+     include '../business/socioBusiness.php';
+
+     $socio = array();
+      array_push($socio, new Socio("1","1","1","1","1","1","1","1","1","1","1","1"));
+      
+            //$socioBusiness = new socioBusiness();
+           // $socios = $socioBusiness->obtenerTodosTBSocio();
+            echo '<table> <tr><td>Cedula</td>  <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Telefono</td><td>Correo</td><td>Tipo de actividad</td> <td>Tipo finca</td> <td>Fecha de ingreso</td> <td>Estado Socio</td><td colspan="2">Acciones</td> </tr>';
+            foreach ($socio as $current) {     
+                echo '<tr>';
+                echo '<td>  '.$current->getCedula() . ' </td>';
+                echo '<td> '.$current->getNombre().'</td>';
+                echo '<td> '.$current->getPrimerApellido() .' </td>';
+                echo '<td> '.$current->getSegundoApellido().' </td>';
+                echo '<td> '.$current->getTelCasa().'</td>';
+                echo '<td> '.$current->getCorreo().'</td>';
+                echo '<td> '.$current->getTipoActividad().'</td>';
+                echo '<td> '.$current->getTipoFinca().'</td>';
+                echo '<td> '.$current->getFechaIngreso().'</td>';
+                echo '<td> '.$current->getEstadoSocioDetalle().'</td>';
+
+
+                //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getIdTBJunta().'"> Eliminar</a> </td>';
+               // echo "<td> <a href='' onclick=loadJunta('".$current->getIdTBJunta()."') > Modificarw</a> </td>";
+                echo '<td> <a href=""> Eliminar</a> </td>';
+                echo '<td> <a href=""> Modificar</a> </td>';
+                echo '</tr>';
+            }
+                echo '</table>';
+
+                 //name='.$current->getIdTBJunta().'
+            ?>
+            
+        </form>
 
   
     <p>Datos personales:</p>
