@@ -22,11 +22,11 @@ class socioData extends Data{
         $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle)
         VALUES ('" .
 
-                $socio->getCedula() . "','" .
-                $socio->getNombre() . "','" .
-                $socio->getPrimerApellido() . "','" .
-
-                $socio->getTelMovil() . "','" . 
+                $socio->getCedula() ."','".
+                $socio->getNombre() ."','" .
+                $socio->getPrimerApellido()."','".
+                $socio->getSegundoApellido()."','".
+                $socio->getTelMovil() ."','" . 
                 $socio->getCorreo() . "','" . 
                 $socio->getTipoActividadId() . "','" . 
                 $socio->getFincaTipo() . "','" . 
