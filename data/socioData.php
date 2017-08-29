@@ -109,15 +109,18 @@ class socioData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $socio = new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                    ,$row["sociocorreo"],$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["sociofechaingreso"] ,$row["socioestadodetalle"] );
+
+                $socio = ["idsocio"=>($row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
+                    ,"sociocorreo"=>$row["sociocorreo"],"tipoactividadnombre"=>$row["tipoactividadnombre"] , "fincatiponombre"=>$row["fincatiponombre"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"] );
+
+
             }
         }else{
             echo "0 results";
         }
         $conn->close();
         
-        return $socio;
+        return json_encode($socio);
     }
 
 
