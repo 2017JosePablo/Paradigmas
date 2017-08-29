@@ -99,19 +99,28 @@ class socioData extends Data{
         $socio;
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-        $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,
+        $sql = "
+        SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,
         tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,
-        tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle 
-        FROM tbsocio   INNER JOIN tbtipoactividad ON  tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid INNER JOIN tbfincatipo ON tbfincatipo.fincatipoid  = tbsocio.fincatipoid 
-        INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
-        tbsocio.sociocedula = '$cedula';";
+        tbfincatipo.fincatiponombre ,tbsocio. sociofechaingreso ,tbsocioestado.socioestadodetalle ,
+        tbsociodireccion.socioprovincia, tbsociodireccion.sociocanton, tbsociodireccion.sociodistrito,
+        tbsociodireccion.sociopueblo
+
+        FROM tbsocio 
+        INNER JOIN tbtipoactividad ON
+        tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid  
+        INNER JOIN tbfincatipo ON tbfincatipo.fincatipoid  = tbsocio.fincatipoid 
+        INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle 
+        INNER JOIN  tbsociodireccion ON tbsociodireccion.socioid = tbsocio.socioid AND
+        tbsocio.sociocedula =  '$cedula';";
+
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
                 $socio = ["idsocio"=>$row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
-                    ,"sociocorreo"=>$row["sociocorreo"],"tipoactividadnombre"=>$row["tipoactividadnombre"] , "fincatiponombre"=>$row["fincatiponombre"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"] ];
+                    ,"sociocorreo"=>$row["sociocorreo"],"tipoactividadnombre"=>$row["tipoactividadnombre"] , "fincatiponombre"=>$row["fincatiponombre"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"],"socioprovinca"=>$row["socioprovinca"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
 
 
             }
