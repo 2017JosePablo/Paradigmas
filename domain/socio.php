@@ -15,12 +15,8 @@ class Socio{
 	private $estadosociodetalle;
 
 
-
-<<<<<<< HEAD
-	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telCasa,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle){
-=======
 	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$fincatipoId,$tipoActividadId,$detalle){
->>>>>>> 9d19bc06f1af32d7c6f4251a344640224dc523de
+
 		$this->socioId = $socioId;
 		$this->cedula = $cedula;
 		$this->nombre = $nombre;
