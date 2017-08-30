@@ -137,16 +137,37 @@ class socioData extends Data{
         $socio;
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-        $sql = "
-        SELECT * FROM tbsocio WHERE sociocedula =  '$cedula';";
+        $sql = " SELECT tbsocio.socioid,tbsocio.sociocedula,tbsocio.socionombre,
+tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido ,
+tbsocio.sociotelefono, tbsocio.sociocorreo,tbsocio.tipoactividadid,
+tbsocio.fincatipoid, tbsocio.sociofechaingreso,tbsocio.estadosociodetalle,
+tbsociodireccion.socioprovincia  ,  tbsociodireccion.sociocanton 
+,  tbsociodireccion.sociodistrito ,  tbsociodireccion.sociopueblo   
+FROM tbsocio INNER JOIN tbsociodireccion ON  tbsocio.socioid = tbsociodireccion.socioid 
+AND  tbsocio.sociocedula = '".$cedula."' ;";
 
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                $socio = ["idsocio"=>$row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
-                    ,"sociocorreo"=>$row["sociocorreo"],"tipoactividadid"=>$row["tipoactividadid"] , "fincatipoid"=>$row["fincatipoid"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"estadosociodetalle"=>$row["estadosociodetalle"],"socioprovincia"=>$row["socioprovincia"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
+                $socio = [
+                    "idsocio"=>$row["socioid"], 
+                    "sociocedula"=> $row["sociocedula"],
+                    "socionombre"=>$row["socionombre"], 
+                    "socioprimerapellido"=>$row["socioprimerapellido"], 
+                    "sociosegundoapellido"=>$row["sociosegundoapellido"],
+                    "sociotelefono"=>$row["sociotelefono"],
+                    "sociocorreo"=>$row["sociocorreo"],
+                    "tipoactividadid"=>$row["tipoactividadid"] , 
+                    "fincatipoid"=>$row["fincatipoid"] ,
+                    "sociofechaingreso"=>$row["sociofechaingreso"] ,
+                    "estadosociodetalle"=>$row["estadosociodetalle"],
+                    "socioprovincia"=>$row["socioprovincia"] ,
+                    "sociocanton"=>$row["sociocanton"],
+                    "sociodistrito"=>$row["sociodistrito"],
+                    "sociopueblo"=>$row["sociopueblo"]
+                 ];
 
 
             }
