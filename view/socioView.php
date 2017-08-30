@@ -5,6 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de Socios</title>
 	<link rel="stylesheet" href="">
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script type="text/javascript">
 
@@ -122,6 +124,10 @@
                 document.getElementById("cajaFormulario").style.display='block';
 
             }
+
+
+
+
         </script>
 
    
@@ -148,7 +154,7 @@
     $socios = $socioBusiness->obtenerTodosTBSocio();
 
 
-    echo '<table> <tr><td>Cedula</td>  <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Telefono</td><td>Correo</td><td>Tipo de actividad</td> <td> Finca Tipo</td> <td>Fecha de ingreso</td> <td>Estado Socio</td><td colspan="2">Acciones</td> </tr>';
+    echo '<table> <tr><td>Cedula</td>  <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Telefono</td><td>Correo</td> <td>Fecha de ingreso</td> <td colspan="2">Acciones</td> </tr>';
 
     foreach ($socios as $current) {     
         echo '<tr>';
@@ -158,10 +164,7 @@
         echo '<td> '.$current->getSegundoApellido().' </td>';
         echo '<td> '.$current->getTelMovil().'</td>';
         echo '<td> '.$current->getCorreo().'</td>';
-        echo '<td> '.$current->getTipoActividad().'</td>';
-        echo '<td> '.$current->getTipoFinca().'</td>';
         echo '<td> '.$current->getFechaIngreso().'</td>';
-        echo '<td> '.$current->getEstadoSocioDetalle().'</td>';
 
 
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
@@ -195,7 +198,7 @@
              <table>
                 <tr>
                     <td>
-                    Cedula
+                        Cedula
                     </td>
 
 
@@ -209,10 +212,6 @@
 
                     <td>
                         Segundo Apellido
-                    </td>
-
-                    <td>
-                        Telefono Fijo
                     </td>
 
 
@@ -241,10 +240,6 @@
                     </td>
                     
                     <td>
-                        <input type="text" name="sociotelcasa" id="sociotelcasa">
-                    </td>
-                    
-                    <td>
                         <input type="text" name="sociotelmovil" id="sociotelmovil">
                     </td>
                     <td>
@@ -263,7 +258,7 @@
 
                 <tr>
                     <td>
-                        <input type="date"  required="" name="fecha"> <br> <br>
+                      <input type="text" name="txtDate" id="datepicker"></td>
                     </td>
                 </tr>
 
@@ -319,9 +314,9 @@
                     foreach ($actividades as $current) {     
                         echo '<tr>';
                         if($current->getId()==1){
-                             echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
+                             echo '<td> <input id ='.$current->getId().' type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
                         }else{
-                             echo '<td> <input type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
+                             echo '<td> <input id ='.$current->getId().' type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
                         }            
                         echo '</tr>';
                     }
@@ -332,31 +327,31 @@
 
             <br><br>
             <p>Tipo de Finca</p>
+                <?php
+             
+             
+                require '../data/tipoFincaData.php';
+                $temp = new tipoFincaData();
+                $tipoFinca = $temp->getAllTBTiposFincas();
 
-            <?php
-         
-         
-            require '../data/tipoFincaData.php';
-            $temp = new tipoFincaData();
-            $tipoFinca = $temp->getAllTBTiposFincas();
+            
+                        echo '<table>';
+                        foreach ($tipoFinca as $curren) {     
+                            echo '<tr>';
 
-     
-                    echo '<table>';
-                    foreach ($tipoFinca as $curren) {     
-                        echo '<tr>';
+                                echo '<td> <input type="radio" checked="" name="tipofinca" value='.$curren->getId().'</td>'; 
 
-                            echo '<td> <input type="radio" checked="" name="tipofinca" value='.$curren->getId().'</td>'; 
-
-                        echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
-                        
-                                  
-                        echo '</tr>';
-                    }
+                            echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
+                            
+                                      
+                            echo '</tr>';
+                        }
                         echo '</table>';
 
-                        
+                            
 
-            ?>
+                ?>
+           
              <br><br>
              Estado Socio Detalle: 
              <?php

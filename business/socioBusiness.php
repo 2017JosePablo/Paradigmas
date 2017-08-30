@@ -46,7 +46,12 @@
 		{
 			return $this->dataSocio->getSocioId($cedula);
 		}
-
+		public function obtenerUnTBSocio($cedula){
+			return $this->dataSocio->obtenerUnTBSocio($cedula);
+		}
+		public function obtenerUnSoloTBSocio($cedula){
+			return $this->dataSocio->obtenerUnSoloTBSocio($cedula);
+		}
 
 	}
 

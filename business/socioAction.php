@@ -1,11 +1,12 @@
 <?
 
 	if(isset($_POST['cedula']) == true && empty($_POST['cedula'])== false){
-		//require '../data/socioData.php';
-		//$consulta = new socioData();
+		require 'socioBusiness.php';
+		$socioBusiness = new socioData();
+		$result = $socioBusiness->obtenerUnTBSocio($_POST['cedula']);
 
-		echo $_POST['cedula']; 
-
+		
+		echo $result; 
 	}
 
 
