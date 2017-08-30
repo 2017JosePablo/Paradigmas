@@ -11,6 +11,13 @@
 </head>
 <body>
 
+
+
+
+
+
+
+
 <p>Tipos de Fincas</p>
 
  <form method="post" enctype="multipart/form-data" >
@@ -20,7 +27,6 @@
             require '../data/tipoFincaData.php';
             $temp = new tipoFincaData();
             $tipoFinca = $temp->getAllTBTiposFincas();
-
      
                     echo '<table>';
                     foreach ($tipoFinca as $curren) {     
@@ -32,9 +38,6 @@
                         echo '</tr>';
                     }
                         echo '</table>';
-
-                        
-
             ?>
             <br><br><br>
        </form>
