@@ -105,23 +105,52 @@ class FincaData extends Data{
 
 
     public function obtenerTodosTBfinca() {
-        $finca = array();
-
+        $finca ;
+        $temp ;
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-        $sql = "SELECT * FROM tbfinca";
+            $sql = "
+            SELECT tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido,
+            tbsocio.sociosegundoapellido, 
+            tbfinca.fincaarea, tbfinca.fincacantidadbobinos,  tbfincatipo.fincatiponombre, 
+            tbtipoactividad.tipoactividadnombre  FROM tbsocio 
+            INNER JOIN tbfinca ON  tbsocio.socioid = tbfinca.fincaid 
+            INNER JOIN tbfincatipo ON tbsocio.fincatipoid = tbfincatipo.fincatipoid
+            INNER JOIN tbtipoactividad ON tbtipoactividad.tipoactividadid = tbsocio.tipoactividadid;";
+
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                array_push($finca,new Finca($row['socioid'],$row['fincaarea'],$row['fincacantidadbobinos']));
+                $finca = [ "cedulasocio"=>$row['sociocedula'], 
+                "socionombre"=>$row['socionombre'], 
+                "socioprimerapellido"=>$row['socioprimerapellido'], 
+                "sociosegundoapellido"=>$row['sociosegundoapellido'],
+                "fincaarea"=>$row['fincaarea'],
+                "fincacantidadbobinos"=>$row['fincacantidadbobinos'],
+                "fincatiponombre"=>$row['fincatiponombre'],
+                "tipoactividadnombre"=>$row['tipoactividadnombre'], ];
+
+                $temp = [$finca ];
+
             }
         }else{
             echo "0 results";
         }
         $conn->close();
         
-        return $finca;
+        return json_encode($finca);
     }
+
+
+
+
+
+
+
+
+
+
+
 }
 
 ?>

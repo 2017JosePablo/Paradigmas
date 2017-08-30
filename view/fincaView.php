@@ -92,33 +92,71 @@
             return todo_correcto;
 
             }
+
+            function agregarNuevaFinca(){
+            
+              document.getElementById('registrarFinca').style="display:block ";
+
+            }
         </script>
 
    
 </head>
 <body>
 
-<?php
-  include '../business/socioBusiness.php';
-  $consulta = new socioBusiness();
-  $idsocio = "";
-  if (isset($_GET['cedula'])) {
-    $idsocio = $consulta->getSocioId($_GET['cedula']);
-  }
-  
-
-
-?>
-
-
 <input type="hidden" id="provincia" name="fincarovincia" value="">
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
 
-<form method="post" onsubmit="return validar()" action="../business/fincaAction.php">      
+
+   <?php
+ 
+       include '../business/fincaBusiness.php';
+      $socioBusiness = new fincaBusiness();
+
+      $fincas = json_decode($socioBusiness->  obtenerTodosTBfinca(), true);
+        //echo "<table><tr><td>Cedula </td><td colspan ='3'> Nombre </td> <td>Tamano de Finca</td> <td>Cantidad de bobinos </td> <td>Tipo de Finca </td> <td>Tipo de Actividad</td></tr>";
+
+        foreach ($fincas as $current) {     
+            echo "<td>".$fincas["socionombre"]."  </td>";
+
+       /*   echo "<tr>";
+          echo "<td>".$fincas["cedulasocio"]."  </td>";
+          echo "<td colspan='3'>".$fincas["socionombre"].' '.$fincas["socioprimerapellido"].' '.$fincas["sociosegundoapellido"]."  </td>";
+          echo "<td>".$fincas["fincaarea"]."  </td>";
+          echo "<td>".$fincas["fincacantidadbobinos"]."  </td>";
+          echo "<td>".$fincas["fincatiponombre"]."  </td>";
+          echo "<td>".$fincas["tipoactividadnombre"]."  </td>";
+          echo "<tr>";
+*/
+          }
+
+        //  echo "</table>";
+
+    ?>
 
 
-    <p>Cedula del Dueño de la Finca:<input type="text" required="" readonly name="idsocio" value="<?php echo $idsocio;  ?>"></p>
+<input  type="submit"onclick="agregarNuevaFinca()" value="Agregar una nueva finca ">
+
+
+<div  id="registrarFinca" style='display:none ;' >
+
+  <form method="post" onsubmit="return validar()" action="../business/fincaAction.php">      
+</br>
+    <?php
+ 
+       include '../business/socioBusiness.php';
+      $socioBusiness = new socioBusiness();
+
+      $socios = $socioBusiness->  obtenerTodosTBSocio();
+       echo '<select > ';
+      foreach ($socios as $current) {     
+        echo "<option >";
+        echo   $current->getCedula() .' -- '. $current->getNombre() .' '.$current->getPrimerApellido() .' '.$current->getSegundoApellido();
+        echo "</option>";
+          }
+      echo '</select>';
+    ?>
 
     <p>Datos de la finca:</p>
 
@@ -204,9 +242,10 @@
 
             </table>
             <br> <br> <br>
-        <input type="submit" value="Finalizar" name="finalizar" id="finalizar"/><p>
+        <input type="submit" value="Registrar finca" name="finalizar" id="finalizar"/><p>
     </form>
 
+</div>
  
 </body>
 </html>

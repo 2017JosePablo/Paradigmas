@@ -24,6 +24,11 @@
 		}
 		
 
+		public function obtenerTodosTBfinca()
+		{
+			return $this->fincaData ->obtenerTodosTBfinca();
+		}
+
 
 
 
