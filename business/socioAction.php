@@ -45,9 +45,9 @@
 		
 				$resultado = $socioBusiness->insertarTBSocio($socio);
 
-
+				$idSocio=$socioBusiness->getSocioId($cedula);
 				$fincaBusiness= new fincaBusiness();
-				$finca= new Finca('',$socio->getSocioId(),'','');
+				$finca= new Finca('',$idSocio,'','');
 				$resuntadoFinca=$fincaBusiness->insertarFinca($finca);
 
 				require_once '../domain/socioDireccion.php';
