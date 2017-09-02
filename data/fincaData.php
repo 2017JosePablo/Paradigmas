@@ -88,6 +88,22 @@ class FincaData extends Data{
 	    $conn->close();
 	    return $result;
  	}
+
+    public function actualizarTBFincaDireccion($fincaDireccion ,$socioid) {
+
+        $sql = "UPDATE tbsociodireccion SET ,socioprovincia= '".$fincaDireccion->getProvincia()."',sociocanton='".$fincaDireccion->getCanton()."',sociodistrito='".$fincaDireccion->getDistrito()."',sociopueblo='".$fincaDireccion->getDireccionExacta()."' WHERE socioid= '".$fincaDireccion->getSocioId()."'";
+
+        $result = $conn->query($sql);
+        if ($conn->query($sql) === TRUE) {
+                 echo "Record updated successfully";
+        } else {
+                 echo "Error updating record: " . $conn->error;
+        }
+        $conn->close();
+        return $result;
+    }
+
+
 	public function eliminarTBfinca($idfinca) {
 
 		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
@@ -140,17 +156,6 @@ class FincaData extends Data{
         
         return json_encode($finca);
     }
-
-
-
-
-
-
-
-
-
-
-
 }
 
 ?>

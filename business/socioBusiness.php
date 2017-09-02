@@ -38,6 +38,10 @@
 			return $this ->dataSocio->insertarTBSocioDireccion($temp);
 		}
 
+		public function actualizarTBSocioDireccion($temp){
+			return $this ->dataSocio->actualizarTBSocioDireccion($temp);
+		}
+
 		public function obtenerSocioEstado(){
 			return $this->dataSocio->obtenerSocioEstado();
 		}
@@ -51,6 +55,14 @@
 		}
 		public function obtenerUnSoloTBSocio($cedula){
 			return $this->dataSocio->obtenerUnSoloTBSocio($cedula);
+		}
+
+		public function verificarCedula($cedula){
+			return $this->dataSocio->verificarCedula($cedula);
+		}
+
+		public function actualizarTBSocio($socio){
+			return $this->dataSocio->actualizarTBSocio($socio);
 		}
 
 	}

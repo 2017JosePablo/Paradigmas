@@ -8,7 +8,8 @@ class tipoFincaData extends  Data {
     function __construct(){
         $this->data= new Data();
     }
- public function getAllTBTiposFincas() {
+
+    public function getAllTBTiposFincas() {
         $fincas = array();
         include '../domain/fincaTipo.php';
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
