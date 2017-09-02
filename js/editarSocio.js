@@ -6,6 +6,7 @@ $(document).ready(function() {
     	var cedula = $(this).val();
 
     	if(cedula.length>0){
+            document.getElementById("cedulaVieja").value = cedula;
 
     		document.getElementById("btnAgregar").style.display = 'none';
     		document.getElementById("btnModificar").style.display = 'block';
