@@ -30,8 +30,22 @@ class hatoActividadData extends Data{
 
 	}
 
+    public function actualizarTBHatoActividad($personaId,$tipoActividad) {
 
-    	
+       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        $sql = "UPDATE tbhatoactividad SET hatoactividadtipo = '".$tipoActividad."' WHERE hatoactividadpersonaid =  $personaId";
+
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+
+    }
+    
+    
 
 }
 
