@@ -47,7 +47,7 @@
 
 
 				$fincaBusiness= new fincaBusiness();
-				$finca= new Finca('','','','');
+				$finca= new Finca('',$socio->getSocioId(),'','');
 				$resuntadoFinca=$fincaBusiness->insertarFinca($finca);
 
 				require_once '../domain/socioDireccion.php';
