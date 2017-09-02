@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 02, 2017 at 06:56 PM
+-- Generation Time: Sep 03, 2017 at 01:30 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -40,7 +40,10 @@ CREATE TABLE `tbfinca` (
 --
 
 INSERT INTO `tbfinca` (`fincaid`, `socioid`, `fincaarea`, `fincacantidadbobinos`) VALUES
-(1, 1, 7, '676');
+(1, 1, 1020, '299'),
+(2, 2, 12, '2'),
+(3, 0, 0, ''),
+(4, 4, 0, '');
 
 -- --------------------------------------------------------
 
@@ -62,7 +65,10 @@ CREATE TABLE `tbfincadireccion` (
 --
 
 INSERT INTO `tbfincadireccion` (`fincaid`, `fincaprovincia`, `fincacanton`, `fincadistrito`, `fincapueblo`, `fincaexacta`) VALUES
-(1, 1, 1, 1, 'RIO', 'RIOO');
+(1, 1, 1, 1, 'RIOQ', '300'),
+(2, 3, 2, 1, 'OP', 'OO'),
+(3, 0, 0, 0, '', ''),
+(4, 0, 0, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -210,7 +216,7 @@ INSERT INTO `tbraza` (`idraza`, `razanombre`) VALUES
 (4, 'Charolais'),
 (5, 'Angus'),
 (6, 'Otros'),
-(8, 'ADAN');
+(7, 'LA CONCHA');
 
 -- --------------------------------------------------------
 
@@ -237,8 +243,10 @@ CREATE TABLE `tbsocio` (
 --
 
 INSERT INTO `tbsocio` (`socioid`, `sociocedula`, `socionombre`, `socioprimerapellido`, `sociosegundoapellido`, `sociotelefono`, `sociocorreo`, `tipoactividadid`, `fincatipoid`, `sociofechaingreso`, `estadosociodetalle`) VALUES
-(1, '1234', 'A', 'V', 'A', 'A', 'ab@ga.com', 1, 1, '2017-08-07', 1),
-(2, '123456', 'Adan', 'CarranzA', 'Alfaro', '33430', 'adanca16@gmail.com', 2, 3, '2017-08-02', 2);
+(1, '503930363', 'Adan  CAR', 'Carranza ', 'Alfaro', '85666738', 'adanca16@gmail.com', 5, 2, '2017-08-02', 3),
+(2, '7024400808', 'Luis', 'Parra', 'Cambronero', '7993-2342', 'luis@gmail.com', 6, 1, '1990-12-01', 1),
+(3, '504130763', 'Jose', 'Carranza', 'Alfaro', '4555-23445', 'elfollon@tocastetas.com', 3, 1, '2017-08-02', 1),
+(4, '505350132', 'Marcos', 'Campos', 'Diaz', '23344-234', 'luis@gmail.com', 1, 1, '2017-08-02', 1);
 
 -- --------------------------------------------------------
 
@@ -259,7 +267,10 @@ CREATE TABLE `tbsociodireccion` (
 --
 
 INSERT INTO `tbsociodireccion` (`socioid`, `socioprovincia`, `sociocanton`, `sociodistrito`, `sociopueblo`) VALUES
-(1, 1, 1, 1, 'Rio');
+(1, 1, 3, 1, 'PUTERO JAJAJA'),
+(2, 3, 3, 1, 'POLO'),
+(3, 3, 3, 1, 'CULION'),
+(4, 1, 2, 1, 'op');
 
 -- --------------------------------------------------------
 
@@ -300,7 +311,8 @@ INSERT INTO `tbtipoactividad` (`tipoactividadid`, `tipoactividadnombre`) VALUES
 (1, 'Carne'),
 (2, 'Leche'),
 (3, 'Desarrollo'),
-(5, 'SEXIIII');
+(5, 'SEXIIII'),
+(6, 'PICHA LARGA');
 
 --
 -- Indexes for dumped tables
@@ -390,12 +402,12 @@ ALTER TABLE `tbtipoactividad`
 -- AUTO_INCREMENT for table `tbfinca`
 --
 ALTER TABLE `tbfinca`
-  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbfincadireccion`
 --
 ALTER TABLE `tbfincadireccion`
-  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbfincatipo`
 --
@@ -405,17 +417,17 @@ ALTER TABLE `tbfincatipo`
 -- AUTO_INCREMENT for table `tbraza`
 --
 ALTER TABLE `tbraza`
-  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbsocio`
 --
 ALTER TABLE `tbsocio`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbsociodireccion`
 --
 ALTER TABLE `tbsociodireccion`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbsocioestado`
 --
@@ -425,7 +437,7 @@ ALTER TABLE `tbsocioestado`
 -- AUTO_INCREMENT for table `tbtipoactividad`
 --
 ALTER TABLE `tbtipoactividad`
-  MODIFY `tipoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
+  MODIFY `tipoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

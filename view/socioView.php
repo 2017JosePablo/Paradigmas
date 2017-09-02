@@ -157,9 +157,9 @@
 
 
 <?php
-    if (isset('error')) {
-        if ($GET_['userexits']) {
-            echo "<p style='color:blue'> El Socio a ingresar ya esta registrado!</p>";
+    if (isset($_GET['error'])) {
+        if (isset($_GET['error']) =='userexits') {
+            echo "<p style='color:red'><strong> El Socio a ingresar ya esta registrado! </strong></p>";
         }
     }
     
