@@ -238,16 +238,16 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
     }
   
     public function actualizarTBSocioDireccion($temp) {
+        echo "Id de socio: ".$temp->getIdSocioDir()."</br>";
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "UPDATE tbsociodireccion SET socioprovincia='".$temp->getProvincia()."',' sociocanton = '".$temp->getCanton()."', sociodistrito = '".$temp->getDistrito()."',sociopueblo = '".$temp->getPueblo()."' WHERE socioid ='".$temp->getSocioId()."';";
+        $sql = "UPDATE tbsociodireccion SET socioprovincia='".$temp->getProvincia()."',sociocanton = '".$temp->getCanton()."', sociodistrito = '".$temp->getDistrito()."',sociopueblo = '".$temp->getPueblo()."' WHERE socioid ='".$temp->getIdSocioDir()."';";
 
-        $result = $conn->query($sql);
-        if ($conn->query($sql) === TRUE) {
+        if ($result = $conn->query($sql) === TRUE) {
                  echo "Record updated successfully";
         } else {
                  echo "Error updating record: " . $conn->error;
@@ -260,7 +260,9 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
 
 
     public function actualizarTBsocio($socio) {
-        $sql = "UPDATE tbsocio SET sociocedula= '".$socio->getCedula()."',socionombre='".$socio->getNombre()."',socioprimerapellido='".$socio->getPrimerApellido()."',sociosegundoapellido='".$socio->getSegundoApellido()."',sociotelefono='".$socio->getTelMovil()."',sociocorreo='".$socio->getCorreo()."',tipoactividadid='".$socio->getTipoActividadId()."',fincatipoid  ='".$socio->getFincaTipo()."', sociofechaingreso= '".$socio->getFechaIngreso()."',estadosociodetalle='".$socio->getEstadoSocioDetalle()."'  WHERE socioid= '".$socio->getSocioId()."'";
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        echo "Id de usuario : ".$socio->getSocioId()."</br>";
+        $sql = "UPDATE tbsocio SET sociocedula= '".$socio->getCedula()."',socionombre='".$socio->getNombre()."'  ,socioprimerapellido= '".$socio->getPrimerApellido()."' ,sociosegundoapellido='".$socio->getSegundoApellido()."',sociotelefono='".$socio->getTelMovil()."',sociocorreo='".$socio->getCorreo()."',tipoactividadid='".$socio->getTipoActividadId()."',fincatipoid  ='".$socio->getFincaTipo()."', sociofechaingreso= '".$socio->getFechaIngreso()."',estadosociodetalle='".$socio->getEstadoSocioDetalle()."'  WHERE socioid= '".$socio->getSocioId()."';";
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {
