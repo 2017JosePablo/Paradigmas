@@ -155,6 +155,20 @@
 </head>
 <body>
 
+
+<?php
+    if (isset('error')) {
+        if ($GET_['userexits']) {
+            echo "<p style='color:blue'> El Socio a ingresar ya esta registrado!</p>";
+        }
+    }
+    
+?>
+
+
+
+
+
 <div id="mostrarInformacion" style="background: red">
 
 </div>
