@@ -1,8 +1,16 @@
 <?php
 
-	if (isset($_POST['agregarsocio'])) {
-		
+	
+	if(isset($_POST['cedula']) == true && empty($_POST['cedula'])== false){
+		require 'socioBusiness.php';
+		$socioBusiness = new socioData();
+		$result = $socioBusiness->obtenerUnSoloTBSocio($_POST['cedula']);
 
+		
+		echo $result; 
+	}
+
+	if (isset($_POST['agregarsocio'])) {
 
 		$cedula = $_POST['sociocedula'];
 		$nombre = $_POST['socionombre'];
@@ -101,7 +109,7 @@
 
 			require 'socioBusiness.php';
 			$socioBusiness = new socioBusiness();
-			$socioid=$socioBusiness->getSocioId($cedula);
+			$socioid=$socioBusiness->getSocioId($cedula); 
 			
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
 					$tipoactividad, $tipofinca , $sociodetalle);
