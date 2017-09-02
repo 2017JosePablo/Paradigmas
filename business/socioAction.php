@@ -1,5 +1,15 @@
 <?php
 
+	
+	if(isset($_POST['cedula']) == true && empty($_POST['cedula'])== false){
+		require 'socioBusiness.php';
+		$socioBusiness = new socioData();
+		$result = $socioBusiness->obtenerUnSoloTBSocio($_POST['cedula']);
+
+		
+		echo $result; 
+	}
+
 	if (isset($_POST['agregarsocio'])) {
 
 		$cedula = $_POST['sociocedula'];
