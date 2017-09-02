@@ -116,26 +116,31 @@
    <?php
  
        include '../business/fincaBusiness.php';
-      $socioBusiness = new fincaBusiness();
+      $fincaBusiness = new fincaBusiness();
 
-      $fincas = json_decode($socioBusiness->  obtenerTodosTBfinca(), true);
-        //echo "<table><tr><td>Cedula </td><td colspan ='3'> Nombre </td> <td>Tamano de Finca</td> <td>Cantidad de bobinos </td> <td>Tipo de Finca </td> <td>Tipo de Actividad</td></tr>";
+      $fincas = $fincaBusiness->  obtenerTodosTBfinca();
+        echo "<table><tr><td>Cedula </td><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td>Tamano de Finca</td> <td>Cantidad de bobinos </td> <td>Tipo de Finca </td> <td>Tipo de Actividad</td></tr>";
 
         foreach ($fincas as $current) {     
+          //echo $current->getTipoActividad();
             //echo "<td>".$fincas["socionombre"]."  </td>";
 
-       /*   echo "<tr>";
-          echo "<td>".$fincas["cedulasocio"]."  </td>";
-          echo "<td colspan='3'>".$fincas["socionombre"].' '.$fincas["socioprimerapellido"].' '.$fincas["sociosegundoapellido"]."  </td>";
-          echo "<td>".$fincas["fincaarea"]."  </td>";
-          echo "<td>".$fincas["fincacantidadbobinos"]."  </td>";
-          echo "<td>".$fincas["fincatiponombre"]."  </td>";
-          echo "<td>".$fincas["tipoactividadnombre"]."  </td>";
           echo "<tr>";
-*/
+          echo "<td>".$current->getCedula()."  </td>";
+          echo "<td>".$current->getNombre()."</td>";
+          echo "<td>".$current->getPrimerApellido()."</td>";
+          echo "<td>".$current->getSegundoApellido()."</td>";
+          echo "<td>".$current->getArea()."  </td>";
+          echo "<td>".$current->getCantidadBovinos()."  </td>";
+          echo "<td>".$current->getFincaTipo()."  </td>";
+          echo "<td>".$current->getTipoActividad()."  </td>";
+          
+          echo "<tr>";
+          
+
           }
 
-        //  echo "</table>";
+          echo "</table>";
 
     ?>
 
