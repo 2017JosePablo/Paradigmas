@@ -108,6 +108,7 @@
 			require 'socioBusiness.php';
 			$socioBusiness = new socioBusiness();
 			$socioid=$socioBusiness->getSocioId($cedula); 
+			echo "idSocio".$socioid;
 			
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
 					$tipoactividad, $tipofinca , $sociodetalle);
