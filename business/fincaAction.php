@@ -1,7 +1,7 @@
 <?php
 
  if(isset($_POST['actulizarfinca'])){
-	$idsocio = $_POST['idsocio'];
+	$sociofinca = $_POST['sociofinca'];
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
 
@@ -12,16 +12,18 @@
 	$fincaexacta =$_POST['fincaexacta'];
 
 
-	if(isset($idsocio) && isset($fincaarea) &&isset($cantidadbobinos) &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)){
+	if(isset($sociofinca) && isset($fincaarea) &&isset($cantidadbobinos) &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)){
 
 			require './fincaBusiness.php';
+			require './socioBusiness.php';
 			include '../domain/fincaDireccion.php';
-			
-			$fincaBusiness = new fincaBusiness();
-							//Valor AI
-			$finca = new Finca('',$idsocio,$fincaarea,$cantidadbobinos);
+			$socioBusiness= new socioBusiness();
+			$idsocio=$socioBusiness->getSocioId($sociofinca);
 
-			$fincaDireccion = new FincaDireccion('',$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
+			$fincaBusiness = new fincaBusiness();
+			$finca = new Finca($idsocio,$idsocio,$fincaarea,$cantidadbobinos);
+
+			$fincaDireccion = new FincaDireccion($idsocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
 			
 		
 			$resultado2 = $fincaBusiness ->actualizarTBfinca($finca,$idsocio);

@@ -1,8 +1,6 @@
 <?php
 
 	if (isset($_POST['agregarsocio'])) {
-		
-
 
 		$cedula = $_POST['sociocedula'];
 		$nombre = $_POST['socionombre'];
@@ -101,7 +99,7 @@
 
 			require 'socioBusiness.php';
 			$socioBusiness = new socioBusiness();
-			$socioid=$socioBusiness->getSocioId($cedula);
+			$socioid=$socioBusiness->getSocioId($cedula); 
 			
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
 					$tipoactividad, $tipofinca , $sociodetalle);
