@@ -29,7 +29,15 @@
 			return $this->fincaData ->obtenerTodosTBfinca();
 		}
 
+		public function actualizarTBfinca($finca,$idsocio)
+		{
+			return $this->fincaData ->actualizarTBfinca($finca);
+		}
 
+		public function actualizarTBfincaDireccion($fincadireccion,$idfinca)
+		{
+			return $this->fincaData ->actualizarTBfincaDireccion($fincadireccion);
+		}
 
 
 
