@@ -98,6 +98,10 @@
               document.getElementById('registrarFinca').style="display:block ";
 
             }
+
+            function getSocio(){
+
+            }
         </script>
 
    
@@ -118,7 +122,7 @@
         //echo "<table><tr><td>Cedula </td><td colspan ='3'> Nombre </td> <td>Tamano de Finca</td> <td>Cantidad de bobinos </td> <td>Tipo de Finca </td> <td>Tipo de Actividad</td></tr>";
 
         foreach ($fincas as $current) {     
-            echo "<td>".$fincas["socionombre"]."  </td>";
+            //echo "<td>".$fincas["socionombre"]."  </td>";
 
        /*   echo "<tr>";
           echo "<td>".$fincas["cedulasocio"]."  </td>";
@@ -151,12 +155,13 @@
       $socios = $socioBusiness->  obtenerTodosTBSocio();
        echo '<select > ';
       foreach ($socios as $current) {     
-        echo "<option >";
+        echo "<option name = 'sociofinca' value = '".$current->getCedula()."'>";
         echo   $current->getCedula() .' -- '. $current->getNombre() .' '.$current->getPrimerApellido() .' '.$current->getSegundoApellido();
         echo "</option>";
           }
       echo '</select>';
     ?>
+
 
     <p>Datos de la finca:</p>
 
