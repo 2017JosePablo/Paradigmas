@@ -94,7 +94,7 @@
 		$canton = $_POST['listadoCantones'];
 		$distrito = $_POST['listadoDistritos'];
 		$pueblo = $_POST['sociopueblo'];
-
+		echo 'Distrito'.$distrito;
 
 		$tipoactividad = $_POST['tipoactividad'];
 		$tipofinca =  $_POST['tipofinca'];
