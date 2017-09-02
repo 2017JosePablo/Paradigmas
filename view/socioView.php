@@ -14,8 +14,10 @@
 	<title>Area Administrativa de Socios</title>
 	<link rel="stylesheet" href="">
 
+    <link rel="stylesheet" type="text/css" href="../css/diseno.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript">
 
 
@@ -38,6 +40,11 @@
         xmlhttp.send();
         */
         }
+
+
+
+                    
+
 
      
         
@@ -130,7 +137,13 @@
             }
             function mostrarFormularioSocio(){
                 document.getElementById("cajaFormulario").style.display='block';
-
+                document.getElementById("btnModificar").style.display='none';
+                document.getElementById("btnAgregar").style.display='block';
+                document.getElementById("frm").reset(); 
+                $("input:radio").removeAttr("checked");
+                $('#1-actividad').attr('checked',true);
+                $('#1-tipo').attr('checked',true);
+                $('#1-estado').attr('checked',true);
             }
 
 
@@ -189,13 +202,13 @@
             
     <!--  </form> -->
 
-    <button onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
+    <button type = "reset" onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
 
 
   
     <div id="cajaFormulario"  style='display:none;'>
 
-    <form method="post" onsubmit="return validar()" action="../business/socioAction.php">
+    <form id= "frm" method="post" onsubmit="return validar()" action="../business/socioAction.php">
 
 
 
@@ -388,7 +401,16 @@
             ?>
             
             <br><br>
-        <button type="submit" name="agregarsocio" id="agregarsocio"/>Agregar Socio</button>
+
+            <div id="btnAgregar">
+                <button type="submit" name="agregarsocio" id="agregarsocio"/>Agregar Socio</button>
+            </div>
+             <div id="btnModificar">
+                <button type="submit" name="modificarsocio" id="agregarsocio"/>Modificar Socio</button>
+            </div>
+
+
+        
     </form>
 
     </div>
@@ -396,6 +418,6 @@
 
     <a href="../index.php">Regresar</a>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../js/global.js"></script>
+    <script src="../js/editarSocio.js"></script>
 </body>
 </html>
