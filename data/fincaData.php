@@ -122,7 +122,7 @@ class FincaData extends Data{
 
     public function obtenerTodosTBfinca() {
         $finca ;
-        $temp ;
+
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
             $sql = "
             SELECT tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido,
@@ -146,7 +146,6 @@ class FincaData extends Data{
                 "fincatiponombre"=>$row['fincatiponombre'],
                 "tipoactividadnombre"=>$row['tipoactividadnombre'], ];
 
-                $temp = [$finca ];
 
             }
         }else{
@@ -154,7 +153,8 @@ class FincaData extends Data{
         }
         $conn->close();
         
-        return json_encode($finca);
+        //return json_encode($finca);
+        return $result;
     }
 }
 

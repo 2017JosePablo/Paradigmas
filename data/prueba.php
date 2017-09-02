@@ -74,7 +74,7 @@
 
         echo $inser->insertarTBActividad($actividad);
 
-*/
+
  
         include '../data/socioData.php';
          $inser = new socioData();
@@ -107,6 +107,30 @@
         }*/
 
 
+       include '../business/fincaBusiness.php';
+      $socioBusiness = new fincaBusiness();
+//$fincas = json_decode($socioBusiness->  obtenerTodosTBfinca(), true);
+      $fincas = $socioBusiness->  obtenerTodosTBfinca();
+        echo "<table><tr><td>Cedula </td><td colspan ='3'> Nombre </td> <td>Tamano de Finca</td> <td>Cantidad de bobinos </td> <td>Tipo de Finca </td> <td>Tipo de Actividad</td></tr>";
+/*
+        foreach ($fincas as $current) {     
+            echo "<tr>";
+                
+                echo "<td>".$fincas["cedulasocio"]."  </td>";
+                echo "<td colspan='3'>".$fincas["socionombre"].' '.$fincas["socioprimerapellido"].' '.$fincas["sociosegundoapellido"]."  </td>";
+                echo "<td>".$fincas["fincaarea"]."  </td>";
+                echo "<td>".$fincas["fincacantidadbobinos"]."  </td>";
+                echo "<td>".$fincas["fincatiponombre"]."  </td>";
+                echo "<td>".$fincas["tipoactividadnombre"]."  </td>";
+            echo "</tr>";       
+
+          }
+
+          echo "Current: ".count($fincas);
+
+        //  echo "</table>";
+*/
+            echo "Cantidad: ".count($fincas);
 
 
     ?>
