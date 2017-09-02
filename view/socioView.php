@@ -1,3 +1,11 @@
+
+<?php
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -168,7 +176,7 @@
 
 
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
-        echo "<td> <button type='submit' id='modificar-submit'value='".$current->getCedula()."'>Modificar</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."'>Modificar</button></td>";
         //echo '<td> <a href=""> Eliminar</a> </td>';
         //echo '<td> <a href=""> Modificar</a> </td>';
         echo '</tr>';
@@ -184,11 +192,10 @@
     <button onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
 
 
-
   
     <div id="cajaFormulario"  style='display:none;'>
 
-    <fowrm method="post" onsubmit="return validar()" action="../business/socioAction.php">
+    <form method="post" onsubmit="return validar()" action="../business/socioAction.php">
 
 
 
@@ -258,7 +265,7 @@
 
                 <tr>
                     <td>
-                      <input type="text" name="txtDate" id="datepicker"></td>
+                      <input type="text" name="fecha" id="datepicker"></td>
                     </td>
                 </tr>
 
@@ -314,9 +321,9 @@
                     foreach ($actividades as $current) {     
                         echo '<tr>';
                         if($current->getId()==1){
-                             echo '<td> <input id ='.$current->getId().' type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
+                             echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad' checked='' value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
                         }else{
-                             echo '<td> <input id ='.$current->getId().' type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
+                              echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad'  value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
                         }            
                         echo '</tr>';
                     }
@@ -336,10 +343,11 @@
 
             
                         echo '<table>';
-                        foreach ($tipoFinca as $curren) {     
+                        foreach ($tipoFinca as $curren) {
+
                             echo '<tr>';
 
-                                echo '<td> <input type="radio" checked="" name="tipofinca" value='.$curren->getId().'</td>'; 
+                            echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>"; 
 
                             echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
                             
@@ -357,36 +365,37 @@
              <?php
          
          
-            //require '../business/socioBusiness.php';
-            $temp = new socioBusiness();
-            $estados = $temp->obtenerSocioEstado();
+                //require '../business/socioBusiness.php';
+                $temp = new socioBusiness();
+                $estados = $temp->obtenerSocioEstado();
 
                     echo '<table>';
-                    foreach ($estados as $curren) {     
-                        echo '<tr>';
+                        foreach ($estados as $curren) {     
+                            echo '<tr>';
 
-                        
-                         echo '<td> <input type="radio" name="socioestado" checked="" value='.$curren->getSocioEstadoId().'</td>'; 
+                            
+                             echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio' name='socioestado' value='".$curren->getSocioEstadoId()."'</td>"; 
 
-                        echo '<td>'.$curren->getSocioEstadoDetalle().'</td>'; 
-                        
+                            echo '<td>'.$curren->getSocioEstadoDetalle().'</td>'; 
+                            
 
-                        echo '</tr>';
-                    }
-                        echo '</table>';
+                            echo '</tr>';
+                        }
+                    echo '</table>';
 
                         
 
             ?>
             
             <br><br>
-        <input type="submit" value="Agregar Socio" name="agregarsocio" id="agregarsocio"/><p>
+        <button type="submit" name="agregarsocio" id="agregarsocio"/>Agregar Socio</button>
     </form>
+
     </div>
  
 
     <a href="../index.php">Regresar</a>
-    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/global.js"></script>
 </body>
 </html>

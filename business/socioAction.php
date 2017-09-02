@@ -3,7 +3,7 @@
 	if(isset($_POST['cedula']) == true && empty($_POST['cedula'])== false){
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
-		$result = $socioBusiness->obtenerUnTBSocio($_POST['cedula']);
+		$result = $socioBusiness->obtenerUnSoloTBSocio($_POST['cedula']);
 
 		
 		echo $result; 
@@ -18,7 +18,6 @@
 		$nombre = $_POST['socionombre'];
 		$primerapellido = $_POST['socioprimerapellido'];
 		$segundoapellido = $_POST['sociosegundoapellido'];
-		$telcasa = $_POST['sociotelcasa'];
 		$telmovil = $_POST['sociotelmovil'];
 		$correo = $_POST['sociocorreo'];
 
@@ -37,7 +36,7 @@
 
 		
 
-		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telcasa) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
+		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
 			
 			require 'socioBusiness.php';
 			
@@ -59,7 +58,7 @@
 
 
 			if ($resultado ==1 && $resultado2 == 1) {
-					header("location: ../view/fincaView.php?cedula=$cedula");
+					header("location: ../view/socioView.php");
 			}else{
 
 				echo "Error al insertar un socio: ".@$resultado;

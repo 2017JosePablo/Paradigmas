@@ -1,9 +1,12 @@
-$('#modificar-submit').on('click',function(){
-	var cedula = $("#modificar-submit").val();
 
-	if($.trim(cedula) != ' '){
+$(document).ready(function() {
+    $('button').click(function() {
 
-		$.post('../business/socioAction.php', {cedula:cedula}, function(data){
+    	var cedula = $(this).val();
+
+    	if(cedula.length>0){
+
+    		$.post('../business/socioAction.php', {cedula:cedula}, function(data){
 			var array = JSON.parse(data);
 
 			document.getElementById('cajaFormulario').style.display='block';
@@ -21,11 +24,18 @@ $('#modificar-submit').on('click',function(){
 
 			//document.getElementById('sociopueblo').value = array['sociocorreo'];
 			document.getElementById('sociopueblo').value = array['sociopueblo'];
+			var tipoactividadid = array['tipoactividadid'];
+			var fincatipoid = array['fincatipoid'];
+			var tipoEstado = array['estadosociodetalle'];
+			
+			//$('#'+tipoactividadid+'').attr('checked',true);
 
-			alert(array['tipoactividadnombre']);
-			var tipo = 2;
+			$('#'+tipoactividadid+'-actividad').attr('checked',true);
 
-			$('#'+tipo+'').attr('checked',true);
+			$('#'+fincatipoid+'-tipo').attr('checked',true);
+
+			$('#'+tipoEstado+'-estado').attr('checked',true);
+
 
 
 			/*
@@ -51,7 +61,17 @@ $('#modificar-submit').on('click',function(){
 			//$('div#mostrarInformacion').text(data);
 
 		});
+	}else{
+
 	}
 
-	
+
+
+
+
+    	
+
+
+        
+    });
 });

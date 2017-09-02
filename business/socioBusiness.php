@@ -28,11 +28,6 @@
 		{
 			return $this->dataSocio ->eliminarSocio($socio);
 		}
-		
-		public function obtenerUnTBSocio($cedula)
-		{
-			return $this->dataSocio ->obtenerUnTBSocio();
-		}
 
 		public function obtenerTodosTBSocio()
 		{
