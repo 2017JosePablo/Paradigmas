@@ -5,8 +5,6 @@
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
 		$result = $socioBusiness->obtenerUnSoloTBSocio($_POST['cedula']);
-
-		
 		echo $result; 
 	}
 
