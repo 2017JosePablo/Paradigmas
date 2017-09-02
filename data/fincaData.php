@@ -139,6 +139,7 @@ class FincaData extends Data{
                array_push($fincas,new TodoFinca($row['sociocedula'], $row['socionombre'], 
                 $row['socioprimerapellido'],$row['sociosegundoapellido'], $row['fincaarea'],
                 $row['fincacantidadbobinos'],$row['fincatiponombre'],$row['tipoactividadnombre'])); 
+          //     echo $row['tipoactividadnombre'];
             }
         }else{
             echo "0 results";
