@@ -70,7 +70,7 @@
 				}
 
 			}else{
-				header("location: ../socioView.php?error=userexits");
+				header("location: ../view/socioView.php?error=userexits");
 			}
 		}else{
 			echo " Algunos campos no existen...";
