@@ -18,7 +18,7 @@ class TodoFinca{
 		$this->area = $area;
 		$this->fincaTipo = $fincaTipo;
 		$this->cantidadBovinos = $cantidadBovinos;
-		$this->tipoActividad = $fincatipoId;
+		$this->tipoActividadId = $fincatipoId;
 	}
 	public function setFincaTipo($finca){
 		$this->fincaTipo = $finca;

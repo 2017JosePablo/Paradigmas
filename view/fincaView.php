@@ -122,7 +122,7 @@
         echo "<table><tr><td>Cedula </td><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td>Tamano de Finca</td> <td>Cantidad de bobinos </td> <td>Tipo de Finca </td> <td>Tipo de Actividad</td></tr>";
 
         foreach ($fincas as $current) {     
-          //echo $current->getTipoActividad();
+
             //echo "<td>".$fincas["socionombre"]."  </td>";
 
           echo "<tr>";
