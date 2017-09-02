@@ -153,21 +153,15 @@
       $socioBusiness = new socioBusiness();
 
       $socios = $socioBusiness->  obtenerTodosTBSocio();
-       echo '<select > ';
+       echo '<select name = "socioFinca"> ';
       foreach ($socios as $current) {     
-        echo "<option name = 'sociofinca' value = '".$current->getCedula()."'>";
+        echo "<option  value = '".$current->getCedula()."'>";
         echo   $current->getCedula() .' -- '. $current->getNombre() .' '.$current->getPrimerApellido() .' '.$current->getSegundoApellido();
         echo "</option>";
           }
       echo '</select>';
     ?>
-
-
     <p>Datos de la finca:</p>
-
-
-
-
             <table>
                 <tr>
                     <td>
