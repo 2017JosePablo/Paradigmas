@@ -52,12 +52,10 @@ $(document).ready(function() {
 			var cantones =array['sociocanton'];
 			var distritos = array['sociodistrito'];
 
-			alert(provincia+' '+cantones+' '+distritos);
-
-			llenarCantones2(provincia);
-			setDistrito2(provincia,cantones);
-
-			$('#listaProvincias').val(2);
+			//alert(provincia+' '+cantones+' '+distritos);
+//
+			//llenarCantones2(provincia);
+			//setDistrito2(provincia,cantones);
 
 		});
 	}else{
