@@ -259,7 +259,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
     
 
 
-    public function actualizarTBsocio($socio ,$idsocio) {
+    public function actualizarTBsocio($socio) {
         $sql = "UPDATE tbsocio SET ,sociocedula= '".$socio->getCedula()."',socionombre='".$socio->getNombre()."',socioprimerapellido='".$socio->getPrimerApellido()."',sociosegundoapellido='".$socio->getSegundoApellido()."',sociotelefono='".$socio->getTelMovil()."',sociocorreo='".$socio->getCorreo()."',tipoactividadid='".$socio->getTipoActividadId()."',fincatipoid  ='".$socio->getFincaTipo()."', sociofechaingreso= '".$socio->getFechaIngreso()."',estadosociodetalle='".$socio->getEstadoSocioDetalle()."'  WHERE socioid= '".$idsocio->getSocioId()."'";
 
         $result = $conn->query($sql);
