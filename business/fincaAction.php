@@ -2,8 +2,8 @@
 
 	if(isset($_POST['btnmodificar']) == true && empty($_POST['btnmodificar'])== false){
 		require 'fincaBusiness.php';
-		$socioBusiness = new fincaBusiness();
-		$result = $socioBusiness->obtenerFinca($_POST['btnmodificar']);
+		$fincaBusiness = new fincaBusiness();
+		$result = $fincaBusiness->obtenerFinca($_POST['btnmodificar']);
 		echo $result;
 	}
 
