@@ -111,10 +111,14 @@
 
       $socioBusiness = new FincaData();
 
+      $cedula = "<scrpit> pront ('Ingrese el valor')</scrpit>";
 
-      $fincas = json_decode($socioBusiness->obtenerFinca("2"),true);
-
-            echo $fincas["socioid"];
+      $fincas = json_decode($socioBusiness->obtenerFinca("4"),true);
+            
+            echo $fincas["fincaid"]."</br>";
+            echo $fincas["socioid"]."</br>";
+            echo $fincas["fincaarea"]."</br>";
+            echo $fincas["fincacantidadbobinos"]."</br>";
         
 
 
