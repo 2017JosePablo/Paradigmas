@@ -154,7 +154,8 @@
 
 <div  id="registrarFinca" style='display:none ;' >
 
-  <form method="post" onsubmit="return validar()" action="../business/fincaAction.php">      
+  <form method="post" onsubmit="return validar()" action="../business/fincaAction.php"> 
+  <input type="hidden" name="cedula" id="cedula" value="">     
 </br>
     <?php
  
@@ -275,6 +276,7 @@
             </div>
         
     </form>
+     <a href="../index.php">Regresar</a>
 
 
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
