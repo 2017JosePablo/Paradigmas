@@ -15,7 +15,7 @@
             $razaBusiness = new razaBusiness();
 
             $todasRazas = $razaBusiness->obtenerTodoTBRaza();
-            echo '<table> <tr><td>Id</td>  <td>Nombre de la Raza</td><td colspan="2">Acciones</td> </tr>';
+            echo '<table border = "1"> <tr>  <td align = "center" colspan = "4">Listado de razas </td> </tr><tr><td>Id</td>  <td>Nombre de la Raza</td><td colspan="2">Acciones</td> </tr>';
 
             foreach ($todasRazas as $current) {     
                 echo '<tr>';
@@ -35,9 +35,10 @@
             
         </form>
 
+        <p>Modificando o agregando una raza</p>
             <form method="post" enctype="multipart/form-data" action="../business/razaAction.php">
 
-                     Nombre de la Raza <input required type="text" name="razanombre" id="razanombre"/><p>
+                     <label>Nombre de la Raza </label><input required type="text" name="razanombre" id="razanombre"/><p>
                      <input type="submit" value="Agregar nueva Raza" name="crearraza" id="crearraza"/><p>
 
                     

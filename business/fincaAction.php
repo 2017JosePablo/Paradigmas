@@ -5,7 +5,6 @@
 	$sociofinca = $_POST['socioFinca'];
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
-
 	$listaProvincias =$_POST['listaProvincias'];
 	$listadoCanton =$_POST['listadoCantones'];
 	$listadoDistrito=$_POST['listadoDistrito'];
@@ -20,6 +19,7 @@
 			include '../domain/fincaDireccion.php';
 			$socioBusiness= new socioBusiness();
 			$idsocio=$socioBusiness->getSocioId($sociofinca);
+			echo "idS".$idsocio;
 
 			$fincaBusiness = new fincaBusiness();
 			$finca = new Finca($idsocio,$idsocio,$fincaarea,$cantidadbobinos);
@@ -27,13 +27,13 @@
 			$fincaDireccion = new FincaDireccion($idsocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
 			
 		
-			$resultado2 = $fincaBusiness ->actualizarTBfinca($finca,$idsocio);
+			$resultado2 = $fincaBusiness ->actualizarTBfinca($finca);
 			$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion);
 
 			
 	
 
-			if ($resultado2 == 1 && $resultado2 == 1) {
+			if ($resultado1 == 1 && $resultado2 == 1) {
 				echo "Finca actualizada con exito";
 				header("location: ../index.php?success=actualizado");
 			}else{
