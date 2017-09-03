@@ -1,9 +1,9 @@
 <?php
 
-	if(isset($_POST['btnmodificar']) == true && empty($_POST['btnmodificar'])== false){
+	if(isset($_POST['cedula']) == true && empty($_POST['cedula'])== false){
 		require 'fincaBusiness.php';
 		$fincaBusiness = new fincaBusiness();
-		$result = $fincaBusiness->obtenerFinca($_POST['btnmodificar']);
+		$result = $fincaBusiness->obtenerFinca($_POST['cedula']);
 		echo $result;
 	}
 
