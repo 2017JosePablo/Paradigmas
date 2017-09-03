@@ -81,6 +81,7 @@
 
 	}else if (isset($_POST['modificarsocio'])){
 
+		$cedula2 = $_POST['cedulaVieja'];
 		$cedula = $_POST['sociocedula'];
 		$nombre = $_POST['socionombre'];
 		$primerapellido = $_POST['socioprimerapellido'];
@@ -103,11 +104,11 @@
 
 		
 
-		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
+		if (strlen($cedula2) &&strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
 
 			require 'socioBusiness.php';
 			$socioBusiness = new socioBusiness();
-			$socioid=$socioBusiness->getSocioId($cedula); 
+			$socioid=$socioBusiness->getSocioId($cedula2); 
 			echo "idSocio".$socioid;
 			
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,

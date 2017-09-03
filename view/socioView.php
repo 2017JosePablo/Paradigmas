@@ -189,7 +189,7 @@
     $socios = $socioBusiness->obtenerTodosTBSocio();
 
 
-    echo '<table> <tr><td>Cedula</td>  <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Telefono</td><td>Correo</td> <td>Fecha de ingreso</td> <td colspan="2">Acciones</td> </tr>';
+    echo '<table border ="1"><tr><td align = "center" colspan = "8">Informacion Socio</td></tr><td>Cedula</td>  <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Telefono</td><td>Correo</td> <td>Fecha de ingreso</td> <td colspan="2">Acciones</td> </tr>';
 
     foreach ($socios as $current) {     
         echo '<tr>';
@@ -223,6 +223,7 @@
     <div id="cajaFormulario"  style='display:none;'>
 
     <form id= "frm" method="post" onsubmit="return validar()" action="../business/socioAction.php">
+    <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
 
 
 
