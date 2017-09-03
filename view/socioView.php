@@ -176,7 +176,6 @@
 <input type="hidden" id="provincia" name="socioprovincia" value="">
 <input type="hidden" id="canton" name="sociocanton" value="">
 <input type="hidden" id="distrito" name="sociodistrito" value="">
-<input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
 
 
 
@@ -224,6 +223,7 @@
     <div id="cajaFormulario"  style='display:none;'>
 
     <form id= "frm" method="post" onsubmit="return validar()" action="../business/socioAction.php">
+    <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
 
 
 
