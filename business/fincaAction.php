@@ -2,10 +2,15 @@
 
  if(isset($_POST['finalizar'])){
 	
-	$sociofinca = $_POST['socioFinca'];
+ 	if(isset($_POST['socioFinca'])){
+ 		$sociofinca = $_POST['socioFinca'];
+ 		echo "Encontrado ".$sociofinca;
+ 	}
+
+	
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
-
+	echo "ced:".$socioFinca;
 	$listaProvincias =$_POST['listaProvincias'];
 	$listadoCanton =$_POST['listadoCantones'];
 	$listadoDistrito=$_POST['listadoDistrito'];
@@ -27,7 +32,7 @@
 			$fincaDireccion = new FincaDireccion($idsocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
 			
 		
-			$resultado2 = $fincaBusiness ->actualizarTBfinca($finca,$idsocio);
+			$resultado2 = $fincaBusiness ->actualizarTBfinca($finca);
 			$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion);
 
 			
