@@ -11,15 +11,13 @@
 </head>
 <body>
 
-<p>Tipos de Actividad</p>
-
  <form method="post" enctype="multipart/form-data" action="../business/actividadAction.php">
          <?php
  
              include '../business/actividadBusiness.php';
             $actividadBusiness = new actividadBusiness();
             $actividades = $actividadBusiness->obtenerTodosTBActividad();
-             echo '<table> <tr><td>Id</td><td>Actividad</td>  <td colspan="2">Acciones</td> </tr>';
+             echo '<table border = "1"> <tr><td colspan= "3">Listado de tipos de actividades</td></tr> <tr><td>Id</td><td>Actividad</td>  <td colspan="2">Acciones</td> </tr>';
             foreach ($actividades as $current) {     
                 echo '<tr>';
                     echo '<td>'.$current->getId().'</td>';

@@ -90,7 +90,7 @@ class FincaData extends Data{
  	}
 
     public function actualizarTBFincaDireccion($fincaDireccion) {
-
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         $sql = "UPDATE tbsociodireccion SET ,socioprovincia= '".$fincaDireccion->getProvincia()."',sociocanton='".$fincaDireccion->getCanton()."',sociodistrito='".$fincaDireccion->getDistrito()."',sociopueblo='".$fincaDireccion->getDireccionExacta()."' WHERE socioid= '".$fincaDireccion->getSocioId()."'";
 
         $result = $conn->query($sql);
