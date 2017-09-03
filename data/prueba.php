@@ -107,11 +107,14 @@
         }*/
 
 
-       include '../business/socioBusiness.php';
-      $socioBusiness = new socioBusiness();
+       include 'fincaData.php';
 
-      $fincas = json_decode($socioBusiness->  obtenerUnTBSocio("12"), true);
-            echo $fincas["socioprimerapellido"];
+      $socioBusiness = new FincaData();
+
+
+      $fincas = json_decode($socioBusiness->obtenerFinca("2"),true);
+
+            echo $fincas["socioid"];
         
 
 
