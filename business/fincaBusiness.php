@@ -29,6 +29,11 @@
 			return $this->fincaData ->obtenerTodosTBfinca();
 		}
 
+		public function obtenerFinca($id)
+		{
+			return $this->fincaData ->obtenerFinca(id);
+		}
+
 		public function actualizarTBfinca($finca)
 		{
 			return $this->fincaData ->actualizarTBfinca($finca);

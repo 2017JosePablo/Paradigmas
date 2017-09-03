@@ -1,5 +1,11 @@
 <?php
 
+	if(isset($_POST['btnmodificar']) == true && empty($_POST['btnmodificar'])== false){
+		require 'fincaBusiness.php';
+		$socioBusiness = new fincaBusiness();
+		$result = $socioBusiness->obtenerFinca($_POST['btnmodificar']);
+	}
+
  if(isset($_POST['finalizar'])){
 	
 	$sociofinca = $_POST['socioFinca'];
@@ -19,8 +25,7 @@
 			include '../domain/fincaDireccion.php';
 			$socioBusiness= new socioBusiness();
 			$idsocio=$socioBusiness->getSocioId($sociofinca);
-			echo "idS".$idsocio;
-
+			
 			$fincaBusiness = new fincaBusiness();
 			$finca = new Finca($idsocio,$idsocio,$fincaarea,$cantidadbobinos);
 
@@ -51,6 +56,36 @@
 	}else{
 		echo "Datos vacios...</br>";
 	}
+
+}else if(isset($_POST['actualizar'])){
+
+	$fincaid = $_POST['cedula'];
+	$fincaarea =$_POST['fincaarea'];
+	$cantidadbobinos =$_POST['cantidadbobinos'];
+	
+	if(isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)){
+
+		require './fincaBusiness.php';
+		require './socioBusiness.php';
+		$socioBusiness= new socioBusiness();
+
+		$idsocio=$socioBusiness->getSocioId($fincaid);
+
+		$fincaBusiness = new fincaBusiness();
+		$finca = new Finca($idsocio,$idsocio,$fincaarea,$cantidadbobinos);
+
+		$resultado = $fincaBusiness ->actualizarTBfinca($finca);
+		if ($resultado == 1) {
+				echo "Finca actualizada con exito";
+				header("location: ../index.php?success=actualizado");
+		}else{
+			header("location: ../view/fincaView.php?error=errorActualizarFinca");
+		}
+
+	}else{
+		echo "Datos vacios...</br>";
+	}
+
 
 }
 
