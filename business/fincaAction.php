@@ -38,7 +38,7 @@
 			
 	
 
-			if ($resultado2 == 1 && $resultado2 == 1) {
+			if ($resultado1 == 1 && $resultado2 == 1) {
 				echo "Finca actualizada con exito";
 				header("location: ../index.php?success=actualizado");
 			}else{
