@@ -1,12 +1,9 @@
-
 <?php
     header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
 ?>
-
-
-<!DOCTYPE html>
+<!doctype HTML>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -15,6 +12,8 @@
 	<link rel="stylesheet" href="">
 
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
+    
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -145,15 +144,34 @@
                 $('#1-tipo').attr('checked',true);
                 $('#1-estado').attr('checked',true);
             }
-
-
-
-
         </script>
 
-   
-</head>
-<body>
+
+
+ <script type="text/javascript">
+      var datefield=document.createElement("input")
+      datefield.setAttribute("type", "date")
+      if (datefield.type!="date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+         document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
+        document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n')
+        document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
+      }
+   </script>
+
+ <script>
+    if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
+       jQuery(function($){ //on document.ready
+           $('#fecha').datepicker();
+       })
+    }
+ </script>
+
+
+
+
+    </head>
+    <body>
+
 
 
 <?php
@@ -293,7 +311,7 @@
 
                 <tr>
                     <td>
-                      <input type="text" name="fecha" id="datepicker"></td>
+                      <input type="text" name="fecha" id="fecha"></td>
                     </td>
                 </tr>
 
