@@ -154,7 +154,7 @@
 
 <div  id="registrarFinca" style='display:none ;' >
 
-  <form method="post" onsubmit="return validar()" action="../business/fincaAction.php"> 
+  <form method="post"  action="../business/fincaAction.php"> 
   <input type="hidden" name="cedula" id="cedula" value="">     
 </br>
     <?php
@@ -255,8 +255,8 @@
                             </div>
                           </div>
                        </td>
-                      <td>Pueblo:<input type="text" id="fincapueblo" required="" name="fincapueblo"> </td>
-                      <td>Otras Señas:<input type="text" id="fincaexacta" required="" name="fincaexacta"> </td>
+                      <td>Pueblo:<input type="text" id="fincapueblo"  name="fincapueblo"> </td>
+                      <td>Otras Señas:<input type="text" id="fincaexacta"  name="fincaexacta"> </td>
 
                   </tr>
                 </table>

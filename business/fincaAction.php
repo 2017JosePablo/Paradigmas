@@ -1,10 +1,16 @@
 <?php
 
-	if(isset($_POST['cedula']) == true && empty($_POST['cedula'])== false){
-		require 'fincaBusiness.php';
-		$fincaBusiness = new fincaBusiness();
-		$result = $fincaBusiness->obtenerFinca($_POST['cedula']);
-		echo $result;
+	if(isset($_POST['cedulaSocio']) == true && empty($_POST['cedulaSocio'])== false){
+   require 'socioBusiness.php';
+   $socioBusiness = new socioBusiness();
+   $idsocio = $socioBusiness->getSocioId($_POST['cedulaSocio']);
+
+   	require_once '../data/fincaData.php';
+
+      $temp = new FincaData();
+
+      echo  $temp->obtenerFinca($idsocio);	
+		
 	}
 
  if(isset($_POST['finalizar'])){
@@ -61,9 +67,13 @@
 }else if(isset($_POST['actualizar'])){
 
 	$fincaid = $_POST['cedula'];
+
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
 	
+	echo "Socio: ".$fincaid;
+
+
 	if(isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)){
 
 		require './fincaBusiness.php';

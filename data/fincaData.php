@@ -75,8 +75,7 @@ class FincaData extends Data{
 	    $sql = "UPDATE tbfinca SET fincaarea='".$finca-> getArea()."', fincacantidadbobinos = '".
                 $finca->getCantidadBovinos()."'  WHERE socioid ='". $finca-> getSocioId()."' ;";
 
-	    $result = $conn->query($sql);
-	    if ($conn->query($sql) === TRUE) {
+	    if ($result = $conn->query($sql) === TRUE) {
 				 echo "Record updated successfully";
 		} else {
 				 echo "Error updating record: " . $conn->error;
@@ -123,8 +122,10 @@ class FincaData extends Data{
             $result = $conn->query($sql);
             if($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                   $finca=[ "fincaid"=>$row['fincaid'], "socioid"=>$row['socioid'], 
-                    "fincaarea"=>$row['fincaarea'], "fincacantidadbobinos"=>$row['fincacantidadbobinos']]; 
+                   $finca= [ "fincaid"=>$row['fincaid'], 
+                    "socioid"=>$row['socioid'], 
+                    "fincaarea"=>$row['fincaarea'],
+                    "fincacantidadbobinos"=>$row['fincacantidadbobinos']]; 
                 }   
             }else{
                 echo "0 results";
