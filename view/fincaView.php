@@ -95,12 +95,13 @@
             }
 
             function agregarNuevaFinca(){
-              document.getElementById('btnModificar').style = 'display:none';
+              document.getElementById('actualizar').style = 'display:none';
               document.getElementById('registrarFinca').style="display:block ";
-              document.getElementById('btnFinalizar').style='display:block';
-              document.getElementById('datosDireccion').style='display:none';
+              document.getElementById('finalizar').style='display:block';
 
-              
+              document.getElementById('datosDireccion').style='display:block';
+
+        
 
             }
 
@@ -169,6 +170,8 @@
           }
       echo "</select>";
     ?>
+
+
     <p>Datos de la finca:</p>
             <table>
                 <tr>
@@ -204,11 +207,15 @@
                           <option value="3">Mixta</option>
             
                         </select>
-                    </td>  
+                    </td>
+
+                    </tr>
                 
+            </table>
 
                 <div id="datosDireccion">
-                </tr>
+
+                <table>
 
                     <tr><td><br><p>Datos de Dirección</p></td></tr>
                       <tr>
@@ -251,25 +258,25 @@
                       <td>Otras Señas:<input type="text" id="fincaexacta" required="" name="fincaexacta"> </td>
 
                   </tr>
-
-                </div>
+                </table>
+              </div>
 
             
 
-            </table>
-            <br> <br> <br>
 
+            <br> <br> <br>
+  </div>
             <div id="btnFinalizar">
-              <input type="submit" value="Registrar finca" name="finalizar" id="finalizar"/><p>
+              <input type="submit" value="Registrar finca" name="finalizar" hidden="" id="finalizar"/><p>
             </div>
 
             <div id="btnModificar">
-              <input type="submit" value="Modificar finca" name="finalizar" id="finalizar"/><p>
+              <input type="submit" value="Modificar finca" name="actualizar" hidden="" id="actualizar"/><p>
             </div>
         
     </form>
 
-</div>
+
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarFinca.js"></script>
  
