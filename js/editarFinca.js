@@ -5,7 +5,12 @@ $(document).ready(function() {
 
     	
     	if(cedula.length>0){
-    		alert(cedula);
+
+    		$.post('../business/socioAction.php', {cedula:cedula}, function(data){
+    			alert("Selecionado editar");
+			});
+
+
     	}
 
 
