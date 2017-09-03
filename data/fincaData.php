@@ -72,12 +72,8 @@ class FincaData extends Data{
 	        die("Connection failed: " . mysqli_connect_error());
 	    }
 
-	    $sql = "UPDATE tbfinca SET 
-	        fincaarea='" 
-                .$finca-> getArea()."','".
-                $finca->getCantidadBovinos()."'
-
-	        WHERE socioid ='" . $finca-> getSocioId(). "';";
+	    $sql = "UPDATE tbfinca SET fincaarea='".$finca-> getArea()."', fincacantidadbobinos = '".
+                $finca->getCantidadBovinos()."'  WHERE socioid ='" . $finca-> getSocioId(). "';";
 
 	    $result = $conn->query($sql);
 	    if ($conn->query($sql) === TRUE) {
