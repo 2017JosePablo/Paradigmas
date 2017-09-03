@@ -160,7 +160,7 @@
       $socios = $socioBusiness->  obtenerTodosTBSocio();
        echo '<select name = "socioFinca"> ';
       foreach ($socios as $current) {     
-        echo "<option  value = '".$current->getCedula()."'>";
+        echo "<option  value = ".$current->getCedula().">";
         echo   $current->getCedula() .' -- '. $current->getNombre() .' '.$current->getPrimerApellido() .' '.$current->getSegundoApellido();
         echo "</option>";
           }
@@ -246,7 +246,15 @@
 
             </table>
             <br> <br> <br>
-        <input type="submit" value="Registrar finca" name="finalizar" id="finalizar"/><p>
+
+            <div>
+              <input type="submit" value="Registrar finca" name="finalizar" id="finalizar"/><p>
+            </div>
+
+            <div>
+              
+            </div>
+        
     </form>
 
 </div>
