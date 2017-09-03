@@ -18,7 +18,7 @@
 
 
 
-<p>Tipos de Fincas</p>
+
 
  <form method="post" enctype="multipart/form-data" >
              <?php
@@ -28,12 +28,15 @@
             $temp = new tipoFincaData();
             $tipoFinca = $temp->getAllTBTiposFincas();
      
-                    echo '<table>';
+                    echo '<table border = "1"> <tr><td colspan = "3" align = "center"><p>Tipos de Fincas</p></td></tr> ';
+                    echo '<tr> <td>Numero </td> <td>Actividad </td> <td>Modificar</td></tr>   ';
                     foreach ($tipoFinca as $curren) {     
                         echo '<tr>';
-                         echo '<td> <input type="radio" name="tipofinca" value='.$curren->getId().'</td>'; 
+                         echo '<td> '.$curren->getId().'</td>'; 
 
                         echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
+
+                        echo '<td><input type="submit" id = "'.$curren->getId().'" value ="Modificar"></td>'; 
                                   
                         echo '</tr>';
                     }
@@ -42,13 +45,15 @@
             <br><br><br>
        </form>
 
-<form method="post" action="../business/fincaTipoAction.php">
-    Tipo de Finca: <input type="text" name="tipofinca" required=""><br>
+    <div>
+        <p>Insertar o modificar una actividad</p>
+        <form method="post" action="../business/fincaTipoAction.php">
+            <label>Nombre: </label> <input type="text" name="tipofinca" required=""><br>
+            <br>
+        <input type="submit" value="Agregar el tipo de actividad" name="fincatipo" id="fincatipo"/><p>
 
-<input type="submit" value="Agregar Tipo" name="fincatipo" id="fincatipo"/><p>
-
-</form>
- 
+        </form>
+    </div>
 
     <a href="../index.php">Regresar</a>
 </body>
