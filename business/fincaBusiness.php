@@ -34,7 +34,7 @@
 			return $this->fincaData ->actualizarTBfinca($finca);
 		}
 
-		public function actualizarTBfincaDireccion($fincadireccion,$idfinca)
+		public function actualizarTBfincaDireccion($fincadireccion)
 		{
 			return $this->fincaData ->actualizarTBfincaDireccion($fincadireccion);
 		}

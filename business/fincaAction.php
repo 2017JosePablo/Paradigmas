@@ -1,7 +1,8 @@
 <?php
 
- if(isset($_POST['actulizarfinca'])){
-	$sociofinca = $_POST['sociofinca'];
+ if(isset($_POST['finalizar'])){
+	
+	$sociofinca = $_POST['socioFinca'];
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
 
@@ -27,7 +28,7 @@
 			
 		
 			$resultado2 = $fincaBusiness ->actualizarTBfinca($finca,$idsocio);
-			$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion,$idsocio);
+			$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion);
 
 			
 	
