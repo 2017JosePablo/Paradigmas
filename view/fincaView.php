@@ -69,7 +69,7 @@
                     });
                 }else{
                     var html = "<select class='form-control'><option value = '0' >Seleccione Un Distrito</option></select>";
-                             $('#listaDistrito').html(html);        
+                             $('#listaDistrmodificarito').html(html);        
                 }
            }
 
@@ -134,7 +134,7 @@
           echo "<td>".$current->getCantidadBovinos()."  </td>";
           echo "<td>".$current->getFincaTipo()."  </td>";
           echo "<td>".$current->getTipoActividad()."  </td>";
-          
+          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."'>Modificar</button></td>";
           echo "<tr>";
           
 
@@ -250,6 +250,8 @@
     </form>
 
 </div>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/editarFinca.js"></script>
  
 </body>
 </html>
