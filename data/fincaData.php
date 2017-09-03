@@ -116,15 +116,15 @@ class FincaData extends Data{
 	}
     public function obtenerFinca($idsocio){
          require '../domain/finca.php';
-         $finca = new array();
+         $finca = "";
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
             $sql = "SELECT * FROM tbfinca WHERE  socioid = $idsocio";
 
             $result = $conn->query($sql);
             if($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                   array_push($finca,new Finca($row['fincaid'], $row['socioid'], 
-                    $row['fincaarea'],$row['fincacantidadbobinos'])); 
+                   $finca=new Finca($row['fincaid'], $row['socioid'], 
+                    $row['fincaarea'],$row['fincacantidadbobinos']); 
                 }   
             }else{
                 echo "0 results";
