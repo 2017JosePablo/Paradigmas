@@ -4,6 +4,7 @@
 		require 'fincaBusiness.php';
 		$socioBusiness = new fincaBusiness();
 		$result = $socioBusiness->obtenerFinca($_POST['btnmodificar']);
+		echo $result;
 	}
 
  if(isset($_POST['finalizar'])){
@@ -66,13 +67,9 @@
 	if(isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)){
 
 		require './fincaBusiness.php';
-		require './socioBusiness.php';
-		$socioBusiness= new socioBusiness();
-
-		$idsocio=$socioBusiness->getSocioId($fincaid);
 
 		$fincaBusiness = new fincaBusiness();
-		$finca = new Finca($idsocio,$idsocio,$fincaarea,$cantidadbobinos);
+		$finca = new Finca($fincaid,$fincaid,$fincaarea,$cantidadbobinos);
 
 		$resultado = $fincaBusiness ->actualizarTBfinca($finca);
 		if ($resultado == 1) {
