@@ -71,9 +71,9 @@ class FincaData extends Data{
 	    if (!$conn) {
 	        die("Connection failed: " . mysqli_connect_error());
 	    }
-
+ 
 	    $sql = "UPDATE tbfinca SET fincaarea='".$finca-> getArea()."', fincacantidadbobinos = '".
-                $finca->getCantidadBovinos()."'  WHERE socioid ='" . $finca-> getSocioId(). "';";
+                $finca->getCantidadBovinos()."'  WHERE socioid ='". $finca-> getSocioId()."' ;";
 
 	    $result = $conn->query($sql);
 	    if ($conn->query($sql) === TRUE) {
@@ -87,7 +87,7 @@ class FincaData extends Data{
 
     public function actualizarTBFincaDireccion($fincaDireccion) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        $sql = "UPDATE tbsociodireccion SET ,socioprovincia= '".$fincaDireccion->getProvincia()."',sociocanton='".$fincaDireccion->getCanton()."',sociodistrito='".$fincaDireccion->getDistrito()."',sociopueblo='".$fincaDireccion->getDireccionExacta()."' WHERE socioid= '".$fincaDireccion->getSocioId()."'";
+        $sql = "UPDATE tbsociodireccion SET socioprovincia= '".$fincaDireccion->getProvincia()."',sociocanton='".$fincaDireccion->getCanton()."',sociodistrito='".$fincaDireccion->getDistrito()."',sociopueblo='".$fincaDireccion->getDireccionExacta()."' WHERE socioid= '".$fincaDireccion->getSocioId()."'";
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {
