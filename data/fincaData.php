@@ -89,7 +89,7 @@ class FincaData extends Data{
 	    return $result;
  	}
 
-    public function actualizarTBFincaDireccion($fincaDireccion ,$socioid) {
+    public function actualizarTBFincaDireccion($fincaDireccion) {
 
         $sql = "UPDATE tbsociodireccion SET ,socioprovincia= '".$fincaDireccion->getProvincia()."',sociocanton='".$fincaDireccion->getCanton()."',sociodistrito='".$fincaDireccion->getDistrito()."',sociopueblo='".$fincaDireccion->getDireccionExacta()."' WHERE socioid= '".$fincaDireccion->getSocioId()."'";
 

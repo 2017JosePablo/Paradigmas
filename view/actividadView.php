@@ -19,20 +19,13 @@
              include '../business/actividadBusiness.php';
             $actividadBusiness = new actividadBusiness();
             $actividades = $actividadBusiness->obtenerTodosTBActividad();
-             echo '<table> <tr><td>Actividad</td>  <td colspan="2">Acciones</td> </tr>';
+             echo '<table> <tr><td>Id</td><td>Actividad</td>  <td colspan="2">Acciones</td> </tr>';
             foreach ($actividades as $current) {     
                 echo '<tr>';
-                     if($current->getId()==1){
-                     echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
-                     //echo '<td> <a href="../business/actividadAction.php?ideliminar='.$current->getId().'"> Eliminar</a> </td>';
-                     //echo "<td> <a href=''> Modificar</a> </td>";
-                }else{
-                     echo '<td> <input type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
-                  //  echo '<td> <a href="../business/actividadAction.php?ideliminar='.$current->getId().'"> Eliminar</a> </td>';
-                   //  echo "<td> <a href=''> Modificar</a> </td>";
-                }
-
-                 echo '</tr>';
+                    echo '<td>'.$current->getId().'</td>';
+                    echo '<td> '.$current->getNombreActividad().'</td>';
+                    echo '<td> <input type= "submit" name= "'.$current->getId().'" value = "Modificar"></td>';
+                    echo '</tr>';
             }
                 echo '</table>';
 
