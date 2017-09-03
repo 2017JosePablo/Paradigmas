@@ -81,6 +81,7 @@
 
             }
             function validar(){
+             // alert(document.getElementById('socioFinca').value);
                 var todo_correcto = true;  
                 if(document.getElementById("listaProvincias").value <0){
                     todo_correcto = false;
@@ -94,14 +95,17 @@
             }
 
             function agregarNuevaFinca(){
-            
+              document.getElementById('actualizar').style = 'display:none';
               document.getElementById('registrarFinca').style="display:block ";
+              document.getElementById('finalizar').style='display:block';
+
+              document.getElementById('datosDireccion').style='display:block';
+
+        
 
             }
 
-            function getSocio(){
-
-            }
+           
         </script>
 
    
@@ -158,14 +162,16 @@
       $socioBusiness = new socioBusiness();
 
       $socios = $socioBusiness->  obtenerTodosTBSocio();
-       echo '<select name = "socioFinca"> ';
+       echo "<select name = 'socioFinca' id = 'socioFinca'> ";
       foreach ($socios as $current) {     
-        echo "<option  value = ".$current->getCedula().">";
+        echo "<option  value = '".$current->getCedula()."'>";
         echo   $current->getCedula() .' -- '. $current->getNombre() .' '.$current->getPrimerApellido() .' '.$current->getSegundoApellido();
         echo "</option>";
           }
-      echo '</select>';
+      echo "</select>";
     ?>
+
+
     <p>Datos de la finca:</p>
             <table>
                 <tr>
@@ -190,6 +196,7 @@
                     <td>
                         <input type="text" name="cantidadbobinos" id="cantidadbobinos"  required>
                     </td>
+
                    
 
                     <td>
@@ -200,64 +207,76 @@
                           <option value="3">Mixta</option>
             
                         </select>
-                    </td>  
-                </tr>
+                    </td>
 
-                <tr><td><br><p>Datos de Dirección</p></td></tr>
-            <tr>
-                <td>
-                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="listaProvincias">Provincia</label>
-                      <div class="col-md-4">
-                        <select id="listaProvincias" name="listaProvincias" class="form-control" onclick="provinciaSeleccionada()">
-                          <option value="-1">Seleccione Una Provincia</option>
-                          <option value="1">San Jose</option>
-                          <option value="2">Alajuela</option>
-                          <option value="3">Cartago</option>
-                          <option value="4">Heredia</option>
-                          <option value="5">Guanacaste</option>
-                          <option value="6">Puntarenas</option>
-                          <option value="7">Limon</option>
-                        </select>
-                      </div>
-                    </div>  
-                </td>
-                <td>    
-                    <!-- Select Canton -->
-                    <div class="form-group" >
-                      <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
-                      <div class="col-md-4" id="cajaCantones">
-                      </div>
-                    </div>
-                </td>
-                <td>
-                    <!-- Select Distrito-->
-                    <div class="form-group" id="cajaDistrito" >
-                      <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
-                      <div class="col-md-4" id="listaDistrito" >
-                     
-                      </div>
-                    </div>
-                 </td>
-                <td>Pueblo:<input type="text" id="fincapueblo" required="" name="fincapueblo"> </td>
-                <td>Otras Señas:<input type="text" id="fincaexacta" required="" name="fincaexacta"> </td>
-
-            </tr>
-
+                    </tr>
+                
             </table>
-            <br> <br> <br>
 
-            <div>
-              <input type="submit" value="Registrar finca" name="finalizar" id="finalizar"/><p>
+                <div id="datosDireccion">
+
+                <table>
+
+                    <tr><td><br><p>Datos de Dirección</p></td></tr>
+                      <tr>
+
+                      <td>
+                           <div class="form-group">
+                            <label class="col-md-4 control-label" for="listaProvincias">Provincia</label>
+                            <div class="col-md-4">
+                              <select id="listaProvincias" name="listaProvincias" class="form-control" onclick="provinciaSeleccionada()">
+                                <option value="-1">Seleccione Una Provincia</option>
+                                <option value="1">San Jose</option>
+                                <option value="2">Alajuela</option>
+                                <option value="3">Cartago</option>
+                                <option value="4">Heredia</option>
+                                <option value="5">Guanacaste</option>
+                                <option value="6">Puntarenas</option>
+                                <option value="7">Limon</option>
+                              </select>
+                            </div>
+                          </div>  
+                      </td>
+                      <td>    
+                          <!-- Select Canton -->
+                          <div class="form-group" >
+                            <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
+                            <div class="col-md-4" id="cajaCantones">
+                            </div>
+                          </div>
+                      </td>
+                      <td>
+                          <!-- Select Distrito-->
+                          <div class="form-group" id="cajaDistrito" >
+                            <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
+                            <div class="col-md-4" id="listaDistrito" >
+                           
+                            </div>
+                          </div>
+                       </td>
+                      <td>Pueblo:<input type="text" id="fincapueblo" required="" name="fincapueblo"> </td>
+                      <td>Otras Señas:<input type="text" id="fincaexacta" required="" name="fincaexacta"> </td>
+
+                  </tr>
+                </table>
+              </div>
+
+            
+
+
+            <br> <br> <br>
+  </div>
+            <div id="btnFinalizar">
+              <input type="submit" value="Registrar finca" name="finalizar" hidden="" id="finalizar"/><p>
             </div>
 
-            <div>
-              
+            <div id="btnModificar">
+              <input type="submit" value="Modificar finca" name="actualizar" hidden="" id="actualizar"/><p>
             </div>
         
     </form>
 
-</div>
+
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarFinca.js"></script>
  
