@@ -12,7 +12,8 @@
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
 		$result = $socioBusiness->devolverDatosSocio($_POST['tipoactividad'],$_POST['fincatipo'],$_POST['estado']);
-		echo $result; 
+		//echo $result; 
+		echo "hola pablooo";
 	}
 
 
