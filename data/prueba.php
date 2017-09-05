@@ -122,24 +122,19 @@
         
 */
 
-//        include 'socioData.php';
-  //      $socioBusiness = new socioData();
+        include 'socioData.php';
+        $socioBusiness = new socioData();
 
-    //    echo "Socio: ".$socioBusiness->editarEstado("503930363","2");
+//        echo "Socio: ".$socioBusiness->editarEstado("503930363","2");
 
-            $texto = "Adan Carranza";
-
-
-
-        //  echo "</table>";
+        $info = json_decode($socioBusiness->devolverDatosSocio("1","1","1"),true);
+        echo "Actividad: ".$info["tipoactividadnombre"];
 
 
 
     ?>
 
 
-    <input type="" name="temp" value="<?php echo $texto ?>" readonly="">
-      
 
 
 
