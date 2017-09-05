@@ -5,118 +5,203 @@ $(document).ready(function() {
 
     	var cedula = $(this).val();
 
-    	if(cedula.length>0){
+
+    if(cedula.length>0){
+
+        var result = cedula.split('-');
+
+        if(result[1] == 'Mod'){
+            
             document.getElementById("cedulaVieja").value = cedula;
 
-    		document.getElementById("btnAgregar").style.display = 'none';
-    		document.getElementById("btnModificar").style.display = 'block';
+            document.getElementById("btnAgregar").style.display = 'none';
+            document.getElementById("btnModificar").style.display = 'block';
+            document.getElementById('cajaVerSocio').style.display = 'none';
 
-    		$.post('../business/socioAction.php', {cedula:cedula}, function(data){
-			var array = JSON.parse(data);
+            $.post('../business/socioAction.php', {cedula:result[0]}, function(data){
 
-			document.getElementById('cajaFormulario').style.display='block';
-			document.getElementById('sociocedula').value = array['sociocedula'];
-			document.getElementById('socionombre').value = array['socionombre'];
-			document.getElementById('socioprimerapellido').value = array['socioprimerapellido'];
-			document.getElementById('sociosegundoapellido').value = array['sociosegundoapellido'];
-			document.getElementById('sociotelmovil').value = array['sociotelefono'];
-			document.getElementById('sociocorreo').value = array['sociocorreo'];
+            var array = JSON.parse(data);
+
+            document.getElementById('cajaFormulario').style.display='block';
+            document.getElementById('sociocedula').value = array['sociocedula'];
+            document.getElementById('socionombre').value = array['socionombre'];
+            document.getElementById('socioprimerapellido').value = array['socioprimerapellido'];
+            document.getElementById('sociosegundoapellido').value = array['sociosegundoapellido'];
+            document.getElementById('sociotelmovil').value = array['sociotelefono'];
+            document.getElementById('sociocorreo').value = array['sociocorreo'];
+            document.getElementById('sociopueblo').value = array['sociopueblo'];
+            var tipoactividadid = array['tipoactividadid'];
+            var fincatipoid = array['fincatipoid'];
+            var tipoEstado = array['estadosociodetalle'];
+
+            
+            $("input:radio").removeAttr("checked");
+
+            $('#'+tipoactividadid+'-actividad').attr('checked',true);
+
+            $('#'+fincatipoid+'-tipo').attr('checked',true);
+
+            $('#'+tipoEstado+'-estado').attr('checked',true);
+            
+            var provincia = array['socioprovincia'];
+            var cantones =array['sociocanton'];
+            var distritos = array['sociodistrito'];
+
+        });
+
+        }else if(result[1] == 'Ver'){
+             var tipoactividadid ;
+            var fincatipoid ;
+            var tipoEstado ;
+            
 
 
-			//document.getElementById('date').value = array['sociofechaingreso'];	
-
-			//sociopueblo		
-
-			//document.getElementById('sociopueblo').value = array['sociocorreo'];
-			document.getElementById('sociopueblo').value = array['sociopueblo'];
-			var tipoactividadid = array['tipoactividadid'];
-			var fincatipoid = array['fincatipoid'];
-			var tipoEstado = array['estadosociodetalle'];
+            document.getElementById('cajaVerSocio').style.display = 'block';
+            document.getElementById('cajaFormulario').style.display='none';
+            document.getElementById("btnAgregar").style.display = 'none';
+            document.getElementById("btnModificar").style.display = 'none';
 
 
-			
-			//$('#'+tipoactividadid+'').attr('checked',true);
+            $.post('../business/socioAction.php', {cedula:result[0]}, function(data){
 
-			
-			$("input:radio").removeAttr("checked");
+            var array = JSON.parse(data);
 
-			$('#'+tipoactividadid+'-actividad').attr('checked',true);
+            alert(array['sociofechaingreso']);
 
-			$('#'+fincatipoid+'-tipo').attr('checked',true);
+            document.getElementById('cedula').value = array['sociocedula'];
+            document.getElementById('nombre').value = array['socionombre'];
+            document.getElementById('primerapellido').value = array['socioprimerapellido'];
+            document.getElementById('segundoapellido').value = array['sociosegundoapellido'];
+            document.getElementById('telmovil').value = array['sociotelefono'];
+            document.getElementById('correo').value = array['sociocorreo'];
 
-			$('#'+tipoEstado+'-estado').attr('checked',true);
+            var fecha = array['sociofechaingreso'].split('-');
+            var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
+            document.getElementById('fechaS').value = fechaSalida;
 
-			//PONER los opcion selected
 
-			
-			var provincia = array['socioprovincia'];
-			var cantones =array['sociocanton'];
-			var distritos = array['sociodistrito'];
+            var tipoactividadid = array['tipoactividadid'];
+            var fincatipoid = array['fincatipoid'];
+            var tipoEstado = array['estadosociodetalle'];
 
-			//alert(provincia+' '+cantones+' '+distritos);
-//
-			//llenarCantones2(provincia);
-			//setDistrito2(provincia,cantones);
+            document.getElementById('prov').value = getProvincia(array['socioprovincia']);
+            document.getElementById('can').value = getCanton(array['socioprovincia'],array['sociocanton']);
+            document.getElementById('dis').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
+            document.getElementById('pueb').value = array['sociopueblo'];
 
-		});
-	}else{
 
-	}
+
+            });
+
+            $.post('../business/socioAction.php', {tipoactividad:tipoactividadid,fincatipo:fincatipoid,estado:tipoEstado}, function(data){
+
+            //var array = JSON.parse(data);
+
+            alert(data);
+/*
+
+            document.getElementById('cedula').value = array['sociocedula'];
+            document.getElementById('nombre').value = array['socionombre'];
+            document.getElementById('primerapellido').value = array['socioprimerapellido'];
+            document.getElementById('segundoapellido').value = array['sociosegundoapellido'];
+            document.getElementById('telmovil').value = array['sociotelefono'];
+            document.getElementById('correo').value = array['sociocorreo'];
+
+            var fecha = array['sociofechaingreso'].split('-');
+            var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
+            document.getElementById('fechaS').value = fechaSalida;
+
+
+            var tipoactividadid = array['tipoactividadid'];
+            var fincatipoid = array['fincatipoid'];
+            var tipoEstado = array['estadosociodetalle'];
+
+            document.getElementById('prov').value = getProvincia(array['socioprovincia']);
+            document.getElementById('can').value = getCanton(array['socioprovincia'],array['sociocanton']);
+            document.getElementById('dis').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
+            document.getElementById('pueb').value = array['sociopueblo'];
+
+            */
+
+            });
+
+             
+           
+                
+            
+        } else if(result[1] == 'Desac'){
+            alert("Desactivar Socio");
+        }
+    }
         
     });
 });
 
-function llenarCantones2(valor){
-	if(valor >0){
+function getProvincia(provincia){
+    var result;
     $.ajax({
             dataType: "json",
-            url: "https://ubicaciones.paginasweb.cr/provincia/"+valor+"/cantones.json",
+            url: "https://ubicaciones.paginasweb.cr/provincias.json",
             data: {},
+            async: false,
             success: function (data) {
-                var html = "<select class='form-control' id='listadoCantones' name = 'listadoCantones' >";
-
-                html+="<option value = -1 >Seleccione un Canton</option>";
                  for(key in data) {
-                 	
-                 		html += "<option value="+key+">"+data[key]+"</option>"; 
+                    if(key == provincia){
+                        result =  data[key];
+                        break;
+
+                    }
                     
                 }
-                html += "</select>";
-                $('#cajaCantones').html(html);
             }
         });
-    }else{
-        var html = "<select class='form-control'value = '-1'><option>Seleccione Un Canton</option></select>";
-                $('#cajaCantones').html(html);
-    }
+    return result;
 
 }
 
-function setDistrito2(valor,valorCantones){
+function getCanton(provincia,can){
+    var canton;
+    $.ajax({
+            dataType: "json",
+            url: "https://ubicaciones.paginasweb.cr/provincia/"+provincia+"/cantones.json",
+            data: {},
+            async: false,
+            success: function (data) {
+                 for(key in data) {
+                    if(key == can){
+                        canton =  data[key];
+                        break;
 
-    if(valor >0){
+                    }
+                    
+                }
+            }
+        });
+    return canton;
+
+}
+
+function getDistrito(valor,valorCantones,distrito){
+    var distrito;
         $.ajax({
                 dataType: "json",
              
                 url: "https://ubicaciones.paginasweb.cr/provincia/"+valor+"/canton/"+valorCantones+"/distritos.json",
 
                 data: {},
+                async: false,
+
                 success: function (data) {
-                    var html = "<select class='form-control' id='listadoDistritos' name = 'listadoDistrito'  >";
-                     html+="<option value = -1>Selecciones un Distrito</option>";
-                 
                     for(key in data) {
                     	
-                    		html += "<option value="+key+">"+data[key]+"</option>";
+                    		if(key == distrito){
+                                distrito = data[key];
+                                break;
+                            }
                     	
                         
                     }
-                    html += "</select>";
-                    $('#cajaDistrito').html(html);
                 }
         });
-    }else{
-        var html = "<select class='form-control' ><option value = '0' >Seleccione Un Distrito</option></select>";
-                 $('#cajaDistrito').html(html);        
-    }
+        return distrito;
 }

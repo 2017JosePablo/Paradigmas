@@ -207,21 +207,19 @@
     $socios = $socioBusiness->obtenerTodosTBSocio();
 
 
-    echo '<table border ="1"><tr><td align = "center" colspan = "8">Informacion Socio</td></tr><td>Cedula</td>  <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Telefono</td><td>Correo</td> <td>Fecha de ingreso</td> <td colspan="2">Acciones</td> </tr>';
+    echo '<table border ="1"><tr><td align = "center" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
     foreach ($socios as $current) {     
         echo '<tr>';
-        echo '<td> '.$current->getCedula() . ' </td>';
         echo '<td> '.$current->getNombre().'</td>';
         echo '<td> '.$current->getPrimerApellido() .' </td>';
         echo '<td> '.$current->getSegundoApellido().' </td>';
-        echo '<td> '.$current->getTelMovil().'</td>';
-        echo '<td> '.$current->getCorreo().'</td>';
-        echo '<td> '.$current->getFechaIngreso().'</td>';
-
+       
 
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."'>Modificar</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Ver</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Mod'>Modificar</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Desac'>Desactivar</button></td>";
         //echo '<td> <a href=""> Eliminar</a> </td>';
         //echo '<td> <a href=""> Modificar</a> </td>';
         echo '</tr>';
@@ -445,6 +443,115 @@
 
         
     </form>
+
+    </div>
+
+    <div id="cajaVerSocio" style='display:none;' >
+    <p>Datos personales:</p>
+
+             <table>
+                <tr>
+                    <td>
+                        Cedula
+                    </td>
+
+
+                    <td>
+                        Nombre
+                    </td>
+
+                    <td>
+                        Primer Apellido
+                    </td>
+
+                    <td>
+                        Segundo Apellido
+                    </td>
+
+
+                    <td>
+                        Telefono Movil
+                    </td>
+
+                    <td>
+                        Correo
+                    </td>
+                </tr>
+               
+
+                <tr>
+                    <td>
+                        <input type="text"  id="cedula" readonly>
+                    </td>
+                    <td>
+                        <input  type="text"  id="nombre"  readonly>
+                    </td>
+                    <td>
+                        <input  type="text"  id="primerapellido"  readonly>
+                    </td>       
+                    <td>
+                        <input  type="text" id="segundoapellido"  readonly>
+                    </td>
+                    
+                    <td>
+                        <input  type="text" id="telmovil" readonly>
+                    </td>
+                    <td>
+                        <input  type="text"  id = 'correo' readonly >
+                    </td>
+                   
+                </tr>
+
+     
+           
+                 <tr>
+                    <td>
+                        <br> Fecha Ingreso: 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input  type="text"  id = 'fechaS' readonly >
+                    </td>
+                </tr>
+
+                <tr><td><br><p>Datos de Dirección</p></td></tr>
+                <tr>
+                    <td>
+                        Provincia : <input  type="text"  id = 'prov' readonly >
+                         
+                    </td>
+
+                    <td>
+                        Canton : <input  type="text"  id = 'can' readonly >
+                  
+                    </td>
+                    
+                    <td>
+                        Distrito : <input  type="text"  id = 'dis' readonly >
+                    </td>
+
+                 <td>Pueblo :<input  type="text"  id = 'pueb' readonly >
+
+            </tr>
+
+            <tr>
+                <td>
+                    Tipo de Actividad : <p id="tipoActividad"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    Tipo Finca : <p id="tipoFinca"></p>
+                </td>
+            </tr>
+            <tr>                
+                <td>
+                    Estado Socio : <p id="estado"></p>
+                </td>
+            </tr>
+        </table>
 
     </div>
  
