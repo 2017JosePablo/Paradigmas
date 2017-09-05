@@ -311,7 +311,7 @@
 
                 <tr>
                     <td>
-                      <input type="text" name="fecha" id="fecha"></td>
+                      <input type="date"  required ="" name="fecha" id="fecha"></td>
                     </td>
                 </tr>
 
