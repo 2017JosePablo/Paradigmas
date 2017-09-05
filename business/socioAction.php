@@ -30,6 +30,8 @@
 		$sociodetalle = $_POST['socioestado'];		
 
 
+
+
 		
 
 		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
@@ -113,23 +115,28 @@
 		$canton = $_POST['listadoCantones'];
 		$distrito = $_POST['listadoDistritos'];
 		$pueblo = $_POST['sociopueblo'];
-		echo 'Distrito'.$distrito;
+
 
 		$tipoactividad = $_POST['tipoactividad'];
 		$tipofinca =  $_POST['tipofinca'];
-		$fechaingreso = $_POST['fecha'];
+//		$fechaingreso = $_POST['fecha'];
 
 		$sociodetalle = $_POST['socioestado'];		
 
 
-		
+		$fecha = explode("/", $_POST['fecha']);		
+//		list($mes, $dia, $anuo) = split('[/.-]', $_POST['fecha']);
+
+		//$fechaingreso = $anuo.'-'.$mes.'-'$dia;
+
+		$fechaingreso = $fecha[2] .'-'.$fecha[0].'-'.$fecha[1] ;
 
 		if (strlen($cedula2) &&strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
 
 			require 'socioBusiness.php';
 			$socioBusiness = new socioBusiness();
 			$socioid=$socioBusiness->getSocioId($cedula2); 
-			echo "idSocio".$socioid;
+		//	echo "idSocio".$socioid;
 			
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
 					$tipoactividad, $tipofinca , $sociodetalle);
@@ -145,14 +152,14 @@
 						header("location: ../index.php");
 				}else{
 
-					echo "Error al actualizar un socio: ".@$resultado;
-					echo "Error al actualizar un socioDireccion: ".@$resultado2;
+				//	echo "Error al actualizar un socio: ".@$resultado;
+			//		echo "Error al actualizar un socioDireccion: ".@$resultado2;
 					header("location: ../view/socioView.php?error=erroractualizar");
 				}
 
 		}else{
-			echo " Algunos campos no existen...";
-			//header("location: ../view/socioView.php?error=emptyFile");
+		//	echo " Algunos campos no existen...";
+			header("location: ../view/socioView.php?error=emptyFile");
 		}
 
 	}
