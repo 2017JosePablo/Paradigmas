@@ -39,6 +39,46 @@ class socioData extends Data{
 
 	}
      
+    public function editarEstado($cedula, $estado){
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        if (!$conn) {
+            die("Connection failed: ".mysqli_connect_error());
+        }
+        $sql = "UPDATE tbsocio  SET  estadosociodetalle = '".$estado."' WHERE sociocedula = '".$cedula."' ";
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+    }
+
+    public function devolverDatosSocio($tipoactividadid,$tipofinca,$estadosociodetalle){
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+     
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+
+        $sql = "SELECT tbtipoactividad.tipoactividadnombre ,tbfincatipo.fincatiponombre,  tbsocioestado.socioestadodetalle FROM tbtipoactividad INNER JOIN tbfincatipo ON fincatipoid= '".$tipoactividadid."' INNER JOIN tbsocioestado ON socioestadoid = '".$tipofinca."' 
+            AND tbtipoactividad.tipoactividadid = '".$tipoactividadid."' ;";
+
+        $result = $conn->query($sql);
+
+        $informacionsocio ="";
+            while($row = $result->fetch_assoc()) {
+
+                $informacionsocio = ["tipoactividadnombre"=>$row["tipoactividadnombre"],
+                "fincatiponombre"=>$row["fincatiponombre"] ,
+                "socioestadodetalle"=>$row["socioestadodetalle"] ];
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        
+        return json_encode($informacionsocio);
+
+
+    }
+
    
       public function eliminarTBSocio($idsocio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());

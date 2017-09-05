@@ -104,7 +104,7 @@
         foreach ($array as $key) {
 
             echo $key->getNombreRaza().'</br>';
-        }*/
+        }
 
 
        include 'fincaData.php';
@@ -120,7 +120,14 @@
             echo $fincas["fincaarea"]."</br>";
             echo $fincas["fincacantidadbobinos"]."</br>";
         
+*/
 
+//        include 'socioData.php';
+  //      $socioBusiness = new socioData();
+
+    //    echo "Socio: ".$socioBusiness->editarEstado("503930363","2");
+
+            $texto = "Adan Carranza";
 
 
 
@@ -130,6 +137,8 @@
 
     ?>
 
+
+    <input type="" name="temp" value="<?php echo $texto ?>" readonly="">
       
 
 
