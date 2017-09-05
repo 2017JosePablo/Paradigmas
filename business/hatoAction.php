@@ -1,13 +1,12 @@
 <?php
 
-	//include './personBusiness.php';
-//	include './herdBusiness.php';
-	
-//	include './herdActivityBusiness.php';
-
 	if (isset($_POST['registrarhato'])) {
-// Personal information
-		$socioid = $_POST['sociocedula'];
+		require 'socioBusiness.php';
+		$socioBusiness = new socioData();
+		$cedula=$_POST['cedula'];
+		$socioid = $socioBusiness->obtenerUnSoloTBSocio($cedula);
+		
+		/*
 		$socionombre = $_POST['socionombre'];
 		$socioprimerapellido = $_POST['socioprimerapellido'];
 		$sociosegundoapellido = $_POST['sociosegundoapellido'];
@@ -20,6 +19,9 @@
 		if (strlen($sociotelefono)==0) {
 			$sociotelefono = '';
 		}
+		*/
+
+
 		////  Quantity Animals
 		$ternero = $_POST['terneros'];
 		$ternera = $_POST['terneras'];
@@ -30,13 +32,14 @@
 		$vaca =$_POST['vacas'];
 		//Variable para saber el tipo de actividad...
 		
-
+		/*
 
 		if (strlen($socioid)> 0 && strlen($socionombre) > 0  &&  strlen($socioprimerapellido)  &&  strlen($sociosegundoapellido) ) {
 
 		//	echo "TIpo de Actividad: ".$valor;
 
-			
+			*/
+
 			if (strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($toro) > 0  || strlen($vaca) > 0 ) {
 
 
@@ -44,8 +47,6 @@
 					if (is_numeric($ternero) &&  $ternero >  0 || is_numeric($ternera) && $ternera > 0 ||
 						is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 || 
 						is_numeric($novillaprenada) && $novillaprenada > 0 || is_numeric($toro)&& $toro > 0  || is_numeric($vaca) && $vaca > 0 ) {
-
-//include './herdBusiness.php';
 
 
 						require './personBusiness.php';
@@ -86,9 +87,13 @@
 				}else{
 					header("location: ../view/censoView.php?error=emptyField");	
 				}
+				/*
 			}else{
 				header("location: ../view/censoView.php?error=emptyActivity");	
 			}
+
+			*/
+
 		}else{	
 			header("location: ../view/censoView.php?error=emptyField");
 		}
