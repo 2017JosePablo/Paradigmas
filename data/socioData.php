@@ -56,13 +56,14 @@ class socioData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-
         $sql = "SELECT tbtipoactividad.tipoactividadnombre ,tbfincatipo.fincatiponombre,  tbsocioestado.socioestadodetalle FROM tbtipoactividad INNER JOIN tbfincatipo ON fincatipoid= '".$tipoactividadid."' INNER JOIN tbsocioestado ON socioestadoid = '".$tipofinca."' 
             AND tbtipoactividad.tipoactividadid = '".$tipoactividadid."' ;";
 
         $result = $conn->query($sql);
 
         $informacionsocio ="";
+
+        if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
                 $informacionsocio = ["tipoactividadnombre"=>$row["tipoactividadnombre"],
