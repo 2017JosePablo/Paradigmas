@@ -51,7 +51,7 @@
 			require 'fincaBusiness.php';
 			$socioBusiness = new socioBusiness();
 				
-			if($socioBusiness->verificarCedula($cedula)==false){
+			if($socioBusiness->verificarCedula($cedula)==0){
 
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
 					$tipoactividad, $tipofinca , $sociodetalle);
