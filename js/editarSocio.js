@@ -62,7 +62,7 @@ $(document).ready(function() {
             document.getElementById("btnModificar").style.display = 'none';
 
 
-            $.post('../business/socioAction.php', {cedula:result[0]}, function(data){
+            $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
 
             var array = JSON.parse(data);
 
@@ -79,9 +79,16 @@ $(document).ready(function() {
             document.getElementById('fechaS').value = fechaSalida;
 
 
-             tipoactividadid = array['tipoactividadid'];
-             fincatipoid = array['fincatipoid'];
-             tipoEstado = array['estadosociodetalle'];
+             var tipoactividadid = array['tipoactividadid'];
+             var fincatipoid = array['fincatipoid'];
+             var tipoEstado = array['estadosociodetalle'];
+
+
+
+            document.getElementById("tipoActi").value = array['tipoactividadnombre'];
+            document.getElementById("tipoFinc").value = array['fincatiponombre'];
+            document.getElementById("esta").value = array['socioestadodetalle'];
+
 
            
 
@@ -90,21 +97,8 @@ $(document).ready(function() {
             document.getElementById('dis').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
             document.getElementById('pueb').value = array['sociopueblo'];
 
-            
-
-
-
             });
-            $.post('../business/socioAction.php', {tipoactividad:tipoactividadid,fincatipo:fincatipoid,estado:tipoEstado}, function(data){
-                 alert(tipoactividadid+" "+fincatipoid+" "+tipoEstado);
 
-            var arraySocio = JSON.parse(data);
-
-            document.getElementById("tipoActi").value = arraySocio['tipoactividadnombre'];
-            document.getElementById("tipoFinc").value = arraySocio['fincatiponombre'];
-            document.getElementById("esta").value = arraySocio['socioestadodetalle'];
-
-            });
                 
             
         } else if(result[1] == 'Desac'){
