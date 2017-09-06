@@ -38,7 +38,7 @@ class FincaData extends Data{
 
 
 
-    public function  obtenerDatosFinca($cedulasocio){
+    public function  obtenerDatosFincaVer($cedulasocio){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
