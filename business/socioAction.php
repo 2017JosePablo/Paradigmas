@@ -8,6 +8,20 @@
 		echo $result; 
 	}
 
+	if(isset($_POST['tipoactividad'])==true && empty($_POST['tipoactividad'])== false && isset($_POST['fincatipo'])==true && empty($_POST['fincatipo'])== false && isset($_POST['estado'])==true && empty($_POST['estado'])== false ){
+		require 'socioBusiness.php';
+		$socioBusiness = new socioData();
+		$result = $socioBusiness->devolverDatosSocio($_POST['tipoactividad'],$_POST['fincatipo'],$_POST['estado']);
+		echo $result;
+	}
+
+	if (isset($_POST['desactivar'])== true && empty($_POST['desactivar'])== false ){
+		require 'socioBusiness.php';
+		$socioBusiness = new socioData();
+		$result = $socioBusiness->editarEstado($_POST['desactivar']);
+		echo $result;
+	}
+
 	if (isset($_POST['agregarsocio'])) {
 
 		$cedula = $_POST['sociocedula'];
@@ -27,11 +41,7 @@
 		$tipofinca =  $_POST['tipofinca'];
 		$fechaingreso = $_POST['fecha'];
 
-		$sociodetalle = $_POST['socioestado'];		
-
-
-
-
+		$sociodetalle = $_POST['socioestado'];
 		
 
 		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
