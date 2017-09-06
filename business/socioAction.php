@@ -65,6 +65,7 @@
 
 				require_once '../domain/socioDireccion.php';
 				require_once '../domain/fincaDireccion.php';
+				require_once '../domain/hato.php';
 
 				$socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
 				$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
@@ -88,7 +89,7 @@
 							header("location: ../index.php?success=inserted");	
 						}else{
 							header("location: ../view/socioView.php?error=errorinsertarhatoactividad");		
-					}
+						}
 					
 					}else{
 							header("location: ../view/socioView.php?error=errorinsertarhato");		
