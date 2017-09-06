@@ -8,6 +8,16 @@
 		echo $result; 
 	}
 
+	if(isset($_POST['tipoactividad'])==true && empty($_POST['tipoactividad'])== false  && isset($_POST['fincatipo'])==true && empty($_POST['fincatipo'])== false && isset($_POST['estado'])==true && empty($_POST['estado'])== false ){
+		require 'socioBusiness.php';
+		$socioBusiness = new socioData();
+		$result = $socioBusiness->devolverDatosSocio($_POST['tipoactividad'],$_POST['fincatipo'],$_POST['estado']);
+		//echo $result; 
+		echo "hola pablooo";
+	}
+
+
+
 	if (isset($_POST['agregarsocio'])) {
 
 		$cedula = $_POST['sociocedula'];
@@ -63,7 +73,27 @@
 
 
 				if ($resultado ==1 && $resultado2 == 1 && $resuntadoFinca==1 && $resuntadoFinca2==1) {
-						header("location: ../index.php");
+					require './hatoBusiness.php';
+				
+					$hato = new Hato($idSocio,'','','','','','','');
+					$hatoBusiness = new hatoBusiness();		
+
+					$resultado3 = $hatoBusiness->insertarTBHato($hato);
+					if ($resultado3 == 1) {
+						require './hatoActividadBusiness.php';
+						$hatoActividadBusiness = new hatoActividadBusiness();
+						$resultado4=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
+						if($resultado4==1){
+							header("location: ../index.php?success=inserted");	
+						}else{
+							header("location: ../view/socioView.php?error=errorinsertarhatoactividad");		
+					}
+					
+					}else{
+							header("location: ../view/socioView.php?error=errorinsertarhato");		
+					}
+					
+					//	header("location: ../index.php");
 				}else{
 
 					echo "Error al insertar un socio: ".@$resultado;
@@ -142,7 +172,7 @@
 			header("location: ../view/socioView.php?error=emptyFile");
 		}
 
-	}
+	} 
 
 
 

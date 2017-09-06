@@ -104,7 +104,7 @@
         foreach ($array as $key) {
 
             echo $key->getNombreRaza().'</br>';
-        }*/
+        }
 
 
        include 'fincaData.php';
@@ -120,17 +120,21 @@
             echo $fincas["fincaarea"]."</br>";
             echo $fincas["fincacantidadbobinos"]."</br>";
         
+*/
 
+        include 'socioData.php';
+        $socioBusiness = new socioData();
 
+//        echo "Socio: ".$socioBusiness->editarEstado("503930363","2");
 
-
-        //  echo "</table>";
+        $info = json_decode($socioBusiness->devolverDatosSocio("1","1","1"),true);
+        echo "Actividad: ".$info["tipoactividadnombre"];
 
 
 
     ?>
 
-      
+
 
 
 

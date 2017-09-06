@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 27, 2017 at 08:36 AM
+-- Generation Time: Sep 05, 2017 at 07:23 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -25,27 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbactividad`
---
-
-CREATE TABLE `tbactividad` (
-  `actividadid` int(11) NOT NULL,
-  `actividadtipo` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbactividad`
---
-
-INSERT INTO `tbactividad` (`actividadid`, `actividadtipo`) VALUES
-(1, 'Leche'),
-(2, 'Carne Cria'),
-(3, 'Doble proposito'),
-(4, 'Carne engorde');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbfinca`
 --
 
@@ -55,6 +34,16 @@ CREATE TABLE `tbfinca` (
   `fincaarea` int(11) DEFAULT NULL,
   `fincacantidadbobinos` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbfinca`
+--
+
+INSERT INTO `tbfinca` (`fincaid`, `socioid`, `fincaarea`, `fincacantidadbobinos`) VALUES
+(1, 1, 1234, '1334'),
+(2, 2, 12, '1333'),
+(3, 3, 13909, '1930'),
+(4, 4, 193813, '294289');
 
 -- --------------------------------------------------------
 
@@ -71,6 +60,16 @@ CREATE TABLE `tbfincadireccion` (
   `fincaexacta` varchar(450) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbfincadireccion`
+--
+
+INSERT INTO `tbfincadireccion` (`fincaid`, `fincaprovincia`, `fincacanton`, `fincadistrito`, `fincapueblo`, `fincaexacta`) VALUES
+(1, 1, 1, 1, 'RIOQ', '300'),
+(2, 3, 2, 1, 'OP', 'OO'),
+(3, 0, 0, 0, '', ''),
+(4, 0, 0, 0, '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -81,6 +80,15 @@ CREATE TABLE `tbfincatipo` (
   `fincatipoid` int(11) NOT NULL,
   `fincatiponombre` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbfincatipo`
+--
+
+INSERT INTO `tbfincatipo` (`fincatipoid`, `fincatiponombre`) VALUES
+(1, 'REPASTO'),
+(2, 'ESTAULADO\r\n'),
+(3, 'SEMIESTAULADO');
 
 -- --------------------------------------------------------
 
@@ -105,22 +113,7 @@ CREATE TABLE `tbhato` (
 --
 
 INSERT INTO `tbhato` (`hatoid`, `hatopersonaid`, `hatoterneros`, `hatoterneras`, `hatonovillos`, `hatonovillas`, `hatonovillasprenadas`, `hatotoros`, `hatovacas`) VALUES
-(1, '503930363', 0, 0, 1, 0, 0, 0, 10),
-(5, '434', 100, 0, 5, 4, 80, 50, 0),
-(6, '122222', 100, 0, 5, 4, 80, 50, 0),
-(7, '504130763', 12, 1, 100, 112, 54, 3, 789),
-(8, '503930363', 1, 1, 1, 1, 1, 1, 1),
-(9, '877', 0, 6, 0, 0, 0, 0, 0),
-(10, '877', 0, 6, 0, 0, 0, 0, 0),
-(11, '877', 0, 6, 0, 0, 0, 0, 0),
-(12, 'ADan', 787, 0, 0, 0, 0, 0, 0),
-(13, '7', 7, 0, 0, 0, 0, 0, 0),
-(14, '7', 7, 0, 0, 0, 0, 0, 0),
-(15, '7', 7, 0, 0, 0, 0, 0, 0),
-(16, '7', 7, 0, 0, 0, 0, 0, 0),
-(17, '7', 7, 0, 0, 0, 0, 0, 0),
-(18, '3434', 0, 8, 0, 0, 0, 0, 0),
-(19, '9009', 8, 0, 0, 0, 0, 0, 0);
+(0, '8', 67, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -139,6 +132,7 @@ CREATE TABLE `tbhatoactividad` (
 --
 
 INSERT INTO `tbhatoactividad` (`hatoactividadid`, `hatoactividadpersonaid`, `hatoactividadtipo`) VALUES
+(0, '8', '1'),
 (1, '503960363', '1,2,3'),
 (2, '503960368', '1,2,4'),
 (3, '909090', '1,'),
@@ -200,31 +194,29 @@ CREATE TABLE `tbpersona` (
   `personacelular` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tbpersona`
+-- Table structure for table `tbraza`
 --
 
-INSERT INTO `tbpersona` (`personaid`, `personaidentificacion`, `personanombre`, `personaprimerapellido`, `personasegundoapellido`, `personatelefonofjo`, `personacelular`) VALUES
-(2, '503960363', 'Adan Francisco', 'Carranza', 'Alfaro', '50088487', '85666738'),
-(4, '101230456', 'ADriana', 'Carbajal', 'Madrigal', '24788965', '87878985'),
-(5, '104560256', 'Pablo', 'carranza', 'alfaro', '24650889', '50088487'),
-(6, '104560256', 'ASAS', 'carranza', 'alfaro', '24650889', '50088487'),
-(7, '100000000000', 'ASAS', 'carranza', 'alfaro', '24650889', '50088487'),
-(8, '504130763', 'Jose Pablo', 'Carranza', 'Alfaro', '2476789', '85599663'),
-(9, '503930363', 'Adan ', 'Carranza', 'Alfaro', '201414', '56005555'),
-(10, '877', '87', '87', '87', '87', ''),
-(11, '877', '87', '87', '87', '87', ''),
-(12, '877', '87', '87', '87', '87', ''),
-(13, '877', '87', '87', '87', '87', ''),
-(14, '877', '87', '87', '87', '87', ''),
-(15, 'ADan', 'Adna', 'Adan', 'Adan', 'Adan', ''),
-(16, '7', '7', '7', '7', '7', '7'),
-(17, '7', '7', '7', '7', '7', '7'),
-(18, '7', '7', '7', '7', '7', '7'),
-(19, '7', '7', '7', '7', '7', '7'),
-(20, '7', '7', '7', '7', '7', '7'),
-(21, '3434', 'A', 'A', 'A', 'A', ''),
-(22, '9009', 'j', 'j', 'j', 'j', 'j');
+CREATE TABLE `tbraza` (
+  `idraza` int(11) NOT NULL,
+  `razanombre` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbraza`
+--
+
+INSERT INTO `tbraza` (`idraza`, `razanombre`) VALUES
+(1, 'Jersey'),
+(2, 'Holstein'),
+(3, 'Brahaman'),
+(4, 'Charolais'),
+(5, 'Angus'),
+(6, 'Otros'),
+(7, 'LA CONCHA');
 
 -- --------------------------------------------------------
 
@@ -246,6 +238,16 @@ CREATE TABLE `tbsocio` (
   `estadosociodetalle` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbsocio`
+--
+
+INSERT INTO `tbsocio` (`socioid`, `sociocedula`, `socionombre`, `socioprimerapellido`, `sociosegundoapellido`, `sociotelefono`, `sociocorreo`, `tipoactividadid`, `fincatipoid`, `sociofechaingreso`, `estadosociodetalle`) VALUES
+(1, '503930363', 'Adan  CAR', 'Carranza ', 'Alfaro', '85666738', 'adanca16@gmail.com', 5, 2, '2017-08-02', 3),
+(2, '7024400808', 'Luis', 'Parra', 'Cambronero', '7993-2342', 'luis@gmail.com', 1, 1, '2017-09-20', 1),
+(3, '504130763', 'Jose', 'Carranza', 'Alfaro', '4555-23445', 'elfollon@tocastetas.com', 3, 1, '2017-06-12', 1),
+(4, '505350132', 'Marcos', 'Campos', 'Diaz', '23344-234', 'luis@gmail.com', 1, 1, '2017-08-02', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -260,6 +262,16 @@ CREATE TABLE `tbsociodireccion` (
   `sociopueblo` varchar(450) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbsociodireccion`
+--
+
+INSERT INTO `tbsociodireccion` (`socioid`, `socioprovincia`, `sociocanton`, `sociodistrito`, `sociopueblo`) VALUES
+(1, 1, 3, 1, 'PUTERO JAJAJA'),
+(2, 1, 2, 1, 'POLO'),
+(3, 1, 3, 3, 'sfkaljs'),
+(4, 1, 3, 1, 'lgDKj');
+
 -- --------------------------------------------------------
 
 --
@@ -270,6 +282,15 @@ CREATE TABLE `tbsocioestado` (
   `socioestadoid` int(11) NOT NULL,
   `socioestadodetalle` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbsocioestado`
+--
+
+INSERT INTO `tbsocioestado` (`socioestadoid`, `socioestadodetalle`) VALUES
+(1, 'moroso'),
+(2, 'Activo'),
+(3, 'inactivo');
 
 -- --------------------------------------------------------
 
@@ -283,14 +304,19 @@ CREATE TABLE `tbtipoactividad` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `tbtipoactividad`
 --
 
+INSERT INTO `tbtipoactividad` (`tipoactividadid`, `tipoactividadnombre`) VALUES
+(1, 'Carne'),
+(2, 'Leche'),
+(3, 'Desarrollo'),
+(5, 'Carne 2'),
+(6, 'Carne leche');
+
 --
--- Indexes for table `tbactividad`
+-- Indexes for dumped tables
 --
-ALTER TABLE `tbactividad`
-  ADD PRIMARY KEY (`actividadid`);
 
 --
 -- Indexes for table `tbfinca`
@@ -336,6 +362,12 @@ ALTER TABLE `tbpersona`
   ADD PRIMARY KEY (`personaid`);
 
 --
+-- Indexes for table `tbraza`
+--
+ALTER TABLE `tbraza`
+  ADD PRIMARY KEY (`idraza`);
+
+--
 -- Indexes for table `tbsocio`
 --
 ALTER TABLE `tbsocio`
@@ -370,62 +402,42 @@ ALTER TABLE `tbtipoactividad`
 -- AUTO_INCREMENT for table `tbfinca`
 --
 ALTER TABLE `tbfinca`
-  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbfincadireccion`
 --
 ALTER TABLE `tbfincadireccion`
-  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbfincatipo`
 --
 ALTER TABLE `tbfincatipo`
-  MODIFY `fincatipoid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fincatipoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `tbraza`
+--
+ALTER TABLE `tbraza`
+  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbsocio`
 --
 ALTER TABLE `tbsocio`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbsociodireccion`
 --
 ALTER TABLE `tbsociodireccion`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbsocioestado`
 --
 ALTER TABLE `tbsocioestado`
-  MODIFY `socioestadoid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `socioestadoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbtipoactividad`
 --
 ALTER TABLE `tbtipoactividad`
-  MODIFY `tipoactividadid` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `tbfinca`
---
-ALTER TABLE `tbfinca`
-  ADD CONSTRAINT `tbfinca_ibfk_1` FOREIGN KEY (`socioid`) REFERENCES `tbsocio` (`socioid`),
-  ADD CONSTRAINT `tbfinca_ibfk_2` FOREIGN KEY (`fincaid`) REFERENCES `tbfincadireccion` (`fincaid`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `tbsocio`
---
-ALTER TABLE `tbsocio`
-  ADD CONSTRAINT `tbsocio_ibfk_1` FOREIGN KEY (`tipoactividadid`) REFERENCES `tbtipoactividad` (`tipoactividadid`),
-  ADD CONSTRAINT `tbsocio_ibfk_2` FOREIGN KEY (`fincatipoid`) REFERENCES `tbfincatipo` (`fincatipoid`),
-  ADD CONSTRAINT `tbsocio_ibfk_3` FOREIGN KEY (`estadosociodetalle`) REFERENCES `tbsocioestado` (`socioestadoid`);
-
---
--- Constraints for table `tbsociodireccion`
---
-ALTER TABLE `tbsociodireccion`
-  ADD CONSTRAINT `tbsociodireccion_ibfk_1` FOREIGN KEY (`socioid`) REFERENCES `tbsocio` (`socioid`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
+  MODIFY `tipoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
