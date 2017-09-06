@@ -20,8 +20,23 @@
 		echo $result; 
 	}
 
+	if(isset($_POST['fincamodificar']) == true && empty($_POST['fincamodificar'])== false){
+		require 'fincaBusiness.php';
+		$fincaBusiness = new fincaData();
+		$result = $fincaBusiness->obtenerDatosFincaModificar($_POST['fincamodificar']);
+		echo $result; 	
+	}
 
- if(isset($_POST['finalizar'])){
+	if(isset($_POST['verificarfinca']) == true && empty($_POST['verificarfinca'])== false){
+		require 'fincaBusiness.php';
+		$fincaBusiness = new fincaData();
+		$result = $fincaBusiness->verificarFinca($_POST['verificarfinca']);
+		echo $result; 	
+	}
+
+
+
+ if(isset($_POST['finalizar']) || isset($_POST['actualizar'])){
 
 	$fincaid = $_POST['cedula'];
 	$fincaarea =$_POST['fincaarea'];
@@ -32,8 +47,9 @@
 	$fincapueblo =$_POST['fincapueblo'];
 	$fincaexacta =$_POST['fincaexacta'];
 	$tipoactividad =$_POST['tipoactividad'];
-	$fincatipo =$_POST['fincatipo'];
+	$fincatipo =$_POST['tipofinca'];
 
+	echo "datos".$fincaid;
 
 	if(isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($tipoactividad)&&isset($fincatipo)){
 
