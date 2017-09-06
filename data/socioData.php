@@ -238,14 +238,14 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
     }
 
     public function verificarCedula($cedula){
-        $booleano = false;
+        $booleano = 0;
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
 
         $consulta = "SELECT  * FROM tbsocio WHERE sociocedula = '$cedula'";
         $result = $conn->query($consulta);
 //mysqli_num_rows()
     if(mysqli_num_rows($result) > 0){
-        $booleano = true;
+        $booleano = 1;
          
     }
         mysqli_close($conn);
