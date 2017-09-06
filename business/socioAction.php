@@ -49,6 +49,10 @@
 
 			require 'socioBusiness.php';
 			require 'fincaBusiness.php';
+			require_once '../domain/socioDireccion.php';
+			require_once '../domain/fincaDireccion.php';
+			require_once '../domain/hato.php';
+			require_once '../domain/finca.php';
 			$socioBusiness = new socioBusiness();
 				
 			if($socioBusiness->verificarCedula($cedula)==0){
@@ -63,9 +67,7 @@
 				$finca= new Finca('',$idSocio,'','');
 				$resuntadoFinca=$fincaBusiness->insertarFinca($finca);
 
-				require_once '../domain/socioDireccion.php';
-				require_once '../domain/fincaDireccion.php';
-				require_once '../domain/hato.php';
+
 
 				$socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
 				$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
