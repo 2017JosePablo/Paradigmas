@@ -7,13 +7,14 @@
 		$result = $socioBusiness->obtenerUnSoloTBSocio($_POST['cedula']);
 		echo $result; 
 	}
+	if(isset($_POST['versocio']) == true && empty($_POST['versocio'])== false){
+			require 'socioBusiness.php';
+			$socioBusiness = new socioData();
+			$result = $socioBusiness->obtenerUnTBSocio($_POST['versocio']);
+			echo $result; 
+		}
 
-	if(isset($_POST['tipoactividad'])==true && empty($_POST['tipoactividad'])== false && isset($_POST['fincatipo'])==true && empty($_POST['fincatipo'])== false && isset($_POST['estado'])==true && empty($_POST['estado'])== false ){
-		require 'socioBusiness.php';
-		$socioBusiness = new socioData();
-		$result = $socioBusiness->devolverDatosSocio($_POST['tipoactividad'],$_POST['fincatipo'],$_POST['estado']);
-		echo $result;
-	}
+
 
 	if (isset($_POST['desactivar'])== true && empty($_POST['desactivar'])== false ){
 		require 'socioBusiness.php';
@@ -129,15 +130,11 @@
 
 		$tipoactividad = $_POST['tipoactividad'];
 		$tipofinca =  $_POST['tipofinca'];
-//		$fechaingreso = $_POST['fecha'];
 
 		$sociodetalle = $_POST['socioestado'];		
 
 
 		$fecha = explode("/", $_POST['fecha']);		
-//		list($mes, $dia, $anuo) = split('[/.-]', $_POST['fecha']);
-
-		//$fechaingreso = $anuo.'-'.$mes.'-'$dia;
 
 		$fechaingreso = $fecha[2] .'-'.$fecha[0].'-'.$fecha[1] ;
 

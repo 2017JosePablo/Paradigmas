@@ -1,17 +1,25 @@
 <?php
 
 	if(isset($_POST['cedulaSocio']) == true && empty($_POST['cedulaSocio'])== false){
-   require 'socioBusiness.php';
-   $socioBusiness = new socioBusiness();
-   $idsocio = $socioBusiness->getSocioId($_POST['cedulaSocio']);
+	   require 'socioBusiness.php';
+	   $socioBusiness = new socioBusiness();
+	   $idsocio = $socioBusiness->getSocioId($_POST['cedulaSocio']);
 
-   	require_once '../data/fincaData.php';
+	   	require_once '../data/fincaData.php';
 
-      $temp = new FincaData();
+	      $temp = new FincaData();
 
-      echo  $temp->obtenerFinca($idsocio);	
-		
+	      echo  $temp->obtenerFinca($idsocio);	
+			
 	}
+
+	if(isset($_POST['cedulafinca']) == true && empty($_POST['cedulafinca'])== false){
+		require 'fincaBusiness.php';
+		$fincaBusiness = new fincaData();
+		$result = $fincaBusiness->obtenerDatosFinca($_POST['cedula']);
+		echo $result; 
+	}
+
 
  if(isset($_POST['finalizar'])){
 	
