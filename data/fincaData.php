@@ -71,7 +71,24 @@ class FincaData extends Data{
         return json_encode($socioinformacion);
     }
 
+    public function verificarFinca($cedula){
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        if (!$conn) {
+            die("Connection failed: ".mysqli_connect_error());
+        }
 
+        $sql = "SELECT tbfinca.fincaarea FROM tbfinca
+        INNER JOIN tbsocio ON tbfinca.socioid = tbsocio.socioid
+        AND tbsocio.sociocedula = '".$cedula."' ;" ;
+
+       $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            return 1;
+        }else{
+            return 0;
+        }        
+
+    }
 
     public function  obtenerDatosFincaModificar($cedulasocio){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
