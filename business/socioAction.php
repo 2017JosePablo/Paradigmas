@@ -79,7 +79,7 @@
 				if ($resultado ==1 && $resultado2 == 1 && $resuntadoFinca==1 && $resuntadoFinca2==1) {
 					require './hatoBusiness.php';
 				
-					$hato = new Hato($idSocio,'','','','','','','');
+					$hato = new Hato($idSocio,'','','','','','','','');
 					$hatoBusiness = new hatoBusiness();		
 
 					$resultado3 = $hatoBusiness->insertarTBHato($hato);
