@@ -128,7 +128,10 @@
 //        echo "Socio: ".$socioBusiness->editarEstado("503930363","2");
 
         $info = json_decode($socioBusiness->devolverDatosSocio("1","1","1"),true);
-        echo "Actividad: ".$info["tipoactividadnombre"];
+        echo "Actividad: ".$info["tipoactividadnombre"]."<br>";
+        echo "Finca Tipo: ".$info["fincatiponombre"]."<br>";
+        echo "Estado del Socio: ".$info["socioestadodetalle"]."<br>";
+
 
 
 
