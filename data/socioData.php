@@ -39,12 +39,12 @@ class socioData extends Data{
 
 	}
      
-    public function editarEstado($cedula, $estado){
+    public function editarEstado($cedula){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
-        $sql = "UPDATE tbsocio  SET  estadosociodetalle = '".$estado."' WHERE sociocedula = '".$cedula."' ";
+        $sql = "UPDATE tbsocio  SET  estadosociodetalle = '1' WHERE sociocedula = '".$cedula."' ";
         $result = $conn->query($sql);
         $conn->close();
         return $result;
