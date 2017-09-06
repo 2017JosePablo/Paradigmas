@@ -19,10 +19,11 @@ class hatoData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbhato (hatopersonaid,hatoterneros,hatoterneras,hatonovillos,hatonovillas,hatonovillasprenadas,hatotoros,hatovacas)
+        $sql = "INSERT INTO tbhato (socioid,hatoraza,hatoterneros,hatoterneras,hatonovillos,hatonovillas,hatonovillasprenadas,hatotoros,hatovacas)
         VALUES ('" .
 
                 $hato->getPropietario() . "','" .
+                $hato->getListadoRazas() . "','" .
                 $hato->getTerneros() . "','" .
                 $hato->getTerneras() . "','" .
                 $hato->getNovillos() . "','" .
@@ -46,6 +47,7 @@ class hatoData extends Data{
         }
 
         $sql = "UPDATE tbhato SET hatopersonid ='".$hato-> getPropietario(). "',
+            hatoraza='" . $hato-> getListadoRazas()."',
             hatoterneros='" . $hato-> getTerneros()."',
             hatoterneras='" . $hato-> getTerneras()."',
             hatonovillos='" . $hato-> getNovillos()."',
@@ -65,14 +67,14 @@ class hatoData extends Data{
         return $result;
      }
 
-     public function eliminarTBHato($propietarioId) {
+     public function eliminarTBHato($socioid) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
      
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
      
-        $sql = "DELETE from tbhato where hatopersonid='".$propietarioId."';";
+        $sql = "DELETE from tbhato where socioid='".$socioid."';";
         $result = $conn->query($sql);
         $conn->close();
      
@@ -86,7 +88,7 @@ class hatoData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($hato, new hato($row["hatopersonid"],$row["hatoterneros"],$row["hatoterneras"],$row["hatonovillos"],$row["hatonovillas"],$row["hatonovillasprenadas"],$row["hatotoros"],$row["hatovacas"]));
+                array_push($hato, new hato($row["socioid"],$row["hatoraza"],$row["hatoterneros"],$row["hatoterneras"],$row["hatonovillos"],$row["hatonovillas"],$row["hatonovillasprenadas"],$row["hatotoros"],$row["hatovacas"]));
             }
         }else{
             echo "0 results";
