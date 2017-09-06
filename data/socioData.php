@@ -39,12 +39,13 @@ class socioData extends Data{
 
 	}
     
-    public function actualizarDatoActividad($idsocio , $tipofinca, $tipoactividad){
+    public function actualizarDatoActividad($idsocio , $tipofincaTemporal, $tipoactividad){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
-        $sql = "UPDATE tbsocio  SET   fincatipoid = '".$tipofinca."' tipoactividadid = '".$tipoactividad."' WHERE socioid = '".$idsocio."' ";
+
+        $sql = "UPDATE tbsocio  SET   fincatipoid = '$tipofincaTemporal', tipoactividadid = '$tipoactividad'   WHERE socioid = '$idsocio' ; ";
         $result = $conn->query($sql);
         $conn->close();
         return $result;        

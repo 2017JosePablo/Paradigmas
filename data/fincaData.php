@@ -38,7 +38,7 @@ class FincaData extends Data{
 
 
 
-    public function  obtenerDatosFinca($cedulasocio){
+    public function  obtenerDatosFincaVer($cedulasocio){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
@@ -171,7 +171,7 @@ class FincaData extends Data{
 
     public function actualizarTBFincaDireccion($fincaDireccion) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        $sql = "UPDATE tbsociodireccion SET socioprovincia= '".$fincaDireccion->getProvincia()."',sociocanton='".$fincaDireccion->getCanton()."',sociodistrito='".$fincaDireccion->getDistrito()."',sociopueblo='".$fincaDireccion->getDireccionExacta()."' WHERE socioid= '".$fincaDireccion->getSocioId()."'";
+        $sql = "UPDATE tbfincadireccion SET fincaprovincia= '".$fincaDireccion->getProvincia()."',fincacanton='".$fincaDireccion->getCanton()."',fincadistrito='".$fincaDireccion->getDistrito()."',fincapueblo='".$fincaDireccion->getPueblo()."',fincaexacta = '".$fincaDireccion->getDireccionExacta()."'  WHERE fincaid= '".$fincaDireccion->getSocioId()."'";
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {

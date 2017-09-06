@@ -124,9 +124,10 @@
 
         include 'fincaData.php';
         $socioBusiness = new fincaData();
-        //$fincas = json_decode($socioBusiness->obtenerDatosFinca("503930363"),true);
-        
-        echo $socioBusiness->verificarFinca("50393036d3");
+        $fincas = json_decode($socioBusiness->obtenerDatosFincaModificar("503930363"),true);
+
+            
+        echo $fincas["fincaprovincia"];
         
 
 
