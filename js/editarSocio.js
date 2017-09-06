@@ -10,10 +10,12 @@ $(document).ready(function() {
 
         var result = cedula.split('-');
 
+
         if(result[1] == 'Mod'){
+
             document.getElementById('notificacionSocio').innerHTML = ''
             
-            document.getElementById("cedulaVieja").value = cedula;
+            document.getElementById("cedulaVieja").value = result[0];
 
             document.getElementById("btnAgregar").style.display = 'none';
             document.getElementById("btnModificar").style.display = 'block';
