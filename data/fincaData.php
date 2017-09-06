@@ -45,7 +45,12 @@ class FincaData extends Data{
 
         $socioinformacion = "";
         $sql = "SELECT tbsocio.socionombre, tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido, tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
-            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid 
+            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos,
+            tbfincatipo.fincatiponombre , tbtipoactividad.tipoactividadnombre
+            FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid 
+            INNER JOIN  tbfincatipo 
+            ON  tbfincatipo.fincatipoid = tbsocio.fincatipoid INNER JOIN tbtipoactividad   ON tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
+ 
             AND tbsocio.sociocedula = '".$cedulasocio."' ; ";
 
         $result = $conn->query($sql);
