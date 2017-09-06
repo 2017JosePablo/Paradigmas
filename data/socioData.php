@@ -44,7 +44,7 @@ class socioData extends Data{
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
-        $sql = "UPDATE tbsocio  SET  estadosociodetalle = '1' WHERE sociocedula = '".$cedula."' ";
+        $sql = "UPDATE tbsocio  SET  estadosociodetalle = '3' WHERE sociocedula = '".$cedula."' ";
         $result = $conn->query($sql);
         $conn->close();
         return $result;
