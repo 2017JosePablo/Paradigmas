@@ -122,11 +122,11 @@
         
 */
 
-        include 'fincaData.php';
-        $socioBusiness = new fincaData();
+        include 'socioData.php';
+        $socioBusiness = new socioData();
         //$fincas = json_decode($socioBusiness->obtenerDatosFinca("503930363"),true);
         
-        echo $socioBusiness->verificarFinca("50393036d3");
+        echo $socioBusiness->actualizarDatoActividad("50393036d3", "1","2");
         
 
 
