@@ -115,7 +115,8 @@
         echo "<table border ='1'><tr><td align = 'center' colspan = '6'>Informacion Finca Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td align = 'center' colspan = '3'>Acciones </td>
         </tr>";
 
-        foreach ($fincas as $current) {     
+        foreach ($fincas as $current) {
+
 
             //echo "<td>".$fincas["socionombre"]."  </td>";
 
@@ -140,6 +141,8 @@
   <form id = 'frm' method="post"  action="../business/fincaAction.php"> 
 
   <input type="hidden" name="cedula" id="cedula" value="">     
+
+  <p id='Socio' ></p>
 
 
     <p>Datos de la finca:</p>
@@ -296,6 +299,8 @@
 
     <div id="cajaFinca" style='display:none ;'>
 
+
+
         <p>Datos personales:</p>
 
              <table>
@@ -362,6 +367,7 @@
                     </td>     
 
                     </tr>
+
                                 <tr><td><br><p>Dirección de la Finca</p></td></tr>
                 <tr>
                     <td>

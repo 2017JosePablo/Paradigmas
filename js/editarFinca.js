@@ -16,8 +16,6 @@ $(document).ready(function() {
                 $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
 //
                     var array = JSON.parse(data);
-
-                    alert(data);
                     
 
                     document.getElementById('registrarFinca').style="display:none";
@@ -55,6 +53,8 @@ $(document).ready(function() {
                 if(result[1]=='Mod'){
 
                      $.post('../business/fincaAction.php', {fincamodificar:result[0]}, function(data){
+
+                        document.getElementById("Socio").innerHTML = '----------------'+result[0]+'----------------';
 
 
                         document.getElementById("cedula").value = result[0];
