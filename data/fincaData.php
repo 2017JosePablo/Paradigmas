@@ -83,10 +83,19 @@ class FincaData extends Data{
 
        $result = $conn->query($sql);
         if($result->num_rows > 0) {
-            return 1;
+            while($row = $result->fetch_assoc()) {
+                $fincaareatemporal =$row["fincaarea"];
+             }
+
         }else{
-            return 0;
-        }        
+        }    
+
+        if ($fincaareatemporal == 0) {
+             return 0;
+            }else{
+                
+             return 1;
+            }    
 
     }
 
