@@ -37,6 +37,7 @@ class FincaData extends Data{
     }
 
 
+
     public function  obtenerDatosFinca($cedulasocio){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
@@ -61,6 +62,39 @@ class FincaData extends Data{
 
                 "fincaprovincia"=>$row["fincaprovincia"], "fincacanton"=>$row["fincacanton"],"fincadistrito"=>$row["fincadistrito"]
                     ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatiponombre"=>$row["fincatiponombre"],"tipoactividadnombre"=>$row["tipoactividadnombre"]];
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        
+        return json_encode($socioinformacion);
+    }
+
+
+
+    public function  obtenerDatosFincaModificar($cedulasocio){
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        if (!$conn) {
+            die("Connection failed: ".mysqli_connect_error());
+        }
+
+        $socioinformacion = "";
+        $sql = "SELECT  tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
+            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos,
+            tbfincatipo.fincatipoid , tbtipoactividad.tipoactividadid
+            FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid 
+            INNER JOIN  tbfincatipo 
+            ON  tbfincatipo.fincatipoid = tbsocio.fincatipoid INNER JOIN tbtipoactividad   ON tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
+ 
+            AND tbsocio.sociocedula = '".$cedulasocio."' ; ";
+
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+
+                $socioinformacion = ["fincaprovincia"=>$row["fincaprovincia"], "fincacanton"=>$row["fincacanton"],"fincadistrito"=>$row["fincadistrito"]
+                    ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatipoid"=>$row["fincatipoid"],"tipoactividadid"=>$row["tipoactividadid"]];
             }
         }else{
             echo "0 results";
