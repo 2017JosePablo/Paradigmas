@@ -122,11 +122,15 @@
         
 */
 
-        include 'socioData.php';
-        $socioBusiness = new socioData();
-
-        echo "Socio: ".$socioBusiness->editarEstado("503930363");
-
+        include 'fincaData.php';
+        $socioBusiness = new fincaData();
+        $fincas = json_decode($socioBusiness->obtenerDatosFinca("503930363"),true);
+        
+        echo $fincas["socionombre"]."</br>";
+        
+        echo $fincas["socioprimerapellido"]."</br>";
+        echo $fincas["sociosegundoapellido"]."</br>";
+        echo $fincas["fincacantidadbobinos"]."</br>";
 
 
 

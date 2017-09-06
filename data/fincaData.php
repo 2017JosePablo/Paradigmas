@@ -36,7 +36,7 @@ class FincaData extends Data{
 
     }
 
-    
+
     public function  obtenerDatosFinca($cedulasocio){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
@@ -46,7 +46,7 @@ class FincaData extends Data{
         $socioinformacion = "";
         $sql = "SELECT tbsocio.socionombre, tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido, tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
             tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid 
-            AND tbsocio.sociocedula = '".$cedulasocio."'' ; ";
+            AND tbsocio.sociocedula = '".$cedulasocio."' ; ";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
