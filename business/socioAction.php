@@ -15,7 +15,7 @@
 		$result = $socioBusiness->devolverDatosSocio($_POST['tipoactividad']);
 		
 		//echo $result; 
-		echo "hola pablooo";
+		echo "hola pablooo".$_POST['tipoactividad'];
 	}
 
 
