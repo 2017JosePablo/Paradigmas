@@ -16,6 +16,8 @@ $(document).ready(function() {
                 $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
 
                     var array = JSON.parse(data);
+                    
+                    alert(data);
 
                     document.getElementById('registrarFinca').style="display:none";
                     document.getElementById('datosDireccion').style='display:none';
@@ -40,7 +42,9 @@ $(document).ready(function() {
                     document.getElementById('prov').value = getProvincia(array['fincaprovincia']);
                     document.getElementById('can').value = getCanton(array['fincaprovincia'],array['fincacanton']);
                     document.getElementById('dis').value = getDistrito(array['fincaprovincia'],array['fincacanton'],array['fincadistrito']);
-                    document.getElementById('pueb').value = array['fincaexacta'];
+                    document.getElementById('pueb').value = array['fincapueblo'];
+
+                    document.getElementById("dir").value = array['fincaexacta'];
                     
                 });
 
@@ -48,22 +52,19 @@ $(document).ready(function() {
             }else{
                 if(result[1]=='Mod'){
 
+                     $.post('../business/fincaAction.php', {fincamodificar:result[0]}, function(data){
 
 
-                     $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
+                        document.getElementById("cedula").value = result[0];
+
                         var array = JSON.parse(data);
 
                         document.getElementById("actualizar").style="display:block";
                         document.getElementById("finalizar").style='display:none';
                         document.getElementById('registrarFinca').style="display:block";
 
-                        
-
-                    
-
-                    document.getElementById('cajaFinca').style='display:none';
-                    document.getElementById('datosDireccion').style='display:block';
-
+                        document.getElementById('cajaFinca').style='display:none';
+                        document.getElementById('datosDireccion').style='display:block';
 
                         document.getElementById("cedula").value = result[0];
                         document.getElementById("fincaarea").value = array['fincaarea'];
@@ -75,16 +76,52 @@ $(document).ready(function() {
                     //document.getElementById('can').value = getCanton(array['fincaprovincia'],array['fincacanton']);
                     //document.getElementById('dis').value = getDistrito(array['fincaprovincia'],array['fincacanton'],array['fincadistrito']);
 
+                        var tipoactividadid = array['tipoactividadid'];
+                        var fincatipoid = array['fincatipoid'];
 
-                    document.getElementById('fincapueblo').value = array['fincapueblo'];
-                    document.getElementById("fincaexacta").value = array['fincaexacta'];
+
+                        $("input:radio").removeAttr("checked");
+
+                        $('#'+tipoactividadid+'-actividad').attr('checked',true);
+
+                        $('#'+fincatipoid+'-tipo').attr('checked',true);
+
+
+                        document.getElementById('fincapueblo').value = array['fincapueblo'];
+                        document.getElementById("fincaexacta").value = array['fincaexacta'];
 
                     
                 });
 
+                }else{
+                if(result[1]=='Reg'){
+
+                     $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
+
+                        if(data  == 1){
+                            alert("Posee Datos");
+                        }else{
+                            alert('No tiene Ninguna FInca');
+
+                             document.getElementById('cajaFinca').style='display:none'
+                    document.getElementById('actualizar').style = 'display:none';
+                    document.getElementById('registrarFinca').style="display:block ";
+                    document.getElementById('finalizar').style='display:block';
+                    document.getElementById('frm').reset(); 
+
+                    document.getElementById('datosDireccion').style='display:block';
+                    document.getElementById("cedula").value = result[0];
+                        }
+
+
+                    });
+
+                   
+
                 }
             }
 
+            }
     		
 
     	}

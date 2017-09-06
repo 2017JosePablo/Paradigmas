@@ -94,19 +94,6 @@
 
             }
 
-            function agregarNuevaFinca(){
-              document.getElementById('cajaFinca').style='display:none'
-              document.getElementById('actualizar').style = 'display:none';
-              document.getElementById('registrarFinca').style="display:block ";
-              document.getElementById('finalizar').style='display:block';
-              document.getElementById('frm').reset(); 
-
-              document.getElementById('datosDireccion').style='display:block';
-
-        
-
-            }
-
            
         </script>
 
@@ -125,7 +112,7 @@
       $fincaBusiness = new fincaBusiness();
 
       $fincas = $fincaBusiness->  obtenerTodosTBfinca();
-        echo "<table border ='1'><tr><td align = 'center' colspan = '5'>Informacion Finca Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td align = 'center' colspan = '2'>Acciones </td>
+        echo "<table border ='1'><tr><td align = 'center' colspan = '6'>Informacion Finca Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td align = 'center' colspan = '3'>Acciones </td>
         </tr>";
 
         foreach ($fincas as $current) {     
@@ -138,6 +125,7 @@
           echo "<td>".$current->getSegundoApellido()."</td>";
           echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Ver'>Ver</button></td>";
           echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Mod'>Modificar</button></td>";
+          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Reg'>Registrar</button></td>";
           echo "<tr>";
           
 
@@ -147,13 +135,10 @@
 
     ?>
 
-
-<input  type="reset" onclick="agregarNuevaFinca()" value="Agregar una nueva finca ">
-
-
 <div  id="registrarFinca" style='display:none ;' >
 
   <form id = 'frm' method="post"  action="../business/fincaAction.php"> 
+
   <input type="hidden" name="cedula" id="cedula" value="">     
 
 
@@ -394,6 +379,8 @@
                     </td>
 
                  <td>Pueblo :<input  type="text"  id = 'pueb' readonly >
+
+                 <td>Otros señas :<input  type="text"  id = 'dir' readonly >
 
             </tr>
 
