@@ -172,6 +172,8 @@
     </head>
     <body>
 
+    <p id="notificacionSocio" style="color: red"></p>
+
 
 
 <?php
@@ -537,18 +539,18 @@
 
             <tr>
                 <td>
-                    Tipo de Actividad : <p id="tipoActividad"></p>
+                    Tipo de Actividad : <input  type="text"  id = 'tipoActi' readonly >
                 </td>
 
             </tr>
             <tr>
                 <td>
-                    Tipo Finca : <p id="tipoFinca"></p>
+                    Tipo Finca : <input  type="text"  id = 'tipoFinc' readonly >
                 </td>
             </tr>
             <tr>                
                 <td>
-                    Estado Socio : <p id="estado"></p>
+                    Estado Socio : <input  type="text"  id = 'esta' readonly >
                 </td>
             </tr>
         </table>

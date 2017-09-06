@@ -11,6 +11,7 @@ $(document).ready(function() {
         var result = cedula.split('-');
 
         if(result[1] == 'Mod'){
+            document.getElementById('notificacionSocio').innerHTML = ''
             
             document.getElementById("cedulaVieja").value = cedula;
 
@@ -50,11 +51,7 @@ $(document).ready(function() {
         });
 
         }else if(result[1] == 'Ver'){
-             var tipoactividadid ;
-            var fincatipoid ;
-            var tipoEstado ;
-            
-
+            document.getElementById('notificacionSocio').innerHTML = ''
 
             document.getElementById('cajaVerSocio').style.display = 'block';
             document.getElementById('cajaFormulario').style.display='none';
@@ -66,7 +63,6 @@ $(document).ready(function() {
 
             var array = JSON.parse(data);
 
-            alert(array['sociofechaingreso']);
 
             document.getElementById('cedula').value = array['sociocedula'];
             document.getElementById('nombre').value = array['socionombre'];
@@ -88,49 +84,46 @@ $(document).ready(function() {
             document.getElementById('can').value = getCanton(array['socioprovincia'],array['sociocanton']);
             document.getElementById('dis').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
             document.getElementById('pueb').value = array['sociopueblo'];
-
-
-
-            });
 
             $.post('../business/socioAction.php', {tipoactividad:tipoactividadid,fincatipo:fincatipoid,estado:tipoEstado}, function(data){
 
-            //var array = JSON.parse(data);
+            var arraySocio = JSON.parse(data);
 
-            alert(data);
-/*
-
-            document.getElementById('cedula').value = array['sociocedula'];
-            document.getElementById('nombre').value = array['socionombre'];
-            document.getElementById('primerapellido').value = array['socioprimerapellido'];
-            document.getElementById('segundoapellido').value = array['sociosegundoapellido'];
-            document.getElementById('telmovil').value = array['sociotelefono'];
-            document.getElementById('correo').value = array['sociocorreo'];
-
-            var fecha = array['sociofechaingreso'].split('-');
-            var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
-            document.getElementById('fechaS').value = fechaSalida;
-
-
-            var tipoactividadid = array['tipoactividadid'];
-            var fincatipoid = array['fincatipoid'];
-            var tipoEstado = array['estadosociodetalle'];
-
-            document.getElementById('prov').value = getProvincia(array['socioprovincia']);
-            document.getElementById('can').value = getCanton(array['socioprovincia'],array['sociocanton']);
-            document.getElementById('dis').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
-            document.getElementById('pueb').value = array['sociopueblo'];
-
-            */
+            document.getElementById("tipoActi").value = '';
+            document.getElementById("tipoFinc").value = '';
+            document.getElementById("esta").value = '';
+            document.getElementById("tipoActi").value = arraySocio['tipoactividadnombre'];
+            document.getElementById("tipoFinc").value = arraySocio['fincatiponombre'];
+            document.getElementById("esta").value = arraySocio['socioestadodetalle'];
 
             });
+
+
+
+            });
+
+
 
              
            
                 
             
         } else if(result[1] == 'Desac'){
-            alert("Desactivar Socio");
+            document.getElementById('cajaVerSocio').style.display = 'none';
+            document.getElementById('cajaFormulario').style.display='none';
+           
+             
+             $.post('../business/socioAction.php', {desactivar:result[0]}, function(data){
+                
+                alert(data);
+
+                if(data == 1){
+                     document.getElementById('notificacionSocio').innerHTML = 'Socio Desactivado';
+                }else{
+                     document.getElementById('notificacionSocio').innerHTML = 'No se puede Desactivar ';
+                }
+             });
+
         }
     }
         
