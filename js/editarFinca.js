@@ -14,10 +14,11 @@ $(document).ready(function() {
             if(result[1]=='Ver'){
 
                 $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
-
+//
                     var array = JSON.parse(data);
-                    
+
                     alert(data);
+                    
 
                     document.getElementById('registrarFinca').style="display:none";
                     document.getElementById('datosDireccion').style='display:none';
@@ -45,6 +46,7 @@ $(document).ready(function() {
                     document.getElementById('pueb').value = array['fincapueblo'];
 
                     document.getElementById("dir").value = array['fincaexacta'];
+                    
                     
                 });
 
