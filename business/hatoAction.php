@@ -87,13 +87,9 @@
 
 					$hatoBusiness = new hatoBusiness();		
 
-					$resultado2 = $hatoBusiness->insertarTBHato($hato);
-					if ($resultado2 == 1) {
-						require './hatoActividadBusiness.php';
-						$hatoActividadBusiness = new hatoActividadBusiness();
-						$resultado2=$hatoActividadBusiness->insertarTBHatoActividad($socioid,$_POST['tipoactividad']);
-					
-							header("location: ../index.php?success=inserted");	
+					$resultado = $hatoBusiness->actualizarTBHato($hato);
+					if ($resultado == 1) {
+						header("location: ../index.php?success=inserted");	
 					
 					}else{
 							header("location: ../view/hatoView.php?error=error");			
