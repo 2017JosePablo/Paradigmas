@@ -41,7 +41,7 @@
 
 		public function actualizarTBfincaDireccion($fincadireccion)
 		{
-			return $this->fincaData ->actualizarTBfincaDireccion($fincadireccion);
+			return $this->fincaData ->actualizarTBFincaDireccion($fincadireccion);
 		}
 
 
