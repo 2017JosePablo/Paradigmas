@@ -8,14 +8,11 @@
 		echo $result; 
 	}
 
-	if(isset($_POST['tipoactividad'])==true && empty($_POST['tipoactividad'])== false  /*&& isset($_POST['fincatipo'])==true && empty($_POST['fincatipo'])== false && isset($_POST['estado'])==true && empty($_POST['estado'])== false */){
+	if(isset($_POST['tipoactividad'])==true && empty($_POST['tipoactividad'])== false && isset($_POST['fincatipo'])==true && empty($_POST['fincatipo'])== false && isset($_POST['estado'])==true && empty($_POST['estado'])== false ){
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
-	//	$result = $socioBusiness->devolverDatosSocio($_POST['tipoactividad'],$_POST['fincatipo'],$_POST['estado']);
-		$result = $socioBusiness->devolverDatosSocio($_POST['tipoactividad']);
-		
-		//echo $result; 
-		echo "hola pablooo".$_POST['tipoactividad'];
+		$result = $socioBusiness->devolverDatosSocio($_POST['tipoactividad'],$_POST['fincatipo'],$_POST['estado']);
+		echo $result;
 	}
 
 
