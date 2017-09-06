@@ -55,6 +55,7 @@
 
 		require './fincaBusiness.php';
 		require './socioBusiness.php';
+		//include '../domain/finca.php';
 		include '../domain/fincaDireccion.php';
 		$socioBusiness= new socioBusiness();
 

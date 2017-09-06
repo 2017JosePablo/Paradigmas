@@ -1,6 +1,7 @@
 <?php
 class Hato{
 	private $propietarioid;
+	private $listarazas;
 	private $terneros;
 	private $terneras;
 	private $novillos;
@@ -9,8 +10,9 @@ class Hato{
 	private $toros;
 	private $vacas;
 
-	function Hato($propietarioid,$terneros,$terneras,$novillos,$novillas,$novillasprenadas,$toros,$vacas){
+	function Hato($propietarioid,$listarazas,$terneros,$terneras,$novillos,$novillas,$novillasprenadas,$toros,$vacas){
 		$this->propietarioid = $propietarioid;
+		$this->listarazas = $listarazas;
 		$this->terneros = $terneros;
 		$this->terneras =  $terneras;
 		$this->novillos = $novillos;
@@ -27,6 +29,15 @@ class Hato{
 	public function getPropietario(){
 		return $this->propietarioid;
 	}
+
+	public function setListadoRazas($listarazas){
+		$this->listarazas = $listarazas;
+	}
+	public function getListadoRazas(){
+		return $this->listarazas;
+	}
+
+
 	public function setTerneros($terneros){
 		$this->terneros = $terneros;
 	}
