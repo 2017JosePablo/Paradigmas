@@ -60,7 +60,7 @@ class FincaData extends Data{
                 $socioinformacion = ["socionombre"=>$row["socionombre"], "socioprimerapellido"=> $row["socioprimerapellido"],"sociosegundoapellido"=>$row["sociosegundoapellido"], 
 
                 "fincaprovincia"=>$row["fincaprovincia"], "fincacanton"=>$row["fincacanton"],"fincadistrito"=>$row["fincadistrito"]
-                    ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"]];
+                    ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatiponombre"=>$row["fincatiponombre"],"tipoactividadnombre"=>$row["tipoactividadnombre"]];
             }
         }else{
             echo "0 results";
