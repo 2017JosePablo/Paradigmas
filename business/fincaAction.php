@@ -16,7 +16,7 @@
 	if(isset($_POST['cedulafinca']) == true && empty($_POST['cedulafinca'])== false){
 		require 'fincaBusiness.php';
 		$fincaBusiness = new fincaData();
-		$result = $fincaBusiness->obtenerDatosFinca($_POST['cedula']);
+		$result = $fincaBusiness->obtenerDatosFinca($_POST['cedulafinca']);
 		echo $result; 
 	}
 
