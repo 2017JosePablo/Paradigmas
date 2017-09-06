@@ -101,11 +101,6 @@ $(document).ready(function() {
 
 
             });
-
-
-
-             
-           
                 
             
         } else if(result[1] == 'Desac'){
@@ -114,8 +109,6 @@ $(document).ready(function() {
            
              
              $.post('../business/socioAction.php', {desactivar:result[0]}, function(data){
-                
-                alert(data);
 
                 if(data == 1){
                      document.getElementById('notificacionSocio').innerHTML = 'Socio Desactivado';

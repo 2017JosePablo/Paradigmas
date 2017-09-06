@@ -172,7 +172,7 @@
     </head>
     <body>
 
-    <p id="notificacionSocio" style="color: red"></p>
+    <p id="notificacionSocio" style="color: red" ></p>
 
 
 
