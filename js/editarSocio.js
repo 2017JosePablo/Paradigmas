@@ -51,6 +51,9 @@ $(document).ready(function() {
         });
 
         }else if(result[1] == 'Ver'){
+            var tipoactividadid;
+            var fincatipoid;
+            var tipoEstado;
             document.getElementById('notificacionSocio').innerHTML = ''
 
             document.getElementById('cajaVerSocio').style.display = 'block';
@@ -76,29 +79,30 @@ $(document).ready(function() {
             document.getElementById('fechaS').value = fechaSalida;
 
 
-            var tipoactividadid = array['tipoactividadid'];
-            var fincatipoid = array['fincatipoid'];
-            var tipoEstado = array['estadosociodetalle'];
+             tipoactividadid = array['tipoactividadid'];
+             fincatipoid = array['fincatipoid'];
+             tipoEstado = array['estadosociodetalle'];
+
+           
 
             document.getElementById('prov').value = getProvincia(array['socioprovincia']);
             document.getElementById('can').value = getCanton(array['socioprovincia'],array['sociocanton']);
             document.getElementById('dis').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
             document.getElementById('pueb').value = array['sociopueblo'];
 
+            
+
+
+
+            });
             $.post('../business/socioAction.php', {tipoactividad:tipoactividadid,fincatipo:fincatipoid,estado:tipoEstado}, function(data){
+                 alert(tipoactividadid+" "+fincatipoid+" "+tipoEstado);
 
             var arraySocio = JSON.parse(data);
 
-            document.getElementById("tipoActi").value = '';
-            document.getElementById("tipoFinc").value = '';
-            document.getElementById("esta").value = '';
             document.getElementById("tipoActi").value = arraySocio['tipoactividadnombre'];
             document.getElementById("tipoFinc").value = arraySocio['fincatiponombre'];
             document.getElementById("esta").value = arraySocio['socioestadodetalle'];
-
-            });
-
-
 
             });
                 
