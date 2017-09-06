@@ -15,7 +15,12 @@
 		echo $result;
 	}
 
-
+	if (isset($_POST['desactivar'])== true && empty($_POST['desactivar'])== false ){
+		require 'socioBusiness.php';
+		$socioBusiness = new socioData();
+		$result = $socioBusiness->editarEstado($_POST['desactivar']);
+		echo $result;
+	}
 
 	if (isset($_POST['agregarsocio'])) {
 
@@ -36,11 +41,7 @@
 		$tipofinca =  $_POST['tipofinca'];
 		$fechaingreso = $_POST['fecha'];
 
-		$sociodetalle = $_POST['socioestado'];		
-
-
-
-
+		$sociodetalle = $_POST['socioestado'];
 		
 
 		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {	
@@ -171,7 +172,7 @@
 			header("location: ../view/socioView.php?error=emptyFile");
 		}
 
-	} 
+	}
 
 
 
