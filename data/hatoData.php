@@ -1,7 +1,7 @@
 <?php
 
-//include 'data.php';
-require_once 'data.php';
+
+include 'data.php';
 include '../domain/hato.php';
 
 class hatoData extends Data{
@@ -9,7 +9,7 @@ class hatoData extends Data{
 	 private $data;
 
     function __construct(){ 
-
+       
         $this->data = new Data();
     }
      public function insertarTBHato($hato) {

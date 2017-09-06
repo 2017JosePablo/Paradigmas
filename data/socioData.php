@@ -1,13 +1,14 @@
 <?php
 
-require_once 'data.php';
+
 include '../domain/socio.php';
 
-class socioData extends Data{
+class socioData {
 
 	public $data;
 
-    function __construct(){ 
+    function socioData(){ 
+        require 'data.php';
         $this->data = new Data();
     }
      public function insertarTBSocio($socio) {

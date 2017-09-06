@@ -1,15 +1,16 @@
 <?php
 
-	include 'data.php';
 
-	require_once '../domain/raza.php';
-	class razaData extends data
+	include_once 'data.php';
+	include '../domain/raza.php';
+	class razaData 
 	{
 
 		private  $data ;
 		
 		function __construct()
 		{
+		
 			$this->data = new Data();
 		}
 

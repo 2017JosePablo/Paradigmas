@@ -17,32 +17,6 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script type="text/javascript">
-
-
-            function validar(){
-                var todo_correcto = true;  
-                if(document.getElementById("listaProvincias").value <0){
-                     todo_correcto = false;
-                }
-
-                if (!todo_correcto) {
-                    alert('Seleccione una Provincia'+document.getElementById("listaProvincias").value );    
-                }
-                    return todo_correcto;
-                
-            }
-            function mostrarFormularioSocio(){
-                document.getElementById("cajaFormulario").style.display='block';
-                document.getElementById("btnModificar").style.display='none';
-                document.getElementById("btnAgregar").style.display='block';
-                document.getElementById("frm").reset(); 
-                $("input:radio").removeAttr("checked");
-                $('#1-actividad').attr('checked',true);
-                $('#1-tipo').attr('checked',true);
-                $('#1-estado').attr('checked',true);
-            }
-        </script>
 
 
     <body>
@@ -60,17 +34,6 @@
     
 ?>
 
-
-
-
-
-<div id="mostrarInformacion" style="background: red">
-
-</div>
-
-<input type="hidden" id="provincia" name="socioprovincia" value="">
-<input type="hidden" id="canton" name="sociocanton" value="">
-<input type="hidden" id="distrito" name="sociodistrito" value="">
 
 
 
@@ -172,37 +135,30 @@
 
         </table>
 
-
-
-        <?php
- 
-          include_once '../business/razaBusiness.php';
-            $razaBusiness = new razaBusiness();
-
-            $todasRazas = $razaBusiness->obtenerTodoTBRaza();
-            echo '<table border = "1"> <tr>  <td align = "center" colspan = "4">Listado de razas </td> </tr><tr><td>Id</td>  <td>Nombre de la Raza</td><td colspan="2">Acciones</td> </tr>';
-
-            foreach ($todasRazas as $current) {     
-                echo '<tr>';
-                echo '<td>  <input type="check"> </td>';
-                echo '<td> '.$current->getNombreRaza().'</td>';
-                echo '</tr>';
-            }
-                echo '</table>';
-
-                 
-            ?>
-
-
-
+  
 
 
             <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
 
+      <?php
+            
+            include '../business/razaBusiness.php';
+            $razaBusiness = new razaBusiness();
+            $todasRazas = $razaBusiness->obtenerTodoTBRaza();
+            echo '<table border = "1"> <tr>  <td align = "center" >Listado de razas </td> </tr><tr><td >Nombre de la Raza</td></tr>';
 
+            foreach ($todasRazas as $current) {     
+                echo '<tr>';
+                echo '<td> <input type="checkbox" id="'.$current->getIdRaza().'" value="'.$current->getIdRaza().'"> </td>';
+                echo '<td> '.$current->getNombreRaza().'</td>';
+
+                echo '</tr>';
+            }
+                echo '</table>';
+
+
+?>
 </form>
-
-
 
 
 
@@ -212,6 +168,6 @@
 
     <a href="../index.php">Regresar</a>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../js/editarSocio.js"></script>
+   
 </body>
 </html>

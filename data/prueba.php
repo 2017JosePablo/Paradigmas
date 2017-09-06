@@ -122,20 +122,28 @@
         
 */
 
-        include 'fincaData.php';
-        $socioBusiness = new fincaData();
-     
+ 
+     include 'razaData.php';
+            $razaBusiness = new razaData();
 
-        
-        echo $socioBusiness->verificarFinca("11")."</br>";            
-   
+            $todasRazas = $razaBusiness->obtenerTodoTBRaza();
+            echo '<table border = "1"> <tr>  <td align = "center" colspan = "4">Listado de razas </td> </tr><tr><td>Id</td>  <td>Nombre de la Raza</td><td colspan="2">Acciones</td> </tr>';
 
+            foreach ($todasRazas as $current) {     
+                echo '<tr>';
+                echo '<td>  '.$current->getIdRaza() . ' </td>';
+                echo '<td> '.$current->getNombreRaza().'</td>';
 
+                echo '<td> <a href="../business/razaAction.php?ideliminar='.$current->getIdRaza().'"> Eliminar</a> </td>';
 
+                 echo "<td> <a href='' onclick=loadJunta('".$current->getIdRaza()."') > Modificar</a> </td>";
 
-    ?>
+                echo '</tr>';
+            }
+                echo '</table>';
 
-
+                 
+            ?>
 
 
 
