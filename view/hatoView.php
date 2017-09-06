@@ -75,9 +75,10 @@
 
 
   <!-- <form method="post" enctype="multipart/form-data" action="../business/socioAction.php"> -->
+    
     <?php
  
-    include '../business/socioBusiness.php';
+    require '../business/socioBusiness.php';
 
 
     $socioBusiness = new socioBusiness();
@@ -96,7 +97,7 @@
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
         echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Ver</button></td>";
         echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Mod'>Modificar</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Desac'>Nuevo</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Reg'>Registrar</button></td>";
         //echo '<td> <a href=""> Eliminar</a> </td>';
         //echo '<td> <a href=""> Modificar</a> </td>';
         echo '</tr>';
@@ -104,6 +105,7 @@
     echo '</table>';
 
              //name='.$current->getIdTBJunta().'
+
     ?>
 
 
@@ -174,9 +176,10 @@
 
 
 
-        <?php
+     <?php
+     
  
-          include_once '../business/razaBusiness.php';
+     require '../business/razaBusiness.php';
             $razaBusiness = new razaBusiness();
 
             $todasRazas = $razaBusiness->obtenerTodoTBRaza();
@@ -184,15 +187,19 @@
 
             foreach ($todasRazas as $current) {     
                 echo '<tr>';
-                echo '<td>  <input type="check"> </td>';
+                echo '<td>  '.$current->getIdRaza() . ' </td>';
                 echo '<td> '.$current->getNombreRaza().'</td>';
+
+                echo '<td> <a href="../business/razaAction.php?ideliminar='.$current->getIdRaza().'"> Eliminar</a> </td>';
+
+                 echo "<td> <a href='' onclick=loadJunta('".$current->getIdRaza()."') > Modificar</a> </td>";
+
                 echo '</tr>';
             }
                 echo '</table>';
 
                  
             ?>
-
 
 
 
@@ -211,7 +218,9 @@
 
 
     <a href="../index.php">Regresar</a>
+
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../js/editarSocio.js"></script>
+    <script src="../js/editarHato.js"></script>
+
 </body>
 </html>
