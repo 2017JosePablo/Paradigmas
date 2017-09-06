@@ -130,15 +130,11 @@
 
 		$tipoactividad = $_POST['tipoactividad'];
 		$tipofinca =  $_POST['tipofinca'];
-//		$fechaingreso = $_POST['fecha'];
 
 		$sociodetalle = $_POST['socioestado'];		
 
 
 		$fecha = explode("/", $_POST['fecha']);		
-//		list($mes, $dia, $anuo) = split('[/.-]', $_POST['fecha']);
-
-		//$fechaingreso = $anuo.'-'.$mes.'-'$dia;
 
 		$fechaingreso = $fecha[2] .'-'.$fecha[0].'-'.$fecha[1] ;
 
