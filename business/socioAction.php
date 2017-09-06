@@ -51,8 +51,8 @@
 			require 'fincaBusiness.php';
 			require_once '../domain/socioDireccion.php';
 			require_once '../domain/fincaDireccion.php';
-			require_once '../domain/hato.php';
-			require_once '../domain/finca.php';
+			//require_once '../domain/hato.php';
+			//require_once '../domain/finca.php';
 			$socioBusiness = new socioBusiness();
 				
 			if($socioBusiness->verificarCedula($cedula)==0){
