@@ -61,7 +61,7 @@
 		$idSocio=$socioBusiness->getSocioId($fincaid);
 		$fincaBusiness = new fincaBusiness();
 		$finca = new Finca($idSocio,$idSocio,$fincaarea,$cantidadbobinos);
-		$resultado = $fincaBusiness ->actualizarTBfinca($finca);
+		$resultado2 = $fincaBusiness ->actualizarTBfinca($finca);
 
 
 		$fincaDireccion = new FincaDireccion($idSocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
