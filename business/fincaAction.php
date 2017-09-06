@@ -22,8 +22,8 @@
 
 
  if(isset($_POST['finalizar'])){
-	
-	$sociofinca = $_POST['socioFinca'];
+
+	$fincaid = $_POST['cedula'];
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
 	$listaProvincias =$_POST['listaProvincias'];
@@ -31,70 +31,45 @@
 	$listadoDistrito=$_POST['listadoDistrito'];
 	$fincapueblo =$_POST['fincapueblo'];
 	$fincaexacta =$_POST['fincaexacta'];
+	$tipoactividad =$_POST['tipoactividad'];
+	$fincatipo =$_POST['fincatipo'];
 
 
-	if(isset($sociofinca) && isset($fincaarea) &&isset($cantidadbobinos) &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)){
-
-			require './fincaBusiness.php';
-			require './socioBusiness.php';
-			include '../domain/fincaDireccion.php';
-			$socioBusiness= new socioBusiness();
-			$idsocio=$socioBusiness->getSocioId($sociofinca);
-			
-			$fincaBusiness = new fincaBusiness();
-			$finca = new Finca($idsocio,$idsocio,$fincaarea,$cantidadbobinos);
-
-			$fincaDireccion = new FincaDireccion($idsocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
-			
-		
-			$resultado2 = $fincaBusiness ->actualizarTBfinca($finca);
-			$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion);
-
-			
-	
-
-			if ($resultado1 == 1 && $resultado2 == 1) {
-				echo "Finca actualizada con exito";
-				header("location: ../index.php?success=actualizado");
-			}else{
-				if($resultado2!=1){
-					header("location: ../view/fincaView.php?error=errorActualizarFinca");
-
-				}else{
-					if($resultado1!=1){
-						header("location: ../view/fincaView.php?error=errorActualizarDireccion");
-					}
-				}
-				
-			}
-
-	}else{
-		echo "Datos vacios...</br>";
-	}
-
-}else if(isset($_POST['actualizar'])){
-
-	$fincaid = $_POST['cedula'];
-
-	$fincaarea =$_POST['fincaarea'];
-	$cantidadbobinos =$_POST['cantidadbobinos'];
-	
-	echo "Socio: ".$fincaid;
-
-
-	if(isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)){
+	if(isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($tipoactividad)&&isset($fincatipo)){
 
 		require './fincaBusiness.php';
+		require './socioBusiness.php';
+		include '../domain/fincaDireccion.php';
+		$socioBusiness= new socioBusiness();
 
+		$idSocio=$socioBusiness->getSocioId($fincaid);
 		$fincaBusiness = new fincaBusiness();
-		$finca = new Finca($fincaid,$fincaid,$fincaarea,$cantidadbobinos);
-
+		$finca = new Finca($idSocio,$idSocio,$fincaarea,$cantidadbobinos);
 		$resultado = $fincaBusiness ->actualizarTBfinca($finca);
-		if ($resultado == 1) {
-				echo "Finca actualizada con exito";
-				header("location: ../index.php?success=actualizado");
+
+
+		$fincaDireccion = new FincaDireccion($idSocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
+		$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion);
+
+		$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo,$tipoactividad);
+
+		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1) {
+			echo "Finca actualizada con exito";
+			header("location: ../index.php?success=actualizado");
 		}else{
-			header("location: ../view/fincaView.php?error=errorActualizarFinca");
+			if($resultado2!=1){
+				header("location: ../view/fincaView.php?error=errorActualizarFinca");
+
+			}else{
+				if($resultado1!=1){
+					header("location: ../view/fincaView.php?error=errorActualizarDireccion");
+				}else{
+					if($resultado3!=1){
+						header("location: ../view/fincaView.php?error=errorActualizarActividades");
+					}	
+				}
+			}
+			
 		}
 
 	}else{

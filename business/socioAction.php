@@ -12,7 +12,7 @@
 			$socioBusiness = new socioData();
 			$result = $socioBusiness->obtenerUnTBSocio($_POST['versocio']);
 			echo $result; 
-		}
+	}
 
 
 
