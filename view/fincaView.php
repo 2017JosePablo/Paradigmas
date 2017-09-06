@@ -95,9 +95,11 @@
             }
 
             function agregarNuevaFinca(){
+              document.getElementById('cajaFinca').style='display:none'
               document.getElementById('actualizar').style = 'display:none';
               document.getElementById('registrarFinca').style="display:block ";
               document.getElementById('finalizar').style='display:block';
+              document.getElementById('frm').reset(); 
 
               document.getElementById('datosDireccion').style='display:block';
 
@@ -123,22 +125,19 @@
       $fincaBusiness = new fincaBusiness();
 
       $fincas = $fincaBusiness->  obtenerTodosTBfinca();
-        echo "<table border ='1'><tr><tr><td align = 'center' colspan = '9'>Informacion Finca Socio</td></tr><td>Cedula </td><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td>Tamano de Finca</td> <td>Cantidad de bobinos </td> <td>Tipo de Finca </td> <td>Tipo de Actividad</td><td>Acciones</td></tr>";
+        echo "<table border ='1'><tr><td align = 'center' colspan = '5'>Informacion Finca Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td align = 'center' colspan = '2'>Acciones </td>
+        </tr>";
 
         foreach ($fincas as $current) {     
 
             //echo "<td>".$fincas["socionombre"]."  </td>";
 
           echo "<tr>";
-          echo "<td>".$current->getCedula()."  </td>";
           echo "<td>".$current->getNombre()."</td>";
           echo "<td>".$current->getPrimerApellido()."</td>";
           echo "<td>".$current->getSegundoApellido()."</td>";
-          echo "<td>".$current->getArea()."  </td>";
-          echo "<td>".$current->getCantidadBovinos()."  </td>";
-          echo "<td>".$current->getFincaTipo()."  </td>";
-          echo "<td>".$current->getTipoActividad()."  </td>";
-          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."'>Modificar</button></td>";
+          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Ver'>Ver</button></td>";
+          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Mod'>Modificar</button></td>";
           echo "<tr>";
           
 
@@ -149,28 +148,13 @@
     ?>
 
 
-<input  type="submit"onclick="agregarNuevaFinca()" value="Agregar una nueva finca ">
+<input  type="reset" onclick="agregarNuevaFinca()" value="Agregar una nueva finca ">
 
 
 <div  id="registrarFinca" style='display:none ;' >
 
-  <form method="post"  action="../business/fincaAction.php"> 
+  <form id = 'frm' method="post"  action="../business/fincaAction.php"> 
   <input type="hidden" name="cedula" id="cedula" value="">     
-</br>
-    <?php
- 
-       include '../business/socioBusiness.php';
-      $socioBusiness = new socioBusiness();
-
-      $socios = $socioBusiness->  obtenerTodosTBSocio();
-       echo "<select name = 'socioFinca' id = 'socioFinca'> ";
-      foreach ($socios as $current) {     
-        echo "<option  value = '".$current->getCedula()."'>";
-        echo   $current->getCedula() .' -- '. $current->getNombre() .' '.$current->getPrimerApellido() .' '.$current->getSegundoApellido();
-        echo "</option>";
-          }
-      echo "</select>";
-    ?>
 
 
     <p>Datos de la finca:</p>
@@ -186,7 +170,6 @@
                     </td>
 
                    
-                    <td>Tipo de Cerca</td>
 
                 </tr>
                 <tr>
@@ -200,15 +183,7 @@
 
                    
 
-                    <td>
-                        <select id="ficatipocerca" name="ficatipocerca" class="form-control" onclick="provinciaSeleccionada()">
-                          <option value="-1">Seleccione un tipo cerca</option>
-                          <option value="1">Puas</option>
-                          <option value="2">Electrica</option>
-                          <option value="3">Mixta</option>
-            
-                        </select>
-                    </td>
+                   
 
                     </tr>
                 
@@ -218,7 +193,7 @@
 
                 <table>
 
-                    <tr><td><br><p>Datos de Dirección</p></td></tr>
+                    <tr><td><br><p>Dirección Finca</p></td></tr>
                       <tr>
 
                       <td>
@@ -266,7 +241,64 @@
 
 
             <br> <br> <br>
-  </div>
+
+             <?php
+         
+             include '../business/actividadBusiness.php';
+                    $actividadBusiness = new actividadBusiness();
+                    $actividades = $actividadBusiness->obtenerTodosTBActividad();
+                    echo "Tipo Actividad";
+                    echo "</br>";
+                     echo '<table>';
+                    foreach ($actividades as $current) {     
+                        echo '<tr>';
+                        if($current->getId()==1){
+                             echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad' checked='' value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
+                        }else{
+                              echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad'  value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
+                        }            
+                        echo '</tr>';
+                    }
+                 
+       echo '</table>';
+
+            ?>
+
+
+                        <br><br>
+            <p>Tipo de Finca</p>
+                <?php
+             
+             
+                require '../data/tipoFincaData.php';
+                $temp = new tipoFincaData();
+                $tipoFinca = $temp->getAllTBTiposFincas();
+
+            
+                        echo '<table>';
+                        foreach ($tipoFinca as $curren) {
+
+                            echo '<tr>';
+
+                            echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>"; 
+
+                            echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
+                            
+                                      
+                            echo '</tr>';
+                        }
+                        echo '</table>';
+
+                            
+
+                ?>
+      </div>
+
+
+
+        
+
+
             <div id="btnFinalizar">
               <input type="submit" value="Registrar finca" name="finalizar" hidden="" id="finalizar"/><p>
             </div>
@@ -276,6 +308,110 @@
             </div>
         
     </form>
+
+    <div id="cajaFinca" style='display:none ;'>
+
+        <p>Datos personales:</p>
+
+             <table>
+                <tr>
+                    <td>
+                        Cedula
+                    </td>
+
+
+                    <td>
+                        Nombre
+                    </td>
+
+                    <td>
+                        Primer Apellido
+                    </td>
+
+                    <td>
+                        Segundo Apellido
+                    </td>
+
+                </tr>
+               
+
+                <tr>
+                    <td>
+                        <input type="text"  id="ced" readonly>
+                    </td>
+                    <td>
+                        <input  type="text"  id="nombre"  readonly>
+                    </td>
+                    <td>
+                        <input  type="text"  id="primerapellido"  readonly>
+                    </td>       
+                    <td>
+                        <input  type="text" id="segundoapellido"  readonly>
+                    </td>
+                    
+                   
+                </tr>
+                </table>
+
+                 <table>
+                <tr>
+                    <td>
+                        Area de la Finca
+                    </td>
+
+
+                    <td>
+                        Cantidad de Bobinos
+                    </td>
+
+                   
+
+                </tr>
+                <tr>
+
+                    <td>
+                        <input type="text" name="fincaarea" id="area" readonly="" >
+                    </td>
+                    <td>
+                        <input type="text" name="cantidadbobinos" id="bobinos" readonly="" >
+                    </td>     
+
+                    </tr>
+                                <tr><td><br><p>Dirección de la Finca</p></td></tr>
+                <tr>
+                    <td>
+                        Provincia : <input  type="text"  id = 'prov' readonly >
+                         
+                    </td>
+
+                    <td>
+                        Canton : <input  type="text"  id = 'can' readonly >
+                  
+                    </td>
+                    
+                    <td>
+                        Distrito : <input  type="text"  id = 'dis' readonly >
+                    </td>
+
+                 <td>Pueblo :<input  type="text"  id = 'pueb' readonly >
+
+            </tr>
+
+            <tr>
+                <td>
+                    Tipo de Actividad : <input  type="text"  id = 'tipoActi' readonly >
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    Tipo Finca : <input  type="text"  id = 'tipoFinc' readonly >
+                </td>
+            </tr>
+            </table>
+
+      
+    </div>
      <a href="../index.php">Regresar</a>
 
 

@@ -65,6 +65,11 @@
 			return $this->dataSocio->actualizarTBSocio($socio);
 		}
 
+		public function actualizarDatoActividad($id,$tipoFInca,$tipoActividad){
+			return $this->dataSocio->actualizarDatoActividad($id,$tipoFInca,$tipoActividad);
+		}
+
+
 	}
 
 
