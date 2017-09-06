@@ -81,7 +81,7 @@
 					header("location: ../view/fincaView.php?error=errorActualizarDireccion");
 				}else{
 					if($resultado3!=1){
-						echo "resultado3".$resultado3;
+						echo "resultado3".@$resultado3;
 						//header("location: ../view/fincaView.php?error=errorActualizarActividades");
 					}	
 				}
