@@ -1,6 +1,6 @@
 <?php
 
-	include '../data/razaData.php';
+	require '../data/razaData.php';
 	/**
 	* 
 	*/

@@ -4,8 +4,6 @@ $(document).ready(function() {
     $('button').click(function() {
 
     	var cedula = $(this).val();
-        alert(cedula);
-
 
 
     	if(cedula.length>0){

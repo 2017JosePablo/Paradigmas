@@ -411,7 +411,7 @@
              <?php
          
          
-                //require '../business/socioBusiness.php';
+                require '../business/socioBusiness.php';
                 $temp = new socioBusiness();
                 $estados = $temp->obtenerSocioEstado();
 

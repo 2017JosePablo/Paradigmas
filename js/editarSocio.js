@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
     $('button').click(function() {
+        alert('MOD');
 
     	var cedula = $(this).val();
 
@@ -12,6 +13,7 @@ $(document).ready(function() {
 
 
         if(result[1] == 'Mod'){
+
 
             document.getElementById('notificacionSocio').innerHTML = ''
             
