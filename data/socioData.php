@@ -1,6 +1,6 @@
 <?php
 
-
+require_once 'data.php';
 include '../domain/socio.php';
 
 class socioData {
@@ -8,7 +8,7 @@ class socioData {
 	public $data;
 
     function socioData(){ 
-        require 'data.php';
+        
         $this->data = new Data();
     }
      public function insertarTBSocio($socio) {

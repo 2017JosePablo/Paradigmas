@@ -1,6 +1,6 @@
 <?php
 
-	include '../data/socioData.php';
+	include_once '../data/socioData.php';
 	/**
 	* 
 	*/

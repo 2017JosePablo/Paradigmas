@@ -360,7 +360,7 @@
 
             <?php
          
-             include '../business/actividadBusiness.php';
+             require_once '../business/actividadBusiness.php';
                     $actividadBusiness = new actividadBusiness();
                     $actividades = $actividadBusiness->obtenerTodosTBActividad();
                      echo '<table>';
@@ -411,7 +411,7 @@
              <?php
          
          
-                //require '../business/socioBusiness.php';
+                require_once '../business/socioBusiness.php';
                 $temp = new socioBusiness();
                 $estados = $temp->obtenerSocioEstado();
 
