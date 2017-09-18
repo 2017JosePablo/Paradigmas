@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     $('button').click(function() {
-        alert('MOD');
+        
 
     	var cedula = $(this).val();
 
@@ -22,6 +22,8 @@ $(document).ready(function() {
             document.getElementById("btnAgregar").style.display = 'none';
             document.getElementById("btnModificar").style.display = 'block';
             document.getElementById('cajaVerSocio').style.display = 'none';
+            document.getElementById('editarUbic').style.display='none';
+            document.getElementById('verDir').style.display='block';
 
             $.post('../business/socioAction.php', {cedula:result[0]}, function(data){
 
@@ -34,7 +36,6 @@ $(document).ready(function() {
             document.getElementById('sociosegundoapellido').value = array['sociosegundoapellido'];
             document.getElementById('sociotelmovil').value = array['sociotelefono'];
             document.getElementById('sociocorreo').value = array['sociocorreo'];
-            document.getElementById('sociopueblo').value = array['sociopueblo'];
             var tipoactividadid = array['tipoactividadid'];
             var fincatipoid = array['fincatipoid'];
             var tipoEstado = array['estadosociodetalle'];
@@ -51,6 +52,22 @@ $(document).ready(function() {
             var provincia = array['socioprovincia'];
             var cantones =array['sociocanton'];
             var distritos = array['sociodistrito'];
+
+            document.getElementById('provE').value = getProvincia(array['socioprovincia']);
+            document.getElementById('canE').value = getCanton(array['socioprovincia'],array['sociocanton']);
+            document.getElementById('disE').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
+            document.getElementById('puebE').value = array['sociopueblo'];
+
+            
+            var fecha = array['sociofechaingreso'].split('-');
+            var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
+            document.getElementById('fecha').value = fechaSalida;
+
+
+            
+
+
+
 
         });
 

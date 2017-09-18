@@ -125,11 +125,21 @@
 		$telmovil = $_POST['sociotelmovil'];
 		$correo = $_POST['sociocorreo'];
 
-		$provincia = $_POST['listaProvincias'];
-		$canton = $_POST['listadoCantones'];
-		$distrito = $_POST['listadoDistritos'];
-		$pueblo = $_POST['sociopueblo'];
+		
 
+		if($_POST['ModUbi'] == 1){
+			$provincia = $_POST['provE'];
+			$canton = $_POST['canE'];
+			$distrito = $_POST['disE'];
+			$pueblo = $_POST['pueE'];
+
+		}else if($_POST['ModUbi'] == 0){
+			$provincia = $_POST['listaProvincias'];
+			$canton = $_POST['listadoCantones'];
+			$distrito = $_POST['listadoDistritos'];
+			$pueblo = $_POST['sociopueblo'];
+
+		}
 
 		$tipoactividad = $_POST['tipoactividad'];
 		$tipofinca =  $_POST['tipofinca'];
@@ -169,7 +179,7 @@
 
 		}else{
 		//	echo " Algunos campos no existen...";
-			header("location: ../view/socioView.php?error=emptyFile");
+			//header("location: ../view/socioView.php?error=emptyFile");
 		}
 
 	}

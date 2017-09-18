@@ -58,9 +58,7 @@
        
 
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Ver</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Mod'>Modificar</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Reg'>Registrar</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Registrar Hato</button></td>";
         //echo '<td> <a href=""> Eliminar</a> </td>';
         //echo '<td> <a href=""> Modificar</a> </td>';
         echo '</tr>';
@@ -150,29 +148,27 @@
             foreach ($todasRazas as $current) {     
                 echo '<tr>';
 
-                echo '<td>  '.$current->getIdRaza() . ' </td>';
-                echo '<td> '.$current->getNombreRaza().'</td>';
+               // echo '<td>  '.$current->getIdRaza() . ' </td>';
+                //echo '<td> '.$current->getNombreRaza().'</td>';
 
-                echo '<td> <a href="../business/razaAction.php?ideliminar='.$current->getIdRaza().'"> Eliminar</a> </td>';
+                //echo '<td> <a href="../business/razaAction.php?ideliminar='.$current->getIdRaza().'"> Eliminar</a> </td>';
 
-                 echo "<td> <a href='' onclick=loadJunta('".$current->getIdRaza()."') > Modificar</a> </td>";
+                 //echo "<td> <a href='' onclick=loadJunta('".$current->getIdRaza()."') > Modificar</a> </td>";
 
 
-                echo '<td> <input type="checkbox" id="'.$current->getIdRaza().'" value="'.$current->getIdRaza().'"> </td>';
-                echo '<td> '.$current->getNombreRaza().'</td>';
+                echo '<td> <input type="checkbox" id="'.$current->getIdRaza().'" value="'.$current->getIdRaza().'">'.$current->getNombreRaza().'</td>';
 
                 echo '</tr>';
             }
                 echo '</table>';
 
                  
-            ?>
+            
 
 
-
+?>
 
             <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
-?>
 </form>
 
 

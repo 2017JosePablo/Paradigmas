@@ -8,29 +8,24 @@
 
 
     <script type="text/javascript">
-        function loadJunta(idjunta) {
+        
+        function setCamposRegistro(id_caja){
+            var campos = "<table> <tr>";
+            campos+="<td><input type='text' name='sociocedula' id='sociocedula'  required></td>";
+            campos+="<td><input type='text' name='socionombre' id='socionombre'  required></td>";
+            campos+="<td><input type='text' name='socioprimerapellido' id='socioprimerapellido'  required> </td>";
+            campos+="<td><input type='text' name='sociosegundoapellido' id='sociosegundoapellido'  required>";
+            campos+="</td><td><input type='text' name='sociotelmovil' id='sociotelmovil'></td>";
+            campos+="<td><input type='email'  required name='sociocorreo' id='sociocorreo'></td></tr>";
+            campos+="<table>"
 
-     //   if (str.length == 0) {
-        //document.getElementById("txtHint").innerHTML = "";
-       // return;
-    //} else {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                alert("Aqui estoy");
-                document.getElementById("txtHint").innerHTML = this.responseText;
-
-
-            }
-        };
-        xmlhttp.open("post", "../business/juntaAction.php?idUpdate="+idjunta, true);
-        xmlhttp.send();
+            return campos;
         }
 
-     
-        }
 
     </script>
+
+
 </head>
 <body>   
    <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
@@ -64,27 +59,145 @@
             
         </form>
 
-            <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
+        <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
+            
+            <?php
+
+                include '../business/socioBusiness.php';
+                $socioBusiness = new socioBusiness();
+
+                $socios = $socioBusiness->obtenerTodosTBSocio();
+
+
+                echo "<p>Id Junta: </p> <input required type='text' name='idjunta' id='idjunta'/><p>";
+
+
+
+                echo "<p>Presidente:</p>";
+
+
+                echo "<select class='form-control' id='listadoPresidente' name = 'listadoSocios'  >";
+
+                foreach ($socios as $current) {
+                    
+                    echo "<option>".$current->getNombre()."</option>";
+                }
                 
+                echo '</select>';
+
+                echo "<button type = 'button' value = 'cajaPresidente-P' >Agregar Colaborador</button>";
+
+                echo "<div id= 'cajaPresidente'> </div>";
+
+                
+
+                echo "<p>Vicepresidente:</p>";
+                
+
+                echo "<select class='form-control' id='listadoVicepresidente' name = 'listadoVicepresidente'  >";
+
+                foreach ($socios as $current) {
                     
-                   <p>Id Junta: </p> <input required type="text" name="idjunta" id="idjunta"/><p>
+                    echo "<option>".$current->getNombre()."</option>";
+                }
+                
+                echo '</select>';
 
-                   <p>Presidente</p> <input required type="text" name="presidentejunta" id="presidentejunta"/><p>
+                echo "<button type = 'button' value = 'cajaViveprecidente-Vi' >Agregar Colaborador</button>";
 
-                    <p>VicePresidente</p> <input required type="text" name="vicepresidentejunta" id="vicepresidentejunta"/><p>
+                echo "<div id= 'cajaViveprecidente'> </div>";
 
-                     <p>Tesorero</p><input required type="text" name="tesorerojunta" id="tesorerojunta"/><p>
-                    <p>Secretario</p><input required type="text" name="secretariojunta" id="secretariojunta"/><p>
 
-                     <p>Vocal1</p><input required type="text" name="vocal1junta" id="vocal1junta"/><p>
 
-                     <p>Vocal3</p><input required type="text" name="vocal2junta" id="vocal2junta"/><p>
+                echo "<p>Tesorero:</p>";
 
-                     <p>Vocal3</p><input required type="text" name="vocal3junta" id="vocal3junta"/><p>
-                     <input type="submit" value="Crear Junta" name="crear" id="crear"/><p>
 
+
+                 echo "<select class='form-control' id='listadoTesorero' name = 'listadoTesorero'  >";
+
+                foreach ($socios as $current) {
                     
-            </form>
+                    echo "<option>".$current->getNombre()."</option>";
+                }
+                
+                echo '</select>';
+
+                echo "<button type = 'button' value = 'cajaTesorero-T' >Agregar Colaborador</button>";
+
+                echo "<div id= 'cajaTesorero'> </div>";
+
+
+
+                echo "<p>Secretaria/o:</p>";
+
+                 echo "<select class='form-control' id='listadoSecretario' name = 'listadoSecretario'  >";
+
+                foreach ($socios as $current) {
+                    
+                    echo "<option>".$current->getNombre()."</option>";
+                }
+                
+                echo '</select>';
+
+                echo "<button type = 'button' value = 'cajaSecre-S' >Agregar Colaborador</button>";
+
+                echo "<div id= 'cajaSecre'> </div>";
+
+
+
+
+                echo "<p>Vocal 1:</p>";
+
+                 echo "<select class='form-control' id='listadoV1' name = 'listadoV1'  >";
+
+                foreach ($socios as $current) {
+                    
+                    echo "<option>".$current->getNombre()."</option>";
+                }
+                
+                echo '</select>';
+
+                echo "<button type = 'button' value = 'cajaV1-V1' >Agregar Colaborador</button>";
+
+                echo "<div id= 'cajaV1'> </div>";
+
+                echo "<p>Vocal 2:</p>";
+
+                 echo "<select class='form-control' id='listadoV2' name = 'listadoV2'  >";
+
+                foreach ($socios as $current) {
+                    
+                    echo "<option>".$current->getNombre()."</option>";
+                }
+                
+                echo '</select>';
+
+                echo "<button type = 'button' value = 'cajaV2-V2' >Agregar Colaborador</button>";
+
+                echo "<div id= 'cajaV2'> </div>";
+
+                 echo "<p>Vocal 3:</p>";
+
+
+                 echo "<select class='form-control' id='listadoV3' name = 'listadoV3'  >";
+
+                foreach ($socios as $current) {
+                    
+                    echo "<option>".$current->getNombre()."</option>";
+                }
+                
+                echo '</select>';
+
+                echo "<button type = 'button' value = 'cajaV3-V3' >Agregar Colaborador</button>";
+
+                echo "<div id= 'cajaV3'> </div>";
+
+
+            ?>
+            </br>
+            <button name="crear">Registrar Junta</button>
+            </br>
+        </form>
             
           
 
@@ -92,5 +205,7 @@
 
 	
 	<a href="../index.php">Regresar</a>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/editarJunta.js"></script>
 </body>
 </html>

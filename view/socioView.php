@@ -144,6 +144,12 @@
                 $('#1-tipo').attr('checked',true);
                 $('#1-estado').attr('checked',true);
             }
+
+            function mostrarUbicacion(){
+                document.getElementById('editarUbic').style.display='block';
+                document.getElementById('verDir').style.display='none';
+                document.getElementById('selecModUbi').value = 0;
+            }
         </script>
 
 
@@ -199,6 +205,8 @@
 
 
 
+
+
   <!-- <form method="post" enctype="multipart/form-data" action="../business/socioAction.php"> -->
     <?php
  
@@ -240,8 +248,9 @@
   
     <div id="cajaFormulario"  style='display:none;'>
 
-    <form id= "frm" method="post" onsubmit="return validar()" action="../business/socioAction.php">
+    <form id= "frm" method="post" action="../business/socioAction.php">
     <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
+    <input type="hidden" id="selecModUbi" name="ModUbi" value="1">
 
 
 
@@ -315,52 +324,100 @@
                     </td>
                 </tr>
 
-                <tr><td><br><p>Datos de Dirección</p></td></tr>
-            <tr>
-                <td>
-                     <div class="form-group">
-                      <label class="col-md-4 control-label" for="listaProvincias">Provincia</label>
-                      <div class="col-md-4">
-                        <select id="listaProvincias" name="listaProvincias" class="form-control" onclick="provinciaSeleccionada()">
-                          <option value="-1">Seleccione Una Provincia</option>
-                          <option value="1">San Jose</option>
-                          <option value="2">Alajuela</option>
-                          <option value="3">Cartago</option>
-                          <option value="4">Heredia</option>
-                          <option value="5">Guanacaste</option>
-                          <option value="6">Puntarenas</option>
-                          <option value="7">Limon</option>
-                        </select>
-                      </div>
-                    </div>  
-                </td>
-                <td>    
-                    <!-- Select Canton -->
-                    <div class="form-group" >
-                      <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
-                      <div class="col-md-4" id="cajaCantones">
-                      </div>
-                    </div>
-                </td>
-                <td>
-                    <!-- Select Distrito-->
-                    <div class="form-group" id="cajaDistrito" >
-                      <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
-                      <div class="col-md-4" id="listaDistrito" >
-                     
-                      </div>
-                    </div>
-                 </td>
-                 <td>Pueblo:<input type="text" id="sociopueblo" name="sociopueblo"> </td>
+                 </table>
 
-            </tr>
-            </table>
+                
+
+
+                <div id="verDir">
+                    
+                    <table>
+                        <tr><td><br><p>Datos de Dirección</p></td></tr>
+
+                         <td>
+                        Provincia : <input  type="text"  id = 'provE' name="provE" readonly >
+                             
+                        </td>
+
+                        <td>
+                            Canton : <input  type="text"  id = 'canE' name="canE" readonly >
+                      
+                        </td>
+                        
+                        <td>
+                            Distrito : <input  type="text"  id = 'disE' name="disE" readonly >
+                        </td>
+
+                         <td>
+                            Pueblo :<input  type="text"  id = 'puebE' name="pueE" readonly >
+                        </td>
+                        <td>
+                            <button type="button" onclick="mostrarUbicacion()">Editar ubicacion</button>
+                        </td>
+
+                    </table>
+
+                   
+                </div>
+
+                <div id="editarUbic" style='display:none;'>
+
+                    <table>
+                     <tr><td><br><p>Seleccione la nueva dirección</p></td></tr>
+                        <tr>
+                        <td>
+                             <div class="form-group">
+                              <label class="col-md-4 control-label" for="listaProvincias">Provincia</label>
+                              <div class="col-md-4">
+                                <select id="listaProvincias" name="listaProvincias" class="form-control" onclick="provinciaSeleccionada()">
+                                  <option value="-1">Seleccione Una Provincia</option>
+                                  <option value="1">San Jose</option>
+                                  <option value="2">Alajuela</option>
+                                  <option value="3">Cartago</option>
+                                  <option value="4">Heredia</option>
+                                  <option value="5">Guanacaste</option>
+                                  <option value="6">Puntarenas</option>
+                                  <option value="7">Limon</option>
+                                </select>
+                              </div>
+                            </div>  
+                        </td>
+                        <td>    
+                            <!-- Select Canton -->
+                            <div class="form-group" >
+                              <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
+                              <div class="col-md-4" id="cajaCantones">
+                              </div>
+                            </div>
+                        </td>
+                        <td>
+                            <!-- Select Distrito-->
+                            <div class="form-group" id="cajaDistrito" >
+                              <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
+                              <div class="col-md-4" id="listaDistrito" >
+                             
+                              </div>
+                            </div>
+                         </td>
+                         <td>Pueblo:<input type="text" id="sociopueblo" name="sociopueblo"> </td>
+
+                        </tr>
+                    </table>
+                </div>
+
+
+                    
+
+
+
+          
+           
             <br>
             <p>Tipo de Actividad</p>
 
             <?php
          
-             include '../business/actividadBusiness.php';
+             require_once '../business/actividadBusiness.php';
                     $actividadBusiness = new actividadBusiness();
                     $actividades = $actividadBusiness->obtenerTodosTBActividad();
                      echo '<table>';
@@ -411,7 +468,8 @@
              <?php
          
          
-                require '../business/socioBusiness.php';
+                require_once '../business/socioBusiness.php';
+
                 $temp = new socioBusiness();
                 $estados = $temp->obtenerSocioEstado();
 
@@ -533,7 +591,9 @@
                         Distrito : <input  type="text"  id = 'dis' readonly >
                     </td>
 
-                 <td>Pueblo :<input  type="text"  id = 'pueb' readonly >
+                    <td>
+                        Pueblo :<input  type="text"  id = 'pueb' readonly >
+                    </td>
 
             </tr>
 
