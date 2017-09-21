@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<?php 
+<?php
 	if(isset($_GET['success'])){
 		 echo '<p style="color: green">Dato insertado con Exito</p>';
 	}
@@ -22,5 +22,13 @@
 <a href="view/fincaTipoView.php">Tipo Finca</a><br>
 <a href="view/fincaView.php">Finca</a><br>
 <a href="view/razaView.php">Raza</a><br>
+
+
+<form class="" action="data/uploadFileData.php" method="post" enctype="multipart/form-data">
+	<label for="">Subir foto</label>
+		<input type="file" value="Seleccionar Foto" name="foto" id="foto">
+		<input type="submit" value="Enviar Foto">
+</form>
+
 </body>
 </html>

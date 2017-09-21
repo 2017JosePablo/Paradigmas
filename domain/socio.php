@@ -1,4 +1,4 @@
-<?php
+3<?php
 class Socio{
 	private $socioId;
 	private $cedula;

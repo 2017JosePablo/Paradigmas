@@ -11,13 +11,13 @@
             function provinciaSeleccionada(){
                 var valor = document.getElementById("listaProvincias") .value ;
                 if(valor != -1){
-                    llenarCantones(valor);  
-                    document.getElementById("provincia").value = valor;      
+                    llenarCantones(valor);
+                    document.getElementById("provincia").value = valor;
                 }else{
                     var html = "<select class='form-control' id = 'listaProvincias' onclick='llenarCantones()'><option>Seleccione Una Provincia</option></select>";
                             $('#cajaProvincias').html(html);
                 }
-            
+
             }
 
 
@@ -34,12 +34,12 @@
                              for(key in data) {
                                 html += "<option value='"+key+"'>"+data[key]+"</option>";
                             }
-                            
+
                             html += "</select>";
                             $('#cajaCantones').html(html);
                         }
                     });
-                
+
                 }else{
                     var html = "<select class='form-control'  onclick=setDistrito()  ><option>Seleccione Un Canton</option></select>";
                             $('#cajaCantones').html(html);
@@ -52,13 +52,13 @@
                if(valor >0){
                 $.ajax({
                         dataType: "json",
-                     
+
                         url: "https://ubicaciones.paginasweb.cr/provincia/"+valor+"/canton/"+valorCantones+"/distritos.json",
 
                         data: {},
                         success: function (data) {
                             var html = "<select class='form-control' id='listadoDistritos' name = 'listadoDistrito'  >";
-                         
+
                             for(key in data) {
 
                                 html += "<option value='"+key+"'>"+data[key]+"</option>";
@@ -69,11 +69,11 @@
                     });
                 }else{
                     var html = "<select class='form-control'><option value = '0' >Seleccione Un Distrito</option></select>";
-                             $('#listaDistrmodificarito').html(html);        
+                             $('#listaDistrmodificarito').html(html);
                 }
            }
 
-           
+
 
             function cargarValores(){
               document.getElementById("distrito").value =document.getElementById('listadoDistritos').options[document.getElementById('listadoDistritos').selectedIndex].value;
@@ -82,13 +82,13 @@
             }
             function validar(){
              // alert(document.getElementById('socioFinca').value);
-                var todo_correcto = true;  
+                var todo_correcto = true;
                 if(document.getElementById("listaProvincias").value <0){
                     todo_correcto = false;
                 }
 
                 if (!todo_correcto) {
-                    alert('Seleccione una Provincia'+document.getElementById("listaProvincias").value );    
+                    alert('Seleccione una Provincia'+document.getElementById("listaProvincias").value );
                 }
             return todo_correcto;
 
@@ -101,9 +101,10 @@
 
             }
 
+
         </script>
 
-   
+
 </head>
 <body>
 
@@ -113,7 +114,7 @@
 
 
    <?php
- 
+
        include '../business/fincaBusiness.php';
       $fincaBusiness = new fincaBusiness();
 
@@ -134,7 +135,7 @@
           echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Mod'>Modificar</button></td>";
           echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Reg'>Registrar</button></td>";
           echo "<tr>";
-          
+
 
           }
 
@@ -144,9 +145,9 @@
 
 <div  id="registrarFinca" style='display:none ;' >
 
-  <form id = 'frm' method="post"  action="../business/fincaAction.php"> 
+  <form id = 'frm' method="post"  action="../business/fincaAction.php">
 
-  <input type="hidden" name="cedula" id="cedula" value="">     
+  <input type="hidden" name="cedula" id="cedula" value="">
 
   <input type="hidden" name="selecModUbi" id="selecModUbi" value="1">
 
@@ -166,7 +167,7 @@
                         Cantidad de Bobinos
                     </td>
 
-                   
+
 
                 </tr>
                 <tr>
@@ -182,6 +183,7 @@
             </table>
 
 
+<<<<<<< HEAD
 
                  <div id="verUbic">
 
@@ -255,6 +257,53 @@
                               <div class="col-md-4" id="listaDistrito" >
                              
                               </div>
+=======
+
+
+
+                    </tr>
+
+            </table>
+
+                <div id="datosDireccion">
+
+                <table>
+
+                    <tr><td><br><p>Dirección Finca</p></td></tr>
+                      <tr>
+
+                      <td>
+                           <div class="form-group">
+                            <label class="col-md-4 control-label" for="listaProvincias">Provincia</label>
+                            <div class="col-md-4">
+                              <select id="listaProvincias" name="listaProvincias" class="form-control" onclick="provinciaSeleccionada()">
+                                <option value="-1">Seleccione Una Provincia</option>
+                                <option value="1">San Jose</option>
+                                <option value="2">Alajuela</option>
+                                <option value="3">Cartago</option>
+                                <option value="4">Heredia</option>
+                                <option value="5">Guanacaste</option>
+                                <option value="6">Puntarenas</option>
+                                <option value="7">Limon</option>
+                              </select>
+                            </div>
+                          </div>
+                      </td>
+                      <td>
+                          <!-- Select Canton -->
+                          <div class="form-group" >
+                            <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
+                            <div class="col-md-4" id="cajaCantones">
+                            </div>
+                          </div>
+                      </td>
+                      <td>
+                          <!-- Select Distrito-->
+                          <div class="form-group" id="cajaDistrito" >
+                            <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
+                            <div class="col-md-4" id="listaDistrito" >
+
+>>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
                             </div>
                          </td>
                         <td>Pueblo:<input type="text" id="fincapueblo"  name="fincapueblo"> </td>
@@ -268,13 +317,18 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
 
 
             <br> <br> <br>
 
              <?php
-         
+
              include '../business/actividadBusiness.php';
+<<<<<<< HEAD
                 $actividadBusiness = new actividadBusiness();
                 $actividades = $actividadBusiness->obtenerTodosTBActividad();
                 echo "Tipo Actividad";
@@ -291,10 +345,29 @@
                 }   
                  
               echo '</table>';
+=======
+                    $actividadBusiness = new actividadBusiness();
+                    $actividades = $actividadBusiness->obtenerTodosTBActividad();
+                    echo "Tipo Actividad";
+                    echo "</br>";
+                     echo '<table>';
+                    foreach ($actividades as $current) {
+                        echo '<tr>';
+                        if($current->getId()==1){
+                             echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad' checked='' value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
+                        }else{
+                              echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad'  value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
+                        }
+                        echo '</tr>';
+                    }
+
+       echo '</table>';
+>>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
 
             ?>
 
 
+<<<<<<< HEAD
           <br><br>
           <p>Tipo de Finca</p>
 
@@ -304,11 +377,26 @@
           require '../data/tipoFincaData.php';
           $temp = new tipoFincaData();
           $tipoFinca = $temp->getAllTBTiposFincas();
+=======
+                        <br><br>
+            <p>Tipo de Finca</p>
+                <?php
+
+
+                require '../data/tipoFincaData.php';
+                $temp = new tipoFincaData();
+                $tipoFinca = $temp->getAllTBTiposFincas();
+
+
+                        echo '<table>';
+                        foreach ($tipoFinca as $curren) {
+>>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
 
       
                   echo '<table>';
                   foreach ($tipoFinca as $curren) {
 
+<<<<<<< HEAD
                       echo '<tr>';
 
                       echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>"; 
@@ -319,14 +407,30 @@
                       echo '</tr>';
                   }
                   echo '</table>';
+=======
+                            echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>";
+
+                            echo '<td>'.$curren->getFincaTipoActividad().'</td>';
+
+
+                            echo '</tr>';
+                        }
+                        echo '</table>';
+
+
+>>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
 
                       
 
           ?>
 
 
+<<<<<<< HEAD
          
       
+=======
+
+>>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
 
 
             <div id="btnFinalizar">
@@ -336,7 +440,7 @@
             <div id="btnModificar">
               <input type="submit" value="Modificar finca" name="actualizar" hidden="" id="actualizar"/><p>
             </div>
-        
+
     </form>
 
     </div>
@@ -368,7 +472,7 @@
                     </td>
 
                 </tr>
-               
+
 
                 <tr>
                     <td>
@@ -379,12 +483,12 @@
                     </td>
                     <td>
                         <input  type="text"  id="primerapellido"  readonly>
-                    </td>       
+                    </td>
                     <td>
                         <input  type="text" id="segundoapellido"  readonly>
                     </td>
-                    
-                   
+
+
                 </tr>
                 </table>
 
@@ -399,7 +503,7 @@
                         Cantidad de Bobinos
                     </td>
 
-                   
+
 
                 </tr>
                 <tr>
@@ -409,7 +513,7 @@
                     </td>
                     <td>
                         <input type="text" name="cantidadbobinos" id="bobinos" readonly="" >
-                    </td>     
+                    </td>
 
                     </tr>
 
@@ -417,14 +521,14 @@
                 <tr>
                     <td>
                         Provincia : <input  type="text"  id = 'prov' readonly >
-                         
+
                     </td>
 
                     <td>
                         Canton : <input  type="text"  id = 'can' readonly >
-                  
+
                     </td>
-                    
+
                     <td>
                         Distrito : <input  type="text"  id = 'dis' readonly >
                     </td>
@@ -448,13 +552,13 @@
             </tr>
             </table>
 
-      
+
     </div>
      <a href="../index.php">Regresar</a>
 
 
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarFinca.js"></script>
- 
+
 </body>
 </html>

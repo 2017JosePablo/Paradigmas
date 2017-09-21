@@ -8,128 +8,14 @@
 <body>
 
     <?php
-
-        //include '../data/juntaData.php';
-    //include '../data/herdData.php';
-
-//
-       // $herd = new Herd("122222","100","0","5","4","80","50","0");
-
-        //$herdD = new herdData();
-
-       // echo ($herdD -> insertTBHerd($herd));
-       // $herdD -> updateTBHerd($herd);
-
-       // $herdD -> deleteTBHerd("504130763");
-
-       /* $array = $herdD->getAllTBHerd();
-
-        foreach ($array as $key) {
-
-            echo $key->getOwerId().'</br>';
-        }
-
-
-        /*
-        include '../data/personData.php';
-
-        $person = new Person("100000000000","ASAS","carranza","alfaro","24650889","50088487");
-        $personD = new personData();
-
-        //echo($personD->insertTBPerson($person));
-
-        //$personD->updateTBPerson($person);
-
-       // $personD -> deleteTBPerson("504130763");
-
-
-        /*
-        $array = $personD->getAllTBPerson();
-
-        foreach ($array as $key) {
-
-            echo $key->getId().'</br>';
-        }*/
-
-       // $personD-> insertTBPerson($person);
-        /*
-        
-        */
-        /*
-        include '../data/herdActivityData.php';
-
-        $herdActivityD = new herdActivityData();
-
-        echo($herdActivityD->insertTBHerdActivity("111111111","1,2,4"));
-  */
-        
-/*
-        include '../data/actividadData.php';;
-
-
-        $actividad = new Actividad('',"Carne Carranza");
-        echo $actividad->getNombreActividad();
-
-        $inser = new actividadData();
-
-        echo $inser->insertarTBActividad($actividad);
-
-
- 
-        include '../data/socioData.php';
-         $inser = new socioData();
-
-         $socio = $inser->obtenerUnTBSocio("503930363");
-
-         $array = json_decode($socio, true);
-         echo $array["socionombre"];
-/*
-        include '../data/razaData.php';
-         $inser = new razaData();
-         //$raza = new raza('7',"Negras");
-
-//        $result = $inser->editarRaza($raza);
-
-          $result =   $inser->eliminarRazaTBRaza('7');
-        if ($result == 1) {
-            echo "Modificado con exito";
-        }else{
-            echo "No se a podido modificar";
-        }
-
-//         $inser->insertarRaza($raza);
-
-          /*$array = $inser->obtenerTodoTBRaza();
-
-        foreach ($array as $key) {
-
-            echo $key->getNombreRaza().'</br>';
-        }
-
-
-       include 'fincaData.php';
-
-      $socioBusiness = new FincaData();
-
-      $cedula = "<scrpit> pront ('Ingrese el valor')</scrpit>";
-
-      $fincas = json_decode($socioBusiness->obtenerFinca("4"),true);
-            
-            echo $fincas["fincaid"]."</br>";
-            echo $fincas["socioid"]."</br>";
-            echo $fincas["fincaarea"]."</br>";
-            echo $fincas["fincacantidadbobinos"]."</br>";
-        
-*/
-
- 
-     include 'razaData.php';
-            $razaBusiness = new razaData();
+    /*
+     include 'cercaData.php';
+            $temp = new razaData();
 
             $todasRazas = $razaBusiness->obtenerTodoTBRaza();
             echo '<table border = "1"> <tr>  <td align = "center" colspan = "4">Listado de razas </td> </tr><tr><td>Id</td>  <td>Nombre de la Raza</td><td colspan="2">Acciones</td> </tr>';
 
-            foreach ($todasRazas as $current) {     
+            foreach ($todasRazas as $current) {
                 echo '<tr>';
                 echo '<td>  '.$current->getIdRaza() . ' </td>';
                 echo '<td> '.$current->getNombreRaza().'</td>';
@@ -142,9 +28,49 @@
             }
                 echo '</table>';
 
-                 
-            ?>
 
+          include 'cercaData.php';
+          $temp = new cercaData();
+          $test = $temp->obtenerTiposCerca();
+
+          foreach ($test as $current) {
+
+              echo $current->getNombreCerca().'</br>';
+          }
+
+          include 'cvoData.php';
+          $temp = new cvoData();
+          include_once '../domain/cvo.php';
+          $cvo = new Cvo('','1','2018-02-12','2');
+          //echo $temp->insertarCvo($cvo);
+
+          echo $temp->obtenerCvoSocio("2")->getCvoFechaVigencia();
+
+          include 'examenBruselasData.php';
+          $temp = new examenBruselasData();
+          include_once '../domain/examenBruselas.php';
+          $examen = new examenBruselas('','1','2018-02-12','1');
+          //echo $temp->insertarExamen($examen);
+
+//          echo $temp->obtenerExamenSocio("1")->getExamenFechaVencimiento();
+          echo $temp->modificarExamenSocio($examen);
+*/
+
+
+
+
+
+        include 'fierroData.php';
+        $temp = new fierroData();
+        include_once '../domain/fierro.php';
+        $examen = new fierro('','1','/home/carranza/Escritorio/fierro1.jpg','1');
+    //    echo $temp->insertarFierroSocio($examen);
+
+//        echo $temp->obtenerFierroSocio("1")->getFierroRutaImagen();
+        echo $temp->modificarFierroSocio($examen);
+
+
+        ?>
 
 
 </body>

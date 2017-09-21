@@ -7,7 +7,7 @@ class personaData extends Data{
 
 	public $data;
 
-    function __construct(){ 
+    function __construct(){   
         $this->data = new Data();
     }
      public function insertarTBpersona($persona) {
@@ -24,7 +24,7 @@ class personaData extends Data{
                 $persona->getNombre() . "','" .
                 $persona->getPrimerApellido() . "','" .
                 $persona->getSegundoApellido() . "','" .
-                $persona->getTelCasa() . "','" . 
+                $persona->getTelCasa() . "','" .
                 $persona->getTelMovil() . "');";
 
         $result = $conn->query($sql);
@@ -58,22 +58,22 @@ class personaData extends Data{
      }
       public function eliminarTBpersona($idpersona) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-     
+
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-     
+
         $sql = "DELETE from tbpersona where personaidentificacion='".$idpersona."';";
         $result = $conn->query($sql);
         $conn->close();
-     
+
         return $result;
      }
 
       public function obtenerTodosTBpersona() {
         $persona = array();
 
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         $sql = "SELECT * FROM tbpersona";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
@@ -84,7 +84,7 @@ class personaData extends Data{
             echo "0 results";
         }
         $conn->close();
-        
+
         return $persona;
     }
 }

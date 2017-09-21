@@ -80,7 +80,7 @@
 
                 foreach ($socios as $current) {
                     
-                    echo "<option>".$current->getNombre()."</option>";
+                    echo "<option>".$current->getNombre()." "$current->getPrimerApellido()."</option>";
                 }
                 
                 echo '</select>';
