@@ -187,7 +187,7 @@ $(document).ready(function() {
                                 document.getElementById('cajaFinca').style='display:none'
                                 document.getElementById('actualizar').style = 'display:none';
                                 document.getElementById('verUbic').style='display:none';
-                                document.getElementById('editarUbic').style='display:none';
+                                //document.getElementById('editarUbic').style='display:none';
 
 
 
