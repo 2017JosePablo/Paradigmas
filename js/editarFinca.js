@@ -23,15 +23,19 @@ $(document).ready(function() {
                     if(result[1]=='Ver'){
 
                         $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
-        //
                             var array = JSON.parse(data);
-                            
-
                             document.getElementById('registrarFinca').style="display:none";
                             
                             document.getElementById("actualizar").style="display:none";
                             document.getElementById("finalizar").style='display:none';
                             document.getElementById('cajaFinca').style='display:block';
+
+
+                              document.getElementById('registrarFinca').style="display:none ";
+                                document.getElementById('finalizar').style='display:none';
+                                document.getElementById('frm').reset(); 
+
+                                document.getElementById('datosDireccion').style='display:none';
 
 
                                // datos de la finca
@@ -119,7 +123,7 @@ $(document).ready(function() {
 
                             document.getElementById("dirF").value = array['fincaexacta'];
 
-                            document.getElementById('editarUbic').style='display:none';
+                           // document.getElementById('editarUbic').style='display:none';
 
                             
                         });
@@ -142,15 +146,24 @@ $(document).ready(function() {
                             }else{
                                 alert('No tiene Ninguna FInca');
 
-                                document.getElementById('cajaFinca').style='display:none'
+
+
+                                document.getElementById('cajaFinca').style='display:none';
+
                                 document.getElementById('actualizar').style = 'display:none';
+
                                 document.getElementById('registrarFinca').style="display:block ";
+
                                 document.getElementById('finalizar').style='display:block';
+
                                 document.getElementById('frm').reset(); 
 
                                 document.getElementById('datosDireccion').style='display:block';
+
                                 document.getElementById('verUbic').style='display:none';
                                 document.getElementById("cedula").value = result[0];
+
+                                document.getElementById('editarUbic').style = 'display:none';
                             }
 
 
@@ -161,11 +174,9 @@ $(document).ready(function() {
                     }
                 }
 
-            }   
-                        
-
+            }           
                     }else{
-                        alert('No tiene Ninguna FInca');
+                        alert('No tiene Ninguna FInca uuuuuu');
 
                         if(result[1]=='Reg'){
 
@@ -175,12 +186,20 @@ $(document).ready(function() {
 
                                 document.getElementById('cajaFinca').style='display:none'
                                 document.getElementById('actualizar').style = 'display:none';
+                                document.getElementById('verUbic').style='display:none';
+                                document.getElementById('editarUbic').style='display:none';
+
+
+
+
+
+                                document.getElementById('datosDireccion').style = 'display:block';
                                 document.getElementById('registrarFinca').style="display:block ";
                                 document.getElementById('finalizar').style='display:block';
                                 document.getElementById('frm').reset(); 
 
-                                document.getElementById('editarUbic').style='display:block';
-                                document.getElementById('verUbic').style='display:none';
+                                
+                                
                                 document.getElementById("cedula").value = result[0];
                             
 
@@ -198,14 +217,11 @@ $(document).ready(function() {
                             document.getElementById('registrarFinca').style="display:none ";
                             document.getElementById('finalizar').style='display:none';
                             document.getElementById('frm').reset(); 
-
-                            
+   
 
                         }
 
                     }
-
-
             });
 
     	}

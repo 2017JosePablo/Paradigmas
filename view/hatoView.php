@@ -115,22 +115,36 @@
         </tr>
             <tr>
                 <td>
-                    Toros
+                    Toros en servicio
                 </td>
                 <td>
-                    <input type="text" id="toros"  name="toros" placeholder="0">
+                    <input type="text" id="toros"  name="torosServicio" placeholder="0">
                 </td>
-
         </tr>
             <tr>
-                <td>
-                    Vacas
+                  <td>
+                    Toros engorde
                 </td>
                 <td>
-                    <input type="text" id="vacas" name="vacas" placeholder="0">
+                    <input type="text" id="toros"  name="torosEngorde" placeholder="0">
                 </td>
-
-
+            </tr>
+            <tr>
+                <td>
+                    Vacas Cria
+                </td>
+                <td>
+                    <input type="text" id="vacas" name="vacasCria" placeholder="0">
+                </td>
+            </tr>
+            <tr>
+                
+                <td>
+                    Vacas Engorde
+                </td>
+                <td>
+                    <input type="text" id="vacas" name="vacasEngorde" placeholder="0">
+                </td>
             </tr>
 
         </table>
@@ -138,8 +152,6 @@
   
 
      <?php
-     
-    
             include '../business/razaBusiness.php';
             $razaBusiness = new razaBusiness();
             $todasRazas = $razaBusiness->obtenerTodoTBRaza();
@@ -147,24 +159,11 @@
 
             foreach ($todasRazas as $current) {     
                 echo '<tr>';
-
-               // echo '<td>  '.$current->getIdRaza() . ' </td>';
-                //echo '<td> '.$current->getNombreRaza().'</td>';
-
-                //echo '<td> <a href="../business/razaAction.php?ideliminar='.$current->getIdRaza().'"> Eliminar</a> </td>';
-
-                 //echo "<td> <a href='' onclick=loadJunta('".$current->getIdRaza()."') > Modificar</a> </td>";
-
-
                 echo '<td> <input type="checkbox" id="'.$current->getIdRaza().'" value="'.$current->getIdRaza().'">'.$current->getNombreRaza().'</td>';
 
                 echo '</tr>';
             }
                 echo '</table>';
-
-                 
-            
-
 
 ?>
 

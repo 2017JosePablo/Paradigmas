@@ -135,6 +135,7 @@
                 
             }
             function mostrarFormularioSocio(){
+
                 document.getElementById("cajaFormulario").style.display='block';
                 document.getElementById("btnModificar").style.display='none';
                 document.getElementById("btnAgregar").style.display='block';
@@ -356,7 +357,6 @@
                         </td>
 
                     </table>
-
                    
                 </div>
 

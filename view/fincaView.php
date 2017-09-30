@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Area Administrativa de Fincas</title>
-	<link rel="stylesheet" href="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Area Administrativa de Fincas</title>
+  <link rel="stylesheet" href="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script>
 
             function provinciaSeleccionada(){
+
                 var valor = document.getElementById("listaProvincias") .value ;
                 if(valor != -1){
                     llenarCantones(valor);
@@ -96,7 +97,8 @@
 
             function ocultarCajaDireccion(){
               document.getElementById('verUbic').style='display:none';
-              document.getElementById('editarUbic').style="display:block";
+             // document.getElementById('editarUbic').style="display:block";
+              document.getElementById('datosDireccion').style='display:block';
               document.getElementById('selecModUbi').value = 0;
 
             }
@@ -183,89 +185,8 @@
             </table>
 
 
-<<<<<<< HEAD
 
-                 <div id="verUbic">
-
-                    <table>
-                       <tr><td><br><p>Dirección de la Finca</p></td></tr>
-                            <tr>
-                                <td>
-                                    Provincia : <input  type="text"  id = 'provF' name="provF" readonly >
-                                     
-                                </td>
-
-                                <td>
-                                    Canton : <input  type="text"  id = 'canF' name='canF' readonly >
-                              
-                                </td>
-                                
-                                <td>
-                                    Distrito : <input  type="text"  id = 'disF' name="disF" readonly >
-                                </td>
-
-                             <td>Pueblo :<input  type="text"  id = 'puebF' name = "prubF" readonly >
-
-                             <td>Otros señas :<input  type="text"  id = 'dirF' name= "dirF" readonly >
-
-                             <td>
-                               <button type="button" onclick="ocultarCajaDireccion()">Editar Ubicacion</button>
-                             </td>
-
-                        </tr>
-                    </table>
-                  
-                </div>  
-
-                
-
-
-              <div id="editarUbic" style='display:none;'>
-
-                    <table>
-                     <tr><td><br><p>Seleccione la nueva dirección</p></td></tr>
-                        <tr>
-                        <td>
-                             <div class="form-group">
-                              <label class="col-md-4 control-label" for="listaProvincias">Provincia</label>
-                              <div class="col-md-4">
-                                <select id="listaProvincias" name="listaProvincias" class="form-control" onclick="provinciaSeleccionada()">
-                                  <option value="-1">Seleccione Una Provincia</option>
-                                  <option value="1">San Jose</option>
-                                  <option value="2">Alajuela</option>
-                                  <option value="3">Cartago</option>
-                                  <option value="4">Heredia</option>
-                                  <option value="5">Guanacaste</option>
-                                  <option value="6">Puntarenas</option>
-                                  <option value="7">Limon</option>
-                                </select>
-                              </div>
-                            </div>  
-                        </td>
-                        <td>    
-                            <!-- Select Canton -->
-                            <div class="form-group" >
-                              <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
-                              <div class="col-md-4" id="cajaCantones">
-                              </div>
-                            </div>
-                        </td>
-                        <td>
-                            <!-- Select Distrito-->
-                            <div class="form-group" id="cajaDistrito" >
-                              <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
-                              <div class="col-md-4" id="listaDistrito" >
-                             
-                              </div>
-=======
-
-
-
-                    </tr>
-
-            </table>
-
-                <div id="datosDireccion">
+                <div id="datosDireccion" style="display: none;">
 
                 <table>
 
@@ -303,7 +224,6 @@
                             <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
                             <div class="col-md-4" id="listaDistrito" >
 
->>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
                             </div>
                          </td>
                         <td>Pueblo:<input type="text" id="fincapueblo"  name="fincapueblo"> </td>
@@ -313,14 +233,42 @@
                     </table>
                 </div>
 
+                 <div id="verUbic" style="display: none">
+
+                    <table>
+                       <tr><td><br><p>Dirección de la Finca</p></td></tr>
+                            <tr>
+                                <td>
+                                    Provincia : <input  type="text"  id = 'provF' name="provF" readonly >
+                                     
+                                </td>
+
+                                <td>
+                                    Canton : <input  type="text"  id = 'canF' name='canF' readonly >
+                              
+                                </td>
+                                
+                                <td>
+                                    Distrito : <input  type="text"  id = 'disF' name="disF" readonly >
+                                </td>
+
+                             <td>Pueblo :<input  type="text"  id = 'puebF' name = "prubF" readonly >
+
+                             <td>Otros señas :<input  type="text"  id = 'dirF' name= "dirF" readonly >
+
+                             <td>
+                               <button type="button" onclick="ocultarCajaDireccion()">Editar Ubicacion</button>
+                             </td>
+
+                        </tr>
+                    </table>
+                  
+                </div> 
 
 
+             
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
 
 
             <br> <br> <br>
@@ -328,57 +276,28 @@
              <?php
 
              include '../business/actividadBusiness.php';
-<<<<<<< HEAD
+
                 $actividadBusiness = new actividadBusiness();
                 $actividades = $actividadBusiness->obtenerTodosTBActividad();
                 echo "Tipo Actividad";
                 echo "</br>";
                  echo '<table>';
-                foreach ($actividades as $current) {     
+                foreach ($actividades as $current) {
                     echo '<tr>';
                     if($current->getId()==1){
                          echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad' checked='' value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
                     }else{
                           echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad'  value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
-                    }            
-                    echo '</tr>';
-                }   
-                 
-              echo '</table>';
-=======
-                    $actividadBusiness = new actividadBusiness();
-                    $actividades = $actividadBusiness->obtenerTodosTBActividad();
-                    echo "Tipo Actividad";
-                    echo "</br>";
-                     echo '<table>';
-                    foreach ($actividades as $current) {
-                        echo '<tr>';
-                        if($current->getId()==1){
-                             echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad' checked='' value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
-                        }else{
-                              echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad'  value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
-                        }
-                        echo '</tr>';
                     }
+                    echo '</tr>';
+                }
 
-       echo '</table>';
->>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
+              echo '</table>';
 
             ?>
 
 
-<<<<<<< HEAD
-          <br><br>
-          <p>Tipo de Finca</p>
-
-          <?php
-       
-       
-          require '../data/tipoFincaData.php';
-          $temp = new tipoFincaData();
-          $tipoFinca = $temp->getAllTBTiposFincas();
-=======
-                        <br><br>
+            <br><br>
             <p>Tipo de Finca</p>
                 <?php
 
@@ -387,16 +306,11 @@
                 $temp = new tipoFincaData();
                 $tipoFinca = $temp->getAllTBTiposFincas();
 
-
-                        echo '<table>';
-                        foreach ($tipoFinca as $curren) {
->>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
-
       
                   echo '<table>';
                   foreach ($tipoFinca as $curren) {
 
-<<<<<<< HEAD
+
                       echo '<tr>';
 
                       echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>"; 
@@ -407,30 +321,10 @@
                       echo '</tr>';
                   }
                   echo '</table>';
-=======
-                            echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>";
-
-                            echo '<td>'.$curren->getFincaTipoActividad().'</td>';
-
-
-                            echo '</tr>';
-                        }
-                        echo '</table>';
-
-
->>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
-
                       
 
           ?>
 
-
-<<<<<<< HEAD
-         
-      
-=======
-
->>>>>>> e3e210816e6f24b94a3527f9d187a4f66516cbf0
 
 
             <div id="btnFinalizar">
