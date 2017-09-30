@@ -82,15 +82,38 @@
 
             }
             function validar(){
+               var todo_correcto = false;
+
+              
              // alert(document.getElementById('socioFinca').value);
-                var todo_correcto = true;
+
+              if(document.getElementById('selecCerca').value == 0){
+                alert('Debe selecionar al menos un tipo de cerca');
+                todo_correcto = false;
+              }
+
+              if( document.getElementById('selecModUbi').value == 0){
                 if(document.getElementById("listaProvincias").value <0){
-                    todo_correcto = false;
+                alert('Seleccione una Provincia');
+                  todo_correcto = false;
                 }
 
-                if (!todo_correcto) {
-                    alert('Seleccione una Provincia'+document.getElementById("listaProvincias").value );
+
+                if(document.getElementById('fincapueblo').value<=0){
+                  alert('Ingrese un pueblo');
+                  todo_correcto = false;
                 }
+
+                if(document.getElementById('fincaexacta').value<=0){
+                  alert('Ingrese una direccion Exacta');
+                  todo_correcto = false;
+                }
+
+
+              }
+              
+              
+
             return todo_correcto;
 
             }
@@ -103,6 +126,16 @@
 
             }
 
+            function soloNumeros(e){
+              tecla = (document.all) ? e.keyCode : e.which;
+              if (tecla==8){
+                  return true;
+              }
+              patron =/[0-9]/;
+              tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+}
+
 
         </script>
 
@@ -113,6 +146,9 @@
 <input type="hidden" id="provincia" name="fincarovincia" value="">
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
+
+
+
 
 
    <?php
@@ -147,12 +183,16 @@
 
 <div  id="registrarFinca" style='display:none ;' >
 
-  <form id = 'frm' method="post"  action="../business/fincaAction.php">
+  <form id='frm' onsubmit="return validar()" method="post"  action="../business/fincaAction.php">
+
 
   <input type="hidden" name="cedula" id="cedula" value="">
 
   <input type="hidden" name="selecModUbi" id="selecModUbi" value="1">
+  <input type="hidden" id="tiposCerca" name="tiposCerca" value="">
 
+<input type="hidden" id="selecCerca"  value="">
+  
 
   <p id='Socio' ></p>
 
@@ -175,10 +215,10 @@
                 <tr>
 
                     <td>
-                        <input type="text" name="fincaarea" id="fincaarea"  required>
+                        <input type="text" name="fincaarea" id="fincaarea" onkeypress="return soloNumeros(event)" required>
                     </td>
                     <td>
-                        <input type="text" name="cantidadbobinos" id="cantidadbobinos"  required>
+                        <input type="text" name="cantidadbobinos" id="cantidadbobinos" onkeypress="return soloNumeros(event)"  required>
                     </td>
                 </tr>
                 
@@ -322,18 +362,41 @@
 
           ?>
 
-          <?php
-            
-          ?>
+
+<br><br>
+    <?php
+
+    $cont =1;
+    
+    include '../business/fincaCercaBusiness.php';
+    $fincaBusiness = new fincaCercaBusiness();
+    $cerca = $fincaBusiness->getTipoCerca();
+    echo '<table > <tr>  <td align = "center" >Tipo de cerca</td> </tr><tr></tr>';
+
+    foreach ($cerca as $current) {     
+        echo '<tr>';
+        echo '<td> <input  name ="checkbox" value="'.$current.'"type="checkbox" id="'.$cont.'" >'.$current.'</td>';
+
+        echo '</tr>';
+
+        $cont++;
+    }
+        echo '</table>';
+  ?>
+
+
+
 
 
 
             <div id="btnFinalizar">
-              <input type="submit" value="Registrar finca" name="finalizar" hidden="" id="finalizar"/><p>
+             <!-- <input type="button" value="Registrar finca" name="finalizar" hidden="" id="finalizar"/><p>-->
+
+              <button type='submit'  id="finalizar" name='finalizar' value='registrar'>Registrar Finca</button>
             </div>
 
             <div id="btnModificar">
-              <input type="submit" value="Modificar finca" name="actualizar" hidden="" id="actualizar"/><p>
+              <button type='submit'  id="actualizar" name='actualizar' value='actualizar'>Modificar Finca</button>
             </div>
 
     </form>

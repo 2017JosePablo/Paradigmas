@@ -1,6 +1,7 @@
 
 
 $(document).ready(function() {
+
     $('button').click(function() {
 
     	var cedula = $(this).val();
@@ -9,11 +10,35 @@ $(document).ready(function() {
 
     	if(cedula.length>0){
 
+
+           
+            if(cedula == 'registrar' || cedula == 'actualizar'){
+
+                var tipoCerca = "";
+                var validar = 0;
+
+                var checkboxes = document.getElementById("frm").checkbox;
+                var cont = 0; 
+ 
+                for (var x=0; x < checkboxes.length; x++) {
+                 if (checkboxes[x].checked) {
+
+                    tipoCerca += $("input:checkbox[id="+(x+1)+"]").val()+'-';
+                    validar = 1;
+                    
+                 
+                 }
+                }
+                document.getElementById('selecCerca').value = validar;
+                document.getElementById('tiposCerca').value =tipoCerca;
+
+            }
+
             var result = cedula.split('-');
 
 
 
-
+            if(result[1]=='Ver' || result[1]=='Mod' || result[1]=='Reg'){
 
             $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
                 //POSEE UNA FINCA
@@ -224,8 +249,14 @@ $(document).ready(function() {
                     }
             });
 
+
+
+    
     	}
-    });
+    
+    }});
+
+    
 });
 
 function getProvincia(provincia){

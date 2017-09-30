@@ -23,7 +23,7 @@ class fincaCercaData extends Data{
         }
 
 
-        $sql = "SELECT  * FROM tbtipocerca ";
+        $sql = "SELECT  * FROM tbfincacerca ";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {

@@ -19,6 +19,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
+
+    <script type="text/javascript">
+        function soloNumeros(e){
+              tecla = (document.all) ? e.keyCode : e.which;
+              if (tecla==8){
+                  return true;
+              }
+              patron =/[0-9]/;
+              tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+        }
+
+
+    </script>
+
+
     <body>
 
     <p id="notificacionSocio" style="color: red" ></p>
@@ -78,7 +94,7 @@
                 </td>
         
                 <td>
-                    <input type="text" id="terneros" name="terneros" placeholder="0">
+                    <input type="text" id="terneros" name="terneros" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
             </tr>
             <tr>
@@ -86,7 +102,7 @@
                     Terneras
                 </td>
                 <td>
-                    <input type="text" id="terneras" name="terneras" placeholder="0" >
+                    <input type="text" id="terneras" name="terneras" onkeypress="return soloNumeros(event)" placeholder="0" >
                 </td>
         </tr>
             <tr>
@@ -94,7 +110,7 @@
                     Novillos
                 </td>
                 <td>
-                    <input type="text" id="novillos"  name="novillos" placeholder="0">
+                    <input type="text" id="novillos"  name="novillos" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
         </tr>
             <tr>
@@ -102,7 +118,7 @@
                     Novillas
                 </td>
                 <td>
-                    <input type="text" id="novillas" name="novillas" placeholder="0">
+                    <input type="text" id="novillas" name="novillas" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
         </tr>
             <tr>
@@ -110,7 +126,7 @@
                     Novillas Pregnadas
                 </td>
                 <td>
-                    <input type="text" id="novillaspregnadas" name="novillaspregnadas" placeholder="0">
+                    <input type="text" id="novillaspregnadas" name="novillaspregnadas" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
         </tr>
             <tr>
@@ -118,7 +134,7 @@
                     Toros en servicio
                 </td>
                 <td>
-                    <input type="text" id="toros"  name="torosServicio" placeholder="0">
+                    <input type="text" id="toros"  name="torosServicio" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
         </tr>
             <tr>
@@ -126,7 +142,7 @@
                     Toros engorde
                 </td>
                 <td>
-                    <input type="text" id="toros"  name="torosEngorde" placeholder="0">
+                    <input type="text" id="toros"  name="torosEngorde" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
             </tr>
             <tr>
@@ -134,7 +150,7 @@
                     Vacas Cria
                 </td>
                 <td>
-                    <input type="text" id="vacas" name="vacasCria" placeholder="0">
+                    <input type="text" id="vacas" name="vacasCria" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
             </tr>
             <tr>
@@ -143,7 +159,7 @@
                     Vacas Engorde
                 </td>
                 <td>
-                    <input type="text" id="vacas" name="vacasEngorde" placeholder="0">
+                    <input type="text" id="vacas" name="vacasEngorde" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
             </tr>
 

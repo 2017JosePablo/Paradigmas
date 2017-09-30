@@ -7,10 +7,12 @@ class Hato{
 	private $novillos;
 	private $novillas;
 	private $novillasprenadas;
-	private $toros;
-	private $vacas;
+	private $torosServicio;
+	private $torosEngorde;
+	private $vacasCria;
+	private $vacasEngorde;
 
-	function Hato($propietarioid,$listarazas,$terneros,$terneras,$novillos,$novillas,$novillasprenadas,$toros,$vacas){
+	function Hato($propietarioid,$listarazas,$terneros,$terneras,$novillos,$novillas,$novillasprenadas,$torosServicio,$torosEngorde,$vacasCria,$vacasEngorde){
 		$this->propietarioid = $propietarioid;
 		$this->listarazas = $listarazas;
 		$this->terneros = $terneros;
@@ -18,8 +20,10 @@ class Hato{
 		$this->novillos = $novillos;
 		$this->novillas = $novillas;
 		$this->novillasprenadas = $novillasprenadas;
-		$this->toros =  $toros;
-		$this->vacas =$vacas;
+		$this->torosServicio =  $torosServicio;
+		$this->vacasCria =$vacasCria;
+		$this->torosEngorde =  $torosEngorde;
+		$this->vacasEngorde =$vacasEngorde;
 	}
 
 	public function setPropietario($id){
@@ -68,17 +72,29 @@ class Hato{
 	public function getNovillasPrenadas(){
 		return $this->novillasprenadas;
 	}
-	public function setToros($toros){
-		$this->toros = $toros;
+	public function setTorosServicio($torosServicio){
+		$this->torosServicio = $torosServicio;
 	}
-	public function getToros(){
-		return $this->toros;
+	public function getTorosServicio(){
+		return $this->torosServicio;
 	}
-	public function setVacas($vacas){
-		$this->vacas = $vacas;
+	public function setvacasCria($vacasCria){
+		$this->vacasCria = $vacasCria;
 	}
-	public function getVacas(){
-		return $this->vacas;
+	public function getvacasCria(){
+		return $this->vacasCria;
+	}
+	public function setTorosEngorde($torosEngorde){
+		$this->torosEngorde = $torosEngorde;
+	}
+	public function getTorosEngorde(){
+		return $this->torosEngorde;
+	}
+	public function setvacasEngorde($vacasEngorde){
+		$this->vacasEngorde = $vacasEngorde;
+	}
+	public function getvacasEngorde(){
+		return $this->vacasEngorde;
 	}
 }
 
