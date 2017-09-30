@@ -54,20 +54,21 @@
 	
 	$tipoactividad =$_POST['tipoactividad'];
 	$fincatipo =$_POST['tipofinca'];
+	$cercas =$_POST['tiposCerca'];
+
 
 	echo "datos".$fincaid;
 
-	if(isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($tipoactividad)&&isset($fincatipo)){
+	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($tipoactividad)&&isset($fincatipo)){
 
 		require './fincaBusiness.php';
 		require './socioBusiness.php';
-		//include '../domain/finca.php';
 		include '../domain/fincaDireccion.php';
 		$socioBusiness= new socioBusiness();
 
 		$idSocio=$socioBusiness->getSocioId($fincaid);
 		$fincaBusiness = new fincaBusiness();
-		$finca = new Finca($idSocio,$idSocio,$fincaarea,$cantidadbobinos);
+		$finca = new Finca($idSocio,$idSocio,$fincaarea,$cantidadbobinos,$cercas);
 		$resultado2 = $fincaBusiness ->actualizarTBfinca($finca);
 
 
