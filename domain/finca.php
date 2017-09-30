@@ -5,13 +5,14 @@ class Finca{
 	private $socioId;
 	private $area;
 	private $cantidadBovinos;
+	private $cerca;
 
-
-	function Finca($fincaid,$socioId,$area,$cantidadBovinos){
+	function Finca($fincaid,$socioId,$area,$cantidadBovinos,$cerca){
 		$this->fincaid = $fincaid;
 		$this->socioId = $socioId;
 		$this->area = $area;
 		$this->cantidadBovinos = $cantidadBovinos;
+		$this->cerca=$cerca;
 	}
 	public function setFincaId($fincaid){
 		$this->fincaid = $fincaid;
@@ -26,6 +27,10 @@ class Finca{
 	public function setArea($area){
 		$this->area = $area;
 	}
+
+	public function setCerca($cerca){
+		$this->cerca = $carca;
+	}
 	
 	public function setCantidadBovinos($cantidadBovinos){
 		$this->cantidadBovinos = $cantidadBovinos;
@@ -39,6 +44,10 @@ class Finca{
 		return $this->area;
 	}
 	
+	public function getCerca(){
+		return $this->cerca;
+	}
+
 	public function getCantidadBovinos(){
 		return $this->cantidadBovinos;
 	}

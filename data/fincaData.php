@@ -23,11 +23,12 @@ class FincaData extends Data{
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbfinca (socioid,fincaarea,fincacantidadbobinos)
+        $sql = "INSERT INTO tbfinca (socioid,fincaarea,fincacantidadbobinos,fincacerca)
         VALUES ('".
                 $finca->getSocioId()."','".
                 $finca->getArea()."','".
-                $finca->getCantidadBovinos() . "')";
+                $finca->getCantidadBovinos()."','".
+                $finca->getCerca(). "')";
 
         $result = $conn->query($sql);
 

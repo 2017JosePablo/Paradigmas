@@ -1,13 +1,16 @@
 <?php
 
 require '../data/juntaData.php';
+require '../data/colaboradorData.php';
 
 class JuntaBusiness {
 
     private $juntaData;
+    private $colaborador;
 
     public function JuntaBusiness() {
         $this->juntaData = new JuntaData();
+        $this->colaborador = new colaboradorData();
     }
 
     public function insertarTBJunta($junta) {
@@ -23,6 +26,13 @@ class JuntaBusiness {
     }
     public function obtenerTodosTBJunta() {
         return $this->juntaData->obtenerTodosTBJunta();
-    }    
+    }
+
+    public function insertarColaborador($colaborador)
+    {
+        return $this->colaborador->insertarColaborador($colaborador);
+    }
+
+
 }
 ?>

@@ -71,9 +71,10 @@ if (isset($_POST['actualizar'])) {
     ////Parte para insertar a la base de datos un nueva Junta ....
 } else if (isset($_POST['crear'])) {
 
-    require 'socioBusiness.php';
+    //require 'socioBusiness.php';
     require_once '../domain/socioDireccion.php';
-    $socioBusiness = new socioBusiness();
+    //$socioBusiness = new socioBusiness();
+    $juntaBusiness = new JuntaBusiness();
 
     if (isset($_POST['idjunta']) && isset($_POST['listadoSocios']) && isset($_POST['listadoVicepresidente']) && isset($_POST['listadoTesorero'])
             && isset($_POST['listadoSecretario']) && isset($_POST['listadoV1']) && isset($_POST['listadoV2'])  && isset($_POST['listadoV3'])) {
@@ -160,16 +161,10 @@ if (isset($_POST['actualizar'])) {
     if(isset($presidenteColaborardoCedula)==true && empty($presidenteColaborardoCedula)==false && isset($presidenteColaborardorNombre)==true && empty($presidenteColaborardorNombre)==false && isset($presidenteColaborardorPrimerApellido)==true && empty($presidenteColaborardorPrimerApellido)==false && isset($presidenteColaborardorSegundoApellido)==true && empty($presidenteColaborardorSegundoApellido)==false && isset($presidenteColaborardorTelMovil)==true && empty($presidenteColaborardorTelMovil)==false && isset($presidenteColaborardorCorreo)==true && empty($presidenteColaborardorCorreo)==false){
 
          
-        if($socioBusiness->verificarCedula($presidenteColaborardoCedula)==0){
+         $presidente= new Colaborador("",$presidenteColaborardoCedula,$presidenteColaborardorNombre,$presidenteColaborardorPrimerApellido,$presidenteColaborardorSegundoApellido,$presidenteColaborardorCorreo,$presidenteColaborardorTelMovil);
 
-            $socioP = new Socio('',$presidenteColaborardoCedula,$presidenteColaborardorNombre,$presidenteColaborardorPrimerApellido,$presidenteColaborardorSegundoApellido,$presidenteColaborardorTelMovil,$presidenteColaborardorCorreo,"",
-                "", "" , "");
-
-            $resultadoP = $socioBusiness->insertarTBSocio($socioP);
-
-          //  $socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-            //$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
-
+            $resultadoP = $juntaBusiness->insertarColaborador($presidente);
+            
             if ($resultadoP ==1) {
                 $presidentejunta=$presidenteColaborardorNombre;
                 echo "ColaboradorP insertardo"; 
@@ -180,30 +175,15 @@ if (isset($_POST['actualizar'])) {
                 //header("location: ../view/socioView.php?error=errorinserted");
             }
 
-        }else{
-            echo "El colaboradorP ya existe"; 
-        }
-
-        
-
-
     }else{
        $presidentejunta = $_POST['listadoSocios'];
     }
 
     if(isset($vicepresidenteColaborardoCedula)==true && empty($vicepresidenteColaborardoCedula)==false && isset($vicepresidenteColaborardorNombre)==true && empty($vicepresidenteColaborardorNombre)==false && isset($vicepresidenteColaborardorPrimerApellido)==true && empty($vicepresidenteColaborardorPrimerApellido)==false && isset($vicepresidenteColaborardorSegundoApellido)==true && empty($vicepresidenteColaborardorSegundoApellido)==false && isset($vicepresidenteColaborardorTelMovil)==true && empty($vicepresidenteColaborardorTelMovil)==false && isset($vicepresidenteColaborardorCorreo)==true && empty($vicepresidenteColaborardorCorreo)==false){
 
-         
-        if($socioBusiness->verificarCedula($vicepresidenteColaborardoCedula)==0){
+        $vicepresidente= new Colaborador("",$vicepresidenteColaborardoCedula,$vicepresidenteColaborardorNombre,$vicepresidenteColaborardorPrimerApellido,$vicepresidenteColaborardorSegundoApellido,$vicepresidenteColaborardorCorreo,$vicepresidenteColaborardorTelMovil);
 
-            $socioV = new Socio('',$vicepresidenteColaborardoCedula,$vicepresidenteColaborardorNombre,$vicepresidenteColaborardorPrimerApellido,$vicepresidenteColaborardorSegundoApellido,$vicepresidenteColaborardorTelMovil,$vicepresidenteColaborardorCorreo,"",
-                "", "" , "");
-
-            $resultadoV = $socioBusiness->insertarTBSocio($socioV);
-
-          //  $socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-            //$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
-
+            $resultadoV = $juntaBusiness->insertarColaborador($presidente);
 
             if ($resultadoV ==1) { 
                 $vicepresidentejunta=$vicepresidenteColaborardorNombre;
@@ -214,12 +194,6 @@ if (isset($_POST['actualizar'])) {
                // header("location: ../view/socioView.php?error=errorinserted");
             }
 
-        }else{
-               echo "El colaboradorV ya existe"; 
-        }
-
-       
-
     }else{
         $vicepresidentejunta = $_POST['listadoVicepresidente'];
     }
@@ -227,17 +201,11 @@ if (isset($_POST['actualizar'])) {
 
 
     if(isset($tesoreroColaborardoCedula)==true && empty($tesoreroColaborardoCedula)==false && isset($tesoreroColaborardorNombre)==true && empty($tesoreroColaborardorNombre)==false && isset($tesoreroColaborardorPrimerApellido)==true && empty($tesoreroColaborardorPrimerApellido)==false && isset($tesoreroColaborardorSegundoApellido)==true && empty($tesoreroColaborardorSegundoApellido)==false && isset($tesoreroColaborardorTelMovil)==true && empty($tesoreroColaborardorTelMovil)==false && isset($tesoreroColaborardorCorreo)==true && empty($tesoreroColaborardorCorreo)==false){
-         
-        if($socioBusiness->verificarCedula($tesoreroColaborardoCedula)==0){
+            
+             $tesorero= new Colaborador("",$tesoreroColaborardoCedula,$tesoreroColaborardorNombre,$tesoreroColaborardorPrimerApellido,$tesoreroColaborardorSegundoApellido,$tesoreroColaborardorCorreo,$tesoreroColaborardorTelMovil);
 
-            $socioT = new Socio('',$tesoreroColaborardoCedula,$tesoreroColaborardorNombre,$tesoreroColaborardorPrimerApellido,$tesoreroColaborardorSegundoApellido,$tesoreroColaborardorTelMovil,$tesoreroColaborardorCorreo,"",
-                "", "" , "");
-
-            $resultadoT = $socioBusiness->insertarTBSocio($socioT);
-
-          //  $socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-            //$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
-
+            $resultadoT = $juntaBusiness->insertarColaborador($tesorero);
+    
 
             if ($resultadoT ==1) {
                 $tesorerojunta =$tesoreroColaborardorNombre;
@@ -247,12 +215,6 @@ if (isset($_POST['actualizar'])) {
                // header("location: ../view/socioView.php?error=errorinserted");
             }
 
-        }else{
-
-            echo " El ColaboradorT ya existe";
-           // header("location: ../view/socioView.php?error=userexits");
-        }
-
 
     }else{
          $tesorerojunta = $_POST['listadoTesorero'];
@@ -261,17 +223,12 @@ if (isset($_POST['actualizar'])) {
      if(isset($secretarioColaborardoCedula)==true && empty($secretarioColaborardoCedula)==false && isset($secretarioColaborardorNombre)==true && empty($secretarioColaborardorNombre)==false && isset($secretarioColaborardorPrimerApellido)==true && empty($secretarioColaborardorPrimerApellido)==false && isset($secretarioColaborardorSegundoApellido)==true && empty($ecretarioColaborardorSegundoApellido)==false && isset($secretarioColaborardorTelMovil)==true && empty($secretarioColaborardorTelMovil)==false && isset($secretarioColaborardorCorreo)==true && empty($secretarioColaborardorCorreo)==false){
 
 
-        if($socioBusiness->verificarCedula($secretarioColaborardoCedula)==0){
-
-            $socioS = new Socio('',$secretarioColaborardoCedula,$secretarioColaborardorNombre,$secretarioColaborardorPrimerApellido,$secretarioColaborardorSegundoApellido,$secretarioColaborardorTelMovil,$secretarioColaborardorCorreo,"",
-                "", "" , "");
-
-            $resultadoS = $socioBusiness->insertarTBSocio($socioS);
-
-          //  $socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-            //$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
 
 
+           $secretario= new Colaborador("",$secretarioColaborardoCedula,$secretarioColaborardorNombre,$secretarioColaborardorPrimerApellido,$secretarioColaborardorSegundoApellido,$secretarioColaborardorCorreo,$secretarioColaborardorTelMovil);
+
+            $resultadoS = $juntaBusiness->insertarColaborador($secretario);
+    
             if ($resultadoS ==1) {
                 $secretariojunta =$secretarioColaborardorNombre;
                 echo " ColaboradorS insertardo";
@@ -280,11 +237,6 @@ if (isset($_POST['actualizar'])) {
                 echo "Error al insertar un ColaboradorS: ";
                 //header("location: ../view/socioView.php?error=errorinserted");
             }
-
-        }else{
-            echo "El ColaboradorS ya existe";
-            //header("location: ../view/socioView.php?error=userexits");
-        }
 
      
      }else{
@@ -295,16 +247,10 @@ if (isset($_POST['actualizar'])) {
      if(isset($v1ColaborardoCedula)==true && empty($v1ColaborardoCedula)==false && isset($v1ColaborardorNombre)==true && empty($v1ColaborardorNombre)==false && isset($v1ColaborardorPrimerApellido)==true && empty($v1ColaborardorPrimerApellido)==false && isset($v1ColaborardorSegundoApellido)==true && empty($v1ColaborardorSegundoApellido)==false && isset($v1ColaborardorTelMovil)==true && empty($v1ColaborardorTelMovil)==false && isset($v1ColaborardorCorreo)==true && empty($v1ColaborardorCorreo)==false){
 
 
-        if($socioBusiness->verificarCedula($v1ColaborardoCedula)==0){
+    
+            $vocal1= new Colaborador("",$vocal1ColaborardoCedula,$vocal1ColaborardorNombre,$vocal1ColaborardorPrimerApellido,$vocal1ColaborardorSegundoApellido,$vocal1ColaborardorCorreo,$vocal1ColaborardorTelMovil);
 
-            $socioV1 = new Socio('',$v1ColaborardoCedula,$v1ColaborardorNombre,$v1ColaborardorPrimerApellido,$v1ColaborardorSegundoApellido,$v1ColaborardorTelMovil,$v1ColaborardorCorreo,"",
-                "", "" , "");
-
-            $resultadoV1 = $socioBusiness->insertarTBSocio($socioV1);
-
-          //  $socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-            //$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
-
+            $resultadoV1 = $juntaBusiness->insertarColaborador($vocal1);
 
             if ($resultadoV1 ==1) {
                 $vocal1junta = $v1ColaborardorNombre;
@@ -315,10 +261,6 @@ if (isset($_POST['actualizar'])) {
                 //header("location: ../view/socioView.php?error=errorinserted");
             }
 
-        }else{
-            echo "El ColaboradorV1 ya existe";
-            //header("location: ../view/socioView.php?error=userexits");
-        }
 
          
      }else{
@@ -330,15 +272,11 @@ if (isset($_POST['actualizar'])) {
 
      if(isset($v2ColaborardoCedula)==true && empty($v2ColaborardoCedula)==false && isset($v2ColaborardorNombre)==true && empty($v2ColaborardorNombre)==false && isset($v2ColaborardorPrimerApellido)==true && empty($v2ColaborardorPrimerApellido)==false && isset($v2ColaborardorSegundoApellido)==true && empty($v2ColaborardorSegundoApellido)==false && isset($v2ColaborardorTelMovil)==true && empty($v1ColaborardorTelMovil)==false && isset($v2ColaborardorCorreo)==true && empty($v2ColaborardorCorreo)==false){
 
-        if($socioBusiness->verificarCedula($v2ColaborardoCedula)==0){
 
-            $socioV2 = new Socio('',$v2ColaborardoCedula,$v2ColaborardorNombre,$v2ColaborardorPrimerApellido,$v2ColaborardorSegundoApellido,$v2ColaborardorTelMovil,$v2ColaborardorCorreo,"",
-                "", "" , "");
+            $vocal2= new Colaborador("",$vocal2ColaborardoCedula,$vocal2ColaborardorNombre,$vocal2ColaborardorPrimerApellido,$vocal2ColaborardorSegundoApellido,$vocal2ColaborardorCorreo,$vocal2ColaborardorTelMovil);
 
-            $resultadoV2 = $socioBusiness->insertarTBSocio($socioV2);
-
-          //  $socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-            //$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
+            $resultadoV2 = $juntaBusiness->insertarColaborador($vocal2);
+    
 
 
             if ($resultadoV2 ==1) {
@@ -349,12 +287,6 @@ if (isset($_POST['actualizar'])) {
                 echo "Error al insertar un ColaboradorV2: ";
                 //header("location: ../view/socioView.php?error=errorinserted");
             }
-
-        }else{
-             echo "El ColaboradorV2 ya existe";
-            //header("location: ../view/socioView.php?error=userexits");
-        }
-
         
 
      }else{
@@ -366,16 +298,11 @@ if (isset($_POST['actualizar'])) {
      if(isset($v3ColaborardoCedula)==true && empty($v3ColaborardoCedula)==false && isset($v3ColaborardorNombre)==true && empty($v3ColaborardorNombre)==false && isset($v3ColaborardorPrimerApellido)==true && empty($v3ColaborardorPrimerApellido)==false && isset($v3ColaborardorSegundoApellido)==true && empty($v3ColaborardorSegundoApellido)==false && isset($v3ColaborardorTelMovil)==true && empty($v3ColaborardorTelMovil)==false && isset($v3ColaborardorCorreo)==true && empty($v3ColaborardorCorreo)==false){
 
 
-        if($socioBusiness->verificarCedula($v3ColaborardoCedula)==0){
+        
+            $vocal3= new Colaborador("",$vocal3ColaborardoCedula,$vocal3ColaborardorNombre,$vocal3ColaborardorPrimerApellido,$vocal3ColaborardorSegundoApellido,$vocal3ColaborardorCorreo,$vocal3ColaborardorTelMovil);
 
-            $socio = new Socio('',$v3ColaborardoCedula,$v3ColaborardorNombre,$v3ColaborardorPrimerApellido,$v3ColaborardorSegundoApellido,$v3ColaborardorTelMovil,$v3ColaborardorCorreo,"",
-                "", "" , "");
-
-            $resultadoV3 = $socioBusiness->insertarTBSocio($socioV3);
-
-          //  $socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-            //$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
-
+            $resultadoV3 = $juntaBusiness->insertarColaborador($vocal3);
+    
 
             if ($resultadoV3 ==1) {
                 $vocal3junta = $v3ColaborardorNombre;
@@ -385,11 +312,6 @@ if (isset($_POST['actualizar'])) {
                 echo "Error al insertar un ColaboradorV3: ";
                 //header("location: ../view/socioView.php?error=errorinserted");
             }
-
-        }else{
-             echo "El ColaboradorV3 ya existe";
-            //header("location: ../view/socioView.php?error=userexits");
-        }
 
         
 

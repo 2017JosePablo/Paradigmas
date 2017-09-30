@@ -64,7 +64,7 @@
 
 				$idSocio=$socioBusiness->getSocioId($cedula);
 				$fincaBusiness= new fincaBusiness();
-				$finca= new Finca('',$idSocio,'','');
+				$finca= new Finca('',$idSocio,'','','');
 				$resuntadoFinca=$fincaBusiness->insertarFinca($finca);
 
 

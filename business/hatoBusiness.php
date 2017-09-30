@@ -33,6 +33,7 @@
 			return $this->hato->obtenerTodosTBHato();
 		}
 
+
 	}
 
 ?>
