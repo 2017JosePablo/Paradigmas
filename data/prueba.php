@@ -60,14 +60,16 @@
 
 
 
-        include 'fierroData.php';
-        $temp = new fierroData();
-        include_once '../domain/fierro.php';
-        $examen = new fierro('','1','/home/carranza/Escritorio/fierro1.jpg','1');
-    //    echo $temp->insertarFierroSocio($examen);
+        include 'colaboradorData.php';
+        $temp = new colaboradorData();
+        include_once '../domain/colaborador.php';
+        $colaborador = new colaborador('3','103450353','Adan','Rojas','Hernadez','rc@gmai.com','7503-2525');
 
-//        echo $temp->obtenerFierroSocio("1")->getFierroRutaImagen();
-        echo $temp->modificarFierroSocio($examen);
+        //echo "Aqui estot: ". $temp->insertarColaborador($colaborador);
+
+      //    echo $temp->obtenerColaborador("1")->getNombreColaborador();
+        echo $temp->modificarColaborador($colaborador);
+        //echo $temp->eliminarColaborador('2');
 
 
         ?>
