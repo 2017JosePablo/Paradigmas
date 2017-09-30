@@ -44,29 +44,14 @@
 
 	
 
-	if($_POST['selecModUbi'] == 1 ){
-
-		$listaProvincias =$_POST['provF'];
-		$listadoCanton =$_POST['canF'];
-		$listadoDistrito=$_POST['disF'];
-		$fincapueblo =$_POST['prubF'];
-		$fincaexacta =$_POST['dirF'];
-
-	}else{
-		if($_POST['selecModUbi'] == 0){
-			$listaProvincias =$_POST['listaProvincias'];
-			$listadoCanton =$_POST['listadoCantones'];
-			$listadoDistrito=$_POST['listadoDistrito'];
-			$fincapueblo =$_POST['fincapueblo'];
-			$fincaexacta =$_POST['fincaexacta'];
-
-		}
-
-	}
+	$listaProvincias =$_POST['listaProvincias'];
+	$listadoCanton =$_POST['listadoCantones'];
+	$listadoDistrito=$_POST['listadoDistrito'];
+	$fincapueblo =$_POST['fincapueblo'];
+	$fincaexacta =$_POST['fincaexacta'];
 
 	
 	
-
 	$tipoactividad =$_POST['tipoactividad'];
 	$fincatipo =$_POST['tipofinca'];
 
