@@ -3,6 +3,7 @@
 	if (isset($_POST['cedulaHato'])) {
 		require 'socioBusiness.php';
 		require 'hatoBusiness.php';
+		$cedula=$_POST['cedulaHato'];
 		$socioBusiness = new socioData();
 		$hatoBusiness = new hatoData();
 		$socioid = $socioBusiness->obtenerUnSoloTBSocio($cedula);
