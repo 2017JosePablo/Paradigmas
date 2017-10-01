@@ -71,18 +71,23 @@
         echo $temp->modificarColaborador($colaborador);
         //echo $temp->eliminarColaborador('2');
 */
-/*
+
   include 'hatoData.php';
         $temp = new hatoData();
         include_once '../domain/hato.php';
-        $hato = new Hato('2','4,2,3','2','2','2','2','2','3','3','3','3');
+     //   $hato = new Hato('2','4,2,3','2','2','2','2','2','3','3','3','3');
 
        // echo "Insertando un hato: ". $temp->insertarTBHato($hato);
 
-          echo $temp->actualizarTBHato($hato);
-//        echo $temp->modificarColaborador($colaborador);
+    //      echo $temp->actualizarTBHato($hato);
+       // echo $temp->obtenerSocioHato('1');
+        
+        $deco = json_decode($temp->obtenerSocioHato('1'),true);
+        
+
+        echo $deco["hatovacaengorde"];
         //echo $temp->eliminarColaborador('2');
-        */
+/*
 
         //include 'socioData.php';
         //$temp = new socioData();
@@ -100,9 +105,10 @@
         $fecha = gmdate('D, d M Y H:i:s T', time());
 
         echo "La fecha es: ".$fecha;
+        */
 
         ?>
-        <link rel="stylesheet" type="text/css" href="https://www.calendario-365.es/css/calendar_365.css" /> <a href="https://www.calendario-365.es/calendario-2017.html" class="calendar365" title="Calendario 2017">Calendario 2017</a>
+       
 
 
 </body>
