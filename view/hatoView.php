@@ -45,7 +45,7 @@
     }
     
 ?>
-   <form method="post" enctype="multipart/form-data" action="../business/socioAction.php"> 
+   
     
     <?php
     require '../business/socioBusiness.php';
@@ -80,6 +80,7 @@
 
     ?>
 
+<form method="post" enctype="multipart/form-data" action="../business/hatoAction.php"> 
 
 <div id="cajaHato" style="display: none;">
     
@@ -185,7 +186,7 @@
 
     </div>
 
-            <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
+    <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
 </form>
 
 
