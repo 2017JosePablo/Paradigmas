@@ -106,6 +106,7 @@ class hatoData extends Data{
         return $hato;
     }
     public function obtenerSocioHato($idsocio) {
+        echo "El id por parametros es: ".$idsocio;
         $hato = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
