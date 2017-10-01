@@ -113,7 +113,7 @@ class hatoData extends Data{
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 
-                $hato = ["socioid"=>$row["socioid"],"hatoraza"=>$row["hatoraza"],"hatoternero"=>$row["hatoternero"],"hatoternera"=>$row["hatoternera"],"hatono"=>$row["hatonovillo"],"hatonovilla"=>$row["hatonovilla"],"hatonovillaprenada"=>$row["hatonovillaprenada"],"hatotoroengorde"=>$row["hatotoroengorde"],"hatotoroservicio"=>$row["hatotoroservicio"],"hatovacacria"=>$row["hatovacacria"],"hatovacaengorde"=>$row["hatovacaengorde"]));
+                $hato = ["socioid"=>$row["socioid"],"hatoraza"=>$row["hatoraza"],"hatoternero"=>$row["hatoternero"],"hatoternera"=>$row["hatoternera"],"hatono"=>$row["hatonovillo"],"hatonovilla"=>$row["hatonovilla"],"hatonovillaprenada"=>$row["hatonovillaprenada"],"hatotoroengorde"=>$row["hatotoroengorde"],"hatotoroservicio"=>$row["hatotoroservicio"],"hatovacacria"=>$row["hatovacacria"],"hatovacaengorde"=>$row["hatovacaengorde"]];
             }
         }else{
             echo "0 results";
