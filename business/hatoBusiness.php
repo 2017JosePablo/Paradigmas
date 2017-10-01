@@ -33,7 +33,9 @@
 			return $this->hato->obtenerTodosTBHato();
 		}
 
-
+		public function obtenerSocioHato($socioid){
+			return $this->obtenerSocioHato($socioid);
+		}
 	}
 
 ?>

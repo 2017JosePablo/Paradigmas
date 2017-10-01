@@ -7,7 +7,7 @@
 		$hatoBusiness = new hatoData();
 
 		$result=$hatoBusiness->obtenerSocioHato($socioid);
-		//echo $result;
+		echo $result;
 		
 	}
 
