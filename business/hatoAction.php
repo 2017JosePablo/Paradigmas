@@ -5,7 +5,7 @@
 		$socioid=$_POST['cedulaHato'];	
 		$hatoBusiness = new hatoData();
 		$result=$hatoBusiness->obtenerSocioHato($socioid);
-		echo "Hola";
+		echo $result;
 
 	}
 
