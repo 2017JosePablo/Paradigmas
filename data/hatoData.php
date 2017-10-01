@@ -19,7 +19,7 @@ class hatoData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbhato (socioid,hatoraza,hatoternero,hatoternera,hatonovillo,hatonovilla,hatonovillaprenada,hatotoroengorde,hatotoroservicio,hatovacacria,hatotoroengorde)
+        $sql = "INSERT INTO tbhato (socioid,hatoraza,hatoternero,hatoternera,hatonovillo,hatonovilla,hatonovillaprenada,hatotoroengorde,hatotoroservicio,hatovacacria,hatovacaengorde)
         VALUES ('" .
 
                 $hato->getPropietario() . "','" .
@@ -31,8 +31,8 @@ class hatoData extends Data{
                 $hato->getNovillasPrenadas() . "','" .
                 $hato->getTorosEngorde() . "','" .
                 $hato->getTorosServicio() . "','" .
-                $hato->getToros() . "','" .
-                $hato->getVacas() . "');";
+                $hato->getvacasCria() . "','" .
+                $hato->getvacasEngorde() . "');";
 
 
 
@@ -49,16 +49,21 @@ class hatoData extends Data{
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "UPDATE tbhato SET hatopersonid ='".$hato-> getPropietario(). "',
+        $sql = "UPDATE tbhato SET 
             hatoraza='" . $hato-> getListadoRazas()."',
-            hatoterneros='" . $hato-> getTerneros()."',
-            hatoterneras='" . $hato-> getTerneras()."',
-            hatonovillos='" . $hato-> getNovillos()."',
-            hatonovillas='" . $hato-> getNovillas()."',
-            hatonovillasprenadas='" . $hato-> getNovillasPrenadas()."',
-            hatotoros='".$hato-> getToros()."',
-            hatovacas='" . $hato-> getVacas()."' 
-            WHERE hatopersonid ='" . $hato-> getPropietario(). "';";
+            hatoternero='" . $hato-> getTerneros()."',
+            hatoternera='" . $hato-> getTerneras()."',
+            hatonovillo='" . $hato-> getNovillos()."',
+            hatonovilla='" . $hato-> getNovillas()."',
+            hatonovillaprenada='" . $hato-> getNovillasPrenadas()."',
+            hatotoroengorde='".$hato-> getTorosEngorde()."',
+            hatotoroservicio='".$hato-> getTorosServicio()."',
+            hatovacacria='".$hato-> getvacasCria()."',
+
+            hatovacaengorde='" . $hato-> getvacasEngorde()."' 
+            WHERE socioid ='" . $hato-> getPropietario(). "';";
+
+        //    echo $sql;
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {
@@ -91,7 +96,7 @@ class hatoData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($hato, new hato($row["socioid"],$row["hatoraza"],$row["hatoterneros"],$row["hatoterneras"],$row["hatonovillos"],$row["hatonovillas"],$row["hatonovillasprenadas"],$row["hatotoros"],$row["hatovacas"]));
+                array_push($hato, new hato($row["socioid"],$row["hatoraza"],$row["hatoternero"],$row["hatoternera"],$row["hatonovillo"],$row["hatonovilla"],$row["hatonovillaprenada"],$row["hatotoroengorde"],$row["hatotoroservicio"],$row["hatovacacria"],$row["hatovacaengorde"]));
             }
         }else{
             echo "0 results";
