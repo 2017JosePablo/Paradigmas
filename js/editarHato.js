@@ -10,7 +10,7 @@ $(document).ready(function() {
 
             var result = cedula.split('-');
 
-            if(result[1]=='Ver'){
+            if(result[1] == 'Ver'){
                 document.getElementById('cajaHato').style='display:block';
 
                 document.getElementById("terneros").readOnly = true; 
@@ -64,7 +64,7 @@ $(document).ready(function() {
                 alert('Reg');
                 document.getElementById('cajaRazas').style='display:block';
 
-                document.getElementById('cajaHato').style='display:block';
+
 
                 document.getElementById("terneros").readOnly = false; 
                 document.getElementById("terneras").readOnly = false; 
@@ -79,8 +79,6 @@ $(document).ready(function() {
 
         } 
 
-        
 
     });
 });
-
