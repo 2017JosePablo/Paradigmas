@@ -1,9 +1,4 @@
 <?php
-if (isset($_POST['cedulaHato']) == true && empty($_POST['cedulaHato'])== false) {
-	$hatoData = new hatoData();
-	echo $hatoData->obtenerSocioHato($_POST['cedulaHato']);
-}
-
 include 'data.php';
 include '../domain/hato.php';
 
