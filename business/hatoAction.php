@@ -1,12 +1,9 @@
 <?php
 
 	if (isset($_POST['cedulaHato'])) {
-		require 'socioBusiness.php';
 		require 'hatoBusiness.php';
-		$cedula=$_POST['cedulaHato'];
-		$socioBusiness = new socioData();
+		$socioid=$_POST['cedulaHato'];	
 		$hatoBusiness = new hatoData();
-		$socioid = $socioBusiness->obtenerUnSoloTBSocio($cedula);
 		$result=$hatoBusiness->obtenerSocioHato($socioid);
 		echo $result;
 
