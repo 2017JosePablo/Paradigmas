@@ -295,7 +295,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
     }
   
     public function actualizarTBSocioDireccion($temp) {
-        echo "Id de socio: ".$temp->getIdSocioDir()."</br>";
+        
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
         if (!$conn) {
@@ -318,7 +318,8 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
 
     public function actualizarTBsocio($socio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        echo "Id de usuario : ".$socio->getSocioId()."</br>";
+       
+
         $sql = "UPDATE tbsocio SET sociocedula= '".$socio->getCedula()."',socionombre='".$socio->getNombre()."'  ,socioprimerapellido= '".$socio->getPrimerApellido()."' ,sociosegundoapellido='".$socio->getSegundoApellido()."',sociotelefono='".$socio->getTelMovil()."',sociocorreo='".$socio->getCorreo()."',tipoactividadid='".$socio->getTipoActividadId()."',fincatipoid  ='".$socio->getFincaTipo()."', sociofechaingreso= '".$socio->getFechaIngreso()."',estadosociodetalle='".$socio->getEstadoSocioDetalle()."'  WHERE socioid= '".$socio->getSocioId()."';";
 
         $result = $conn->query($sql);

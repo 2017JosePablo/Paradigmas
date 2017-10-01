@@ -19,7 +19,7 @@ class hatoData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbhato (socioid,hatoraza,hatoterneros,hatoterneras,hatonovillos,hatonovillas,hatonovillasprenadas,hatotoros,hatovacas)
+        $sql = "INSERT INTO tbhato (socioid,hatoraza,hatoternero,hatoternera,hatonovillo,hatonovilla,hatonovillaprenada,hatotoroengorde,hatotoroservicio,hatovacacria,hatotoroengorde)
         VALUES ('" .
 
                 $hato->getPropietario() . "','" .
@@ -29,8 +29,11 @@ class hatoData extends Data{
                 $hato->getNovillos() . "','" .
                 $hato->getNovillas() . "','" .
                 $hato->getNovillasPrenadas() . "','" .
+                $hato->getTorosEngorde() . "','" .
+                $hato->getTorosServicio() . "','" .
                 $hato->getToros() . "','" .
                 $hato->getVacas() . "');";
+
 
 
         $result = $conn->query($sql);
