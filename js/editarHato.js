@@ -11,6 +11,8 @@ $(document).ready(function() {
             var result = cedula.split('-');
 
             if(result[1]=='Ver'){
+                document.getElementById('cajaHato').style='display:block';
+
                 document.getElementById("terneros").readOnly = true; 
                 document.getElementById("terneras").readOnly = true; 
                 document.getElementById("novillos").readOnly = true; 
@@ -23,8 +25,8 @@ $(document).ready(function() {
 
                 $.post('../business/hatoAction.php', {cedulaHato:result[0]}, function(data){
 
-                    alert(result[0]);
-                    
+                    alert(data);
+                    /*
                     var array = JSON.parse(data);
                     document.getElementById("terneros").value = array['']; 
                     document.getElementById("terneras").value = array['']; 
@@ -35,12 +37,16 @@ $(document).ready(function() {
                     document.getElementById("torosEngorde").value = array['']; 
                     document.getElementById("vacasCria").value = array['']; 
                     document.getElementById("vacasEngorde").value = array[''];
-
+*/
                     
                 }); 
 
             }else if(result[1]=='Mod'){
                 alert('Mod');
+                
+                document.getElementById('cajaRazas').style='display:block';
+
+
                 document.getElementById("terneros").readOnly = false; 
                 document.getElementById("terneras").readOnly = false; 
                 document.getElementById("novillos").readOnly = false; 
@@ -56,6 +62,19 @@ $(document).ready(function() {
 
             }else if(result[1]=='Reg'){
                 alert('Reg');
+                document.getElementById('cajaRazas').style='display:block';
+
+                document.getElementById('cajaHato').style='display:block';
+
+                document.getElementById("terneros").readOnly = false; 
+                document.getElementById("terneras").readOnly = false; 
+                document.getElementById("novillos").readOnly = false; 
+                document.getElementById("novillas").readOnly = false; 
+                document.getElementById("novillaspregnadas").readOnly = false; 
+                document.getElementById("torosServicio").readOnly = false; 
+                document.getElementById("torosEngorde").readOnly = false; 
+                document.getElementById("vacasCria").readOnly = false; 
+                document.getElementById("vacasEngorde").readOnly = false;
             }
 
         } 

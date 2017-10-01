@@ -81,6 +81,8 @@
     ?>
 
 
+<div id="cajaHato" style="display: none;">
+    
 
     <table>
             <tr>
@@ -159,9 +161,12 @@
             </tr>
 
         </table>
+    </div>
 
   
-
+    <div id = 'cajaRazas' style="display: none;">
+        
+    
      <?php
             include '../business/razaBusiness.php';
             $razaBusiness = new razaBusiness();
@@ -176,7 +181,9 @@
             }
                 echo '</table>';
 
-?>
+    ?>
+
+    </div>
 
             <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
 </form>
