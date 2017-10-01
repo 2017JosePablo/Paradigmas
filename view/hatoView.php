@@ -1,8 +1,4 @@
-<?php
-    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-    header("Cache-Control: post-check=0, pre-check=0", false);
-    header("Pragma: no-cache");
-?>
+
 <!doctype HTML>
 <html>
 <head>
@@ -49,14 +45,9 @@
     }
     
 ?>
-
-
-
-
   <!-- <form method="post" enctype="multipart/form-data" action="../business/socioAction.php"> -->
     
     <?php
- 
     require '../business/socioBusiness.php';
 
 
@@ -67,6 +58,7 @@
     echo '<table border ="1"><tr><td align = "center" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
     foreach ($socios as $current) {     
+        
         echo '<tr>';
         echo '<td> '.$current->getNombre().'</td>';
         echo '<td> '.$current->getPrimerApellido() .' </td>';
@@ -78,6 +70,7 @@
         //echo '<td> <a href=""> Eliminar</a> </td>';
         //echo '<td> <a href=""> Modificar</a> </td>';
         echo '</tr>';
+        
     }
     echo '</table>';
 

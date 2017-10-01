@@ -26,7 +26,7 @@ $(document).ready(function() {
             document.getElementById('verDir').style.display='block';
 
             $.post('../business/socioAction.php', {cedula:result[0]}, function(data){
-
+         
             var array = JSON.parse(data);
 
             document.getElementById('cajaFormulario').style.display='block';
@@ -61,10 +61,7 @@ $(document).ready(function() {
             
             var fecha = array['sociofechaingreso'].split('-');
             var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
-            document.getElementById('fecha').value = fechaSalida;
-
-
-            
+            document.getElementById('fecha').value = fechaSalida;          
 
 
 
@@ -119,8 +116,6 @@ $(document).ready(function() {
             document.getElementById('pueb').value = array['sociopueblo'];
 
             });
-
-                
             
         } else if(result[1] == 'Desac'){
             document.getElementById('cajaVerSocio').style.display = 'none';
