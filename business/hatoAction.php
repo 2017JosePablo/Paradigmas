@@ -1,7 +1,7 @@
 <?php
 
 	if (isset($_POST['cedulaHato'])) {
-		require 'hatoBusiness.php';
+		require './hatoBusiness.php';
 		$socioid=$_POST['cedulaHato'];	
 		$hatoBusiness = new hatoData();
 		$result=$hatoBusiness->obtenerSocioHato($socioid);
