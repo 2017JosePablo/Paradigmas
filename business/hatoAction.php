@@ -7,6 +7,7 @@
 		$hatoBusiness = new hatoData();
 		$socioid = $socioBusiness->obtenerUnSoloTBSocio($cedula);
 		$result=$hatoBusiness->obtenerSocioHato($socioid);
+		echo $result;
 
 	}
 
