@@ -1,7 +1,7 @@
 <?php
 
 require_once 'data.php';
-include '../domain/socio.php';
+//include '../domain/socio.php';
 
 class socioData {
 
@@ -37,6 +37,7 @@ class socioData {
         $result = $conn->query($sql);
         $conn->close();
         return $result;
+        
 
 	}
     

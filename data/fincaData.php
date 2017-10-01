@@ -47,7 +47,7 @@ class FincaData extends Data{
 
         $socioinformacion = "";
         $sql = "SELECT tbsocio.socionombre, tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido, tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
-            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos,
+            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca, 
             tbfincatipo.fincatiponombre , tbtipoactividad.tipoactividadnombre
             FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid 
             INNER JOIN  tbfincatipo 
@@ -62,7 +62,7 @@ class FincaData extends Data{
                 $socioinformacion = ["socionombre"=>$row["socionombre"], "socioprimerapellido"=> $row["socioprimerapellido"],"sociosegundoapellido"=>$row["sociosegundoapellido"], 
 
                 "fincaprovincia"=>$row["fincaprovincia"], "fincacanton"=>$row["fincacanton"],"fincadistrito"=>$row["fincadistrito"]
-                    ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatiponombre"=>$row["fincatiponombre"],"tipoactividadnombre"=>$row["tipoactividadnombre"]];
+                    ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatipocerca"=>$row["fincacerca"],"fincatiponombre"=>$row["fincatiponombre"],"tipoactividadnombre"=>$row["tipoactividadnombre"]];
             }
         }else{
             echo "0 results";
@@ -108,7 +108,7 @@ class FincaData extends Data{
 
         $socioinformacion = "";
         $sql = "SELECT  tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
-            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos,
+            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos,tbfinca.fincacerca,
             tbfincatipo.fincatipoid , tbtipoactividad.tipoactividadid
             FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid 
             INNER JOIN  tbfincatipo 
@@ -121,7 +121,7 @@ class FincaData extends Data{
             while($row = $result->fetch_assoc()) {
 
                 $socioinformacion = ["fincaprovincia"=>$row["fincaprovincia"], "fincacanton"=>$row["fincacanton"],"fincadistrito"=>$row["fincadistrito"]
-                    ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatipoid"=>$row["fincatipoid"],"tipoactividadid"=>$row["tipoactividadid"]];
+                    ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatipocerca"=>$row["fincacerca"],"fincatipoid"=>$row["fincatipoid"],"tipoactividadid"=>$row["tipoactividadid"]];
             }
         }else{
             echo "0 results";
@@ -168,7 +168,8 @@ class FincaData extends Data{
 	    }
  
 	    $sql = "UPDATE tbfinca SET fincaarea='".$finca-> getArea()."', fincacantidadbobinos = '".
-                $finca->getCantidadBovinos()."'  WHERE socioid ='". $finca-> getSocioId()."' ;";
+                $finca->getCantidadBovinos()."' , fincacerca = '".
+                $finca->getCerca()."'  WHERE socioid ='". $finca-> getSocioId()."' ;";
 
 	    if ($result = $conn->query($sql) === TRUE) {
 				 echo "Record updated successfully";
@@ -220,7 +221,8 @@ class FincaData extends Data{
                    $finca= [ "fincaid"=>$row['fincaid'], 
                     "socioid"=>$row['socioid'], 
                     "fincaarea"=>$row['fincaarea'],
-                    "fincacantidadbobinos"=>$row['fincacantidadbobinos']]; 
+                    "fincacantidadbobinos"=>$row['fincacantidadbobinos'],
+                       "fincacerca"=>$row['fincacerca']]; 
                 }   
             }else{
                 echo "0 results";
@@ -238,7 +240,7 @@ class FincaData extends Data{
             $sql = "
             SELECT tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido,
             tbsocio.sociosegundoapellido, 
-            tbfinca.fincaarea, tbfinca.fincacantidadbobinos,  tbfincatipo.fincatiponombre, 
+            tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca, tbfincatipo.fincatiponombre, 
             tbtipoactividad.tipoactividadnombre  FROM tbsocio 
             INNER JOIN tbfinca ON  tbsocio.socioid = tbfinca.fincaid 
             INNER JOIN tbfincatipo ON tbsocio.fincatipoid = tbfincatipo.fincatipoid
@@ -249,7 +251,7 @@ class FincaData extends Data{
             while($row = $result->fetch_assoc()) {
                array_push($fincas,new TodoFinca($row['sociocedula'], $row['socionombre'], 
                 $row['socioprimerapellido'],$row['sociosegundoapellido'], $row['fincaarea'],
-                $row['fincacantidadbobinos'],$row['fincatiponombre'],$row['tipoactividadnombre'])); 
+                $row['fincacantidadbobinos'],$row['fincacerca'],$row['fincatiponombre'],$row['tipoactividadnombre'])); 
           //     echo $row['tipoactividadnombre'];
             }
         }else{

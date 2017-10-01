@@ -7,10 +7,11 @@ class TodoFinca{
 	private $segundoApellido;
 	private $area;
 	private $cantidadBovinos;
+	private $fincacerca;
 	private $fincaTipo;
 	private $tipoActividadId;
 
-	function TodoFinca($cedula,$nombre,$primerApellido,$segundoApellido,$area,$cantidadBovinos,$fincaTipo,$fincatipoId){
+	function TodoFinca($cedula,$nombre,$primerApellido,$segundoApellido,$area,$cantidadBovinos,$fincacerca,$fincaTipo,$fincatipoId){
 		$this->cedula = $cedula;
 		$this->nombre = $nombre;
 		$this->primerApellido =  $primerApellido;
@@ -18,6 +19,7 @@ class TodoFinca{
 		$this->area = $area;
 		$this->fincaTipo = $fincaTipo;
 		$this->cantidadBovinos = $cantidadBovinos;
+		$this->fincacerca = $fincacerca;
 		$this->tipoActividadId = $fincatipoId;
 	}
 	public function setFincaTipo($finca){
@@ -73,6 +75,13 @@ class TodoFinca{
 	}
 	public function getArea(){
 		return $this->area;
+	}
+
+	public function setCerca($cerca){
+		$this->fincacerca = $cerca;
+	}
+	public function getCerca(){
+		return $this->fincacerca;
 	}
 	public function getCantidadBovinos(){
 		return $this->cantidadBovinos;
