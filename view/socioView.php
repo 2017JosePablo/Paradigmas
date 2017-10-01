@@ -41,16 +41,6 @@
         }
 
 
-
-                    
-
-
-     
-        
-
-
-
-
             function provinciaSeleccionada(){
                 var valor = document.getElementById("listaProvincias") .value ;
                 if(valor != -1){
@@ -136,6 +126,8 @@
             }
             function mostrarFormularioSocio(){
 
+                document.getElementById('editarUbic').style.display='block';
+
                 document.getElementById("cajaFormulario").style.display='block';
                 document.getElementById("btnModificar").style.display='none';
                 document.getElementById("btnAgregar").style.display='block';
@@ -150,6 +142,10 @@
                 document.getElementById('editarUbic').style.display='block';
                 document.getElementById('verDir').style.display='none';
                 document.getElementById('selecModUbi').value = 0;
+            }
+
+            function verUbi(){
+
             }
         </script>
 
@@ -208,7 +204,6 @@
 
 
 
-  <!-- <form method="post" enctype="multipart/form-data" action="../business/socioAction.php"> -->
     <?php
  
     include '../business/socioBusiness.php';
@@ -250,6 +245,7 @@
     <div id="cajaFormulario"  style='display:none;'>
 
     <form id= "frm" method="post" action="../business/socioAction.php">
+
     <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
     <input type="hidden" id="selecModUbi" name="ModUbi" value="1">
 
@@ -330,7 +326,7 @@
                 
 
 
-                <div id="verDir">
+                <div id="verDir" style="display: none;">
                     
                     <table>
                         <tr><td><br><p>Datos de Dirección</p></td></tr>
@@ -363,7 +359,7 @@
                 <div id="editarUbic" style='display:none;'>
 
                     <table>
-                     <tr><td><br><p>Seleccione la nueva dirección</p></td></tr>
+                     <tr><td><br><p>Datos de dirección</p></td></tr>
                         <tr>
                         <td>
                              <div class="form-group">
@@ -486,9 +482,6 @@
                             echo '</tr>';
                         }
                     echo '</table>';
-
-                        
-
             ?>
             
             <br><br>
