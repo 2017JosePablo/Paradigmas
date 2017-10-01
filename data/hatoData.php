@@ -1,5 +1,8 @@
 <?php
-
+if (isset($_POST['cedulaHato']) == true && empty($_POST['cedulaHato'])== false) {
+	$hatoData = new hatoData();
+	echo $hatoData->obtenerSocioHato($_POST['cedulaHato']);
+}
 
 include 'data.php';
 include '../domain/hato.php';
@@ -8,8 +11,8 @@ class hatoData extends Data{
 
 	 private $data;
 
-    function __construct(){ 
-       
+    function __construct(){
+
         $this->data = new Data();
     }
      public function insertarTBHato($hato) {
@@ -49,7 +52,7 @@ class hatoData extends Data{
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "UPDATE tbhato SET 
+        $sql = "UPDATE tbhato SET
             hatoraza='" . $hato-> getListadoRazas()."',
             hatoternero='" . $hato-> getTerneros()."',
             hatoternera='" . $hato-> getTerneras()."',
@@ -60,7 +63,7 @@ class hatoData extends Data{
             hatotoroservicio='".$hato-> getTorosServicio()."',
             hatovacacria='".$hato-> getvacasCria()."',
 
-            hatovacaengorde='" . $hato-> getvacasEngorde()."' 
+            hatovacaengorde='" . $hato-> getvacasEngorde()."'
             WHERE socioid ='" . $hato-> getPropietario(). "';";
 
         //    echo $sql;
@@ -77,21 +80,21 @@ class hatoData extends Data{
 
      public function eliminarTBHato($socioid) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-     
+
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-     
+
         $sql = "DELETE from tbhato where socioid='".$socioid."';";
         $result = $conn->query($sql);
         $conn->close();
-     
+
         return $result;
     }
     public function obtenerTodosTBHato() {
         $hato = array();
 
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         $sql = "SELECT * FROM tbhato";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
@@ -102,24 +105,24 @@ class hatoData extends Data{
             echo "0 results";
         }
         $conn->close();
-        
+
         return $hato;
     }
     public function obtenerSocioHato($idsocio) {
-        
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         $sql = "SELECT * FROM tbhato WHERE socioid = $idsocio";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                
+
                 $hato = ["socioid"=>$row["socioid"],"hatoraza"=>$row["hatoraza"],"hatoternero"=>$row["hatoternero"],"hatoternera"=>$row["hatoternera"],"hatono"=>$row["hatonovillo"],"hatonovilla"=>$row["hatonovilla"],"hatonovillaprenada"=>$row["hatonovillaprenada"],"hatotoroengorde"=>$row["hatotoroengorde"],"hatotoroservicio"=>$row["hatotoroservicio"],"hatovacacria"=>$row["hatovacacria"],"hatovacaengorde"=>$row["hatovacaengorde"]];
             }
         }else{
             echo "0 results";
         }
         $conn->close();
-        
+
         return json_encode($hato);
     }
 
