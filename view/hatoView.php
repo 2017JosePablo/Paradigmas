@@ -66,9 +66,9 @@
        
 
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Reg'>Registrar Hato</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Ver hato</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Mod'>Editar Hato</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getSocioId()."-Reg'>Registrar Hato</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getSocioId()."-Ver'>Ver hato</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getSocioId()."-Mod'>Editar Hato</button></td>";
         //echo '<td> <a href=""> Eliminar</a> </td>';
         //echo '<td> <a href=""> Modificar</a> </td>';
         echo '</tr>';

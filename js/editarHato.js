@@ -11,7 +11,6 @@ $(document).ready(function() {
             var result = cedula.split('-');
 
             if(result[1]=='Ver'){
-                alert($(this).val());
                 document.getElementById("terneros").readOnly = true; 
                 document.getElementById("terneras").readOnly = true; 
                 document.getElementById("novillos").readOnly = true; 
@@ -23,6 +22,9 @@ $(document).ready(function() {
                 document.getElementById("vacasEngorde").readOnly = true;
 
                 $.post('../business/hatoAction.php', {cedulaHato:result[0]}, function(data){
+
+                    alert(result[0]);
+                    /*
                     var array = JSON.parse(data);
                     document.getElementById("terneros").value = array['']; 
                     document.getElementById("terneras").value = array['']; 
@@ -33,11 +35,13 @@ $(document).ready(function() {
                     document.getElementById("torosEngorde").value = array['']; 
                     document.getElementById("vacasCria").value = array['']; 
                     document.getElementById("vacasEngorde").value = array[''];
+
+                    */
                 }); 
 
             }else if(result[1]=='Mod'){
                 alert('Mod');
-                 document.getElementById("terneros").readOnly = false; 
+                document.getElementById("terneros").readOnly = false; 
                 document.getElementById("terneras").readOnly = false; 
                 document.getElementById("novillos").readOnly = false; 
                 document.getElementById("novillas").readOnly = false; 
