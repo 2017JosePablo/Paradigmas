@@ -1,16 +1,14 @@
 <?php
 
 	if (isset($_POST['cedulaHato']) == true && empty($_POST['cedulaHato'])== false) {
-		/*require 'hatoBusiness.php';
+		require 'hatoBusiness.php';
 		$socioid=$_POST['cedulaHato'];	
 		
 		$hatoBusiness = new hatoData();
-		
+
 		$result=$hatoBusiness->obtenerSocioHato($socioid);
 		//echo $result;
-		*/
-		echo "ID:";
-
+		
 	}
 
 
