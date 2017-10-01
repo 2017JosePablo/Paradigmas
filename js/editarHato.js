@@ -24,7 +24,7 @@ $(document).ready(function() {
                 $.post('../business/hatoAction.php', {cedulaHato:result[0]}, function(data){
 
                     alert(result[0]);
-                    /*
+                    
                     var array = JSON.parse(data);
                     document.getElementById("terneros").value = array['']; 
                     document.getElementById("terneras").value = array['']; 
@@ -36,7 +36,7 @@ $(document).ready(function() {
                     document.getElementById("vacasCria").value = array['']; 
                     document.getElementById("vacasEngorde").value = array[''];
 
-                    */
+                    
                 }); 
 
             }else if(result[1]=='Mod'){
