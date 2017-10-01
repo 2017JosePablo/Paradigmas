@@ -66,7 +66,9 @@
        
 
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Registrar Hato</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Reg'>Registrar Hato</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Ver hato</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Mod'>Editar Hato</button></td>";
         //echo '<td> <a href=""> Eliminar</a> </td>';
         //echo '<td> <a href=""> Modificar</a> </td>';
         echo '</tr>';
@@ -127,7 +129,7 @@
                     Toros en servicio
                 </td>
                 <td>
-                    <input type="text" id="toros"  name="torosServicio" onkeypress="return soloNumeros(event)" placeholder="0">
+                    <input type="text" id="torosServicio"  name="torosServicio" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
         </tr>
             <tr>
@@ -135,7 +137,7 @@
                     Toros engorde
                 </td>
                 <td>
-                    <input type="text" id="toros"  name="torosEngorde" onkeypress="return soloNumeros(event)" placeholder="0">
+                    <input type="text" id="torosEngorde"  name="torosEngorde" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
             </tr>
             <tr>
@@ -143,7 +145,7 @@
                     Vacas Cria
                 </td>
                 <td>
-                    <input type="text" id="vacas" name="vacasCria" onkeypress="return soloNumeros(event)" placeholder="0">
+                    <input type="text" id="vacasCria" name="vacasCria" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
             </tr>
             <tr>
@@ -152,7 +154,7 @@
                     Vacas Engorde
                 </td>
                 <td>
-                    <input type="text" id="vacas" name="vacasEngorde" onkeypress="return soloNumeros(event)" placeholder="0">
+                    <input type="text" id="vacasEngorde" name="vacasEngorde" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
             </tr>
 
