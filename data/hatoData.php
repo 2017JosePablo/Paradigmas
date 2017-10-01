@@ -105,6 +105,23 @@ class hatoData extends Data{
         
         return $hato;
     }
+    public function obtenerSocioHato($idsocio) {
+        $hato = array();
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $sql = "SELECT * FROM tbhato WHERE socioid = $idsocio";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($hato, new hato($row["socioid"],$row["hatoraza"],$row["hatoternero"],$row["hatoternera"],$row["hatonovillo"],$row["hatonovilla"],$row["hatonovillaprenada"],$row["hatotoroengorde"],$row["hatotoroservicio"],$row["hatovacacria"],$row["hatovacaengorde"]));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        
+        return $hato;
+    }
 
 }
 
