@@ -56,11 +56,11 @@ $(document).ready(function() {
                             document.getElementById('cajaFinca').style='display:block';
 
 
-                              document.getElementById('registrarFinca').style="display:none ";
-                                document.getElementById('finalizar').style='display:none';
-                                document.getElementById('frm').reset(); 
+                            document.getElementById('registrarFinca').style="display:none ";
+                            document.getElementById('finalizar').style='display:none';
+                            document.getElementById('frm').reset(); 
 
-                                document.getElementById('datosDireccion').style='display:none';
+                            document.getElementById('datosDireccion').style='display:none';
 
 
                                // datos de la finca
@@ -91,10 +91,6 @@ $(document).ready(function() {
                         if(result[1]=='Mod'){
 
                           
-
-
-
-
                             $.post('../business/fincaAction.php', {fincamodificar:result[0]}, function(data){
 
                                 document.getElementById("Socio").innerHTML = '----------------'+result[0]+'----------------';
@@ -136,9 +132,11 @@ $(document).ready(function() {
                                 $('#'+fincatipoid+'-tipo').attr('checked',true);
 
 
-                                
-
-
+                            document.getElementById('editoPro').value = array['fincaprovincia'];
+                            document.getElementById('editoCan').value = array['fincacanton'];
+                            document.getElementById('editoDis').value = array['fincadistrito'];
+                            document.getElementById('editoPueblo').value = array['fincapueblo'];
+                            document.getElementById("editoOtros").value = array['fincaexacta'];
 
 
                             document.getElementById('provF').value = getProvincia(array['fincaprovincia']);

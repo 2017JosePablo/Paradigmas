@@ -142,6 +142,11 @@
                 document.getElementById('editarUbic').style.display='block';
                 document.getElementById('verDir').style.display='none';
                 document.getElementById('selecModUbi').value = 0;
+
+                document.getElementById('cajaVerSocio').style.display='none';
+
+
+                doc
             }
 
             function verUbi(){
@@ -474,7 +479,7 @@
                             echo '<tr>';
 
                             
-                             echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio' name='socioestado' value='".$curren->getSocioEstadoId()."'</td>"; 
+                            echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio' name='socioestado' value='".$curren->getSocioEstadoId()."'</td>"; 
 
                             echo '<td>'.$curren->getSocioEstadoDetalle().'</td>'; 
                             
@@ -483,6 +488,45 @@
                         }
                     echo '</table>';
             ?>
+
+
+            <p>VCO</p>
+            <input type='radio' name='radioVCO' checked='' value='1'> Si<br> 
+            <input type="radio" name="radioVCO" value="2">No
+            <p> Fecha Vigencia </p>
+            <input type="date"required ="" name="fecha" id="fecha">
+            <br><br>
+           
+            <p>Fierro</p>
+            <input type='radio' name='radioFierro' checked='' value='1'> Si<br> 
+            <input type="radio" name="radioFierro" value="2">No
+            
+            <br>
+            <form class="" action="data/uploadFileData.php" method="post" enctype="multipart/form-data">
+                <label for="">Subir foto del Fierro</label>
+                <input type="file" value="Seleccionar Fierro" name="foto" id="foto">
+                <input type="submit" value="Enviar Foto">
+            </form>
+
+            <br><br>
+            <p>Examen de bruselas</p>
+            <p>Vigente</p>
+            <input type='radio' name='radioBrusela' checked='' value='1'> Si<br> 
+            <input type="radio" name="radioBrusela" value="2">No
+            <p>Fecha de vencimiento</p>
+            <input type="date"required ="" name="fecha" id="fecha">
+            <br><br>
+            <p>Examen tuberculosis</p>
+            <p>Vigente</p>
+            <input type='radio' name='radioTuber' checked='' value='1'> Si<br> 
+            <input type="radio" name="radioTuber" value="2">No
+            <p>Fecha de vencimiento</p>
+            <input type="date"required ="" name="fecha" id="fecha">
+
+
+
+
+
             
             <br><br>
 

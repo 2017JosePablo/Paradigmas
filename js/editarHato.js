@@ -11,6 +11,7 @@ $(document).ready(function() {
             var result = cedula.split('-');
 
             if(result[1] == 'Ver'){
+
                 document.getElementById('cajaHato').style='display:block';
 
                 document.getElementById("terneros").readOnly = true; 
@@ -25,8 +26,6 @@ $(document).ready(function() {
 
                 $.post('../business/hatoAction.php', {cedulaHato:result[0]}, function(data){
 
-                    alert(data);
-                    /*
                     var array = JSON.parse(data);
                     document.getElementById("terneros").value = array['']; 
                     document.getElementById("terneras").value = array['']; 
@@ -37,7 +36,7 @@ $(document).ready(function() {
                     document.getElementById("torosEngorde").value = array['']; 
                     document.getElementById("vacasCria").value = array['']; 
                     document.getElementById("vacasEngorde").value = array[''];
-*/
+
                     
                 }); 
 

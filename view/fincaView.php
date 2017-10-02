@@ -122,7 +122,7 @@
               document.getElementById('verUbic').style='display:none';
              // document.getElementById('editarUbic').style="display:block";
               document.getElementById('datosDireccion').style='display:block';
-              document.getElementById('selecModUbi').value = 0;
+              document.getElementById('editoUbicacion').value = 1;
 
             }
 
@@ -183,15 +183,23 @@
 
 <div  id="registrarFinca" style='display:none ;' >
 
-  <form id='frm' onsubmit="return validar()" method="post"  action="../business/fincaAction.php">
+  <form id='frm'  method="post"  action="../business/fincaAction.php">
 
 
   <input type="hidden" name="cedula" id="cedula" value="">
-
   <input type="hidden" name="selecModUbi" id="selecModUbi" value="1">
   <input type="hidden" id="tiposCerca" name="tiposCerca" value="">
+  <input type="hidden" id="selecCerca"  value="">
 
-<input type="hidden" id="selecCerca"  value="">
+   <input type="hidden"  name= "editoUbicacion" id="editoUbicacion" value="0">
+
+   <input type="hidden"  name= "editoPro" id="editoPro" value="">
+   <input type="hidden"  name= "editoCan" id="editoCan" value="">
+   <input type="hidden"  name= "editoDis" id="editoDis" value="">
+   <input type="hidden"  name= "editoPueblo" id="editoPueblo" value="">
+   <input type="hidden"  name= "editoOtros" id="editoOtros" value="">
+
+
   
 
   <p id='Socio' ></p>
