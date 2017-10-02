@@ -28,9 +28,9 @@ $(document).ready(function() {
 */
                 $.post('../business/hatoAction.php',{idSocio:result[0]}, function(temporal){
 
-                    var array = JSON.stringify(temporal);
+                  //  var array = JSON.stringify(temporal);
                    // alert(JSON.stringify(temporal));
-                    alert(array["socioid"]);
+                    alert(temporal);
 
                 /*    document.getElementById("terneros").value = array['']; 
                     document.getElementById("terneras").value = array['']; 
