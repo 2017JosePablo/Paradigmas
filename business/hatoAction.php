@@ -2,10 +2,10 @@
 	
 	if(isset($_POST['idSocio']) == true && empty($_POST['idSocio'])== false){
  	
- 		require '../data/hatoData.php';
+ 		require 'hatoBusiness.php';
       
 
-        $hatoBusiness = new hatoData();
+        $hatoBusiness = new hatoBusiness();
         $result=$hatoBusiness->obtenerSocioHato($_POST['idSocio']);
         echo $result;
 

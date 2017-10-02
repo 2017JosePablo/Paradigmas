@@ -1,6 +1,6 @@
 <?php
 require_once 'data.php';
-include_once '../domain/hato.php';
+require_once '../domain/hato.php';
 
 class hatoData extends Data{
 
