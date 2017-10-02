@@ -187,6 +187,17 @@
         }
      </script>
 
+    <script type="text/javascript">
+    function validarLetras(e) { 
+        tecla = (document.all) ? e.keyCode : e.which; 
+        if (tecla==8) return true; 
+        patron =/[A-Za-z\s]/; 
+        te = String.fromCharCode(tecla); 
+    return patron.test(te);
+    }
+
+    </script>
+
 
 
     </head>
@@ -303,13 +314,13 @@
                         <input type="text" name="sociocedula" id="sociocedula"  required>
                     </td>
                     <td>
-                        <input type="text" name="socionombre" id="socionombre"  required>
+                        <input type="text" class='letra' name="socionombre"  onkeypress="return validarLetras(event)" id="socionombre"  required>
                     </td>
                     <td>
-                        <input type="text" name="socioprimerapellido" id="socioprimerapellido"  required>
+                        <input type="text" name="socioprimerapellido" id="socioprimerapellido" onkeypress="return validarLetras(event)"  required>
                     </td>       
                     <td>
-                        <input type="text" name="sociosegundoapellido" id="sociosegundoapellido"  required>
+                        <input type="text" name="sociosegundoapellido" id="sociosegundoapellido" onkeypress="return validarLetras(event)" required>
                     </td>
                     
                     <td>
@@ -356,7 +367,7 @@
                         </td>
                         
                         <td>
-                            Distrito : <input  type="text"  id = 'disE' name="disE" readonly >
+                            Distrito : <input  type="text"  id = 'disE' name="disE"  readonly >
                         </td>
 
                          <td>
@@ -409,7 +420,7 @@
                               </div>
                             </div>
                          </td>
-                         <td>Pueblo:<input type="text" id="sociopueblo" name="sociopueblo"> </td>
+                         <td>Pueblo:<input type="text" id="sociopueblo" name="sociopueblo" onkeypress="return validarLetras(event)"> </td>
 
                         </tr>
                     </table>
