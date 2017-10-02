@@ -12,7 +12,13 @@
 	<link rel="stylesheet" href="">
 
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
+
     
+    <!--MAscaras-->
+    <script src="../js/jquery.maskedinput.min.js" type="text/javascript"></script>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+
 
 
 
@@ -161,8 +167,22 @@
         </script>
 
 
+    <script type="text/javascript">
+        function soloNumeros(e){
+              tecla = (document.all) ? e.keyCode : e.which;
+              if (tecla==8){
+                  return true;
+              }
+              patron =/[0-9]/;
+              tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+        }
 
- <script type="text/javascript">
+
+    </script>
+
+
+    <script type="text/javascript">
       var datefield=document.createElement("input")
       datefield.setAttribute("type", "date")
       if (datefield.type!="date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
@@ -170,20 +190,22 @@
         document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n')
         document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
       }
-   </script>
+     </script>
 
- <script>
-    if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
-       jQuery(function($){ //on document.ready
-           $('#fecha').datepicker();
-           $('#fechaCVO').datepicker();
-           $('#fechaBruc').datepicker();
-           $('#fechaTuber').datepicker();
+     <script>
+        if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
+           jQuery(function($){ //on document.ready
+               $('#fecha').datepicker();
+               $('#fechaCVO').datepicker();
+               $('#fechaBruc').datepicker();
+               $('#fechaTuber').datepicker();
 
 
-       })
-    }
- </script>
+           })
+        }
+     </script>
+
+
 
 
 
@@ -312,7 +334,7 @@
                     </td>
                     
                     <td>
-                        <input type="text" name="sociotelmovil" id="sociotelmovil">
+                        <input type="text" name="sociotelmovil" id="sociotelmovil" onkeypress="return soloNumeros(event)" maxlength="8">
                     </td>
                     <td>
                         <input type="email"  required="" name="sociocorreo" id="sociocorreo">
@@ -533,9 +555,6 @@
             <p id="labelTuber">Fecha de vencimiento</p>
             <input type="date" required ="" name="fechaTuberculosis" id="fechaTuber">
                            
-       
-       
-       
 
             
             <br><br>
@@ -669,4 +688,19 @@
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarSocio.js"></script>
 </body>
+     <script type="text/javascript">
+        jQuery(function($){
+
+            $("#sociocedula").mask("9/999/999");
+
+           // $("#movil").mask("999 99 99 99");
+
+            //$("#letras").mask("aaa");
+
+            //$("#comodines").mask("?");
+
+        });
+
+    </script>
+
 </html>
