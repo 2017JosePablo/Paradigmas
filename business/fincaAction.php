@@ -41,23 +41,29 @@
 	$fincaid = $_POST['cedula'];
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
+		//	En caso de que no editara la ubicacion
+	if ($_POST["editoUbicacion"] == 0) {
+		$listaProvincias =$_POST['listaProvincias'];
+		$listadoCanton =$_POST['listadoCantones'];
+		$listadoDistrito=$_POST['listadoDistrito'];
+		$fincapueblo =$_POST['fincapueblo'];
+		$fincaexacta =$_POST['fincaexacta'];
 
-	
+		}else{
+			$listaProvincias =$_POST['editoPor'];
+			$listadoCanton =$_POST['editoCan'];
+			$listadoDistrito=$_POST['editoDis'];
+			$fincapueblo =$_POST['editoPueblo'];
+			$fincaexacta =$_POST['editoOtro'];
+		}
 
-	$listaProvincias =$_POST['listaProvincias'];
-	$listadoCanton =$_POST['listadoCantones'];
-	$listadoDistrito=$_POST['listadoDistrito'];
-	$fincapueblo =$_POST['fincapueblo'];
-	$fincaexacta =$_POST['fincaexacta'];
-
-	
 	
 	$tipoactividad =$_POST['tipoactividad'];
 	$fincatipo =$_POST['tipofinca'];
 	$cercas =$_POST['tiposCerca'];
 
 
-	echo "datos".$fincaid;
+//	echo "datos".$fincaid;
 
 	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($tipoactividad)&&isset($fincatipo)){
 
