@@ -533,6 +533,9 @@
             <p id="labelTuber">Fecha de vencimiento</p>
             <input type="date" required ="" name="fechaTuberculosis" id="fechaTuber">
                            
+       
+       
+       
 
             
             <br><br>

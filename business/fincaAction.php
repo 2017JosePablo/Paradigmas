@@ -38,11 +38,18 @@
 
  if(isset($_POST['finalizar']) || isset($_POST['actualizar'])){
 
+	echo $_POST['editoPro']."</br>";
+	echo  $_POST['editoCan']."</br>";
+	echo $_POST['editoDis']."</br>";
+	echo $_POST['editoPueblo']."</br>";
+	echo $_POST['editoOtros']."</br>";
+
+
 	$fincaid = $_POST['cedula'];
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
 		//	En caso de que no editara la ubicacion
-	if ($_POST["editoUbicacion"] == 0) {
+	if ($_POST["editoUbicacion"] != 0) {
 		$listaProvincias =$_POST['listaProvincias'];
 		$listadoCanton =$_POST['listadoCantones'];
 		$listadoDistrito=$_POST['listadoDistrito'];
@@ -50,11 +57,11 @@
 		$fincaexacta =$_POST['fincaexacta'];
 
 		}else{
-			$listaProvincias =$_POST['editoPor'];
+			$listaProvincias =$_POST['editoPro'];
 			$listadoCanton =$_POST['editoCan'];
 			$listadoDistrito=$_POST['editoDis'];
 			$fincapueblo =$_POST['editoPueblo'];
-			$fincaexacta =$_POST['editoOtro'];
+			$fincaexacta =$_POST['editoOtros'];
 		}
 
 	
