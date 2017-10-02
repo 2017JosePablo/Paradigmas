@@ -170,6 +170,11 @@
     if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
        jQuery(function($){ //on document.ready
            $('#fecha').datepicker();
+           $('#fechaVCO').datepicker();
+           $('#fechaBruc').datepicker();
+           $('#fechaTuber').datepicker();
+
+
        })
     }
  </script>
@@ -479,7 +484,7 @@
                             echo '<tr>';
 
                             
-                            echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio' name='socioestado' value='".$curren->getSocioEstadoId()."'</td>"; 
+                            echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio' name='socioestado' value='".$curren->getSocioEstadoId()."'></td>"; 
 
                             echo '<td>'.$curren->getSocioEstadoDetalle().'</td>'; 
                             
@@ -494,7 +499,7 @@
             <input type='radio' name='radioVCO' checked='' value='1'> Si<br> 
             <input type="radio" name="radioVCO" value="2">No
             <p> Fecha Vigencia </p>
-            <input type="date"required ="" name="fecha" id="fecha">
+            <input type="date"required ="" name="fechaVCO" id="fechaVCO">
             <br><br>
            
             <p>Fierro</p>
@@ -511,17 +516,18 @@
             <br><br>
             <p>Examen de bruselas</p>
             <p>Vigente</p>
-            <input type='radio' name='radioBrusela' checked='' value='1'> Si<br> 
+            <input type="radio" name='radioBrusela'  value="1" checked > Si<br> 
             <input type="radio" name="radioBrusela" value="2">No
             <p>Fecha de vencimiento</p>
-            <input type="date"required ="" name="fecha" id="fecha">
+            <input type="date"required ="" name="fechaBruc" id="fechaBruc">
             <br><br>
             <p>Examen tuberculosis</p>
             <p>Vigente</p>
-            <input type='radio' name='radioTuber' checked='' value='1'> Si<br> 
+            <input type='radio' name='radioTuber' selectet='' value='1' checked> Si<br> 
             <input type="radio" name="radioTuber" value="2">No
             <p>Fecha de vencimiento</p>
-            <input type="date"required ="" name="fecha" id="fecha">
+            <input type="date" required ="" name="fechaTuber" id="fechaTuber">
+                           
 
 
 
