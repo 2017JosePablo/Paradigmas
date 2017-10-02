@@ -23,12 +23,13 @@ $(document).ready(function() {
                 for (var x=0; x < checkboxes.length; x++) {
                  if (checkboxes[x].checked) {
 
-                    tipoCerca += $("input:checkbox[id="+(x+1)+"]").val()+'-';
+                    //tipoCerca += $("input:checkbox[id="+(x+1)+"]").val()+'-';
+                    tipoCerca+=x+'-';
                     validar = 1;
-                    
                  
                  }
                 }
+
                 document.getElementById('selecCerca').value = validar;
                 document.getElementById('tiposCerca').value =tipoCerca;
 

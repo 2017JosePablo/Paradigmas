@@ -132,7 +132,7 @@
                 document.getElementById("btnModificar").style.display='none';
                 document.getElementById("btnAgregar").style.display='block';
                 document.getElementById("frm").reset(); 
-                $("input:radio").removeAttr("checked");
+               // $("input:radio").removeAttr("checked");
                 $('#1-actividad').attr('checked',true);
                 $('#1-tipo').attr('checked',true);
                 $('#1-estado').attr('checked',true);
@@ -144,13 +144,19 @@
                 document.getElementById('selecModUbi').value = 0;
 
                 document.getElementById('cajaVerSocio').style.display='none';
-
-
-                doc
             }
 
             function verUbi(){
 
+            }
+
+            function ocultarEspacios(id,id2){
+                document.getElementById(id).style="display:none";
+                document.getElementById(id2).style="display:none";
+            }
+            function verEspacios(id1,id2){
+                document.getElementById(id1).style="display:block";
+                document.getElementById(id2).style="display:block";
             }
         </script>
 
@@ -170,7 +176,7 @@
     if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
        jQuery(function($){ //on document.ready
            $('#fecha').datepicker();
-           $('#fechaVCO').datepicker();
+           $('#fechaCVO').datepicker();
            $('#fechaBruc').datepicker();
            $('#fechaTuber').datepicker();
 
@@ -254,13 +260,10 @@
   
     <div id="cajaFormulario"  style='display:none;'>
 
-    <form id= "frm" method="post" action="../business/socioAction.php">
+    <form id= "frm" method="post" action="../business/socioAction.php" enctype="multipart/form-data">
 
     <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
     <input type="hidden" id="selecModUbi" name="ModUbi" value="1">
-
-
-
         
          <p>Datos personales:</p>
 
@@ -495,43 +498,41 @@
             ?>
 
 
-            <p>VCO</p>
-            <input type='radio' name='radioVCO' checked='' value='1'> Si<br> 
-            <input type="radio" name="radioVCO" value="2">No
-            <p> Fecha Vigencia </p>
-            <input type="date"required ="" name="fechaVCO" id="fechaVCO">
+            <p>CVO</p>
+            <input type='radio' name='radioCVO' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br> 
+            <input type="radio" name="radioCVO" onclick="ocultarEspacios('fechaCVO','labelCVO')" value="2">No
+            <p id="labelCVO"> Fecha Vigencia </p>
+            <input type="date"required ="" name="fechaCVO" id="fechaCVO">
             <br><br>
            
             <p>Fierro</p>
-            <input type='radio' name='radioFierro' checked='' value='1'> Si<br> 
-            <input type="radio" name="radioFierro" value="2">No
+            <input type='radio' name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br> 
+            <input type="radio" name="radioFierro" onclick="ocultarEspacios('cajaFierro','w')" value="2">No
             
             <br>
-            <form class="" action="data/uploadFileData.php" method="post" enctype="multipart/form-data">
-                <label for="">Subir foto del Fierro</label>
-                <input type="file" value="Seleccionar Fierro" name="foto" id="foto">
-                <input type="submit" value="Enviar Foto">
-            </form>
+            <div id="cajaFierro">
+               
+            <label for="">Subir foto del Fierro</label>
+            <input type="file" value="Seleccionar Fierro" name="foto" id="foto">
+            </div>
+            <input type="hidden" name="" id="w">
+           
 
             <br><br>
             <p>Examen de bruselas</p>
             <p>Vigente</p>
-            <input type="radio" name='radioBrusela'  value="1" checked > Si<br> 
-            <input type="radio" name="radioBrusela" value="2">No
-            <p>Fecha de vencimiento</p>
-            <input type="date"required ="" name="fechaBruc" id="fechaBruc">
+            <input type="radio" name='radioBrusela' onclick="verEspacios('fechaBruc','labelBru')" value="1" checked > Si<br> 
+            <input type="radio" name="radioBrusela"  onclick="ocultarEspacios('fechaBruc','labelBru')" value="2">No
+            <p id="labelBru">Fecha de vencimiento</p>
+            <input type="date"required ="" name="fechaBrusela" id="fechaBruc">
             <br><br>
             <p>Examen tuberculosis</p>
             <p>Vigente</p>
-            <input type='radio' name='radioTuber' selectet='' value='1' checked> Si<br> 
-            <input type="radio" name="radioTuber" value="2">No
-            <p>Fecha de vencimiento</p>
-            <input type="date" required ="" name="fechaTuber" id="fechaTuber">
+            <input type='radio' name='radioTuberculosis' onclick="verEspacios('fechaTuber','labelTuber')" value='1' checked="checked" /> Si<br> 
+            <input type="radio" name="radioTuberculosis" onclick="ocultarEspacios('fechaTuber','labelTuber')"  value="2">No
+            <p id="labelTuber">Fecha de vencimiento</p>
+            <input type="date" required ="" name="fechaTuberculosis" id="fechaTuber">
                            
-
-
-
-
 
             
             <br><br>
