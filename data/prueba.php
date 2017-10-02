@@ -93,7 +93,7 @@
 
           $hatoBusiness = new hatoData();
 
-          echo $hatoBusiness->desomponerLinea("1,2,3,4,5,6");
+          echo $hatoBusiness->obtenerSocioHato("1");
           
   ?>
 </body>
