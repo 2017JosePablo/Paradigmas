@@ -1,6 +1,6 @@
 <?php
-include 'data.php';
-include '../domain/hato.php';
+require_once 'data.php';
+include_once '../domain/hato.php';
 
 class hatoData extends Data{
 
@@ -17,7 +17,7 @@ class hatoData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbhato (socioid,hatoraza,hatoternero,hatoternera,hatonovillo,hatonovilla,hatonovillaprenada,hatotoroengorde,hatotoroservicio,hatovacacria,hatovacaengorde)
+        $sql = "INSERT INTO tbhato (socioid,hatoraza,hatoternero,hatoternera,hatonovillo,hatonovilla,hatonovillaprenada,hatotoroservicio,hatotoroengorde,hatovacacria,hatovacaengorde)
         VALUES ('" .
 
                 $hato->getPropietario() . "','" .

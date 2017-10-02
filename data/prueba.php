@@ -68,7 +68,7 @@
       //    echo $temp->obtenerColaborador("1")->getNombreColaborador();
         echo $temp->modificarColaborador($colaborador);
         //echo $temp->eliminarColaborador('2');
-*/
+
   include 'hatoData.php';
         $temp = new hatoData();
         include_once '../domain/hato.php';
@@ -90,5 +90,14 @@
         $fecha = gmdate('D, d M Y H:i:s T', time());
         echo "La fecha es: ".$fecha;
         */
+
+
+        require 'hatoData.php';
+          $socioid='1';  
+
+          $hatoBusiness = new hatoData();
+
+          $result=$hatoBusiness->obtenerSocioHato($socioid);
+          echo $result;
   ?>
 </body>

@@ -61,13 +61,10 @@ foreach ($socios as $current) {
     echo '<td> '.$current->getPrimerApellido() .' </td>';
     echo '<td> '.$current->getSegundoApellido().' </td>';
    
-
-    //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
     echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Reg'>Registrar Hato</button></td>";
     echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Ver'>Ver hato</button></td>";
     echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Mod'>Editar Hato</button></td>";
-    //echo '<td> <a href=""> Eliminar</a> </td>';
-    //echo '<td> <a href=""> Modificar</a> </td>';
+  
     echo '</tr>';
     
 }
@@ -193,7 +190,7 @@ echo '</table>';
 
     <a href="../index.php">Regresar</a>
 
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarHato.js"></script>
 
 
