@@ -1,19 +1,15 @@
 <?php
 	
 	if(isset($_POST['idSocio']) == true && empty($_POST['idSocio'])== false){
- 		
-
-
+ 	
  		require '../data/hatoData.php';
-        $socioid='1';  
+      
 
         $hatoBusiness = new hatoData();
-        $result=$hatoBusiness->obtenerSocioHato($socioid);
+        $result=$hatoBusiness->obtenerSocioHato($_POST['idSocio']);
         echo $result;
 
-	}else{
-
-	if (isset($_POST['registrarhato'])) {
+	}else if (isset($_POST['registrarhato'])) {
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
 		$cedula=$_POST['cedula'];
@@ -64,13 +60,8 @@
 				header("location: ../view/censoView.php?error=emptyField");	
 			}
 
-		}else{	
-			header("location: ../view/censoView.php?error=emptyField");
-		}
-	}else{
-/******************************HATO********************************************************/		
-
-	if (isset($_POST['registrar']) || isset($_POST['actualizar'])) {
+		
+	}else	if (isset($_POST['registrar']) || isset($_POST['actualizar'])) {
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
 		$cedula=$_POST['cedula'];
@@ -115,11 +106,10 @@
 				header("location: ../view/hatoView.php?error=emptyField");	
 			}
 
-		}else{	
-			header("location: ../view/hatoView.php?error=emptyField");
 		}
-	}
 	
+
+
 
 
 ?>
