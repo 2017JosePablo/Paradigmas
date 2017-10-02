@@ -35,8 +35,6 @@
 
     <p id="notificacionSocio" style="color: red" ></p>
 
-
-
 <?php
     if (isset($_GET['error'])) {
         if (isset($_GET['error']) =='userexits') {
@@ -44,41 +42,40 @@
         }
     }
     
-?>
-   
+?>   
     
-    <?php
-    require '../business/socioBusiness.php';
+<?php
+require '../business/socioBusiness.php';
 
 
-    $socioBusiness = new socioBusiness();
-    $socios = $socioBusiness->obtenerTodosTBSocio();
+$socioBusiness = new socioBusiness();
+$socios = $socioBusiness->obtenerTodosTBSocio();
 
 
-    echo '<table border ="1"><tr><td align = "center" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+echo '<table border ="1"><tr><td align = "center" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
-    foreach ($socios as $current) {     
-        
-        echo '<tr>';
-        echo '<td> '.$current->getNombre().'</td>';
-        echo '<td> '.$current->getPrimerApellido() .' </td>';
-        echo '<td> '.$current->getSegundoApellido().' </td>';
-       
+foreach ($socios as $current) {     
+    
+    echo '<tr>';
+    echo '<td> '.$current->getNombre().'</td>';
+    echo '<td> '.$current->getPrimerApellido() .' </td>';
+    echo '<td> '.$current->getSegundoApellido().' </td>';
+   
 
-        //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
-        echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Reg'>Registrar Hato</button></td>";
-        echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Ver'>Ver hato</button></td>";
-        echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Mod'>Editar Hato</button></td>";
-        //echo '<td> <a href=""> Eliminar</a> </td>';
-        //echo '<td> <a href=""> Modificar</a> </td>';
-        echo '</tr>';
-        
-    }
-    echo '</table>';
+    //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
+    echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Reg'>Registrar Hato</button></td>";
+    echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Ver'>Ver hato</button></td>";
+    echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Mod'>Editar Hato</button></td>";
+    //echo '<td> <a href=""> Eliminar</a> </td>';
+    //echo '<td> <a href=""> Modificar</a> </td>';
+    echo '</tr>';
+    
+}
+echo '</table>';
 
-             //name='.$current->getIdTBJunta().'
+         //name='.$current->getIdTBJunta().'
 
-    ?>
+?>
 
 <form method="post" enctype="multipart/form-data" action="../business/hatoAction.php"> 
 
@@ -188,7 +185,6 @@
 
     <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
 </form>
-
 
 
 
