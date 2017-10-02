@@ -1,51 +1,32 @@
-<?php
-    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-    header("Cache-Control: post-check=0, pre-check=0", false);
-    header("Pragma: no-cache");
-?>
+
 <!doctype HTML>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de Socios</title>
-	<link rel="stylesheet" href="">
 
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
 
     
     <!--MAscaras-->
+        <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+
+
     <script src="../js/jquery.maskedinput.min.js" type="text/javascript"></script>
 
-    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
 
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript">
+            jQuery(function($){
+                $("#sociocedula").mask("9-9999999");
+                $("#sociotelmovil").mask("9999 99 99");
+            });
+        </script>
 
-
-
-   
-        function loadSocio(socio) {
-            alert(socio);
-
-        /*
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                alert("Aqui estoy");
-                document.getElementById("txtHint").innerHTML = this.responseText;
-
-
-            }
-        };
-        xmlhttp.open("post", "../business/juntaAction.php?idUpdate="+idjunta, true);
-        xmlhttp.send();
-        */
-        }
-
+        <script type="text/javascript">
 
             function provinciaSeleccionada(){
                 var valor = document.getElementById("listaProvincias") .value ;
@@ -181,7 +162,6 @@
 
     </script>
 
-
     <script type="text/javascript">
       var datefield=document.createElement("input")
       datefield.setAttribute("type", "date")
@@ -193,7 +173,7 @@
      </script>
 
      <script>
-        if (datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
+        if(datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
            jQuery(function($){ //on document.ready
                $('#fecha').datepicker();
                $('#fechaCVO').datepicker();
@@ -204,9 +184,6 @@
            })
         }
      </script>
-
-
-
 
 
 
@@ -334,7 +311,7 @@
                     </td>
                     
                     <td>
-                        <input type="text" name="sociotelmovil" id="sociotelmovil" onkeypress="return soloNumeros(event)" maxlength="8">
+                        <input type="text" name="sociotelmovil" id="sociotelmovil" required="">
                     </td>
                     <td>
                         <input type="email"  required="" name="sociocorreo" id="sociocorreo">
@@ -688,19 +665,4 @@
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarSocio.js"></script>
 </body>
-     <script type="text/javascript">
-        jQuery(function($){
-
-            $("#sociocedula").mask("9/999/999");
-
-           // $("#movil").mask("999 99 99 99");
-
-            //$("#letras").mask("aaa");
-
-            //$("#comodines").mask("?");
-
-        });
-
-    </script>
-
 </html>

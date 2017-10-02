@@ -26,25 +26,8 @@
 
     }
 
-    input {
 
-        padding:5px;
 
-        border-radius: 5px;
-
-        -moz-border-radius: 5px;
-
-        -webkit-border-radius: 5px;
-
-        -o-border-radius: 5px;
-
-    }
-
-    input:focus {
-
-        outline:0px;
-
-    }
 
     .ok {
 
@@ -66,6 +49,7 @@
             $("#letras").mask("aaa");
 
             $("#comodines").mask("?");
+            $("#pablo").mask("9999 99 99 99");
 
         });
 
@@ -85,6 +69,8 @@
 <div><span>movil</span><input type="text" id="movil"> 999 99 99 99</div>
 
 <div><span>Solo tres letras</span><input type="text" id="letras"> aaa</div>
+
+<div><span>fecha</span><input type="text" id="pablo"> 99/99/9999</div>
 
 
 </body>
