@@ -49,8 +49,17 @@
 
 			require 'socioBusiness.php';
 			require 'fincaBusiness.php';
+			require 'cvoBusiness.php';
+			require 'examenBruselasBusiness.php';
+			require 'examenTuberculosisBusiness.php';
+
 			require_once '../domain/socioDireccion.php';
 			require_once '../domain/fincaDireccion.php';
+
+
+			require_once '../domain/cvo.php';
+			require_once '../domain/examenBruselas.php';
+			require_once '../domain/examenTuberculosis.php';
 			//require_once '../domain/hato.php';
 			//require_once '../domain/finca.php';
 			$socioBusiness = new socioBusiness();
@@ -60,34 +69,68 @@
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
 					$tipoactividad, $tipofinca , $sociodetalle);
 		
-				$resultado = $socioBusiness->insertarTBSocio($socio);
+				$resultado0 = $socioBusiness->insertarTBSocio($socio);
 
 				$idSocio=$socioBusiness->getSocioId($cedula);
 				$fincaBusiness= new fincaBusiness();
 				$finca= new Finca('',$idSocio,'','','');
 				$resuntadoFinca=$fincaBusiness->insertarFinca($finca);
 
+				//Area donde se inserta los examenes..
+				$cvoid= $_POST[''];
+				$cvotiene= $_POST['radioCVO'];
+				$cvofechavigencia= $_POST['fechaCVO'];
+				
+
+				$cvoBusiness = new cvoBusiness();
+				$cvo = new Cvo($cvoid,$cvotiene,$cvofechavigencia,$idSocio);
+				
+				
+				$resultado1 = $cvoBusiness->insertarCvo($cvo);
+
+
+				$examenid= $_POST[''];
+				$examenvigente= $_POST['radioBrusela'];
+				$examenfechavencimiento= $_POST['fechaBrusela'];
+			
+
+				$examenBruselasBusiness = new examenBruselasBusiness();				
+				$examenBrusela = new examenBruselas($examenid,$examenvigente,$examenfechavencimiento,$idSocio);
+				$resultado2 =$examenBruselasBusiness->insertarExamen($examenBrusela);
+
+
+
+				$examenid= $_POST[''];
+				$examenvigente= $_POST['radioTuberculosis'];
+				$examenfechavencimiento= $_POST['fechasTuberculosis'];
+				
+
+				$examenTuberculosisBusiness = new examenTuberculosisBusiness();				
+				$examenTuberculosis = new examenTuberculosis($examenid,$examenvigente,$examenfechavencimiento,$idSocio);
+				$resultado3 = $examenTuberculosisBusiness->insertarExamen($examenTuberculosis);
+
 
 
 				$socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-				$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
+				$resultado4 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
 
 				$fincaDireccion= new fincaDireccion('','','','','','');
-				$resuntadoFinca2= $fincaBusiness->insertarTBFincaDireccion($fincaDireccion);
+				$resuntado5= $fincaBusiness->insertarTBFincaDireccion($fincaDireccion);
 
 
-				if ($resultado ==1 && $resultado2 == 1 && $resuntadoFinca==1 && $resuntadoFinca2==1) {
+				if ($resultado0 ==0 && $resultado1 == 1 && $resultado2==1 && $resulado3==1&& $resulado4==1&& $resulado5==1) {
+
 					require './hatoBusiness.php';
 				
 					$hato = new Hato($idSocio,'','','','','','','','');
 					$hatoBusiness = new hatoBusiness();		
 
-					$resultado3 = $hatoBusiness->insertarTBHato($hato);
-					if ($resultado3 == 1) {
+					$resultado6 = $hatoBusiness->insertarTBHato($hato);
+					if ($resultado6 == 1) {
 						require './hatoActividadBusiness.php';
 						$hatoActividadBusiness = new hatoActividadBusiness();
-						$resultado4=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
-						if($resultado4==1){
+						$resultado7=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
+						if($resultado7==1){
 							header("location: ../index.php?success=inserted");	
 						}else{
 							header("location: ../view/socioView.php?error=errorinsertarhatoactividad");		

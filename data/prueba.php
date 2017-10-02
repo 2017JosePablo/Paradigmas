@@ -7,6 +7,12 @@
 </head
 <body>
 
+
+ <form>
+  <input type="radio" name="examen" value="sitiene" checked> SI<br>
+  <input type="radio" name="examen" value="notiene"> NO<br>
+</form> 
+
     <?php
     /*
      include 'cercaData.php';

@@ -523,16 +523,13 @@
             <br><br>
             <p>Examen tuberculosis</p>
             <p>Vigente</p>
-            <input type='radio' name='radioTuber' selectet='' value='1' checked> Si<br> 
-            <input type="radio" name="radioTuber" value="2">No
+            <input type="radio" name="radioTuber"  value="1" > Si<br> 
+            <input type="radio" name="radioTuber" value="2" checked>No
             <p>Fecha de vencimiento</p>
             <input type="date" required ="" name="fechaTuber" id="fechaTuber">
-                           
-
-
-
-
-
+       
+       
+       
             
             <br><br>
 
