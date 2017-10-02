@@ -6,7 +6,7 @@
  		require '../data/hatoData.php';
  
         $hatoBusiness = new hatoData();
- 	
+
  		require 'hatoBusiness.php';  
 
         $hatoBusiness = new hatoBusiness();

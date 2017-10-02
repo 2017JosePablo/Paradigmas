@@ -26,7 +26,8 @@ $(document).ready(function() {
                 document.getElementById("vacasEngorde").readOnly = true;
 
                 $.post('../business/hatoAction.php',{idSocio:result[0]}, function(data){
-
+                    alert(data);
+                    /*
                     var array = JSON.parse(data);
                     document.getElementById("terneros").value = array['hatoternero']; 
                     document.getElementById("terneras").value = array['hatoternera']; 

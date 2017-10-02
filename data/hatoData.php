@@ -103,24 +103,50 @@ class hatoData extends Data{
 
         return $hato;
     }
-    public function obtenerSocioHato($idsocio) {
 
+    public function obtenerSocioHato($idsocio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $hato="0 results";
         $sql = "SELECT * FROM tbhato WHERE socioid = $idsocio";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                $hato = ["socioid"=>$row["socioid"],"hatoraza"=>$row["hatoraza"],"hatoternero"=>$row["hatoternero"],"hatoternera"=>$row["hatoternera"],"hatono"=>$row["hatonovillo"],"hatonovilla"=>$row["hatonovilla"],"hatonovillaprenada"=>$row["hatonovillaprenada"],"hatotoroengorde"=>$row["hatotoroengorde"],"hatotoroservicio"=>$row["hatotoroservicio"],"hatovacacria"=>$row["hatovacacria"],"hatovacaengorde"=>$row["hatovacaengorde"]];
+                $hato = ["socioid"=>$row["socioid"],"hatoraza"=>desomponerLinea($row["hatoraza"]),"hatoternero"=>$row["hatoternero"],"hatoternera"=>$row["hatoternera"],"hatono"=>$row["hatonovillo"],"hatonovilla"=>$row["hatonovilla"],"hatonovillaprenada"=>$row["hatonovillaprenada"],"hatotoroengorde"=>$row["hatotoroengorde"],"hatotoroservicio"=>$row["hatotoroservicio"],"hatovacacria"=>$row["hatovacacria"],"hatovacaengorde"=>$row["hatovacaengorde"]];
             }
-        }else{
-            echo "0 results";
         }
+
         $conn->close();
 
         return json_encode($hato);
     }
+    public function desomponerLinea($listaRazas)
+    {
+        
+        $lista = explode(",",$listaRazas);
 
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+
+        $raza="";
+
+        $sql = "SELECT * FROM tbraza ";
+        $result = $conn->query($sql);
+     
+
+            while($row = $result->fetch_assoc()) {
+
+                for ($i=0; $i < count($lista); $i++) { 
+
+                    if ($row["idraza"] == $lista[$i]) {
+                        $raza = $raza .$row["razanombre"].",";
+                    }
+                        
+                }   
+            }
+
+        $conn->close();
+        return $raza;
+    }
 }
 
 ?>
