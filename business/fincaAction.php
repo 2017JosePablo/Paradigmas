@@ -42,7 +42,7 @@
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
 		//	En caso de que no editara la ubicacion
-	if ($_POST["editoUbicacion"] == 0) {
+	if ($_POST["editoUbicacion"] != 0) {
 		$listaProvincias =$_POST['listaProvincias'];
 		$listadoCanton =$_POST['listadoCantones'];
 		$listadoDistrito=$_POST['listadoDistrito'];
