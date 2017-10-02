@@ -1,11 +1,8 @@
 <?php
-	include_once '../data/hatoData.php';
-
-	
+	require_once '../data/hatoData.php';	
 	class hatoBusiness 
 	{
 		private $hato;
-		
 
 		function hatoBusiness()
 		{
@@ -34,7 +31,7 @@
 		}
 
 		public function obtenerSocioHato($socioid){
-			return $this->obtenerSocioHato($socioid);
+			return $this->hato->obtenerSocioHato($socioid);
 		}
 	}
 

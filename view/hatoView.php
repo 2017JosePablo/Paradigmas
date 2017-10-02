@@ -73,8 +73,8 @@ echo '</table>';
          //name='.$current->getIdTBJunta().'
 
 ?>
-
-<form method="post" enctype="multipart/form-data" action="../business/hatoAction.php"> 
+<br><br>
+<form id="frm" method="post" enctype="multipart/form-data" action="../business/hatoAction.php"> 
 
 <div id="cajaHato" style="display: none;">
     
@@ -157,7 +157,7 @@ echo '</table>';
 
         </table>
     </div>
-
+<br><br>
   
     <div id = 'cajaRazas' style="display: none;">
         
@@ -166,21 +166,22 @@ echo '</table>';
             include '../business/razaBusiness.php';
             $razaBusiness = new razaBusiness();
             $todasRazas = $razaBusiness->obtenerTodoTBRaza();
-            echo '<table border = "1"> <tr>  <td align = "center" >Listado de razas </td> </tr><tr><td >Nombre de la Raza</td></tr>';
+            echo '<table > <tr>  <td align = "center" >Listado de razas </td> ';
 
             foreach ($todasRazas as $current) {     
                 echo '<tr>';
-                echo '<td> <input type="checkbox" id="'.$current->getIdRaza().'" value="'.$current->getIdRaza().'">'.$current->getNombreRaza().'</td>';
+                echo '<td> <input type="checkbox" name="checkbox" id="'.$current->getIdRaza().'" value="'.$current->getIdRaza().'">'.$current->getNombreRaza().'</td>';
 
                 echo '</tr>';
             }
                 echo '</table>';
-
     ?>
 
     </div>
-
-    <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
+    <div id="btnSubmit" style="display: none;">
+        <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
+    </div>
+    
 </form>
 
 
