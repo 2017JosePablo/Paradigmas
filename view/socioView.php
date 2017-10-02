@@ -113,6 +113,8 @@
             }
             function mostrarFormularioSocio(){
 
+                document.getElementById('cajaVerSocio').style.display ='none';
+
                 document.getElementById('editarUbic').style.display='block';
 
                 document.getElementById("cajaFormulario").style.display='block';
@@ -501,7 +503,7 @@
             <input type='radio' name='radioCVO' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br> 
             <input type="radio" name="radioCVO" onclick="ocultarEspacios('fechaCVO','labelCVO')" value="2">No
             <p id="labelCVO"> Fecha Vigencia </p>
-            <input type="date"required ="" name="fechaCVO" id="fechaCVO">
+            <input type="date" name="fechaCVO" id="fechaCVO">
             <br><br>
            
             <p>Fierro</p>
@@ -523,14 +525,14 @@
             <input type="radio" name='radioBrusela' onclick="verEspacios('fechaBruc','labelBru')" value="1" checked > Si<br> 
             <input type="radio" name="radioBrusela"  onclick="ocultarEspacios('fechaBruc','labelBru')" value="2">No
             <p id="labelBru">Fecha de vencimiento</p>
-            <input type="date"required ="" name="fechaBrusela" id="fechaBruc">
+            <input type="date" name="fechaBrusela" id="fechaBruc">
             <br><br>
             <p>Examen tuberculosis</p>
             <p>Vigente</p>
             <input type='radio' name='radioTuberculosis' onclick="verEspacios('fechaTuber','labelTuber')" value='1' checked="checked" /> Si<br> 
             <input type="radio" name="radioTuberculosis" onclick="ocultarEspacios('fechaTuber','labelTuber')"  value="2">No
             <p id="labelTuber">Fecha de vencimiento</p>
-            <input type="date" required ="" name="fechaTuberculosis" id="fechaTuber">
+            <input type="date" name="fechaTuberculosis" id="fechaTuber">
                            
 
             
