@@ -8,10 +8,6 @@
 <body>
 
 
- <form>
-  <input type="radio" name="examen" value="sitiene" checked> SI<br>
-  <input type="radio" name="examen" value="notiene"> NO<br>
-</form> 
 
     <?php
     /*
@@ -97,7 +93,7 @@
 
           $hatoBusiness = new hatoData();
 
-          $result=$hatoBusiness->obtenerSocioHato($socioid);
-          echo $result;
+          echo $hatoBusiness->desomponerLinea("1,2,3,4,5,6");
+          
   ?>
 </body>

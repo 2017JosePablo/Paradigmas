@@ -2,7 +2,7 @@
 	
 	if(isset($_POST['idSocio']) == true && empty($_POST['idSocio'])== false){
  	
- 		require 'hatoBusiness.php';
+ 		require './hatoBusiness.php';
       
 
         $hatoBusiness = new hatoBusiness();
