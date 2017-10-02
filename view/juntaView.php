@@ -5,6 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de las Juntas</title>
 	<link rel="stylesheet" href="">
+    <meta charset="utf-8">
+
+
+
 
 
     <script type="text/javascript">
@@ -22,12 +26,18 @@
             return campos;
         }
 
+</script>
 
-    </script>
 
 
 </head>
 <body>   
+
+    
+
+    
+
+
    <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
 	 <?php
  
@@ -208,4 +218,9 @@
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarJunta.js"></script>
 </body>
+
+
+
+
+
 </html>

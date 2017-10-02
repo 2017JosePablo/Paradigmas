@@ -66,6 +66,13 @@
 				
 			if($socioBusiness->verificarCedula($cedula)==0){
 
+			//	echo "Fecha cvo: ".$_POST['fechaCVO']."</br>";
+
+				$date = new DateTime($_POST['fechaCVO']);
+				
+				echo $date->format('Y-m-d');
+
+
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
 					$tipoactividad, $tipofinca , $sociodetalle);
 		
@@ -77,36 +84,45 @@
 				$resuntadoFinca=$fincaBusiness->insertarFinca($finca);
 
 				//Area donde se inserta los examenes..
-				$cvoid= $_POST[''];
+				
 				$cvotiene= $_POST['radioCVO'];
-				$cvofechavigencia= $_POST['fechaCVO'];
+
+				$date = new DateTime($_POST['fechaCVO']);
+				//echo $date->format('Y-m-d');
+				$cvofechavigencia= $date->format('Y-m-d');
 				
 
 				$cvoBusiness = new cvoBusiness();
-				$cvo = new Cvo($cvoid,$cvotiene,$cvofechavigencia,$idSocio);
+				$cvo = new Cvo('',$cvotiene,$cvofechavigencia,$idSocio);
 				
 				
 				$resultado1 = $cvoBusiness->insertarCvo($cvo);
 
 
-				$examenid= $_POST[''];
+				
 				$examenvigente= $_POST['radioBrusela'];
-				$examenfechavencimiento= $_POST['fechaBrusela'];
+
+				$date = new DateTime($_POST['fechaBrusela']);
+				$examenfechavencimiento= $date->format('Y-m-d');
+				
 			
 
 				$examenBruselasBusiness = new examenBruselasBusiness();				
-				$examenBrusela = new examenBruselas($examenid,$examenvigente,$examenfechavencimiento,$idSocio);
+				$examenBrusela = new examenBruselas('',$examenvigente,$examenfechavencimiento,$idSocio);
 				$resultado2 =$examenBruselasBusiness->insertarExamen($examenBrusela);
 
 
 
-				$examenid= $_POST[''];
+
 				$examenvigente= $_POST['radioTuberculosis'];
-				$examenfechavencimiento= $_POST['fechasTuberculosis'];
+
+				$date = new DateTime($_POST['fechaTuberculosis']);
+				$examenfechavencimiento= $date->format('Y-m-d');
+				
 				
 
 				$examenTuberculosisBusiness = new examenTuberculosisBusiness();				
-				$examenTuberculosis = new examenTuberculosis($examenid,$examenvigente,$examenfechavencimiento,$idSocio);
+				$examenTuberculosis = new examenTuberculosis('',$examenvigente,$examenfechavencimiento,$idSocio);
 				$resultado3 = $examenTuberculosisBusiness->insertarExamen($examenTuberculosis);
 
 
@@ -115,41 +131,52 @@
 				$resultado4 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
 
 				$fincaDireccion= new fincaDireccion('','','','','','');
-				$resuntado5= $fincaBusiness->insertarTBFincaDireccion($fincaDireccion);
+				$resultado5= $fincaBusiness->insertarTBFincaDireccion($fincaDireccion);
 
 
-				if ($resultado0 ==0 && $resultado1 == 1 && $resultado2==1 && $resulado3==1&& $resulado4==1&& $resulado5==1) {
+				echo "Resultado 0: ".$resultado0."</br>";
+				echo "Resultado 1: ".$resultado1."</br>";
+				echo "Resultado 2: ".$resultado2."</br>";
+				echo "Resultado 3: ".$resultado3."</br>";
+				echo "Resultado 4: ".$resultado4."</br>";
+				echo "Resultado 5: ".$resultado5."</br>";
+
+				if ($resultado0 ==1 && $resultado1 == 1 && $resultado2==1 && $resultado3==1&& $resultado4==1&& $resultado5==1) {
 
 					require './hatoBusiness.php';
 				
-					$hato = new Hato($idSocio,'','','','','','','','');
+					$hato = new Hato($idSocio,'','','','','','','','','','');
 					$hatoBusiness = new hatoBusiness();		
 
 					$resultado6 = $hatoBusiness->insertarTBHato($hato);
+
+					echo "Resultado 6: ".$resultado6."</br>";
 					if ($resultado6 == 1) {
 						require './hatoActividadBusiness.php';
 						$hatoActividadBusiness = new hatoActividadBusiness();
 						$resultado7=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
+						
+						echo "Resultado 7: ".$resultado7."</br>";
+
 						if($resultado7==1){
 							header("location: ../index.php?success=inserted");	
 						}else{
-							header("location: ../view/socioView.php?error=errorinsertarhatoactividad");		
+						//	header("location: ../view/socioView.php?error=errorinsertarhatoactividad");		
 						}
 					
 					}else{
-							header("location: ../view/socioView.php?error=errorinsertarhato");		
+						//	header("location: ../view/socioView.php?error=errorinsertarhato");		
 					}
 					
 					//	header("location: ../index.php");
 				}else{
 
-					echo "Error al insertar un socio: ".@$resultado;
-					echo "Error al insertar un socioDireccion: ".@$resultado2;
-					header("location: ../view/socioView.php?error=errorinserted");
+					
+				//	header("location: ../view/socioView.php?error=errorinserted");
 				}
 
 			}else{
-				header("location: ../view/socioView.php?error=userexits");
+			//	header("location: ../view/socioView.php?error=userexits");
 			}
 		}else{
 			echo " Algunos campos no existen...";

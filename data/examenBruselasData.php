@@ -1,5 +1,5 @@
 <?php
-include 'data.php';
+require_once 'data.php';
 include '../domain/examenBruselas.php';
 
 

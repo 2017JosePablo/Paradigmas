@@ -1,18 +1,17 @@
 <?php
-	echo "CEDULA: ".$_POST['cedulaHato'];
 	
-	if (isset($_POST['cedulaHato']) == true && empty($_POST['cedulaHato'])== false) {
-		require 'hatoBusiness.php';
-		$socioid=$_POST['cedulaHato'];	
-		
-		$hatoBusiness = new hatoData();
-
-		$result=$hatoBusiness->obtenerSocioHato($_POST['cedulaHato']);
-		echo $result;
-		
-	}
+	if(isset($_POST['idSocio']) == true && empty($_POST['idSocio'])== false){
+ 		
 
 
+ 		require '../data/hatoData.php';
+        $socioid='1';  
+
+        $hatoBusiness = new hatoData();
+        $result=$hatoBusiness->obtenerSocioHato($socioid);
+        echo $result;
+
+	}else{
 
 	if (isset($_POST['registrarhato'])) {
 		require 'socioBusiness.php';
@@ -68,7 +67,7 @@
 		}else{	
 			header("location: ../view/censoView.php?error=emptyField");
 		}
-
+	}else{
 /******************************HATO********************************************************/		
 
 	if (isset($_POST['registrar']) || isset($_POST['actualizar'])) {
@@ -119,6 +118,7 @@
 		}else{	
 			header("location: ../view/hatoView.php?error=emptyField");
 		}
+	}
 	
 
 

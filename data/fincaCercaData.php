@@ -11,6 +11,8 @@ class fincaCercaData extends Data{
         $this->data = new Data();
     }
 
+    
+
 
     function getTipoCerca(){
 

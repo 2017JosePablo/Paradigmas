@@ -1,5 +1,5 @@
 <?php
-	include '../data/hatoData.php';
+	include_once '../data/hatoData.php';
 
 	
 	class hatoBusiness 
