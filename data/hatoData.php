@@ -122,6 +122,25 @@ public function obtenerSocioHatoModificar($idsocio) {
     }
 
 
+  public function verificarSocioHato($idsocio) {
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $hato=FALSE;
+        $sql = "SELECT * FROM tbhato WHERE socioid = $idsocio";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+
+                if ($row["hatoternero"]>0||$row["hatoternera"]>0||$row["hatonovillo"]>0||$row["hatonovilla"]>0||$row["hatonovillaprenada"]>0||$row["hatotoroengorde"]>0||$row["hatotoroservicio"]>0||$row["hatovacacria"]>0||$row["hatovacaengorde"]){
+                    $hato = TRUE;
+                }
+            }
+        }
+
+        $conn->close();
+
+        return $hato;
+    }
+
 
     public function obtenerSocioHato($idsocio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
