@@ -93,7 +93,7 @@
 
           $hatoBusiness = new hatoData();
 
-          echo $hatoBusiness->obtenerSocioHato("1");
+          echo $hatoBusiness->verificarSocioHato("13");
           
   ?>
 </body>
