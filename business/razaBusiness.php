@@ -21,7 +21,7 @@
 
 		public function modificarTBRaza($Raza)
 		{
-			return $this->dataRaza ->modificarRaza($Raza);
+			return $this->dataRaza ->modificarTBRaza($Raza);
 		}
 
 		public function eliminarTBRaza($Raza)

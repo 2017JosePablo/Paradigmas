@@ -38,11 +38,9 @@ class actividadData extends Data{
 	        die("Connection failed: " . mysqli_connect_error());
 	    }
 
-	    $sql = "UPDATE tbactividad SET 
-	    	actividadid ='".$actividad-> getId(). "',
-	        actividadtipo='" . $actividad-> getNombreActividad()."'
+	    $sql = "UPDATE tbtipoactividad SET  tipoactividadnombre='". $actividad-> getNombreActividad()."'
 
-	        WHERE actividadid ='" . $actividad-> getId(). "';";
+	        WHERE tipoactividadid ='" . $actividad-> getId(). "';";
 
 	    $result = $conn->query($sql);
 	    if ($conn->query($sql) === TRUE) {
@@ -61,7 +59,7 @@ class actividadData extends Data{
 		die("Connection failed: " . mysqli_connect_error());
 		}
 
-		$sql = "DELETE from tbactividad where actividadid='".$idActividad."';";
+		$sql = "DELETE from tbtipoactividad where tipoactividadid='".$idActividad."';";
 		$result = $conn->query($sql);
 		$conn->close();
 

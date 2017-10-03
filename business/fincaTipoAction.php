@@ -1,39 +1,44 @@
 <?php
+	if (isset($_POST['crearTipoFinca'])) {	
+		$nombreaFinca = $_POST['tipofinca'];
+		
 
-	if (isset($_POST['crearactividad'])) {		
-		$nombreactividad = $_POST['tipoactividad'];
-		echo "Nombre de la Actividad: ".$nombreactividad;
-		if(isset($nombreactividad)){
-			if (strlen($nombreactividad)) {
-				require './actividadBusiness.php';
-				$actividadBusiness  = new actividadBusiness();
+		echo "Aqui insertando:  ".$nombreaFinca."</br>";
+		if(isset($nombreaFinca)){
+			if (strlen($nombreaFinca)) {
+				require './fincaTipoBusiness.php';
+				include_once '../domain/fincaTipo.php';
+
+				$fincaTipoBusiness  = new fincaTipoBusiness();
 				
-				$actividadid = "9";
-				$actividad = new Actividad($actividadid,$nombreactividad);
+				
+				$actividad = new fincaTipo('',$nombreaFinca);
 
-				$resultado = $actividadBusiness->insertarTBActividad($actividad);
+				$resultado = $fincaTipoBusiness->insertarTBfincaTipo($actividad);
 				echo "Aquii resultado ".$resultado ."</br>";
 				if ($resultado ==1) {
-					header ('location: ../view/actividadView.php?success=inserted');
+					header ('location: ../index.php?success=inserted');
 				}else{
-					header ('location: ../view/actividadView.php?error=errortoinserted');
+					header ('location: ../index.php?error=errortoinserted');
 				}
-
-
-
-
 			}	
-		}
+		}	
+	}else if (isset($_POST['modificarTipoFinca'])) {	
+		$nombreaFinca = $_POST['tipofincaUpdate'];
+		$actividadid = $_POST['idTipoFinca'];
+
 		
-			
+		if(isset($nombreaFinca)){
+			if (strlen($nombreaFinca)) {
+				require './fincaTipoBusiness.php';
+				include_once '../domain/fincaTipo.php';
+
+				$fincaTipoBusiness  = new fincaTipoBusiness();
+				$fincaTipo = new fincaTipo($actividadid,$nombreaFinca);
+
+				$resultado = $fincaTipoBusiness->actualizarTBfincaTipo($fincaTipo);
+					header ('location: ../index.php?success=inserted');
+			}	
+		}		
 	}
-
-
-
-		
-
-
-
-
-?>y
-
+?>

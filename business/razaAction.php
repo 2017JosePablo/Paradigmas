@@ -44,6 +44,35 @@ if (isset($_GET['ideliminar'])){
         }
     }
     // Escucha el boton de Buscar una junta
-}   
+}else    if (isset($_POST['modificarRaza'])) {
+
+    if (isset($_POST['razanombreMod'])) {
+
+        $idraza = $_POST['idRaza'];    
+        $razanombre = $_POST['razanombreMod'];
+
+
+        if (strlen($razanombre)) {
+
+                $raza = new raza($idraza, $razanombre);
+
+                $razaBusiness = new razaBusiness();
+
+                $result = $razaBusiness->modificarTBRaza($raza);
+                if ($result == 1) {
+                    header("location: ../index.php?success=inserted");
+                //     header("location: ../business/juntaAction.php?success=inserted");
+                  //  echo "Se inserto";
+                } else {
+                    header("location: ../index.php?error=inserted");
+                    //header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
+                }        
+        } else {
+                header("location: ../index.php?error=inserted");
+        //    header("location: ../business/juntaAction.php?error=Campos");
+        }
+    }
+    // Escucha el boton de Buscar una junta
+}
 
 ?>
