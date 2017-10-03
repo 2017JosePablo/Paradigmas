@@ -78,6 +78,8 @@ echo '</table>';
 
 <input type="hidden" name="socioId" value="" id="socioId"> 
 
+<input type="hidden" name="razas" value="" id="razas"> 
+
 <div id="cajaHato" style="display: none;">
     
 
@@ -187,8 +189,9 @@ echo '</table>';
     ?>
 
     </div>
+
     <div id="btnSubmit" style="display: none;">
-        <input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
+        <button type="submit" name="registrarhato" id="registrarhato" value="registrar" >Registrar Hato</button>
     </div>
     
 </form>

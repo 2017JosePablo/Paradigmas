@@ -32,13 +32,24 @@
        </form>
 
 <form method="post" action="../business/actividadAction.php">
-    Tipo de Actividad: <input type="text" name="tipoactividad" required=""><br>
+   
+    <div id="regActividad" >
+        Tipo de Actividad: <input type="text" name="tipoactividad" required=""><br>
+        <input type="submit" value="Crear Actividad" name="crearactividad" id="crearactiviad"/><p>
+    </div>
 
-<input type="submit" value="Crear Actividad" name="crearactividad" id="crearactiviad"/><p>
+    <div id="modActividad" style="display: none;">
+        Editar Actividad: <br><br><input type="text" name="tipoactividadMod" id="tipoactividadMod"><br><br>
+        <input type="submit" value="Guardar Cambios" name="modActividad" id="modActividad"/><p>
+    </div>
+
+
 
 </form>
  
 
     <a href="../index.php">Regresar</a>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/editarActividad.js"></script>
 </body>
 </html>

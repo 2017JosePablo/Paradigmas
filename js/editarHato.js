@@ -8,6 +8,31 @@ $(document).ready(function() {
 
     	if(cedula.length>0){
 
+
+
+            if(cedula == 'registrar' ){
+
+
+                
+                var tipoRaza = "";
+
+                var checkboxes = document.getElementById("frm").checkbox;
+ 
+                for (var x=0; x < checkboxes.length; x++) {
+                 if (checkboxes[x].checked) {
+                    tipoRaza+=x+',';      
+                 }
+                }
+                document.getElementById('razas').value = tipoRaza;
+                //document.getElementById('tiposCerca').value =tipoCerca;
+
+                
+            }
+
+
+
+
+
             var result = cedula.split('-');
 
             if(result[1] == 'Ver'){
@@ -116,7 +141,7 @@ $(document).ready(function() {
 
                          
                 
-
+                    
     
                 });
                 
