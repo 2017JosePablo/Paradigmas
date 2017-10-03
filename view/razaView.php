@@ -6,9 +6,19 @@
 	<title>Area Administrativa de Raza</title>
 	<link rel="stylesheet" href="">
 
+
+    <script type="text/javascript">
+        function ocultarDatos(){
+            document.getElementById('cajaEdi').style="display:none";
+
+            document.getElementById('cajaReg').style="display:block";
+
+        }
+
+    </script>
+
 </head>
 <body>   
-   <form method="post" enctype="multipart/form-data" action="../business/razaAction.php">
 	 <?php
  
 	 include '../business/razaBusiness.php';
@@ -19,12 +29,10 @@
 
             foreach ($todasRazas as $current) {     
                 echo '<tr>';
-                echo '<td>  '.$current->getIdRaza() . ' </td>';
+                echo '<td>  '.$current->getIdRaza(). ' </td>';
                 echo '<td> '.$current->getNombreRaza().'</td>';
 
-                echo '<td> <a href="../business/razaAction.php?ideliminar='.$current->getIdRaza().'"> Eliminar</a> </td>';
-
-                 echo "<td> <a href='' onclick=loadJunta('".$current->getIdRaza()."') > Modificar</a> </td>";
+                echo "<td> <button type='submit' value='".$current->getIdRaza().'-'.$current->getNombreRaza()."-Mod'> Modificar</button> </td>";
 
                 echo '</tr>';
             }
@@ -32,21 +40,34 @@
 
                  
             ?>
-            
-        </form>
 
-        <p>Modificando o agregando una raza</p>
+            <br>
+
+            <button onclick="ocultarDatos()">Agregar Raza</button>
+
+        
             <form method="post" enctype="multipart/form-data" action="../business/razaAction.php">
+            <input type="hidden" name="idRaza" id="idRaza" value="">
+            <div id="cajaReg" style="display: none;">
+                <p>Agregar Raza</p>
+                <label>Raza: </label><input type="text" name="razanombre" id="razanombre"/><br><br>
+                <button type="submit" name="crearraza" id="crearraza">Agregar nueva Raza</button> 
+            </div>
 
-                     <label>Nombre de la Raza </label><input required type="text" name="razanombre" id="razanombre"/><p>
-                     <input type="submit" value="Agregar nueva Raza" name="crearraza" id="crearraza"/><p>
-
-                    
+            <div id="cajaEdi" style="display: none;">
+                <p>Editar Raza</p>
+                <label>Raza: </label><input type="text" name="razanombreMod" id="razanombreMod"/><br><br>
+                <button type="submit" name="modificarRaza" id="crearraza">Editar nueva Raza</button> 
+            </div>
+             
+   
             </form>
             
           
 
 	
 	<a href="../index.php">Regresar</a>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/editarRaza.js"></script>
 </body>
 </html>
