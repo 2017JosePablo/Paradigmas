@@ -19,7 +19,7 @@
       
 
         $hatoBusiness = new hatoBusiness();
-        $result=$hatoBusiness->obtenerSocioHatoModificar($_POST['idSocio']);
+        $result=$hatoBusiness->obtenerSocioHatoModificar($_POST['idSocioModificar']);
         echo $result;
 
 	}else if (isset($_POST['registrarhato'])) {
