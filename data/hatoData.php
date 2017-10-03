@@ -57,8 +57,8 @@ class hatoData extends Data{
             hatotoroengorde='".$hato-> getTorosEngorde()."',
             hatotoroservicio='".$hato-> getTorosServicio()."',
             hatovacacria='".$hato-> getvacasCria()."',
-
             hatovacaengorde='" . $hato-> getvacasEngorde()."'
+            
             WHERE socioid ='" . $hato-> getPropietario(). "';";
 
         //    echo $sql;

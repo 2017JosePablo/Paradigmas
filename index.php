@@ -13,10 +13,9 @@
 		 echo '<p style="color: green">Dato insertado con Exito</p>';
 	}
  ?>
-
+<p>ASOTURGA</p>
 <a href="view/juntaView.php">Junta</a><br>
 <a href="view/hatoView.php">Hato</a><br>
-<a href="view/censoView.php">Censo</a><br>
 <a href="view/actividadView.php">Actividad</a><br>
 <a href="view/socioView.php">Socio</a><br>
 <a href="view/fincaTipoView.php">Tipo Finca</a><br>
