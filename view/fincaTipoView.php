@@ -15,6 +15,16 @@
 
        }
    </script>
+
+   <script type="text/javascript">
+    function validarLetras(e) { 
+        tecla = (document.all) ? e.keyCode : e.which; 
+        if (tecla==8) return true; 
+        patron =/[A-Za-z\s]/; 
+        te = String.fromCharCode(tecla); 
+    return patron.test(te);
+    }
+ </script>
 </head>
 <body>
 
@@ -47,13 +57,13 @@ $tipoFinca = $temp->getAllTBTiposFincas();
 
             <div id="cajaInsert" style="display: none;">
                 <p>Insertar Actividad</p>
-                <label>Nombre: </label> <input type="text" name="tipofinca" ><br>
+                <label>Nombre: </label> <input type="text" name="tipofinca"  onkeypress="return validarLetras(event)" ><br>
                 <br>
                 <button type="submit" name="crearTipoFinca" id="fincaTipoInser">Crear Tipo</button>
             </div>
             <div id="cajaUpdate" style="display: none;">
                 <p>Actualizar Actividad</p>
-                <label>Nombre: </label> <input type="text" name="tipofincaUpdate" id="tipofincaUp" ><br>
+                <label>Nombre: </label> <input type="text" name="tipofincaUpdate"  onkeypress="return validarLetras(event)" id="tipofincaUp" ><br>
                 <br>
                 <button type="submit" name="modificarTipoFinca" id="fincaTipoUpd">Actualizar Tipo</button> 
             </div>

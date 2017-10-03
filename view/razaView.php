@@ -16,6 +16,15 @@
         }
 
     </script>
+    <script type="text/javascript">
+        function validarLetras(e) { 
+            tecla = (document.all) ? e.keyCode : e.which; 
+            if (tecla==8) return true; 
+            patron =/[A-Za-z\s]/; 
+            te = String.fromCharCode(tecla); 
+        return patron.test(te);
+    }
+     </script>
 
 </head>
 <body>   
@@ -50,13 +59,13 @@
             <input type="hidden" name="idRaza" id="idRaza" value="">
             <div id="cajaReg" style="display: none;">
                 <p>Agregar Raza</p>
-                <label>Raza: </label><input type="text" name="razanombre" id="razanombre"/><br><br>
+                <label>Raza: </label><input type="text"  onkeypress="return validarLetras(event)" name="razanombre" id="razanombre"/><br><br>
                 <button type="submit" name="crearraza" id="crearraza">Agregar nueva Raza</button> 
             </div>
 
             <div id="cajaEdi" style="display: none;">
                 <p>Editar Raza</p>
-                <label>Raza: </label><input type="text" name="razanombreMod" id="razanombreMod"/><br><br>
+                <label>Raza: </label><input type="text"  onkeypress="return validarLetras(event)" name="razanombreMod" id="razanombreMod"/><br><br>
                 <button type="submit" name="modificarRaza" id="crearraza">Editar nueva Raza</button> 
             </div>
              
