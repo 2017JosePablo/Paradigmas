@@ -187,7 +187,6 @@ echo '</table>';
             }
                 echo '</table>';
     ?>
-
     </div>
 
     <div  id="btnSubmit" style="display: none;">
@@ -198,17 +197,8 @@ echo '</table>';
     </div>
 
 </form>
-
-
-
-
-
-
     <a href="../index.php">Regresar</a>
-
-     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarHato.js"></script>
-
-
 </body>
 </html>
