@@ -20,7 +20,7 @@ $(document).ready(function() {
  
                 for (var x=0; x < checkboxes.length; x++) {
                  if (checkboxes[x].checked) {
-                    tipoRaza+=x+',';      
+                    tipoRaza+=(x+1)+',';      
                  }
                 }
                 document.getElementById('razas').value = tipoRaza;
