@@ -17,6 +17,7 @@
    </script>
 </head>
 <body>
+
  <?php
 
 
@@ -43,20 +44,19 @@ $tipoFinca = $temp->getAllTBTiposFincas();
         
         <form method="post" action="../business/fincaTipoAction.php">
         <input type="hidden" id="idTipoFinca" name="idTipoFinca" value="">
+
             <div id="cajaInsert" style="display: none;">
                 <p>Insertar Actividad</p>
                 <label>Nombre: </label> <input type="text" name="tipofinca" ><br>
                 <br>
-                <input type="submit" value="Guardar Tipo" name="fincaTipoInser" id="fincaTipoInser"><p>
+                <button type="submit" name="crearTipoFinca" id="fincaTipoInser">Crear Tipo</button>
             </div>
             <div id="cajaUpdate" style="display: none;">
                 <p>Actualizar Actividad</p>
-                <label>Nombre: </label> <input type="text" name="tipofincaUp" id="tipofincaUp" ><br>
+                <label>Nombre: </label> <input type="text" name="tipofincaUpdate" id="tipofincaUp" ><br>
                 <br>
-                <input type="submit" value="Actualizar Tipo" name="fincaTipoUpd" id="fincaTipoUpd"><p>
+                <button type="submit" name="modificarTipoFinca" id="fincaTipoUpd">Actualizar Tipo</button> 
             </div>
-            
-
         </form>
     </div>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
