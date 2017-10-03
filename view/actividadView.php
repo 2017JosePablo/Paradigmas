@@ -22,7 +22,7 @@
                 echo '<tr>';
                     echo '<td>'.$current->getId().'</td>';
                     echo '<td> '.$current->getNombreActividad().'</td>';
-                    echo '<td> <input type= "submit" name= "'.$current->getId().'" value = "Modificar"></td>';
+                    echo '<td> <button type= "button" value = "'.$current->getId().'-Mod">Modificar</button</td>';
                     echo '</tr>';
             }
                 echo '</table>';

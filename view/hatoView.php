@@ -74,7 +74,9 @@ echo '</table>';
 
 ?>
 <br><br>
-<form id="frm" method="post" enctype="multipart/form-data" action="../business/hatoAction.php"> 
+<form id="frm" method="post" enctype="multipart/form-data" action="../business/hatoAction.php">
+
+<input type="hidden" name="socioId" value="" id="socioId"> 
 
 <div id="cajaHato" style="display: none;">
     

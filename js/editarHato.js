@@ -72,6 +72,8 @@ $(document).ready(function() {
 
             }else if(result[1]=='Mod'){
 
+                document.getElementById('socioId').value = result[0];
+
                 document.getElementById('cajaListaRazas').style='display:none';
                 
                 document.getElementById('cajaRazas').style='display:block';
@@ -87,9 +89,7 @@ $(document).ready(function() {
                 document.getElementById("vacasCria").readOnly = false; 
                 document.getElementById("vacasEngorde").readOnly = false;
 
-                $.post('../business/hatoAction.php',{idSocioModificar:result[0]}, function(data){
-                    alert(data);
-                    /*
+                $.post('../business/hatoAction.php',{idSocioModificar:result[0]}, function(data){  
                     var array = JSON.parse(data);
                     document.getElementById("terneros").value = array['hatoternero']; 
                     document.getElementById("terneras").value = array['hatoternera']; 
@@ -101,17 +101,31 @@ $(document).ready(function() {
                     document.getElementById("vacasCria").value = array['hatovacacria']; 
                     document.getElementById("vacasEngorde").value = array['hatovacaengorde'];
                     //"socioid""hatoraza"=>$row["hatoraza"]["hatotoroservicio"],"hatotoroservicio"=>$row["hatovacacria"],"hatovacaengorde"=>$row["hatovacaengorde"]];
-                var checkboxes = document.getElementById("frm").checkbox;
-                $(checkboxes[1]).attr('checked',true);     
+                    var razas = array['hatoraza'].split(',');
+                    
+                    var checkboxes = document.getElementById("frm").checkbox;
+
+                    $(document.getElementById("frm").checkbox).removeAttr('checked');
+                    //$(checkboxes[0]).attr('checked',true);
+                    
+
+                    for(var i = 0 ; i < razas.length;i++){
+                        //
+                        $(checkboxes[razas[i]-1]).attr('checked',true);
+                    }
+
+                         
                 
 
-    */
+    
                 });
                 
 
             }else if(result[1]=='Reg'){
                 document.getElementById('cajaListaRazas').style='display:none';
                 document.getElementById('cajaRazas').style='display:block';
+
+                document.getElementById('socioId').value = result[0];
 
 
 
