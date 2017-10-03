@@ -77,9 +77,6 @@ $(document).ready(function() {
                 document.getElementById('cajaRazas').style='display:block';
                 document.getElementById('cajaHato').style='display:block';
                 document.getElementById('btnSubmit').style='display:block';
-                
-
-
                 document.getElementById("terneros").readOnly = false; 
                 document.getElementById("terneras").readOnly = false; 
                 document.getElementById("novillos").readOnly = false; 
@@ -90,8 +87,9 @@ $(document).ready(function() {
                 document.getElementById("vacasCria").readOnly = false; 
                 document.getElementById("vacasEngorde").readOnly = false;
 
-                $.post('../business/hatoAction.php',{idSocio:result[0]}, function(data){
-
+                $.post('../business/hatoAction.php',{idSocioModificar:result[0]}, function(data){
+                    alert(data);
+                    /*
                     var array = JSON.parse(data);
                     document.getElementById("terneros").value = array['hatoternero']; 
                     document.getElementById("terneras").value = array['hatoternera']; 
@@ -103,13 +101,13 @@ $(document).ready(function() {
                     document.getElementById("vacasCria").value = array['hatovacacria']; 
                     document.getElementById("vacasEngorde").value = array['hatovacaengorde'];
                     //"socioid""hatoraza"=>$row["hatoraza"]["hatotoroservicio"],"hatotoroservicio"=>$row["hatovacacria"],"hatovacaengorde"=>$row["hatovacaengorde"]];
-                    
-                });
                 var checkboxes = document.getElementById("frm").checkbox;
-                $(checkboxes[1]).attr('checked',true); 
+                $(checkboxes[1]).attr('checked',true);     
+                
 
-
-
+    */
+                });
+                
 
             }else if(result[1]=='Reg'){
                 document.getElementById('cajaListaRazas').style='display:none';

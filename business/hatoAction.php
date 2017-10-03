@@ -1,10 +1,6 @@
 <?php
 	
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e7cf5e7ff4714092ac02cb9b68415d963d3ee326
 	if(isset($_POST['idSocio']) == true && empty($_POST['idSocio'])== false){
 
  		require '../data/hatoData.php';
