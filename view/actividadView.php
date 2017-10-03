@@ -12,7 +12,16 @@
         document.getElementById('regActividad').style = "display:block";
         document.getElementById('modActividad').style = "display:none";
     }
+    </script>
 
+    <script type="text/javascript">
+        function validarLetras(e) { 
+            tecla = (document.all) ? e.keyCode : e.which; 
+            if (tecla==8) return true; 
+            patron =/[A-Za-z\s]/; 
+            te = String.fromCharCode(tecla); 
+        return patron.test(te);
+    }
 
     </script>
 </head>
@@ -44,12 +53,12 @@
     <input type="hidden" name="idActividad" value="" id="idActividad">
    
     <div id="regActividad" style="display: none;" >
-        Tipo de Actividad: <input type="text" name="tipoactividad"><br>
+        Tipo de Actividad: <input type="text" name="tipoactividad" onkeypress="return validarLetras(event)"><br>
         <button type="submit" name="crearactividad" id="crearactiviad">Crear Actividad</button>
     </div>
 
     <div id="modActividad" style="display: none;">
-        Editar Actividad: <br><br><input type="text" name="tipoactividadMod" id="tipoactividadMod"><br><br>
+        Editar Actividad: <br><br><input type="text" name="tipoactividadMod" id="tipoactividadMod"  onkeypress="return validarLetras(event)"><br><br>
          <button type="submit"name="modificarActividad" id="modActividad">Guardar Cambios</button>
     </div>
 
