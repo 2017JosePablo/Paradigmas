@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 02, 2017 at 10:21 PM
+-- Generation Time: Oct 03, 2017 at 04:22 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -38,13 +38,6 @@ CREATE TABLE `tbcolaborador` (
   `colaboradortelefono` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbcolaborador`
---
-
-INSERT INTO `tbcolaborador` (`colaboradorid`, `colaboradorcedula`, `colaboradornombre`, `colaboradorprimerapellido`, `colaboradorsegundoapellido`, `colaboradorcorreo`, `colaboradortelefono`) VALUES
-(1, '702440808', 'LuisC', 'Parra', 'Cambronero', 'l@g.com', '61913452');
-
 -- --------------------------------------------------------
 
 --
@@ -57,27 +50,6 @@ CREATE TABLE `tbcvo` (
   `cvofechavigencia` date NOT NULL,
   `idsocio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbcvo`
---
-
-INSERT INTO `tbcvo` (`cvoid`, `cvotiene`, `cvofechavigencia`, `idsocio`) VALUES
-(1, 1, '2017-02-12', 1),
-(2, 1, '2018-02-12', 2),
-(3, 1, '0000-00-00', 4),
-(4, 1, '0000-00-00', 5),
-(5, 1, '2017-10-23', 6),
-(6, 1, '2017-10-17', 7),
-(7, 1, '2017-10-02', 8),
-(8, 1, '2017-10-23', 9),
-(9, 1, '2017-10-02', 10),
-(10, 1, '2017-10-09', 11),
-(11, 1, '2017-10-23', 12),
-(12, 1, '2017-10-15', 13),
-(13, 1, '2017-10-02', 14),
-(14, 1, '2017-10-03', 15),
-(15, 1, '2017-10-03', 16);
 
 -- --------------------------------------------------------
 
@@ -92,27 +64,6 @@ CREATE TABLE `tbexamenbrusela` (
   `idsocio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbexamenbrusela`
---
-
-INSERT INTO `tbexamenbrusela` (`examenbruselaid`, `examenbruselavigente`, `examenbruselafechavencimiento`, `idsocio`) VALUES
-(1, 1, '2017-02-12', 2),
-(2, 1, '2018-02-12', 1),
-(3, 1, '0000-00-00', 4),
-(4, 1, '0000-00-00', 5),
-(5, 1, '2017-10-01', 6),
-(6, 1, '2017-10-30', 7),
-(7, 1, '2017-10-03', 8),
-(8, 1, '2017-10-18', 9),
-(9, 1, '2017-10-23', 10),
-(10, 1, '2017-10-17', 11),
-(11, 1, '2017-10-10', 12),
-(12, 1, '2017-10-30', 13),
-(13, 1, '2017-10-16', 14),
-(14, 1, '2017-10-24', 15),
-(15, 1, '2017-10-17', 16);
-
 -- --------------------------------------------------------
 
 --
@@ -125,26 +76,6 @@ CREATE TABLE `tbexamentuberculosis` (
   `examentuberculosisfechavencimiento` date NOT NULL,
   `idsocio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbexamentuberculosis`
---
-
-INSERT INTO `tbexamentuberculosis` (`examentuberculosisid`, `examentuberculosisvigente`, `examentuberculosisfechavencimiento`, `idsocio`) VALUES
-(1, 1, '2017-02-12', 2),
-(2, 1, '0000-00-00', 4),
-(3, 1, '0000-00-00', 5),
-(4, 1, '2017-10-02', 6),
-(5, 1, '2017-10-02', 7),
-(6, 1, '2017-10-02', 8),
-(7, 1, '2017-10-02', 9),
-(8, 1, '2017-10-23', 10),
-(9, 1, '2017-10-03', 11),
-(10, 1, '2017-10-17', 12),
-(11, 1, '2017-10-15', 13),
-(12, 1, '2017-10-09', 14),
-(13, 1, '2017-10-16', 15),
-(14, 1, '2017-10-23', 16);
 
 -- --------------------------------------------------------
 
@@ -159,13 +90,6 @@ CREATE TABLE `tbfierro` (
   `idsocio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbfierro`
---
-
-INSERT INTO `tbfierro` (`fierroid`, `fierrotiene`, `fierroruta`, `idsocio`) VALUES
-(1, 1, '', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -179,28 +103,6 @@ CREATE TABLE `tbfinca` (
   `fincacantidadbobinos` varchar(45) DEFAULT NULL,
   `fincacerca` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbfinca`
---
-
-INSERT INTO `tbfinca` (`fincaid`, `socioid`, `fincaarea`, `fincacantidadbobinos`, `fincacerca`) VALUES
-(1, 1, 122452, '385738', 'Concreto-'),
-(2, 2, 123422, '432123455', 'Puas-'),
-(3, 3, 786522332, '11223121', 'Puas-'),
-(4, 4, 0, '', ''),
-(5, 5, 0, '', ''),
-(6, 6, 0, '', ''),
-(7, 7, 0, '', ''),
-(8, 8, 0, '', ''),
-(9, 9, 0, '', ''),
-(10, 10, 0, '', ''),
-(11, 11, 0, '', ''),
-(12, 12, 0, '', ''),
-(13, 13, 0, '', ''),
-(14, 14, 0, '', ''),
-(15, 15, 0, '', ''),
-(16, 16, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -238,28 +140,6 @@ CREATE TABLE `tbfincadireccion` (
   `fincaexacta` varchar(450) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbfincadireccion`
---
-
-INSERT INTO `tbfincadireccion` (`fincaid`, `fincaprovincia`, `fincacanton`, `fincadistrito`, `fincapueblo`, `fincaexacta`) VALUES
-(1, 7, 6, 5, 'XMANKJ', 'AKJDAK'),
-(2, 1, 1, 1, 'Cara', 'CAll'),
-(3, 5, 11, 4, 'AD>M', '<ADJ'),
-(4, 0, 0, 0, '', ''),
-(5, 0, 0, 0, '', ''),
-(6, 0, 0, 0, '', ''),
-(7, 0, 0, 0, '', ''),
-(8, 0, 0, 0, '', ''),
-(9, 0, 0, 0, '', ''),
-(10, 0, 0, 0, '', ''),
-(11, 0, 0, 0, '', ''),
-(12, 0, 0, 0, '', ''),
-(13, 0, 0, 0, '', ''),
-(14, 0, 0, 0, '', ''),
-(15, 0, 0, 0, '', ''),
-(16, 0, 0, 0, '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -278,7 +158,8 @@ CREATE TABLE `tbfincatipo` (
 INSERT INTO `tbfincatipo` (`fincatipoid`, `fincatiponombre`) VALUES
 (1, 'REPASTO'),
 (2, 'ESTAULADO\r\n'),
-(3, 'SEMIESTAULADO');
+(3, 'SEMIESTAULADO'),
+(4, 'SEMIESTAULADO CERCA');
 
 -- --------------------------------------------------------
 
@@ -301,17 +182,6 @@ CREATE TABLE `tbhato` (
   `hatovacaengorde` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbhato`
---
-
-INSERT INTO `tbhato` (`hatoid`, `socioid`, `hatoraza`, `hatoternero`, `hatoternera`, `hatonovillo`, `hatonovilla`, `hatonovillaprenada`, `hatotoroservicio`, `hatotoroengorde`, `hatovacacria`, `hatovacaengorde`) VALUES
-(1, 1, '', 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 2, '', 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, 3, '', 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, 13, '', 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, 16, '', 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -323,16 +193,6 @@ CREATE TABLE `tbhatoactividad` (
   `hatoactividadpersonaid` int(11) NOT NULL,
   `hatoactividadtipo` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbhatoactividad`
---
-
-INSERT INTO `tbhatoactividad` (`hatoactividadid`, `hatoactividadpersonaid`, `hatoactividadtipo`) VALUES
-(1, 1, '1'),
-(2, 2, '2'),
-(3, 3, '1'),
-(4, 16, '1');
 
 -- --------------------------------------------------------
 
@@ -349,31 +209,6 @@ CREATE TABLE `tbjunta` (
   `juntavocal1` varchar(100) NOT NULL,
   `juntavocal2` varchar(100) NOT NULL,
   `juntavocal3` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbjunta`
---
-
-INSERT INTO `tbjunta` (`idjunta`, `juntapresidente`, `juntavicepresidente`, `juntatesorero`, `juntasecretario`, `juntavocal1`, `juntavocal2`, `juntavocal3`) VALUES
-('909090', 'u', 'u', 'u', 'u', 'u', 'u', 'u'),
-('dd', 'Jose', 'JUANANANA', 'Juja', 'adam', 'v1', 'v2', 'DSDSD'),
-('JTR-234', 'LuisC', 'Carlos', 'Carlos', 'Carlos', 'Carlos', 'Carlos', 'Carlos');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbpersona`
---
-
-CREATE TABLE `tbpersona` (
-  `personaid` int(30) NOT NULL,
-  `personaidentificacion` varchar(30) DEFAULT NULL,
-  `personanombre` varchar(30) DEFAULT NULL,
-  `personaprimerapellido` varchar(30) DEFAULT NULL,
-  `personasegundoapellido` varchar(20) NOT NULL,
-  `personatelefonofjo` varchar(20) NOT NULL,
-  `personacelular` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -397,7 +232,8 @@ INSERT INTO `tbraza` (`idraza`, `razanombre`) VALUES
 (3, 'Brahaman'),
 (4, 'Charolais'),
 (5, 'Angus'),
-(6, 'Otros');
+(6, 'Otros'),
+(7, 'PALARGA');
 
 -- --------------------------------------------------------
 
@@ -419,28 +255,6 @@ CREATE TABLE `tbsocio` (
   `estadosociodetalle` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbsocio`
---
-
-INSERT INTO `tbsocio` (`socioid`, `sociocedula`, `socionombre`, `socioprimerapellido`, `sociosegundoapellido`, `sociotelefono`, `sociocorreo`, `tipoactividadid`, `fincatipoid`, `sociofechaingreso`, `estadosociodetalle`) VALUES
-(1, '7024408', 'Carlos', 'Romero', 'Chavarria', '43235687', 'cr@xn--gmai-jqa.com', 1, 1, '0230-06-06', 3),
-(2, '5393363', 'AdÃ¡n', 'Carranza', 'Alfaro', '34343434', 'acd@gmail.com', 2, 2, '2000-07-07', 3),
-(3, '117010943', 'Kimberly', 'Rivera', 'Ulloa', '2233-1213', 'kim@gmial.com', 1, 1, '0000-00-00', 1),
-(4, '503930363', 'AD', 'A', 'AAD', '23323-3233', 'aaa@aaa.com', 1, 1, '0000-00-00', 1),
-(5, '1201313012', 'DARIo', 'CAMPOS', 'BRENES', '1332-3341', 'adanca16@gmail.com', 1, 1, '0000-00-00', 1),
-(6, '301230345', 'Fabian', 'Duran', 'Cambronero', '8767-2345', 'adanca16@gmail.com', 1, 1, '0000-00-00', 1),
-(7, '90909', 'Prueba1A', 'Adan', 'Ada', '24233-342', 'adadn@fnan.com', 1, 1, '0000-00-00', 1),
-(8, '12323', 'EL CAM', 'AMDA', 'ADLK', '242324-243', 'adakl@fma.com', 1, 1, '0000-00-00', 1),
-(9, '429842', 'ADL', 'FOLA', 'ADLAK', '120303-232', 'aaa@aaa.com', 1, 1, '0000-00-00', 1),
-(10, '9313819', '<ADH', 'ejldlkj', 'slkjfskj1', '2442-2422', 'sksjks@ga.com', 1, 1, '0000-00-00', 1),
-(11, '2323', 'ADAKJ', 'ADJKA', 'AKdjAK', '2332-3223', 'aaa@aaa.com', 1, 1, '0000-00-00', 1),
-(12, '39929232', 'Sandra', 'Rivera', 'Espinoza', '2302-2324', 'c@fa.com', 1, 1, '0000-00-00', 1),
-(13, '35983', 'AAJK', 'AKdj', 'AFKj', '24224-233', 'adanca16@gmail.com', 1, 1, '0000-00-00', 1),
-(14, '122139129', 'Diego', 'Duran', 'Rodriguez', '3232-2323', 'aaa@aaa.com', 1, 1, '0000-00-00', 1),
-(15, '12948948', 'ADIO', 'ADIo', 'AOi', '48294821132', 'aaa@aaa.com', 1, 1, '0000-00-00', 1),
-(16, '203942049', 'AKDJAK', 'KDAJ', 'AKFj', '1234-2422', 'aaa@aaa.com', 1, 1, '0000-00-00', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -454,28 +268,6 @@ CREATE TABLE `tbsociodireccion` (
   `sociodistrito` int(11) DEFAULT NULL,
   `sociopueblo` varchar(450) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbsociodireccion`
---
-
-INSERT INTO `tbsociodireccion` (`socioid`, `socioprovincia`, `sociocanton`, `sociodistrito`, `sociopueblo`) VALUES
-(1, 6, 5, 1, 'xxxx'),
-(2, 2, 3, 6, 'xxxxx'),
-(3, 2, 6, 5, 'La punalada'),
-(4, 3, 8, 3, 'ADK'),
-(5, 6, 11, 1, 'DKAKJA'),
-(6, 2, 3, 4, 'ADA'),
-(7, 2, 3, 4, '22322'),
-(8, 2, 1, 1, 'KFJSK'),
-(9, 1, 3, 1, 'KSJFm'),
-(10, 4, 4, 1, 'skjf'),
-(11, 2, 3, 3, '242eqw'),
-(12, 2, 9, 4, 'AJDk'),
-(13, 1, 4, 1, 'AKJD'),
-(14, 2, 4, 1, 'ADKJ'),
-(15, 5, 3, 1, 'ALDK'),
-(16, 5, 5, 1, 'AKJA');
 
 -- --------------------------------------------------------
 
@@ -516,7 +308,9 @@ INSERT INTO `tbtipoactividad` (`tipoactividadid`, `tipoactividadnombre`) VALUES
 (1, 'Carne'),
 (2, 'Leche'),
 (3, 'Desarrollo'),
-(5, 'SEXIIII');
+(5, 'FIORINA'),
+(6, 'CANINA'),
+(7, 'POLLINA');
 
 --
 -- Indexes for dumped tables
@@ -596,12 +390,6 @@ ALTER TABLE `tbjunta`
   ADD PRIMARY KEY (`idjunta`);
 
 --
--- Indexes for table `tbpersona`
---
-ALTER TABLE `tbpersona`
-  ADD PRIMARY KEY (`personaid`);
-
---
 -- Indexes for table `tbraza`
 --
 ALTER TABLE `tbraza`
@@ -642,32 +430,32 @@ ALTER TABLE `tbtipoactividad`
 -- AUTO_INCREMENT for table `tbcolaborador`
 --
 ALTER TABLE `tbcolaborador`
-  MODIFY `colaboradorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `colaboradorid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbcvo`
 --
 ALTER TABLE `tbcvo`
-  MODIFY `cvoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `cvoid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbexamenbrusela`
 --
 ALTER TABLE `tbexamenbrusela`
-  MODIFY `examenbruselaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `examenbruselaid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbexamentuberculosis`
 --
 ALTER TABLE `tbexamentuberculosis`
-  MODIFY `examentuberculosisid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `examentuberculosisid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbfierro`
 --
 ALTER TABLE `tbfierro`
-  MODIFY `fierroid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `fierroid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbfinca`
 --
 ALTER TABLE `tbfinca`
-  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbfincacerca`
 --
@@ -677,37 +465,37 @@ ALTER TABLE `tbfincacerca`
 -- AUTO_INCREMENT for table `tbfincadireccion`
 --
 ALTER TABLE `tbfincadireccion`
-  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbfincatipo`
 --
 ALTER TABLE `tbfincatipo`
-  MODIFY `fincatipoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `fincatipoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tbhato`
 --
 ALTER TABLE `tbhato`
-  MODIFY `hatoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `hatoid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbhatoactividad`
 --
 ALTER TABLE `tbhatoactividad`
-  MODIFY `hatoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `hatoactividadid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbraza`
 --
 ALTER TABLE `tbraza`
-  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbsocio`
 --
 ALTER TABLE `tbsocio`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbsociodireccion`
 --
 ALTER TABLE `tbsociodireccion`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbsocioestado`
 --
@@ -717,7 +505,7 @@ ALTER TABLE `tbsocioestado`
 -- AUTO_INCREMENT for table `tbtipoactividad`
 --
 ALTER TABLE `tbtipoactividad`
-  MODIFY `tipoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
+  MODIFY `tipoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

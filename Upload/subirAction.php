@@ -14,7 +14,7 @@ if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 200000))
    || ($_FILES["imagen"]["type"] == "image/png"))
    {
       // Ruta donde se guardarán las imágenes que subamos
-      $directorio = $_SERVER['DOCUMENT_ROOT'].'/uploads/';
+      $directorio = $_SERVER['DOCUMENT_ROOT'].'/paradigmas/uploads/';
       // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
       move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
     } 
