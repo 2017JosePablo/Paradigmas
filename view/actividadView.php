@@ -9,22 +9,14 @@
     <script type="text/javascript">
         
     function ocultarCajas(){
-        
         document.getElementById('regActividad').style = "display:block";
         document.getElementById('modActividad').style = "display:none";
-
     }
 
 
     </script>
-
-
-   
 </head>
 <body>
-
-
-
 
          <?php
  
@@ -53,12 +45,12 @@
    
     <div id="regActividad" style="display: none;" >
         Tipo de Actividad: <input type="text" name="tipoactividad"><br>
-        <input type="submit" value="Crear Actividad" name="crearactividad" id="crearactiviad"/><p>
+        <button type="submit" name="crearactividad" id="crearactiviad">Crear Actividad</button>
     </div>
 
     <div id="modActividad" style="display: none;">
         Editar Actividad: <br><br><input type="text" name="tipoactividadMod" id="tipoactividadMod"><br><br>
-        <input type="submit" value="Guardar Cambios" name="modActividad" id="modActividad"/><p>
+         <button type="submit"name="modificarActividad" id="modActividad">Guardar Cambios</button>
     </div>
 
 
