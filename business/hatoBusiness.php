@@ -33,6 +33,10 @@
 		public function obtenerSocioHato($socioid){
 			return $this->hato->obtenerSocioHato($socioid);
 		}
+		public function obtenerSocioHatoModificar($socioid){
+			return $this->hato->obtenerSocioHatoModificar($socioid);
+		}
+		
 	}
 
 ?>

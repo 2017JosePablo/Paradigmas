@@ -1,5 +1,7 @@
 <?php
 	
+
+
 	if(isset($_POST['idSocio']) == true && empty($_POST['idSocio'])== false){
  	
  		require './hatoBusiness.php';
@@ -7,6 +9,15 @@
 
         $hatoBusiness = new hatoBusiness();
         $result=$hatoBusiness->obtenerSocioHato($_POST['idSocio']);
+        echo $result;
+
+	}else if(isset($_POST['idSocioModificar']) == true && empty($_POST['idSocioModificar'])== false){
+ 	
+ 		require './hatoBusiness.php';
+      
+
+        $hatoBusiness = new hatoBusiness();
+        $result=$hatoBusiness->obtenerSocioHatoModificar($_POST['idSocio']);
         echo $result;
 
 	}else if (isset($_POST['registrarhato'])) {
