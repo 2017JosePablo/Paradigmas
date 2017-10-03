@@ -25,7 +25,6 @@ $(document).ready(function() {
                 }
                 document.getElementById('razas').value = tipoRaza;
                 //document.getElementById('tiposCerca').value =tipoCerca;
-
                 
             }
 
@@ -100,10 +99,14 @@ $(document).ready(function() {
                 document.getElementById('socioId').value = result[0];
 
                 document.getElementById('cajaListaRazas').style='display:none';
+
+
+                document.getElementById('btnSubmit').style='display:none';
+                document.getElementById('btnSubmitMod').style='display:block';
+
                 
                 document.getElementById('cajaRazas').style='display:block';
                 document.getElementById('cajaHato').style='display:block';
-                document.getElementById('btnSubmit').style='display:block';
                 document.getElementById("terneros").readOnly = false; 
                 document.getElementById("terneras").readOnly = false; 
                 document.getElementById("novillos").readOnly = false; 
@@ -138,21 +141,27 @@ $(document).ready(function() {
                         //
                         $(checkboxes[razas[i]-1]).attr('checked',true);
                     }
-
-                         
-                
-                    
-    
                 });
                 
 
             }else if(result[1]=='Reg'){
+
+                document.getElementById("frm").reset();
+                $(document.getElementById("frm").checkbox).removeAttr('checked'); 
+
+
+                document.getElementById('btnSubmit').style='display:block';
+                document.getElementById('btnSubmitMod').style='display:none';
+
+                document.getElementById('cajaRazas').style='display:block';
+                document.getElementById('cajaHato').style='display:block';
+
+
+
                 document.getElementById('cajaListaRazas').style='display:none';
                 document.getElementById('cajaRazas').style='display:block';
 
                 document.getElementById('socioId').value = result[0];
-
-
 
                 document.getElementById("terneros").readOnly = false; 
                 document.getElementById("terneras").readOnly = false; 

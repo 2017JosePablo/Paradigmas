@@ -190,10 +190,13 @@ echo '</table>';
 
     </div>
 
-    <div id="btnSubmit" style="display: none;">
+    <div  id="btnSubmit" style="display: none;">
         <button type="submit" name="registrarhato" id="registrarhato" value="registrar" >Registrar Hato</button>
     </div>
-    
+    <div id="btnSubmitMod" style="display: none;">
+        <button type="submit" name="hatoMod" id="hatoMod" value="hatoMod" >Editar Hato</button>
+    </div>
+
 </form>
 
 

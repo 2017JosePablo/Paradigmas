@@ -6,12 +6,25 @@
 	<title>Area Administrativa de Actividas</title>
 	<link rel="stylesheet" href="">
 
+    <script type="text/javascript">
+        
+    function ocultarCajas(){
+        
+        document.getElementById('regActividad').style = "display:block";
+
+    }
+
+
+    </script>
+
 
    
 </head>
 <body>
 
- <form method="post" enctype="multipart/form-data" action="../business/actividadAction.php">
+
+
+
          <?php
  
              include '../business/actividadBusiness.php';
@@ -22,18 +35,20 @@
                 echo '<tr>';
                     echo '<td>'.$current->getId().'</td>';
                     echo '<td> '.$current->getNombreActividad().'</td>';
-                    echo '<td> <button type= "button" value = "'.$current->getId().'-Mod">Modificar</button</td>';
+                    echo '<td> <button type= "button" value = "'.$current->getId().'-'.$current->getNombreActividad().'-Mod">Modificar</button</td>';
                     echo '</tr>';
             }
                 echo '</table>';
 
             ?>
-            <br><br><br>
-       </form>
+            <button onclick="ocultarCajas()" > Agregar Actividad</button>
+            <br><br>
+
+       
 
 <form method="post" action="../business/actividadAction.php">
    
-    <div id="regActividad" >
+    <div id="regActividad" style="display: none;" >
         Tipo de Actividad: <input type="text" name="tipoactividad" required=""><br>
         <input type="submit" value="Crear Actividad" name="crearactividad" id="crearactiviad"/><p>
     </div>
