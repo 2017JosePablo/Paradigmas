@@ -14,6 +14,8 @@ $(document).ready(function() {
                 document.getElementById('btnSubmit').style='display:none';
                 document.getElementById('cajaHato').style='display:block';
                 document.getElementById('cajaRazas').style='display:none';
+                
+                document.getElementById('cajaListaRazas').style='display:block';
 
                 document.getElementById("terneros").readOnly = true; 
                 document.getElementById("terneras").readOnly = true; 
@@ -26,8 +28,8 @@ $(document).ready(function() {
                 document.getElementById("vacasEngorde").readOnly = true;
 
                 $.post('../business/hatoAction.php',{idSocio:result[0]}, function(data){
-                    alert(data);
-                    /*
+                    //alert(data);
+                    
                     var array = JSON.parse(data);
                     document.getElementById("terneros").value = array['hatoternero']; 
                     document.getElementById("terneras").value = array['hatoternera']; 
@@ -40,11 +42,19 @@ $(document).ready(function() {
                     document.getElementById("vacasEngorde").value = array['hatovacaengorde'];
                     //"socioid""hatoraza"=>$row["hatoraza"]["hatotoroservicio"],"hatotoroservicio"=>$row["hatovacacria"],"hatovacaengorde"=>$row["hatovacaengorde"]];
                     
-                    var tipoRazas = array['hatoraza'].split('-');
-                    alert(tipoRazas[0]+tipoRazas[1]+tipoRazas[2]);
+                    var tipoRazas = array['hatoraza'].split(',');
 
-                    var checkboxes = document.getElementById("frm").checkbox;
-                    alert('Cantidad de chexbox'+checkboxes.length);
+                    var lista = "<ol>";
+                    for(var i = 0 ; i < tipoRazas.length-1;i++){
+                        lista+="<li>"+tipoRazas[i]+"</li>";
+                    }
+                    lista+="</ol>";
+
+
+                    document.getElementById('listadoRazas').innerHTML = lista;
+
+                    //var checkboxes = document.getElementById("frm").checkbox;
+                   // alert('Cantidad de chexbox'+checkboxes.length);
     /*
                     for (var x=0; x < checkboxes.length; x++) {
                         if (checkboxes[x].checked) {
@@ -61,6 +71,8 @@ $(document).ready(function() {
                 }); 
 
             }else if(result[1]=='Mod'){
+
+                document.getElementById('cajaListaRazas').style='display:none';
                 
                 document.getElementById('cajaRazas').style='display:block';
                 document.getElementById('cajaHato').style='display:block';
@@ -100,7 +112,7 @@ $(document).ready(function() {
 
 
             }else if(result[1]=='Reg'){
-                alert('Reg');
+                document.getElementById('cajaListaRazas').style='display:none';
                 document.getElementById('cajaRazas').style='display:block';
 
 

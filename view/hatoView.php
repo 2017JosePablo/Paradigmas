@@ -157,6 +157,13 @@ echo '</table>';
 
         </table>
     </div>
+
+    <div id="cajaListaRazas" style="display: none;">
+        <p>Razas</p>
+
+        <div id='listadoRazas'>
+        </div>       
+    </div>
 <br><br>
   
     <div id = 'cajaRazas' style="display: none;">
