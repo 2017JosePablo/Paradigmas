@@ -7,54 +7,60 @@
 	<link rel="stylesheet" href="">
 
 
-   
+   <script type="text/javascript">
+       function ocultarCajas(){
+        document.getElementById("cajaInsert").style="display:block";
+        document.getElementById("cajaUpdate").style="display:none";
+
+
+       }
+   </script>
 </head>
 <body>
+ <?php
 
 
+require '../data/tipoFincaData.php';
+$temp = new tipoFincaData();
+$tipoFinca = $temp->getAllTBTiposFincas();
 
-
-
-
-
-
-
-
- <form method="post" enctype="multipart/form-data" >
-             <?php
-         
-         
-            require '../data/tipoFincaData.php';
-            $temp = new tipoFincaData();
-            $tipoFinca = $temp->getAllTBTiposFincas();
-     
-                    echo '<table border = "1"> <tr><td colspan = "3" align = "center"><p>Tipos de Fincas</p></td></tr> ';
-                    echo '<tr> <td>Numero </td> <td>Actividad </td> <td>Modificar</td></tr>   ';
-                    foreach ($tipoFinca as $curren) {     
-                        echo '<tr>';
-                         echo '<td> '.$curren->getId().'</td>'; 
-
-                        echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
-
-                        echo '<td><input type="submit" id = "'.$curren->getId().'" value ="Modificar"></td>'; 
-                                  
-                        echo '</tr>';
-                    }
-                        echo '</table>';
-            ?>
-            <br><br><br>
-       </form>
-
+        echo '<table border = "1"> <tr><td colspan = "3" align = "center"><p>Tipos de Fincas</p></td></tr> ';
+        echo '<tr> <td>Numero </td> <td>Actividad </td> <td>Modificar</td></tr>   ';
+        foreach ($tipoFinca as $curren) {     
+            echo '<tr>';
+            echo '<td> '.$curren->getId().'</td>'; 
+            echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
+            echo '<td><button type="button" id = "'.$curren->getId().'" value ="'.$curren->getId().'-'.$curren->getFincaTipoActividad().'-Mod">Modificar</button></td>'; 
+                      
+            echo '</tr>';
+        }
+        echo '</table>';
+?>
+<br>
+<button onclick="ocultarCajas()">Agregar Tipo Finca</button>
+<br><br>
     <div>
-        <p>Insertar o modificar una actividad</p>
+        
         <form method="post" action="../business/fincaTipoAction.php">
-            <label>Nombre: </label> <input type="text" name="tipofinca" required=""><br>
-            <br>
-        <input type="submit" value="Agregar el tipo de actividad" name="fincatipo" id="fincatipo"/><p>
+        <input type="hidden" id="idTipoFinca" name="idTipoFinca" value="">
+            <div id="cajaInsert" style="display: none;">
+                <p>Insertar Actividad</p>
+                <label>Nombre: </label> <input type="text" name="tipofinca" ><br>
+                <br>
+                <input type="submit" value="Guardar Tipo" name="fincaTipoInser" id="fincaTipoInser"><p>
+            </div>
+            <div id="cajaUpdate" style="display: none;">
+                <p>Actualizar Actividad</p>
+                <label>Nombre: </label> <input type="text" name="tipofincaUp" id="tipofincaUp" ><br>
+                <br>
+                <input type="submit" value="Actualizar Tipo" name="fincaTipoUpd" id="fincaTipoUpd"><p>
+            </div>
+            
 
         </form>
     </div>
-
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/editarTipoFinca.js"></script>
     <a href="../index.php">Regresar</a>
 </body>
 </html>

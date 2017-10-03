@@ -11,6 +11,7 @@
     function ocultarCajas(){
         
         document.getElementById('regActividad').style = "display:block";
+        document.getElementById('modActividad').style = "display:none";
 
     }
 
@@ -30,7 +31,7 @@
              include '../business/actividadBusiness.php';
             $actividadBusiness = new actividadBusiness();
             $actividades = $actividadBusiness->obtenerTodosTBActividad();
-             echo '<table border = "1"> <tr><td colspan= "3">Listado de tipos de actividades</td></tr> <tr><td>Id</td><td>Actividad</td>  <td colspan="2">Acciones</td> </tr>';
+             echo '<table border = "1"> <tr><td colspan= "3">Listado de tipos de actividades</td></tr> <tr><td>Id</td><td>Actividad</td><td align="center">Acciones</td> </tr>';
             foreach ($actividades as $current) {     
                 echo '<tr>';
                     echo '<td>'.$current->getId().'</td>';
@@ -41,15 +42,17 @@
                 echo '</table>';
 
             ?>
+            <br>
             <button onclick="ocultarCajas()" > Agregar Actividad</button>
             <br><br>
 
        
 
 <form method="post" action="../business/actividadAction.php">
+    <input type="hidden" name="idActividad" value="" id="idActividad">
    
     <div id="regActividad" style="display: none;" >
-        Tipo de Actividad: <input type="text" name="tipoactividad" required=""><br>
+        Tipo de Actividad: <input type="text" name="tipoactividad"><br>
         <input type="submit" value="Crear Actividad" name="crearactividad" id="crearactiviad"/><p>
     </div>
 
