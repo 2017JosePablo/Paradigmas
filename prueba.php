@@ -76,9 +76,11 @@
 
 <?php 
 require './data/pagoAnualidadData.php';
-$anualidadData= new pagoAnualidadData();    
-$result=$anualidadData->insertarpagoanualidad($pagoanualidad);
-echo $result;
+require './domain/anualidad.php';
+$anualidadData= new pagoAnualidadData(); 
+$anualidad= new Anualidad("","","2001-06-12","2001-06-12","2001-06-12");   
+$result=$anualidadData->insertarpagoanualidad($anualidad);
+echo "resultado= ".$result;
 ?>
 
 </body>
