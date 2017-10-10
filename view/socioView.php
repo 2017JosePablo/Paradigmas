@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
 
-    
+
     <!--MAscaras-->
         <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
 
@@ -31,13 +31,13 @@
             function provinciaSeleccionada(){
                 var valor = document.getElementById("listaProvincias") .value ;
                 if(valor != -1){
-                    llenarCantones(valor);  
-                    document.getElementById("provincia").value = valor;      
+                    llenarCantones(valor);
+                    document.getElementById("provincia").value = valor;
                 }else{
                     var html = "<select class='form-control' id = 'listaProvincias' onclick='llenarCantones()'><option>Seleccione Una Provincia</option></select>";
                             $('#cajaProvincias').html(html);
                 }
-            
+
             }
 
 
@@ -54,12 +54,12 @@
                              for(key in data) {
                                 html += "<option value='"+key+"'>"+data[key]+"</option>";
                             }
-                            
+
                             html += "</select>";
                             $('#cajaCantones').html(html);
                         }
                     });
-                
+
                 }else{
                     var html = "<select class='form-control'  onclick=setDistrito()  ><option>Seleccione Un Canton</option></select>";
                             $('#cajaCantones').html(html);
@@ -72,13 +72,13 @@
                if(valor >0){
                 $.ajax({
                         dataType: "json",
-                     
+
                         url: "https://ubicaciones.paginasweb.cr/provincia/"+valor+"/canton/"+valorCantones+"/distritos.json",
 
                         data: {},
                         success: function (data) {
                             var html = "<select class='form-control' id='listadoDistritos' name = 'listadoDistritos'  >";
-                         
+
                             for(key in data) {
 
                                 html += "<option value='"+key+"'>"+data[key]+"</option>";
@@ -89,7 +89,7 @@
                     });
                 }else{
                     var html = "<select class='form-control'><option value = '0' >Seleccione Un Distrito</option></select>";
-                             $('#listaDistrito').html(html);        
+                             $('#listaDistrito').html(html);
                 }
            }
 
@@ -100,16 +100,16 @@
             }
 
             function validar(){
-                var todo_correcto = true;  
+                var todo_correcto = true;
                 if(document.getElementById("listaProvincias").value <0){
                      todo_correcto = false;
                 }
 
                 if (!todo_correcto) {
-                    alert('Seleccione una Provincia'+document.getElementById("listaProvincias").value );    
+                    alert('Seleccione una Provincia'+document.getElementById("listaProvincias").value );
                 }
                     return todo_correcto;
-                
+
             }
             function mostrarFormularioSocio(){
 
@@ -120,7 +120,7 @@
                 document.getElementById("cajaFormulario").style.display='block';
                 document.getElementById("btnModificar").style.display='none';
                 document.getElementById("btnAgregar").style.display='block';
-                document.getElementById("frm").reset(); 
+                document.getElementById("frm").reset();
                // $("input:radio").removeAttr("checked");
                 $('#1-actividad').attr('checked',true);
                 $('#1-tipo').attr('checked',true);
@@ -188,11 +188,11 @@
      </script>
 
     <script type="text/javascript">
-    function validarLetras(e) { 
-        tecla = (document.all) ? e.keyCode : e.which; 
-        if (tecla==8) return true; 
-        patron =/[A-Za-z\s]/; 
-        te = String.fromCharCode(tecla); 
+    function validarLetras(e) {
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla==8) return true;
+        patron =/[A-Za-z\s]/;
+        te = String.fromCharCode(tecla);
     return patron.test(te);
     }
 
@@ -213,7 +213,7 @@
             echo "<p style='color:red'><strong> El Socio a ingresar ya esta registrado! </strong></p>";
         }
     }
-    
+
 ?>
 
 
@@ -233,7 +233,7 @@
 
 
     <?php
- 
+
     include '../business/socioBusiness.php';
 
 
@@ -241,14 +241,14 @@
     $socios = $socioBusiness->obtenerTodosTBSocio();
 
 
-    echo '<table border ="1"><tr><td align = "center" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+    echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Socios</td></tr><tr><td align = "left" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
-    foreach ($socios as $current) {     
+    foreach ($socios as $current) {
         echo '<tr>';
         echo '<td> '.$current->getNombre().'</td>';
         echo '<td> '.$current->getPrimerApellido() .' </td>';
         echo '<td> '.$current->getSegundoApellido().' </td>';
-       
+
 
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
         echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Ver</button></td>";
@@ -263,20 +263,20 @@
              //name='.$current->getIdTBJunta().'
     ?>
 
-            
+
     <!--  </form> -->
 
     <button type = "reset" onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
 
 
-  
+
     <div id="cajaFormulario"  style='display:none;'>
 
     <form id= "frm" method="post" action="../business/socioAction.php" enctype="multipart/form-data">
 
     <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
     <input type="hidden" id="selecModUbi" name="ModUbi" value="1">
-        
+
          <p>Datos personales:</p>
 
              <table>
@@ -307,7 +307,7 @@
                         Correo
                     </td>
                 </tr>
-               
+
 
                 <tr>
                     <td>
@@ -318,22 +318,22 @@
                     </td>
                     <td>
                         <input type="text" name="socioprimerapellido" id="socioprimerapellido" onkeypress="return validarLetras(event)"  required>
-                    </td>       
+                    </td>
                     <td>
                         <input type="text" name="sociosegundoapellido" id="sociosegundoapellido" onkeypress="return validarLetras(event)" required>
                     </td>
-                    
+
                     <td>
                         <input type="text" name="sociotelmovil" id="sociotelmovil" required="">
                     </td>
                     <td>
                         <input type="email"  required="" name="sociocorreo" id="sociocorreo">
                     </td>
-                   
+
                 </tr>
 
-     
-           
+
+
                  <tr>
                     <td>
                         <br> Fecha Ingreso <br>
@@ -348,24 +348,24 @@
 
                  </table>
 
-                
+
 
 
                 <div id="verDir" style="display: none;">
-                    
+
                     <table>
                         <tr><td><br><p>Datos de Dirección</p></td></tr>
 
                          <td>
                         Provincia : <input  type="text"  id = 'provE' name="provE" readonly >
-                             
+
                         </td>
 
                         <td>
                             Canton : <input  type="text"  id = 'canE' name="canE" readonly >
-                      
+
                         </td>
-                        
+
                         <td>
                             Distrito : <input  type="text"  id = 'disE' name="disE"  readonly >
                         </td>
@@ -378,7 +378,7 @@
                         </td>
 
                     </table>
-                   
+
                 </div>
 
                 <div id="editarUbic" style='display:none;'>
@@ -401,9 +401,9 @@
                                   <option value="7">Limon</option>
                                 </select>
                               </div>
-                            </div>  
+                            </div>
                         </td>
-                        <td>    
+                        <td>
                             <!-- Select Canton -->
                             <div class="form-group" >
                               <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
@@ -416,7 +416,7 @@
                             <div class="form-group" id="cajaDistrito" >
                               <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
                               <div class="col-md-4" id="listaDistrito" >
-                             
+
                               </div>
                             </div>
                          </td>
@@ -427,31 +427,31 @@
                 </div>
 
 
-                    
 
 
 
-          
-           
+
+
+
             <br>
             <p>Tipo de Actividad</p>
 
             <?php
-         
+
              require_once '../business/actividadBusiness.php';
                     $actividadBusiness = new actividadBusiness();
                     $actividades = $actividadBusiness->obtenerTodosTBActividad();
                      echo '<table>';
-                    foreach ($actividades as $current) {     
+                    foreach ($actividades as $current) {
                         echo '<tr>';
                         if($current->getId()==1){
                              echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad' checked='' value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
                         }else{
                               echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad'  value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
-                        }            
+                        }
                         echo '</tr>';
                     }
-                 
+
        echo '</table>';
 
             ?>
@@ -459,50 +459,50 @@
             <br><br>
             <p>Tipo de Finca</p>
                 <?php
-             
-             
+
+
                 require '../data/tipoFincaData.php';
                 $temp = new tipoFincaData();
                 $tipoFinca = $temp->getAllTBTiposFincas();
 
-            
+
                         echo '<table>';
                         foreach ($tipoFinca as $curren) {
 
                             echo '<tr>';
 
-                            echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>"; 
+                            echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>";
 
-                            echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
-                            
-                                      
+                            echo '<td>'.$curren->getFincaTipoActividad().'</td>';
+
+
                             echo '</tr>';
                         }
                         echo '</table>';
 
-                            
+
 
                 ?>
-           
+
              <br><br>
-             Estado Socio Detalle: 
+             Estado Socio Detalle:
              <?php
-         
-         
+
+
                 require_once '../business/socioBusiness.php';
 
                 $temp = new socioBusiness();
                 $estados = $temp->obtenerSocioEstado();
 
                     echo '<table>';
-                        foreach ($estados as $curren) {     
+                        foreach ($estados as $curren) {
                             echo '<tr>';
 
-                            
-                            echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio' name='socioestado' value='".$curren->getSocioEstadoId()."'></td>"; 
 
-                            echo '<td>'.$curren->getSocioEstadoDetalle().'</td>'; 
-                            
+                            echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio' name='socioestado' value='".$curren->getSocioEstadoId()."'></td>";
+
+                            echo '<td>'.$curren->getSocioEstadoDetalle().'</td>';
+
 
                             echo '</tr>';
                         }
@@ -511,53 +511,55 @@
 
 
             <p>CVO</p>
-            <input type='radio' name='radioCVO' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br> 
+            <input type='radio' name='radioCVO' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br>
             <input type="radio" name="radioCVO" onclick="ocultarEspacios('fechaCVO','labelCVO')" value="2">No
             <p id="labelCVO"> Fecha Vigencia </p>
             <input type="date" name="fechaCVO" id="fechaCVO">
             <br><br>
-           
+
             <p>Fierro</p>
-            <input type='radio' name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br> 
+            <input type='radio' name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br>
             <input type="radio" name="radioFierro" onclick="ocultarEspacios('cajaFierro','w')" value="2">No
-            
+
             <br>
             <div id="cajaFierro">
-               
+
             <label for="">Subir foto del Fierro</label>
             <input type="file" value="Seleccionar Fierro" name="imagen" id="imagen">
             </div>
             <input type="hidden" name="" id="w">
-           
+
 
             <br><br>
             <p>Examen de bruselas</p>
             <p>Vigente</p>
-            <input type="radio" name='radioBrusela' onclick="verEspacios('fechaBruc','labelBru')" value="1" checked > Si<br> 
+            <input type="radio" name='radioBrusela' onclick="verEspacios('fechaBruc','labelBru')" value="1" checked > Si<br>
             <input type="radio" name="radioBrusela"  onclick="ocultarEspacios('fechaBruc','labelBru')" value="2">No
             <p id="labelBru">Fecha de vencimiento</p>
             <input type="date" name="fechaBrusela" id="fechaBruc">
             <br><br>
             <p>Examen tuberculosis</p>
             <p>Vigente</p>
-            <input type='radio' name='radioTuberculosis' onclick="verEspacios('fechaTuber','labelTuber')" value='1' checked="checked" /> Si<br> 
+            <input type='radio' name='radioTuberculosis' onclick="verEspacios('fechaTuber','labelTuber')" value='1' checked="checked" /> Si<br>
             <input type="radio" name="radioTuberculosis" onclick="ocultarEspacios('fechaTuber','labelTuber')"  value="2">No
             <p id="labelTuber">Fecha de vencimiento</p>
             <input type="date" name="fechaTuberculosis" id="fechaTuber">
-                           
 
-            
+
+
             <br><br>
 
             <div id="btnAgregar">
-                <button type="submit" name="agregarsocio" id="agregarsocio"/>Agregar Socio</button>
+                <button type="submit" name="agregarsocio" id="agregarsocio"/>Guardar Datos</button>
+								<a href="socioView.php"><input type="button" value="Cancelar" ></a>
             </div>
              <div id="btnModificar">
-                <button type="submit" name="modificarsocio" id="agregarsocio"/>Modificar Socio</button>
+                <button type="submit" name="modificarsocio" id="agregarsocio"/>Actualizar Datos</button>
+								<a href="socioView.php"><input type="button" value="Cancelar" ></a>
             </div>
 
 
-        
+
     </form>
 
     </div>
@@ -593,7 +595,7 @@
                         Correo
                     </td>
                 </tr>
-               
+
 
                 <tr>
                     <td>
@@ -604,25 +606,25 @@
                     </td>
                     <td>
                         <input  type="text"  id="primerapellido"  readonly>
-                    </td>       
+                    </td>
                     <td>
                         <input  type="text" id="segundoapellido"  readonly>
                     </td>
-                    
+
                     <td>
                         <input  type="text" id="telmovil" readonly>
                     </td>
                     <td>
                         <input  type="text"  id = 'correo' readonly >
                     </td>
-                   
+
                 </tr>
 
-     
-           
+
+
                  <tr>
                     <td>
-                        <br> Fecha Ingreso: 
+                        <br> Fecha Ingreso:
                     </td>
                 </tr>
                 <tr>
@@ -635,14 +637,14 @@
                 <tr>
                     <td>
                         Provincia : <input  type="text"  id = 'prov' readonly >
-                         
+
                     </td>
 
                     <td>
                         Canton : <input  type="text"  id = 'can' readonly >
-                  
+
                     </td>
-                    
+
                     <td>
                         Distrito : <input  type="text"  id = 'dis' readonly >
                     </td>
@@ -664,7 +666,7 @@
                     Tipo Finca : <input  type="text"  id = 'tipoFinc' readonly >
                 </td>
             </tr>
-            <tr>                
+            <tr>
                 <td>
                     Estado Socio : <input  type="text"  id = 'esta' readonly >
                 </td>
@@ -672,7 +674,7 @@
         </table>
 
     </div>
- 
+
 
     <a href="../index.php">Regresar</a>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>

@@ -84,7 +84,7 @@
             function validar(){
                var todo_correcto = false;
 
-              
+
              // alert(document.getElementById('socioFinca').value);
 
               if(document.getElementById('selecCerca').value == 0){
@@ -111,8 +111,8 @@
 
 
               }
-              
-              
+
+
 
             return todo_correcto;
 
@@ -157,7 +157,7 @@
       $fincaBusiness = new fincaBusiness();
 
       $fincas = $fincaBusiness->  obtenerTodosTBfinca();
-        echo "<table border ='1'><tr><td align = 'center' colspan = '6'>Informacion Finca Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td align = 'center' colspan = '3'>Acciones </td>
+        echo "<table border ='1'><tr><td align = 'center' colspan = '6'>Area administrativa de Fincas</td></tr><tr><td align = 'left' colspan = '6'>Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td align = 'center' colspan = '3'>Acciones </td>
         </tr>";
 
         foreach ($fincas as $current) {
@@ -200,7 +200,7 @@
    <input type="hidden"  name= "editoOtros" id="editoOtros" value="">
 
 
-  
+
 
   <p id='Socio' ></p>
 
@@ -229,7 +229,7 @@
                         <input type="text" name="cantidadbobinos" id="cantidadbobinos" onkeypress="return soloNumeros(event)"  required>
                     </td>
                 </tr>
-                
+
             </table>
 
 
@@ -288,14 +288,14 @@
                             <tr>
                                 <td>
                                     Provincia : <input  type="text"  id = 'provF' name="provF" readonly >
-                                     
+
                                 </td>
 
                                 <td>
                                     Canton : <input  type="text"  id = 'canF' name='canF' readonly >
-                              
+
                                 </td>
-                                
+
                                 <td>
                                     Distrito : <input  type="text"  id = 'disF' name="disF" readonly >
                                 </td>
@@ -310,8 +310,8 @@
 
                         </tr>
                     </table>
-                  
-                </div> 
+
+                </div>
 
 
 
@@ -351,22 +351,22 @@
                 $temp = new tipoFincaData();
                 $tipoFinca = $temp->getAllTBTiposFincas();
 
-      
+
                   echo '<table>';
                   foreach ($tipoFinca as $curren) {
 
 
                       echo '<tr>';
 
-                      echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>"; 
+                      echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>";
 
-                      echo '<td>'.$curren->getFincaTipoActividad().'</td>'; 
-                      
-                                
+                      echo '<td>'.$curren->getFincaTipoActividad().'</td>';
+
+
                       echo '</tr>';
                   }
                   echo '</table>';
-                      
+
 
           ?>
 
@@ -375,13 +375,13 @@
     <?php
 
     $cont =1;
-    
+
     include '../business/fincaCercaBusiness.php';
     $fincaBusiness = new fincaCercaBusiness();
     $cerca = $fincaBusiness->getTipoCerca();
     echo '<table > <tr>  <td align = "center" >Tipo de cerca</td> </tr><tr></tr>';
 
-    foreach ($cerca as $current) {     
+    foreach ($cerca as $current) {
         echo '<tr>';
         echo '<td> <input  name ="checkbox" value="'.$current.'"type="checkbox" id="'.$cont.'" >'.$current.'</td>';
 

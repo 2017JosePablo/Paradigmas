@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="">
 
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
-    
+
 
 
 
@@ -41,9 +41,9 @@
             echo "<p style='color:red'><strong> El Socio a ingresar ya esta registrado! </strong></p>";
         }
     }
-    
-?>   
-    
+
+?>
+
 <?php
 require '../business/socioBusiness.php';
 
@@ -52,21 +52,21 @@ $socioBusiness = new socioBusiness();
 $socios = $socioBusiness->obtenerTodosTBSocio();
 
 
-echo '<table border ="1"><tr><td align = "center" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Hatos</td></tr><tr><td align = "left" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
-foreach ($socios as $current) {     
-    
+foreach ($socios as $current) {
+
     echo '<tr>';
     echo '<td> '.$current->getNombre().'</td>';
     echo '<td> '.$current->getPrimerApellido() .' </td>';
     echo '<td> '.$current->getSegundoApellido().' </td>';
-   
+
     echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Reg'>Registrar Hato</button></td>";
     echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Ver'>Ver hato</button></td>";
     echo "<td> <button type='button' id='modificar-submit' value='".$current->getSocioId()."-Mod'>Editar Hato</button></td>";
-  
+
     echo '</tr>';
-    
+
 }
 echo '</table>';
 
@@ -76,19 +76,19 @@ echo '</table>';
 <br><br>
 <form id="frm" method="post" enctype="multipart/form-data" action="../business/hatoAction.php">
 
-<input type="hidden" name="socioId" value="" id="socioId"> 
+<input type="hidden" name="socioId" value="" id="socioId">
 
-<input type="hidden" name="razas" value="" id="razas"> 
+<input type="hidden" name="razas" value="" id="razas">
 
 <div id="cajaHato" style="display: none;">
-    
+
 
     <table>
             <tr>
                 <td>
                     Terneros
                 </td>
-        
+
                 <td>
                     <input type="text" id="terneros" name="terneros" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
@@ -150,7 +150,7 @@ echo '</table>';
                 </td>
             </tr>
             <tr>
-                
+
                 <td>
                     Vacas Engorde
                 </td>
@@ -166,20 +166,20 @@ echo '</table>';
         <p>Razas</p>
 
         <div id='listadoRazas'>
-        </div>       
+        </div>
     </div>
 <br><br>
-  
+
     <div id = 'cajaRazas' style="display: none;">
-        
-    
+
+
      <?php
             include '../business/razaBusiness.php';
             $razaBusiness = new razaBusiness();
             $todasRazas = $razaBusiness->obtenerTodoTBRaza();
             echo '<table > <tr>  <td align = "center" >Listado de razas </td> ';
 
-            foreach ($todasRazas as $current) {     
+            foreach ($todasRazas as $current) {
                 echo '<tr>';
                 echo '<td> <input type="checkbox" name="checkbox" id="'.$current->getIdRaza().'" value="'.$current->getIdRaza().'">'.$current->getNombreRaza().'</td>';
 
@@ -190,12 +190,15 @@ echo '</table>';
     </div>
 
     <div  id="btnSubmit" style="display: none;">
-        <button type="submit" name="registrarhato" id="registrarhato" value="registrar" >Registrar Hato</button>
+			<hr>
+        <button type="submit" name="registrarhato" id="registrarhato" value="registrar" >Registrar Datos</button>
+				<a href="hatoView.php"><input type="button" value="Cancelar" ></a>
     </div>
     <div id="btnSubmitMod" style="display: none;">
-        <button type="submit" name="hatoMod" id="hatoMod" value="hatoMod" >Editar Hato</button>
+			<hr>
+        <button type="submit" name="hatoMod" id="hatoMod" value="hatoMod" >Actualizar Datos</button>
+				<a href="hatoView.php"><input type="button" value="Cancelar" ></a>
     </div>
-
 </form>
     <a href="../index.php">Regresar</a>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
