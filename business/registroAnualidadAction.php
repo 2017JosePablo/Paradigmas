@@ -38,7 +38,7 @@
 	if(isset($_POST["primerAnualidad"])) {
 		$socioId = $_POST['socioId'];
 		$fechaPago = $_POST['fechaPago'];
-		
+
 		if(isset($socioId) && !empty($socioId) && isset($fechaPago) && !empty($fechaPago)){
 
 			$date = new DateTime($fechaPago);
@@ -57,7 +57,7 @@
 			$resultado =  $registroAnualidad ->insertarPagoAnualidad($anualidad);
 
 			if($resultado == 1){
-				header("location: ../index.php?success=insertedPago");
+				header("location: ../index.php?success=insertedPagoPrimero");
 			}else{
 				header("location: ../view/pagoPrimeroAnualidadView.php?error=inserted");
 			}

@@ -1,7 +1,6 @@
 <?php
 	if (isset($_POST['crearactividad'])) {	
 		$nombreactividad = $_POST['tipoactividad'];
-		echo "Nombre de la Actividad: ".$nombreactividad;
 		if(isset($nombreactividad)){
 			if (strlen($nombreactividad)) {
 				require './actividadBusiness.php';
@@ -10,9 +9,8 @@
 				$actividad = new Actividad($actividadid,$nombreactividad);
 
 				$resultado = $actividadBusiness->insertarTBActividad($actividad);
-				echo "Aquii resultado ".$resultado ."</br>";
 				if ($resultado ==1) {
-					header ('location: ../view/actividadView.php?success=inserted');
+					header ('location: ../index.php?success=insertedActividad');
 				}else{
 					header ('location: ../view/actividadView.php?error=errortoinserted');
 				}
@@ -27,7 +25,12 @@
 				$actividadBusiness  = new actividadBusiness();
 				$actividad = new Actividad($actividadid,$nombreactividad);
 				$resultado = $actividadBusiness->actualizarTBActividad($actividad);
-					header ('location: ../index.php?success=inserted');
+
+				if($resultado == 1){
+					header ('location: ../index.php?success=updateActividad');				}
+				}else{
+					header ('location: ../view/actividadView.php?error=updateActividad');
+				}
 			}	
 		}		
 	}

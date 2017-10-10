@@ -17,7 +17,7 @@
 				$resultado = $fincaTipoBusiness->insertarTBfincaTipo($actividad);
 				echo "Aquii resultado ".$resultado ."</br>";
 				if ($resultado ==1) {
-					header ('location: ../index.php?success=inserted');
+					header ('location: ../index.php?success=insertedTipoFinca');
 				}else{
 					header ('location: ../index.php?error=errortoinserted');
 				}
@@ -37,7 +37,10 @@
 				$fincaTipo = new fincaTipo($actividadid,$nombreaFinca);
 
 				$resultado = $fincaTipoBusiness->actualizarTBfincaTipo($fincaTipo);
-					header ('location: ../index.php?success=inserted');
+
+				if ($resultado ==1) {
+					header ('location: ../index.php?success=updateTipoFinca');
+				}
 			}	
 		}		
 	}

@@ -51,7 +51,7 @@ if (isset($_POST['actualizar'])) {
                 //igualo al valor que devolvio el sql
                 $result = $juntaBusiness->actualizarTBJunta($junta);
                 if ($result == 1) {
-                    header("location: ../view/juntaView.php?success=updated");
+                    header("location: ../index.php?success=updatedJunta");
                 } else {
                     //echo $idSickness." - ".$bullName;
                     header("location: ../view/juntaView.php?error=dbError");
@@ -167,7 +167,7 @@ if (isset($_POST['actualizar'])) {
             
             if ($resultadoP ==1) {
                 $presidentejunta=$presidenteColaborardoCedula;
-                echo "ColaboradorP insertardo"; 
+                 header("location: ../index.php?success=insertedJunta");
 
             }else{
 

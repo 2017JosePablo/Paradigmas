@@ -22,7 +22,7 @@
         $result=$hatoBusiness->obtenerSocioHatoModificar($_POST['idSocioModificar']);
         echo $result;
 
-	}else if (isset($_POST['registrarhato'])) {
+	}else if (isset($_POST['hatoCenso'])) {
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
 		$socioid=$_POST['socioId'];
@@ -63,7 +63,7 @@
 						$hatoActividadBusiness = new hatoActividadBusiness();
 						$resultado2=$hatoActividadBusiness->insertarTBHatoActividad($socioid,$_POST['tipoactividad']);
 						if ($resultado2 == 1) {
-							header("location: ../index.php?success=inserted");	
+							header("location: ../index.php?success=insertedHato");	
 						}else{
 							header("location: ../view/censoView.php?error=error");			
 						}
@@ -81,7 +81,7 @@
 			}
 
 		
-	}else	if (isset($_POST['hatoMod'])) {
+	}else	if (isset($_POST['registrarhato']) || isset($_POST['hatoMod'])) {
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
 		
@@ -121,7 +121,7 @@
 					$resultado = $hatoBusiness->actualizarTBHato($hato);
 				
 					if ($resultado == 1) {
-						header("location: ../index.php?success=inserted");	
+						header("location: ../index.php?success=updateHato");	
 					
 					}else{
 							header("location: ../view/hatoView.php?error=error");			
