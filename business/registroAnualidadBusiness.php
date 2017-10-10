@@ -1,8 +1,8 @@
 <?php
-	include '../data/PagoAnualidadData.php';
+	include '../data/pagoAnualidadData.php';
 
 	if (isset($_POST['idSocio']) && !empty($_POST['idSocio'])) {
-		
+
 		echo "Adan me la mam***";	
 	}
 	class RegistroAnualidadBusiness {
