@@ -2,7 +2,6 @@
 
 	require './registroAnualidadBusiness.php';
 
-
 	if(isset($_POST["renovarAnualidad"])) {
 		$socioId = $_POST['idSocio'];
 		$fechaVencimientoAnterior = $_POST[''];
@@ -18,12 +17,17 @@
 
 			$anualidad = new Anualidad('',$socioId,$fechaVencimientoAnterior,$fechaPago,$fechaVencimientoProximo);
 
-			
+			$resultado =  $registroAnualidad ->insertarPagoAnualidad($anualidad);
 
+			if($resultado == 1){
+				header("location: ../index.php?success=insertedPago");
+			}else{
+				header("location: ../view/renovarAnualidad.php?error=inserted");
+			}
 		}else{
-			echo "ERROR";
+			header("location: ../view/renovarAnualidad.php?error=datosVacios");
 		}
-
-
 	}
+
+	
 ?>

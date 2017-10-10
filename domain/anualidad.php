@@ -21,31 +21,31 @@
 			$this->idAnualidad=$idAnualidad;
 		}
 		function getIdAnualidad(){
-			$this->idAnualidad;
+			return $this->idAnualidad;
 		}
 		function setIdSocio($idSocio){
 			$this->idSocio=$idSocio;
 		}
 		function getIdSocio(){
-			$this->idSocio;
+			return  $this->idSocio;
 		}
 		function setFechaVencimientoAnterior($fechaVencimientoAnterior){
 			$this->fechaVencimientoAnterior=$fechaVencimientoAnterior;
 		}
 		function getFechaVencimientoAnterior(){
-			$this->fechaVencimientoAnterior;
+			return $this->fechaVencimientoAnterior;
 		}
 		function setFechaPago($fechaPagoActual){
 			$this->fechaPagoActual=$fechaPagoActual;
 		}
 		function getFechaPago(){
-			$this->fechaPagoActual;
+			return $this->fechaPagoActual;
 		}
 		function setFechaVencimientoProximo($fechaVencimientoProximo){
 			$this->fechaVencimientoProximo=$fechaVencimientoProximo;
 		}
 		function getFechaVencimientoProximo(){
-			$this->fechaVencimientoProximo;
+			return $this->fechaVencimientoProximo;
 		}	
 	}
 ?>
