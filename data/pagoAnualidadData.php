@@ -60,7 +60,7 @@ class pagoAnualidadData extends Data{
 
 
     public function  obtenerFechasSocio($socioid) {
-        require_once './domain/anualidad.php';
+        require '../domain/anualidad.php';
         $socioAnualidad;
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
         $sql = "SELECT * FROM tbpagoanualidad WHERE socioid='".$socioid."'  ORDER BY tbpagoanualidad.pagoanualidadanterior DESC ";

@@ -76,11 +76,12 @@
 
 <?php 
 require './data/pagoAnualidadData.php';
-require './domain/anualidad.php';
+//require './domain/anualidad.php';
+
 $anualidadData= new pagoAnualidadData(); 
-$anualidad= new Anualidad("","1","2002-06-12","2002-06-12","2002-06-12");   
+//$anualidad= new Anualidad("","1","2002-06-12","2002-06-12","2002-06-12");   
 $result=$anualidadData->obtenerFechasSocio(1);
-echo "resultado= ".$result->getIdSocio();
+echo "resultado= ".$result->getFechaVencimientoProximo();
 ?>
 
 </body>
