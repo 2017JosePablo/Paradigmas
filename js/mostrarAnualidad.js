@@ -1,5 +1,8 @@
-$.post('../business/registroAnualidadBusiness.php', {socioId:result[0]}, function(data){
-      
-       document.getElementById("cedula").value = result[0];
-   }
+$(document).ready(function() {
+  $('select').on('change', function() {
+        $.post('../business/registroAnualidadBusiness.php',{idSocio:this.value}, function(data){
+          alert( data);      
+        });
+    //alert( this.value );
+  });
 });
