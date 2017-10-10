@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>Renovar Anualidad</title>
   </head>
-  <script type="text/javascript" src="../js/mostrarAnualidad.js"></script>
+
+
   <script type="text/javascript">
     var datefield=document.createElement("input")
     datefield.setAttribute("type", "date")
@@ -13,6 +14,7 @@
       document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n')
       document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
     }
+
    </script>
 
    <script>
@@ -36,12 +38,16 @@
           $socioBusiness = new socioBusiness();
           $socios = $socioBusiness->obtenerTodosTBSocio();
 
-          echo '<select>';
+          echo '<select name= "socioAnualidad" id= "socioAnualidad">';
           foreach ($socios as $current) {
               echo '<option value = "'.$current->getSocioId().'"> '.$current->getNombre().' '.$current->getPrimerApellido() .' '.$current->getSegundoApellido().'</option>';
           }
           echo '</select>';
+
           ?>
+          <input type="text" name="socioId" id="socioId" value="" hidden="">
+          <p>Fecha del pago Anterior: </p><input id="fechapagoAnterior" readOnly>
+
           <br>
           <br>
           <?php
@@ -64,6 +70,9 @@
        <input name="renovarAnualidad" value="Registrar Anualidad" type="submit">
     </form>
 
+    <a href="../index.php">Regresar</a>
 
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../js/mostrarAnualidad.js"></script>
   </body>
 </html>
