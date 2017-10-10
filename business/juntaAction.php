@@ -166,7 +166,7 @@ if (isset($_POST['actualizar'])) {
             $resultadoP = $juntaBusiness->insertarColaborador($presidente);
             
             if ($resultadoP ==1) {
-                $presidentejunta=$presidenteColaborardorNombre;
+                $presidentejunta=$presidenteColaborardoCedula;
                 echo "ColaboradorP insertardo"; 
 
             }else{
@@ -186,7 +186,7 @@ if (isset($_POST['actualizar'])) {
             $resultadoV = $juntaBusiness->insertarColaborador($presidente);
 
             if ($resultadoV ==1) { 
-                $vicepresidentejunta=$vicepresidenteColaborardorNombre;
+                $vicepresidentejunta=$vicepresidenteColaborardoCedula;
                 echo "ColaboradorV insertardo"; 
             }else{
 
@@ -208,7 +208,7 @@ if (isset($_POST['actualizar'])) {
     
 
             if ($resultadoT ==1) {
-                $tesorerojunta =$tesoreroColaborardorNombre;
+                $tesorerojunta =$tesoreroColaborardoCedula;
                 echo "ColaboradorT insertardo";
             }else{
                 echo "Error al insertar un ColaboradorT: ".@$resultadoT;
@@ -230,7 +230,7 @@ if (isset($_POST['actualizar'])) {
             $resultadoS = $juntaBusiness->insertarColaborador($secretario);
     
             if ($resultadoS ==1) {
-                $secretariojunta =$secretarioColaborardorNombre;
+                $secretariojunta =$secretarioColaborardoCedula;
                 echo " ColaboradorS insertardo";
             }else{
 
@@ -253,7 +253,7 @@ if (isset($_POST['actualizar'])) {
             $resultadoV1 = $juntaBusiness->insertarColaborador($vocal1);
 
             if ($resultadoV1 ==1) {
-                $vocal1junta = $v1ColaborardorNombre;
+                $vocal1junta = $v1ColaborardoCedula;
               echo "ColaboradorV1 insertado"; 
             }else{
 
@@ -280,7 +280,7 @@ if (isset($_POST['actualizar'])) {
 
 
             if ($resultadoV2 ==1) {
-                $vocal2junta = $v2ColaborardorNombre;
+                $vocal2junta = $v2ColaborardoCedula;
              echo "ColaboradorV2 insertardo";  
             }else{
 
@@ -305,7 +305,7 @@ if (isset($_POST['actualizar'])) {
     
 
             if ($resultadoV3 ==1) {
-                $vocal3junta = $v3ColaborardorNombre;
+                $vocal3junta = $v3ColaborardoCedula;
               echo "ColaboradorV3 insertado";
             }else{
 

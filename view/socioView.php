@@ -525,7 +525,7 @@
             <div id="cajaFierro">
                
             <label for="">Subir foto del Fierro</label>
-            <input type="file" value="Seleccionar Fierro" name="foto" id="foto">
+            <input type="file" value="Seleccionar Fierro" name="imagen" id="imagen">
             </div>
             <input type="hidden" name="" id="w">
            
