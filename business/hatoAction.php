@@ -124,7 +124,9 @@
 						header("location: ../index.php?success=updateHato");	
 					
 					}else{
-							header("location: ../view/hatoView.php?error=error");			
+
+						echo @.resultado;
+							//header("location: ../view/hatoView.php?error=error");			
 					}
 
 				}else{
