@@ -27,7 +27,7 @@
 				$resultado = $actividadBusiness->actualizarTBActividad($actividad);
 
 				if($resultado == 1){
-					header ('location: ../index.php?success=updateActividad');				}
+					header ('location: ../index.php?success=updateActividad');				
 				}else{
 					header ('location: ../view/actividadView.php?error=updateActividad');
 				}
