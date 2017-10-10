@@ -35,7 +35,24 @@ class anualidadData extends Data{
 
     }
 
+    public function actualizarPagoAnualidad($anualidad) {
+        
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+
+        $sql = "UPDATE tbanualidad SET responsableid='".$anualidad->getResponsableId()."',anualidadmonto = '".$anualidad->getMonto()."', 	anualidadfechaactualizacion = '".$anualidad->getFechaActualizacion()."' WHERE socioid ='".$anualidad->getResponsableId()."' and anualidadid='".$anualidad->getAnualidadId()."';";
+
+        if ($result = $conn->query($sql) === TRUE) {
+                 echo "Record updated successfully";
+        } else {
+                 echo "Error updating record: " . $conn->error;
+        }
+        $conn->close();
+        return $result;
+    }
 
 
 }

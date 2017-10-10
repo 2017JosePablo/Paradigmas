@@ -78,9 +78,9 @@
 require './data/pagoAnualidadData.php';
 require './domain/anualidad.php';
 $anualidadData= new pagoAnualidadData(); 
-$anualidad= new Anualidad("","","2001-06-12","2001-06-12","2001-06-12");   
-$result=$anualidadData->insertarpagoanualidad($anualidad);
-echo "resultado= ".$result;
+$anualidad= new Anualidad("","1","2002-06-12","2002-06-12","2002-06-12");   
+$result=$anualidadData->obtenerFechasSocio(1);
+echo "resultado= ".$result->getIdSocio();
 ?>
 
 </body>
