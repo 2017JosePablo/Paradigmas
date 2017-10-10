@@ -5,8 +5,6 @@
             $fechaVenc = explode('/', $fechaVencimientoAnterior);
             //m/d/Y
             $ano = $fechaVenc[2]+1;
-
-            
             $fechaProxVen = $ano."-".$fechaVenc[0]."-".$fechaVenc[1];
 
             echo "->>>".$fechaProxVen;
