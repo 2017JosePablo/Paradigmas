@@ -188,7 +188,7 @@
 						echo "Resultado 7: ".$resultado7."</br>";
 
 						if($resultado7==1){
-							header("location: ../index.php?success=inserted");	
+							header("location: ../index.php?success=insertedSocio");	
 						}else{
 						//	header("location: ../view/socioView.php?error=errorinsertarhatoactividad");		
 						}
@@ -268,7 +268,7 @@
 				$resultado2 = $socioBusiness-> actualizarTBSocioDireccion($socioDireccion);
 
 				if ($resultado ==1 && $resultado2 == 1 ) {
-						header("location: ../index.php");
+						header("location: ../index.php?success=updatedSocio");
 				}else{
 
 				//	echo "Error al actualizar un socio: ".@$resultado;
