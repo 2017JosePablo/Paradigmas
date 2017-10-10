@@ -61,7 +61,7 @@
 
 <body>
  
-
+<!--
 <div><span>numero con dos decimales</span><input type="text" id="numero1"> 9,99 (generamos un evento al rellenarlo)</div>
 
 <div><span>fecha</span><input type="text" id="date"> 99/99/9999</div>
@@ -72,6 +72,14 @@
 
 <div><span>fecha</span><input type="text" id="pablo"> 99/99/9999</div>
 
+-->
+
+<?php 
+require './data/pagoAnualidadData.php';
+$anualidadData= new pagoAnualidadData();    
+$result=$anualidadData->insertarpagoanualidad($pagoanualidad);
+echo $result;
+?>
 
 </body>
 
