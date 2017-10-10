@@ -31,7 +31,7 @@ if (isset($_GET['ideliminar'])){
 
                 $result = $razaBusiness->insertarTBRaza($raza);
                 if ($result == 1) {
-                    header("location: ../index.php?success=inserted");
+                    header("location: ../index.php?success=insertedRaza");
                 //     header("location: ../business/juntaAction.php?success=inserted");
                   //  echo "Se inserto";
                 } else {
@@ -60,7 +60,7 @@ if (isset($_GET['ideliminar'])){
 
                 $result = $razaBusiness->modificarTBRaza($raza);
                 if ($result == 1) {
-                    header("location: ../index.php?success=inserted");
+                    header("location: ../index.php?success=updatedRaza");
                 //     header("location: ../business/juntaAction.php?success=inserted");
                   //  echo "Se inserto";
                 } else {

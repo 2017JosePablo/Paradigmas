@@ -22,5 +22,4 @@
 			return $this->pagoAnualidad->obtenerFechasSocio($idSocio);
 		}
 	}
-	
 ?>

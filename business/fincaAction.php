@@ -91,8 +91,7 @@
 		$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo,$tipoactividad);
 
 		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1) {
-			echo "Finca actualizada con exito";
-			header("location: ../index.php?success=actualizado");
+			header("location: ../index.php?success=updateFinca");
 		}else{
 			if($resultado2!=1){
 				header("location: ../view/fincaView.php?error=errorActualizarFinca");
