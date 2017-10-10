@@ -21,6 +21,7 @@
 <a href="view/fincaTipoView.php">Tipo Finca</a><br>
 <a href="view/fincaView.php">Finca</a><br>
 <a href="view/razaView.php">Raza</a><br>
-
+<a href="view/renovarAnualidadView.php">Renovar Anualidad</a><br>
+<a href="view/pagoPrimeroAnualidadView.php">Pago socio primera vez</a><br>
 </body>
 </html>

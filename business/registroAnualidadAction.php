@@ -5,7 +5,7 @@
 	if(isset($_POST["renovarAnualidad"])) {
 		$socioId = $_POST['idSocio'];
 		$fechaVencimientoAnterior = $_POST[''];
-		$fechaPago = $_POST[''];
+		$fechaPago = $_POST['fechaPago'];
 		$fechaVencimientoProximo[''];
 
 		if(isset($socioId) && !empty($socioId) $$ isset($fechaVencimientoAnterior) && !empty($fechaVencimientoAnterior) &&

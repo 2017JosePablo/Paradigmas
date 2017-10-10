@@ -12,7 +12,7 @@
 
 
     <script type="text/javascript">
-        
+
         function setCamposRegistro(id_caja){
             var campos = "<table> <tr>";
             campos+="<td><input type='text' name='sociocedula' id='sociocedula'  required></td>";
@@ -26,26 +26,20 @@
             return campos;
         }
 
+				function anadirJunta() {
+						document.getElementById('anadirJunta').style="display:block";
+				}
 </script>
-
-
-
 </head>
-<body>   
-
-    
-
-    
-
-
+<body>
    <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
 	 <?php
- 
+
 	 include '../business/juntaBusiness.php';
             $juntaBusiness = new JuntaBusiness();
             $allJuntas = $juntaBusiness->obtenerTodosTBJunta();
             echo '<table border = "1"> <tr><td>Id</td>  <td>Presidiente</td><td>Vicepresidente</td><td>Tesorero</td><td>Secretario</td><td>Vocal 1</td><td>Vocal 2</td> <td>Vocal 3</td> <td colspan="2">Acciones</td> </tr>';
-            foreach ($allJuntas as $current) {     
+            foreach ($allJuntas as $current) {
                 echo '<tr>';
                 echo '<td>  '.$current->getIdTBJunta() . ' </td>';
                 echo '<td> '.$current->getPresidenteTBJunta().'</td>';
@@ -66,11 +60,14 @@
 
                  //name='.$current->getIdTBJunta().'
             ?>
-            
+
         </form>
 
+				<br><hr>
+				<input onclick="anadirJunta()" type="button" value="Agragar Junta">
+				<div id= "anadirJunta" style="display:none">
         <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
-            
+
             <?php
 
                 include '../business/socioBusiness.php';
@@ -89,28 +86,28 @@
                 echo "<select class='form-control' id='listadoPresidente' name = 'listadoSocios'  >";
 
                 foreach ($socios as $current) {
-                    
+
                     echo "<option>".$current->getNombre()." ".$current->getPrimerApellido()."</option>";
                 }
-                
+
                 echo '</select>';
 
                 echo "<button type = 'button' value = 'cajaPresidente-P' >Agregar Colaborador</button>";
 
                 echo "<div id= 'cajaPresidente'> </div>";
 
-                
+
 
                 echo "<p>Vicepresidente:</p>";
-                
+
 
                 echo "<select class='form-control' id='listadoVicepresidente' name = 'listadoVicepresidente'  >";
 
                 foreach ($socios as $current) {
-                    
+
                     echo "<option>".$current->getNombre()."</option>";
                 }
-                
+
                 echo '</select>';
 
                 echo "<button type = 'button' value = 'cajaViveprecidente-Vi' >Agregar Colaborador</button>";
@@ -126,10 +123,10 @@
                  echo "<select class='form-control' id='listadoTesorero' name = 'listadoTesorero'  >";
 
                 foreach ($socios as $current) {
-                    
+
                     echo "<option>".$current->getNombre()."</option>";
                 }
-                
+
                 echo '</select>';
 
                 echo "<button type = 'button' value = 'cajaTesorero-T' >Agregar Colaborador</button>";
@@ -143,10 +140,10 @@
                  echo "<select class='form-control' id='listadoSecretario' name = 'listadoSecretario'  >";
 
                 foreach ($socios as $current) {
-                    
+
                     echo "<option>".$current->getNombre()."</option>";
                 }
-                
+
                 echo '</select>';
 
                 echo "<button type = 'button' value = 'cajaSecre-S' >Agregar Colaborador</button>";
@@ -161,10 +158,10 @@
                  echo "<select class='form-control' id='listadoV1' name = 'listadoV1'  >";
 
                 foreach ($socios as $current) {
-                    
+
                     echo "<option>".$current->getNombre()."</option>";
                 }
-                
+
                 echo '</select>';
 
                 echo "<button type = 'button' value = 'cajaV1-V1' >Agregar Colaborador</button>";
@@ -176,10 +173,10 @@
                  echo "<select class='form-control' id='listadoV2' name = 'listadoV2'  >";
 
                 foreach ($socios as $current) {
-                    
+
                     echo "<option>".$current->getNombre()."</option>";
                 }
-                
+
                 echo '</select>';
 
                 echo "<button type = 'button' value = 'cajaV2-V2' >Agregar Colaborador</button>";
@@ -192,10 +189,10 @@
                  echo "<select class='form-control' id='listadoV3' name = 'listadoV3'  >";
 
                 foreach ($socios as $current) {
-                    
+
                     echo "<option>".$current->getNombre()."</option>";
                 }
-                
+
                 echo '</select>';
 
                 echo "<button type = 'button' value = 'cajaV3-V3' >Agregar Colaborador</button>";
@@ -205,15 +202,17 @@
 
             ?>
             </br>
-            <button name="crear">Registrar Junta</button>
+						<hr>
+            <button name="crear">Registrar Datos</button>
+						<a href="juntaView.php"><button name="cancelar">Cancelar</button></a>
             </br>
         </form>
-            
-          
+
+			</div>
 
 
 
-	
+
 	<a href="../index.php">Regresar</a>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarJunta.js"></script>
