@@ -46,7 +46,8 @@
           echo '</select>';
 
           ?>
-          <input type="text" name="socioId" id="socioId"  hidden="">
+          <input type="text" name="socioId" id="socioId" >
+
 
           <br>
           <br>
@@ -65,6 +66,7 @@
 
     <a href="../index.php">Regresar</a>
 
-  
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../js/mostrarPrimerAnualidad.js"></script>
   </body>
 </html>
