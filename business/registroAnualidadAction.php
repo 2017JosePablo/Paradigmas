@@ -7,15 +7,23 @@
 		$fechaVencimientoAnterior = $_POST['fechaPagoAnterior'];
 		$fechaPago = $_POST['fechaPago'];
 
-		if(isset($socioId) && !empty($socioId) $$ isset($fechaVencimientoAnterior) && !empty($fechaVencimientoAnterior) &&
+		echo "socioId->".$socioId;
+		echo "fechaVA->".$fechaVencimientoAnterior;
+		echo "FE->".$fechaPago;
+
+		if(isset($socioId) && !empty($socioId) && isset($fechaVencimientoAnterior) && !empty($fechaVencimientoAnterior) &&
 			isset($fechaPago) && !empty($fechaPago)){
 
 
+			$date = new DateTime($fechaPago);
+			$fechaPago= $date->format('Y-m-d');
 
-			//FECHA del proximo pago
-            $fechaVenc = explode('/', $fechaVencimientoAnterior);
-            $ano = $fechaVenc[2]+1;
-            $fechaProxVen = $ano."-".$fechaVenc[0]."-".$fechaVenc[1];
+			echo "->".$fechaPago;
+
+			$fechaProx = strtotime('+1 year',strtotime($fechaVencimientoAnterior));
+
+			$fechaProx = date('Y-m-d',$fechaProx);
+
 
 				
 			
@@ -23,7 +31,7 @@
 
 			$registroAnualidad = new RegistroAnualidadBusiness();
 
-			$anualidad = new Anualidad('',$socioId,$fechaVencimientoAnterior,$fechaPago,$fechaProxVen);
+			$anualidad = new Anualidad('',$socioId,$fechaVencimientoAnterior,$fechaPago,$fechaProx);
 
 			$resultado =  $registroAnualidad ->insertarPagoAnualidad($anualidad);
 
