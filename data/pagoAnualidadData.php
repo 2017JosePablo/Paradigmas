@@ -16,9 +16,6 @@ class pagoAnualidadData extends Data{
 
 
      public function insertarPagoAnualidad($pagoanualidad){
-         echo "1". $pagoanualidad->getFechaVencimientoAnterior()."<br>";
-             echo "2".  $pagoanualidad->getFechaPago()."<br>";
-                echo "3".$pagoanualidad->getFechaVencimientoProximo(). "<br>";
 
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
 
