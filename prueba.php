@@ -1,3 +1,18 @@
+<?php
+
+        $fechaVencimientoAnterior = "02/01/2017";
+
+            $fechaVenc = explode('/', $fechaVencimientoAnterior);
+            //m/d/Y
+            $ano = $fechaVenc[2]+1;
+
+            
+            $fechaProxVen = $ano."-".$fechaVenc[0]."-".$fechaVenc[1];
+
+            echo "->>>".$fechaProxVen;
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -74,15 +89,9 @@
 
 -->
 
-<?php 
-require './data/pagoAnualidadData.php';
-//require './domain/anualidad.php';
 
-$anualidadData= new pagoAnualidadData(); 
-//$anualidad= new Anualidad("","1","2002-06-12","2002-06-12","2002-06-12");   
-$result=$anualidadData->obtenerFechasSocio(1);
-echo "resultado= ".$result->getFechaVencimientoProximo();
-?>
+
+
 
 </body>
 

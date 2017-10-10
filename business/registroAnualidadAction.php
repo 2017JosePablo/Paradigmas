@@ -3,19 +3,27 @@
 	require './registroAnualidadBusiness.php';
 
 	if(isset($_POST["renovarAnualidad"])) {
-		$socioId = $_POST['idSocio'];
-		$fechaVencimientoAnterior = $_POST[''];
+		$socioId = $_POST['socioId'];
+		$fechaVencimientoAnterior = $_POST['fechaPagoAnterior'];
 		$fechaPago = $_POST['fechaPago'];
-		$fechaVencimientoProximo[''];
 
 		if(isset($socioId) && !empty($socioId) $$ isset($fechaVencimientoAnterior) && !empty($fechaVencimientoAnterior) &&
-			isset($fechaPago) && !empty($fechaPago)  && isset($fechaVencimientoProximo) && !empty($fechaVencimientoProximo) ){
+			isset($fechaPago) && !empty($fechaPago)){
+
+
+
+			//FECHA del proximo pago
+            $fechaVenc = explode('/', $fechaVencimientoAnterior);
+            $ano = $fechaVenc[2]+1;
+            $fechaProxVen = $ano."-".$fechaVenc[0]."-".$fechaVenc[1];
+
+				
 			
 			require_once '../domain/anualidad.php';
 
 			$registroAnualidad = new RegistroAnualidadBusiness();
 
-			$anualidad = new Anualidad('',$socioId,$fechaVencimientoAnterior,$fechaPago,$fechaVencimientoProximo);
+			$anualidad = new Anualidad('',$socioId,$fechaVencimientoAnterior,$fechaPago,$fechaProxVen);
 
 			$resultado =  $registroAnualidad ->insertarPagoAnualidad($anualidad);
 
@@ -29,5 +37,5 @@
 		}
 	}
 
-	
+
 ?>
