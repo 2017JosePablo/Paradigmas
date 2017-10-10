@@ -61,13 +61,16 @@ class pagoAnualidadData extends Data{
 
     public function  obtenerFechasSocio($socioid) {
         require '../domain/anualidad.php';
-        $socioAnualidad;
+        $socioAnualidad= new Anualidad("","","","","");
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
         $sql = "SELECT * FROM tbpagoanualidad WHERE socioid='".$socioid."'  ORDER BY tbpagoanualidad.pagoanualidadanterior DESC ";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $socioAnualidad = new Anualidad($row["pagoanualidadid"],$row["socioid"], $row["pagoanualidadanterior"],$row["pagoanualidadactual"], $row["pagoanualidadproximo"]);
+                $socioAnualidad->setFechaVencimientoAnterior($row["pagoanualidadanterior"] );
+                $socioAnualidad->setFechaPago($row["pagoanualidadactual"]);
+                $socioAnualidad->setFechaVencimientoProximo($row["pagoanualidadproximo"]);
+                
                 break;
                 
             }
