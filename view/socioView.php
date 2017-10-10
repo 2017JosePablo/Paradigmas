@@ -241,7 +241,7 @@
     $socios = $socioBusiness->obtenerTodosTBSocio();
 
 
-    echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Socios</td></tr><tr><td align = "left" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+    echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Socios</td></tr><tr><td align = "left" colspan = "7">Informacion del socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
     foreach ($socios as $current) {
         echo '<tr>';

@@ -39,27 +39,20 @@
           $socios = $socioBusiness->obtenerTodosTBSocio();
 
           echo '<select name= "socioAnualidad" id= "socioAnualidad">';
+                echo '<option value = "-1"> Seleccione un socio </option>';
           foreach ($socios as $current) {
               echo '<option value = "'.$current->getSocioId().'"> '.$current->getNombre().' '.$current->getPrimerApellido() .' '.$current->getSegundoApellido().'</option>';
           }
           echo '</select>';
 
           ?>
-          <input type="text" name="socioId" id="socioId" value="" hidden="">
-          <p>Fecha del pago Anterior: </p><input id="fechapagoAnterior" readOnly>
+          <input type="text" name="socioId" id="socioId"  hidden="">
+          <p>Fecha del pago Anterior: </p><input id="fechaPagoAnterior" name="fechaPagoAnterior" readOnly>
 
           <br>
           <br>
           <?php
-/*
-          include '../business/registroAnualidadBusiness.php';
-            $socioAnualidad = new registroAnualidadBusiness();
-            $socios = $socioAnualidad->obtenerFechaAnterior();
 
-              echo '<select>';
-                foreach ($socios as $current) {
-
-          }*/
           ?>
 
 
@@ -67,7 +60,8 @@
           <input type="date" name="fechaPago" id="fechaPago">
           <br>
           <br>
-       <input name="renovarAnualidad" value="Registrar Anualidad" type="submit">
+       <input name="renovarAnualidad" value="Guardar Datos" type="submit">
+       <a href="renovarAnualdadView.php"><input type="button" value="Cancelar" ></a>
     </form>
 
     <a href="../index.php">Regresar</a>

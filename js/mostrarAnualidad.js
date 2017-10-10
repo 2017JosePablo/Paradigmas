@@ -1,8 +1,13 @@
 $(document).ready(function() {
   $('select').on('change', function() {
-        $.post('../business/registroAnualidadBusiness.php',{idSocio:this.value}, function(data){
-          alert( data);      
-        });
-    //alert( this.value );
+    if(this.value>0){
+      var idsocio =  this.value;
+      $.post('../business/registroAnualidadBusiness.php',{idSocio:idsocio}, function(data){
+        var anualidad =  JSON.parse(data);
+        document.getElementById('socioId').value = idsocio;
+        document.getElementById('fechaPagoAnterior').value = anualidad["pagoanualidadanterior"];
+
+      });
+    }
   });
 });
