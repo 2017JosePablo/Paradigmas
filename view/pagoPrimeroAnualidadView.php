@@ -46,7 +46,7 @@
           echo '</select>';
 
           ?>
-          <input type="text" name="socioId" id="socioId" >
+          <input type="text" name="socioId" id="socioId" hidden="" >
 
 
           <br>
