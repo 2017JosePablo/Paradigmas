@@ -28,6 +28,11 @@ class JuntaBusiness {
         return $this->juntaData->obtenerTodosTBJunta();
     }
 
+    public function obtenerTodosTBColaborador() {
+        return $this->colaborador->obtenerTodosTBColaborador();
+    }
+
+
     public function insertarColaborador($colaborador)
     {
         return $this->colaborador->insertarColaborador($colaborador);

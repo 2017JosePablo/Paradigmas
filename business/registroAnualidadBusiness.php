@@ -8,7 +8,7 @@
 	class RegistroAnualidadBusiness {
 
 		private $pagoAnualidad;
-		
+
 		function RegistroAnualidadBusiness(){
 			$this->pagoAnualidad = new pagoAnualidadData();
 		}

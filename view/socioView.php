@@ -236,7 +236,6 @@
 
     include '../business/socioBusiness.php';
 
-
     $socioBusiness = new socioBusiness();
     $socios = $socioBusiness->obtenerTodosTBSocio();
 
@@ -354,7 +353,7 @@
                 <div id="verDir" style="display: none;">
 
                     <table>
-                        <tr><td><br><p>Datos de Dirección</p></td></tr>
+                        <tr><td><br><p>Dirección del Socio</p></td></tr>
 
                          <td>
                         Provincia : <input  type="text"  id = 'provE' name="provE" readonly >
@@ -384,7 +383,7 @@
                 <div id="editarUbic" style='display:none;'>
 
                     <table>
-                     <tr><td><br><p>Datos de dirección</p></td></tr>
+                     <tr><td><br><p>Dirección del Socio</p></td></tr>
                         <tr>
                         <td>
                              <div class="form-group">
@@ -456,36 +455,9 @@
 
             ?>
 
-            <br><br>
-            <p>Tipo de Finca</p>
-                <?php
-
-
-                require '../data/tipoFincaData.php';
-                $temp = new tipoFincaData();
-                $tipoFinca = $temp->getAllTBTiposFincas();
-
-
-                        echo '<table>';
-                        foreach ($tipoFinca as $curren) {
-
-                            echo '<tr>';
-
-                            echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>";
-
-                            echo '<td>'.$curren->getFincaTipoActividad().'</td>';
-
-
-                            echo '</tr>';
-                        }
-                        echo '</table>';
-
-
-
-                ?>
 
              <br><br>
-             Estado Socio Detalle:
+             Estado del Socio:
              <?php
 
 
@@ -510,12 +482,6 @@
             ?>
 
 
-            <p>CVO</p>
-            <input type='radio' name='radioCVO' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br>
-            <input type="radio" name="radioCVO" onclick="ocultarEspacios('fechaCVO','labelCVO')" value="2">No
-            <p id="labelCVO"> Fecha Vigencia </p>
-            <input type="date" name="fechaCVO" id="fechaCVO">
-            <br><br>
 
             <p>Fierro</p>
             <input type='radio' name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br>
@@ -530,22 +496,7 @@
             <input type="hidden" name="" id="w">
 
 
-            <br><br>
-            <p>Examen de bruselas</p>
-            <p>Vigente</p>
-            <input type="radio" name='radioBrusela' onclick="verEspacios('fechaBruc','labelBru')" value="1" checked > Si<br>
-            <input type="radio" name="radioBrusela"  onclick="ocultarEspacios('fechaBruc','labelBru')" value="2">No
-            <p id="labelBru">Fecha de vencimiento</p>
-            <input type="date" name="fechaBrusela" id="fechaBruc">
-            <br><br>
-            <p>Examen tuberculosis</p>
-            <p>Vigente</p>
-            <input type='radio' name='radioTuberculosis' onclick="verEspacios('fechaTuber','labelTuber')" value='1' checked="checked" /> Si<br>
-            <input type="radio" name="radioTuberculosis" onclick="ocultarEspacios('fechaTuber','labelTuber')"  value="2">No
-            <p id="labelTuber">Fecha de vencimiento</p>
-            <input type="date" name="fechaTuberculosis" id="fechaTuber">
-
-
+            
 
             <br><br>
 

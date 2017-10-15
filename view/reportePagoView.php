@@ -1,100 +1,91 @@
+<?php
+  if (!isset($_POST['reporte'])) {
+    header("location: ../index.php?error=accessDeneid");
+  }
+ ?>
 <html>
 <head>
-<title>jspdf  </title>
+
 </head>
-<style type="text/css">
- td {
- padding:10px;
+<body >
+  <?php
+  include '../business/socioBusiness.php';
 
-}
- th {
- padding:10px;
- background-color:aqua;
- }
-</style>
+  $socioBusiness = new socioBusiness();
+  $socios = json_decode($socioBusiness->obtenerUnTBSocio($_POST['reporte']), true);
+  ?>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
-<div id="divEmployee">
- <table id="tab_customers">
+<br>
+<br>
 
-<thead>
- <tr class='warning'>
- <th>ID</th>
- <th>Name</th>
- <th>Join Date</th>
- <th>Age</th>
- </tr>
- </thead>
- <tbody>
- <tr>
- <td>1</td>
- <td>Aman Roy</td>
- <td>March 25, 2014</td>
- <td>25</td>
- </tr>
- <tr>
- <td>2</td>
- <td>Vishal Singh</td>
- <td>January 25, 2014</td>
- <td>26</td>
- </tr>
- <tr>
- <td>3</td>
- <td>Gaurav Singh</td>
- <td>March 25, 2014</td>
- <td>25</td>
- </tr>
- <tr>
- <td>4</td>
- <td>Vinod Palne</td>
- <td>May 25, 2014</td>
- <td>22</td>
- </tr>
- </tbody>
+<br><br>
+<h1 align = "center">Reporte de Pago:<strong> <?php echo $socios["sociocedula"]; ?> </strong></h1>
+<br><br><br>
+
+ <table width="100%">
+   <tr>
+         <td>Cedula</td>
+         <td>Nombre</td>
+         <td>Correo</td>
+         <td>Telefono</td>
+       </tr>
+    <tr>
+       <td><?php echo $socios["sociocedula"]; ?></td>
+       <td><?php echo $socios["socionombre"].' '.$socios["socioprimerapellido"].' '.$socios["sociosegundoapellido"]; ?></td>
+       <td><?php echo $socios["sociocorreo"]; ?></td>
+       <td><?php echo $socios["sociotelefono"]; ?></td>
+     </tr>
  </table>
+<br><br><hr><br><br>
+ <table width="100%">
+   <tr>
+        <td>Estado</td>
+         <td>Fecha Ingreso</td>
+         <td>Actividad</td>
+         <td>Tipo de Finca</td>
+       </tr>
+    <tr>
+      <td><?php echo $socios["socioestadodetalle"]; ?></td>
+       <td><?php echo $socios["sociofechaingreso"]; ?></td>
+       <td><?php echo $socios["tipoactividadnombre"]; ?></td>
+        <td><?php echo $socios["fincatiponombre"]; ?></td>
 
+     </tr>
+ </table>
+ <hr>
+ <?php
+ include '../business/registroAnualidadBusiness.php';
+ $registroAnualidadBusiness = new RegistroAnualidadBusiness();
+ $pago = json_decode($registroAnualidadBusiness->getInformacionPago("1"),true);
+ ?>
+<table  width="100%">
+    <tr>
+        <td>Fecha de Vencimiento</td>
+        <td>Pago Anterior</td>
+        <td>Fecha del Pago Actual</td>
+        <td>Fecha Proximo Pago</td>
+      </tr>
+
+    <tr>
+      <td><?php echo $pago["pagoanualidadanterior"]; ?></td>
+      <td>Indefinido</td>
+      <td><?php echo $pago["pagoanualidadactual"]; ?></td>
+      <td><?php echo $pago["pagoanualidadproximo"]; ?></td>
+    </tr>
+
+</table>
+
+<br>
+
+<br><br>
+<div id="llamado">
+  <a href="" onclick="myFunction()">Imprimir reporte</a>
 </div>
-<button onclick="javascript:Export();">Exportar a PDF</button>
-<script type="text/javascript">
- function Export() {
- var pdf = new jsPDF('p', 'pt', 'letter');
-
-pdf.text(50, 25, "Employee Report");
- // source can be HTML-formatted string, or a reference
- // to an actual DOM element from which the text will be scraped.
- source = document.getElementById('divEmployee').innerHTML;
-
-// we support special element handlers. Register them with jQuery-style
- // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
- // There is no support for any other type of selectors
- // (class, of compound) at this time.
- specialElementHandlers = {
- // element with id of "bypass" - jQuery style selector
- '#bypassme': function (element, renderer) {
- // true = "handled elsewhere, bypass text extraction"
- return true
+ <script>
+ function myFunction() {
+   document.getElementById('llamado').style="display:none";
+   window.print();
  }
- };
- margins = {
- top: 80,
- bottom: 60,
- left: 40,
- width: 522
- };
- // all coords and widths are in jsPDF instance's declared units
- // 'inches' in this case
- pdf.fromHTML(
- source, // HTML string or DOM elem ref.
- margins.left, // x coord
- margins.top, { // y coord
- 'width': margins.width, // max width of content on PDF
- 'elementHandlers': specialElementHandlers
- },
+ </script>
 
-function (dispose) {
- // dispose: object with X, Y of the last line add to the PDF
- // this allow the insertion of new lines after html
- pdf.save('Test.pdf');
- }, margins);
- }
-</script></html>
+</html>

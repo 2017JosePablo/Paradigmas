@@ -56,6 +56,26 @@ class colaboradorData extends Data{
 
         return $colaborador;
     }
+		      public function obtenerTodosTBColaborador() {
+		        $colaborador = array();
+
+		        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+		        $sql = "SELECT * FROM tbcolaborador";
+
+		        $result = $conn->query($sql);
+		        if($result->num_rows > 0) {
+		            while($row = $result->fetch_assoc()) {
+
+		                array_push($colaborador, new colaborador($row["colaboradorid"],$row["colaboradorcedula"],$row["colaboradornombre"],$row["colaboradorprimerapellido"],$row["colaboradorsegundoapellido"],$row["colaboradorcorreo"]
+		                    ,$row["colaboradortelefono"]));
+		            }
+		        }else{
+		            echo "0 results";
+		        }
+		        $conn->close();
+		        return $colaborador;
+		    }
+
     //Metodo para actualizar un tipo de cerca existente..
     public function modificarColaborador($colaborador)
     {

@@ -14,9 +14,9 @@
 				}else{
 					header ('location: ../view/actividadView.php?error=errortoinserted');
 				}
-			}	
-		}	
-	}else if (isset($_POST['modificarActividad'])) {	
+			}
+		}
+	}else if (isset($_POST['modificarActividad'])) {
 		$actividadid = $_POST['idActividad'];
 		$nombreactividad = $_POST['tipoactividadMod'];
 		if(isset($nombreactividad)){
@@ -27,11 +27,11 @@
 				$resultado = $actividadBusiness->actualizarTBActividad($actividad);
 
 				if($resultado == 1){
-					header ('location: ../index.php?success=updateActividad');				
+					header ('location: ../index.php?success=updateActividad');
 				}else{
 					header ('location: ../view/actividadView.php?error=updateActividad');
 				}
-			}	
-		}		
+			}
+		}
 	}
 ?>

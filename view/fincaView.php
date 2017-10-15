@@ -372,6 +372,16 @@
 
 
 <br><br>
+
+<p>CVO</p>
+<input type='radio' name='radioCVO' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br>
+<input type="radio" name="radioCVO" onclick="ocultarEspacios('fechaCVO','labelCVO')" value="2">No
+<p id="labelCVO"> Fecha de Aplicacion del Examen </p>
+<input type="date" name="fechaCVO" id="fechaCVO">
+<br><br>
+
+
+
     <?php
 
     $cont =1;
