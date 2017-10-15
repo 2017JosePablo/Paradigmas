@@ -38,7 +38,7 @@
 <?php
     if (isset($_GET['error'])) {
         if (isset($_GET['error']) =='userexits') {
-            echo "<p style='color:red'><strong> El Socio a ingresar ya esta registrado! </strong></p>";
+            echo "<p style='color:red'><strong>No se ha podido registrar el Hato </strong></p>";
         }
     }
 
@@ -162,6 +162,9 @@ echo '</table>';
         </table>
     </div>
 
+
+
+
     <div id="cajaListaRazas" style="display: none;">
         <p>Razas</p>
 
@@ -169,7 +172,6 @@ echo '</table>';
         </div>
     </div>
 <br><br>
-
     <div id = 'cajaRazas' style="display: none;">
 
 
@@ -187,6 +189,22 @@ echo '</table>';
             }
                 echo '</table>';
     ?>
+
+		<br><br>
+		<p>Examen de brucelas</p>
+		<p>Esta Vigente?</p>
+		<input type="radio" name='radioBrusela' onclick="verEspacios('fechaBruc','labelBru')" value="1" checked > Si<br>
+		<input type="radio" name="radioBrusela"  onclick="ocultarEspacios('fechaBruc','labelBru')" value="2">No
+		<p id="labelBru">Fecha de Aplicacion del Examen de Brucelas</p>
+		<input type="date" name="fechaBrusela" id="fechaBruc">
+		<br><br>
+		<p>Examen tuberculosis</p>
+		<p>Esta Vigente?</p>
+		<input type='radio' name='radioTuberculosis' onclick="verEspacios('fechaTuber','labelTuber')" value='1' checked="checked" /> Si<br>
+		<input type="radio" name="radioTuberculosis" onclick="ocultarEspacios('fechaTuber','labelTuber')"  value="2">No
+		<p id="labelTuber">Fecha de Aplicacion de Examen de Tuberculosis</p>
+		<input type="date" name="fechaTuberculosis" id="fechaTuber">
+
     </div>
 
     <div  id="btnSubmit" style="display: none;">

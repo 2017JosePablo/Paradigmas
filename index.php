@@ -26,7 +26,36 @@
 
 <?php
 	if(isset($_GET['success'])){
-		 echo '<p style="color: green">Dato insertado con Exito</p>';
+			if($_GET['success'] == "insertedPago"){
+				echo '<p style="color: green">Anualidad insetada con exito</p>';
+			}else if($_GET['success'] == "insertedPagoPrimero"){
+				echo '<p style="color: green">Se ha registrado la primer Anualidad con exito</p>';
+			}else if($_GET['success'] == "insertedActividad"){
+				echo '<p style="color: green">Se ha registrado correctamente la Actividad</p>';
+			}else if($_GET['success'] == "updateActividad"){
+				echo '<p style="color: green">La actividad se ha modificado con exito</p>';
+			}else if($_GET['success'] == "updateFinca"){
+				echo '<p style="color: green">La finca se ha modificado con exito</p>';
+			}else if($_GET['success'] == "insertedTipoFinca"){
+				echo '<p style="color: green">El tipo de tipo de actividad se a registrado con exito</p>';
+			}else if($_GET['success'] == "updateTipoFinca"){
+				echo '<p style="color: green">El tipo de finca se ha modificado con exito</p>';
+			}else if($_GET['success'] == "insertedHato"){
+				echo '<p style="color: green">El hato se ha insertado con exito</p>';
+			}else if($_GET['success'] == "updateHato"){
+				echo '<p style="color: green">El hato se a modificado con exito</p>';
+			}else if($_GET['success'] == "insertedJunta"){
+				echo '<p style="color: green">La junta se ha insertado exitosamente.</p>';
+			}else if($_GET['success'] == "insertedRaza"){
+				echo '<p style="color: green">La raza se ha insertado con exito</p>';
+			}else if($_GET['success'] == "updatedRaza"){
+				echo '<p style="color: green">La raza se ha modificado con exito</p>';
+			}else if($_GET['success'] == "insertedSocio"){
+				echo '<p style="color: green">El socio se ha insertado con exito</p>';
+			}else if($_GET['success'] == "updatedSocio"){
+				echo '<p style="color: green">El socio se ha modificado con exito</p>';
+			}
+
 	}
  ?>
 <p>ASOTURGA</p>
@@ -41,6 +70,7 @@
 		<li><a href="view/renovarAnualidadView.php">Renovar Anualidad</a><br></li>
 		<li><a href="view/reporteView.php">Reportes</a><br></li>
 		<li><a href="view/actividadView.php">Actividad</a><br></li>
+		<li><a href="view/anualidadView.php">Anualidad</a><br></li>
 
 
 </ol>

@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!doctype HTML>
 <html>
 <head>
@@ -9,6 +14,8 @@
     <script src="../js/jquery.maskedinput.min.js" type="text/javascript"></script>
   </head>
     <body>
+
+			<form class="" action="reportePagoView.php" method="post">
     <?php
     include '../business/socioBusiness.php';
     $socioBusiness = new socioBusiness();
@@ -19,13 +26,17 @@
         echo '<td> '.$current->getNombre().'</td>';
         echo '<td> '.$current->getPrimerApellido() .' </td>';
         echo '<td> '.$current->getSegundoApellido().' </td>';
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Generar Reporte</button></td>";
+        echo "<td><button type='submit' name='reporte'  value='".$current->getCedula()."'>Generar Reporte</button></td>";
         echo '</tr>';
     }
     echo '</table>';
     ?>
+	</form>
+
     <a href="../index.php">Regresar</a>
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../js/editarSocio.js"></script>
+
+		<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="../js/generarReporte.js"></script>
+
 </body>
 </html>
