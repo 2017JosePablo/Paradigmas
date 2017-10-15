@@ -63,7 +63,7 @@
   </head>
   <body>
 
-    <form class="" action="../business/anualidadBusiness.php" method="post" onsubmit="return verificarSocio()">
+    <form class="" action="../business/anualidadAction.php" method="post" onsubmit="return verificarSocio()">
 
     <?php
     require '../business/socioBusiness.php';

@@ -113,6 +113,11 @@
 
 
 					require './hatoBusiness.php';
+					require './examenBruselasBusiness.php';
+					require './examenTuberculosisBusiness.php';
+
+					require_once '../domain/examenBruselas.php';
+					require_once '../domain/examenTuberculosis.php';
 				
 					
 					$hato = new Hato($socioid,$razas,$ternero ,$ternera,$novillo,$novilla,$novillaprenada,$torosServicio,$torosEngorde,$vacasCria,$vacasEngorde);
@@ -144,15 +149,14 @@
 					}else{
 						
 						if($resultado!=1){
-							echo @.resultado;
+
 							header("location: ../view/hatoView.php?error=errorInsertHato");	
 						}else{
 							if ($resultado2!=1) {
-								echo @.resultado2;
+
 								header("location: ../view/hatoView.php?error=errorInsertBrucela");	
 							}else{
 								if ($resultado3!=1) {
-									echo @.resultado3;
 									header("location: ../view/hatoView.php?error=errorInsertTuberculina");		
 								}
 							}
