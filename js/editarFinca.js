@@ -6,27 +6,27 @@ $(document).ready(function() {
 
     	var cedula = $(this).val();
 
-
+      alert(cedula);
 
     	if(cedula.length>0){
 
 
-           
+
             if(cedula == 'registrar' || cedula == 'actualizar'){
 
                 var tipoCerca = "";
                 var validar = 0;
 
                 var checkboxes = document.getElementById("frm").checkbox;
-                var cont = 0; 
- 
+                var cont = 0;
+
                 for (var x=0; x < checkboxes.length; x++) {
                  if (checkboxes[x].checked) {
 
                     //tipoCerca += $("input:checkbox[id="+(x+1)+"]").val()+'-';
                     tipoCerca+=x+'-';
                     validar = 1;
-                 
+
                  }
                 }
 
@@ -35,14 +35,15 @@ $(document).ready(function() {
 
             }
 
-            var result = cedula.split('-');
+            var result = cedula.split('~');
 
 
 
             if(result[1]=='Ver' || result[1]=='Mod' || result[1]=='Reg'){
-
+    alert("POSEE");
             $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
                 //POSEE UNA FINCA
+
 
                 if(data  == 1){
 
@@ -51,7 +52,7 @@ $(document).ready(function() {
                         $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
                             var array = JSON.parse(data);
                             document.getElementById('registrarFinca').style="display:none";
-                            
+
                             document.getElementById("actualizar").style="display:none";
                             document.getElementById("finalizar").style='display:none';
                             document.getElementById('cajaFinca').style='display:block';
@@ -59,7 +60,7 @@ $(document).ready(function() {
 
                             document.getElementById('registrarFinca').style="display:none ";
                             document.getElementById('finalizar').style='display:none';
-                            document.getElementById('frm').reset(); 
+                            document.getElementById('frm').reset();
 
                             document.getElementById('datosDireccion').style='display:none';
 
@@ -83,21 +84,21 @@ $(document).ready(function() {
                             document.getElementById('pueb').value = array['fincapueblo'];
 
                             document.getElementById("dir").value = array['fincaexacta'];
-                            
-                            
+
+
                         });
 
 
                     }else{
                         if(result[1]=='Mod'){
 
-                          
+
                             $.post('../business/fincaAction.php', {fincamodificar:result[0]}, function(data){
 
                                 document.getElementById("Socio").innerHTML = '----------------'+result[0]+'----------------';
-                               
 
-                                
+
+
                                 document.getElementById("cedula").value = result[0];
 
                                 var array = JSON.parse(data);
@@ -110,7 +111,7 @@ $(document).ready(function() {
 
                                 document.getElementById('verUbic').style = 'display:block';
 
-                               
+
 
                                 document.getElementById("cedula").value = result[0];
                                 document.getElementById("fincaarea").value = array['fincaarea'];
@@ -149,7 +150,7 @@ $(document).ready(function() {
 
                            // document.getElementById('editarUbic').style='display:none';
 
-                            
+
                         });
 
                 }else{
@@ -164,7 +165,7 @@ $(document).ready(function() {
                                 document.getElementById('actualizar').style = 'display:none';
                                 document.getElementById('registrarFinca').style="display:none ";
                                 document.getElementById('finalizar').style='display:none';
-                                document.getElementById('frm').reset(); 
+                                document.getElementById('frm').reset();
 
                                 //document.getElementById('datosDireccion').style='display:block';
                             }else{
@@ -180,7 +181,7 @@ $(document).ready(function() {
 
                                 document.getElementById('finalizar').style='display:block';
 
-                                document.getElementById('frm').reset(); 
+                                document.getElementById('frm').reset();
 
                                 document.getElementById('datosDireccion').style='display:block';
 
@@ -193,12 +194,12 @@ $(document).ready(function() {
 
                         });
 
-                       
+
 
                     }
                 }
 
-            }           
+            }
                     }else{
                         alert('No tiene Ninguna FInca uuuuuu');
 
@@ -206,7 +207,7 @@ $(document).ready(function() {
 
                              $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
 
-                        
+
 
                                 document.getElementById('cajaFinca').style='display:none'
                                 document.getElementById('actualizar').style = 'display:none';
@@ -220,18 +221,18 @@ $(document).ready(function() {
                                 document.getElementById('datosDireccion').style = 'display:block';
                                 document.getElementById('registrarFinca').style="display:block ";
                                 document.getElementById('finalizar').style='display:block';
-                                document.getElementById('frm').reset(); 
+                                document.getElementById('frm').reset();
 
-                                
-                                
+
+
                                 document.getElementById("cedula").value = result[0];
-                            
+
 
 
                         });
 
 
-                            
+
                         }else{
 
 
@@ -240,8 +241,8 @@ $(document).ready(function() {
                             document.getElementById('actualizar').style = 'display:none';
                             document.getElementById('registrarFinca').style="display:none ";
                             document.getElementById('finalizar').style='display:none';
-                            document.getElementById('frm').reset(); 
-   
+                            document.getElementById('frm').reset();
+
 
                         }
 
@@ -250,12 +251,12 @@ $(document).ready(function() {
 
 
 
-    
+
     	}
-    
+
     }});
 
-    
+
 });
 
 function getProvincia(provincia){
@@ -272,7 +273,7 @@ function getProvincia(provincia){
                         break;
 
                     }
-                    
+
                 }
             }
         });
@@ -294,7 +295,7 @@ function getCanton(provincia,can){
                         break;
 
                     }
-                    
+
                 }
             }
         });
@@ -306,7 +307,7 @@ function getDistrito(valor,valorCantones,distrito){
     var distrito;
         $.ajax({
                 dataType: "json",
-             
+
                 url: "https://ubicaciones.paginasweb.cr/provincia/"+valor+"/canton/"+valorCantones+"/distritos.json",
 
                 data: {},
@@ -314,13 +315,13 @@ function getDistrito(valor,valorCantones,distrito){
 
                 success: function (data) {
                     for(key in data) {
-                        
+
                             if(key == distrito){
                                 distrito = data[key];
                                 break;
                             }
-                        
-                        
+
+
                     }
                 }
         });
@@ -329,7 +330,7 @@ function getDistrito(valor,valorCantones,distrito){
 
 
 function ocultarCajasDireccion(){
-    
+
 
 
     alert('Estoy en method');

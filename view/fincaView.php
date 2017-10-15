@@ -139,6 +139,25 @@
 
         </script>
 
+        <script type="text/javascript">
+          var datefield=document.createElement("input")
+          datefield.setAttribute("type", "date")
+          if (datefield.type!="date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+             document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n')
+            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
+          }
+         </script>
+
+         <script>
+            if(datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
+               jQuery(function($){ //on document.ready
+                   $('#fechaCVO').datepicker();
+               })
+            }
+         </script>
+
+
 
 </head>
 <body>
@@ -169,9 +188,9 @@
           echo "<td>".$current->getNombre()."</td>";
           echo "<td>".$current->getPrimerApellido()."</td>";
           echo "<td>".$current->getSegundoApellido()."</td>";
-          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Ver'>Ver</button></td>";
-          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Mod'>Modificar</button></td>";
-          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."-Reg'>Registrar</button></td>";
+          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Ver'>Ver</button></td>";
+          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Mod'>Modificar</button></td>";
+          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Reg'>Registrar</button></td>";
           echo "<tr>";
 
 
@@ -374,10 +393,13 @@
 <br><br>
 
 <p>CVO</p>
+
 <input type='radio' name='radioCVO' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br>
 <input type="radio" name="radioCVO" onclick="ocultarEspacios('fechaCVO','labelCVO')" value="2">No
-<p id="labelCVO"> Fecha de Aplicacion del Examen </p>
-<input type="date" name="fechaCVO" id="fechaCVO">
+<div id="cajaCVO">
+  <p id="labelCVO"> Fecha de Aplicacion del Examen </p>
+  <input type="date" name="fechaCVO" id="fechaCVO">
+</div>
 <br><br>
 
 
