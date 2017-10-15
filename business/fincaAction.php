@@ -2,10 +2,12 @@
 
 	if(isset($_POST['cedulaSocio']) == true && empty($_POST['cedulaSocio'])== false){
 	   require 'socioBusiness.php';
+
 	   $socioBusiness = new socioBusiness();
 	   $idsocio = $socioBusiness->getSocioId($_POST['cedulaSocio']);
 
 	   	require_once '../data/fincaData.php';
+
 
 	      $temp = new FincaData();
 
@@ -45,6 +47,13 @@
 	echo $_POST['editoOtros']."</br>";
 
 
+	$cvotiene= $_POST['radioCVO'];
+	$date = new DateTime($_POST['fechaCVO']);
+	//echo $date->format('Y-m-d');
+	$cvofechavigencia= $date->format('Y-m-d');
+	
+
+
 	$fincaid = $_POST['cedula'];
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
@@ -70,6 +79,10 @@
 	$cercas =$_POST['tiposCerca'];
 
 
+
+
+
+
 //	echo "datos".$fincaid;
 
 	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($tipoactividad)&&isset($fincatipo)){
@@ -77,6 +90,10 @@
 		require './fincaBusiness.php';
 		require './socioBusiness.php';
 		include '../domain/fincaDireccion.php';
+
+		require 'cvoBusiness.php';
+		require_once '../domain/cvo.php';
+
 		$socioBusiness= new socioBusiness();
 
 		$idSocio=$socioBusiness->getSocioId($fincaid);
@@ -90,7 +107,18 @@
 
 		$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo,$tipoactividad);
 
-		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1) {
+
+		//CVO
+		$cvoBusiness = new cvoBusiness();
+		$cvo = new Cvo('',$cvotiene,$cvofechavigencia,$idSocio);
+		$resultado4 = $cvoBusiness->insertarCvo($cvo);
+
+
+
+
+
+
+		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1 && $resultado4 == 1 ) {
 			header("location: ../index.php?success=updateFinca");
 		}else{
 			if($resultado2!=1){
@@ -102,6 +130,10 @@
 				}else{
 					if($resultado3!=1){
 						header("location: ../view/fincaView.php?error=errorActualizarActividades");
+					}else{
+						if($resultado4!=1){
+							header("location: ../view/fincaView.php?error=errorInsertCVO");
+						}
 					}	
 				}
 			}

@@ -101,6 +101,7 @@
 
 
 
+
 		if (strlen($razas) > 0 ||strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($torosServicio) > 0 || strlen($torosEngorde) > 0 || strlen($vacasCria) > 0|| strlen($vacasEngorde) > 0 ) {
 
 
@@ -116,17 +117,46 @@
 					
 					$hato = new Hato($socioid,$razas,$ternero ,$ternera,$novillo,$novilla,$novillaprenada,$torosServicio,$torosEngorde,$vacasCria,$vacasEngorde);
 
+					//BRUCELAS
+					$examenvigente= $_POST['radioBrusela'];
+					$date = new DateTime($_POST['fechaBrusela']);
+					$examenfechavencimiento= $date->format('Y-m-d');
+					$examenBruselasBusiness = new examenBruselasBusiness();				
+					$examenBrusela = new examenBruselas('',$examenvigente,$examenfechavencimiento,$idSocio);
+					$resultado2 =$examenBruselasBusiness->insertarExamen($examenBrusela);
+
+
+					//TUBERCULINA
+					$examenvigente= $_POST['radioTuberculosis'];
+					$date = new DateTime($_POST['fechaTuberculosis']);
+					$examenfechavencimiento= $date->format('Y-m-d');
+					$examenTuberculosisBusiness = new examenTuberculosisBusiness();				
+					$examenTuberculosis = new examenTuberculosis('',$examenvigente,$examenfechavencimiento,$idSocio);
+					$resultado3 = $examenTuberculosisBusiness->insertarExamen($examenTuberculosis);
+
+
 					$hatoBusiness = new hatoBusiness();		
 
 					$resultado = $hatoBusiness->actualizarTBHato($hato);
 				
-					if ($resultado == 1) {
+					if ($resultado == 1 && $resultado2 == 1 && $resultado3 == 1) {
 						header("location: ../index.php?success=updateHato");	
-					
 					}else{
-
-						echo @.resultado;
-							//header("location: ../view/hatoView.php?error=error");			
+						
+						if($resultado!=1){
+							echo @.resultado;
+							header("location: ../view/hatoView.php?error=errorInsertHato");	
+						}else{
+							if ($resultado2!=1) {
+								echo @.resultado2;
+								header("location: ../view/hatoView.php?error=errorInsertBrucela");	
+							}else{
+								if ($resultado3!=1) {
+									echo @.resultado3;
+									header("location: ../view/hatoView.php?error=errorInsertTuberculina");		
+								}
+							}
+						}
 					}
 
 				}else{
@@ -137,5 +167,4 @@
 			}
 
 		}
-
 ?>

@@ -188,7 +188,7 @@
 						echo "Resultado 7: ".$resultado7."</br>";
 
 						if($resultado7==1){
-							header("location: ../indexs.php?success=insertedSocio");	
+							header("location: ../index.php?success=insertedSocio");	
 						}else{
 						//	header("location: ../view/socioView.php?error=errorinsertarhatoactividad");		
 						}
