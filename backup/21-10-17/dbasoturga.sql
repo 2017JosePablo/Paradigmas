@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-10-2017 a las 16:46:00
+-- Tiempo de generación: 21-10-2017 a las 19:20:11
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -64,7 +64,7 @@ CREATE TABLE `tbanualidad` (
 
 INSERT INTO `tbanualidad` (`anualidadid`, `responsableid`, `anualidadmonto`, `anualidadfechaactualizacion`) VALUES
 (1, 1, 2000, '2017-10-02'),
-(2, 1, 5000, '2017-10-01');
+(2, 1, 5000, '2016-10-01');
 
 -- --------------------------------------------------------
 
@@ -334,9 +334,9 @@ INSERT INTO `tbpagoanualidad` (`pagoanualidadid`, `socioid`, `pagoanualidadanter
 (1, 1, '2002-06-28', '2002-06-12', '2002-06-12', 'debe'),
 (2, 2, '2002-06-12', '2002-06-12', '2002-06-12', 'debe'),
 (3, 1, '2002-06-12', '2002-06-12', '2002-06-12', 'debe'),
-(4, 1, '2002-06-12', '2002-06-12', '2002-06-12', 'debe'),
-(5, 1, '2017-10-02', '2017-10-02', '2018-10-02', ''),
-(6, 1, '2017-10-05', '2017-10-05', '2018-10-05', ''),
+(4, 1, '2002-06-12', '2002-06-12', '2002-06-12', ''),
+(5, 1, '2017-10-02', '2017-10-02', '2018-10-02', 'pago'),
+(6, 1, '2017-10-05', '2017-10-05', '2018-10-05', 'pagp'),
 (7, 1, '2017-10-05', '2017-10-18', '2018-10-05', '');
 
 -- --------------------------------------------------------
@@ -390,7 +390,8 @@ CREATE TABLE `tbsocio` (
 --
 
 INSERT INTO `tbsocio` (`socioid`, `sociocedula`, `socionombre`, `socioprimerapellido`, `sociosegundoapellido`, `sociotelefono`, `sociocorreo`, `tipoactividadid`, `fincatipoid`, `sociofechaingreso`, `estadosociodetalle`, `sociorecomendacionuno`, `sociorecomendaciondos`) VALUES
-(1, '5-1212313', 'ADAN', 'CARRAANZA', 'ALFARO', '1111 11 11', 'adanca16@gmail.com', 1, 1, '0000-00-00', 1, 'socio recomendacion uno', 'socio recomendacion dos');
+(1, '5-1212313', 'ADAN', 'CARRAANZA', 'ALFARO', '1111 11 11', 'adanca16@gmail.com', 1, 1, '0000-00-00', 1, 'socio recomendacion uno', 'socio recomendacion dos'),
+(2, '5-1212313', 'PARRA', 'LUIS', 'ALFARO', '1111 11 11', 'adanca16@gmail.com', 1, 1, '0000-00-00', 1, 'socio recomendacion uno', 'socio recomendacion dos');
 
 -- --------------------------------------------------------
 
@@ -667,7 +668,7 @@ ALTER TABLE `tbraza`
 -- AUTO_INCREMENT de la tabla `tbsocio`
 --
 ALTER TABLE `tbsocio`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tbsociodireccion`
 --
