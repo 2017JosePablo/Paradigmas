@@ -84,6 +84,14 @@ class pagoAnualidadData extends Data{
     }
 
 
+    public function sacarMorosos($fecha1){
+         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+
+
+
+    }
+
+
 
 }
 
