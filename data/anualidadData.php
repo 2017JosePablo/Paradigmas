@@ -1,6 +1,6 @@
 <?php
 
-//include 'data.php';
+include '../domain/montoAnualidad.php';
 require_once 'data.php';
 
 
@@ -53,7 +53,7 @@ class anualidadData extends Data{
         $conn->close();
         return $result;
     }
-		public function obtenerTodosTBAAnualidad() {
+		public function obtenerTodosTBAnualidad() {
         $anualidad = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
@@ -62,7 +62,7 @@ class anualidadData extends Data{
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                array_push($anualidad,new anualidad($row['anualidadid'],$row['responsableid'],$row['anualidadmonto'],$row['fechaactualizacion']));
+                array_push($anualidad,new MontoAnualidad($row['anualidadid'],$row['anualidadmonto'],$row['responsableid'],$row['anualidadfechaactualizacion']));
             }
         }else{
             echo "0 results";
