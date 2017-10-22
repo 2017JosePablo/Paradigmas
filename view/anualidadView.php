@@ -1,5 +1,5 @@
 <?php
-  include_once '../business/anualidadBusiness.php';
+  include '../business/anualidadBusiness.php';
 	$anualidad  = new AnualidadBusiness();
 	echo $anualidad->actualizarEstado("2017/10/22");
  ?>
@@ -72,16 +72,16 @@
   </head>
   <body>
     <?php
-    include '../business/socioBusiness.php';
-    $socioBusiness = new socioBusiness();
-    $socios = $socioBusiness->obtenerTodosTBSocio();
+
+    $listaanualidad = $anualidad-> $socioBusiness->obtenerTodosTBAAnualidad();
+
     echo '<table border ="1"><tr><td align = "center" colspan = "7">Listado de Anualidades</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
-    foreach ($socios as $current) {
+    foreach ($listaanualidad as $current) {
         echo '<tr>';
-        echo '<td> '.$current->getNombre().'</td>';
-        echo '<td> '.$current->getPrimerApellido() .' </td>';
-        echo '<td> '.$current->getSegundoApellido().' </td>';
-        echo "<td> <button type='button' id='seleccion_socio' value='".$current->getCedula()."'>Seleccionar Socio</button></td>";
+        echo '<td> '.$current->getResponsableId().'</td>';
+        echo '<td> '.$current->getMonto() .' </td>';
+        echo '<td> '.$current->getFechaActualizacion().' </td>';
+        echo "<td> <button type='button' id='editar~anualidad' value='".$current->getIdMontoAnualidad()."'>Editar</button></td>";
         echo '</tr>';
     }
     echo '<tr><td colspan = "7" > Colaboradores</td></tr>';
