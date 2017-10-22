@@ -135,9 +135,6 @@
                 document.getElementById('cajaVerSocio').style.display='none';
             }
 
-            function verUbi(){
-
-            }
 
             function ocultarEspacios(id,id2){
                 document.getElementById(id).style="display:none";
@@ -250,9 +247,9 @@
 
 
         //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Ver'>Ver</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Mod'>Modificar</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."-Desac'>Desactivar</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."~Ver'>Ver</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."~Mod'>Modificar</button></td>";
+        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."~Desac'>Desactivar</button></td>";
         //echo '<td> <a href=""> Eliminar</a> </td>';
         //echo '<td> <a href=""> Modificar</a> </td>';
         echo '</tr>';
@@ -495,9 +492,32 @@
             </div>
             <input type="hidden" name="" id="w">
 
-
-            
-
+            <br>
+							<p>Recomendacion 1</p>
+							<?php
+			        include_once '../business/socioBusiness.php';
+			        $socioBusiness = new socioBusiness();
+			        $socios = $socioBusiness->obtenerTodosTBSocio();
+							echo '<select id ="recomendacion1">';
+			        foreach ($socios as $current) {
+			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
+			        }
+			        echo '</select>';
+			        ?>
+							<input type="text" name="recemendacionSocio1" id="recomendacionSocio1" value="">
+							<br>
+							<p>Recomendacion 2</p>
+							<?php
+			        include_once '../business/socioBusiness.php';
+			        $socioBusiness = new socioBusiness();
+			        $socios = $socioBusiness->obtenerTodosTBSocio();
+							echo '<select id = "recomendacion2">';
+			        foreach ($socios as $current) {
+			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
+			        }
+			        echo '</select>';
+			        ?>
+							<input type="text" name="recemendacionSocio2" id="recomendacionSocio2" value="">
             <br><br>
 
             <div id="btnAgregar">

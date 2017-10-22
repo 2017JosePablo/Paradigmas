@@ -49,7 +49,7 @@ class hatoData extends Data{
 
         $sql = "UPDATE tbhato SET
             hatoraza='" . $hato-> getListadoRazas()."',
-            hatoternero='" . $hato-> getTerneros()."',
+            hatoternero=    '" . $hato-> getTerneros()."',
             hatoternera='" . $hato-> getTerneras()."',
             hatonovillo='" . $hato-> getNovillos()."',
             hatonovilla='" . $hato-> getNovillas()."',

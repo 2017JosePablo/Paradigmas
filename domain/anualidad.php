@@ -7,14 +7,16 @@
 		private $fechaVencimientoAnterior;
 		private $fechaPagoActual;
 		private $fechaVencimientoProximo;
+		private $estado;
+		
 
-		function Anualidad($idAnualidad,$idSocio,$fechaVencimientoAnterior,$fechaPagoActual,$fechaVencimientoProximo){
+		function Anualidad($idAnualidad,$idSocio,$fechaVencimientoAnterior,$fechaPagoActual,$fechaVencimientoProximo,$estado){
 			$this->idAnualidad=$idAnualidad;
 			$this->idSocio=$idSocio;
 			$this->fechaVencimientoAnterior=$fechaVencimientoAnterior;
 			$this->fechaPagoActual=$fechaPagoActual;
 			$this->fechaVencimientoProximo=$fechaVencimientoProximo;
-
+			$this->estado=$estado;
 		}
 
 		function setIdAnualidad($idAnualidad){
@@ -46,6 +48,13 @@
 		}
 		function getFechaVencimientoProximo(){
 			return $this->fechaVencimientoProximo;
+		}
+
+		function setEstado($estado){
+			$this->estado=$estado;
+		}
+		function getEstado(){
+			return $this->estado;
 		}	
 	}
 ?>

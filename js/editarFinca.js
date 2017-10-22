@@ -5,66 +5,40 @@ $(document).ready(function() {
     $('button').click(function() {
 
     	var cedula = $(this).val();
-
-      alert(cedula);
-
     	if(cedula.length>0){
-
-
-
             if(cedula == 'registrar' || cedula == 'actualizar'){
-
                 var tipoCerca = "";
                 var validar = 0;
-
                 var checkboxes = document.getElementById("frm").checkbox;
                 var cont = 0;
-
                 for (var x=0; x < checkboxes.length; x++) {
                  if (checkboxes[x].checked) {
-
-                    //tipoCerca += $("input:checkbox[id="+(x+1)+"]").val()+'-';
                     tipoCerca+=x+'-';
                     validar = 1;
-
                  }
                 }
-
                 document.getElementById('selecCerca').value = validar;
                 document.getElementById('tiposCerca').value =tipoCerca;
-
             }
-
             var result = cedula.split('~');
 
-
-
             if(result[1]=='Ver' || result[1]=='Mod' || result[1]=='Reg'){
-    alert("POSEE");
             $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
                 //POSEE UNA FINCA
 
 
                 if(data  == 1){
-
                     if(result[1]=='Ver'){
-
                         $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
                             var array = JSON.parse(data);
                             document.getElementById('registrarFinca').style="display:none";
-
                             document.getElementById("actualizar").style="display:none";
                             document.getElementById("finalizar").style='display:none';
                             document.getElementById('cajaFinca').style='display:block';
-
-
                             document.getElementById('registrarFinca').style="display:none ";
                             document.getElementById('finalizar').style='display:none';
                             document.getElementById('frm').reset();
-
                             document.getElementById('datosDireccion').style='display:none';
-
-
                                // datos de la finca
                             document.getElementById("area").value = array['fincaarea'];
                             document.getElementById("bobinos").value = array['fincacantidadbobinos'];
@@ -91,33 +65,18 @@ $(document).ready(function() {
 
                     }else{
                         if(result[1]=='Mod'){
-
-
                             $.post('../business/fincaAction.php', {fincamodificar:result[0]}, function(data){
-
                                 document.getElementById("Socio").innerHTML = '----------------'+result[0]+'----------------';
-
-
-
                                 document.getElementById("cedula").value = result[0];
-
                                 var array = JSON.parse(data);
-
                                 document.getElementById("actualizar").style="display:block";
                                 document.getElementById("finalizar").style='display:none';
                                 document.getElementById('registrarFinca').style="display:block";
-
                                 document.getElementById('cajaFinca').style='display:none';
-
                                 document.getElementById('verUbic').style = 'display:block';
-
-
-
                                 document.getElementById("cedula").value = result[0];
                                 document.getElementById("fincaarea").value = array['fincaarea'];
                                 document.getElementById("cantidadbobinos").value = array['fincacantidadbobinos'];
-
-
                             ////Datos de direccion///
                             //document.getElementById('prov').value = getProvincia(array['fincaprovincia']);
                             //document.getElementById('can').value = getCanton(array['fincaprovincia'],array['fincacanton']);
@@ -169,9 +128,6 @@ $(document).ready(function() {
 
                                 //document.getElementById('datosDireccion').style='display:block';
                             }else{
-                                alert('No tiene Ninguna FInca');
-
-
 
                                 document.getElementById('cajaFinca').style='display:none';
 
@@ -201,7 +157,7 @@ $(document).ready(function() {
 
             }
                     }else{
-                        alert('No tiene Ninguna FInca uuuuuu');
+                    
 
                         if(result[1]=='Reg'){
 
@@ -258,6 +214,16 @@ $(document).ready(function() {
 
 
 });
+
+function ocultarEspacios(id,id2){
+    document.getElementById(id).style="display:none";
+    document.getElementById(id2).style="display:none";
+}
+function verEspacios(id1,id2){
+    document.getElementById(id1).style="display:block";
+    document.getElementById(id2).style="display:block";
+}
+
 
 function getProvincia(provincia){
     var result;
