@@ -74,7 +74,7 @@ class anualidadData extends Data{
 
 		public function actualizarEstado($fecha)
 		{
-			return "Metodo en proceso "+$fecha;
+			return "Metodo en proceso ".$fecha;
 		}
 
 
