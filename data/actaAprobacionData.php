@@ -1,7 +1,7 @@
 <?php
 
 require_once 'data.php';
-include '../domain/socio.php';
+
 
 class actaAprobacionData extends Data{
 
@@ -23,7 +23,7 @@ class actaAprobacionData extends Data{
         }
         $sql = "INSERT INTO tbactaaprobacion(socioid,actaaprobacionsecion,actaaprobacionfecha,actaaprobacioncondicion,actaaprobacionmotivo)
         VALUES ('".
-                $actaAprobacion->getSicioID()."','".
+                $actaAprobacion->getSocioID()."','".
                 $actaAprobacion->getSecion()."','".
                 $actaAprobacion->getFecha()."','".
                 $actaAprobacion->getCondicion()."','".
@@ -40,6 +40,7 @@ class actaAprobacionData extends Data{
 
 
     public function sociosEnProgreso(){
+        include '../domain/socio.php';
          $socio = array();
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre()); 
         $sql="SELECT * FROM tbsocio INNER JOIN tbactaaprobacion ON tbsocio.socioid=tbactaaprobacion.socioid AND tbactaaprobacion.actaaprobacioncondicion='progreso'";
