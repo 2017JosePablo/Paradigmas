@@ -75,11 +75,11 @@
 
     <?php
 
-   require'./domain/socio.php';
-    require'./data/socioData.php';
-    $pago= new socioData();
-    $socio= new socio("","","","","","","","","","","","","");
-    $result=$pago->insertarTBSocio($socio);
+   require'./domain/actaAprobacion.php';
+    require'./data/actaAprobacionData.php';
+    $pago= new actaAprobacionData();
+    $socio= new actaAprobacion("","","","","");
+    $result=$pago->insertarActaAprobacionData($socio);
     echo " <br>siii--- ".$result." ---";
    
 

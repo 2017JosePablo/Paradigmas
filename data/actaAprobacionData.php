@@ -23,7 +23,7 @@ class actaAprobacionData extends Data{
         }
         $sql = "INSERT INTO tbactaaprobacion(socioid,actaaprobacionsecion,actaaprobacionfecha,actaaprobacioncondicion,actaaprobacionmotivo)
         VALUES ('".
-                $actaAprobacion->getIdSocio()."','".
+                $actaAprobacion->getSicioID()."','".
                 $actaAprobacion->getSecion()."','".
                 $actaAprobacion->getFecha()."','".
                 $actaAprobacion->getCondicion()."','".
