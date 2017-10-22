@@ -19,7 +19,7 @@ class socioData {
         }
 
 
-        $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle,siciorecomendacionuno,sociorecomendaciondos)
+        $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle,sociorecomendacionuno,sociorecomendaciondos)
         VALUES ('" .
                 $socio->getCedula() ."','".
                 $socio->getNombre() ."','" .

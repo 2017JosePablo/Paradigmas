@@ -75,9 +75,12 @@
 
     <?php
 
-    require'./data/pagoAnualidadData.php';
-    $pago= new pagoAnualidadData();
-    $result=$pago->calcularMorosos("2018-10-10");
+   require'./domain/socio.php';
+    require'./data/socioData.php';
+    $pago= new socioData();
+    $socio= new socio("","","","","","","","","","","","","");
+    $result=$pago->insertarTBSocio($socio);
+    echo " <br>siii--- ".$result." ---";
    
 
     ?>
