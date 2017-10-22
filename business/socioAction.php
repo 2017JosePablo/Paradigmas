@@ -134,27 +134,18 @@
 				$resultado5=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
 
 
-				if($resultado0==1){
-					echo "SOCIO INSERTADO";
+
 					require './aprovacionBusiness.php';
 					require '../domain/actaAprobacion.php';
-					//$socioID,$secion,$fecha,$condicion,$motivo){
 					$acta = new actaAprobacion($idSocio,'','','progreso','');
 					$actaBusiness = new AprovacionBusiness();
 					$resultado6  = $actaBusiness->insertarActa($acta);
 
-
-					if($resultado6 == 1){
-						echo "insertado aprovacion";
-					}else{
-						echo "string->".$resultado6;
-					}
-					
 				}
 
 
-				if ($resultado0 ==1 && $resultado1 ==1 && $resultado2 == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1) {
-					//header("location: ../view/socioView.php?success=insertedSocio");
+				if ($resultado0 ==1 && $resultado1 ==1 && $resultado2 == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1) {
+					header("location: ../view/socioView.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
 						header("location: ../view/socioView.php?error=insertedSocio");
@@ -173,6 +164,10 @@
 									}else{
 										if($resultado5!=1){
 											header("location: ../view/socioView.php?error=insertedHatoActividad");
+										}else{
+											if($resultado6!=1){
+												header("location: ../view/socioView.php?error=insertedAprovacion");
+											}
 										}
 									}
 								}
@@ -182,7 +177,7 @@
 				}
 			}
 	}
-}
+
 
  		if (isset($_POST['modificarsocio'])){
 
