@@ -1,6 +1,6 @@
 <?php
-  include '../business/anualidadBusiness.php';
-	$anualidad  = new AnualidadBusiness();
+  require '../business/anualidadBusiness.php';
+  $anualidad  = new AnualidadBusiness();
 	echo $anualidad->actualizarEstado("2017/10/22");
  ?>
 
@@ -67,15 +67,18 @@
             function agregarNuevaAnualidad() {
                 document.getElementById("agregarAnualidad").style="display:block;";
             }
+            function cancelar() {
+              location.href ="anualidadView.php";
+            }
           </script>
 
   </head>
   <body>
     <?php
 
-    $listaanualidad = $anualidad->obtenerTodosTBAAnualidad();
+    $listaanualidad = $anualidad->obtenerTodosTBAnualidad();
 
-    echo '<table border ="1"><tr><td align = "center" colspan = "7">Listado de Anualidades</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+    echo '<table border ="1"><tr><td align = "center" colspan = "7">Listado de Anualidades</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Responsable</td><td>Monto</td><td>Fecha de Creacion</td><td align = "center" colspan="3">Acciones</td> </tr>';
     foreach ($listaanualidad as $current) {
         echo '<tr>';
         echo '<td> '.$current->getResponsableId().'</td>';
@@ -84,17 +87,18 @@
         echo "<td> <button type='button' id='editar~anualidad' value='".$current->getIdMontoAnualidad()."'>Editar</button></td>";
         echo '</tr>';
     }
-    echo '<tr><td colspan = "7" > Colaboradores</td></tr>';
+    echo '</table>';
 
     ?>
     <br><br>
 
-    <button type="button" name="agregarAnualidad" onclick="agregarNuevaAnualidad()">Agregar Nueva Anualidad</button>
+
 
     <div class="" id = "agregarAnualidad" style="display:none">
 
       <form class="" action="../business/anualidadAction.php" method="post" onsubmit="return verificarSocio()">
       <?php
+      require '../business/socioBusiness.php';
       $socioBusiness = new socioBusiness();
       $socios = $socioBusiness->obtenerTodosTBSocio();
       echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Anualidad</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
@@ -139,7 +143,10 @@
 
       </form>
 
+
+      <button type="button" name="agregarAnualidad" onclick="cancelar()">Cancelar</button>
     </div>
+<button type="button" name="agregarAnualidad" onclick="agregarNuevaAnualidad()">Agregar Nueva Anualidad</button>
 
     <a href="../index.php">Regresar</a>
   </body>
