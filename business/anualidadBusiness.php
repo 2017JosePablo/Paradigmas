@@ -14,7 +14,7 @@ class AnualidadBusiness{
 		return $this->anualidad->actualizarPagoAnualidad($anualidad);
 	}
 	function actualizarEstado($fecha){
-		$this->anualidad->actualizarEstado($fecha);
+		return $this->anualidad->actualizarEstado($fecha);
 	}
 }
 
