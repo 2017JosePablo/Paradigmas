@@ -32,7 +32,7 @@ class socioData {
                 $socio->getTipoActividadId() . "','" .
                 $socio->getFincaTipo() . "','" .
                 $socio->getFechaIngreso() . "','".
-                $socio-> getEstadoSocioDetalle()() . "','".
+                $socio-> getEstadoSocioDetalle() . "','".
                 $socio->getRecomendacion1(). "','".
                 $socio->getRecomendacion2(). "');";
                
