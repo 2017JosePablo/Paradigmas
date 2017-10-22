@@ -39,72 +39,61 @@
 
 
 		$tipoactividad = $_POST['tipoactividad'];
-		$fechaingreso = $_POST['fecha'];
+
 		$sociodetalle = $_POST['socioestado'];
 
 		$recomendacion1 = $_POST['recomendacion1'];
 		$recomendacion2 = $_POST['recomendacion2'];
 
 
-		$dateIngreso = new DateTime($fechaingreso);
+		$date = new DateTime($_POST['fecha']);
+		$fechaIngreso =$date->format('Y-m-d');
 
 
 
 
-
-		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {
+		if (strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
+			echo "denrr--------";
 
 			require 'socioBusiness.php';
 			require 'fincaBusiness.php';
-			require 'cvoBusiness.php';
 
 
 			require_once '../domain/socioDireccion.php';
 			require_once '../domain/fincaDireccion.php';
 
-
-			require_once '../domain/cvo.php';
-			require_once '../domain/examenBruselas.php';
-			require_once '../domain/examenTuberculosis.php';
 			//require_once '../domain/hato.php';
 			//require_once '../domain/finca.php';
 			$socioBusiness = new socioBusiness();
 
 
-
+			echo "denrr--------";
 			if($socioBusiness->verificarCedula($cedula)==0){
+				echo "denrr--------ss";
 
 			//	echo "Fecha cvo: ".$_POST['fechaCVO']."</br>";
 
-				$date = new DateTime($_POST['fechaCVO']);
 
-				echo $date->format('Y-m-d');
+			 	$fechaIngreso =$date->format('Y-m-d');
 
 
-				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$dateIngreso,
-					$tipoactividad, $tipofinca , $sociodetalle,$recomendacion1,$recomendacion2);
+				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaIngreso,
+				$tipoactividad, '' , $sociodetalle,$recomendacion1,$recomendacion2);
 
 				$resultado0 = $socioBusiness->insertarTBSocio($socio);
 
 				$idSocio=$socioBusiness->getSocioId($cedula);
 				$fincaBusiness= new fincaBusiness();
 				$finca= new Finca('',$idSocio,'','','');
-				$resuntadoFinca=$fincaBusiness->insertarFinca($finca);
+				$resultado1=$fincaBusiness->insertarFinca($finca);
 
 
-				$cvotiene= $_POST['radioCVO'];
-				$date = new DateTime($_POST['fechaCVO']);
-				//echo $date->format('Y-m-d');
-				$cvofechavigencia= $date->format('Y-m-d');
-				$cvoBusiness = new cvoBusiness();
-				$cvo = new Cvo('',$cvotiene,$cvofechavigencia,$idSocio);
-				$resultado1 = $cvoBusiness->insertarCvo($cvo);
 
 				$socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
-				$resultado4 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
+				$resultado2 = $socioBusiness-> insertarTBSocioDireccion($socioDireccion);
 
 				$fincaDireccion= new fincaDireccion('','','','','','');
-				$resultado5= $fincaBusiness->insertarTBFincaDireccion($fincaDireccion);
+				$resultado3= $fincaBusiness->insertarTBFincaDireccion($fincaDireccion);
 
 
 				////////////////////////////////SUBIENDO IMAGEN
@@ -113,8 +102,7 @@
 				$tamano = $_FILES['imagen']['size'];
 
 				//Si existe imagen y tiene un tamaño correcto
-				if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 200000))
-				{
+				if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 200000)){
 				   //indicamos los formatos que permitimos subir a nuestro servidor
 				   if (($_FILES["imagen"]["type"] == "image/gif")
 				   || ($_FILES["imagen"]["type"] == "image/jpeg")
@@ -125,15 +113,11 @@
 				     $directorio = $_SERVER['DOCUMENT_ROOT'].'/paradigmas/uploads/';
 				      // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
 				      move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
-				    }
-				    else
-				    {
+				    }else{
 				       //si no cumple con el formato
 				       echo "No se puede subir una imagen con ese formato ";
 				    }
-				}
-				else
-				{
+				}else{
 				   //si existe la variable pero se pasa del tamaño permitido
 				   if($nombre_img == !NULL) echo "La imagen es demasiado grande ";
 				}
@@ -141,49 +125,55 @@
 				////////////////////////////////SUBIENDO IMAGEN
 
 
-				if ($resultado0 ==1 && $resultado1 == 1 && $resultado4==1&& $resultado5==1) {
 
-					require './hatoBusiness.php';
-					$hato = new Hato($idSocio,'','','','','','','','','','');
-					$hatoBusiness = new hatoBusiness();
-					$resultado6 = $hatoBusiness->insertarTBHato($hato);
 
-					echo "Resultado 6: ".$resultado6."</br>";
-					if ($resultado6 == 1) {
-						require './hatoActividadBusiness.php';
-						$hatoActividadBusiness = new hatoActividadBusiness();
-						$resultado7=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
+				require './hatoBusiness.php';
+				$hato = new Hato($idSocio,'','','','','','','','','','');
+				$hatoBusiness = new hatoBusiness();
+				$resultado4 = $hatoBusiness->insertarTBHato($hato);
 
-						echo "Resultado 7: ".$resultado7."</br>";
+				require './hatoActividadBusiness.php';
+				$hatoActividadBusiness = new hatoActividadBusiness();
+				$resultado5=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
 
-						if($resultado7==1){
-							header("location: ../index.php?success=insertedSocio");
-						}else{
-						//	header("location: ../view/socioView.php?error=errorinsertarhatoactividad");
-						}
 
-					}else{
-						//	header("location: ../view/socioView.php?error=errorinsertarhato");
-					}
+				if ($resultado0 ==1 && $resultado1 ==1 && $resultado2 == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1) {
 
-					//	header("location: ../index.php");
+					echo "INSERTED success";
+
 				}else{
 
 
-				//	header("location: ../view/socioView.php?error=errorinserted");
+					if($resultado0!=1){
+						echo "Error inserrtar Socio";
+					}else{
+						if($resultado1!=1){
+							echo "Error inserrtar finca";
+						}else{
+							if($resultado2!=1){
+								echo "Error inserrtar Socio direccion";
+							}else{
+								if($resultado3!=1){
+									echo "Error inserrtar finca direccion";
+								}else{
+									if ($resultado4!=1) {
+										echo "Error inserrtar Socio hato";
+									}else{
+										if($resultado5!=1){
+											echo "Error inserrtar hato actividad";
+										}
+									}
+								}
+							}
+						}
+					}
 				}
-
-			}else{
-			//	header("location: ../view/socioView.php?error=userexits");
+				//Cierre del id de verifiacion
 			}
-		}else{
-			echo " Algunos campos no existen...";
-			//header("location: ../view/socioView.php?error=emptyFile");
-		}
+	}
+}
 
-
-
-	}else if (isset($_POST['modificarsocio'])){
+ 		if (isset($_POST['modificarsocio'])){
 
 		$cedula2 = $_POST['cedulaVieja'];
 		$cedula = $_POST['sociocedula'];
