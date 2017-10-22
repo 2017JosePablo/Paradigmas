@@ -200,7 +200,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         $socio = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle FROM tbsocio INNER JOIN tbtipoactividad ON
+        $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos  FROM tbsocio INNER JOIN tbtipoactividad ON
             tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
             INNER JOIN tbfincatipo ON tbfincatipo.fincatipoid  = tbsocio.fincatipoid
             INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
@@ -209,13 +209,8 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-
-
-              //  array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                //    ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["socioestadodetalle"],$row["sociorecomendacionuno"],$row["sociorecomendaciondos"]));
-
-								echo "->".$row['sociorecomendaciondos']."<br>";
-								echo "->".$row['sociorecomendacionuno']."<br>";
+                array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                    ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["socioestadodetalle"],$row["sociorecomendacionuno"],$row["sociorecomendaciondos"]));
 						}
         }else{
             echo "0 results";

@@ -1,12 +1,6 @@
 <?php
-	include 'business/anualidadBusiness.php';
-	$anualidad  = new AnualidadBusiness();
-
-	echo $anualidad->actualizarEstado("2017/10/22");
-
-	//echo "<script>alert('esperando metodo');</script>";
-
-
+	echo dirname("business/anualidadBusiness.php");
+	include "business/anualidadBusiness.php";
 
  ?>
 <!DOCTYPE html>
