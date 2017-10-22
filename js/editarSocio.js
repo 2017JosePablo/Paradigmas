@@ -1,22 +1,36 @@
 
+alert($("recomendacion1 select").value);
+
+
+$(document).ready(function() {
+  $('select').on('change', function() {
+    if(this.value>0){
+      var idsocio =  this.value;
+      //  document.getElementById('socioId').value = idsocio;
+
+        alert(idsocio);
+    }
+  });
+});
+
+
 
 $(document).ready(function() {
     $('button').click(function() {
-        
+
 
     	var cedula = $(this).val();
 
 
     if(cedula.length>0){
-
-        var result = cedula.split('-');
+        var result = cedula.split('~');
 
 
         if(result[1] == 'Mod'){
 
 
             document.getElementById('notificacionSocio').innerHTML = ''
-            
+
             document.getElementById("cedulaVieja").value = result[0];
 
             document.getElementById("btnAgregar").style.display = 'none';
@@ -26,7 +40,7 @@ $(document).ready(function() {
             document.getElementById('verDir').style.display='block';
 
             $.post('../business/socioAction.php', {cedula:result[0]}, function(data){
-         
+
             var array = JSON.parse(data);
 
             document.getElementById('cajaFormulario').style.display='block';
@@ -40,7 +54,7 @@ $(document).ready(function() {
             var fincatipoid = array['fincatipoid'];
             var tipoEstado = array['estadosociodetalle'];
 
-            
+
             $("input:radio").removeAttr("checked");
 
             $('#'+tipoactividadid+'-actividad').attr('checked',true);
@@ -48,7 +62,7 @@ $(document).ready(function() {
             $('#'+fincatipoid+'-tipo').attr('checked',true);
 
             $('#'+tipoEstado+'-estado').attr('checked',true);
-            
+
             var provincia = array['socioprovincia'];
             var cantones =array['sociocanton'];
             var distritos = array['sociodistrito'];
@@ -58,10 +72,10 @@ $(document).ready(function() {
             document.getElementById('disE').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
             document.getElementById('puebE').value = array['sociopueblo'];
 
-            
+
             var fecha = array['sociofechaingreso'].split('-');
             var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
-            document.getElementById('fecha').value = fechaSalida;          
+            document.getElementById('fecha').value = fechaSalida;
 
 
 
@@ -108,7 +122,7 @@ $(document).ready(function() {
             document.getElementById("esta").value = array['socioestadodetalle'];
 
 
-           
+
 
             document.getElementById('prov').value = getProvincia(array['socioprovincia']);
             document.getElementById('can').value = getCanton(array['socioprovincia'],array['sociocanton']);
@@ -116,12 +130,12 @@ $(document).ready(function() {
             document.getElementById('pueb').value = array['sociopueblo'];
 
             });
-            
+
         } else if(result[1] == 'Desac'){
             document.getElementById('cajaVerSocio').style.display = 'none';
             document.getElementById('cajaFormulario').style.display='none';
-           
-             
+
+
              $.post('../business/socioAction.php', {desactivar:result[0]}, function(data){
 
                 if(data == 1){
@@ -133,7 +147,7 @@ $(document).ready(function() {
 
         }
     }
-        
+
     });
 });
 
@@ -151,7 +165,7 @@ function getProvincia(provincia){
                         break;
 
                     }
-                    
+
                 }
             }
         });
@@ -173,7 +187,7 @@ function getCanton(provincia,can){
                         break;
 
                     }
-                    
+
                 }
             }
         });
@@ -185,7 +199,7 @@ function getDistrito(valor,valorCantones,distrito){
     var distrito;
         $.ajax({
                 dataType: "json",
-             
+
                 url: "https://ubicaciones.paginasweb.cr/provincia/"+valor+"/canton/"+valorCantones+"/distritos.json",
 
                 data: {},
@@ -193,13 +207,13 @@ function getDistrito(valor,valorCantones,distrito){
 
                 success: function (data) {
                     for(key in data) {
-                    	
+
                     		if(key == distrito){
                                 distrito = data[key];
                                 break;
                             }
-                    	
-                        
+
+
                     }
                 }
         });

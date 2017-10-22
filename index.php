@@ -71,6 +71,7 @@
 		<li><a href="view/reporteView.php">Reportes</a><br></li>
 		<li><a href="view/actividadView.php">Actividad</a><br></li>
 		<li><a href="view/anualidadView.php">Anualidad</a><br></li>
+		<li><a href="view/aprovacionSocioView.php">Aprovacion de Socio</a><br></li>
 
 
 </ol>

@@ -394,8 +394,8 @@
 
 <p>CVO</p>
 
-<input type='radio' name='radioCVO' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br>
-<input type="radio" name="radioCVO" onclick="ocultarEspacios('fechaCVO','labelCVO')" value="2">No
+<input type='radio' name='radioCVO' id='radioCVOSI' onclick="verEspacios('fechaCVO','labelCVO')" checked='' value='1'> Si<br>
+<input type="radio" name="radioCVO" id='radioCVONO'onclick="ocultarEspacios('fechaCVO','labelCVO')" value="2">No
 <div id="cajaCVO">
   <p id="labelCVO"> Fecha de Aplicacion del Examen </p>
   <input type="date" name="fechaCVO" id="fechaCVO">
