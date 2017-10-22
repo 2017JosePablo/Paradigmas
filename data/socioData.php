@@ -21,7 +21,7 @@ class socioData {
         }
 
 
-        $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle)
+        $sql = "INSERT INTO tbsocio (sociocedula,socionombre,socioprimerapellido,sociosegundoapellido,sociotelefono,sociocorreo,tipoactividadid,fincatipoid,sociofechaingreso,estadosociodetalle,siciorecomendacionuno,sociorecomendacion)
         VALUES ('" .
                 $socio->getCedula() ."','".
                 $socio->getNombre() ."','" .
@@ -32,7 +32,10 @@ class socioData {
                 $socio->getTipoActividadId() . "','" .
                 $socio->getFincaTipo() . "','" .
                 $socio->getFechaIngreso() . "','".
-                $socio->getEstadoSocioDetalle(). "');";
+                $socio-> getEstadoSocioDetalle()() . "','".
+                $socio->getRecomendacion1(). "','".
+                $socio->getRecomendacion2(). "');";
+               
 
 
         $result = $conn->query($sql);
@@ -74,7 +77,7 @@ class socioData {
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "SELECT tbtipoactividad.tipoactividadnombre ,tbfincatipo.fincatiponombre,  tbsocioestado.socioestadodetalle FROM tbtipoactividad INNER JOIN tbfincatipo ON fincatipoid= '".$tipoactividadid."' INNER JOIN tbsocioestado ON socioestadoid = '".$tipofinca."'
+        $sql = "SELECT tbtipoactividad.tipoactividadnombre ,tbfincatipo.fincatiponombre,  tbsocioestado.socioestadodetalle,tbsocioestado.sociorecomendacionuno,tbsocioestado.sociorecomendaciondos FROM tbtipoactividad INNER JOIN tbfincatipo ON fincatipoid= '".$tipoactividadid."' INNER JOIN tbsocioestado ON socioestadoid = '".$tipofinca."'
             AND tbtipoactividad.tipoactividadid = '".$tipoactividadid."' ;";
 
         $result = $conn->query($sql);
@@ -86,7 +89,9 @@ class socioData {
 
                 $informacionsocio = ["tipoactividadnombre"=>$row["tipoactividadnombre"],
                 "fincatiponombre"=>$row["fincatiponombre"] ,
-                "socioestadodetalle"=>$row["socioestadodetalle"] ];
+                "socioestadodetalle"=>$row["socioestadodetalle"],
+                "sociorecomendacionuno"=>$row["sociorecomendacionuno"],
+                "sociorecomendaciondos"=>$row["sociorecomendaciondos"]];
             }
         }else{
             echo "0 results";
@@ -119,7 +124,7 @@ class socioData {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         $sql = "
         SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,
-        tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,
+        tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos, tbtipoactividad.tipoactividadnombre,
         tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle ,
         tbsociodireccion.socioprovincia, tbsociodireccion.sociocanton, tbsociodireccion.sociodistrito,
         tbsociodireccion.sociopueblo
@@ -137,7 +142,7 @@ class socioData {
             while($row = $result->fetch_assoc()) {
 
                 $socio = ["idsocio"=>$row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
-                    ,"sociocorreo"=>$row["sociocorreo"],"tipoactividadnombre"=>$row["tipoactividadnombre"] , "fincatiponombre"=>$row["fincatiponombre"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"],"socioprovincia"=>$row["socioprovincia"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
+                    ,"sociocorreo"=>$row["sociocorreo"],"sociorecomendacionuno"=>$row["sociorecomendacionuno"],"sociorecomendaciondos"=>$row["sociorecomendaciondos"],"tipoactividadnombre"=>$row["tipoactividadnombre"] , "fincatiponombre"=>$row["fincatiponombre"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"],"socioprovincia"=>$row["socioprovincia"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
             }
         }else{
             echo "0 results";
@@ -154,7 +159,7 @@ class socioData {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         $sql = " SELECT tbsocio.socioid,tbsocio.sociocedula,tbsocio.socionombre,
 tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido ,
-tbsocio.sociotelefono, tbsocio.sociocorreo,tbsocio.tipoactividadid,
+tbsocio.sociotelefono, tbsocio.sociocorreo,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos,tbsocio.tipoactividadid,
 tbsocio.fincatipoid, tbsocio.sociofechaingreso,tbsocio.estadosociodetalle,
 tbsociodireccion.socioprovincia  ,  tbsociodireccion.sociocanton
 ,  tbsociodireccion.sociodistrito ,  tbsociodireccion.sociopueblo
@@ -174,6 +179,8 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
                     "sociosegundoapellido"=>$row["sociosegundoapellido"],
                     "sociotelefono"=>$row["sociotelefono"],
                     "sociocorreo"=>$row["sociocorreo"],
+                    "sociorecomendacionuno"=>$row["sociorecomendacionuno"],
+                    "sociorecomendaciondos"=>$row["sociorecomendaciondos"],
                     "tipoactividadid"=>$row["tipoactividadid"] ,
                     "fincatipoid"=>$row["fincatipoid"] ,
                     "sociofechaingreso"=>$row["sociofechaingreso"] ,
@@ -321,7 +328,8 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
 
-        $sql = "UPDATE tbsocio SET sociocedula= '".$socio->getCedula()."',socionombre='".$socio->getNombre()."'  ,socioprimerapellido= '".$socio->getPrimerApellido()."' ,sociosegundoapellido='".$socio->getSegundoApellido()."',sociotelefono='".$socio->getTelMovil()."',sociocorreo='".$socio->getCorreo()."',tipoactividadid='".$socio->getTipoActividadId()."',fincatipoid  ='".$socio->getFincaTipo()."', sociofechaingreso= '".$socio->getFechaIngreso()."',estadosociodetalle='".$socio->getEstadoSocioDetalle()."'  WHERE socioid= '".$socio->getSocioId()."';";
+        $sql = "UPDATE tbsocio SET sociocedula= '".$socio->getCedula()."',socionombre='".$socio->getNombre()."'  ,socioprimerapellido= '".$socio->getPrimerApellido()."' ,sociosegundoapellido='".$socio->getSegundoApellido()."',sociotelefono='".$socio->getTelMovil()."',sociocorreo='".$socio->getCorreo()."',tipoactividadid='".$socio->getTipoActividadId()."',fincatipoid  ='".$socio->getFincaTipo()."', sociofechaingreso= '".$socio->getFechaIngreso()."',estadosociodetalle='".$socio->getEstadoSocioDetalle()."',sociorecomendacionuno='".$socio->getRecomendacion1()."',
+        sociorecomendaciondos='".$socio->getRecomendacion2()."'  WHERE socioid= '".$socio->getSocioId()."';";
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {
