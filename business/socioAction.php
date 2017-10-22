@@ -53,7 +53,6 @@
 
 
 		if (strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
-			echo "denrr--------";
 
 			require 'socioBusiness.php';
 			require 'fincaBusiness.php';
@@ -66,10 +65,7 @@
 			//require_once '../domain/finca.php';
 			$socioBusiness = new socioBusiness();
 
-
-			echo "denrr--------";
 			if($socioBusiness->verificarCedula($cedula)==0){
-				echo "denrr--------ss";
 
 			//	echo "Fecha cvo: ".$_POST['fechaCVO']."</br>";
 
@@ -124,6 +120,7 @@
 
 				////////////////////////////////SUBIENDO IMAGEN
 
+			//	require './'
 
 
 
@@ -137,30 +134,45 @@
 				$resultado5=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
 
 
+				if($resultado0==1){
+					echo "SOCIO INSERTADO";
+					require './aprovacionBusiness.php';
+					require '../domain/actaAprobacion.php';
+					//$socioID,$secion,$fecha,$condicion,$motivo){
+					$acta = new actaAprobacion($idSocio,'','','progreso','');
+					$actaBusiness = new AprovacionBusiness();
+					$resultado6  = $actaBusiness->insertarActa($acta);
+
+
+					if($resultado6 == 1){
+						echo "insertado aprovacion";
+					}else{
+						echo "string->".$resultado6;
+					}
+					
+				}
+
+
 				if ($resultado0 ==1 && $resultado1 ==1 && $resultado2 == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1) {
-
-					echo "INSERTED success";
-
+					//header("location: ../view/socioView.php?success=insertedSocio");
 				}else{
-
-
 					if($resultado0!=1){
-						echo "Error inserrtar Socio";
+						header("location: ../view/socioView.php?error=insertedSocio");
 					}else{
 						if($resultado1!=1){
-							echo "Error inserrtar finca";
+							header("location: ../view/socioView.php?error=insertedFinca");
 						}else{
 							if($resultado2!=1){
-								echo "Error inserrtar Socio direccion";
+								header("location: ../view/socioView.php?error=insertedSocioDireccion");
 							}else{
 								if($resultado3!=1){
-									echo "Error inserrtar finca direccion";
+									header("location: ../view/socioView.php?error=insertedFincaDireccion");
 								}else{
 									if ($resultado4!=1) {
-										echo "Error inserrtar Socio hato";
+										header("location: ../view/socioView.php?error=insertedHato");
 									}else{
 										if($resultado5!=1){
-											echo "Error inserrtar hato actividad";
+											header("location: ../view/socioView.php?error=insertedHatoActividad");
 										}
 									}
 								}
@@ -168,7 +180,6 @@
 						}
 					}
 				}
-				//Cierre del id de verifiacion
 			}
 	}
 }
