@@ -84,7 +84,7 @@
         echo '<td> '.$current->getResponsableId().'</td>';
         echo '<td> '.$current->getMonto() .' </td>';
         echo '<td> '.$current->getFechaActualizacion().' </td>';
-        echo "<td> <button type='button' id='editar~anualidad' value='".$current->getIdMontoAnualidad()."'>Editar</button></td>";
+        echo "<td> <button type='button' id='editar~anualidad' value='editar~".$current->getIdMontoAnualidad()."'>Editar</button></td>";
         echo '</tr>';
     }
     echo '</table>';
@@ -107,7 +107,7 @@
           echo '<td> '.$current->getNombre().'</td>';
           echo '<td> '.$current->getPrimerApellido() .' </td>';
           echo '<td> '.$current->getSegundoApellido().' </td>';
-          echo "<td> <button type='button' id='seleccion_socio' value='".$current->getCedula()."'>Seleccionar Socio</button></td>";
+          echo "<td> <button type='button' id='seleccion_socio' value='seleccionar~".$current->getCedula()."'>Seleccionar Socio</button></td>";
           echo '</tr>';
       }
       echo '<tr><td colspan = "7" > Colaboradores</td></tr>';
@@ -121,7 +121,7 @@
           echo '<td> '.$current->getNombreColaborador().'</td>';
           echo '<td> '.$current->getPrimerApellidoColaborador() .' </td>';
           echo '<td> '.$current->getSegundoApellidoColaborador().' </td>';
-          echo "<td> <button type='button' id='seleccion_colaborador' value='".$current->getCedulaColaborador()."'>Seleccionar Colaborador</button></td>";
+          echo "<td> <button type='button' id='seleccionar~' value='seleccionar~".$current->getCedulaColaborador()."'>Seleccionar Colaborador</button></td>";
           echo '</tr>';
       }
       echo '</table>';
