@@ -39,24 +39,25 @@
 
 
 		$tipoactividad = $_POST['tipoactividad'];
-		$tipofinca =  $_POST['tipofinca'];
 		$fechaingreso = $_POST['fecha'];
-
 		$sociodetalle = $_POST['socioestado'];
 
-		$recomendacion1 = $_POST['$recomendacion1'];
-		$recomendacion2 = $_POST['$recomendacion2'];
+		$recomendacion1 = $_POST['recomendacion1'];
+		$recomendacion2 = $_POST['recomendacion2'];
+
+
+		$dateIngreso = new DateTime($fechaingreso);
 
 
 
 
-		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($tipofinca) &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {
+
+		if (strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {
 
 			require 'socioBusiness.php';
 			require 'fincaBusiness.php';
 			require 'cvoBusiness.php';
-			require 'examenBruselasBusiness.php';
-			require 'examenTuberculosisBusiness.php';
+
 
 			require_once '../domain/socioDireccion.php';
 			require_once '../domain/fincaDireccion.php';
@@ -69,6 +70,8 @@
 			//require_once '../domain/finca.php';
 			$socioBusiness = new socioBusiness();
 
+
+
 			if($socioBusiness->verificarCedula($cedula)==0){
 
 			//	echo "Fecha cvo: ".$_POST['fechaCVO']."</br>";
@@ -78,7 +81,7 @@
 				echo $date->format('Y-m-d');
 
 
-				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
+				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$dateIngreso,
 					$tipoactividad, $tipofinca , $sociodetalle,$recomendacion1,$recomendacion2);
 
 				$resultado0 = $socioBusiness->insertarTBSocio($socio);

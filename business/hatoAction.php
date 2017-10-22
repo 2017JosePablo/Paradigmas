@@ -1,22 +1,22 @@
 <?php
-	
+
 
 	if(isset($_POST['idSocio']) == true && empty($_POST['idSocio'])== false){
 
  		require '../data/hatoData.php';
- 
+
         $hatoBusiness = new hatoData();
 
- 		require 'hatoBusiness.php';  
+ 		require 'hatoBusiness.php';
 
         $hatoBusiness = new hatoBusiness();
         $result=$hatoBusiness->obtenerSocioHato($_POST['idSocio']);
         echo $result;
 
 	}else if(isset($_POST['idSocioModificar']) == true && empty($_POST['idSocioModificar'])== false){
- 	
+
  		require './hatoBusiness.php';
-      
+
 
         $hatoBusiness = new hatoBusiness();
         $result=$hatoBusiness->obtenerSocioHatoModificar($_POST['idSocioModificar']);
@@ -26,7 +26,7 @@
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
 		$socioid=$_POST['socioId'];
-		
+
 		//$socioid = $socioBusiness->obtenerUnSoloTBSocio($cedula);
 
 		////  Quantity Animals
@@ -48,14 +48,14 @@
 
 			/// consultA PARA sabeer si el valor digitado es valido
 				if (is_numeric($ternero) &&  $ternero >  0 || is_numeric($ternera) && $ternera > 0 ||
-					is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 || 
+					is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 ||
 					is_numeric($novillaprenada) && $novillaprenada > 0 || is_numeric($torosServicio)&& $torosEngorde > 0 || is_numeric($vacasCria)&& $vacasCria > 0 || is_numeric($torosServicio)&& $torosServicio > 0  || is_numeric($vacasEngorde) && $vacasEngorde > 0 ) {
 
 					require './hatoBusiness.php';
-				
+
 					$hato = new Hato($socioid,$razas,$ternero ,$ternera,$novillo,$novilla,$novillaprenada,$torosServicio,$torosEngorde,$vacasCria,$vacasEngorde);
-				
-					$hatoBusiness = new hatoBusiness();		
+
+					$hatoBusiness = new hatoBusiness();
 
 					$resultado2 = $hatoBusiness->insertarTBHato($hato);
 					if ($resultado2 == 1) {
@@ -63,28 +63,32 @@
 						$hatoActividadBusiness = new hatoActividadBusiness();
 						$resultado2=$hatoActividadBusiness->insertarTBHatoActividad($socioid,$_POST['tipoactividad']);
 						if ($resultado2 == 1) {
-							header("location: ../index.php?success=insertedHato");	
+							header("location: ../index.php?success=insertedHato");
 						}else{
-							header("location: ../view/censoView.php?error=error");			
+							header("location: ../view/censoView.php?error=error");
 						}
-					
+
 					}else{
-							header("location: ../view/censoView.php?error=error");			
+							header("location: ../view/censoView.php?error=error");
 					}
 
 				}else{
-					header("location: ../view/censoView.php?error=numberFormat");	
+					header("location: ../view/censoView.php?error=numberFormat");
 				}
-				
+
 			}else{
-				header("location: ../view/censoView.php?error=emptyField");	
+				header("location: ../view/censoView.php?error=emptyField");
 			}
 
-		
+
 	}else	if (isset($_POST['registrarhato']) || isset($_POST['hatoMod'])) {
 		require 'socioBusiness.php';
-		$socioBusiness = new socioData();
+
+		require 'examenBruselasBusiness.php';
+		require 'examenTuberculosisBusiness.php';
 		
+		$socioBusiness = new socioData();
+
 		$socioid=$_POST['socioId'];
 
 		////  Quantity Animals
@@ -107,7 +111,7 @@
 
 			/// consultA PARA sabeer si el valor digitado es valido
 				if (is_numeric($ternero) &&  $ternero >  0 || is_numeric($ternera) && $ternera > 0 ||
-					is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 || 
+					is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 ||
 					is_numeric($novillaprenada) && $novillaprenada > 0 || is_numeric($torosServicio)&& $torosEngorde > 0 || is_numeric($vacasCria)&& $vacasCria > 0 || is_numeric($torosServicio)&& $torosServicio > 0  || is_numeric($vacasEngorde) && $vacasEngorde > 0 ) {
 
 
@@ -118,15 +122,15 @@
 
 					require_once '../domain/examenBruselas.php';
 					require_once '../domain/examenTuberculosis.php';
-				
-					
+
+
 					$hato = new Hato($socioid,$razas,$ternero ,$ternera,$novillo,$novilla,$novillaprenada,$torosServicio,$torosEngorde,$vacasCria,$vacasEngorde);
 
 					//BRUCELAS
 					$examenvigente= $_POST['radioBrusela'];
 					$date = new DateTime($_POST['fechaBrusela']);
 					$examenfechavencimiento= $date->format('Y-m-d');
-					$examenBruselasBusiness = new examenBruselasBusiness();				
+					$examenBruselasBusiness = new examenBruselasBusiness();
 					$examenBrusela = new examenBruselas('',$examenvigente,$examenfechavencimiento,$socioid);
 					$resultado2 =$examenBruselasBusiness->insertarExamen($examenBrusela);
 
@@ -135,39 +139,39 @@
 					$examenvigente= $_POST['radioTuberculosis'];
 					$date = new DateTime($_POST['fechaTuberculosis']);
 					$examenfechavencimiento= $date->format('Y-m-d');
-					$examenTuberculosisBusiness = new examenTuberculosisBusiness();				
+					$examenTuberculosisBusiness = new examenTuberculosisBusiness();
 					$examenTuberculosis = new examenTuberculosis('',$examenvigente,$examenfechavencimiento,$socioid);
 					$resultado3 = $examenTuberculosisBusiness->insertarExamen($examenTuberculosis);
 
 
-					$hatoBusiness = new hatoBusiness();		
+					$hatoBusiness = new hatoBusiness();
 
 					$resultado = $hatoBusiness->actualizarTBHato($hato);
-				
+
 					if ($resultado == 1 && $resultado2 == 1 && $resultado3 == 1) {
-						header("location: ../index.php?success=updateHato");	
+						header("location: ../index.php?success=updateHato");
 					}else{
-						
+
 						if($resultado!=1){
 
-							header("location: ../view/hatoView.php?error=errorInsertHato");	
+							header("location: ../view/hatoView.php?error=errorInsertHato");
 						}else{
 							if ($resultado2!=1) {
 
-								header("location: ../view/hatoView.php?error=errorInsertBrucela");	
+								header("location: ../view/hatoView.php?error=errorInsertBrucela");
 							}else{
 								if ($resultado3!=1) {
-									header("location: ../view/hatoView.php?error=errorInsertTuberculina");		
+									header("location: ../view/hatoView.php?error=errorInsertTuberculina");
 								}
 							}
 						}
 					}
 
 				}else{
-					header("location: ../view/hatoView.php?error=numberFormat");	
+					header("location: ../view/hatoView.php?error=numberFormat");
 				}
 			}else{
-				header("location: ../view/hatoView.php?error=emptyField");	
+				header("location: ../view/hatoView.php?error=emptyField");
 			}
 
 		}

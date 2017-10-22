@@ -16,6 +16,9 @@ class AnualidadBusiness{
 	function actualizarEstado($fecha){
 		return $this->anualidad->actualizarEstado($fecha);
 	}
+	function obtenerTodosTBActividad(){
+		return $this->anualidad->obtenerTodosTBActividad();
+	}
 }
 
 ?>
