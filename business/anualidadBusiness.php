@@ -4,7 +4,7 @@
 class AnualidadBusiness{
 	private $anualidad;
 
-	function __construct(){
+	function AnualidadBusiness(){
 		$this->anualidad = new anualidadData();
 	}
 	function insertarAnualidad($anualidad){
