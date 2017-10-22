@@ -2,6 +2,7 @@
 
 //include 'data.php';
 require_once 'data.php';
+include '../domain/socio.php';
 
 
 class pagoAnualidadData extends Data{
@@ -22,12 +23,13 @@ class pagoAnualidadData extends Data{
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbpagoanualidad (socioid,pagoanualidadanterior,pagoanualidadactual,pagoanualidadproximo)
+        $sql = "INSERT INTO tbpagoanualidad (socioid,pagoanualidadanterior,pagoanualidadactual,pagoanualidadproximo,pagoanualidadidestado)
         VALUES ('".
                 $pagoanualidad->getIdSocio()."','".
                 $pagoanualidad->getFechaVencimientoAnterior()."','".
                 $pagoanualidad->getFechaPago()."','".
-                $pagoanualidad->getFechaVencimientoProximo(). "')";
+                $pagoanualidad->getFechaVencimientoProximo()."','".
+                $pagoanualidad->getEstado(). "')";
 
         $result = $conn->query($sql);
 
@@ -83,6 +85,70 @@ class pagoAnualidadData extends Data{
 
     }
 
+
+    public function sacarMorosos(){
+        $socio = array();
+         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+         $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe';"
+
+         $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+
+
+                array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                    ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["socioestadodetalle"] ));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        
+        return $socio;
+
+    }
+
+
+    public function sacarMorososEnFechas($fecha1,$fecha2){
+            $socio = array();
+             $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+             $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle  FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe' AND tbpagoanualidad.pagoanualidadproximo>= '".$fecha1."' AND tbpagoanualidad.pagoanualidadproximo<= '".$fecha2."'";
+
+             $result = $conn->query($sql);
+            if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+
+
+                    array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                        ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["socioestadodetalle"] ));
+                }
+            }else{
+                echo "0 results";
+            }
+            $conn->close();
+            
+            return $socio;
+
+        }
+
+
+
+        public function calcularMorosos($fecha){
+             $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+             $sql="SELECT * FROM tbpagoanualidad WHERE tbpagoanualidad.pagoanualidadproximo<'".$fecha."' AND tbpagoanualidad.pagoanualidadidestado !='debe'";
+              $result = $conn->query($sql);
+
+              if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $sql = "UPDATE tbpagoanualidad  SET   pagoanualidadidestado = 'debe'   WHERE socioid = '".$row["socioid"]."' ; ";  
+
+                }
+            }else{
+                echo "0 results";
+            }
+            $conn->close();
+
+        }
 
 
 }
