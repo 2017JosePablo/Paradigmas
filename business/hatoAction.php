@@ -127,7 +127,7 @@
 					$date = new DateTime($_POST['fechaBrusela']);
 					$examenfechavencimiento= $date->format('Y-m-d');
 					$examenBruselasBusiness = new examenBruselasBusiness();				
-					$examenBrusela = new examenBruselas('',$examenvigente,$examenfechavencimiento,$idSocio);
+					$examenBrusela = new examenBruselas('',$examenvigente,$examenfechavencimiento,$socioid);
 					$resultado2 =$examenBruselasBusiness->insertarExamen($examenBrusela);
 
 
@@ -136,7 +136,7 @@
 					$date = new DateTime($_POST['fechaTuberculosis']);
 					$examenfechavencimiento= $date->format('Y-m-d');
 					$examenTuberculosisBusiness = new examenTuberculosisBusiness();				
-					$examenTuberculosis = new examenTuberculosis('',$examenvigente,$examenfechavencimiento,$idSocio);
+					$examenTuberculosis = new examenTuberculosis('',$examenvigente,$examenfechavencimiento,$socioid);
 					$resultado3 = $examenTuberculosisBusiness->insertarExamen($examenTuberculosis);
 
 
