@@ -498,20 +498,20 @@
 			        include_once '../business/socioBusiness.php';
 			        $socioBusiness = new socioBusiness();
 			        $socios = $socioBusiness->obtenerTodosTBSocio();
-							echo '<select id ="recomendacion1">';
+							echo '<select name ="recomendacion1">';
 			        foreach ($socios as $current) {
 			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
 			        }
 			        echo '</select>';
 			        ?>
-					
+
 							<br>
 							<p>Recomendacion 2</p>
 							<?php
 			        include_once '../business/socioBusiness.php';
 			        $socioBusiness = new socioBusiness();
 			        $socios = $socioBusiness->obtenerTodosTBSocio();
-							echo '<select id = "recomendacion2">';
+							echo '<select name = "recomendacion2">';
 			        foreach ($socios as $current) {
 			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
 			        }

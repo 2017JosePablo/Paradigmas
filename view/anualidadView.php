@@ -1,17 +1,7 @@
 <?php
-//	include_once dirname(__FILE__).'/business/anualidadBusiness.php';
-//	$path = "/business/anualidadBusiness.php";
-//	echo "Path : $path";
-//	require "$path";
-
-	include_once '../business/anualidadBusiness.php';
+  include_once '../business/anualidadBusiness.php';
 	$anualidad  = new AnualidadBusiness();
 	echo $anualidad->actualizarEstado("2017/10/22");
-
-	//echo "<script>alert('esperando metodo');</script>";
-
-
-
  ?>
 
 <!DOCTYPE html>
@@ -82,10 +72,10 @@
   </head>
   <body>
     <?php
-    require '../business/socioBusiness.php';
+    include '../business/socioBusiness.php';
     $socioBusiness = new socioBusiness();
     $socios = $socioBusiness->obtenerTodosTBSocio();
-    echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Anualidad</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+    echo '<table border ="1"><tr><td align = "center" colspan = "7">Listado de Anualidades</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
     foreach ($socios as $current) {
         echo '<tr>';
         echo '<td> '.$current->getNombre().'</td>';
@@ -97,7 +87,6 @@
     echo '<tr><td colspan = "7" > Colaboradores</td></tr>';
 
     ?>
-
     <br><br>
 
     <button type="button" name="agregarAnualidad" onclick="agregarNuevaAnualidad()">Agregar Nueva Anualidad</button>
@@ -106,7 +95,6 @@
 
       <form class="" action="../business/anualidadAction.php" method="post" onsubmit="return verificarSocio()">
       <?php
-      require '../business/socioBusiness.php';
       $socioBusiness = new socioBusiness();
       $socios = $socioBusiness->obtenerTodosTBSocio();
       echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Anualidad</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
