@@ -112,12 +112,13 @@
 
             }
             function mostrarFormularioSocio(){
+      					document.getElementById("cajaFormulario").style.display='block';
 
                 document.getElementById('cajaVerSocio').style.display ='none';
 
                 document.getElementById('editarUbic').style.display='block';
 
-                document.getElementById("cajaFormulario").style.display='block';
+
                 document.getElementById("btnModificar").style.display='none';
                 document.getElementById("btnAgregar").style.display='block';
                 document.getElementById("frm").reset();
@@ -125,6 +126,7 @@
                 $('#1-actividad').attr('checked',true);
                 $('#1-tipo').attr('checked',true);
                 $('#1-estado').attr('checked',true);
+
             }
 
             function mostrarUbicacion(){
@@ -213,13 +215,6 @@
 
 ?>
 
-
-
-
-
-<div id="mostrarInformacion" style="background: red">
-
-</div>
 
 <input type="hidden" id="provincia" name="socioprovincia" value="">
 <input type="hidden" id="canton" name="sociocanton" value="">
@@ -456,12 +451,7 @@
              <br><br>
              Estado del Socio:
              <?php
-
-
-                require_once '../business/socioBusiness.php';
-
-                $temp = new socioBusiness();
-                $estados = $temp->obtenerSocioEstado();
+                $estados = $socioBusiness->obtenerSocioEstado();
 
                     echo '<table>';
                         foreach ($estados as $curren) {
@@ -495,9 +485,6 @@
             <br>
 							<p>Recomendacion 1</p>
 							<?php
-			        include_once '../business/socioBusiness.php';
-			        $socioBusiness = new socioBusiness();
-			        $socios = $socioBusiness->obtenerTodosTBSocio();
 							echo '<select name ="recomendacion1">';
 			        foreach ($socios as $current) {
 			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
@@ -508,9 +495,6 @@
 							<br>
 							<p>Recomendacion 2</p>
 							<?php
-			        include_once '../business/socioBusiness.php';
-			        $socioBusiness = new socioBusiness();
-			        $socios = $socioBusiness->obtenerTodosTBSocio();
 							echo '<select name = "recomendacion2">';
 			        foreach ($socios as $current) {
 			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
@@ -535,7 +519,9 @@
 
     </div>
 
-    <div id="cajaVerSocio" style='display:none;' >
+    <!--- <div id="cajaVerSocio" >-->
+		<div id="cajaVerSocio" style='display:none;' >
+
     <p>Datos personales:</p>
 
              <table>
