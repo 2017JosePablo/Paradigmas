@@ -72,5 +72,14 @@
   <body>
     <a href="page-help.html">help</a>
     <a href="jajajajajaja.html"> Otro link</a>
+
+    <?php
+
+    require'./data/pagoAnualidadData.php';
+    $pago= new pagoAnualidadData();
+    $result=$pago->calcularMorosos("2018-10-10");
+   
+
+    ?>
   </body>
 </html>
