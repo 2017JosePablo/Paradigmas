@@ -58,66 +58,84 @@
 
                 }
 
+            function agregarNuevaAnualidad() {
+                document.getElementById("agregarAnualidad").style="display:block;";
+            }
           </script>
 
   </head>
   <body>
-
-    <form class="" action="../business/anualidadAction.php" method="post" onsubmit="return verificarSocio()">
-
     <?php
     require '../business/socioBusiness.php';
     $socioBusiness = new socioBusiness();
     $socios = $socioBusiness->obtenerTodosTBSocio();
-
-
     echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Anualidad</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
-
     foreach ($socios as $current) {
-
         echo '<tr>';
         echo '<td> '.$current->getNombre().'</td>';
         echo '<td> '.$current->getPrimerApellido() .' </td>';
         echo '<td> '.$current->getSegundoApellido().' </td>';
         echo "<td> <button type='button' id='seleccion_socio' value='".$current->getCedula()."'>Seleccionar Socio</button></td>";
-
         echo '</tr>';
-
     }
-
     echo '<tr><td colspan = "7" > Colaboradores</td></tr>';
-    require_once '../business/juntaBusiness.php';
-    $colaboradorBusiness = new juntaBusiness();
-    $colaborador = $colaboradorBusiness->obtenerTodosTBColaborador();
-
-
-    foreach ($colaborador as $current) {
-        echo '<tr>';
-        echo '<td> '.$current->getNombreColaborador().'</td>';
-        echo '<td> '.$current->getPrimerApellidoColaborador() .' </td>';
-        echo '<td> '.$current->getSegundoApellidoColaborador().' </td>';
-        echo "<td> <button type='button' id='seleccion_colaborador' value='".$current->getCedulaColaborador()."'>Seleccionar Colaborador</button></td>";
-        echo '</tr>';
-    }
-    echo '</table>';
 
     ?>
 
-    <br><br>Cedula del Responsable<br>
-    <input type="text" id="cedulaResponsableAnualidad" name="cedulaResponsableAnualidad" placeholder="Seleccione un responsable" readonly>
-
-    <br><br>Fecha de creacion<br>
-    <input type="date" id="fechaAnualidad" name="fechaAnualidad">
-
-    <br><br>Monto a Cancelar<br>
-    <input type="text" id="montoAnualidad" name="montoAnualidad" onkeypress="return soloNumeros(event)" placeholder="0">
-
-
     <br><br>
-    <input type="submit" id="registrarAnualidad" name="registrarAnualidad" value="Guardar Datos">
 
-    </form>
+    <button type="button" name="agregarAnualidad" onclick="agregarNuevaAnualidad()">Agregar Nueva Anualidad</button>
 
+    <div class="" id = "agregarAnualidad" style="display:none">
+
+      <form class="" action="../business/anualidadAction.php" method="post" onsubmit="return verificarSocio()">
+      <?php
+      require '../business/socioBusiness.php';
+      $socioBusiness = new socioBusiness();
+      $socios = $socioBusiness->obtenerTodosTBSocio();
+      echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Anualidad</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+      foreach ($socios as $current) {
+          echo '<tr>';
+          echo '<td> '.$current->getNombre().'</td>';
+          echo '<td> '.$current->getPrimerApellido() .' </td>';
+          echo '<td> '.$current->getSegundoApellido().' </td>';
+          echo "<td> <button type='button' id='seleccion_socio' value='".$current->getCedula()."'>Seleccionar Socio</button></td>";
+          echo '</tr>';
+      }
+      echo '<tr><td colspan = "7" > Colaboradores</td></tr>';
+      require_once '../business/juntaBusiness.php';
+      $colaboradorBusiness = new juntaBusiness();
+      $colaborador = $colaboradorBusiness->obtenerTodosTBColaborador();
+
+
+      foreach ($colaborador as $current) {
+          echo '<tr>';
+          echo '<td> '.$current->getNombreColaborador().'</td>';
+          echo '<td> '.$current->getPrimerApellidoColaborador() .' </td>';
+          echo '<td> '.$current->getSegundoApellidoColaborador().' </td>';
+          echo "<td> <button type='button' id='seleccion_colaborador' value='".$current->getCedulaColaborador()."'>Seleccionar Colaborador</button></td>";
+          echo '</tr>';
+      }
+      echo '</table>';
+
+      ?>
+
+      <br><br>Cedula del Responsable<br>
+      <input type="text" id="cedulaResponsableAnualidad" name="cedulaResponsableAnualidad" placeholder="Seleccione un responsable" readonly>
+
+      <br><br>Fecha de creacion<br>
+      <input type="date" id="fechaAnualidad" name="fechaAnualidad">
+
+      <br><br>Monto a Cancelar<br>
+      <input type="text" id="montoAnualidad" name="montoAnualidad" onkeypress="return soloNumeros(event)" placeholder="0">
+
+
+      <br><br>
+      <input type="submit" id="registrarAnualidad" name="registrarAnualidad" value="Guardar Datos">
+
+      </form>
+
+    </div>
 
     <a href="../index.php">Regresar</a>
   </body>

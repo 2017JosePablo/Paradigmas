@@ -1,11 +1,11 @@
 <?php
 	include '../data/anualidadData.php';
-	
+
 class AnualidadBusiness{
 	private $anualidad;
 
 	function __construct(){
-		$this->anualidad = new anualidadData();	
+		$this->anualidad = new anualidadData();
 	}
 	function insertarAnualidad($anualidad){
 		return $this->anualidad->insertarAnualidad($anualidad);

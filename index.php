@@ -1,3 +1,13 @@
+<?php
+	include 'business/anualidadBusiness.php';
+	$anualidad  = new AnualidadBusiness();
+
+	echo $anualidad->actualizarEstado();
+	//echo "<script>alert('esperando metodo');</script>";
+
+
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
