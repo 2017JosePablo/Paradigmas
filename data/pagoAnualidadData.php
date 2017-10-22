@@ -137,10 +137,13 @@ class pagoAnualidadData extends Data{
              $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
              $sql="SELECT * FROM tbpagoanualidad WHERE tbpagoanualidad.pagoanualidadproximo<'".$fecha."' AND tbpagoanualidad.pagoanualidadidestado !='debe'";
               $result = $conn->query($sql);
-
+             
               if($result->num_rows > 0) {
+                echo "<br>";
                 while($row = $result->fetch_assoc()) {
+                      echo "siii---".$row["socioid"]."<br>";
                     $sql = "UPDATE tbpagoanualidad  SET   pagoanualidadidestado = 'debe'   WHERE socioid = '".$row["socioid"]."' ; ";  
+                    $conn->query($sql);
 
                 }
             }else{

@@ -53,7 +53,9 @@ class anualidadData extends Data{
         $conn->close();
         return $result;
     }
-		public function obtenerTodosTBAnualidad() {
+
+    
+	public function obtenerTodosTBAnualidad() {
         include '../domain/montoAnualidad.php';
         $anualidad = array();
 
