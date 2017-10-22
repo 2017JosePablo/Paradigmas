@@ -6,6 +6,7 @@ $(document).ready(function() {
             var cedula = result[0];
             if(result[1] == 'aprovar'){
               document.getElementById('cajaAprovacion').style='display:block';
+
               var temporal = "aprovado+"+cedula;
               var estadoUsuario = "estado+"+cedula;
               document.getElementById(temporal).style='color:#099503';

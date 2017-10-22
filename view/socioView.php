@@ -504,7 +504,7 @@
 			        }
 			        echo '</select>';
 			        ?>
-							<input type="text" name="recemendacionSocio1" id="recomendacionSocio1" value="">
+					
 							<br>
 							<p>Recomendacion 2</p>
 							<?php
@@ -517,7 +517,7 @@
 			        }
 			        echo '</select>';
 			        ?>
-							<input type="text" name="recemendacionSocio2" id="recomendacionSocio2" value="">
+
             <br><br>
 
             <div id="btnAgregar">
