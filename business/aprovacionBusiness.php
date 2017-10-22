@@ -1,6 +1,6 @@
 <?php
 
-include '../data/actaAprovacionData.php';
+include '../data/actaAprobacionData.php';
 
 class AprovacionBusiness{
   private $aprovacionData;

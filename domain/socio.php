@@ -39,13 +39,13 @@ class Socio{
 				$this->recomentacion1=$recomentacion1;
 	}
 	public function getRecomendacion1(){
-		return $this->$recomentacion1;
+		return $this->recomentacion1;
 	}
 	public function setRecomendacion2($recomentacion2){
 				$this->recomentacion2=$recomentacion2;
 	}
 	public function getRecomendacion2(){
-		return $this->$recomentacion2;
+		return $this->recomentacion2;
 	}
 
 	public function setSocioId($socioId){
