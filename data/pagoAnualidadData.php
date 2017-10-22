@@ -2,8 +2,6 @@
 
 //include 'data.php';
 require_once 'data.php';
-include '../domain/socio.php';
-
 
 class pagoAnualidadData extends Data{
 
@@ -87,9 +85,10 @@ class pagoAnualidadData extends Data{
 
 
     public function sacarMorosos(){
+        include '../domain/montoAnualidad.php';
         $socio = array();
          $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-         $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe';"
+         $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe';";
 
          $result = $conn->query($sql);
         if($result->num_rows > 0) {
@@ -110,6 +109,7 @@ class pagoAnualidadData extends Data{
 
 
     public function sacarMorososEnFechas($fecha1,$fecha2){
+        include '../domain/montoAnualidad.php';
             $socio = array();
              $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
              $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle  FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe' AND tbpagoanualidad.pagoanualidadproximo>= '".$fecha1."' AND tbpagoanualidad.pagoanualidadproximo<= '".$fecha2."'";
@@ -137,17 +137,20 @@ class pagoAnualidadData extends Data{
              $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
              $sql="SELECT * FROM tbpagoanualidad WHERE tbpagoanualidad.pagoanualidadproximo<'".$fecha."' AND tbpagoanualidad.pagoanualidadidestado !='debe'";
               $result = $conn->query($sql);
-
+             
               if($result->num_rows > 0) {
+                echo "<br>";
                 while($row = $result->fetch_assoc()) {
+                      echo "siii---".$row["socioid"]."<br>";
                     $sql = "UPDATE tbpagoanualidad  SET   pagoanualidadidestado = 'debe'   WHERE socioid = '".$row["socioid"]."' ; ";  
+                    $conn->query($sql);
 
                 }
             }else{
                 echo "0 results";
             }
             $conn->close();
-
+        return $result;
         }
 
 

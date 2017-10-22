@@ -1,5 +1,5 @@
 <?php
-  require '../business/anualidadBusiness.php';
+  include_once '../business/anualidadBusiness.php';
   $anualidad  = new AnualidadBusiness();
 	echo $anualidad->actualizarEstado("2017/10/22");
  ?>
