@@ -2,8 +2,6 @@
 
 require_once 'data.php';
 
-include '../domain/socio.php';
-
 class socioData {
 
 	public $data;
@@ -204,6 +202,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
 
 
       public function obtenerTodosTBSocio() {
+        include '../domain/socio.php';
         $socio = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
