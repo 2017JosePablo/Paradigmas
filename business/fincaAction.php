@@ -11,29 +11,29 @@
 
 	      $temp = new FincaData();
 
-	      echo  $temp->obtenerFinca($idsocio);	
-			
+	      echo  $temp->obtenerFinca($idsocio);
+
 	}
 
 	if(isset($_POST['cedulafinca']) == true && empty($_POST['cedulafinca'])== false){
 		require 'fincaBusiness.php';
 		$fincaBusiness = new fincaData();
 		$result = $fincaBusiness->obtenerDatosFincaVer($_POST['cedulafinca']);
-		echo $result; 
+		echo $result;
 	}
 
 	if(isset($_POST['fincamodificar']) == true && empty($_POST['fincamodificar'])== false){
 		require 'fincaBusiness.php';
 		$fincaBusiness = new fincaData();
 		$result = $fincaBusiness->obtenerDatosFincaModificar($_POST['fincamodificar']);
-		echo $result; 	
+		echo $result;
 	}
 
 	if(isset($_POST['verificarfinca']) == true && empty($_POST['verificarfinca'])== false){
 		require 'fincaBusiness.php';
 		$fincaBusiness = new fincaData();
 		$result = $fincaBusiness->verificarFinca($_POST['verificarfinca']);
-		echo $result; 	
+		echo $result;
 	}
 
 
@@ -51,7 +51,7 @@
 	$date = new DateTime($_POST['fechaCVO']);
 	//echo $date->format('Y-m-d');
 	$cvofechavigencia= $date->format('Y-m-d');
-	
+
 
 
 	$fincaid = $_POST['cedula'];
@@ -73,7 +73,7 @@
 			$fincaexacta =$_POST['editoOtros'];
 		}
 
-	
+
 	$tipoactividad =$_POST['tipoactividad'];
 	$fincatipo =$_POST['tipofinca'];
 	$cercas =$_POST['tiposCerca'];
@@ -114,10 +114,6 @@
 		$resultado4 = $cvoBusiness->insertarCvo($cvo);
 
 
-
-
-
-
 		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1 && $resultado4 == 1 ) {
 			header("location: ../index.php?success=updateFinca");
 		}else{
@@ -134,10 +130,10 @@
 						if($resultado4!=1){
 							header("location: ../view/fincaView.php?error=errorInsertCVO");
 						}
-					}	
+					}
 				}
 			}
-			
+
 		}
 
 	}else{
@@ -148,4 +144,3 @@
 }
 
 ?>
-

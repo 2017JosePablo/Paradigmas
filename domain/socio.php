@@ -11,10 +11,11 @@ class Socio{
 	private $fincatipoId;
 	private $fechaIngreso;
 	private $estadosociodetalle;
+	private $recomentacion1;
+	private $recomentacion2;
 
 
-
-	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle){
+	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle,$recomentacion1,$recomentacion2){
 
 
 		$this->socioId = $socioId;
@@ -23,6 +24,8 @@ class Socio{
 		$this->primerApellido =  $primerApellido;
 		$this->segundoApellido = $segundoApellido;
 		$this->telMovil = $telMovil;
+		$this->recomentacion1=$recomentacion1;
+		$this->recomentacion2=$recomentacion2;
 
 
 		$this->correo = $correo;
@@ -31,6 +34,20 @@ class Socio{
 		$this->fechaIngreso = $fechaIngreso;
 		$this->estadosociodetalle = $estadosociodetalle;
 	}
+
+	public function setRecomendacion1($recomentacion1){
+				$this->recomentacion1=$recomentacion1;
+	}
+	public function getRecomendacion1(){
+		return $this->$recomentacion1;
+	}
+	public function setRecomendacion2($recomentacion2){
+				$this->recomentacion2=$recomentacion2;
+	}
+	public function getRecomendacion2(){
+		return $this->$recomentacion2;
+	}
+
 	public function setSocioId($socioId){
 		$this->socioId = $socioId;
 	}
@@ -105,7 +122,7 @@ class Socio{
 
 	public function getCedula(){
 		return $this->cedula;
-	
+
 	}
 	public function setNombre($nombre){
 		$this->nombre = $nombre;
