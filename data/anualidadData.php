@@ -8,7 +8,7 @@ class anualidadData extends Data{
 
 	 private $data;
 
-    function anualidadData(){ 
+    function anualidadData(){
 
         $this->data = new Data();
     }
@@ -17,7 +17,7 @@ class anualidadData extends Data{
     public function insertarAnualidad($anualidad){
 
 
-  		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+  		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -36,7 +36,7 @@ class anualidadData extends Data{
     }
 
     public function actualizarPagoAnualidad($anualidad) {
-        
+
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
         if (!$conn) {
@@ -52,6 +52,24 @@ class anualidadData extends Data{
         }
         $conn->close();
         return $result;
+    }
+		public function obtenerTodosTBAAnualidad() {
+        $anualidad = array();
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $sql = "SELECT * FROM tbanualidad";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+
+                array_push($anualidad,new anualidad($row['anualidadid'],$row['responsableid'],$row['anualidadmonto'],$row['fechaactualizacion']));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+
+        return $anualidad;
     }
 
 

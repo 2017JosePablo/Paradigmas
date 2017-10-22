@@ -54,7 +54,11 @@
 				echo '<p style="color: green">El socio se ha insertado con exito</p>';
 			}else if($_GET['success'] == "updatedSocio"){
 				echo '<p style="color: green">El socio se ha modificado con exito</p>';
+			}else if($_GET['success'] == "insertedAnualidad"){
+				echo '<p style="color: green">La anualidad ha sido guardada con exito</p>';
 			}
+
+
 
 	}
  ?>
