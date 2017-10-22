@@ -73,7 +73,7 @@
   <body>
     <?php
 
-    $listaanualidad = $anualidad-> $socioBusiness->obtenerTodosTBAAnualidad();
+    $listaanualidad = $anualidad->obtenerTodosTBAAnualidad();
 
     echo '<table border ="1"><tr><td align = "center" colspan = "7">Listado de Anualidades</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
     foreach ($listaanualidad as $current) {
