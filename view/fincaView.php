@@ -332,35 +332,6 @@
 
                 </div>
 
-
-
-
-            <br> <br> <br>
-
-             <?php
-
-             include '../business/actividadBusiness.php';
-
-                $actividadBusiness = new actividadBusiness();
-                $actividades = $actividadBusiness->obtenerTodosTBActividad();
-                echo "Tipo Actividad";
-                echo "</br>";
-                 echo '<table>';
-                foreach ($actividades as $current) {
-                    echo '<tr>';
-                    if($current->getId()==1){
-                         echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad' checked='' value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
-                    }else{
-                          echo "<td> <input id ='".$current->getId()."-actividad' type='radio' name='tipoactividad'  value='".$current->getId()."'> ".$current->getNombreActividad()."<br> </td>";
-                    }
-                    echo '</tr>';
-                }
-
-              echo '</table>';
-
-            ?>
-
-
             <br><br>
             <p>Tipo de Finca</p>
                 <?php
