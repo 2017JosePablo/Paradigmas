@@ -1,8 +1,13 @@
 <?php
-	include 'business/anualidadBusiness.php';
-	$anualidad  = new AnualidadBusiness();
+//	include_once dirname(__FILE__).'/business/anualidadBusiness.php';
+//	$path = "/business/anualidadBusiness.php";
+//	echo "Path : $path";
+//	require "$path";
 
-	echo $anualidad->actualizarEstado("2017/10/22");
+	//include_once './business/anualidadBusiness.php';
+	//$anualidad  = new AnualidadBusiness();
+
+	//echo $anualidad->actualizarEstado("2017/10/22");
 
 	//echo "<script>alert('esperando metodo');</script>";
 
