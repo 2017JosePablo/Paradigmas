@@ -31,5 +31,6 @@
 			return $this->pagoAnualidad->sacarMorosos();
 		}
 
+
 	}
 ?>

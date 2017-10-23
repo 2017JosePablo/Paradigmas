@@ -5,7 +5,7 @@
     <title>Listado de Morosos</title>
   </head>
   <body>
-
+     <form class="" action="reportePagoView.php" method="post">
     <?php
 
         $date = new DateTime($_POST['fechaMenor']);
@@ -40,6 +40,10 @@
 
      ?>
 
+</form>
 
   </body>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../js/generarReporte.js"></script>
+
 </html>
