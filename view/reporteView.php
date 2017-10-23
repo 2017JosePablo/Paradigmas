@@ -1,8 +1,3 @@
-<?php
-// Start the session
-session_start();
-?>
-
 <!doctype HTML>
 <html>
 <head>
@@ -64,11 +59,12 @@ session_start();
     echo '</table>';
     ?>
 	</form>
+
 		<p>Calcular por medio de dos fechas</p>
-		<form class="" action="#" method="post" onsubmit="return validarFecha()">
+		<form class="" action="../business/registroAnualidadBusiness.php" method="post" onsubmit="return validarFecha()">
 			<label for="">Fecha Menor</label><br><br>
 			<input type="date" name="fechaMenor" id="fechaMenor"  value="" placeholder="01/01/1990">
-<br><br>
+			<br><br>
 			<label for="">Fecha Mayor</label><br>
 			<input type="date" name="fechaMayor" id="fechaMayor" value="" placeholder="01/01/2018">
 

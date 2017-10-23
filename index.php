@@ -61,7 +61,10 @@
 				echo '<p style="color: green">El socio se ha modificado con exito</p>';
 			}else if($_GET['success'] == "insertedAnualidad"){
 				echo '<p style="color: green">La anualidad ha sido guardada con exito</p>';
+			}else if($_GET['success'] == "insertedAprovation"){
+				echo '<p style="color: green">Se ha aprovado la Solicitud con exito</p>';
 			}
+
 
 
 
