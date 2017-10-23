@@ -8,15 +8,15 @@ class actaAprobacionData extends Data{
 	 private $data;
 
 
-    function actaAprobacionData(){ 
-        
+    function actaAprobacionData(){
+
         $this->data = new Data();
     }
 
 
      public function insertarActaAprobacionData($actaAprobacion){
 
-  		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+  		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -42,7 +42,7 @@ class actaAprobacionData extends Data{
     public function sociosEnProgreso(){
         include '../domain/socio.php';
          $socio = array();
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre()); 
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         $sql="SELECT * FROM tbsocio INNER JOIN tbactaaprobacion ON tbsocio.socioid=tbactaaprobacion.socioid AND tbactaaprobacion.actaaprobacioncondicion='progreso'";
 
             $result = $conn->query($sql);
@@ -57,14 +57,14 @@ class actaAprobacionData extends Data{
                 echo "0 results";
             }
             $conn->close();
-            
+
             return $socio;
 
-    } 
+    }
 
 
     public function actualizarActaAprobacionCondicion($sicioId,$condicion,$mottivo){
-         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre()); 
+         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
            if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
@@ -73,9 +73,9 @@ class actaAprobacionData extends Data{
         $sql = "UPDATE tbactaaprobacion SET   actaaprobacioncondicion = '".$condicion."', actaaprobacionmotivo = '".$motivo."'   WHERE socioid = '".$sicioId."' ; ";
         $result = $conn->query($sql);
         $conn->close();
-        return $result;        
+        return $result;
 
-    }        
+    }
 
 
 }

@@ -10,14 +10,14 @@ session_start();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de Socios</title>
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
-		if (datefield.type!="date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
-        <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
-    <script src="../js/jquery.maskedinput.min.js" type="text/javascript"></script>
 
+		    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="../js/jquery.maskedinput.min.js" type="text/javascript"></script>
 
 		<script type="text/javascript">
 			var datefield=document.createElement("input")
 			datefield.setAttribute("type", "date")
+			if (datefield.type!="date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
 				 document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
 				document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"><\/script>\n')
 				document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"><\/script>\n')
@@ -27,8 +27,8 @@ session_start();
 		 <script>
 				if(datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
 					 jQuery(function($){ //on document.ready
+						 $('#fechaMenor').datepicker();
 							 $('#fechaMayor').datepicker();
-							 $('#fechaCVOMenor').datepicker();
 					 })
 				}
 		 </script>
@@ -67,12 +67,12 @@ session_start();
 		<p>Calcular por medio de dos fechas</p>
 		<form class="" action="#" method="post" onsubmit="return validarFecha()">
 			<label for="">Fecha Menor</label><br><br>
-			<input type="date" name="fechaMenor" value="" placeholder="01/01/1990">
+			<input type="date" name="fechaMenor" id="fechaMenor"  value="" placeholder="01/01/1990">
 <br><br>
 			<label for="">Fecha Mayor</label><br>
-			<input type="date" name="fechaMayor" value="" placeholder="01/01/2018">
+			<input type="date" name="fechaMayor" id="fechaMayor" value="" placeholder="01/01/2018">
 
-			<input type="submit" name="anualidadFecha" value="Enviar Datos">
+			<input type="submit" name="anualidadFecha" id="anualidadFecha" value="Enviar Datos">
 		</form>
 
 

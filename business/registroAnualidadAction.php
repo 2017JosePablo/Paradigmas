@@ -16,14 +16,21 @@
 			$fechaProx = strtotime('+1 year',strtotime($fechaVencimientoAnterior));
 
 			$fechaProx = date('Y-m-d',$fechaProx);
-			
+
 			require_once '../domain/anualidad.php';
 
 			$registroAnualidad = new RegistroAnualidadBusiness();
 
-			$anualidad = new Anualidad('',$socioId,$fechaVencimientoAnterior,$fechaPago,$fechaProx);
+			$anualidad = new Anualidad('',$socioId,$fechaVencimientoAnterior,$fechaPago,$fechaProx,'pago');
 
 			$resultado =  $registroAnualidad ->insertarPagoAnualidad($anualidad);
+
+//			$actividadBusiness = new AnualidadBusiness();
+
+			//$idMontoAnualidad,$montoAnualidad,$idResponsable,$fechaCreacion
+
+			//$anualidad = new MontoAnualidad('',$monto,$cedula,$fecha);
+			//$result = $actividadBusiness->insertarAnualidad($anualidad);
 
 			if($resultado == 1){
 				header("location: ../index.php?success=insertedPago");
@@ -47,12 +54,12 @@
 			$fechaProx = strtotime('+1 year',strtotime($fechaPago));
 
 			$fechaProx = date('Y-m-d',$fechaProx);
-			
+
 			require_once '../domain/anualidad.php';
 
 			$registroAnualidad = new RegistroAnualidadBusiness();
 
-			$anualidad = new Anualidad('',$socioId,$fechaPago,$fechaPago,$fechaProx);
+			$anualidad = new Anualidad('',$socioId,$fechaPago,$fechaPago,$fechaProx,'pago');
 
 			$resultado =  $registroAnualidad ->insertarPagoAnualidad($anualidad);
 

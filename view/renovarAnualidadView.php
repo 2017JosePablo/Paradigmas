@@ -61,7 +61,7 @@
           <br>
           <br>
        <input name="renovarAnualidad" value="Guardar Datos" type="submit">
-       <a href="renovarAnualdadView.php"><input type="button" value="Cancelar" ></a>
+       <a href="renovarAnualidadView.php"><input type="button" value="Cancelar" ></a>
     </form>
 
     <a href="../index.php">Regresar</a>
