@@ -139,9 +139,7 @@ class pagoAnualidadData extends Data{
               $result = $conn->query($sql);
              
               if($result->num_rows > 0) {
-                echo "<br>";
                 while($row = $result->fetch_assoc()) {
-                      echo "siii---".$row["socioid"]."<br>";
                     $sql = "UPDATE tbpagoanualidad  SET   pagoanualidadidestado = 'debe'   WHERE socioid = '".$row["socioid"]."' ; ";  
                     $conn->query($sql);
 
@@ -150,7 +148,6 @@ class pagoAnualidadData extends Data{
                 echo "0 results";
             }
             $conn->close();
-        return $result;
         }
 
 
