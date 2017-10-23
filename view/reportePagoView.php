@@ -42,13 +42,13 @@
         <td>Estado</td>
          <td>Fecha Ingreso</td>
          <td>Actividad</td>
-         <td>Tipo de Finca</td>
+
        </tr>
     <tr>
       <td><?php echo $socios["socioestadodetalle"]; ?></td>
        <td><?php echo $socios["sociofechaingreso"]; ?></td>
        <td><?php echo $socios["tipoactividadnombre"]; ?></td>
-        <td><?php echo $socios["fincatiponombre"]; ?></td>
+        
 
      </tr>
  </table>

@@ -41,14 +41,21 @@
 
   </head>
     <body>
-
+			<h1>Listado de  socios morosos</h1>
+			<?php
+				if(isset($_GET['error']) && $_GET['error']== "notFound"){
+					echo '<p style="color: blue">No se han encontrado morosos entre las dos fechas</p>';
+				}
+ 			?>
 			<form class="" action="reportePagoView.php" method="post">
     <?php
-    include '../business/socioBusiness.php';
-    $socioBusiness = new socioBusiness();
-    $socios = $socioBusiness->obtenerTodosTBSocio();
-    echo '<table border ="1"><tr><td align = "center" colspan = "4">Reportes de pagos</td></tr><tr><td align = "left" colspan = "4">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td >Reportes</td> </tr>';
-    foreach ($socios as $current) {
+      include_once '../business/registroAnualidadBusiness.php';
+
+      $registroAnualidadBusiness = new RegistroAnualidadBusiness();
+      $listaMorosos = $registroAnualidadBusiness->sacarMorosos();
+
+    echo '<table border ="1"><tr><td align = "left" colspan = "4">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td >Reportes</td> </tr>';
+    foreach ($listaMorosos as $current) {
         echo '<tr>';
         echo '<td> '.$current->getNombre().'</td>';
         echo '<td> '.$current->getPrimerApellido() .' </td>';
@@ -61,7 +68,7 @@
 	</form>
 
 		<p>Calcular por medio de dos fechas</p>
-		<form class="" action="../business/registroAnualidadBusiness.php" method="post" onsubmit="return validarFecha()">
+		<form class="" action="verMorososView.php" method="post" onsubmit="return validarFecha()">
 			<label for="">Fecha Menor</label><br><br>
 			<input type="date" name="fechaMenor" id="fechaMenor"  value="" placeholder="01/01/1990">
 			<br><br>
