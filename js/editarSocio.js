@@ -7,8 +7,6 @@ $(document).ready(function() {
   });
 });
 
-
-
 $(document).ready(function() {
     $('button').click(function() {
 
@@ -70,13 +68,12 @@ $(document).ready(function() {
             var fecha = array['sociofechaingreso'].split('-');
             var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
             document.getElementById('fecha').value = fechaSalida;
-
-
-
-
         });
 
         }else if(result[1] == 'Ver'){
+
+
+
             var tipoactividadid;
             var fincatipoid;
             var tipoEstado;
@@ -89,7 +86,7 @@ $(document).ready(function() {
 
 
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
-
+      
             var array = JSON.parse(data);
 
 

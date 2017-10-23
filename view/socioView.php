@@ -220,17 +220,11 @@
 <input type="hidden" id="canton" name="sociocanton" value="">
 <input type="hidden" id="distrito" name="sociodistrito" value="">
 
-
-
-
-
     <?php
-
     include '../business/socioBusiness.php';
 
     $socioBusiness = new socioBusiness();
     $socios = $socioBusiness->obtenerTodosTBSocio();
-
 
     echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Socios</td></tr><tr><td align = "left" colspan = "7">Informacion del socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
@@ -240,18 +234,13 @@
         echo '<td> '.$current->getPrimerApellido() .' </td>';
         echo '<td> '.$current->getSegundoApellido().' </td>';
 
-
-        //echo '<td> <a href="../business/socioAction.php?ideliminar='.$current->getCedula().'"> Eliminar</a> </td>';
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."~Ver'>Ver</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."~Mod'>Modificar</button></td>";
-        echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."~Desac'>Desactivar</button></td>";
-        //echo '<td> <a href=""> Eliminar</a> </td>';
-        //echo '<td> <a href=""> Modificar</a> </td>';
+        echo "<td> <button type='button' id='modificar-submit' value='".$current->getCedula()."~Ver'>Ver</button></td>";
+        echo "<td> <button type='button' id='modificar-submit' value='".$current->getCedula()."~Mod'>Modificar</button></td>";
+        echo "<td> <button type='button' id='modificar-submit' value='".$current->getCedula()."~Desac'>Desactivar</button></td>";
         echo '</tr>';
     }
     echo '</table>';
 
-             //name='.$current->getIdTBJunta().'
     ?>
 
 
@@ -417,13 +406,6 @@
                     </table>
                 </div>
 
-
-
-
-
-
-
-
             <br>
             <p>Tipo de Actividad</p>
 
@@ -467,6 +449,7 @@
                         }
                     echo '</table>';
             ?>
+
 
 
 
