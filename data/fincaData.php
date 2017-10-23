@@ -267,8 +267,8 @@ class FincaData extends Data{
     public function actualizarTipoFinca($socioId,$Tipo){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
 
-         $result=$sql = "UPDATE tbsocio  SET   fincatipoid= '".$tipo."'  WHERE socioid = '".$socioid."' ; ";  
-         $conn->query($sql);
+         $sql = "UPDATE tbsocio  SET   fincatipoid= '".$tipo."'  WHERE socioid = '".$socioid."' ; ";  
+        $result = $conn->query($sql);
          return $result;
     }
 }
