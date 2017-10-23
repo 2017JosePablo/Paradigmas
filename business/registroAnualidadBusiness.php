@@ -21,5 +21,8 @@
 		function getInformacionPago($idSocio){
 			return $this->pagoAnualidad->obtenerFechasSocio($idSocio);
 		}
+		function calcularMorosos($fecha){
+			$this->anualidad->calcularMorosos($fecha);
+		}
 	}
 ?>
