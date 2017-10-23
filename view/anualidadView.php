@@ -1,7 +1,8 @@
 <?php
-  include_once '../business/anualidadBusiness.php';
-  $anualidad  = new AnualidadBusiness();
-	echo $anualidad->actualizarEstado("2017/10/22");
+  include_once '../business/registroAnualidadBusiness.php';
+  $anualidad  = new RegistroAnualidadBusiness();
+  $fecha = gmdate('Y-m-d', time());
+  $anualidad->calcularMorosos($fecha);
  ?>
 
 <!DOCTYPE html>
