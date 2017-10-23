@@ -1,8 +1,7 @@
 <?php
 
-//include 'data.php';
-require_once 'data.php';
 
+require_once 'data.php';
 
 class pagoAnualidadData extends Data{
 
@@ -87,8 +86,9 @@ class pagoAnualidadData extends Data{
 
     public function sacarMorosos(){
         include '../domain/socio.php';
+
         $socio = array();
-         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
          $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe';";
 
          $result = $conn->query($sql);
@@ -96,8 +96,8 @@ class pagoAnualidadData extends Data{
             while($row = $result->fetch_assoc()) {
 
 
-                 array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                        ,$row["sociocorreo"],"","" ,"" ,"" ));
+                  array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                        ,$row["sociocorreo"],"","" ,"" ,"","","" ));
             }
         }else{
             echo "0 results";
@@ -110,9 +110,11 @@ class pagoAnualidadData extends Data{
 
 
     public function sacarMorososEnFechas($fecha1,$fecha2){
-        include_once '../domain/socio.php';
+        include '../domain/socio.php';
+
             $socio = array();
              $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+
              $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe' AND tbpagoanualidad.pagoanualidadproximo BETWEEN '".$fecha1."' AND '".$fecha2."'";
 
              $result = $conn->query($sql);
@@ -121,7 +123,7 @@ class pagoAnualidadData extends Data{
 
 
                     array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                        ,$row["sociocorreo"],"","" ,"" ,"" ));
+                        ,$row["sociocorreo"],"","" ,"" ,"","","" ));
                 }
             }else{
                 echo "0 results";
