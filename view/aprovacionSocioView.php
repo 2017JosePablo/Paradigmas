@@ -17,6 +17,8 @@
         if(datefield.type!="date"){ //if browser doesn't support input type="date", initialize date picker widget:
            jQuery(function($){ //on document.ready
                $('#fechaAprovacion').datepicker();
+               $('#fechaRechazo').datepicker();
+
            })
         }
      </script>
@@ -38,30 +40,33 @@
             echo '<td> '.$current->getPrimerApellido() .' </td>';
             echo '<td> '.$current->getSegundoApellido().' </td>';
             echo '<td> En proceso</td>';
-            echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."~aprovar'>Aprovar</button></td>";
-            echo "<td> <button type='submit' id='modificar-submit' value='".$current->getCedula()."~rechazar'>Rechazar</button></td>";
+            echo "<td> <button type='button'  value='".$current->getSocioId()."~aprovar'>Aprovar</button></td>";
+            echo "<td> <button type='button'  value='".$current->getSocioId()."~rechazar'>Rechazar</button></td>";
             echo '</tr>';
         }
         echo '</table>';
-
-
         ?>
 
-        <div id="cajaMotivo" name="cajaMotivo" style="display:none">
-          <form class="" action="#" method="post">
+          <form class="" action="../business/aprovacionAction.php" method="post">
+            <input type="text" id="socioid" name="socioid" readonly style="display:block">
+
+            <div id="cajaMotivo" name="cajaMotivo" style="display:none">
             <br><br>
             <p>Porque no se le aprovo la solicitud</p>
             <br>
             <textarea name="motivoRechazo" rows="8" cols="80"></textarea>
+            <br>
+            <p>Fecha de Rechazo de la aprovacion</p>
+            <input type="date" name="fechaRechazo" id="fechaRechazo" value="">
             <br><br>
-            <input type="submit" name="enviarAprobacion" value="Guardar Cambios">
+
+            <input type="submit" name="cancelarAprobacion" value="Guardar Cambios">
             <input type="reset" value="Limpiar campos">
             <a href="aprovacionSocioView.php"><input type="button" name="" value="Cancelar"></a>
-          </form>
+
         </div>
 
         <div id="cajaAprovacion" name="cajaAprovacion" style="display:none">
-          <form class="" action="#" method="post">
             <br><br>
             <p>Session</p>
             <input type="date" name="fechaAprovacion" id="fechaAprovacion" value="">
@@ -70,6 +75,7 @@
             <a href="aprovacionSocioView.php"><input type="button" name="" value="Cancelar"></a>
           </form>
         </div>
+
 
 
         <a href="../index.php">Regresar</a>
