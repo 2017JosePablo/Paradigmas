@@ -73,14 +73,5 @@
     <a href="page-help.html">help</a>
     <a href="jajajajajaja.html"> Otro link</a>
 
-    <?php
-
-    require'./data/pagoAnualidadData.php';
-    $pago= new pagoAnualidadData();
-    $result=$pago->sacarMorososEnFechas("2002-01-01","2022-10-10");
-    
-   
-
-    ?>
   </body>
 </html>
