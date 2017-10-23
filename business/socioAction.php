@@ -156,9 +156,16 @@
 				}else{
 					header("location: ../view/socioView.php?error=userExist");
 				}
+				echo "Socio->".$resultado0."<br>";
+				echo "Socio->".$resultado1."<br>";
+				echo "Socio->".$resultadodireccion."<br>";
+				echo "Socio->".$resultado3."<br>";
+				echo "Socio->".$resultado4."<br>";
+				echo "Socio->".$resultado5."<br>";
+				echo "Socio->".$resultado6."<br>";
 
-				if ($resultado0 ==1 && $resultado1 ==1 && $resultado2 == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1) {
-					header("location: ../view/socioView.php?success=insertedSocio");
+				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1) {
+					header("location: ../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
 						header("location: ../view/socioView.php?error=errorToRegister");
@@ -166,7 +173,7 @@
 						if($resultado1!=1){
 							header("location: ../view/socioView.php?error=insertedFinca");
 						}else{
-							if($resultado2!=1){
+							if($resultadodireccion!=1){
 								header("location: ../view/socioView.php?error=insertedSocioDireccion");
 							}else{
 								if($resultado3!=1){
@@ -187,6 +194,7 @@
 							}
 						}
 					}
+				
 				}
 
 		}

@@ -20,5 +20,4 @@ class AnualidadBusiness{
 		return $this->anualidad->obtenerTodosTBAnualidad();
 	}
 }
-
 ?>
