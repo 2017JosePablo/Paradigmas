@@ -2,7 +2,7 @@
 
 	include_once '../data/socioData.php';
 	/**
-	* 
+	*
 	*/
 	class socioBusiness
 	{
@@ -65,8 +65,8 @@
 			return $this->dataSocio->actualizarTBSocio($socio);
 		}
 
-		public function actualizarDatoActividad($id,$tipoFinca,$tipoActividad){
-			return $this->dataSocio->actualizarDatoActividad($id,$tipoFinca,$tipoActividad);
+		public function actualizarDatoActividad($id,$tipoFinca){
+			return $this->dataSocio->actualizarDatoActividad($id,$tipoFinca);
 		}
 
 
@@ -74,4 +74,3 @@
 
 
 ?>
-
