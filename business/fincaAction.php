@@ -98,7 +98,7 @@
 		$fincaDireccion = new FincaDireccion($idSocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
 		$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion);
 
-		//$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo,'');
+		$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo,'');
 
 		$resultado2=$fincaBusiness->actualizarTipoFinca($idSocio,$fincatipo);
 

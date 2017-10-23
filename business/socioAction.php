@@ -76,7 +76,7 @@
 
 
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaIngreso,
-				$tipoactividad, '' , $sociodetalle,$recomendacion1,$recomendacion2);
+				$tipoactividad, '1' , $sociodetalle,$recomendacion1,$recomendacion2);
 
 				$resultado0 = $socioBusiness->insertarTBSocio($socio);
 				echo "resutador 0 : ".$resultado0."<br>";
@@ -248,7 +248,7 @@
 		//	echo "idSocio".$socioid;
 
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
-					$tipoactividad, '' , $sociodetalle,$recomendacion1, $recomendacion2);
+					$tipoactividad, '1' , $sociodetalle,$recomendacion1, $recomendacion2);
 
 				$resultado = $socioBusiness->actualizarTBSocio($socio);
 
