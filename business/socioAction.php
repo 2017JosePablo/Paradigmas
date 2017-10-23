@@ -46,7 +46,6 @@
 		$pueblo = "Rio Claro";
 
 */
-		$tipoactividad = $_POST['tipoactividad'];
 
 		$sociodetalle = $_POST['socioestado'];
 
@@ -57,6 +56,10 @@
 		$date = new DateTime($_POST['fecha']);
 		$fechaIngreso =$date->format('Y-m-d');
 		$tipoactividad =$_POST['tipoactividad'];
+
+
+		echo $tipoactividad;
+
 
 
 
@@ -73,7 +76,7 @@
 
 
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaIngreso,
-				$tipoactividad, $tipoactividad , $sociodetalle,$recomendacion1,$recomendacion2);
+				$tipoactividad, '' , $sociodetalle,$recomendacion1,$recomendacion2);
 
 				$resultado0 = $socioBusiness->insertarTBSocio($socio);
 				echo "resutador 0 : ".$resultado0."<br>";
@@ -168,7 +171,7 @@
 					header("location: ../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
-						header("location: ../view/socioView.php?error=errorToRegister");
+						//header("location: ../view/socioView.php?error=errorToRegister");
 					}else{
 						if($resultado1!=1){
 							header("location: ../view/socioView.php?error=insertedFinca");
@@ -194,7 +197,7 @@
 							}
 						}
 					}
-				
+
 				}
 
 		}
@@ -229,7 +232,6 @@
 
 		}
 
-		$tipoactividad = $_POST['tipoactividad'];
 
 		$sociodetalle = $_POST['socioestado'];
 
@@ -246,7 +248,7 @@
 		//	echo "idSocio".$socioid;
 
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
-					$tipoactividad, $tipoactividad , $sociodetalle,$recomendacion1, $recomendacion2);
+					$tipoactividad, '' , $sociodetalle,$recomendacion1, $recomendacion2);
 
 				$resultado = $socioBusiness->actualizarTBSocio($socio);
 

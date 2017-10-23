@@ -5,6 +5,7 @@ $(document).ready(function() {
     $('button').click(function() {
 
     	var cedula = $(this).val();
+
     	if(cedula.length>0){
             if(cedula == 'registrar' || cedula == 'actualizar'){
                 var tipoCerca = "";
@@ -23,8 +24,9 @@ $(document).ready(function() {
             var result = cedula.split('~');
 
             if(result[1]=='Ver' || result[1]=='Mod' || result[1]=='Reg'){
+
             $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
-                //POSEE UNA FINCA
+              alert(data);
 
 
                 if(data  == 1){
@@ -146,73 +148,37 @@ $(document).ready(function() {
 
                                 document.getElementById('editarUbic').style = 'display:none';
                             }
-
-
                         });
-
-
-
                     }
                 }
 
             }
-                    }else{
-                    
+          }else{
+            if(result[1]=='Reg'){
 
-                        if(result[1]=='Reg'){
+                 $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
+                    document.getElementById('cajaFinca').style='display:none'
+                    document.getElementById('actualizar').style = 'display:none';
+                    document.getElementById('verUbic').style='display:none';
+                    document.getElementById('datosDireccion').style = 'display:block';
+                    document.getElementById('registrarFinca').style="display:block ";
+                    document.getElementById('finalizar').style='display:block';
+                    document.getElementById('frm').reset();
+                    document.getElementById("cedula").value = result[0];
+                });
 
-                             $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
-
-
-
-                                document.getElementById('cajaFinca').style='display:none'
-                                document.getElementById('actualizar').style = 'display:none';
-                                document.getElementById('verUbic').style='display:none';
-                                //document.getElementById('editarUbic').style='display:none';
-
-
-
-
-
-                                document.getElementById('datosDireccion').style = 'display:block';
-                                document.getElementById('registrarFinca').style="display:block ";
-                                document.getElementById('finalizar').style='display:block';
-                                document.getElementById('frm').reset();
-
-
-
-                                document.getElementById("cedula").value = result[0];
-
-
-
-                        });
-
-
-
-                        }else{
-
-
-                            document.getElementById('verUbic').style='display:none';
-                            document.getElementById('cajaFinca').style='display:none';
-                            document.getElementById('actualizar').style = 'display:none';
-                            document.getElementById('registrarFinca').style="display:none ";
-                            document.getElementById('finalizar').style='display:none';
-                            document.getElementById('frm').reset();
-
-
-                        }
-
-                    }
-            });
-
-
-
-
+                }else{
+                      document.getElementById('verUbic').style='display:none';
+                      document.getElementById('cajaFinca').style='display:none';
+                      document.getElementById('actualizar').style = 'display:none';
+                      document.getElementById('registrarFinca').style="display:none ";
+                      document.getElementById('finalizar').style='display:none';
+                      document.getElementById('frm').reset();
+                }
+          }
+        });
     	}
-
     }});
-
-
 });
 
 function ocultarEspacios(id,id2){

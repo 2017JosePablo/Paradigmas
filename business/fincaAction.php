@@ -74,18 +74,11 @@
 		}
 
 
-	$tipoactividad =$_POST['tipoactividad'];
 	$fincatipo =$_POST['tipofinca'];
 	$cercas =$_POST['tiposCerca'];
 
 
-
-
-
-
-//	echo "datos".$fincaid;
-
-	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($tipoactividad)&&isset($fincatipo)){
+	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($fincatipo)){
 
 		require './fincaBusiness.php';
 		require './socioBusiness.php';
@@ -105,7 +98,11 @@
 		$fincaDireccion = new FincaDireccion($idSocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
 		$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion);
 
-		$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo,$tipoactividad);
+		//$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo,'');
+
+		$resultado2=$fincaBusiness->actualizarTipoFinca($idSocio,$fincatipo);
+
+
 
 
 		//CVO
