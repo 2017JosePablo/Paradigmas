@@ -76,6 +76,8 @@
   </head>
   <body>
     <?php
+    include_once '../business/anualidadBusiness.php';
+    $anualidad  = new AnualidadBusiness();
 
     $listaanualidad = $anualidad->obtenerTodosTBAnualidad();
 
