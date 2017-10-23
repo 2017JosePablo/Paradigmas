@@ -3,6 +3,7 @@
 //include 'data.php';
 require_once 'data.php';
 
+
 class pagoAnualidadData extends Data{
 
 	 private $data;
@@ -85,18 +86,18 @@ class pagoAnualidadData extends Data{
 
 
     public function sacarMorosos(){
-        include '../domain/montoAnualidad.php';
+        include '../domain/socio.php';
         $socio = array();
          $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-         $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe';";
+         $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe';";
 
          $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
 
-                array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                    ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["socioestadodetalle"] ));
+                 array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                        ,$row["sociocorreo"],"","" ,"" ,"" ));
             }
         }else{
             echo "0 results";
@@ -109,10 +110,10 @@ class pagoAnualidadData extends Data{
 
 
     public function sacarMorososEnFechas($fecha1,$fecha2){
-        include '../domain/montoAnualidad.php';
+        include_once '../domain/socio.php';
             $socio = array();
              $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
-             $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre, tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle  FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe' AND tbpagoanualidad.pagoanualidadproximo>= '".$fecha1."' AND tbpagoanualidad.pagoanualidadproximo<= '".$fecha2."'";
+             $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe' AND tbpagoanualidad.pagoanualidadproximo BETWEEN '".$fecha1."' AND '".$fecha2."'";
 
              $result = $conn->query($sql);
             if($result->num_rows > 0) {
@@ -120,7 +121,7 @@ class pagoAnualidadData extends Data{
 
 
                     array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                        ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,$row["fincatiponombre"] ,$row["socioestadodetalle"] ));
+                        ,$row["sociocorreo"],"","" ,"" ,"" ));
                 }
             }else{
                 echo "0 results";
@@ -144,9 +145,8 @@ class pagoAnualidadData extends Data{
                     $conn->query($sql);
 
                 }
-            }else{
-                echo "0 results";
             }
+
             $conn->close();
         }
 

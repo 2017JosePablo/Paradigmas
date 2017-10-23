@@ -75,12 +75,10 @@
 
     <?php
 
-   require'./domain/actaAprobacion.php';
-    require'./data/actaAprobacionData.php';
-    $pago= new actaAprobacionData();
-    $socio= new actaAprobacion("","","","","");
-    $result=$pago->insertarActaAprobacionData($socio);
-    echo " <br>siii--- ".$result." ---";
+    require'./data/pagoAnualidadData.php';
+    $pago= new pagoAnualidadData();
+    $result=$pago->sacarMorososEnFechas("2002-01-01","2022-10-10");
+    
    
 
     ?>
