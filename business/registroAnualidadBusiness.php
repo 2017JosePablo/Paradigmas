@@ -22,7 +22,7 @@
 			return $this->pagoAnualidad->obtenerFechasSocio($idSocio);
 		}
 		function calcularMorosos($fecha){
-			$this->anualidad->calcularMorosos($fecha);
+			$this->pagoAnualidad->calcularMorosos($fecha);
 		}
 	}
 ?>
