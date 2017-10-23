@@ -24,11 +24,11 @@
   </head>
   <body>
     <h1>Listado de socios para aprovar</h1>
-        <?php
-        include '../business/socioBusiness.php';
-        $socioBusiness = new socioBusiness();
-        $socios = $socioBusiness->obtenerTodosTBSocio();
 
+        <?php
+        include_once '../business/aprovacionBusiness.php';
+        $socioBusiness = new AprovacionBusiness();
+        $socios = $socioBusiness->sociosEnProgreso();
 
         echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa Aprovacion de Socios</td></tr><tr><td align = "left" colspan = "7">Informacion de socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td>Estado</td><td align = "center" colspan="2">Acciones</td> </tr>';
 
@@ -44,7 +44,7 @@
         }
         echo '</table>';
 
-                 //name='.$current->getIdTBJunta().'
+
         ?>
 
         <div id="cajaMotivo" name="cajaMotivo" style="display:none">

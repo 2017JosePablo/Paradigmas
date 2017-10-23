@@ -51,7 +51,7 @@
                 echo '<td> '.$current->getVocal2Junta().'</td>';
                 echo '<td> '.$current->getVocal3Junta().'</td>';
                 echo '<td> <a href="../business/juntaAction.php?ideliminar='.$current->getIdTBJunta().'"> Eliminar</a> </td>';
-                 echo "<td> <a href='' onclick=loadJunta('".$current->getIdTBJunta()."') > Modificar</a> </td>";
+                 //echo "<td> <a href='' onclick=loadJunta('".$current->getIdTBJunta()."') > Modificar</a> </td>";
               //  echo '<td> <a href="" onclick=loadJunta(123) "> Modificar</a> </td>';
               //  echo '<td> <a href="" onclick="> Modificar</a> </td>';
                 echo '</tr>';

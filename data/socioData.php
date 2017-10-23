@@ -122,15 +122,13 @@ class socioData {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         $sql = "
         SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,
-        tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos, tbtipoactividad.tipoactividadnombre,
-        tbfincatipo.fincatiponombre ,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle ,
+        tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle ,
         tbsociodireccion.socioprovincia, tbsociodireccion.sociocanton, tbsociodireccion.sociodistrito,
         tbsociodireccion.sociopueblo
 
         FROM tbsocio
         INNER JOIN tbtipoactividad ON
         tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
-        INNER JOIN tbfincatipo ON tbfincatipo.fincatipoid  = tbsocio.fincatipoid
         INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle
         INNER JOIN  tbsociodireccion ON tbsociodireccion.socioid = tbsocio.socioid AND
         tbsocio.sociocedula =  '$cedula';";
@@ -140,7 +138,7 @@ class socioData {
             while($row = $result->fetch_assoc()) {
 
                 $socio = ["idsocio"=>$row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
-                    ,"sociocorreo"=>$row["sociocorreo"],"sociorecomendacionuno"=>$row["sociorecomendacionuno"],"sociorecomendaciondos"=>$row["sociorecomendaciondos"],"tipoactividadnombre"=>$row["tipoactividadnombre"] , "fincatiponombre"=>$row["fincatiponombre"] ,"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"],"socioprovincia"=>$row["socioprovincia"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
+                    ,"sociocorreo"=>$row["sociocorreo"],"sociorecomendacionuno"=>$row["sociorecomendacionuno"],"sociorecomendaciondos"=>$row["sociorecomendaciondos"],"tipoactividadnombre"=>$row["tipoactividadnombre"],"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"],"socioprovincia"=>$row["socioprovincia"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
             }
         }else{
             echo "0 results";
@@ -216,7 +214,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
             while($row = $result->fetch_assoc()) {
                 array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
                     ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,"",$row["socioestadodetalle"],$row["sociorecomendacionuno"],$row["sociorecomendaciondos"]));
-						}
+			}
         }else{
             echo "0 results";
         }
