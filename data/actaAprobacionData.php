@@ -62,14 +62,14 @@ class actaAprobacionData extends Data{
     }
 
 
-    public function actualizarActaAprobacionCondicion($sicioId,$condicion,$mottivo){
+    public function actualizarActaAprobacionCondicion($acta){
          $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
            if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
 
-        $sql = "UPDATE tbactaaprobacion SET   actaaprobacioncondicion = '".$condicion."', actaaprobacionmotivo = '".$motivo."'   WHERE socioid = '".$sicioId."' ; ";
+        $sql = "UPDATE tbactaaprobacion SET  actaaprobacionfecha='".$acta->getFecha()."', actaaprobacioncondicion = '".$acta->getCondicion()."', actaaprobacionmotivo = '".$acta->getMotivo()."'   WHERE socioid = '".$acta->getSocioID()."' ; ";
         $result = $conn->query($sql);
         $conn->close();
         return $result;
