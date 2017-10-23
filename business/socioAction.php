@@ -1,8 +1,7 @@
+
 <?php
-
-
 	if(isset($_POST['cedula']) == true && empty($_POST['cedula'])== false){
-		require 'socioBusiness.php';
+		require_once './socioBusiness.php';
 		$socioBusiness = new socioData();
 		$result = $socioBusiness->obtenerUnSoloTBSocio($_POST['cedula']);
 		echo $result;
@@ -14,14 +13,18 @@
 			echo $result;
 	}
 
-
-
 	if (isset($_POST['desactivar'])== true && empty($_POST['desactivar'])== false ){
 		require 'socioBusiness.php';
 		$socioBusiness = new socioData();
 		$result = $socioBusiness->editarEstado($_POST['desactivar']);
 		echo $result;
 	}
+
+
+	include_once 'socioBusiness.php';
+	$socioBusiness = new socioBusiness();
+
+	require_once '../domain/socio.php';
 
 	if (isset($_POST['agregarsocio'])) {
 
@@ -36,8 +39,13 @@
 		$canton = $_POST['listadoCantones'];
 		$distrito = $_POST['listadoDistritos'];
 		$pueblo = $_POST['sociopueblo'];
+		/*
+		$provincia =2;
+		$canton = 2;
+		$distrito = 1;
+		$pueblo = "Rio Claro";
 
-
+*/
 		$tipoactividad = $_POST['tipoactividad'];
 
 		$sociodetalle = $_POST['socioestado'];
@@ -48,51 +56,45 @@
 
 		$date = new DateTime($_POST['fecha']);
 		$fechaIngreso =$date->format('Y-m-d');
-
+		$tipoactividad =$_POST['tipoactividad'];
 
 
 
 		if (strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
 
-			require 'socioBusiness.php';
 			require 'fincaBusiness.php';
 
 
 			require_once '../domain/socioDireccion.php';
 			require_once '../domain/fincaDireccion.php';
-			include '../domain/socio.php';
-
-			//require_once '../domain/hato.php';
-			//require_once '../domain/finca.php';
-			$socioBusiness = new socioBusiness();
 
 			if($socioBusiness->verificarCedula($cedula)==0){
-
-			//	echo "Fecha cvo: ".$_POST['fechaCVO']."</br>";
-
-
 			 	$fechaIngreso =$date->format('Y-m-d');
 
 
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaIngreso,
-				$tipoactividad, '' , $sociodetalle,$recomendacion1,$recomendacion2);
+				$tipoactividad, $tipoactividad , $sociodetalle,$recomendacion1,$recomendacion2);
 
 				$resultado0 = $socioBusiness->insertarTBSocio($socio);
-
-
-
+				echo "resutador 0 : ".$resultado0."<br>";
 				//si inserta el socio entonces se disparn las otras tablas insert
-				if($resultado0==1){
+				//if($resultado0==1){
+
+					//donde se inserta la direccion del socio
+					$socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
+					$resultadodireccion = $socioBusiness->insertarTBSocioDireccion($socioDireccion);
+
+
 
 					$idSocio=$socioBusiness->getSocioId($cedula);
 					$fincaBusiness= new fincaBusiness();
 					$finca= new Finca('',$idSocio,'','','');
 					$resultado1=$fincaBusiness->insertarFinca($finca);
 
-					$socioDireccion = new socioDireccion('',$provincia,$canton,$distrito,$pueblo);
 					$fincaDireccion= new fincaDireccion('','','','','','');
 					$resultado3= $fincaBusiness->insertarTBFincaDireccion($fincaDireccion);
 
+					echo "Resulado finca direcion: ".$resultado3."</br>";
 
 					$nombre_img = $_FILES['imagen']['name'];
 					$tipo = $_FILES['imagen']['type'];
@@ -124,31 +126,54 @@
 					$hatoBusiness = new hatoBusiness();
 					$resultado4 = $hatoBusiness->insertarTBHato($hato);
 
+					echo "Resulado de hato: ".$resultado4."</br>";
+
 					require './hatoActividadBusiness.php';
 					$hatoActividadBusiness = new hatoActividadBusiness();
 					$resultado5=$hatoActividadBusiness->insertarTBHatoActividad($idSocio,$tipoactividad);
+					echo "Resulado de hato actividad: ".$resultado5."</br>";
 
-					require './aprovacionBusiness.php';
+
+					echo " include 1</br>";
 					require '../domain/actaAprobacion.php';
-					$acta = new actaAprobacion($idSocio,'','','progreso','');
-					$actaBusiness = new AprovacionBusiness();
-					$resultado6  = $actaBusiness->insertarActa($acta);
+					echo "include 2 </br>";
+					$acta = new actaAprobacion('',$idSocio,'','','progreso','');
+					echo "SOcio .".$acta->getSocioID()."</br>";
+					echo "Fecha .".$acta->getFecha()."</br>";
+					echo "Condicion .".$acta->getCondicion()."</br>";
+					echo "nueva acta</br>";
 
+					include_once '../data/actaAprobacionData.php';
+
+					echo "incluyo aprovacionBusiness</br>";
+					//$temporalAprovacion = new AprovacionBusiness();
+					$aprovacionData = new actaAprobacionData();
+					echo "nueva instancia</br>";
+					$resultado6  = $aprovacionData->insertarActaAprobacionData($acta);
+
+					echo "Resulado de acta: ".$resultado6."</br>";
+
+				}else{
+					header("location: ../view/socioView.php?error=userExist");
 				}
+				echo "Socio->".$resultado0."<br>";
+				echo "Socio->".$resultado1."<br>";
+				echo "Socio->".$resultadodireccion."<br>";
+				echo "Socio->".$resultado3."<br>";
+				echo "Socio->".$resultado4."<br>";
+				echo "Socio->".$resultado5."<br>";
+				echo "Socio->".$resultado6."<br>";
 
-				}
-
-
-				if ($resultado0 ==1 && $resultado1 ==1 && $resultado2 == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1) {
-					header("location: ../view/socioView.php?success=insertedSocio");
+				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1) {
+					header("location: ../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
-						header("location: ../view/socioView.php?error=insertedSocio");
+						header("location: ../view/socioView.php?error=errorToRegister");
 					}else{
 						if($resultado1!=1){
 							header("location: ../view/socioView.php?error=insertedFinca");
 						}else{
-							if($resultado2!=1){
+							if($resultadodireccion!=1){
 								header("location: ../view/socioView.php?error=insertedSocioDireccion");
 							}else{
 								if($resultado3!=1){
@@ -169,8 +194,10 @@
 							}
 						}
 					}
+				
 				}
-			}
+
+		}
 	}
 
 
@@ -183,7 +210,9 @@
 		$segundoapellido = $_POST['sociosegundoapellido'];
 		$telmovil = $_POST['sociotelmovil'];
 		$correo = $_POST['sociocorreo'];
-
+		$tipoactividad =$_POST['tipoactividad'];
+		$recomendacion1 = $_POST['recomendacion1'];
+		$recomendacion2 = $_POST['recomendacion2'];
 
 
 		if($_POST['ModUbi'] == 1){
@@ -211,13 +240,13 @@
 
 		if (strlen($cedula2) &&strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)   &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {
 
-			require 'socioBusiness.php';
+
 			$socioBusiness = new socioBusiness();
 			$socioid=$socioBusiness->getSocioId($cedula2);
 		//	echo "idSocio".$socioid;
 
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
-					$tipoactividad, '' , $sociodetalle);
+					$tipoactividad, $tipoactividad , $sociodetalle,$recomendacion1, $recomendacion2);
 
 				$resultado = $socioBusiness->actualizarTBSocio($socio);
 
