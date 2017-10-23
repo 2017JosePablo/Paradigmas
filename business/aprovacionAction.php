@@ -1,6 +1,7 @@
 <?php
 
 if (isset($_POST['cancelarAprobacion'])) {
+
   $motivo = $_POST['motivoRechazo'];
   $socioid = $_POST['socioid'];
   $estado = "rechazado";

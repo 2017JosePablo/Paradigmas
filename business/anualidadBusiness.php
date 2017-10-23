@@ -19,8 +19,6 @@ class AnualidadBusiness{
 	function obtenerTodosTBAnualidad(){
 		return $this->anualidad->obtenerTodosTBAnualidad();
 	}
-	function calcularMorosos($fecha){
-		$this->anualidad->calcularMorosos($fecha);
-	}
+
 }
 ?>

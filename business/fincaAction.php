@@ -40,11 +40,6 @@
 
  if(isset($_POST['finalizar']) || isset($_POST['actualizar'])){
 
-	echo $_POST['editoPro']."</br>";
-	echo  $_POST['editoCan']."</br>";
-	echo $_POST['editoDis']."</br>";
-	echo $_POST['editoPueblo']."</br>";
-	echo $_POST['editoOtros']."</br>";
 
 
 	$cvotiene= $_POST['radioCVO'];
@@ -73,19 +68,17 @@
 			$fincaexacta =$_POST['editoOtros'];
 		}
 
+		echo"->".$listaProvincias."<br>";
+		echo"->".$listadoCanton ."<br>";
+		echo"->".$listadoDistrito."<br>";
+		echo"->".$fincapueblo."<br>";
+		echo"->".$fincaexacta."<br>";
 
-	$tipoactividad =$_POST['tipoactividad'];
 	$fincatipo =$_POST['tipofinca'];
 	$cercas =$_POST['tiposCerca'];
 
 
-
-
-
-
-//	echo "datos".$fincaid;
-
-	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($tipoactividad)&&isset($fincatipo)){
+	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($fincatipo)){
 
 		require './fincaBusiness.php';
 		require './socioBusiness.php';
@@ -105,7 +98,11 @@
 		$fincaDireccion = new FincaDireccion($idSocio,$listaProvincias,$listadoCanton,$listadoDistrito,$fincapueblo,$fincaexacta);
 		$resultado1 = $fincaBusiness->actualizarTBfincaDireccion($fincaDireccion);
 
-		$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo,$tipoactividad);
+		$resultado3=$socioBusiness->actualizarDatoActividad($idSocio,$fincatipo);
+
+		$resultado2=$fincaBusiness->actualizarTipoFinca($idSocio,$fincatipo);
+
+
 
 
 		//CVO
@@ -115,20 +112,20 @@
 
 
 		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1 && $resultado4 == 1 ) {
-			header("location: ../index.php?success=updateFinca");
+			//header("location: ../index.php?success=updateFinca");
 		}else{
 			if($resultado2!=1){
-				header("location: ../view/fincaView.php?error=errorActualizarFinca");
+				//header("location: ../view/fincaView.php?error=errorActualizarFinca");
 
 			}else{
 				if($resultado1!=1){
-					header("location: ../view/fincaView.php?error=errorActualizarDireccion");
+				//	header("location: ../view/fincaView.php?error=errorActualizarDireccion");
 				}else{
 					if($resultado3!=1){
-						header("location: ../view/fincaView.php?error=errorActualizarActividades");
+					//	header("location: ../view/fincaView.php?error=errorActualizarActividades");
 					}else{
 						if($resultado4!=1){
-							header("location: ../view/fincaView.php?error=errorInsertCVO");
+						//	header("location: ../view/fincaView.php?error=errorInsertCVO");
 						}
 					}
 				}

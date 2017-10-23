@@ -2,14 +2,14 @@
 	include '../data/fincaData.php';
 
 	/**
-	* 
+	*
 	*/
-	class fincaBusiness 
+	class fincaBusiness
 	{
 		private $fincaData;
 		function __construct()
 		{
-			$this->fincaData = new fincaData();	
+			$this->fincaData = new fincaData();
 		}
 
 
@@ -17,12 +17,12 @@
 		{
 			return $this->fincaData ->insertarFinca($finca);
 		}
-		
+
 		public function insertarTBFincaDireccion($fincadireccion)
 		{
 			return $this->fincaData ->insertarTBFincaDireccion($fincadireccion);
 		}
-		
+
 
 		public function obtenerTodosTBfinca()
 		{
@@ -42,6 +42,10 @@
 		public function actualizarTBfincaDireccion($fincadireccion)
 		{
 			return $this->fincaData ->actualizarTBFincaDireccion($fincadireccion);
+		}
+
+		public function actualizarTipoFinca($idsocio,$tipo){
+			return $this->fincaData->actualizarTipoFinca($idsocio,$tipo);
 		}
 
 

@@ -210,7 +210,7 @@
   <input type="hidden" id="tiposCerca" name="tiposCerca" value="">
   <input type="hidden" id="selecCerca"  value="">
 
-   <input type="hidden"  name= "editoUbicacion" id="editoUbicacion" value="0">
+   <input type="hidden"  name= "editoUbicacion" id="editoUbicacion" value="1">
 
    <input type="hidden"  name= "editoPro" id="editoPro" value="">
    <input type="hidden"  name= "editoCan" id="editoCan" value="">
