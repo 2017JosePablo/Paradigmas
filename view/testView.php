@@ -34,6 +34,73 @@
 		</ul>
 
 	<body>
+	<?php 
+
+
+    require '../data/loginData.php';
+    $login= new loginData();
+
+    $result= $login->optenerTodasContrasenas();
+
+           echo '<table border = "1"> <tr>  <td align = "center" colspan = "3">Listado de Contraseñas </td> </tr><tr>  <td>Datos del Socio </td><td colspan="2">Contraseña</td> </tr>';
+
+            foreach ($result as $current) {
+                echo '<tr>';
+
+                echo '<td> '."[".$current->getCedula()."] ".$current->getNombre()." ".$current->getPrimerApellido()." ".$current->getSegundoApellido().'</td>';
+                echo '<td> '.$current->getContrasena().'</td>';
+
+                echo '</tr>';
+            }
+                echo '</table>';
+
+           echo '<br>';echo '<br>';echo '<br>';     
+     
+
+
+	echo "ValidanDo:<br> usuario: adanca16@gmail.com ---&--- conreaseña: 1234 <br>";      
+	echo "MENSAJE DE LOGUEO: ";
+	$result2= $login->validarLogin("adanca16@gmail.com","1234");
+	echo '<br>';  
+	echo '<br>';  
+	echo '<br>';             
+
+	echo "Cambiando contraseña del <br>usuario: adanca16@gmail.com ---&--- conreaseña: [1234] por [1234] <br>";
+
+	echo "MENSAJE DEL SISTEMA: ".$result3= $login->actualizarContrasena(" adanca16@gmail.com","1234","1234");
+
+	echo '<br>';  
+	echo '<br>';  
+    echo '<br>'; 
+
+	echo "AVISOS";
+	echo '<br>';  
+	echo '<br>';  
+	echo '<br>'; 
+	require '../data/avisosData.php';
+	$aviso= new avisosData();
+	$result4=$aviso->mostrarTodosAvisos();
+   echo '<table border = "1"> <tr>  <td align = "center" colspan = "4">Listado de AVISOS </td> </tr><tr>  <td>Tema </td> <td>Detalle </td><td>Foto </td><td colspan="2">AutorID</td> </tr>';
+
+    foreach ($result4 as $current) {
+        echo '<tr>';
+
+        echo '<td> '.$current->getTema().'</td>';
+        echo '<td>'.$current->getDetalle().'</td>';
+        echo '<td><img src="'.$current->getRutaFoto().'"</td>';
+        echo '<td> '.$current->getSocioId().'</td>';
+
+        echo '</tr>';
+    }
+        echo '</table>';
+
+   echo '<br>';echo '<br>';echo '<br>';     
+
+
+
+     ?>
+
+
 
 
 	</body>

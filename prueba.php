@@ -70,5 +70,31 @@
     <a href="page-help.html">help</a>
     <a href="jajajajajaja.html"> Otro link</a>
 
+
+    <?php 
+    require './data/loginData.php';
+    $login= new loginData();
+
+    $result= $login->optenerTodasContrasenas();
+
+           echo '<table border = "1"> <tr>  <td align = "center" colspan = "3">Listado de COntraseñas </td> </tr><tr>  <td>Nombre de la Raza</td><td colspan="2">Contraseña</td> </tr>';
+
+            foreach ($result as $current) {
+                echo '<tr>';
+
+                echo '<td> '.$current->getNombre()." ".$current->getPrimerApellido()." ".$current->getSegundoApellido().'</td>';
+                echo '<td> '.$current->getContrasena().'</td>';
+
+                echo '</tr>';
+            }
+                echo '</table>';
+
+
+     ?>
+
+
+    
+
+
   </body>
 </html>
