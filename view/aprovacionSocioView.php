@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <meta charset="utf-8">
     <title>Aprovacion de Socio</title>
+
+    <link rel="stylesheet" href="../css/diseno.css">
     <script type="text/javascript">
       var datefield=document.createElement("input")
       datefield.setAttribute("type", "date")
@@ -25,14 +28,15 @@
 
   </head>
   <body>
-    <h1>Listado de socios para aprovar</h1>
-
+    <div style="overflow-x:auto;">
+      <h1>Area administrativa Aprovacion de Socios</h1>
+        <h2>Informacion de socios</h2>
         <?php
         include_once '../business/aprovacionBusiness.php';
         $socioBusiness = new AprovacionBusiness();
         $socios = $socioBusiness->sociosEnProgreso();
 
-        echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa Aprovacion de Socios</td></tr><tr><td align = "left" colspan = "7">Informacion de socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td>Estado</td><td align = "center" colspan="2">Acciones</td> </tr>';
+        echo '<table><tr class="cabeceraTabla" ><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td>Estado</td><td align = "center" colspan="2">Acciones</td> </tr>';
 
         foreach ($socios as $current) {
             echo '<tr id = "aprovado+'.$current->getCedula().'">';
@@ -46,9 +50,9 @@
         }
         echo '</table>';
         ?>
-
+</div>
           <form class="" action="../business/aprovacionAction.php" method="post">
-            <input type="text" id="socioid" name="socioid" readonly style="display:block">
+            <input type="text" id="socioid" name="socioid" readonly style="display:none" >
 
             <div id="cajaMotivo" name="cajaMotivo" style="display:none">
             <br><br>
@@ -59,7 +63,7 @@
             <p>Fecha de Rechazo de la aprovacion</p>
             <input type="date" name="fechaRechazo" id="fechaRechazo" value="">
             <br><br>
-
+            <hr>
             <input type="submit" name="cancelarAprobacion" value="Guardar Cambios">
             <input type="reset" value="Limpiar campos">
             <a href="aprovacionSocioView.php"><input type="button" name="" value="Cancelar"></a>

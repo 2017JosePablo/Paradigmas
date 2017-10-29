@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de Hatos</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="../css/diseno.css">
 
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
 
@@ -76,7 +76,8 @@
     }
 
 ?>
-
+<h1>Area administrativa de Hatos</h1>
+<h2>Informacion Socio</h2>
 <?php
 require '../business/socioBusiness.php';
 
@@ -85,7 +86,7 @@ $socioBusiness = new socioBusiness();
 $socios = $socioBusiness->obtenerTodosTBSocio();
 
 
-echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Hatos</td></tr><tr><td align = "left" colspan = "7">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+echo '<table><tr class="cabeceraTabla"><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
 foreach ($socios as $current) {
 
@@ -251,6 +252,7 @@ echo '</table>';
 				<a href="hatoView.php"><input type="button" value="Cancelar" ></a>
     </div>
 </form>
+<hr>
     <a href="../index.php">Regresar</a>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarHato.js"></script>

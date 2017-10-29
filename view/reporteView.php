@@ -6,6 +6,7 @@
 	<title>Area Administrativa de Socios</title>
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
 
+
 		    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
     <script src="../js/jquery.maskedinput.min.js" type="text/javascript"></script>
 
@@ -48,13 +49,15 @@
 				}
  			?>
 			<form class="" action="reportePagoView.php" method="post">
+				<div style="overflow-x:auto;">
+					<h2>Informacion Socio</h2>
     <?php
       include_once '../business/registroAnualidadBusiness.php';
 
       $registroAnualidadBusiness = new RegistroAnualidadBusiness();
       $listaMorosos = $registroAnualidadBusiness->sacarMorosos();
 
-    echo '<table border ="1"><tr><td align = "left" colspan = "4">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td >Reportes</td> </tr>';
+    echo '<table ><tr class="cabeceraTabla"><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td >Reportes</td> </tr>';
     foreach ($listaMorosos as $current) {
         echo '<tr>';
         echo '<td> '.$current->getNombre().'</td>';
@@ -65,6 +68,7 @@
     }
     echo '</table>';
     ?>
+	</div>
 	</form>
 
 		<p>Calcular por medio de dos fechas</p>
@@ -78,7 +82,7 @@
 			<input type="submit" name="anualidadFecha" id="anualidadFecha" value="Enviar Datos">
 		</form>
 
-
+		<hr>
     <a href="../index.php">Regresar</a>
 
 		<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>

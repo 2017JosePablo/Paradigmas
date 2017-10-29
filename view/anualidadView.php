@@ -10,6 +10,7 @@
   <head>
     <meta charset="utf-8">
     <title>Anualidad</title>
+    <link rel="stylesheet" href="../css/diseno.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -75,13 +76,18 @@
 
   </head>
   <body>
+
+    <div style="overflow-x:auto;">
+      <h1>Listado de Anualidades</h1>
+      <h2>Informacion de Socios </h2>
+
     <?php
     include_once '../business/anualidadBusiness.php';
     $anualidad  = new AnualidadBusiness();
 
     $listaanualidad = $anualidad->obtenerTodosTBAnualidad();
 
-    echo '<table border ="1"><tr><td align = "center" colspan = "7">Listado de Anualidades</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Responsable</td><td>Monto</td><td>Fecha de Creacion</td><td align = "center" colspan="3">Acciones</td> </tr>';
+    echo '<table ><tr class="cabeceraTabla"><td>Responsable</td><td>Monto</td><td>Fecha de Creacion</td><td>Acciones</td> </tr>';
     foreach ($listaanualidad as $current) {
         echo '<tr>';
         echo '<td> '.$current->getResponsableId().'</td>';
@@ -93,18 +99,21 @@
     echo '</table>';
 
     ?>
+  </div>
     <br><br>
 
 
-
+<hr>
     <div class="" id = "agregarAnualidad" style="display:none">
 
       <form class="" action="../business/anualidadAction.php" method="post" onsubmit="return verificarSocio()">
+        <h1>Area administrativa de Anualidad</h1>
+        <h2>Informacion de Socios</h2>
       <?php
       require '../business/socioBusiness.php';
       $socioBusiness = new socioBusiness();
       $socios = $socioBusiness->obtenerTodosTBSocio();
-      echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Anualidad</td></tr><tr><td align = "left" colspan = "7">Informacion de Socios</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+      echo '<table ><tr class="cabeceraTabla"><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td>Acciones</td> </tr>';
       foreach ($socios as $current) {
           echo '<tr>';
           echo '<td> '.$current->getNombre().'</td>';
@@ -139,19 +148,17 @@
 
       <br><br>Monto a Cancelar<br>
       <input type="text" id="montoAnualidad" name="montoAnualidad" onkeypress="return soloNumeros(event)" placeholder="0">
-
-
       <br><br>
-      <input type="submit" id="registrarAnualidad" name="registrarAnualidad" value="Guardar Datos">
 
+      <input type="submit" id="registrarAnualidad" name="registrarAnualidad" value="Guardar Datos">
+      <button type="button" name="agregarAnualidad" onclick="cancelar()">Cancelar</button>
       </form>
 
-
-      <button type="button" name="agregarAnualidad" onclick="cancelar()">Cancelar</button>
+      <hr>
     </div>
-<button type="button" name="agregarAnualidad" onclick="agregarNuevaAnualidad()">Agregar Nueva Anualidad</button>
-
+    <button type="button" name="agregarAnualidad" onclick="agregarNuevaAnualidad()">Agregar Nueva Anualidad</button>
     <a href="../index.php">Regresar</a>
+
   </body>
   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="../js/anualidadJs.js"></script>

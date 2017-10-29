@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de Raza</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="../css/diseno.css">
 
 
     <script type="text/javascript">
@@ -28,13 +28,16 @@
 
 </head>
 <body>
+	<div style="overflow-x:auto;">
+
+		<h1>Listado de razas</h1>
 	 <?php
 
 	 include '../business/razaBusiness.php';
             $razaBusiness = new razaBusiness();
 
             $todasRazas = $razaBusiness->obtenerTodoTBRaza();
-            echo '<table border = "1"> <tr>  <td align = "center" colspan = "3">Listado de razas </td> </tr><tr>  <td>Nombre de la Raza</td><td colspan="2">Acciones</td> </tr>';
+            echo '<table ><tr class="cabeceraTabla">  <td>Nombre de la Raza</td><td colspan="2">Acciones</td> </tr>';
 
             foreach ($todasRazas as $current) {
                 echo '<tr>';
@@ -49,7 +52,7 @@
 
 
             ?>
-
+</div>
             <br>
 
             <button onclick="ocultarDatos()">Agregar Raza</button>
@@ -71,12 +74,9 @@
 
 
             </form>
-
-
-
-
-	<a href="../index.php">Regresar</a>
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../js/editarRaza.js"></script>
+						<hr>
+						<a href="../index.php">Regresar</a>
+    			<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    			<script src="../js/editarRaza.js"></script>
 </body>
 </html>

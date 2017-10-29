@@ -2,7 +2,7 @@
 class Aviso{
 	private $idAviso;
 	private $socioId;
-	private $tema; 	
+	private $tema;
 	private $detalle;
 	private $rutaFoto;
 
