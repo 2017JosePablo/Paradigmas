@@ -11,7 +11,7 @@ if(isset($_POST['accederlogin'])){
 
     $result = $loginBusiness->validarLogin($usuario,$contrasena);
 
-    if($result == 1){
+    if($result == 'true'){
       header('location: ../index.php?success=bienvenido');
     }else{
       header('location: ../view/loginView.php?error=notExist');

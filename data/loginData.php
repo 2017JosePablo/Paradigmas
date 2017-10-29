@@ -34,7 +34,7 @@ class loginData {
 	}
 
 
-//Devuelve un mensaje 
+//Devuelve un mensaje
     public function validarLogin($user,$contraseña){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         // Check connection
@@ -44,13 +44,12 @@ class loginData {
         $sql="SELECT * FROM tblogin WHERE tblogin.userlogin='".$user."' AND tblogin.passwordlogin='".$contraseña."'";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
-             echo "Bienvenido al Sistema de ASOTURGA"; 
-        
-        }else{ 
-              echo "El usuario no existe"; 
-        } 
-        return $result;
+             return 'true';
 
+        }else{
+              return 'false';
+        }
+				$conn->close();
     }
 
 
@@ -77,7 +76,7 @@ class loginData {
         $conn->close();
 
         return json_encode($login);
-       
+
     }
 
 //Actualiza la contraseña validando el correo y la contraseña vieja
@@ -121,7 +120,7 @@ class loginData {
 
         return $contrasenaSocios;
     }
-    
+
 }
-    
+
 ?>
