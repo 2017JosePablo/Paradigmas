@@ -219,14 +219,16 @@
 <input type="hidden" id="provincia" name="socioprovincia" value="">
 <input type="hidden" id="canton" name="sociocanton" value="">
 <input type="hidden" id="distrito" name="sociodistrito" value="">
-
+<div style="overflow-x:auto;">
+	<h1>Area administrativa de Socios</h1>
+	<h2>Informacion del socio</h2>
     <?php
     include '../business/socioBusiness.php';
 
     $socioBusiness = new socioBusiness();
     $socios = $socioBusiness->obtenerTodosTBSocio();
 
-    echo '<table border ="1"><tr><td align = "center" colspan = "7">Area administrativa de Socios</td></tr><tr><td align = "left" colspan = "7">Informacion del socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
+    echo '<table border ="1"><tr class="cabeceraTabla"><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
     foreach ($socios as $current) {
         echo '<tr>';
@@ -242,7 +244,7 @@
     echo '</table>';
 
     ?>
-
+	</div>
 
     <!--  </form> -->
 
@@ -408,7 +410,7 @@
 
             <br>
             <p>Tipo de Actividad</p>
-
+<div style="overflow-x:auto;">
             <?php
 
              require_once '../business/actividadBusiness.php';
@@ -428,8 +430,8 @@
        echo '</table>';
 
             ?>
-
-
+</div>
+<div style="overflow-x:auto;">
              <br><br>
              Estado del Socio:
              <?php
@@ -449,7 +451,7 @@
                         }
                     echo '</table>';
             ?>
-
+</div>
 
 
 
@@ -615,7 +617,7 @@
 
     </div>
 
-
+		<hr>
     <a href="../index.php">Regresar</a>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarSocio.js"></script>

@@ -19,6 +19,8 @@
 			});
 		</script>
 
+		<link rel="stylesheet" href="../css/diseno.css">
+		
 	</head>
 	<h1>ordenar alfabéticamente elementos del html con jquery</h1>
 

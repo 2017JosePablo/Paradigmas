@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Primer pago de Anualidad</title>
+
+    <link rel="stylesheet" href="../css/diseno.css">
   </head>
 
 
@@ -60,6 +62,7 @@
           <input type="date" name="fechaPago" id="fechaPago">
           <br>
           <br>
+          <hr>
        <input name="primerAnualidad" value="Guardar Datos" type="submit">
        <a href="pagoPrimeroAnualidadView.php"><input type="button" value="Cancelar" ></a>
     </form>

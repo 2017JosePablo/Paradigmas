@@ -4,3 +4,103 @@
 #btnModificar{
 	background-color: blue;
 }
+
+.noticiaAviso{
+	background-color: #CEF6CE;
+}
+
+hr {
+	border-top: 4px solid #0B610B;
+
+	height: 4px;
+}
+
+h1{
+	 font-family: arial, helvetica, sans-serif;
+	 font-style: italic;
+	 color: #1C1C1C;
+ }
+/*body::after {
+	background-image: url("../imges/fondoToro.jpg");
+  content: "";
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
+*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    /*text-align: left;*/
+    padding: 8px;
+}
+/*Fondo de la barra donde se muestran los nombres de las columnnas*/
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+table{
+   border: 0px solid black;
+	 width: 100%;
+	 align-content: center;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+/*Cabecera de las tablas, donde se muestra en nombre de las columnas*/
+.cabeceraTabla{
+    background-color: #4CAF50;
+    color: white;
+		border-bottom: 2px solid #ddd;
+}
+
+
+
+/*Css de los link
+Colo r del link*/
+a:link {
+	 color: red;
+	 text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+	 color: green;
+}
+
+/* mouse over link */
+a:hover {
+	 color: #B40431;
+	 text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+	 color: blue;
+}
+
+.contenedorMensaje {
+	font-family: "Arial", Georgia, Serif;
+	font-weight: bold;
+	font-size: 20px;
+	color: #FFFFFF;
+	background: #04B404;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	padding-top: 10px;
+	/*Diseno de bordes*/
+	border-radius: 7px 7px 7px 7px;
+-moz-border-radius: 7px 7px 7px 7px;
+-webkit-border-radius: 7px 7px 7px 7px;
+border: 1px solid #237d00;
+}

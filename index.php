@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Proyecto de Paradigmas de Programacion</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="css/diseno.css">
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 		<script>
@@ -23,46 +23,55 @@
 				})
 				$.each(listitems, function(idx, itm) { mylist.append(itm); });
 			});
+
+      function setAlerta(mensaje) {
+        document.getElementById('contenedorMesaje').style="display:block";
+        document.getElementById('contenedorMesaje').innerHTML=mensaje;
+        setTimeout ("cerrarAlerta();", 5000);
+      }
+      function cerrarAlerta() {
+          document.getElementById('contenedorMesaje').style="display:none";
+      }
 		</script>
-
-
 </head>
 <body>
+<div id="contenedorMesaje" class="contenedorMensaje" style="display:none;">
+</div>
 
 <?php
 	if(isset($_GET['success'])){
 			if($_GET['success'] == "insertedPago"){
-				echo '<p style="color: green">Anualidad insetada con exito</p>';
+        echo'<script>setAlerta("Anualidad insetada con exito");</script>';
 			}else if($_GET['success'] == "insertedPagoPrimero"){
-				echo '<p style="color: green">Se ha registrado la primer Anualidad con exito</p>';
+        echo'<script>setAlerta("Se ha registrado la primer Anualidad con exito");</script>';
 			}else if($_GET['success'] == "insertedActividad"){
-				echo '<p style="color: green">Se ha registrado correctamente la Actividad</p>';
+        echo'<script>setAlerta("Se ha registrado correctamente la Actividad");</script>';
 			}else if($_GET['success'] == "updateActividad"){
-				echo '<p style="color: green">La actividad se ha modificado con exito</p>';
+        echo'<script>setAlerta("La actividad se ha modificado con exito");</script>';
 			}else if($_GET['success'] == "updateFinca"){
-				echo '<p style="color: green">La finca se ha modificado con exito</p>';
+        echo'<script>setAlerta("La finca se ha modificado con exito");</script>';
 			}else if($_GET['success'] == "insertedTipoFinca"){
-				echo '<p style="color: green">El tipo de tipo de actividad se a registrado con exito</p>';
+        echo'<script>setAlerta("El tipo de tipo de actividad se a registrado con exito");</script>';
 			}else if($_GET['success'] == "updateTipoFinca"){
-				echo '<p style="color: green">El tipo de finca se ha modificado con exito</p>';
+        echo'<script>setAlerta("El tipo de finca se ha modificado con exito");</script>';
 			}else if($_GET['success'] == "insertedHato"){
-				echo '<p style="color: green">El hato se ha insertado con exito</p>';
+        echo'<script>setAlerta("El hato se ha insertado con exito");</script>';
 			}else if($_GET['success'] == "updateHato"){
-				echo '<p style="color: green">El hato se a modificado con exito</p>';
+        echo'<script>setAlerta("El hato se a modificado con exito");</script>';
 			}else if($_GET['success'] == "insertedJunta"){
-				echo '<p style="color: green">La junta se ha insertado exitosamente.</p>';
+        echo'<script>setAlerta("La junta se ha insertado exitosamente.");</script>';
 			}else if($_GET['success'] == "insertedRaza"){
-				echo '<p style="color: green">La raza se ha insertado con exito</p>';
+        echo'<script>setAlerta("La raza se ha insertado con exito");</script>';
 			}else if($_GET['success'] == "updatedRaza"){
-				echo '<p style="color: green">La raza se ha modificado con exito</p>';
+        echo'<script>setAlerta("La raza se ha modificado con exito");</script>  ';
 			}else if($_GET['success'] == "insertedSocio"){
-				echo '<p style="color: green">El socio se ha insertado con exito</p>';
+        echo'<script>setAlerta("El socio se ha insertado con exito");</script>';
 			}else if($_GET['success'] == "updatedSocio"){
-				echo '<p style="color: green">El socio se ha modificado con exito</p>';
+        echo'<script>setAlerta("El socio se ha modificado con exito");</script>';
 			}else if($_GET['success'] == "insertedAnualidad"){
-				echo '<p style="color: green">La anualidad ha sido guardada con exito</p>';
+        echo'<script>setAlerta("La anualidad ha sido guardada con exito");</script>';
 			}else if($_GET['success'] == "insertedAprovation"){
-				echo '<p style="color: green">Se ha aprovado la Solicitud con exito</p>';
+        echo'<script> setAlerta("Se ha aprovado la Solicitud con exito");    </script>  ';
 			}
 
 
@@ -70,7 +79,7 @@
 
 	}
  ?>
-<p>ASOTURGA</p>
+<h1>ASOSIACION TURIALBEÑA DE GANADEROS</h1>
 <ol id="myId">
 		<li><a href="view/pagoPrimeroAnualidadView.php">Pago socio primera vez</a><br></li>
 		<li><a href="view/fincaTipoView.php">Tipo Finca</a><br></li>
@@ -84,9 +93,22 @@
 		<li><a href="view/actividadView.php">Actividad</a><br></li>
 		<li><a href="view/anualidadView.php">Anualidad</a><br></li>
 		<li><a href="view/aprovacionSocioView.php">Aprovacion de Socio</a><br></li>
+    <li><a href="view/loginView.php">Login</a><br></li>
+    <li><a href="view/recuperarPassView.php">Ver Claves</a><br></li>
+    <li><a href="view/avisosView.php">Avisos </a><br></li>
+    <li><a href="view/agregarNoticia.php">Agregar un Aviso </a><br></li>
 
 
 </ol>
+
+
+
+
+
+
+
+
+
 
 
 

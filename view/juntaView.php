@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de las Juntas</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="../css/diseno.css">
     <meta charset="utf-8">
 
 
@@ -32,13 +32,13 @@
 </script>
 </head>
 <body>
+	<h1>Junta Administrativa de ASOTURGA</h1>
    <form method="post" enctype="multipart/form-data" action="../business/juntaAction.php">
 	 <?php
-
 	 include '../business/juntaBusiness.php';
             $juntaBusiness = new JuntaBusiness();
             $allJuntas = $juntaBusiness->obtenerTodosTBJunta();
-            echo '<table border = "1"> <tr><td>Id</td>  <td>Presidiente</td><td>Vicepresidente</td><td>Tesorero</td><td>Secretario</td><td>Vocal 1</td><td>Vocal 2</td> <td>Vocal 3</td> <td colspan="2">Acciones</td> </tr>';
+            echo '<table> <tr class="cabeceraTabla"><td>Codigo de Junta</td>  <td>Presidiente</td><td>Vicepresidente</td><td>Tesorero</td><td>Secretario</td><td>Vocal 1</td><td>Vocal 2</td> <td>Vocal 3</td> <td colspan="2">Acciones</td> </tr>';
             foreach ($allJuntas as $current) {
                 echo '<tr>';
                 echo '<td>  '.$current->getIdTBJunta() . ' </td>';
@@ -211,7 +211,7 @@
 			</div>
 
 
-
+<hr>
 
 	<a href="../index.php">Regresar</a>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>

@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>Listado de Morosos</title>
+    <link rel="stylesheet" href="../css/diseno.css">
   </head>
   <body>
-     <form class="" action="reportePagoView.php" method="post">
-    <?php
 
+    <h1>Reportes de pagos</h1>
+    <h2>Informacion Socio</h2>
+
+     <form class="" action="reportePagoView.php" method="post">
+
+       <div style="overflow-x:auto;">
+    <?php
         $date = new DateTime($_POST['fechaMenor']);
   			$fechaMenor= $date->format('Y-m-d');
-
         $date = new DateTime($_POST['fechaMayor']);
-
         $fechaMayor= $date->format('Y-m-d');
-
-
-
-
         include_once '../business/registroAnualidadBusiness.php';
 
         $registroAnualidadBusiness = new RegistroAnualidadBusiness();
@@ -26,7 +26,7 @@
         if (empty($listaMorosos) ) {
               header("location: ../view/reporteView.php?error=notFound");
         }else{
-          echo '<table border ="1"><tr><td align = "center" colspan = "4">Reportes de pagos</td></tr><tr><td align = "left" colspan = "4">Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td >Reportes</td> </tr>';
+          echo '<table><tr class="cabeceraTabla" > <td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td align = "center">Reporte</td> </tr>';
           foreach ($listaMorosos as $current) {
               echo '<tr>';
               echo '<td> '.$current->getNombre().'</td>';
@@ -39,8 +39,10 @@
         }
 
      ?>
-
+</div>
 </form>
+  <hr>
+  <a href="../">Regresar</a>
 
   </body>
   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>

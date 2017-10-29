@@ -6,16 +6,17 @@
 			Censo de ASOTURGA
 		</title>
 
-	 
+		<link rel="stylesheet" href="../css/diseno.css"> 
 	</head>
+
 	<script type='text/javascript'>
 
 	function validar(){
 
 	var todo_correcto = true;
 	var cont = 0;
-	/*Para comprobar la edad, utilizaremos la función isNaN(), que nos dirá si el valor 
-	ingresado NO es un número (NaN son las siglas de Not a Number). Si la edad no es un 
+	/*Para comprobar la edad, utilizaremos la función isNaN(), que nos dirá si el valor
+	ingresado NO es un número (NaN son las siglas de Not a Number). Si la edad no es un
 	número, todo_correcto será false.*/
 
 	if(document.getElementById('terneros').value.length > 0){
@@ -80,9 +81,9 @@
 	if (cont == 7) { todo_correcto = false;}
 
 	if (!todo_correcto) {
-		alert('Algunos campos no están correctos, vuelva a revisarlos');	
+		alert('Algunos campos no están correctos, vuelva a revisarlos');
 	}
-	
+
 
 	return todo_correcto;
 	}
@@ -111,7 +112,7 @@
 	        echo '<p style="color: green">Transacción realizada</p>';
 	    }
 	    ?>
-	  
+
 
 	<p>Registro de hato para socios de ASOTURGA</p>
 
@@ -158,40 +159,40 @@
 					</td>
 					<td>
 						<input type="text" name="socioprimerapellido" id="socioprimerapellido"  required>
-					</td>		
+					</td>
 					<td>
 						<input type="text" name="sociosegundoapellido" id="sociosegundoapellido"  required>
 					</td>
-					
+
 					<td>
 						<input type="text" name="sociotelcasa" id="sociotelcasa">
 					</td>
-					
+
 					<td>
 
-				
+
 						<input type="text" name="sociotelmovil" id="sociotelmovil">
 
 					</td>
 				</tr>
 
-			</table>		
-		
+			</table>
+
 		<p>Tipo de Actividad</p>
 
 		 <?php
- 
+
 	 include '../business/actividadBusiness.php';
             $actividadBusiness = new actividadBusiness();
             $actividades = $actividadBusiness->obtenerTodosTBActividad();
    			     echo '<table>';
-            foreach ($actividades as $current) {     
+            foreach ($actividades as $current) {
                 echo '<tr>';
                 if($current->getId()==1){
                 	 echo '<td> <input type="radio" name="tipoactividad" checked="" value='.$current->getId().'> '.$current->getNombreActividad().'<br> </td>';
                 }else{
-                	 echo '<td> <input type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>'; 
-                }            
+                	 echo '<td> <input type="radio" name="tipoactividad" value='.$current->getId().'> '.$current->getNombreActividad().'<br></td>';
+                }
                 echo '</tr>';
             }
                 echo '</table>';
@@ -205,7 +206,7 @@
 				<td>
 					Terneros
 				</td>
-		
+
 				<td>
 					<input type="text" id="terneros" name="terneros" placeholder="0">
 				</td>
@@ -266,7 +267,7 @@
 
 
 
-			<input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato"> 
+			<input type="submit" name="registrarhato" id="registrarhato" value="Registrar Hato">
 
 
 </form>
@@ -274,5 +275,3 @@
 <a href="../index.php">Regresar</a>
 </body>
 </html>
-			
-

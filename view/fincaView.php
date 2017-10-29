@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Area Administrativa de Fincas</title>
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="../css/diseno.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script>
 
@@ -20,9 +20,6 @@
                 }
 
             }
-
-
-
              function llenarCantones(valor){
                 var valor = document.getElementById("listaProvincias") .value ;
                if(valor >0){
@@ -166,24 +163,19 @@
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
 
+<div style="overflow-x:auto;">
 
-
-
-
+  <h1>Area administrativa de Fincas</h1>
+  <h2>Informacion Socio</h2>
    <?php
 
        include '../business/fincaBusiness.php';
       $fincaBusiness = new fincaBusiness();
 
       $fincas = $fincaBusiness->  obtenerTodosTBfinca();
-        echo "<table border ='1'><tr><td align = 'center' colspan = '6'>Area administrativa de Fincas</td></tr><tr><td align = 'left' colspan = '6'>Informacion Socio</td></tr><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td> <td align = 'center' colspan = '3'>Acciones </td>
-        </tr>";
+        echo "<table ><tr class='cabeceraTabla'><td>Nombre</td>  <td>Primer Apellido</td><td>Segundo Apellido</td> <td align = 'center' colspan = '3'>Acciones </td> </tr>";
 
         foreach ($fincas as $current) {
-
-
-            //echo "<td>".$fincas["socionombre"]."  </td>";
-
           echo "<tr>";
           echo "<td>".$current->getNombre()."</td>";
           echo "<td>".$current->getPrimerApellido()."</td>";
@@ -191,15 +183,11 @@
           echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Ver'>Ver</button></td>";
           echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Mod'>Modificar</button></td>";
           echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Reg'>Registrar</button></td>";
-          echo "<tr>";
-
-
+          echo "</tr>";
           }
-
           echo "</table>";
-
     ?>
-
+</div>
 <div  id="registrarFinca" style='display:none ;' >
 
   <form id='frm'  method="post"  action="../business/fincaAction.php">
@@ -334,6 +322,7 @@
 
             <br><br>
             <p>Tipo de Finca</p>
+            <div style="overflow-x:auto;">
                 <?php
 
 
@@ -360,7 +349,7 @@
 
           ?>
 
-
+</div>
 <br><br>
 
 <p>CVO</p>
@@ -374,11 +363,10 @@
 <br><br>
 
 
-
+<div style="overflow-x:auto;">
     <?php
 
     $cont =1;
-
     include '../business/fincaCercaBusiness.php';
     $fincaBusiness = new fincaCercaBusiness();
     $cerca = $fincaBusiness->getTipoCerca();
@@ -396,7 +384,7 @@
   ?>
 
 
-
+</div>
 
 
 
@@ -523,6 +511,7 @@
 
 
     </div>
+    <hr>
      <a href="../index.php">Regresar</a>
 
 

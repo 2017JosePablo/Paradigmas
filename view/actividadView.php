@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de Actividas</title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="../css/diseno.css">
 
     <script type="text/javascript">
 
@@ -27,12 +27,16 @@
 </head>
 <body>
 
+			<div style="overflow-x:auto;">
+				<h1>Listado de tipos de actividades</h1>
          <?php
 
              include '../business/actividadBusiness.php';
             $actividadBusiness = new actividadBusiness();
             $actividades = $actividadBusiness->obtenerTodosTBActividad();
-             echo '<table border = "1"> <tr><td colspan= "2">Listado de tipos de actividades</td></tr> <tr><td>Actividad</td><td align="center">Acciones</td> </tr>';
+
+             echo '<table><tr class="cabeceraTabla" ><td>Actividad</td><td >Acciones</td> </tr>';
+
             foreach ($actividades as $current) {
                 echo '<tr>';
                     echo '<td> '.$current->getNombreActividad().'</td>';
@@ -42,7 +46,9 @@
                 echo '</table>';
 
             ?>
+					</div>
             <br>
+						<hr>
             <button onclick="ocultarCajas()" > Agregar Actividad</button>
             <br><br>
 

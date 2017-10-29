@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Area Administrativa de Tipos de Finca</title>
-	<link rel="stylesheet" href="">
+<link rel="stylesheet" href="../css/diseno.css">
 
 
    <script type="text/javascript">
@@ -28,6 +28,8 @@
 </head>
 <body>
 
+<div style="overflow-x:auto;">
+	<h1>Listado de Fincas</h1>
  <?php
 
 
@@ -35,7 +37,7 @@ require '../data/tipoFincaData.php';
 $temp = new tipoFincaData();
 $tipoFinca = $temp->getAllTBTiposFincas();
 
-        echo '<table border = "1"> <tr><td colspan = "3" align = "center"><p>Tipos de Fincas</p></td></tr> ';
+        echo '<table border = "1"> <tr class="cabeceraTabla"><td colspan = "3" align = "center"><p>Tipos de Fincas</p></td></tr> ';
         echo '<tr> <td>Numero </td> <td>Actividad </td> <td>Modificar</td></tr>   ';
         foreach ($tipoFinca as $curren) {
             echo '<tr>';
@@ -47,7 +49,9 @@ $tipoFinca = $temp->getAllTBTiposFincas();
         }
         echo '</table>';
 ?>
+</dib>
 <br>
+<hr>
 <button onclick="ocultarCajas()">Agregar Tipo Finca</button>
 <br><br>
     <div>
@@ -59,6 +63,7 @@ $tipoFinca = $temp->getAllTBTiposFincas();
                 <p>Insertar Actividad</p>
                 <label>Nombre: </label> <input type="text" name="tipofinca"  onkeypress="return validarLetras(event)" ><br>
                 <br>
+								<hr>
                 <button type="submit" name="crearTipoFinca" id="fincaTipoInser">Guardar Datos</button>
 								<a href="fincaTipoView.php"><input type="button" value="Cancelar" ></a>
             </div>
@@ -66,6 +71,7 @@ $tipoFinca = $temp->getAllTBTiposFincas();
                 <p>Actualizar Actividad</p>
                 <label>Nombre: </label> <input type="text" name="tipofincaUpdate"  onkeypress="return validarLetras(event)" id="tipofincaUp" ><br>
                 <br>
+								<hr>
                 <button type="submit" name="modificarTipoFinca" id="fincaTipoUpd">Actualizar Datos</button>
 								<a href="fincaTipoView.php"><input type="button" value="Cancelar" ></a>
             </div>

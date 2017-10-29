@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Renovar Anualidad</title>
+    <link rel="stylesheet" href="../css/diseno.css">
   </head>
 
 
@@ -27,7 +28,7 @@
 
   <body>
 
-    <p>Area administrativa de  Renovacion de Socio</p>
+    <h1>Area administrativa de  Renovacion de Socio</h1>
 
     <form class="" action="../business/registroAnualidadAction.php" method="post">
 
@@ -63,7 +64,7 @@
        <input name="renovarAnualidad" value="Guardar Datos" type="submit">
        <a href="renovarAnualidadView.php"><input type="button" value="Cancelar" ></a>
     </form>
-
+    <hr>  
     <a href="../index.php">Regresar</a>
 
   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
