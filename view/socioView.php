@@ -320,11 +320,17 @@
                     <td>
                         <br> Fecha Ingreso <br>
                     </td>
+										<td>
+												 Contraseña
+										</td>
                 </tr>
 
                 <tr>
                     <td>
                       <input type="date"  required ="" name="fecha" id="fecha"></td>
+                    </td>
+										<td>
+                      <input type="text"  required ="" name="clavesocio" id="clave"></td>
                     </td>
                 </tr>
 

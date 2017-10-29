@@ -34,30 +34,28 @@
                   echo '</td>';
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td> Tema: ';
+                  echo '<td> ';
                   echo $current->getTema();
                   echo '</td>';
                 echo '</tr>';
 
                 echo '<tr>';
-                  echo '<td> Detalle: ';
+                  echo '<td>';
                   echo $current->getDetalle();
                   echo '</td>';
                 echo '</tr>';
 
 
                 echo '<tr>';
-                  echo '<td> Foto: ';
+                  echo '<td align ="center"> ';
                     echo ' <img src="'.$current->getRutaFoto().'">';
                   echo '</td>';
                 echo '</tr>';
 
                 echo '<tr>';
-                  echo '<td> Responsable: ';
+                  echo '<td> Creador: ';
                   echo $current->getSocioId();
-                  echo '</td>';
-                  echo '<td> Responsable: ';
-                  echo '<input type="button" value='.$current->getSocioId().'> ';
+                  echo '<a href = "#?value='.$current->getSocioId().'" >Editar </a> ';
                   echo '</td>';
                 echo '</tr>';
 

@@ -34,7 +34,7 @@ $(document).ready(function() {
             $.post('../business/socioAction.php', {cedula:result[0]}, function(data){
 
             var array = JSON.parse(data);
-            
+
             document.getElementById('cajaFormulario').style.display='block';
             document.getElementById('sociocedula').value = array['sociocedula'];
             document.getElementById('socionombre').value = array['socionombre'];
@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
-alert(data);
+
             var array = JSON.parse(data);
 
 
