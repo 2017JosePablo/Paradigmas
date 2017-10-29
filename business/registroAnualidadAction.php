@@ -71,7 +71,5 @@
 		}else{
 			header("location: ../view/pagoPrimeroAnualidadView.php?error=datosVacios");
 		}
-
-
 	}
 ?>
