@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Login{
 private $idLogin;
 private $socioId;
@@ -38,7 +38,7 @@ public function setContrasena($contrasena){
 	$this->contrasela=$Contrasena;
 }
 public function getContrasena(){
-	return $this->contraseña;
+	return $this->contrasena;
 }
 
 public function setRol($rol){
