@@ -22,9 +22,13 @@
 
 
 	include_once 'socioBusiness.php';
+
+
 	$socioBusiness = new socioBusiness();
 
 	require_once '../domain/socio.php';
+
+
 
 	if (isset($_POST['agregarsocio'])) {
 
@@ -57,8 +61,13 @@
 		$fechaIngreso =$date->format('Y-m-d');
 		$tipoactividad =$_POST['tipoactividad'];
 
+		$contrasena = $_POST['contrasena'];
+
 
 		echo $tipoactividad;
+
+
+
 
 
 
@@ -66,7 +75,6 @@
 		if (strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
 
 			require 'fincaBusiness.php';
-
 
 			require_once '../domain/socioDireccion.php';
 			require_once '../domain/fincaDireccion.php';
@@ -156,6 +164,13 @@
 
 					echo "Resulado de acta: ".$resultado6."</br>";
 
+					require '/loginBusiness.php';
+					require '../domain/login.php';
+//($idLogin,$socioId,$usiario,$contrasena,$rol)
+					$loginBusiness = new loginBusiness();
+					$login =  new Login('',$idSocio,$correo,$contrasena,1);
+					$result7 = $loginBusiness->insertarTBLogin($login);
+
 				}else{
 					header("location: ../view/socioView.php?error=userExist");
 				}
@@ -167,7 +182,7 @@
 				echo "Socio->".$resultado5."<br>";
 				echo "Socio->".$resultado6."<br>";
 
-				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1) {
+				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1 && $result7 == 1) {
 					header("location: ../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
@@ -190,6 +205,10 @@
 										}else{
 											if($resultado6!=1){
 												header("location: ../view/socioView.php?error=insertedAprovacion");
+											}else{
+												if ($result7 != 1) {
+													header("location: ../view/socioView.php?error=insertedLogin");
+												}
 											}
 										}
 									}
