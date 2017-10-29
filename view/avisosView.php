@@ -35,20 +35,20 @@
                 echo '</tr>';
                 echo '<tr>';
                   echo '<td> Tema: ';
-                  echo $current->getTemaAviso();
+                  echo $current->getTema();
                   echo '</td>';
                 echo '</tr>';
 
                 echo '<tr>';
                   echo '<td> Detalle: ';
-                  echo $current->getDetalleAviso();
+                  echo $current->getDetalle();
                   echo '</td>';
                 echo '</tr>';
 
 
                 echo '<tr>';
                   echo '<td> Foto: ';
-                    echo ' <img src="'.$current->getFotoAviso().'">';
+                    echo ' <img src="'.$current->getRutaFoto().'">';
                   echo '</td>';
                 echo '</tr>';
 
