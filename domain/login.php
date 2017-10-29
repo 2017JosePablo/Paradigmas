@@ -38,7 +38,7 @@ public function setContrasena($contrasena){
 	$this->contrasela=$Contrasena;
 }
 public function getContrasena(){
-	return $this->contraseña;
+	return $this->contrasena;
 }
 
 public function setRol($rol){
