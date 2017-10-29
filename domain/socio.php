@@ -56,6 +56,7 @@ class Socio{
 		return $this->socioId;
 	}
 
+
 	public function setTipoActividadId($tipoActividadId){
 		$this->tipoActividadId = $tipoActividadId;
 	}
