@@ -1,8 +1,11 @@
 <?php
 
-include '../data/loginData.php';
-private loginData;
+include_once '../data/loginData.php';
+
 class loginBusiness{
+
+  private $loginData;
+
   function loginBusiness(){
       $this->loginData = new loginData();
   }

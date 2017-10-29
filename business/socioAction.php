@@ -61,7 +61,7 @@
 		$fechaIngreso =$date->format('Y-m-d');
 		$tipoactividad =$_POST['tipoactividad'];
 
-		$contrasena = $_POST['contrasena'];
+		$contrasena = $_POST['clavesocio'];
 
 
 		echo $tipoactividad;
@@ -72,7 +72,7 @@
 
 
 
-		if (strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
+		if (isset($contrasena) && !empty($contrasena) &&strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
 
 			require 'fincaBusiness.php';
 
@@ -164,7 +164,7 @@
 
 					echo "Resulado de acta: ".$resultado6."</br>";
 
-					require '/loginBusiness.php';
+					require 'loginBusiness.php';
 					require '../domain/login.php';
 //($idLogin,$socioId,$usiario,$contrasena,$rol)
 					$loginBusiness = new loginBusiness();
@@ -219,6 +219,8 @@
 
 				}
 
+		}else{
+			header('location: ../view/socioView.php?error=empyInput');
 		}
 	}
 

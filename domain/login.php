@@ -1,9 +1,9 @@
-<?php 
+<?php
 class Login{
 private $idLogin;
 private $socioId;
 private $usiario;
-private $contrasena:
+private $contrasena;
 private $rol;
 
 
