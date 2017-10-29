@@ -54,10 +54,10 @@
 
                 echo '<tr>';
                   echo '<td> Responsable: ';
-                  echo $current->getIdSocio();
+                  echo $current->getSocioId();
                   echo '</td>';
                   echo '<td> Responsable: ';
-                  echo '<input type="button" value='.$current->getIdSocio().'> ';
+                  echo '<input type="button" value='.$current->getSocioId().'> ';
                   echo '</td>';
                 echo '</tr>';
 
