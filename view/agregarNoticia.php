@@ -1,5 +1,11 @@
 <?php
-  $socio = 1;
+  session_start();
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: loginView.php?error=needlogin");
+    }
+
+    echo $_SESSION["usuario"];
+
 
 ?>
 <!DOCTYPE html>
@@ -11,7 +17,7 @@
   </head>
   <body>
     <h1>Agregando un nuevo anuncio.</h1>
-    <form class="" action="../business/agregarNoticiaAction.php" method="post">
+    <form class="" action="../business/agregarNoticiaAction.php" method="post" enctype="multipart/form-data">
       <label for="">Tema</label>
       <br>
       <input type="text" name="temaAnuncio" value="" placeholder="¿De que se trata el aviso?" required>
@@ -23,7 +29,7 @@
 
       <label for="">Foto</label>
       <br>
-      <input type="file" name="fotoNoticia" value="" placeholder="Seleccione una foto" required>
+      <input type="file" name="imagen" value="" placeholder="Seleccione una foto" required>
       <br><br>
       <input type="submit" name="registrarAviso" value="Guardar Datos">
       <hr>
