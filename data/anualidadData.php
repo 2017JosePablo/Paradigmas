@@ -76,6 +76,29 @@ class anualidadData extends Data{
     }
 
 
+    public function calcularMonto($socioId){
+        include '../domain/montoAnualidad.php';
+         $anualidad = array();
+
+         $sql = "SELECT tbanualidad.anualidadmonto, tbanualidad.anualidadfechaactualizacion  FROM tbanualidad INNER JOIN tbpagoanualidad ON tbanualidad.anualidadfechaactualizacion >= tbpagoanualidad.pagoanualidadanterior AND tbanualidad.anualidadfechaactualizacion <= tbpagoanualidad.pagoanualidadproximo AND tbpagoanualidad.socioid = '".$socioId."'";
+
+          $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($anualidad,new MontoAnualidad("",$row['anualidadmonto'],"",$row['anualidadfechaactualizacion']));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+
+        return $anualidad;
+
+    }
+
+
 }
 
 ?>

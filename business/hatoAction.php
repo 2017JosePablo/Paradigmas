@@ -84,9 +84,9 @@
 	}else	if (isset($_POST['registrarhato']) || isset($_POST['hatoMod'])) {
 		require 'socioBusiness.php';
 
-		require 'examenBruselasBusiness.php';
+		require_once 'examenBruselasBusiness.php';
 		require 'examenTuberculosisBusiness.php';
-		
+
 		$socioBusiness = new socioData();
 
 		$socioid=$_POST['socioId'];
@@ -117,8 +117,7 @@
 
 
 					require './hatoBusiness.php';
-					require './examenBruselasBusiness.php';
-					require './examenTuberculosisBusiness.php';
+
 
 					require_once '../domain/examenBruselas.php';
 					require_once '../domain/examenTuberculosis.php';

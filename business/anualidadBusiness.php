@@ -19,6 +19,10 @@ class AnualidadBusiness{
 	function obtenerTodosTBAnualidad(){
 		return $this->anualidad->obtenerTodosTBAnualidad();
 	}
+	function calcularMonto($idsocio){
+		return $this->anualidad->calcularMonto($idsocio);
+	}
+
 
 }
 ?>

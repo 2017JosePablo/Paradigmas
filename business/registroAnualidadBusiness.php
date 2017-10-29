@@ -27,5 +27,10 @@
 		function calcularMorososRango($fecha1,$fecha2){
 			return $this->pagoAnualidad->sacarMorososEnFechas($fecha1,$fecha2);
 		}
+		function sacarMorosos(){
+			return $this->pagoAnualidad->sacarMorosos();
+		}
+
+
 	}
 ?>

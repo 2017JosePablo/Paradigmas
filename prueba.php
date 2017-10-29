@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -73,14 +70,31 @@
     <a href="page-help.html">help</a>
     <a href="jajajajajaja.html"> Otro link</a>
 
-    <?php
 
-    require'./data/pagoAnualidadData.php';
-    $pago= new pagoAnualidadData();
-    $result=$pago->sacarMorososEnFechas("2002-01-01","2022-10-10");
+    <?php 
+    require './data/loginData.php';
+    $login= new loginData();
+
+    $result= $login->optenerTodasContrasenas();
+
+           echo '<table border = "1"> <tr>  <td align = "center" colspan = "3">Listado de COntraseñas </td> </tr><tr>  <td>Nombre de la Raza</td><td colspan="2">Contraseña</td> </tr>';
+
+            foreach ($result as $current) {
+                echo '<tr>';
+
+                echo '<td> '.$current->getNombre()." ".$current->getPrimerApellido()." ".$current->getSegundoApellido().'</td>';
+                echo '<td> '.$current->getContrasena().'</td>';
+
+                echo '</tr>';
+            }
+                echo '</table>';
+
+
+     ?>
+
+
     
-   
 
-    ?>
+
   </body>
 </html>
