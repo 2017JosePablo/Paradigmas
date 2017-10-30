@@ -20,6 +20,8 @@
           <h1>Listado de noticias publicadas en ASOTURGA</h1>
     </p>
 
+<form class="" action="../business/agregarNoticiaAction.php" method="post">
+  <input type="hidden" name="idAviso" id="idAviso" value="">
 
     <?php
 
@@ -30,6 +32,7 @@
     //    include '../domain/aviso.php';
 
         foreach ($misnoticias as $current) {
+          echo '<input type = "hidden" name = "ruta~'.$current->getIdAviso().'" value = "'.$current->getRutaFoto().'">';
             echo '<table width = "80%" border =1 align=center class= "noticiaAviso">';
                 echo '<tr class="cabeceraTabla">';
                   echo '<td> Noticia: ';
@@ -37,14 +40,15 @@
                 echo '</tr>';
                 echo '<tr>';
                   echo '<td> ';
-                  echo "<input type='text' value = '".$current->getTema()."'>";
-                  
+                  echo "<input name='temaAnuncio' type='text' id='tema~".$current->getIdAviso()."' value = '".$current->getTema()."' disabled>";
+
                   echo '</td>';
                 echo '</tr>';
 
                 echo '<tr>';
                   echo '<td>';
-                  echo $current->getDetalle();
+                    //echo "<textArea name='detalleAnuncio'  id='detalle~".$current->getDetalle()."' value = '".$current->getTema()."' disabled>";
+                    echo "<textarea name='detalleAnuncio' id= 'detalle~".$current->getIdAviso()."' rows='7' cols='80' disabled> ".$current->getDetalle()."</textarea>";
                   echo '</td>';
                 echo '</tr>';
 
@@ -52,14 +56,16 @@
                 echo '<tr>';
                   echo '<td align ="center"> ';
                     echo ' <img src="'.$current->getRutaFoto().'">';
+
                   echo '</td>';
                 echo '</tr>';
 
                 echo '<tr>';
-                  echo '<td> Creador: ';
-                  echo $current->getSocioId();
-
-                  echo "<button type= 'button' value = '".$current->getIdAviso()."'>Editar Noticia</button>";
+                  echo "<td>";
+                  echo "<button name= 'editarAviso' type= 'button' value = '".$current->getIdAviso()."'>Editar Noticia</button>";
+                  echo "<div id = 'guardar~".$current->getIdAviso()."' style='display:none;'>";
+                    echo "<button name='editarAviso' type='submit'>Guardar Cambios</button>";
+                  echo "</div>";
 
                   echo '</td>';
                 echo '</tr>';
@@ -70,6 +76,7 @@
           }
 
      ?>
+     </form>
      <hr>
      <a href="../">Regresar</a>
 

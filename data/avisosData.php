@@ -31,21 +31,16 @@ class avisosData {
         return $result;
 
 	}
-
 	public function actualizarAviso($aviso){
-
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql="UPDATE tbaviso SET temaaviso ='".$aviso->getTema()."', detalleaviso='".$aviso->getDetalle()."',rutafotoaviso='".$aviso->getRutaFoto()."' WHERE socioid='".$aviso->getSocioId()."';";
+        $sql="UPDATE tbaviso SET temaaviso ='".$aviso->getTema()."', detalleaviso='".$aviso->getDetalle()."',rutafotoaviso='".$aviso->getRutaFoto()."' WHERE socioid='".$aviso->getSocioId()."' AND idaviso = '".$aviso->getIdAviso()."';";
         $result = $conn->query($sql);
         $conn->close();
         return $result;
-
-
-
 	}
 
 	public function mostrarTodosAvisos(){
