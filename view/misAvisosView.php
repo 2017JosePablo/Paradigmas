@@ -37,7 +37,8 @@
                 echo '</tr>';
                 echo '<tr>';
                   echo '<td> ';
-                  echo $current->getTema();
+                  echo "<input type='text' value = '".$current->getTema()."'>";
+                  
                   echo '</td>';
                 echo '</tr>';
 
@@ -57,7 +58,9 @@
                 echo '<tr>';
                   echo '<td> Creador: ';
                   echo $current->getSocioId();
-                  echo '<a href = "#?value='.$current->getSocioId().'" >Editar </a> ';
+
+                  echo "<button type= 'button' value = '".$current->getIdAviso()."'>Editar Noticia</button>";
+
                   echo '</td>';
                 echo '</tr>';
 
@@ -71,4 +74,6 @@
      <a href="../">Regresar</a>
 
   </body>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../js/editarAvisos.js"></script>
 </html>
