@@ -3,25 +3,35 @@ include 'avisoBusiness.php';
 
 if(isset($_POST['registrarAviso'])){
 
+    $avisoBusiness = new AvisosBusiness();
+
     $titulo = $_POST['temaAnuncio'];
     $detalle = $_POST['detalleAnuncio'];
 
-    $nombre_img = $_FILES['imagen']['name'];
-    $tipo = $_FILES['imagen']['type'];
-    $tamano = $_FILES['imagen']['size'];
+    $nombre_img = $_FILES['fotoNoticia']['name'];
+    $tipo = $_FILES['fotoNoticia']['type'];
+    $tamano = $_FILES['fotoNoticia']['size'];
 
-    //Si existe imagen y tiene un tamaño correcto
-    if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 200000)){
+    session_start();
+    if(isset($_SESSION['usuario'])){
+    }else{
+      echo 'No existe';
+    }
+    echo "saas->".$avisoBusiness->getIndiceImagen($_SESSION['usuario']);
+
+    //Si existe fotoNoticia y tiene un tamaño correcto
+    if (($nombre_img == !NULL) && ($_FILES['fotoNoticia']['size'] <= 200000)){
        //indicamos los formatos que permitimos subir a nuestro servidor
-       if (($_FILES["imagen"]["type"] == "image/gif")
-       || ($_FILES["imagen"]["type"] == "image/jpeg")
-       || ($_FILES["imagen"]["type"] == "image/jpg")
-       || ($_FILES["imagen"]["type"] == "image/png"))
+       if (($_FILES["fotoNoticia"]["type"] == "image/gif")
+       || ($_FILES["fotoNoticia"]["type"] == "image/jpeg")
+       || ($_FILES["fotoNoticia"]["type"] == "image/jpg")
+       || ($_FILES["fotoNoticia"]["type"] == "image/png"))
        {
           // Ruta donde se guardarán las imágenes que subamos
-         $directorio = $_SERVER['SERVER_NAME'].'/paradigmas/uploads/';
+         $directorio ='../uploads/avisos/';
           // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
-          //move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+          $tipo = explode('/',$_FILES['fotoNoticia']['type']);
+          move_uploaded_file($_FILES['fotoNoticia']['tmp_name'],$directorio.$tipo[1]);
           echo "NOmbre de ruta->".$directorio;
         }else{
            //si no cumple con el formato

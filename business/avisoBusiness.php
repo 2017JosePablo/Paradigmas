@@ -17,5 +17,8 @@ class AvisosBusiness{
   function mostrarTodosAvisos(){
     return $this->dataAviso->mostrarTodosAvisos();
   }
+  function getIndiceImagen($idsocio){
+    return $this->dataAviso->getIndiceImagen($idsocio);
+  }
 }
  ?>
