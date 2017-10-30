@@ -9,7 +9,7 @@ class AvisosBusiness{
     $this->dataAviso =  new avisosData();
   }
   function insertarTBAvisos($aviso){
-    return $this->insertarTBAvisos($aviso);
+    return $this->dataAviso->insertarTBAvisos($aviso);
   }
   function actualizarAviso($aviso){
     return $this->dataAviso->actualizarAviso($aviso);
