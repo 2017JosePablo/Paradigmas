@@ -29,7 +29,7 @@
                   <label for="">Digite su correo</label>
               </td>
               <td>
-                  <input type="text" name="correologin" value="" placeholder="Ingrese el correo">
+                  <input type="email" name="correologin" value="" placeholder="Ingrese el correo" required>
               </td>
             </tr>
 
@@ -38,7 +38,7 @@
                 <label for="">Digite su contrasena</label>
               </td>
               <td>
-                  <input type="password" name="clavelogin" id="clavelogin" value="" placeholder="Ingrese el clave">
+                  <input type="password" name="clavelogin" id="clavelogin" value="" placeholder="Ingrese el clave" required>
                   <a onclick="verClave()">Ver</a>
               </td>
             </tr>
@@ -60,3 +60,16 @@
       <a href="../">Regresar</a>
   </body>
 </html>
+
+
+
+<?php
+
+    if(isset($_GET['error'])){
+        if ($_GET['error'] == "needlogin") {
+          echo "<script>alert('Necesita estar logueado.') </script>";
+        }else{
+          echo "<script>alert('El usuario o contraseña ingresada no son validos.') </script>";
+        }
+    }
+ ?>

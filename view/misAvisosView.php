@@ -1,33 +1,38 @@
+<?php
+  session_start();
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: loginView.php?error=needlogin");
+    }
+//    echo $_SESSION["usuario"];
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Avisos</title>
+    <title>Listado de avisos</title>
 
     <link rel="stylesheet" href="../css/diseno.css">
   </head>
   <body>
 
     <p>
-          <h1>Noticias de ASOTURGA</h1>
+          <h1>Listado de noticias publicadas en ASOTURGA</h1>
     </p>
 
 
+    <?php
 
+        include '../business/avisoBusiness.php';
+        $avisos = new AvisosBusiness();
+        $misnoticias = $avisos->mostrarMisAvisos($_SESSION["usuario"]);
 
-        <?php
+    //    include '../domain/aviso.php';
 
-            include '../business/avisoBusiness.php';
-            $avisos = new AvisosBusiness();
-            $misnoticias = $avisos->mostrarTodosAvisos();
-
-
-            foreach ($misnoticias as $current) {
-
+        foreach ($misnoticias as $current) {
             echo '<table width = "80%" border =1 align=center class= "noticiaAviso">';
                 echo '<tr class="cabeceraTabla">';
                   echo '<td> Noticia: ';
-                
                   echo '</td>';
                 echo '</tr>';
                 echo '<tr>';
@@ -50,8 +55,7 @@
                 echo '</tr>';
 
                 echo '<tr>';
-                  echo '<td> Creador por: ';
-
+                  echo '<td> Creador: ';
                   echo $current->getSocioId();
                   echo '<a href = "#?value='.$current->getSocioId().'" >Editar </a> ';
                   echo '</td>';

@@ -1,6 +1,9 @@
 <?php
-  $socio = 1;
-
+  session_start();
+    if (!isset($_SESSION["usuario"])) {
+        header("Location: loginView.php?error=needlogin");
+    }
+//    echo $_SESSION["usuario"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +26,7 @@
 
       <label for="">Foto</label>
       <br>
-      <input type="file" name="fotoNoticia" value="" placeholder="Seleccione una foto" required>
+      <input type="file" name="imagen" value="" placeholder="Seleccione una foto" required>
       <br><br>
       <input type="submit" name="registrarAviso" value="Guardar Datos">
       <hr>
