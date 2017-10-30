@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  if (isset($_SESSION["usuario"]) && isset($_SESSION["rol"])){
+    if ($_SESSION['rol'] == "admi") {
+ ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -64,10 +71,17 @@
        <input name="renovarAnualidad" value="Guardar Datos" type="submit">
        <a href="renovarAnualidadView.php"><input type="button" value="Cancelar" ></a>
     </form>
-    <hr>  
+    <hr>
     <a href="../index.php">Regresar</a>
 
   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="../js/mostrarAnualidad.js"></script>
   </body>
 </html>
+<?php
+    }else{header("Location: ../index.php?error=dontPermisse");}
+  }else{
+     header("Location: ../index.php?error=dontPermisse");
+  }
+
+ ?>
