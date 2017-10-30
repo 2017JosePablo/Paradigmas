@@ -62,9 +62,9 @@ if(isset($_POST['editarAviso'])){
       $result = $avisoBusiness->actualizarAviso($aviso);
 
       if($result == 1){
-        header('location: ../index.php?success = updatedNoticia');
+        header('location: ../index.php?success=updatedNoticia');
       }else{
-        header('Location: ../view/misAvisosView.php?error = updatedFail');
+        header('Location: ../view/misAvisosView.php?error=updatedFail');
       }
   }
 }
