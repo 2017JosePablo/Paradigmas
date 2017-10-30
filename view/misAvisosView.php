@@ -25,15 +25,14 @@
 
         include '../business/avisoBusiness.php';
         $avisos = new AvisosBusiness();
-        $misnoticias = $avisos->mostrarMisAvisos();
+        $misnoticias = $avisos->mostrarMisAvisos($_SESSION["usuario"]);
 
     //    include '../domain/aviso.php';
 
-        foreach ($aviso as $current) {
+        foreach ($misnoticias as $current) {
             echo '<table width = "80%" border =1 align=center class= "noticiaAviso">';
                 echo '<tr class="cabeceraTabla">';
                   echo '<td> Noticia: ';
-                  echo $cont ++;
                   echo '</td>';
                 echo '</tr>';
                 echo '<tr>';

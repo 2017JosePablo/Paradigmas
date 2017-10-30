@@ -13,24 +13,21 @@
     </p>
 
 
-    <?php
 
-        include '../domain/aviso.php';
-        $aviso = array();
-        $cont = 0;
 
-        while($cont < 10) {
-            array_push($aviso, new Aviso($cont,"Adan Carranza Alfaro","Sexo en la ciudad ","Sen detala la fecja","../uploads/avisos/foto1.png"));
-            $cont++;
-        }
+        <?php
 
-          $cont =1;
-            foreach ($aviso as $current) {
+            include '../business/avisoBusiness.php';
+            $avisos = new AvisosBusiness();
+            $misnoticias = $avisos->mostrarTodosAvisos();
+
+
+            foreach ($misnoticias as $current) {
 
             echo '<table width = "80%" border =1 align=center class= "noticiaAviso">';
                 echo '<tr class="cabeceraTabla">';
                   echo '<td> Noticia: ';
-                  echo $cont ++;
+                
                   echo '</td>';
                 echo '</tr>';
                 echo '<tr>';
@@ -53,7 +50,8 @@
                 echo '</tr>';
 
                 echo '<tr>';
-                  echo '<td> Creador: ';
+                  echo '<td> Creador por: ';
+
                   echo $current->getSocioId();
                   echo '<a href = "#?value='.$current->getSocioId().'" >Editar </a> ';
                   echo '</td>';
