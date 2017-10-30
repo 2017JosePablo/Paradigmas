@@ -69,6 +69,27 @@ class avisosData {
         $conn->close();
          return $avisos;
 	}
+	public function mostrarMisAvisos($idsocio){
+		 $avisos = array();
+				require '../domain/aviso.php';
+		 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				// Check connection
+				if (!$conn) {
+						die("Connection failed: " . mysqli_connect_error());
+				}
+				$sql="SELECT * FROM tbaviso WHERE socioid= '".$idsocio."';";
+				$result = $conn->query($sql);
+				if($result->num_rows > 0) {
+						while($row = $result->fetch_assoc()) {
+								array_push($avisos, new Aviso($row["idaviso"],$row["socioid"],$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"]));
+			}
+				}else{
+						echo "0 results";
+				}
+				$conn->close();
+				 return $avisos;
+	}
+
 	public function getIndiceImagen($idsocio){
 		 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 				if (!$conn) {

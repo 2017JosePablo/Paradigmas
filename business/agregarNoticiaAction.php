@@ -19,7 +19,7 @@ if(isset($_POST['registrarAviso'])){
     }
     echo "saas->".$avisoBusiness->getIndiceImagen($_SESSION['usuario']);
 
-    //Si existe fotoNoticia y tiene un tamaño correcto
+    
     if (($nombre_img == !NULL) && ($_FILES['fotoNoticia']['size'] <= 200000)){
        //indicamos los formatos que permitimos subir a nuestro servidor
        if (($_FILES["fotoNoticia"]["type"] == "image/gif")
@@ -27,12 +27,9 @@ if(isset($_POST['registrarAviso'])){
        || ($_FILES["fotoNoticia"]["type"] == "image/jpg")
        || ($_FILES["fotoNoticia"]["type"] == "image/png"))
        {
-          // Ruta donde se guardarán las imágenes que subamos
          $directorio ='../uploads/avisos/';
-          // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
           $tipo = explode('/',$_FILES['fotoNoticia']['type']);
-          move_uploaded_file($_FILES['fotoNoticia']['tmp_name'],$directorio.$tipo[1]);
-          echo "NOmbre de ruta->".$directorio;
+          move_uploaded_file($_FILES['fotoNoticia']['tmp_name'],$directorio.$_SESSION['usuario'].'-'.$avisoBusiness->getIndiceImagen($_SESSION['usuario']).'.'.$tipo[1]);
         }else{
            //si no cumple con el formato
            echo "No se puede subir una imagen con ese formato ";
