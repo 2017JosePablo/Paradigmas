@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'data.php';
 
 class avisosData {
@@ -69,6 +69,21 @@ class avisosData {
         $conn->close();
          return $avisos;
 	}
-
+	public function getIndiceImagen($idsocio){
+		 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				if (!$conn) {
+						die("Connection failed: " . mysqli_connect_error());
+				}
+				$cont = 0;
+				$sql = "SELECT * FROM tbaviso WHERE socioid= '".$idsocio."';";
+				$result = $conn->query($sql);
+				if($result->num_rows > 0) {
+						while($row = $result->fetch_assoc()) {
+								$cont++;
+							}
+				}
+				$conn->close();
+				return $cont;
+	}
 }
  ?>
