@@ -96,6 +96,7 @@
     <li><a href="view/loginView.php">Login</a><br></li>
     <li><a href="view/recuperarPassView.php">Ver Claves</a><br></li>
     <li><a href="view/avisosView.php">Avisos </a><br></li>
+    <li><a href="view/misAvisosView.php">Mis Avisos </a><br></li>
     <li><a href="view/agregarNoticia.php">Agregar un Aviso </a><br></li>
 
 

@@ -3,10 +3,7 @@
     if (!isset($_SESSION["usuario"])) {
         header("Location: loginView.php?error=needlogin");
     }
-
-    echo $_SESSION["usuario"];
-
-
+//    echo $_SESSION["usuario"];
 ?>
 <!DOCTYPE html>
 <html>
