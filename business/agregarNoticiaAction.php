@@ -51,8 +51,21 @@ if(isset($_POST['editarAviso'])){
   $avisoBusiness = new AvisosBusiness();
   $titulo = $_POST['temaAnuncio'];
   $detalle = $_POST['detalleAnuncio'];
-  $nombre_img = $_FILES['imagen']['name'];
-  $tipo = $_FILES['fotoNoticia']['type'];
+  $idNoticia = $_POST['idAviso'];
+  $imagen = "ruta~".$idNoticia;
+  $ruta = $_POST[$imagen];
 
+  if(isset($titulo) && !empty($titulo) && isset($detalle) && !empty($detalle)){
+      session_start();
+      $aviso = new Aviso($idNoticia,$_SESSION['usuario'],$titulo,$detalle,$ruta);
+      $avisoBusiness = new AvisosBusiness();
+      $result = $avisoBusiness->actualizarAviso($aviso);
+
+      if($result == 1){
+        header('location: ../index.php?success = updatedNoticia');
+      }else{
+        header('Location: ../view/misAvisosView.php?error = updatedFail');
+      }
+  }
 }
  ?>
