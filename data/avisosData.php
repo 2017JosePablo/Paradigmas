@@ -21,10 +21,10 @@ class avisosData {
 
         $sql = "INSERT INTO tbaviso (socioid,temaaviso,detalleaviso,rutafotoaviso)
         VALUES ('" .
-                $login->getSocioId() ."','".
-                $login->getTema() ."','" .
-                $login->getDetalle()."','".
-                $login->getRutaFoto(). "');";
+                $aviso->getSocioId() ."','".
+                $aviso->getTema() ."','" .
+                $aviso->getDetalle()."','".
+                $aviso->getRutaFoto(). "');";
 
         $result = $conn->query($sql);
         $conn->close();
