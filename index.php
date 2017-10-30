@@ -69,7 +69,11 @@
         echo'<script>setAlerta("La anualidad ha sido guardada con exito");</script>';
 			}else if($_GET['success'] == "insertedAprovation"){
         echo'<script> setAlerta("Se ha aprovado la Solicitud con exito");    </script>  ';
+			}else if($_GET['success'] == "updatedNoticia"){
+        echo'<script> setAlerta("La noticia se ha actualizado con exito");    </script>  ';
 			}
+
+
 	}else {
     if(isset($_GET['error'])){
       if($_GET['error'] == "dontPermisse"){
