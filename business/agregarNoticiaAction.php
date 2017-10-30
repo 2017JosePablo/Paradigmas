@@ -1,5 +1,6 @@
 <?php
 include 'avisoBusiness.php';
+require_once '../domain/aviso.php';
 
 if(isset($_POST['registrarAviso'])){
 
@@ -17,9 +18,28 @@ if(isset($_POST['registrarAviso'])){
     }else{
       echo 'No existe';
     }
-    echo "saas->".$avisoBusiness->getIndiceImagen($_SESSION['usuario']);
+     $directorio ='../uploads/avisos/';
 
-    
+    if(isset($titulo) && !empty($titulo) && isset($detalle) && !empty($detalle) && isset($nombre_img) && !empty($nombre_img)){
+      //function Aviso($idAviso,$socioId, $tema,$detalle,$rutaFoto){
+      $indice = $avisoBusiness->getIndiceImagen($_SESSION['usuario'])+1;
+      $aviso = new Aviso('',$_SESSION['usuario'],$titulo,$detalle,$directorio.$_SESSION['usuario'].'-'.$indice.'.'.$tipo[1]);
+
+      $avisoBusiness = new AvisosBusiness();
+
+      $result = $avisoBusiness->insertarTBAvisos($aviso);
+
+      if($result == 1){
+        echo "inserted";
+      }else{
+        echo "NOT";
+      }
+
+    }else{
+      header("location: ../view/agregarNoticia.php?error=emptyInput");
+    }
+
+
     if (($nombre_img == !NULL) && ($_FILES['fotoNoticia']['size'] <= 200000)){
        //indicamos los formatos que permitimos subir a nuestro servidor
        if (($_FILES["fotoNoticia"]["type"] == "image/gif")
@@ -29,7 +49,7 @@ if(isset($_POST['registrarAviso'])){
        {
          $directorio ='../uploads/avisos/';
           $tipo = explode('/',$_FILES['fotoNoticia']['type']);
-          move_uploaded_file($_FILES['fotoNoticia']['tmp_name'],$directorio.$_SESSION['usuario'].'-'.$avisoBusiness->getIndiceImagen($_SESSION['usuario']).'.'.$tipo[1]);
+          move_uploaded_file($_FILES['fotoNoticia']['tmp_name'],$directorio.$_SESSION['usuario'].'-'.$indice.'.'.$tipo[1]);
         }else{
            //si no cumple con el formato
            echo "No se puede subir una imagen con ese formato ";

@@ -18,7 +18,7 @@ class AvisosBusiness{
     return $this->dataAviso->mostrarTodosAvisos();
   }
   function mostrarMisAvisos($idSocio){
-    return $this->dataAviso->mosrarMisAvisos($idSocio);
+    return $this->dataAviso->mostrarMisAvisos($idSocio);
   }
   function getIndiceImagen($idsocio){
     return $this->dataAviso->getIndiceImagen($idsocio);
