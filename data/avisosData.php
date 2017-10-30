@@ -56,12 +56,13 @@ class avisosData {
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql="SELECT *FROM tbaviso";
+        $sql="SELECT tbaviso.idaviso, tbsocio.socionombre ,  tbsocio.socioprimerapellido , tbsocio.sociosegundoapellido,   tbaviso.temaaviso, tbaviso.detalleaviso , tbaviso.rutafotoaviso FROM tbaviso  INNER JOIN  tbsocio ON tbaviso.socioid = tbsocio.socioid";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($avisos, new Aviso($row["idaviso"],$row["socioid"],$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"]));
+							$nombreCompleto = $row['socionombre']." ".$row['socioprimerapellido']."".$row['sociosegundoapellido'];
+                array_push($avisos, new Aviso($row["idaviso"], $nombreCompleto,$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"]));
 			}
         }else{
             echo "0 results";
