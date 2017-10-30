@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -67,7 +68,7 @@
 
     if(isset($_GET['error'])){
         if ($_GET['error'] == "needlogin") {
-          echo "<script>alert('Necesita estar logueado.') </script>";
+          echo "<script>alert('Inicie session para poder registrar una noticia.') </script>";
         }else{
           echo "<script>alert('El usuario o contraseña ingresada no son validos.') </script>";
         }

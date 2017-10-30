@@ -1,7 +1,12 @@
 <?php
-  if (!isset($_POST['reporte'])) {
-    header("location: ../view/reporteView.php?error=accessDeneid");
-  }
+  session_start();
+
+  if (isset($_SESSION["usuario"]) && isset($_SESSION["rol"])){
+    if ($_SESSION['rol'] == "admi") {
+
+      if (!isset($_POST['reporte'])) {
+        header("location: ../view/reporteView.php?error=accessDeneid");
+      }
  ?>
 <html>
 <head>
@@ -102,3 +107,10 @@ echo '</table>';
  </script>
 
 </html>
+<?php
+    }else{header("Location: ../index.php?error=dontPermisse");}
+  }else{
+     header("Location: ../index.php?error=dontPermisse");
+  }
+
+ ?>

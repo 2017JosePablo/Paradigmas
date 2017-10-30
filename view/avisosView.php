@@ -27,7 +27,7 @@
             echo '<table width = "80%" border =1 align=center class= "noticiaAviso">';
                 echo '<tr class="cabeceraTabla">';
                   echo '<td> Noticia: ';
-                
+
                   echo '</td>';
                 echo '</tr>';
                 echo '<tr>';
@@ -53,7 +53,6 @@
                   echo '<td> Creador por: ';
 
                   echo $current->getSocioId();
-                  echo '<a href = "#?value='.$current->getSocioId().'" >Editar </a> ';
                   echo '</td>';
                 echo '</tr>';
 

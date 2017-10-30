@@ -1,3 +1,9 @@
+<?php
+  session_start();
+
+  if (isset($_SESSION["usuario"]) && isset($_SESSION["rol"])){
+    if ($_SESSION['rol'] == "admi") {
+ ?>
 
 <!doctype HTML>
 <html>
@@ -258,3 +264,10 @@ echo '</table>';
     <script src="../js/editarHato.js"></script>
 </body>
 </html>
+<?php
+    }else{header("Location: ../index.php?error=dontPermisse");}
+  }else{
+     header("Location: ../index.php?error=dontPermisse");
+  }
+
+ ?>

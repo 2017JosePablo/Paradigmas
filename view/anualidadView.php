@@ -1,4 +1,9 @@
 <?php
+  session_start();
+
+  if (isset($_SESSION["usuario"]) && isset($_SESSION["rol"])){
+    if ($_SESSION['rol'] == "admi") {
+
   include_once '../business/registroAnualidadBusiness.php';
   $anualidad  = new RegistroAnualidadBusiness();
   $fecha = gmdate('Y-m-d', time());
@@ -164,3 +169,10 @@
   <script src="../js/anualidadJs.js"></script>
 
 </html>
+<?php
+    }else{header("Location: ../index.php?error=dontPermisse");}
+  }else{
+     header("Location: ../index.php?error=dontPermisse");
+  }
+
+ ?>

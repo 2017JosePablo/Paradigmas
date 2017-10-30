@@ -1,8 +1,3 @@
-<?php
-	//echo dirname("business/anualidadBusiness.php");
-	//include "business/anualidadBusiness.php";
-
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,31 +6,33 @@
 	<title>Proyecto de Paradigmas de Programacion</title>
 	<link rel="stylesheet" href="css/diseno.css">
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-		<script>
-			$(function(){
-				var mylist = $('#myId');
-				var listitems = mylist.children('li').get();
-				listitems.sort(function(a, b) {
-				   var compA = $(a).text().toUpperCase();
-				   var compB = $(b).text().toUpperCase();
-				   return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
-				})
-				$.each(listitems, function(idx, itm) { mylist.append(itm); });
-			});
+  <script type="text/javascript">
 
       function setAlerta(mensaje) {
         document.getElementById('contenedorMesaje').style="display:block";
         document.getElementById('contenedorMesaje').innerHTML=mensaje;
-        setTimeout ("cerrarAlerta();", 5000);
+        setTimeout ("cerrarAlerta('contenedorMesaje');", 5000);
       }
-      function cerrarAlerta() {
-          document.getElementById('contenedorMesaje').style="display:none";
+
+      function setAlertaError(mensaje) {
+        document.getElementById('contenedorMesajeError').style="display:block";
+        document.getElementById('contenedorMesajeError').innerHTML=mensaje;
+        setTimeout ("cerrarAlerta('contenedorMesajeError');", 5000);
       }
+
+      function cerrarAlerta(ventana) {
+          document.getElementById(ventana).style="display:none";
+      }
+
+
+
 		</script>
 </head>
 <body>
 <div id="contenedorMesaje" class="contenedorMensaje" style="display:none;">
+</div>
+
+<div id="contenedorMesajeError" class="contenedorMensajeError" style="display:none;">
 </div>
 
 <?php
@@ -72,15 +69,29 @@
         echo'<script>setAlerta("La anualidad ha sido guardada con exito");</script>';
 			}else if($_GET['success'] == "insertedAprovation"){
         echo'<script> setAlerta("Se ha aprovado la Solicitud con exito");    </script>  ';
+			}else if($_GET['success'] == "updatedNoticia"){
+        echo'<script> setAlerta("La noticia se ha actualizado con exito");    </script>  ';
 			}
 
 
-
-
-	}
+	}else {
+    if(isset($_GET['error'])){
+      if($_GET['error'] == "dontPermisse"){
+        echo'<script> setAlertaError("No cuenta con los privilegios para esta accion");    </script>  ';
+			}
+    }
+  }
  ?>
 <h1>ASOSIACION TURIALBEÑA DE GANADEROS</h1>
-<ol id="myId">
+
+
+
+<li><a href="view/loginView.php">Login</a></li>
+<li><a href="view/salirView.php">Salir </a><br></li>
+
+
+<h2>Vista administrativa</h2>
+
 		<li><a href="view/pagoPrimeroAnualidadView.php">Pago socio primera vez</a><br></li>
 		<li><a href="view/fincaTipoView.php">Tipo Finca</a><br></li>
 		<li><a href="view/fincaView.php">Finca</a><br></li>
@@ -93,19 +104,20 @@
 		<li><a href="view/actividadView.php">Actividad</a><br></li>
 		<li><a href="view/anualidadView.php">Anualidad</a><br></li>
 		<li><a href="view/aprovacionSocioView.php">Aprovacion de Socio</a><br></li>
-    <li><a href="view/loginView.php">Login</a><br></li>
     <li><a href="view/recuperarPassView.php">Ver Claves</a><br></li>
     <li><a href="view/avisosView.php">Avisos </a><br></li>
     <li><a href="view/misAvisosView.php">Mis Avisos </a><br></li>
     <li><a href="view/agregarNoticia.php">Agregar un Aviso </a><br></li>
+
+
+
+
+<h2>Area de un Usuario</h2>
+
+    <li><a href="view/avisosView.php">Avisos </a><br></li>
+    <li><a href="view/misAvisosView.php">Mis Avisos </a><br></li>
+    <li><a href="view/agregarNoticia.php">Agregar un Aviso </a><br></li>
     <li><a href="view/salirView.php">Salir </a><br></li>
-
-
-</ol>
-
-
-
-
 
 
 

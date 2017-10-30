@@ -13,6 +13,7 @@ if(isset($_POST['accederlogin'])){
       $usuarioJson = $loginBusiness->verificarLogin($usuario,$contrasena);
       $usuario = json_decode($usuarioJson, true);
       $_SESSION['usuario'] = $usuario['socioId'];
+      $_SESSION['rol'] = $usuario['rol'];
       header('location: ../index.php?success=bienvenido');
     }else{
       header('location: ../view/loginView.php?error=notExist');
