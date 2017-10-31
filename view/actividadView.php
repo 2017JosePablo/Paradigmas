@@ -35,7 +35,7 @@
 <body>
 
 			<div style="overflow-x:auto;">
-				<h1>Listado de tipos de actividades</h1>
+				<h1>Gestíon de  actividades</h1>
          <?php
 
              include '../business/actividadBusiness.php';

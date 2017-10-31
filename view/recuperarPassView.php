@@ -14,7 +14,7 @@
   </head>
   <body>
 
-  <h1>Area administrativa de Recuperacion de clave</h1>
+  <h1>Gestíon de recuperacion de clave</h1>
 
 
   <div style="overflow-x:auto;">

@@ -172,7 +172,7 @@
 
 <div style="overflow-x:auto;">
 
-  <h1>Area administrativa de Fincas</h1>
+  <h1>Gestíon de Finca</h1>
   <h2>Informacion Socio</h2>
    <?php
 
@@ -223,7 +223,7 @@
             <table>
                 <tr>
                     <td>
-                        Area de la Finca
+                        Area de la Finca<h3 class="informacionUsuario">Si tiene más de una finca, debe totalizar y registrar un dato unificado.</h3>
                     </td>
 
 
@@ -344,7 +344,7 @@
 
                       echo '<tr>';
 
-                      echo "<td> <input id='".$curren->getId()."-tipo' type='radio' name='tipofinca' value='".$curren->getId()."'</td>";
+                      echo "<td> <input id='".$curren->getId()."-tipo' type='radio' checked name='tipofinca' value='".$curren->getId()."'></td>";
 
                       echo '<td>'.$curren->getFincaTipoActividad().'</td>';
 
@@ -459,7 +459,7 @@
                  <table>
                 <tr>
                     <td>
-                        Area de la Finca
+                        Area de la Finca<h3 class="informacionUsuario"> (Has)</h3>
                     </td>
 
 

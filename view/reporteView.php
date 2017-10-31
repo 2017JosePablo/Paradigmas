@@ -45,10 +45,42 @@
 						return true;
 					}
 				}
+
+        function reporteMorosidad() {
+          document.getElementById('reporteMorosidad').style="display:block";
+          document.getElementById('reporteMorosidadFechas').style="display:none";
+        }
+        function reporteMorosidadFechas() {
+          document.getElementById('reporteMorosidad').style="display:none";
+          document.getElementById('reporteMorosidadFechas').style="display:block";
+        }
+
 		 </script>
 
   </head>
     <body>
+      <h2>
+        Reportes de Morosidad.
+      </h2>
+      <input type="button" onclick="reporteMorosidad()" value="Reporte por morosidad">
+      <input type="button" onclick="reporteMorosidadFechas()" value="Reporte por rango de fechas">
+
+      <h2>
+        Reportes de los socios.
+      </h2>
+      <input type="button" onclick="reporteCanton()" value="Socios por Canton-Distrito">
+      <input type="button" onclick="reporteRaza()" value="Socios por Raza">
+      <input type="button" onclick="reporteFinca()" value="Socios por Tipo de Finca">
+      <input type="button" onclick="reporteCerca()" value="Socios por tipo de cerca">
+
+
+      <h2>
+        Reportes de Finca y de Hato.
+      </h2>
+      <input type="button" onclick="reporteHato()" value="Hato consolidado">
+      <input type="button" onclick="reporteExamen()" value="Examenes CVO Tubuerculosis Brucelas">
+      <input type="button" onclick="reporteBovinosDistrito()" value="Cantidad de bovinos por distrito">
+      <div class="" id="reporteMorosidad" style="display:none">
 			<h1>Listado de  socios morosos</h1>
 			<?php
 				if(isset($_GET['error']) && $_GET['error']== "notFound"){
@@ -60,10 +92,8 @@
 					<h2>Informacion Socio</h2>
     <?php
       include_once '../business/registroAnualidadBusiness.php';
-
       $registroAnualidadBusiness = new RegistroAnualidadBusiness();
       $listaMorosos = $registroAnualidadBusiness->sacarMorosos();
-
     echo '<table ><tr class="cabeceraTabla"><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td >Reportes</td> </tr>';
     foreach ($listaMorosos as $current) {
         echo '<tr>';
@@ -75,20 +105,24 @@
     }
     echo '</table>';
     ?>
+  	</div>
+  	</form>
 	</div>
-	</form>
+<div class="" id="reporteMorosidadFechas" style="display:none">
+		<h1>Calcular por medio de dos fechas</h1>
 
-		<p>Calcular por medio de dos fechas</p>
 		<form class="" action="verMorososView.php" method="post" onsubmit="return validarFecha()">
-			<label for="">Fecha Menor</label><br><br>
+			<label for="">Fecha Menor     <h3 class="informacionUsuario">(m/d/A)</h3><br></label>
+
 			<input type="date" name="fechaMenor" id="fechaMenor"  value="" placeholder="01/01/1990">
 			<br><br>
-			<label for="">Fecha Mayor</label><br>
+			<label for="">Fecha Mayor  <h3 class="informacionUsuario">(m/d/A)</h3></label>
+
 			<input type="date" name="fechaMayor" id="fechaMayor" value="" placeholder="01/01/2018">
 
 			<input type="submit" name="anualidadFecha" id="anualidadFecha" value="Enviar Datos">
 		</form>
-
+</div>
 		<hr>
     <a href="../index.php">Regresar</a>
 

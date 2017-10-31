@@ -36,7 +36,7 @@
 
   <body>
 
-    <p>Area administrativa de primer pago de Anualidad </p>
+    <p><h1>Gestíon de  pago por primera vez de  Anualidad </h1></p>
 
     <form class="" action="../business/registroAnualidadAction.php" method="post">
 

@@ -121,3 +121,8 @@ border: 1px solid #237d00;
 -webkit-border-radius: 7px 7px 7px 7px;
 border: 1px solid #237d00;
 }
+
+.informacionUsuario{
+	color: #db0000;
+	font-size: 15px;
+}

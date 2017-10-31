@@ -89,9 +89,7 @@
 <li><a href="view/loginView.php">Login</a></li>
 <li><a href="view/salirView.php">Salir </a><br></li>
 
-
 <h2>Vista administrativa</h2>
-
 		<li><a href="view/pagoPrimeroAnualidadView.php">Pago socio primera vez</a><br></li>
 		<li><a href="view/fincaTipoView.php">Tipo Finca</a><br></li>
 		<li><a href="view/fincaView.php">Finca</a><br></li>
@@ -109,22 +107,10 @@
     <li><a href="view/misAvisosView.php">Mis Avisos </a><br></li>
     <li><a href="view/agregarNoticia.php">Agregar un Aviso </a><br></li>
 
-
-
-
 <h2>Area de un Usuario</h2>
-
     <li><a href="view/avisosView.php">Avisos </a><br></li>
     <li><a href="view/misAvisosView.php">Mis Avisos </a><br></li>
     <li><a href="view/agregarNoticia.php">Agregar un Aviso </a><br></li>
-    <li><a href="view/salirView.php">Salir </a><br></li>
-
-
-
-
-
-
-
 
 </body>
 </html>

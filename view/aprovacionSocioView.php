@@ -36,7 +36,7 @@
   </head>
   <body>
     <div style="overflow-x:auto;">
-      <h1>Area administrativa Aprovacion de Socios</h1>
+      <h1>Gestíon de Aprovacion de Socios</h1>
         <h2>Informacion de socios</h2>
         <?php
         include_once '../business/aprovacionBusiness.php';

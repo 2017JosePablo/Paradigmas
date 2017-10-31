@@ -82,8 +82,9 @@
     }
 
 ?>
-<h1>Area administrativa de Hatos</h1>
+<h1>Gestíon de Hato</h1>
 <h2>Informacion Socio</h2>
+<h3 class="informacionUsuario">Si desconoce algun valor o cantidad, ingrese 0</h3></p>
 <?php
 require '../business/socioBusiness.php';
 
@@ -124,9 +125,25 @@ echo '</table>';
 
 
     <table>
+      <tr  class="cabeceraTabla">
+        <td>
+          Animal
+        </td>
+        <td>
+          Promedio de edad
+        </td>
+        <td>
+          Cantidad
+        </td>
+      </tr>
+
             <tr>
                 <td>
                     Terneros
+                </td>
+
+                <td>
+                    0-6 meses.
                 </td>
 
                 <td>
@@ -138,12 +155,18 @@ echo '</table>';
                     Terneras
                 </td>
                 <td>
+                    0-6 meses.
+                </td>
+                <td>
                     <input type="text" id="terneras" name="terneras" onkeypress="return soloNumeros(event)" placeholder="0" >
                 </td>
         </tr>
             <tr>
                 <td>
                     Novillos
+                </td>
+                <td>
+                    6-18 meses.
                 </td>
                 <td>
                     <input type="text" id="novillos"  name="novillos" onkeypress="return soloNumeros(event)" placeholder="0">
@@ -154,12 +177,18 @@ echo '</table>';
                     Novillas
                 </td>
                 <td>
+                    6-Preñez.
+                </td>
+                <td>
                     <input type="text" id="novillas" name="novillas" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
         </tr>
             <tr>
                 <td>
                     Novillas Pregnadas
+                </td>
+                <td>
+
                 </td>
                 <td>
                     <input type="text" id="novillaspregnadas" name="novillaspregnadas" onkeypress="return soloNumeros(event)" placeholder="0">
@@ -170,12 +199,18 @@ echo '</table>';
                     Toros en servicio
                 </td>
                 <td>
+
+                </td>
+                <td>
                     <input type="text" id="torosServicio"  name="torosServicio" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
         </tr>
             <tr>
                   <td>
                     Toros engorde
+                </td>
+                <td>
+                    18 meses -venta.
                 </td>
                 <td>
                     <input type="text" id="torosEngorde"  name="torosEngorde" onkeypress="return soloNumeros(event)" placeholder="0">
@@ -186,6 +221,9 @@ echo '</table>';
                     Vacas Cria
                 </td>
                 <td>
+
+                </td>
+                <td>
                     <input type="text" id="vacasCria" name="vacasCria" onkeypress="return soloNumeros(event)" placeholder="0">
                 </td>
             </tr>
@@ -193,6 +231,9 @@ echo '</table>';
 
                 <td>
                     Vacas Engorde
+                </td>
+                <td>
+
                 </td>
                 <td>
                     <input type="text" id="vacasEngorde" name="vacasEngorde" onkeypress="return soloNumeros(event)" placeholder="0">
@@ -235,15 +276,15 @@ echo '</table>';
 		<p>Esta Vigente?</p>
 		<input type="radio" name='radioBrusela' onclick="verEspacios('fechaBruc','labelBru')" value="1" checked > Si<br>
 		<input type="radio" name="radioBrusela"  onclick="ocultarEspacios('fechaBruc','labelBru')" value="2">No
-		<p id="labelBru">Fecha de Aplicacion del Examen de Brucelas</p>
-		<input type="date" name="fechaBrusela" id="fechaBruc">
+		<p id="labelBru">Fecha de Aplicacion del Examen de Brucelas  <h3 class="informacionUsuario">(m/d/A)</h3></p>
+		<input type="date" name="fechaBrusela" id="fechaBrusela">
 		<br><br>
 		<p>Examen tuberculosis</p>
 		<p>Esta Vigente?</p>
 		<input type='radio' name='radioTuberculosis' onclick="verEspacios('fechaTuber','labelTuber')" value='1' checked="checked" /> Si<br>
 		<input type="radio" name="radioTuberculosis" onclick="ocultarEspacios('fechaTuber','labelTuber')"  value="2">No
-		<p id="labelTuber">Fecha de Aplicacion de Examen de Tuberculosis</p>
-		<input type="date" name="fechaTuberculosis" id="fechaTuber">
+		<p id="labelTuber">Fecha de Aplicacion de Examen de Tuberculosis <h3 class="informacionUsuario">(m/d/A)</h3></p>
+		<input type="date" name="fechaTuberculosis" id="fechaTuberculosis">
 
     </div>
 

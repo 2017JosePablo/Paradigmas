@@ -10,6 +10,8 @@ class avisosData {
         $this->data = new Data();
     }
 
+
+
     public function insertarTBAvisos($aviso) {
 
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
@@ -31,6 +33,7 @@ class avisosData {
         return $result;
 
 	}
+
 	public function actualizarAviso($aviso){
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         // Check connection
@@ -84,6 +87,53 @@ class avisosData {
 				}
 				$conn->close();
 				 return $avisos;
+	}
+
+
+
+	    public function insertarComentario($comentario) {
+
+	       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+	        // Check connection
+	        if (!$conn) {
+	            die("Connection failed: " . mysqli_connect_error());
+	        }
+
+
+	        $sql = "INSERT INTO tbcomentarioaviso(idcomentario,idaviso,idresponsable,comentariomensaje)
+
+	        VALUES ('" .
+	                $comentario->getIdComentario() ."','".
+	                $comentario->getIdAviso() ."','" .
+	                $comentario->getIdSocio()."','".
+	                $comentario->getMensaje(). "');";
+
+	        $result = $conn->query($sql);
+	        $conn->close();
+	        return $result;
+		}
+
+	public function mostrarComentarioAviso($idaviso){
+		require_once '../domain/comentario.php';
+		 $comentario = array();
+		 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				// Check connection
+				if (!$conn) {
+						die("Connection failed: " . mysqli_connect_error());
+				}
+				$sql="SELECT tbcomentarioaviso.idcomentario, tbcomentarioaviso.idaviso , tbcomentarioaviso.idresponsable,tbcomentarioaviso.comentariomensaje , tbsocio.socionombre, tbsocio.socioprimerapellido, tbsocio.sociosegundoapellido FROM tbcomentarioaviso  INNER JOIN
+tbsocio ON tbsocio.socioid = tbcomentarioaviso.idresponsable AND tbcomentarioaviso.idaviso = ".$idaviso.";";
+				$result = $conn->query($sql);
+				if($result->num_rows > 0) {
+						while($row = $result->fetch_assoc()) {
+								$creador = $row["socionombre"]." ".$row["socioprimerapellido"]." ".$row["sociosegundoapellido"];
+								array_push($comentario, new comentarioAviso($row["idcomentario"],$row["idaviso"],$creador,$row["comentariomensaje"]));
+			}
+				}else{
+					//	$comentario=  "Anuncio sin comentarios.";
+				}
+				$conn->close();
+				 return $comentario;
 	}
 
 	public function getIndiceImagen($idsocio){

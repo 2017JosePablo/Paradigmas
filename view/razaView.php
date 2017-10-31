@@ -37,7 +37,7 @@
 <body>
 	<div style="overflow-x:auto;">
 
-		<h1>Listado de razas</h1>
+		<h1>Gestíon de razas</h1>
 	 <?php
 
 	 include '../business/razaBusiness.php';

@@ -1,6 +1,6 @@
 <?php
 
-include '../data/avisosData.php';
+require_once '../data/avisosData.php';
 
 class AvisosBusiness{
   private $dataAviso;
@@ -17,6 +17,17 @@ class AvisosBusiness{
   function mostrarTodosAvisos(){
     return $this->dataAviso->mostrarTodosAvisos();
   }
+  public function mostrarComentarioAviso($aviso)
+  {
+    return $this->dataAviso->mostrarComentarioAviso($aviso);
+  }
+  public function insertarComentario($comentario)
+  {
+    return $this->dataAviso->insertarComentario($comentario);
+  }
+
+
+
   function mostrarMisAvisos($idSocio){
     return $this->dataAviso->mostrarMisAvisos($idSocio);
   }

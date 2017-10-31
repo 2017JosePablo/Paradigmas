@@ -226,7 +226,7 @@
 <input type="hidden" id="canton" name="sociocanton" value="">
 <input type="hidden" id="distrito" name="sociodistrito" value="">
 <div style="overflow-x:auto;">
-	<h1>Area administrativa de Socios</h1>
+	<h1>Gestíon de Socio</h1>
 	<h2>Informacion del socio</h2>
     <?php
     include '../business/socioBusiness.php';
@@ -260,6 +260,7 @@
 
     <div id="cajaFormulario"  style='display:none;'>
 
+    <h2 class="informacionUsuario">Si desconoce algun valor o cantidad, ingrese 0</h2>
     <form id= "frm" method="post" action="../business/socioAction.php" enctype="multipart/form-data">
 
     <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
@@ -324,7 +325,7 @@
 
                  <tr>
                     <td>
-                        <br> Fecha Ingreso <br>
+                        <br> Fecha de solicitud <h3 class="informacionUsuario">(m/d/A)</h3>
                     </td>
 										<td>
 												 Contraseña
@@ -378,7 +379,7 @@
                 <div id="editarUbic" style='display:none;'>
 
                     <table>
-                     <tr><td><br><p>Dirección del Socio</p></td></tr>
+                     <tr><td><br>Dirección del Socio <h4 class="informacionUsuario">La direccion de la finca se detalla en otro formulario.</h4> </td></tr>
                         <tr>
                         <td>
                              <div class="form-group">
@@ -454,7 +455,7 @@
                             echo '<tr>';
 
 
-                            echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio' name='socioestado' value='".$curren->getSocioEstadoId()."'></td>";
+                            echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio'  name='socioestado' value='".$curren->getSocioEstadoId()."' checked></td>";
 
                             echo '<td>'.$curren->getSocioEstadoDetalle().'</td>';
 
@@ -474,7 +475,7 @@
             <br>
             <div id="cajaFierro">
 
-            <label for="">Subir foto del Fierro</label>
+            <label for="">Fierro</label>
             <input type="file" value="Seleccionar Fierro" name="imagen" id="imagen">
             </div>
             <input type="hidden" name="" id="w">
@@ -483,6 +484,7 @@
 							<p>Recomendacion 1</p>
 							<?php
 							echo '<select name ="recomendacion1">';
+                echo '<option value="Sin Recomendacion">Sin Recomendacion</option>';
 			        foreach ($socios as $current) {
 			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
 			        }
@@ -493,22 +495,22 @@
 							<p>Recomendacion 2</p>
 							<?php
 							echo '<select name = "recomendacion2">';
+              echo '<option value="Sin Recomendacion">Sin Recomendacion</option>';
 			        foreach ($socios as $current) {
 			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
 			        }
 			        echo '</select>';
 			        ?>
 
+
             <br><br>
 
-            <div id="btnAgregar">
+
                 <button type="submit" name="agregarsocio" id="agregarsocio"/>Guardar Datos</button>
-								<a href="socioView.php"><input type="button" value="Cancelar" ></a>
-            </div>
-             <div id="btnModificar">
+
                 <button type="submit" name="modificarsocio" id="agregarsocio"/>Actualizar Datos</button>
 								<a href="socioView.php"><input type="button" value="Cancelar" ></a>
-            </div>
+
 
 
 
@@ -578,7 +580,7 @@
 
                  <tr>
                     <td>
-                        <br> Fecha Ingreso:
+                        <br> Fecha de solicitud:
                     </td>
                 </tr>
                 <tr>

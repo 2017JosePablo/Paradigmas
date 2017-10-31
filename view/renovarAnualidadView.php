@@ -35,7 +35,7 @@
 
   <body>
 
-    <h1>Area administrativa de  Renovacion de Socio</h1>
+    <h1>Gestíon de renovacion anualidad</h1>
 
     <form class="" action="../business/registroAnualidadAction.php" method="post">
 

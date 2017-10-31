@@ -1,7 +1,7 @@
 <?php
 include 'avisoBusiness.php';
 require_once '../domain/aviso.php';
-
+require_once '../domain/comentario.php';
 if(isset($_POST['registrarAviso'])){
 
     $avisoBusiness = new AvisosBusiness();
@@ -68,4 +68,25 @@ if(isset($_POST['editarAviso'])){
       }
   }
 }
+
+if(isset($_POST['enviarComentario'])){
+  session_start();
+  $mensaje = $_POST['mensaje'];
+  $idaviso = $_POST['idaviso'];
+  $idsocio = $_SESSION["usuario"];
+
+    if(isset($mensaje)){
+
+      $comentario = new comentarioAviso('',$idaviso,$_SESSION["usuario"],$mensaje);
+      $avisoBusiness = new AvisosBusiness();
+      $result = $avisoBusiness->insertarComentario($comentario);
+      if($result == 1){
+        header('location: ../view/avisosView.php?success=comentInserted');
+      }else{
+        header('Location: ../index.php');
+      }
+    }
+}
+
+
  ?>

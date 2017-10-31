@@ -33,7 +33,7 @@ class socioData {
                 $socio-> getEstadoSocioDetalle() . "','".
                 $socio->getRecomendacion1(). "','".
                 $socio->getRecomendacion2(). "');";
-               
+
 
 
         $result = $conn->query($sql);
@@ -207,7 +207,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos  FROM tbsocio INNER JOIN tbtipoactividad ON
             tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
             INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
-            tbsocio.estadosociodetalle != 3;";
+            tbsocio.estadosociodetalle != 5;";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {

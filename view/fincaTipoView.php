@@ -36,19 +36,18 @@
 <body>
 
 <div style="overflow-x:auto;">
-	<h1>Listado de Fincas</h1>
+	<h1>Gestíon de tipos de fincas</h1>
  <?php
 
-
+//<tr class="cabeceraTabla"><td colspan = "3" align = "center"><p>Tipos de Fincas</p></td></tr>
 require '../data/tipoFincaData.php';
 $temp = new tipoFincaData();
 $tipoFinca = $temp->getAllTBTiposFincas();
 
-        echo '<table border = "1"> <tr class="cabeceraTabla"><td colspan = "3" align = "center"><p>Tipos de Fincas</p></td></tr> ';
-        echo '<tr> <td>Numero </td> <td>Actividad </td> <td>Modificar</td></tr>   ';
+        echo '<table border = "1"> ';
+        echo '<tr class="cabeceraTabla"> <td>Actividad </td> <td>Modificar</td></tr>   ';
         foreach ($tipoFinca as $curren) {
             echo '<tr>';
-            echo '<td> '.$curren->getId().'</td>';
             echo '<td>'.$curren->getFincaTipoActividad().'</td>';
             echo '<td><button type="button" id = "'.$curren->getId().'" value ="'.$curren->getId().'-'.$curren->getFincaTipoActividad().'-Mod">Modificar</button></td>';
 

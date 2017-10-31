@@ -83,7 +83,7 @@
   <body>
 
     <div style="overflow-x:auto;">
-      <h1>Listado de Anualidades</h1>
+      <h1>Gestíon de Anualidad</h1>
       <h2>Informacion de Socios </h2>
 
     <?php

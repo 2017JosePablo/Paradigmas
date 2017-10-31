@@ -15,7 +15,7 @@
   <body>
     <h1>Agregando un nuevo anuncio.</h1>
     <form class="" action="../business/agregarNoticiaAction.php" method="post" enctype="multipart/form-data">
-      <label for="">Tema</label>
+      <label for="">Título</label>
       <br>
       <input type="text" name="temaAnuncio" value="" placeholder="¿De que se trata el aviso?" required>
       <br><br>

@@ -106,7 +106,7 @@ class loginData {
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql="SELECT tbsocio.socioid,tbsocio.sociocedula,tbsocio.socionombre,tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tblogin.passwordlogin FROM tbsocio INNER JOIN tblogin ON tbsocio.socioid= tblogin.socioid";
+        $sql="SELECT tbsocio.socioid,tbsocio.sociocedula,tbsocio.socionombre,tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tblogin.passwordlogin FROM tbsocio INNER JOIN tblogin ON tbsocio.socioid= tblogin.socioid  ORDER BY tbsocio.socionombre ASC";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
