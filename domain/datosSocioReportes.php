@@ -22,7 +22,7 @@ class DatosSocioReportes{
 		$this->telMovil = $telMovil;
 		$this->correo = $correo;
 		$this->provincia = $provincia;
-		$this->canton = $Canton;
+		$this->canton = $canton;
 		$this->distrito = $distrito;
 	}
 

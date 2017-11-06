@@ -65,6 +65,40 @@ class reportesData extends Data{
     }
 
 
+<<<<<<< HEAD
+=======
+
+    public function hatoConsolidado(){
+        
+        $array=("hatotenero","hatoternera","hatonovillo","hatonovilla","hatoprenada","hatotoroservicio","hatotoroengorde","hatovacacria","hatoengorde");
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        // Check connection 
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+
+        for ($i=0; $i <sizeof($array) ; $i++) {
+
+            
+        }
+
+        $sql="SELECT tbsocio.socioid,tbsocio.sociocedula,tbsocio.socionombre,tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo,tbfincatipo.fincatiponombre FROM tbsocio INNER JOIN tbfincatipo ON tbsocio.fincatipoid=tbfincatipo.fincatipoid ORDER BY tbfincatipo.fincatiponombre ASC,tbsocio.socionombre ASC";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($socioCantonDistrito, new DatosSocioLogin($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                    ,$row["sociocorreo"],$row["fincatiponombre"],"",""))));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+
+        return $socioCantonDistrito;
+    } 
+
+>>>>>>> e71ecbfbf4b153d01fcdbf86fb11603d1e8af3ea
 
 
 }

@@ -88,12 +88,14 @@
         */
 
 
-        require 'hatoData.php';
-          $socioid='1';  
+        require './fincaCercaData.php';
 
-          $hatoBusiness = new hatoData();
+          $finca = new fincaCercaData();
 
-          echo $hatoBusiness->verificarSocioHato("13");
-          
+          $listado = $finca->socioTipoCerca();
+
+            foreach ($listado as $current) {
+                echo $current->getNombre()." -> ". $current->getProvincia()."<br>";;
+            }
   ?>
 </body>
