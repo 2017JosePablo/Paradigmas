@@ -254,7 +254,7 @@
 
     <!--  </form> -->
 
-    <button type = "reset" onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
+    <button type = "reset" id="btnAgregar" onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
 
 
 
@@ -327,17 +327,11 @@
                     <td>
                         <br> Fecha de solicitud <h3 class="informacionUsuario">(m/d/A)</h3>
                     </td>
-										<td>
-												 Contraseña
-										</td>
                 </tr>
 
                 <tr>
                     <td>
                       <input type="date"  required ="" name="fecha" id="fecha"></td>
-                    </td>
-										<td>
-                      <input type="text"  required ="" name="clavesocio" id="clave"></td>
                     </td>
                 </tr>
 

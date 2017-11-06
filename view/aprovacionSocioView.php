@@ -59,6 +59,7 @@
         ?>
 </div>
           <form class="" action="../business/aprovacionAction.php" method="post">
+            <input type="text" id="estadoSocio" name="" readonly style="display:none">
             <input type="text" id="socioid" name="socioid" readonly style="display:none" >
 
             <div id="cajaMotivo" name="cajaMotivo" style="display:none">
@@ -76,6 +77,8 @@
             <a href="aprovacionSocioView.php"><input type="button" name="" value="Cancelar"></a>
 
         </div>
+
+
 
         <div id="cajaAprovacion" name="cajaAprovacion" style="display:none">
             <br><br>
