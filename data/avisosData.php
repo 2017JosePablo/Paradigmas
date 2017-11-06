@@ -21,12 +21,13 @@ class avisosData {
         }
 
 
-        $sql = "INSERT INTO tbaviso (socioid,temaaviso,detalleaviso,rutafotoaviso)
+        $sql = "INSERT INTO tbaviso (socioid,temaaviso,detalleaviso,rutafotoaviso,fechaaviso)
         VALUES ('" .
                 $aviso->getSocioId() ."','".
                 $aviso->getTema() ."','" .
                 $aviso->getDetalle()."','".
-                $aviso->getRutaFoto(). "');";
+                $aviso->getRutaFoto()."','".
+                $aviso->getFechaAviso(). "');";
 
         $result = $conn->query($sql);
         $conn->close();
@@ -60,7 +61,7 @@ class avisosData {
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 							$nombreCompleto = $row['socionombre']." ".$row['socioprimerapellido']."".$row['sociosegundoapellido'];
-                array_push($avisos, new Aviso($row["idaviso"], $nombreCompleto,$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"]));
+                array_push($avisos, new Aviso($row["idaviso"], $nombreCompleto,$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"],$row["fechaaviso"]));
 			}
         }else{
             echo "0 results";
@@ -80,7 +81,7 @@ class avisosData {
 				$result = $conn->query($sql);
 				if($result->num_rows > 0) {
 						while($row = $result->fetch_assoc()) {
-								array_push($avisos, new Aviso($row["idaviso"],$row["socioid"],$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"]));
+								array_push($avisos, new Aviso($row["idaviso"],$row["socioid"],$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"],$row["fechaaviso"]));
 			}
 				}else{
 						echo "0 results";
