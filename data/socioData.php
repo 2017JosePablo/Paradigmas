@@ -70,6 +70,29 @@ class socioData {
         return $result;
     }
 
+
+
+    public function obtenerCedulaSocio($socioid){
+        $id="";
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        if (!$conn) {
+            die("Connection failed: ".mysqli_connect_error());
+        }
+        $sql = "SELECT socioid FROM tbsocio WHERE socioid=1";
+        $result = $conn->query($sql);
+         if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+               $id=$row["socioid"]];
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+        return $id;
+    }
+
+
+
     public function devolverDatosSocio($tipoactividadid,$tipofinca,$estadosociodetalle){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
