@@ -23,7 +23,13 @@ if (isset($_POST['cancelarAprobacion'])) {
     }
   }
   }elseif (isset($_POST['enviarAprobacion'])) {
+    require_once 'socioBusiness.php';
     $socioid = $_POST['socioid'];
+
+    $socioBusiness = new socioBusiness();
+    $cedulaSocio = $socioBusiness->obtenerCedulaSocio($socioid);
+
+
     $sesion = "Sin definir";
     $fecha = $_POST['fechaAprovacion'];
       if(isset($sesion) && !empty($sesion)){
@@ -33,10 +39,19 @@ if (isset($_POST['cancelarAprobacion'])) {
         $acta = new actaAprobacion('',$socioid,$sesion,$fecha,'Aceptado','Solicitud Aceptada.');
         $resultado = $aprovacion->actualizarActa($acta);
 
-        if ($resultado ==1) {
+        $resultadoEditarEstado = $socioBusiness->editarEstado($cedulaSocio,'2');
+
+        if ($resultado ==1 && $resultadoEditarEstado == 1) {
           header ('location: ../index.php?success=insertedAprovation');
         }else{
-          header ('location: ../view/aprovacionSocioView.php?error=errortoinserted');
+          if($resultadoEditarEstado != 1){
+            header ('location: ../view/aprovacionSocioView.php?error=updateEstado');
+          }else{
+            if($resultado != 1 ){
+              header ('location: ../view/aprovacionSocioView.php?error=errortoinserted');
+            }
+          }
+
         }
       }
 }

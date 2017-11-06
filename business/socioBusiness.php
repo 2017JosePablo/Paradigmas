@@ -77,7 +77,9 @@
 		function editarEstado($cedula,$estado){
 			return $this->dataSocio->editarEstado($cedula,$estado);
 		}
-
+		function obtenerCedulaSocio($idSocio){
+			return $this->dataSocio->obtenerCedulaSocio($idSocio);
+		}
 	}
 
 
