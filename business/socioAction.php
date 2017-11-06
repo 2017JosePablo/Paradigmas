@@ -67,6 +67,8 @@
 
 		echo $tipoactividad;
 
+		$fierroCheck = $_POST['radioFierro'];
+
 
 
 
@@ -79,6 +81,9 @@
 
 			require_once '../domain/socioDireccion.php';
 			require_once '../domain/fincaDireccion.php';
+
+			require '../domain/fierro.php';
+
 
 			if($socioBusiness->verificarCedula($cedula)==0){
 			 	$fechaIngreso =$date->format('Y-m-d');
@@ -125,7 +130,9 @@
 							 $directorio = '../uploads/fierros/';
 					      // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
 								$tipo = explode('/',$_FILES["imagen"]["type"]);
-					      move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$cedula,$tipo[1]);
+								$direccionFierro = $directorio.$cedula.".".$tipo[1];
+					      move_uploaded_file($_FILES['imagen']['tmp_name'],$direccionFierro);
+								echo "DIRECCION->".$directorio.$cedula.".".$tipo[1];
 					    }else{
 					       //si no cumple con el formato
 					       echo "No se puede subir una imagen con ese formato ";
@@ -134,6 +141,17 @@
 					   //si existe la variable pero se pasa del tamaño permitido
 					   if($nombre_img == !NULL) echo "La imagen es demasiado grande ";
 					}
+
+					require 'fierroBusiness.php';
+
+					$fierroBusiness = new FierroBusiness();
+
+
+
+//  function Fierro($fierroid,$fierrotiene,$fierrorutaimagen,$idsocio)
+					$fierro = new Fierro('',$fierroCheck,$direccionFierro,$idSocio);
+					$resultadoFierro = $fierroBusiness->insertarFierro($fierro);
+
 
 					require './hatoBusiness.php';
 					$hato = new Hato($idSocio,'','','','','','','','','','');
@@ -185,7 +203,7 @@
 				echo "Socio->".$resultado5."<br>";
 				echo "Socio->".$resultado6."<br>";
 
-				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1 && $result7 == 1) {
+				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1 && $result7 == 1 && $resultadoFierro == 1) {
 					header("location: ../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
@@ -211,6 +229,10 @@
 											}else{
 												if ($result7 != 1) {
 													header("location: ../view/socioView.php?error=insertedLogin");
+												}else{
+													if ($resultadoFierro != 1) {
+														header("location: ../view/socioView.php?error=insertedFierro");
+													}
 												}
 											}
 										}

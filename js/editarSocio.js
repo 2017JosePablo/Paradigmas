@@ -85,6 +85,11 @@ $(document).ready(function() {
             //document.getElementById("btnModificar").style.display = 'none';
             document.getElementById("modificarsocio").style.display = 'none';
 
+            $.post('../business/fierroAction.php', {fierro:result[0]}, function(data){
+              alert(data);
+            });
+
+
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
 
             var array = JSON.parse(data);

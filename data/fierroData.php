@@ -2,14 +2,14 @@
 
 //include 'data.php';
 require_once 'data.php';
-include '../domain/fierro.php';
+require_once '../domain/fierro.php';
 
 
 class fierroData extends Data{
 
 	 private $data;
 
-    function __construct(){
+    function fierroData(){
         $this->data = new Data();
     }
 
