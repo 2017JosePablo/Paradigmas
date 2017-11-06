@@ -260,6 +260,8 @@
     <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
     <input type="hidden" id="selecModUbi" name="ModUbi" value="1">
 
+    <input type="hidden" name="rutaImagen" value="" id="rutaImagen">
+
          <p>Datos personales:</p>
 
              <table>
@@ -332,7 +334,7 @@
                     </td>
 
                     <td id="claveMostrarInput">
-                      <input type="text"  required ="" name="clavesocio"></td>
+                      <input type="text"   name="clavesocio"></td>
                     </td>
 
                 </tr>
@@ -473,6 +475,7 @@
 
             <label for="">Fierro</label>
             <input type="file" value="Seleccionar Fierro" name="imagen" id="imagen">
+            <img src="" alt="" id="fierroSalida">
             </div>
             <input type="hidden" name="" id="w">
 

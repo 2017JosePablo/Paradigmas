@@ -34,6 +34,8 @@ $(document).ready(function() {
 
             $.post('../business/fierroAction.php', {fierro:result[0]}, function(data){
               var fierroArray = JSON.parse(data);
+              document.getElementById('rutaImagen').value =fierroArray['fierroruta'] ;
+              document.getElementById('fierroSalida').src = fierroArray['fierroruta'];
               document.getElementById('fierro').src = fierroArray['fierroruta'];
 
               $('#'+fierroArray['fierrotiene']).attr('checked',true);

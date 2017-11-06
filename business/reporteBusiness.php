@@ -16,8 +16,12 @@ class ReporteBusiness{
   function socioTipoCerca(){
     require '../data/fincaCercaData.php';
     $fincaData = new fincaCercaData();
-    
+
     return $fincaData->socioTipoCerca();
+  }
+  function socioReporteExamen(){
+    require '../data/socioData.php';
+    $socioData = new 
   }
 }
 ?>

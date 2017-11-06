@@ -252,6 +252,8 @@
 
  		if (isset($_POST['modificarsocio'])){
 
+			require '../domain/fierro.php';
+
 		$cedula2 = $_POST['cedulaVieja'];
 		$cedula = $_POST['sociocedula'];
 		$nombre = $_POST['socionombre'];
@@ -277,6 +279,36 @@
 			$pueblo = $_POST['sociopueblo'];
 
 		}
+		/////////////////
+		$nombre_img = $_FILES['imagen']['name'];
+
+		if (($nombre_img == !NULL)){
+			 //indicamos los formatos que permitimos subir a nuestro servidor
+			 if (($_FILES["imagen"]["type"] == "image/gif")
+			 || ($_FILES["imagen"]["type"] == "image/jpeg")
+			 || ($_FILES["imagen"]["type"] == "image/jpg")
+			 || ($_FILES["imagen"]["type"] == "image/png"))
+			 {
+					// Ruta donde se guardarán las imágenes que subamos
+				 //$directorio = $_SERVER['DOCUMENT_ROOT'].'/paradigmas/uploads/';
+				 $directorio = '../uploads/fierros/';
+					// Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
+					$tipo = explode('/',$_FILES["imagen"]["type"]);
+					$direccionFierro = $directorio.$cedula.".".$tipo[1];
+					move_uploaded_file($_FILES['imagen']['tmp_name'],$direccionFierro);
+				}else{
+					 echo "No se puede subir una imagen con ese formato ";
+				}
+		}
+		$idSocio=$socioBusiness->getSocioId($cedula);
+
+		require 'fierroBusiness.php';
+		$fierroBusiness = new FierroBusiness();
+
+//  function Fierro($fierroid,$fierrotiene,$fierrorutaimagen,$idsocio)
+		$fierro = new Fierro('',$fierroCheck,$direccionFierro,$idSocio);
+		$resultadoFierro = $fierroBusiness->modificarFierroSocio($fierro);
+		/////////////////
 
 
 		$sociodetalle = $_POST['socioestado'];
@@ -303,7 +335,7 @@
 				$socioDireccion = new socioDireccion($socioid,$provincia,$canton,$distrito,$pueblo);
 				$resultado2 = $socioBusiness-> actualizarTBSocioDireccion($socioDireccion);
 
-				if ($resultado ==1 && $resultado2 == 1 ) {
+				if ($resultado ==1 && $resultado2 == 1 && $resultadoFierro == 1 ) {
 						header("location: ../index.php?success=updatedSocio");
 				}else{
 

@@ -11,8 +11,8 @@ class FierroBusiness{
   function insertarFierro($fierro){
     return $this->dataFierro->insertarFierroSocio($fierro);
   }
-  function actualizarFierro($fierro){
-    return $this->dataFierro->actualizarFierro($fierro);
+  function modificarFierroSocio($fierro){
+    return $this->dataFierro->modificarFierroSocio($fierro);
   }
   function obtenerFierroSocio($idSocio){
     return $this->dataFierro->obtenerFierroSocio($idSocio);
