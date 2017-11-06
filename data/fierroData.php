@@ -28,7 +28,7 @@ class fierroData extends Data{
 
 
     public function  obtenerFierroSocio($idsocio){
-
+        $fierro;
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
@@ -40,15 +40,14 @@ class fierroData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-
-                $fierroSocio = new Fierro($row["fierroid"], $row["fierrotiene"], $row["fierroruta"], $row["idsocio"]);
+                $fierro = ["fierroid"=>$row["fierroid"], "fierrotiene"=> $row["fierrotiene"],"fierroruta"=>$row["fierroruta"], "idsocio"=>$row["idsocio"]];
             }
         }else{
             echo "0 results";
         }
         $conn->close();
 
-        return $fierroSocio;
+         return json_encode($fierro);
     }
     //Metodo para actualizar un tipo de cerca existente..
     public function modificarFierroSocio($fierro)
