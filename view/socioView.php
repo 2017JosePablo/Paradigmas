@@ -124,8 +124,8 @@
 
                 document.getElementById('editarUbic').style.display='block';
 
-
-                document.getElementById("btnModificar").style.display='none';
+                document.getElementById("modificarsocio").style.display = 'none';
+                //document.getElementById("btnModificar").style.display='none';
                 document.getElementById("btnAgregar").style.display='block';
                 document.getElementById("frm").reset();
                // $("input:radio").removeAttr("checked");
@@ -232,7 +232,7 @@
     include '../business/socioBusiness.php';
 
     $socioBusiness = new socioBusiness();
-    $socios = $socioBusiness->obtenerTodosTBSocio();
+    $socios = $socioBusiness->obtenerTodosTBSocioActivos();
 
     echo '<table border ="1"><tr class="cabeceraTabla"><td>Nombre</td><td>Primer Apellido</td><td>Segundo Apellido</td><td align = "center" colspan="3">Acciones</td> </tr>';
 
@@ -254,13 +254,14 @@
 
     <!--  </form> -->
 
-    <button type = "reset" id="btnAgregar" onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
+    <button type = "reset" value="add~add" id="btnAgregar" onclick="mostrarFormularioSocio()"> Agregar Nuevo Socio</button>
 
 
+    <h2 class="informacionUsuario">Si desconoce algun valor o cantidad, ingrese 0</h2>
 
     <div id="cajaFormulario"  style='display:none;'>
 
-    <h2 class="informacionUsuario">Si desconoce algun valor o cantidad, ingrese 0</h2>
+
     <form id= "frm" method="post" action="../business/socioAction.php" enctype="multipart/form-data">
 
     <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
@@ -327,12 +328,20 @@
                     <td>
                         <br> Fecha de solicitud <h3 class="informacionUsuario">(m/d/A)</h3>
                     </td>
+                    <td id="claveMostrarLabel">
+                        <br> Clave
+                    </td>
                 </tr>
 
                 <tr>
                     <td>
                       <input type="date"  required ="" name="fecha" id="fecha"></td>
                     </td>
+
+                    <td id="claveMostrarInput">
+                      <input type="text"  required ="" name="clavesocio"></td>
+                    </td>
+
                 </tr>
 
                  </table>
@@ -477,7 +486,7 @@
             <br>
 							<p>Recomendacion 1</p>
 							<?php
-							echo '<select name ="recomendacion1">';
+							echo '<select name ="recomendacion1" id="recomendacion1">';
                 echo '<option value="Sin Recomendacion">Sin Recomendacion</option>';
 			        foreach ($socios as $current) {
 			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
@@ -488,7 +497,7 @@
 							<br>
 							<p>Recomendacion 2</p>
 							<?php
-							echo '<select name = "recomendacion2">';
+							echo '<select name = "recomendacion2" id="recomendacion2">';
               echo '<option value="Sin Recomendacion">Sin Recomendacion</option>';
 			        foreach ($socios as $current) {
 			            echo '<option value= "'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().'">'.$current->getNombre().' '.$current->getPrimerApellido() .' ' .$current->getSegundoApellido().' </option>';
@@ -502,7 +511,7 @@
 
                 <button type="submit" name="agregarsocio" id="agregarsocio"/>Guardar Datos</button>
 
-                <button type="submit" name="modificarsocio" id="agregarsocio"/>Actualizar Datos</button>
+                <button type="submit" name="modificarsocio" id="modificarsocio"/>Actualizar Datos</button>
 								<a href="socioView.php"><input type="button" value="Cancelar" ></a>
 
 
@@ -619,6 +628,16 @@
             <tr>
                 <td>
                     Estado Socio : <input  type="text"  id = 'esta' readonly >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Recomendacion 1 : <input  type="text"  id = 'recomendacion1' readonly >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    recomendacion 2 : <input  type="text"  id = 'recomendacion2' readonly >
                 </td>
             </tr>
         </table>
