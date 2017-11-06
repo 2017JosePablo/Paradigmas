@@ -18,7 +18,7 @@ class reportesData extends Data{
         $socioCantonDistrito= array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        // Check connection 
+        // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -44,7 +44,7 @@ class reportesData extends Data{
         $socioCantonDistrito= array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        // Check connection 
+        // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -62,9 +62,9 @@ class reportesData extends Data{
         $conn->close();
 
         return $socioCantonDistrito;
-    } 
+    }
 
-    
+
 
 
 }
