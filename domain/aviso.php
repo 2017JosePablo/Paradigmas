@@ -5,13 +5,15 @@ class Aviso{
 	private $tema;
 	private $detalle;
 	private $rutaFoto;
+	private $fechaAviso;
 
-	function Aviso($idAviso,$socioId, $tema,$detalle,$rutaFoto){
+	function Aviso($idAviso,$socioId, $tema,$detalle,$rutaFoto,$fechaAviso){
 		$this->idAviso=$idAviso;
 		$this->socioId=$socioId;
 		$this->tema=$tema;
 		$this->detalle=$detalle;
 		$this->rutaFoto=$rutaFoto;
+		$this->fechaAviso=$fechaAviso;
 	}
 
 	public function setIdAviso($idAviso){
@@ -52,6 +54,13 @@ class Aviso{
 
 	public function getRutaFoto(){
 		return $this->rutaFoto;
+	}
+	public function setFechaAviso($fechaAviso){
+		$this->fechaAviso=$fechaAviso;
+	}
+
+	public function getFechaAviso(){
+		return $this->fechaAviso;
 	}
 
 
