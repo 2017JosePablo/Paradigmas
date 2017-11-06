@@ -74,6 +74,9 @@
 		function socioReporteExamen(){
 			return $this->dataSocio->socioReporteExamen();
 		}
+		function editarEstado($cedula,$estado){
+			return $this->dataSocio->editarEstado($cedula,$estado);
+		}
 
 	}
 
