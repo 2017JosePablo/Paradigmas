@@ -64,7 +64,7 @@ class socioData {
             die("Connection failed: ".mysqli_connect_error());
         }
         $sql = "UPDATE tbsocio  SET  estadosociodetalle = '".$estado."' WHERE sociocedula = '".$cedula."' ";
-        $result = $conn->query($sql);
+        $result = $conn->query($sql);   
         $conn->close();
         return $result;
     }
@@ -207,7 +207,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos  FROM tbsocio INNER JOIN tbtipoactividad ON
             tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
             INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
-            tbsocio.estadosociodetalle != 5;";
+            tbsocio.estadosociodetalle = 2 AND tbsocio.estadosociodetalle = 1;";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
@@ -222,6 +222,31 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
 
         return $socio;
     }
+
+    public function obtenerTodosTBSocioActivos() {
+        include '../domain/socio.php';
+        $socio = array();
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos  FROM tbsocio INNER JOIN tbtipoactividad ON
+            tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
+            INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
+            tbsocio.estadosociodetalle = 2;";
+
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                    ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,"",$row["socioestadodetalle"],$row["sociorecomendacionuno"],$row["sociorecomendaciondos"]));
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+
+        return $socio;
+    }
+
 
 
      public function obtenerSocioEstado() {
