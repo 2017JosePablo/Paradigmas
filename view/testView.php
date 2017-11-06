@@ -79,30 +79,15 @@
 	echo '<br>';  
 	echo '<br>';  
 	echo '<br>'; 
-	require '../data/avisosData.php';
-	$aviso= new avisosData();
-	$result4=$aviso->mostrarTodosAvisos();
-   echo '<table border = "1"> <tr>  <td align = "center" colspan = "4">Listado de AVISOS </td> </tr><tr>  <td>Tema </td> <td>Detalle </td><td>Foto </td><td colspan="2">AutorID</td> </tr>';
 
-    foreach ($result4 as $current) {
-        echo '<tr>';
-
-        echo '<td> '.$current->getTema().'</td>';
-        echo '<td>'.$current->getDetalle().'</td>';
-        echo '<td><img src="'.$current->getRutaFoto().'"</td>';
-        echo '<td> '.$current->getSocioId().'</td>';
-
-        echo '</tr>';
-    }
-        echo '</table>';
-
-   echo '<br>';echo '<br>';echo '<br>';     
+	require '../data/reportesData.php';
+	$aviso= new reportesData();
+	$result4=$aviso->hatoConsolidado();
+  	echo 'Cantidad Total: '.$result4;
 
 
 
      ?>
-
-
 
 
 	</body>
