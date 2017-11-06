@@ -71,6 +71,9 @@
 		public function obtenerTodosTBSocioActivos(){
 			return $this->dataSocio->obtenerTodosTBSocioActivos();
 		}
+		function socioReporteExamen(){
+			return $this->dataSocio->socioReporteExamen();
+		}
 
 	}
 
