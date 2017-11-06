@@ -640,6 +640,11 @@
                     recomendacion 2 : <input  type="text"  id = 'recomendacion2Input' readonly >
                 </td>
             </tr>
+            <tr>
+                <td>
+                    Fierro: <img src="" alt="">
+                </td>
+            </tr>
         </table>
 
     </div>
