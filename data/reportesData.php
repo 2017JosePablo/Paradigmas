@@ -28,7 +28,7 @@ class reportesData extends Data{
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 array_push($socioCantonDistrito, new DatosSocioLogin($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                    ,$row["sociocorreo"],$row["socioprovincia"],$row["sociocanton"],$row["sociodistrito"]))));
+                    ,$row["sociocorreo"],$row["socioprovincia"],$row["sociocanton"],$row["sociodistrito"]));
             }
         }else{
             echo "0 results";
@@ -54,7 +54,7 @@ class reportesData extends Data{
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 array_push($socioCantonDistrito, new DatosSocioLogin($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                    ,$row["sociocorreo"],$row["fincatiponombre"],"",""))));
+                    ,$row["sociocorreo"],$row["fincatiponombre"],"",""));
             }
         }else{
             echo "0 results";
@@ -65,12 +65,11 @@ class reportesData extends Data{
     }
 
 
-<<<<<<< HEAD
-=======
 
     public function hatoConsolidado(){
-        
-        $array=("hatotenero","hatoternera","hatonovillo","hatonovilla","hatoprenada","hatotoroservicio","hatotoroengorde","hatovacacria","hatoengorde");
+        $datos= "<table border = '1'><tr><td align = 'center'>Bovino</td>  <td>Cantidad</td></tr>";
+        $cantTotal=0;
+        $columna= array("hatoternero","hatoternera","hatonovillo","hatonovilla","hatonovillaprenada","hatotoroservicio","hatotoroengorde","hatovacacria","hatovacaengorde");
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         // Check connection 
@@ -78,27 +77,25 @@ class reportesData extends Data{
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        for ($i=0; $i <sizeof($array) ; $i++) {
-
-            
-        }
-
-        $sql="SELECT tbsocio.socioid,tbsocio.sociocedula,tbsocio.socionombre,tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo,tbfincatipo.fincatiponombre FROM tbsocio INNER JOIN tbfincatipo ON tbsocio.fincatipoid=tbfincatipo.fincatipoid ORDER BY tbfincatipo.fincatiponombre ASC,tbsocio.socionombre ASC";
-        $result = $conn->query($sql);
-        if($result->num_rows > 0) {
+         for ($i=0; $i <sizeof($columna) ; $i++) {
+            $sql="SELECT SUM($columna[$i]) AS $columna[$i] FROM tbhato";
+            $result = $conn->query($sql);
+            if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($socioCantonDistrito, new DatosSocioLogin($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                    ,$row["sociocorreo"],$row["fincatiponombre"],"",""))));
+               $datos=$datos."<tr><td>".$columna[$i]."</td><td>".$row[$columna[$i]]."</td></tr> ";
+                $cantTotal+=$row[$columna[$i]];
             }
+
         }else{
             echo "0 results";
         }
+            
+        }
+        $datos=$datos."<tr><td>Cantidad Total</td><td>".$cantTotal."</td></tr></table> ";
         $conn->close();
 
-        return $socioCantonDistrito;
+        return $datos;
     } 
-
->>>>>>> e71ecbfbf4b153d01fcdbf86fb11603d1e8af3ea
 
 
 }
