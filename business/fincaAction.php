@@ -37,10 +37,7 @@
 	}
 
 
-
  if(isset($_POST['finalizar']) || isset($_POST['actualizar'])){
-
-
 
 	$cvotiene= $_POST['radioCVO'];
 	$date = new DateTime($_POST['fechaCVO']);
@@ -53,7 +50,7 @@
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
 		//	En caso de que no editara la ubicacion
-	if ($_POST["editoUbicacion"] != 0) {
+	if ($_POST["editoUbicacion"] == 0) {
 		$listaProvincias =$_POST['listaProvincias'];
 		$listadoCanton =$_POST['listadoCantones'];
 		$listadoDistrito=$_POST['listadoDistrito'];
@@ -67,7 +64,7 @@
 			$fincapueblo =$_POST['editoPueblo'];
 			$fincaexacta =$_POST['editoOtros'];
 		}
-
+		echo "->".$fincaid."<br>";
 		echo"->".$listaProvincias."<br>";
 		echo"->".$listadoCanton ."<br>";
 		echo"->".$listadoDistrito."<br>";
@@ -90,6 +87,7 @@
 		$socioBusiness= new socioBusiness();
 
 		$idSocio=$socioBusiness->getSocioId($fincaid);
+		echo "ID SOCIO ->".$idSocio."<br>";
 		$fincaBusiness = new fincaBusiness();
 		$finca = new Finca($idSocio,$idSocio,$fincaarea,$cantidadbobinos,$cercas);
 		$resultado2 = $fincaBusiness ->actualizarTBfinca($finca);
@@ -112,20 +110,20 @@
 
 
 		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1 && $resultado4 == 1 ) {
-			//header("location: ../index.php?success=updateFinca");
+			header("location: ../index.php?success=updateFinca");
 		}else{
 			if($resultado2!=1){
-				//header("location: ../view/fincaView.php?error=errorActualizarFinca");
+				header("location: ../view/fincaView.php?error=errorActualizarFinca");
 
 			}else{
 				if($resultado1!=1){
-				//	header("location: ../view/fincaView.php?error=errorActualizarDireccion");
+					header("location: ../view/fincaView.php?error=errorActualizarDireccion");
 				}else{
 					if($resultado3!=1){
-					//	header("location: ../view/fincaView.php?error=errorActualizarActividades");
+						header("location: ../view/fincaView.php?error=errorActualizarActividades");
 					}else{
 						if($resultado4!=1){
-						//	header("location: ../view/fincaView.php?error=errorInsertCVO");
+							header("location: ../view/fincaView.php?error=errorInsertCVO");
 						}
 					}
 				}
@@ -136,8 +134,6 @@
 	}else{
 		echo "Datos vacios...</br>";
 	}
-
-
 }
 
 ?>

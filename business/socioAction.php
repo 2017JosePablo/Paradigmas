@@ -15,8 +15,9 @@
 
 	if (isset($_POST['desactivar'])== true && empty($_POST['desactivar'])== false ){
 		require 'socioBusiness.php';
+
 		$socioBusiness = new socioData();
-		$result = $socioBusiness->editarEstado($_POST['desactivar']);
+		$result = $socioBusiness->editarEstado($_POST['desactivar'],'3');
 		echo $result;
 	}
 

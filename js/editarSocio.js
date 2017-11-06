@@ -19,14 +19,11 @@ $(document).ready(function() {
 
 
         if(result[1] == 'Mod'){
-
-
+          alert("Modificando");
             document.getElementById('notificacionSocio').innerHTML = ''
-
             document.getElementById("cedulaVieja").value = result[0];
-
-            document.getElementById("btnAgregar").style.display = 'none';
-            document.getElementById("btnModificar").style.display = 'block';
+//            document.getElementById("btnAgregar").style.display = 'none';
+//            document.getElementById("btnModificar").style.display = 'block';
             document.getElementById('cajaVerSocio').style.display = 'none';
             document.getElementById('editarUbic').style.display='none';
             document.getElementById('verDir').style.display='block';
@@ -82,8 +79,8 @@ $(document).ready(function() {
 
             document.getElementById('cajaVerSocio').style.display = 'block';
             document.getElementById('cajaFormulario').style.display='none';
-            document.getElementById("btnAgregar").style.display = 'none';
-            document.getElementById("btnModificar").style.display = 'none';
+            //document.getElementById("btnAgregar").style.display = 'none';
+            //document.getElementById("btnModificar").style.display = 'none';
 
 
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
