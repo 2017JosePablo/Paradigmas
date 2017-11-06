@@ -201,6 +201,7 @@
 
 
   <input type="hidden" name="cedula" id="cedula" value="">
+
   <input type="hidden" name="selecModUbi" id="selecModUbi" value="1">
   <input type="hidden" id="tiposCerca" name="tiposCerca" value="">
   <input type="hidden" id="selecCerca"  value="">

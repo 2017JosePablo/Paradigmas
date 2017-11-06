@@ -9,7 +9,7 @@ class FincaData extends Data{
 
 	 private $data;
 
-    function __construct(){ 
+    function __construct(){
 
         $this->data = new Data();
     }
@@ -18,7 +18,7 @@ class FincaData extends Data{
     public function insertarFinca($finca){
 
 
-  		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+  		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -47,19 +47,19 @@ class FincaData extends Data{
 
         $socioinformacion = "";
         $sql = "SELECT tbsocio.socionombre, tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido, tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
-            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca, 
+            tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca,
             tbfincatipo.fincatiponombre , tbtipoactividad.tipoactividadnombre
-            FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid 
-            INNER JOIN  tbfincatipo 
+            FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid
+            INNER JOIN  tbfincatipo
             ON  tbfincatipo.fincatipoid = tbsocio.fincatipoid INNER JOIN tbtipoactividad   ON tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
- 
+
             AND tbsocio.sociocedula = '".$cedulasocio."' ; ";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                $socioinformacion = ["socionombre"=>$row["socionombre"], "socioprimerapellido"=> $row["socioprimerapellido"],"sociosegundoapellido"=>$row["sociosegundoapellido"], 
+                $socioinformacion = ["socionombre"=>$row["socionombre"], "socioprimerapellido"=> $row["socioprimerapellido"],"sociosegundoapellido"=>$row["sociosegundoapellido"],
 
                 "fincaprovincia"=>$row["fincaprovincia"], "fincacanton"=>$row["fincacanton"],"fincadistrito"=>$row["fincadistrito"]
                     ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatipocerca"=>$row["fincacerca"],"fincatiponombre"=>$row["fincatiponombre"],"tipoactividadnombre"=>$row["tipoactividadnombre"]];
@@ -68,7 +68,7 @@ class FincaData extends Data{
             echo "0 results";
         }
         $conn->close();
-        
+
         return json_encode($socioinformacion);
     }
 
@@ -89,14 +89,14 @@ class FincaData extends Data{
              }
 
         }else{
-        }    
+        }
 
         if ($fincaareatemporal == 0) {
              return 0;
             }else{
-                
+
              return 1;
-            }    
+            }
 
     }
 
@@ -110,10 +110,10 @@ class FincaData extends Data{
         $sql = "SELECT  tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
             tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos,tbfinca.fincacerca,
             tbfincatipo.fincatipoid , tbtipoactividad.tipoactividadid
-            FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid 
-            INNER JOIN  tbfincatipo 
+            FROM tbsocio INNER JOIN tbfinca ON tbsocio.socioid = tbfinca.socioid  INNER JOIN tbfincadireccion ON tbfinca.fincaid = tbfincadireccion.fincaid
+            INNER JOIN  tbfincatipo
             ON  tbfincatipo.fincatipoid = tbsocio.fincatipoid INNER JOIN tbtipoactividad   ON tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
- 
+
             AND tbsocio.sociocedula = '".$cedulasocio."' ; ";
 
         $result = $conn->query($sql);
@@ -127,14 +127,14 @@ class FincaData extends Data{
             echo "0 results";
         }
         $conn->close();
-        
+
         return json_encode($socioinformacion);
     }
 
 
       public function insertarTBFincaDireccion($fincaDireccion){
 
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -143,7 +143,7 @@ class FincaData extends Data{
         VALUES ('".$fincaDireccion->getProvincia()."','".$fincaDireccion->getCanton()."','".$fincaDireccion->getDistrito()."','".$fincaDireccion->getPueblo()."','".$fincaDireccion->getDireccionExacta()."');";
 
 
-        
+
 
 
          if ( ( $result = $conn->query($sql)) === TRUE) {
@@ -166,7 +166,7 @@ class FincaData extends Data{
 	    if (!$conn) {
 	        die("Connection failed: " . mysqli_connect_error());
 	    }
- 
+
 	    $sql = "UPDATE tbfinca SET fincaarea='".$finca-> getArea()."', fincacantidadbobinos = '".
                 $finca->getCantidadBovinos()."' , fincacerca = '".
                 $finca->getCerca()."'  WHERE socioid ='". $finca-> getSocioId()."' ;";
@@ -212,18 +212,18 @@ class FincaData extends Data{
     public function obtenerFinca($idsocio){
     //     require '../domain/finca.php';
          $finca;
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
             $sql = "SELECT * FROM tbfinca WHERE  socioid = $idsocio";
 
             $result = $conn->query($sql);
             if($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                   $finca= [ "fincaid"=>$row['fincaid'], 
-                    "socioid"=>$row['socioid'], 
+                   $finca= [ "fincaid"=>$row['fincaid'],
+                    "socioid"=>$row['socioid'],
                     "fincaarea"=>$row['fincaarea'],
                     "fincacantidadbobinos"=>$row['fincacantidadbobinos'],
-                       "fincacerca"=>$row['fincacerca']]; 
-                }   
+                       "fincacerca"=>$row['fincacerca']];
+                }
             }else{
                 echo "0 results";
             }
@@ -236,22 +236,22 @@ class FincaData extends Data{
     public function obtenerTodosTBfinca() {
         $fincas  = array();
         require '../domain/todoFinca.php';
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
             $sql = "
             SELECT tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido,
-            tbsocio.sociosegundoapellido, 
-            tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca, tbfincatipo.fincatiponombre, 
-            tbtipoactividad.tipoactividadnombre  FROM tbsocio 
-            INNER JOIN tbfinca ON  tbsocio.socioid = tbfinca.fincaid 
+            tbsocio.sociosegundoapellido,
+            tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca, tbfincatipo.fincatiponombre,
+            tbtipoactividad.tipoactividadnombre  FROM tbsocio
+            INNER JOIN tbfinca ON  tbsocio.socioid = tbfinca.fincaid
             INNER JOIN tbfincatipo ON tbsocio.fincatipoid = tbfincatipo.fincatipoid
             INNER JOIN tbtipoactividad ON tbtipoactividad.tipoactividadid = tbsocio.tipoactividadid";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-               array_push($fincas,new TodoFinca($row['sociocedula'], $row['socionombre'], 
+               array_push($fincas,new TodoFinca($row['sociocedula'], $row['socionombre'],
                 $row['socioprimerapellido'],$row['sociosegundoapellido'], $row['fincaarea'],
-                $row['fincacantidadbobinos'],$row['fincacerca'],$row['fincatiponombre'],$row['tipoactividadnombre'])); 
+                $row['fincacantidadbobinos'],$row['fincacerca'],$row['fincatiponombre'],$row['tipoactividadnombre']));
           //     echo $row['tipoactividadnombre'];
             }
         }else{
@@ -265,9 +265,9 @@ class FincaData extends Data{
 
 
     public function actualizarTipoFinca($socioId,$tipo){
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
-         $sql = "UPDATE tbsocio  SET   fincatipoid= '".$tipo."'  WHERE socioid = '".$socioid."' ; ";  
+         $sql = "UPDATE tbsocio  SET   fincatipoid= '".$tipo."'  WHERE socioid = '".$socioId."' ; ";  
         $result = $conn->query($sql);
          return $result;
     }
