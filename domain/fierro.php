@@ -1,15 +1,11 @@
 <?php
-    /**
-     *
-     */
-    class Fierro 
-    {
+    class Fierro{
       private $fierroid;
       private $fierrotiene;
       private $fierrorutaimagen;
       private $idsocio;
-      function __construct($fierroid,$fierrotiene,$fierrorutaimagen,$idsocio)
-      {
+
+      function Fierro($fierroid,$fierrotiene,$fierrorutaimagen,$idsocio){
           $this->fierroid = $fierroid;
           $this->fierrotiene = $fierrotiene;
           $this->fierrorutaimagen = $fierrorutaimagen;

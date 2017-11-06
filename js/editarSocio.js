@@ -19,6 +19,8 @@ $(document).ready(function() {
 
 
         if(result[1] == 'Mod'){
+          $("input:radio").removeAttr("checked");
+
             document.getElementById('notificacionSocio').innerHTML = ''
             document.getElementById("cedulaVieja").value = result[0];
             document.getElementById("agregarsocio").style.display = 'none';
@@ -27,6 +29,17 @@ $(document).ready(function() {
             document.getElementById('cajaVerSocio').style.display = 'none';
             document.getElementById('editarUbic').style.display='none';
             document.getElementById('verDir').style.display='block';
+
+
+
+            $.post('../business/fierroAction.php', {fierro:result[0]}, function(data){
+              var fierroArray = JSON.parse(data);
+              document.getElementById('fierro').src = fierroArray['fierroruta'];
+
+              $('#'+fierroArray['fierrotiene']).attr('checked',true);
+
+
+            });
 
             $.post('../business/socioAction.php', {cedula:result[0]}, function(data){
 
@@ -44,7 +57,7 @@ $(document).ready(function() {
             var tipoEstado = array['estadosociodetalle'];
 
 
-            $("input:radio").removeAttr("checked");
+          // /  $("input:radio").removeAttr("checked");
 
             $('#'+tipoactividadid+'-actividad').attr('checked',true);
 
@@ -84,6 +97,13 @@ $(document).ready(function() {
             //document.getElementById("btnAgregar").style.display = 'none';
             //document.getElementById("btnModificar").style.display = 'none';
             document.getElementById("modificarsocio").style.display = 'none';
+
+            $.post('../business/fierroAction.php', {fierro:result[0]}, function(data){
+              var fierroArray = JSON.parse(data);
+              document.getElementById('fierro').src = fierroArray['fierroruta'];
+
+            });
+
 
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
 
@@ -218,4 +238,12 @@ function getDistrito(valor,valorCantones,distrito){
                 }
         });
         return distrito;
+}
+function ocultarEspacios(id,id2){
+    document.getElementById(id).style="display:none";
+    document.getElementById(id2).style="display:none";
+}
+function verEspacios(id1,id2){
+    document.getElementById(id1).style="display:block";
+    document.getElementById(id2).style="display:block";
 }

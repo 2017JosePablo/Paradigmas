@@ -144,14 +144,7 @@
             }
 
 
-            function ocultarEspacios(id,id2){
-                document.getElementById(id).style="display:none";
-                document.getElementById(id2).style="display:none";
-            }
-            function verEspacios(id1,id2){
-                document.getElementById(id1).style="display:block";
-                document.getElementById(id2).style="display:block";
-            }
+
         </script>
 
 
@@ -472,8 +465,8 @@
 
 
             <p>Fierro</p>
-            <input type='radio' name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br>
-            <input type="radio" name="radioFierro" onclick="ocultarEspacios('cajaFierro','w')" value="2">No
+            <input type='radio' id="1" name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br>
+            <input type="radio" id='2' name="radioFierro" onclick="ocultarEspacios('cajaFierro','w')" value="2">No
 
             <br>
             <div id="cajaFierro">
@@ -640,6 +633,12 @@
                     recomendacion 2 : <input  type="text"  id = 'recomendacion2Input' readonly >
                 </td>
             </tr>
+            <tr>
+                <td>
+                    Fierro:<img id="fierro" src="" alt="">
+                </td>
+            </tr>
+
         </table>
 
     </div>
