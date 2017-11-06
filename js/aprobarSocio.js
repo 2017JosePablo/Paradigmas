@@ -6,7 +6,6 @@ $(document).ready(function() {
             var cedula = result[0];
           document.getElementById('socioid').value = result[0];
             if(result[1] == 'aprovar'){
-              alert("aprovador");
               document.getElementById('cajaAprovacion').style='display:block';
               document.getElementById('cajaMotivo').style='display:none';
               document.getElementById('estadoSocio').value = "aprovado";
