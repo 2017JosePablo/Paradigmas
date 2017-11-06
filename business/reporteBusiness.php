@@ -16,7 +16,5 @@ class ReporteBusiness{
     return $this->reporteData->socioTipoFinca();
   }
 
-
-  
 }
 ?>
