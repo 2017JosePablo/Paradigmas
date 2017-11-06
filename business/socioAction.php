@@ -113,7 +113,7 @@
 					$tamano = $_FILES['imagen']['size'];
 
 					//Si existe imagen y tiene un tamaño correcto
-					if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 200000)){
+					if (($nombre_img == !NULL)){
 					   //indicamos los formatos que permitimos subir a nuestro servidor
 					   if (($_FILES["imagen"]["type"] == "image/gif")
 					   || ($_FILES["imagen"]["type"] == "image/jpeg")
@@ -121,9 +121,11 @@
 					   || ($_FILES["imagen"]["type"] == "image/png"))
 					   {
 					      // Ruta donde se guardarán las imágenes que subamos
-					     $directorio = $_SERVER['DOCUMENT_ROOT'].'/paradigmas/uploads/';
+					     //$directorio = $_SERVER['DOCUMENT_ROOT'].'/paradigmas/uploads/';
+							 $directorio = '../uploads/fierros/';
 					      // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
-					      move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+								$tipo = explode('/',$_FILES["imagen"]["type"]);
+					      move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$cedula,$tipo[1]);
 					    }else{
 					       //si no cumple con el formato
 					       echo "No se puede subir una imagen con ese formato ";
