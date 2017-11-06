@@ -35,7 +35,7 @@ class fierroData extends Data{
         }
 
 
-        $sql = "SELECT  * FROM tbfierro ";
+        $sql = "SELECT  * FROM tbfierro WHERE tbfierro.idsocio='".$idsocio."'";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
