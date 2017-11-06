@@ -2,7 +2,9 @@
 include '../data/reportesData.php';
 
 class ReporteBusiness{
+
   private $reporteData;
+
   function ReporteBusiness(){
     $this->reporteData = new reportesData();
   }
@@ -21,7 +23,10 @@ class ReporteBusiness{
   }
   function socioReporteExamen(){
     require '../data/socioData.php';
-    $socioData = new 
+    $socioData = new socioData();
+    return $socioData->socioReporteExamen();
   }
+
+
 }
 ?>
