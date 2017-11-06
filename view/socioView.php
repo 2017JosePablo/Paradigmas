@@ -632,12 +632,12 @@
             </tr>
             <tr>
                 <td>
-                    Recomendacion 1 : <input  type="text"  id = 'recomendacion1' readonly >
+                    Recomendacion 1 : <input  type="text"  id = 'recomendacion1Input' readonly >
                 </td>
             </tr>
             <tr>
                 <td>
-                    recomendacion 2 : <input  type="text"  id = 'recomendacion2' readonly >
+                    recomendacion 2 : <input  type="text"  id = 'recomendacion2Input' readonly >
                 </td>
             </tr>
         </table>

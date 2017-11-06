@@ -69,7 +69,6 @@ $(document).ready(function() {
             document.getElementById('fecha').value = fechaSalida;
 
             document.getElementById("recomendacion1").value = array['sociorecomendacionuno'];
-
             document.getElementById("recomendacion2").value = array['sociorecomendacionuno'];
 
         });
@@ -122,8 +121,8 @@ $(document).ready(function() {
             document.getElementById('dis').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
             document.getElementById('pueb').value = array['sociopueblo'];
 
-            document.getElementById("recomendacion1").value = array['sociorecomendacionuno'];
-            document.getElementById("recomendacion2").value = array['sociorecomendaciondos'];
+            document.getElementById("recomendacion1Input").value = array['sociorecomendacionuno'];
+            document.getElementById("recomendacion2Input").value = array['sociorecomendacionuno'];
 
             document.getElementById("claveMostrarLabel").style.display = 'none';
             document.getElementById("claveMostrarInput").style.display = 'none';
