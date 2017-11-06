@@ -55,13 +55,13 @@ class avisosData {
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql="SELECT tbaviso.idaviso, tbsocio.socionombre ,  tbsocio.socioprimerapellido , tbsocio.sociosegundoapellido,   tbaviso.temaaviso, tbaviso.detalleaviso , tbaviso.rutafotoaviso FROM tbaviso  INNER JOIN  tbsocio ON tbaviso.socioid = tbsocio.socioid";
+        $sql="SELECT tbaviso.idaviso, tbsocio.socionombre ,  tbsocio.socioprimerapellido , tbsocio.sociosegundoapellido,   tbaviso.temaaviso, tbaviso.detalleaviso , tbaviso.rutafotoaviso ,tbaviso.fechaaviso FROM tbaviso  INNER JOIN  tbsocio ON tbaviso.socioid = tbsocio.socioid  ORDER BY tbaviso.idaviso DESC";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 							$nombreCompleto = $row['socionombre']." ".$row['socioprimerapellido']."".$row['sociosegundoapellido'];
-                array_push($avisos, new Aviso($row["idaviso"], $nombreCompleto,$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"],$row["fechaaviso"]));
+                array_push($avisos, new Aviso($row["idaviso"], $nombreCompleto,$row["temaaviso"],$row["detalleaviso"],$row["rutafotoaviso"],$row["fechaaviso"], $row["fechaaviso"]));
 			}
         }else{
             echo "0 results";

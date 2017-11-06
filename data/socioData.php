@@ -43,6 +43,7 @@ class socioData {
 
 	}
 
+
     public function actualizarDatoActividad($idsocio , $tipofincaTemporal){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
@@ -64,7 +65,7 @@ class socioData {
             die("Connection failed: ".mysqli_connect_error());
         }
         $sql = "UPDATE tbsocio  SET  estadosociodetalle = '".$estado."' WHERE sociocedula = '".$cedula."' ";
-        $result = $conn->query($sql);   
+        $result = $conn->query($sql);
         $conn->close();
         return $result;
     }
@@ -100,6 +101,29 @@ class socioData {
 
 
     }
+
+
+
+		function socioReporteExamen(){
+					$arrayReporteExamen = array();
+					include_once "../domain/datosSocioReportes.php";
+					$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+					if (!$conn) {
+								die("Connection failed: ".mysqli_connect_error());
+					}
+					$sql = "Select tbsocio.socioid,tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido, tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo,	tbexamenbrusela.examenbruselafechavencimiento , tbexamentuberculosis.examentuberculosisfechavencimiento, tbcvo.cvofechavigencia
+						From tbsocio INNER JOIN tbcvo ON tbcvo.idsocio = tbsocio.socioid INNER JOIN tbexamentuberculosis ON tbexamentuberculosis.idsocio = tbsocio.socioid
+						INNER JOIN tbexamenbrusela ON tbexamenbrusela.idsocio = tbsocio.socioid";
+					$result = $conn->query($sql);
+					if($result->num_rows > 0) {
+							while($row = $result->fetch_assoc()) {
+									array_push($arrayReporteExamen,new DatosSocioReportes($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"],$row["sociocorreo"],$row["examenbruselafechavencimiento"],$row["examentuberculosisfechavencimiento"],$row["cvofechavigencia"]));
+							}
+					}else{
+							echo "0 results";
+					}
+				return $arrayReporteExamen;
+		}
 
 
       public function eliminarTBSocio($idsocio) {
