@@ -26,9 +26,6 @@ $(document).ready(function() {
             if(result[1]=='Ver' || result[1]=='Mod' || result[1]=='Reg'){
 
             $.post('../business/fincaAction.php', {verificarfinca:result[0]}, function(data){
-              alert(data);
-
-
                 if(data  == 1){
                     if(result[1]=='Ver'){
                         $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
@@ -79,10 +76,6 @@ $(document).ready(function() {
                                 document.getElementById("cedula").value = result[0];
                                 document.getElementById("fincaarea").value = array['fincaarea'];
                                 document.getElementById("cantidadbobinos").value = array['fincacantidadbobinos'];
-                            ////Datos de direccion///
-                            //document.getElementById('prov').value = getProvincia(array['fincaprovincia']);
-                            //document.getElementById('can').value = getCanton(array['fincaprovincia'],array['fincacanton']);
-                            //document.getElementById('dis').value = getDistrito(array['fincaprovincia'],array['fincacanton'],array['fincadistrito']);
 
                                 var tipoactividadid = array['tipoactividadid'];
                                 var fincatipoid = array['fincatipoid'];

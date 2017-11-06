@@ -19,11 +19,11 @@ $(document).ready(function() {
 
 
         if(result[1] == 'Mod'){
-          alert("Modificando");
             document.getElementById('notificacionSocio').innerHTML = ''
             document.getElementById("cedulaVieja").value = result[0];
-//            document.getElementById("btnAgregar").style.display = 'none';
-//            document.getElementById("btnModificar").style.display = 'block';
+            document.getElementById("agregarsocio").style.display = 'none';
+            document.getElementById("modificarsocio").style.display = 'block';
+
             document.getElementById('cajaVerSocio').style.display = 'none';
             document.getElementById('editarUbic').style.display='none';
             document.getElementById('verDir').style.display='block';
@@ -61,17 +61,19 @@ $(document).ready(function() {
             document.getElementById('disE').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
             document.getElementById('puebE').value = array['sociopueblo'];
 
+            document.getElementById("claveMostrarLabel").style.display = 'none';
+            document.getElementById("claveMostrarInput").style.display = 'none';
 
             var fecha = array['sociofechaingreso'].split('-');
             var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
             document.getElementById('fecha').value = fechaSalida;
+
+            document.getElementById("recomendacion1").value = array['sociorecomendacionuno'];
+            document.getElementById("recomendacion2").value = array['sociorecomendacionuno'];
+
         });
 
         }else if(result[1] == 'Ver'){
-
-
-
-
             var tipoactividadid;
             var fincatipoid;
             var tipoEstado;
@@ -81,13 +83,13 @@ $(document).ready(function() {
             document.getElementById('cajaFormulario').style.display='none';
             //document.getElementById("btnAgregar").style.display = 'none';
             //document.getElementById("btnModificar").style.display = 'none';
-
+            document.getElementById("modificarsocio").style.display = 'none';
 
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
 
             var array = JSON.parse(data);
 
-
+            //alert();
 
             document.getElementById('cedula').value = array['sociocedula'];
             document.getElementById('nombre').value = array['socionombre'];
@@ -119,8 +121,13 @@ $(document).ready(function() {
             document.getElementById('dis').value = getDistrito(array['socioprovincia'],array['sociocanton'],array['sociodistrito']);
             document.getElementById('pueb').value = array['sociopueblo'];
 
-            });
+            document.getElementById("recomendacion1Input").value = array['sociorecomendacionuno'];
+            document.getElementById("recomendacion2Input").value = array['sociorecomendacionuno'];
 
+            document.getElementById("claveMostrarLabel").style.display = 'none';
+            document.getElementById("claveMostrarInput").style.display = 'none';
+
+            });
         } else if(result[1] == 'Desac'){
             document.getElementById('cajaVerSocio').style.display = 'none';
             document.getElementById('cajaFormulario').style.display='none';
@@ -135,6 +142,9 @@ $(document).ready(function() {
                 }
              });
 
+        }else if(result[1] == 'add'){
+          document.getElementById("claveMostrarLabel").style.display = 'block';
+          document.getElementById("claveMostrarInput").style.display = 'block';
         }
     }
 
