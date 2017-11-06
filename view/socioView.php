@@ -144,14 +144,7 @@
             }
 
 
-            function ocultarEspacios(id,id2){
-                document.getElementById(id).style="display:none";
-                document.getElementById(id2).style="display:none";
-            }
-            function verEspacios(id1,id2){
-                document.getElementById(id1).style="display:block";
-                document.getElementById(id2).style="display:block";
-            }
+
         </script>
 
 
@@ -267,6 +260,8 @@
     <input type="hidden" id="cedulaVieja" name= "cedulaVieja" value="">
     <input type="hidden" id="selecModUbi" name="ModUbi" value="1">
 
+    <input type="hidden" name="rutaImagen" value="" id="rutaImagen">
+
          <p>Datos personales:</p>
 
              <table>
@@ -339,7 +334,7 @@
                     </td>
 
                     <td id="claveMostrarInput">
-                      <input type="text"  required ="" name="clavesocio"></td>
+                      <input type="text"   name="clavesocio"></td>
                     </td>
 
                 </tr>
@@ -472,14 +467,15 @@
 
 
             <p>Fierro</p>
-            <input type='radio' name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br>
-            <input type="radio" name="radioFierro" onclick="ocultarEspacios('cajaFierro','w')" value="2">No
+            <input type='radio' id="1" name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br>
+            <input type="radio" id='2' name="radioFierro" onclick="ocultarEspacios('cajaFierro','w')" value="2">No
 
             <br>
             <div id="cajaFierro">
 
             <label for="">Fierro</label>
             <input type="file" value="Seleccionar Fierro" name="imagen" id="imagen">
+            <img src="" alt="" id="fierroSalida">
             </div>
             <input type="hidden" name="" id="w">
 
@@ -640,6 +636,12 @@
                     recomendacion 2 : <input  type="text"  id = 'recomendacion2Input' readonly >
                 </td>
             </tr>
+            <tr>
+                <td>
+                    Fierro:<img id="fierro" src="" alt="">
+                </td>
+            </tr>
+
         </table>
 
     </div>

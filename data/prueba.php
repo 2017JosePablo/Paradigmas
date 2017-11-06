@@ -86,14 +86,14 @@
         $fecha = gmdate('D, d M Y H:i:s T', time());
         echo "La fecha es: ".$fecha;
         */
+        require './socioData.php';
 
+          $finca = new socioData();
 
-        require 'hatoData.php';
-          $socioid='1';  
+          $listado = $finca->socioReporteExamen();
 
-          $hatoBusiness = new hatoData();
-
-          echo $hatoBusiness->verificarSocioHato("13");
-          
+            foreach ($listado as $current) {
+                echo $current->getNombre()." -> ". $current->getCanton()."<br>";;
+            }
   ?>
 </body>

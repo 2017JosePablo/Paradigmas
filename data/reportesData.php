@@ -18,7 +18,7 @@ class reportesData extends Data{
         $socioCantonDistrito= array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        // Check connection 
+        // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -44,7 +44,7 @@ class reportesData extends Data{
         $socioCantonDistrito= array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        // Check connection 
+        // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -62,8 +62,11 @@ class reportesData extends Data{
         $conn->close();
 
         return $socioCantonDistrito;
-    } 
+    }
 
+
+<<<<<<< HEAD
+=======
 
     public function hatoConsolidado(){
         $datos= "<table border = '1'><tr><td align = 'center'>Bovino</td>  <td>Cantidad</td></tr>";
@@ -156,6 +159,7 @@ class reportesData extends Data{
         return $datos;
     } 
 
+>>>>>>> e71ecbfbf4b153d01fcdbf86fb11603d1e8af3ea
 
 
 
