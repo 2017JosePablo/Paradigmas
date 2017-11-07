@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2017 a las 02:51:11
+-- Tiempo de generación: 07-11-2017 a las 03:42:38
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -36,6 +36,13 @@ CREATE TABLE `tbactaaprobacion` (
   `actaaprobacioncondicion` varchar(100) NOT NULL,
   `actaaprobacionmotivo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbactaaprobacion`
+--
+
+INSERT INTO `tbactaaprobacion` (`actaaprobacionid`, `socioid`, `actaaprobacionsecion`, `actaaprobacionfecha`, `actaaprobacioncondicion`, `actaaprobacionmotivo`) VALUES
+(1, 1, 0, '0000-00-00', 'progreso', '');
 
 -- --------------------------------------------------------
 
@@ -146,6 +153,13 @@ CREATE TABLE `tbfierro` (
   `idsocio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tbfierro`
+--
+
+INSERT INTO `tbfierro` (`fierroid`, `fierrotiene`, `fierroruta`, `idsocio`) VALUES
+(1, 1, '../uploads/fierros/1-2345678.jpeg', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -159,6 +173,13 @@ CREATE TABLE `tbfinca` (
   `fincacantidadbobinos` varchar(45) DEFAULT NULL,
   `fincacerca` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbfinca`
+--
+
+INSERT INTO `tbfinca` (`fincaid`, `socioid`, `fincaarea`, `fincacantidadbobinos`, `fincacerca`) VALUES
+(1, 1, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -195,6 +216,13 @@ CREATE TABLE `tbfincadireccion` (
   `fincapueblo` varchar(300) DEFAULT NULL,
   `fincaexacta` varchar(450) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbfincadireccion`
+--
+
+INSERT INTO `tbfincadireccion` (`fincaid`, `fincaprovincia`, `fincacanton`, `fincadistrito`, `fincapueblo`, `fincaexacta`) VALUES
+(1, 0, 0, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -238,6 +266,13 @@ CREATE TABLE `tbhato` (
   `hatovacaengorde` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tbhato`
+--
+
+INSERT INTO `tbhato` (`hatoid`, `socioid`, `hatoraza`, `hatoternero`, `hatoternera`, `hatonovillo`, `hatonovilla`, `hatonovillaprenada`, `hatotoroservicio`, `hatotoroengorde`, `hatovacacria`, `hatovacaengorde`) VALUES
+(1, 1, '', 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -249,6 +284,13 @@ CREATE TABLE `tbhatoactividad` (
   `hatoactividadpersonaid` int(11) NOT NULL,
   `hatoactividadtipo` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbhatoactividad`
+--
+
+INSERT INTO `tbhatoactividad` (`hatoactividadid`, `hatoactividadpersonaid`, `hatoactividadtipo`) VALUES
+(1, 1, '5');
 
 -- --------------------------------------------------------
 
@@ -280,6 +322,13 @@ CREATE TABLE `tblogin` (
   `passwordlogin` varchar(100) NOT NULL,
   `rollogin` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tblogin`
+--
+
+INSERT INTO `tblogin` (`idlogin`, `socioid`, `userlogin`, `passwordlogin`, `rollogin`) VALUES
+(1, 1, 'asoturgaturri@gmail.com', 'asoturgaturri1', '1');
 
 -- --------------------------------------------------------
 
@@ -342,6 +391,13 @@ CREATE TABLE `tbsocio` (
   `sociorecomendaciondos` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tbsocio`
+--
+
+INSERT INTO `tbsocio` (`socioid`, `sociocedula`, `socionombre`, `socioprimerapellido`, `sociosegundoapellido`, `sociotelefono`, `sociocorreo`, `tipoactividadid`, `fincatipoid`, `sociofechaingreso`, `estadosociodetalle`, `sociorecomendacionuno`, `sociorecomendaciondos`) VALUES
+(1, '1-2345678', 'ASOTURGA', 'ASOTURGA', 'ASOTURGA', '8888 88 88', 'asoturgaturri@gmail.com', 5, 0, '2017-11-06', 5, 'Sin Recomendacion', 'Sin Recomendacion');
+
 -- --------------------------------------------------------
 
 --
@@ -355,6 +411,13 @@ CREATE TABLE `tbsociodireccion` (
   `sociodistrito` int(11) DEFAULT NULL,
   `sociopueblo` varchar(450) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbsociodireccion`
+--
+
+INSERT INTO `tbsociodireccion` (`socioid`, `socioprovincia`, `sociocanton`, `sociodistrito`, `sociopueblo`) VALUES
+(1, 3, 5, 1, 'turri');
 
 -- --------------------------------------------------------
 
@@ -553,7 +616,7 @@ ALTER TABLE `tbtipoactividad`
 -- AUTO_INCREMENT de la tabla `tbactaaprobacion`
 --
 ALTER TABLE `tbactaaprobacion`
-  MODIFY `actaaprobacionid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `actaaprobacionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbanualidad`
 --
@@ -593,12 +656,12 @@ ALTER TABLE `tbexamentuberculosis`
 -- AUTO_INCREMENT de la tabla `tbfierro`
 --
 ALTER TABLE `tbfierro`
-  MODIFY `fierroid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fierroid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbfinca`
 --
 ALTER TABLE `tbfinca`
-  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbfincacerca`
 --
@@ -608,7 +671,7 @@ ALTER TABLE `tbfincacerca`
 -- AUTO_INCREMENT de la tabla `tbfincadireccion`
 --
 ALTER TABLE `tbfincadireccion`
-  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbfincatipo`
 --
@@ -618,17 +681,17 @@ ALTER TABLE `tbfincatipo`
 -- AUTO_INCREMENT de la tabla `tbhato`
 --
 ALTER TABLE `tbhato`
-  MODIFY `hatoid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `hatoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbhatoactividad`
 --
 ALTER TABLE `tbhatoactividad`
-  MODIFY `hatoactividadid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `hatoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tblogin`
 --
 ALTER TABLE `tblogin`
-  MODIFY `idlogin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idlogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbpagoanualidad`
 --
@@ -643,12 +706,12 @@ ALTER TABLE `tbraza`
 -- AUTO_INCREMENT de la tabla `tbsocio`
 --
 ALTER TABLE `tbsocio`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbsociodireccion`
 --
 ALTER TABLE `tbsociodireccion`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbsocioestado`
 --
