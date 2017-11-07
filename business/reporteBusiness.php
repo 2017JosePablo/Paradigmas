@@ -18,6 +18,10 @@ class ReporteBusiness{
   function hatoConsolidado(){
     return $this->reporteData->hatoConsolidado();
   }
+  function cantBovinosxDistrito(){
+    return $this->reporteData->cantBovinosxDistrito();
+  }
+  cantBovinosxDistrito
 
 }
 ?>
