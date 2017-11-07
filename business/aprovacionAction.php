@@ -37,21 +37,21 @@ if (isset($_POST['cancelarAprobacion'])) {
         include '../domain/actaAprobacion.php';
 
         $aprovacion = new AprovacionBusiness();
-        //$acta = new actaAprobacion('',$socioid,$sesion,$fecha,'Aceptado','Solicitud Aceptada.');
-        //$resultado = $aprovacion->actualizarActa($acta);
+        $acta = new actaAprobacion('',$socioid,$sesion,$fecha,'Aceptado','Solicitud Aceptada.');
+        $resultado = $aprovacion->actualizarActa($acta);
 
         $resultadoEditarEstado = $socioBusiness->editarEstado($cedulaSocio,'2');
-        echo "ID->".$socioid."<br>";
+        echo "Cedula->".$cedulaSocio."<br>";
         echo "->".$resultadoEditarEstado;
 
         if ($resultadoEditarEstado == 1) {
-        //  header ('location: ../index.php?success=insertedAprovation');
+          header ('location: ../index.php?success=insertedAprovation');
         }else{
           if($resultadoEditarEstado != 1){
-        //    header ('location: ../view/aprovacionSocioView.php?error=updateEstado');
+            header ('location: ../view/aprovacionSocioView.php?error=updateEstado');
           }else{
             if($resultado != 1 ){
-          //    header ('location: ../view/aprovacionSocioView.php?error=errortoinserted');
+              header ('location: ../view/aprovacionSocioView.php?error=errortoinserted');
             }
           }
 
