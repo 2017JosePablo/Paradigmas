@@ -15,8 +15,9 @@ class ReporteBusiness{
   function socioTipoFinca(){
     return $this->reporteData->socioTipoFinca();
   }
+  function hatoConsolidado(){
+    return $this->reporteData->hatoConsolidado();
+  }
 
-
-  
 }
 ?>

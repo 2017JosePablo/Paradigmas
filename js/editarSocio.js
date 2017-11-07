@@ -111,7 +111,7 @@ $(document).ready(function() {
 
             var array = JSON.parse(data);
 
-            //alert();
+            alert(data);
 
             document.getElementById('cedula').value = array['sociocedula'];
             document.getElementById('nombre').value = array['socionombre'];

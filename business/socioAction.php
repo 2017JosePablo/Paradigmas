@@ -72,9 +72,6 @@
 
 
 
-
-
-
 		if (isset($contrasena) && !empty($contrasena) &&strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
 
 			require 'fincaBusiness.php';
@@ -204,7 +201,7 @@
 				echo "Socio->".$resultado6."<br>";
 
 				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1 && $result7 == 1 && $resultadoFierro == 1) {
-					header("location: ../index.php?success=insertedSocio");
+					//header("location: ../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
 						//header("location: ../view/socioView.php?error=errorToRegister");

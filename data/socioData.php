@@ -78,11 +78,11 @@ class socioData {
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
-        $sql = "SELECT sociocedula FROM tbsocio WHERE socioid='".$sociocid."'";
+        $sql = "SELECT sociocedula FROM tbsocio WHERE socioid='".$socioid."'";
         $result = $conn->query($sql);
          if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-               $id=$row["socioid"];
+               $id=$row["sociocedula"];
             }
         }else{
             echo "0 results";

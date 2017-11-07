@@ -243,7 +243,6 @@ class FincaData extends Data{
             tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca, tbfincatipo.fincatiponombre,
             tbtipoactividad.tipoactividadnombre  FROM tbsocio
             INNER JOIN tbfinca ON  tbsocio.socioid = tbfinca.fincaid
-            INNER JOIN tbfincatipo ON tbsocio.fincatipoid = tbfincatipo.fincatipoid
             INNER JOIN tbtipoactividad ON tbtipoactividad.tipoactividadid = tbsocio.tipoactividadid";
 
         $result = $conn->query($sql);
@@ -251,7 +250,7 @@ class FincaData extends Data{
             while($row = $result->fetch_assoc()) {
                array_push($fincas,new TodoFinca($row['sociocedula'], $row['socionombre'],
                 $row['socioprimerapellido'],$row['sociosegundoapellido'], $row['fincaarea'],
-                $row['fincacantidadbobinos'],$row['fincacerca'],$row['fincatiponombre'],$row['tipoactividadnombre']));
+                $row['fincacantidadbobinos'],$row['fincacerca'],"",$row['tipoactividadnombre']));
           //     echo $row['tipoactividadnombre'];
             }
         }else{
@@ -267,7 +266,7 @@ class FincaData extends Data{
     public function actualizarTipoFinca($socioId,$tipo){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
 
-         $sql = "UPDATE tbsocio  SET   fincatipoid= '".$tipo."'  WHERE socioid = '".$socioId."' ; ";  
+         $sql = "UPDATE tbsocio  SET   fincatipoid= '".$tipo."'  WHERE socioid = '".$socioId."' ; ";
         $result = $conn->query($sql);
          return $result;
     }
