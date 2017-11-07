@@ -52,6 +52,10 @@
 
 */
 
+	echo $provincia."<br>";
+	echo $canton."<br>";
+	echo $distrito."<br>".$pueblo;
+
 		$sociodetalle = $_POST['socioestado'];
 
 		$recomendacion1 = $_POST['recomendacion1'];
@@ -194,7 +198,7 @@
 				}
 				echo "Socio->".$resultado0."<br>";
 				echo "Socio->".$resultado1."<br>";
-				echo "Socio->".$resultadodireccion."<br>";
+				echo "Socio DIRECCION->".$resultadodireccion."<br>";
 				echo "Socio->".$resultado3."<br>";
 				echo "Socio->".$resultado4."<br>";
 				echo "Socio->".$resultado5."<br>";

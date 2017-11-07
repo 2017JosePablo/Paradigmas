@@ -238,10 +238,11 @@ class FincaData extends Data{
         require '../domain/todoFinca.php';
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
             $sql = "
-            SELECT tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido,
+						SELECT tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido,
             tbsocio.sociosegundoapellido,
             tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca, tbfincatipo.fincatiponombre,
             tbtipoactividad.tipoactividadnombre  FROM tbsocio
+            INNER JOIN tbfincatipo ON tbsocio.fincatipoid=tbfincatipo.fincatipoid
             INNER JOIN tbfinca ON  tbsocio.socioid = tbfinca.fincaid
             INNER JOIN tbtipoactividad ON tbtipoactividad.tipoactividadid = tbsocio.tipoactividadid
             INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
@@ -252,7 +253,7 @@ class FincaData extends Data{
             while($row = $result->fetch_assoc()) {
                array_push($fincas,new TodoFinca($row['sociocedula'], $row['socionombre'],
                 $row['socioprimerapellido'],$row['sociosegundoapellido'], $row['fincaarea'],
-                $row['fincacantidadbobinos'],$row['fincacerca'],"",$row['tipoactividadnombre']));
+                $row['fincacantidadbobinos'],$row['fincacerca'],$row['fincatiponombre'],$row['tipoactividadnombre']));
           //     echo $row['tipoactividadnombre'];
             }
         }else{

@@ -35,11 +35,11 @@
 		}
 
 		public function insertarTBSocioDireccion($temp){
-			return $this ->dataSocio->insertarTBSocioDireccion($temp);
+			return $this->dataSocio->insertarTBSocioDireccion($temp);
 		}
 
 		public function actualizarTBSocioDireccion($temp){
-			return $this ->dataSocio->actualizarTBSocioDireccion($temp);
+			return $this->dataSocio->actualizarTBSocioDireccion($temp);
 		}
 
 		public function obtenerSocioEstado(){
