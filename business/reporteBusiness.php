@@ -21,7 +21,10 @@ class ReporteBusiness{
   function cantBovinosxDistrito(){
     return $this->reporteData->cantBovinosxDistrito();
   }
-  cantBovinosxDistrito
+
+
+
+  
 
 }
 ?>
