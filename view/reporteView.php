@@ -130,7 +130,47 @@
 
   <div class="" id="reporteCanton"style="display:none" >
     <h1>Reporte de socio por Canton y distrito</h1>
-    
+
+    <?php
+    include_once '../business/socioBusiness.php';
+    $socioReporte = new ReporteBusiness();
+    $listado = $socioReporte->socioCantonDistrito();
+
+    echo "<table>";
+    echo "<tr class='cabeceraTabla' ><td>Cedula</td><td>Nombre</td><td>Primer apellido</td><td>Segundo Apellido</td> <td>Telefon</td><td>Canton</td><td>Distrito</td></tr>";
+      foreach ($listado as $current){
+        echo "<tr>";
+        echo "<td>";
+          echo $current->getCedula();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getNombre();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getPrimerApellido();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getSegundoApellido();
+        echo "</td>";
+
+        echo "<td>";
+          echo $current->getTelefono ();
+        echo "</td>";
+
+        echo "<td>";
+          echo $current->getCanton();
+        echo "</td>";
+
+        echo "<td>";
+          echo $current->getDistrito();
+        echo "</td>";
+
+        echo "</tr>";
+      }
+      echo "</table>";
+    ?>
+
+
   </div>
 
     <div class="" id="reporteRaza" style="display:none">
@@ -143,6 +183,42 @@
 
   <div class="" id="reporteCerca" style="display:none">
     <h1>Reporte por tipos de cerca</h1>
+
+        <?php
+
+        include_once '../business/fincaCercaBusiness.php';
+        $cercaReporte = new fincaCercaBusiness();
+        $listado = $cercaReporte->socioTipoCerca();
+        echo "<table>";
+        echo "<tr class='cabeceraTabla' ><td>Cedula</td><td>Nombre</td><td>Primer apellido</td><td>Segundo Apellido</td> <td>Telefono</td><td>Tipo de Cerca</td></tr>";
+          foreach ($listado as $current){
+            echo "<tr>";
+            echo "<td>";
+              echo $current->getCedula();
+            echo "</td>";
+            echo "<td>";
+              echo $current->getNombre();
+            echo "</td>";
+            echo "<td>";
+              echo $current->getPrimerApellido();
+            echo "</td>";
+            echo "<td>";
+              echo $current->getSegundoApellido();
+            echo "</td>";
+
+            echo "<td>";
+              echo $current->getTelMovil();
+            echo "</td>";
+
+            echo "<td>";
+              echo $current->getProvincia();
+            echo "</td>";
+
+            echo "</tr>";
+          }
+          echo "</table>";
+        ?>
+
   </div>
 
   <div class="" id="reporteHato"style="display:none">
@@ -151,6 +227,46 @@
 
   <div class="" id="reporteExamen"style="display:none">
     <h1>Reporte de examenes de bucelas , cvo, tuberculosis</h1>
+
+    <?php
+    include_once '../business/socioBusiness.php';
+    $socioReporte = new socioBusiness();
+    $listado = $socioReporte->socioReporteExamen();
+    echo "<table>";
+    echo "<tr class='cabeceraTabla' ><td>Cedula</td><td>Nombre</td><td>Primer apellido</td><td>Segundo Apellido</td> <td>CVO</td><td>Tuberculosis</td><td>Bruselas</td></tr>";
+      foreach ($listado as $current){
+        echo "<tr>";
+        echo "<td>";
+          echo $current->getCedula();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getNombre();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getPrimerApellido();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getSegundoApellido();
+        echo "</td>";
+
+        echo "<td>";
+          echo $current->getProvincia ();
+        echo "</td>";
+
+        echo "<td>";
+          echo $current->getCanton();
+        echo "</td>";
+
+        echo "<td>";
+          echo $current->getDistrito();
+        echo "</td>";
+
+        echo "</tr>";
+      }
+      echo "</table>";
+    ?>
+
+
   </div>
 
   <div class="" id="reporteBovinosDistrito"style="display:none">
