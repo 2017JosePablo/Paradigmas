@@ -10,25 +10,16 @@
     <link rel="stylesheet" href="../css/diseno.css">
   </head>
   <body>
-
-    <p>
-          <h1>Noticias de ASOTURGA</h1>
-    </p>
-
+      <h1>Noticias de ASOTURGA</h1>
       <?php
             include '../business/avisoBusiness.php';
 
             $avisos = new AvisosBusiness();
             $misnoticias = $avisos->mostrarTodosAvisos();
-
-
-
             foreach ($misnoticias as $current) {
-
-            echo '<table width = "80%" border =1 align=center class= "noticiaAviso">';
+            echo '<table width = "80%" border =1 align=center >';
                 echo '<tr class="cabeceraTabla">';
                   echo '<td> Noticia: ';
-
                   echo '</td>';
                 echo '</tr>';
                 echo '<tr>';
@@ -36,30 +27,21 @@
                   echo $current->getTema();
                   echo '</td>';
                 echo '</tr>';
-
                 echo '<tr>';
                   echo '<td>';
                   echo $current->getDetalle();
                   echo '</td>';
                 echo '</tr>';
-
-
                 echo '<tr>';
                   echo '<td align ="center"> ';
-                    echo ' <img src="'.$current->getRutaFoto().'">';
+                    echo ' <img src="'.$current->getRutaFoto().'" width "500px" height="400px">';
                   echo '</td>';
                 echo '</tr>';
-
                 echo '<tr>';
-                  echo '<td> Creador por: ';
-
+                  echo '<td class ="creadoPor"> Creador por: ';
                   echo $current->getSocioId();
                   echo '</td>';
                 echo '</tr>';
-
-
-
-
             echo '</table> ';
             echo '<br> ';
             echo 'Comentarios:';
@@ -70,10 +52,10 @@
               echo '<table width = "60%" align=center>';
               foreach ($listacomentarios as $comentariosTemporal) {
                     echo '<tr>';
-                      echo '<td width= "30%" align="right">   ';
+                      echo '<td width= "30%" align="right" class="comentarioAvisoCreador">';
                       echo $comentariosTemporal->getIdSocio();
                       echo '</td>';
-                      echo '<td align="left">';
+                      echo '<td align="left" class="comentarioAviso">';
                       echo $comentariosTemporal->getMensaje();
                       echo '</td>';
                     echo '</tr>';

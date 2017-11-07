@@ -19,7 +19,7 @@
     <p>
           <h1>Listado de noticias publicadas en ASOTURGA</h1>
     </p>
-
+<a href="../view/agregarNoticia.php">Agregar un Aviso </a><br>
 <form class="" action="../business/agregarNoticiaAction.php" method="post">
   <input type="hidden" name="idAviso" id="idAviso" value="">
 
@@ -33,7 +33,7 @@
 
         foreach ($misnoticias as $current) {
           echo '<input type = "hidden" name = "ruta~'.$current->getIdAviso().'" value = "'.$current->getRutaFoto().'">';
-            echo '<table width = "80%" border =1 align=center class= "noticiaAviso">';
+            echo '<table width = "80%" border =1 align=center >';
                 echo '<tr class="cabeceraTabla">';
                   echo '<td> Noticia: ';
                   echo '</td>';

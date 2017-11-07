@@ -418,7 +418,7 @@
         <p>Datos personales:</p>
 
              <table>
-                <tr>
+                <tr class='cabeceraTabla'>
                     <td>
                         Cedula
                     </td>

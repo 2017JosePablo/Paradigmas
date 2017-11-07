@@ -5,10 +5,6 @@
 	background-color: blue;
 }
 
-.noticiaAviso{
-	background-color: #CEF6CE;
-}
-
 #fierroSalida{
 	width: 400px;
 	height: 400px;
@@ -70,6 +66,25 @@ th, td {
 .centro{
 	align-content: center;
 	align-items: center;
+}
+
+
+.comentarioAvisoCreador{
+	font-size: 17px;
+	color: #1134b3;
+	font-weight: bold;
+	font-weight: lighter;
+	font-style: italic;
+}
+.creadoPor{
+	font-size: 13px;
+	color: #2c2c2c;
+}
+
+.comentarioAviso{
+	font-size: 14px;
+	color: #52170a;
+	font-style: italic;
 }
 
 

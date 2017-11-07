@@ -111,6 +111,7 @@
             echo '</tr>';
         }
         echo '</table>';
+
         ?>
       	</div>
       	</form>
@@ -132,9 +133,16 @@
     <h1>Reporte de socio por Canton y distrito</h1>
 
     <?php
-    include_once '../business/socioBusiness.php';
+
+  //  include_once '../data/reportesData.php';
+    include_once '../business/reporteBusiness.php';
+  //  $socioReporte = new reportesData();
     $socioReporte = new ReporteBusiness();
-    $listado = $socioReporte->socioCantonDistrito();
+
+//    echo $socioReporte->hola();
+  //  $listadoCanton = $socioReporte->socioCantonDistrito();
+
+  $listado = $socioReporte->socioCantonDistrito();
 
     echo "<table>";
     echo "<tr class='cabeceraTabla' ><td>Cedula</td><td>Nombre</td><td>Primer apellido</td><td>Segundo Apellido</td> <td>Telefon</td><td>Canton</td><td>Distrito</td></tr>";
@@ -149,25 +157,33 @@
         echo "<td>";
           echo $current->getPrimerApellido();
         echo "</td>";
-        echo "<td>";
-          echo $current->getSegundoApellido();
-        echo "</td>";
 
         echo "<td>";
-          echo $current->getTelefono ();
-        echo "</td>";
+        echo $current->getSegundoApellido();
+      echo "</td>";
+
+
+      echo "<td>";
+        echo $current->getTelMovil ();
+      echo "</td>";
+
+
 
         echo "<td>";
           echo $current->getCanton();
         echo "</td>";
+
+
 
         echo "<td>";
           echo $current->getDistrito();
         echo "</td>";
 
         echo "</tr>";
+
       }
       echo "</table>";
+
     ?>
 
 

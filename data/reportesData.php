@@ -9,10 +9,13 @@ class reportesData extends Data{
 
 
     function reportesData(){
-
         $this->data = new Data();
-    }
 
+    }
+		public function hola()
+		{
+			return "hola jajaja";
+		}
     public function socioCantonDistrito(){
         require '../domain/datosSocioReportes.php';
         $socioCantonDistrito= array();
@@ -27,7 +30,7 @@ class reportesData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($socioCantonDistrito, new DatosSocioLogin($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                array_push($socioCantonDistrito, new DatosSocioReportes($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
                     ,$row["sociocorreo"],$row["socioprovincia"],$row["sociocanton"],$row["sociodistrito"]));
             }
         }else{
@@ -72,7 +75,7 @@ class reportesData extends Data{
         $columna= array("hatoternero","hatoternera","hatonovillo","hatonovilla","hatonovillaprenada","hatotoroservicio","hatotoroengorde","hatovacacria","hatovacaengorde");
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        // Check connection 
+        // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -89,15 +92,15 @@ class reportesData extends Data{
         }else{
             echo "0 results";
         }
-            
+
         }
         $datos=$datos."<tr><td>Cantidad Total</td><td>".$cantTotal."</td></tr></table> ";
         $conn->close();
 
         return $datos;
-    } 
-    
-  
+    }
+
+
 
 }
 ?>

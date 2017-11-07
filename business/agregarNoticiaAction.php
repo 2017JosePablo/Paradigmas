@@ -17,7 +17,7 @@ if(isset($_POST['registrarAviso'])){
     if(isset($titulo) && !empty($titulo) && isset($detalle) && !empty($detalle) && isset($nombre_img) && !empty($nombre_img)){
       //function Aviso($idAviso,$socioId, $tema,$detalle,$rutaFoto){
       $indice = $avisoBusiness->getIndiceImagen($_SESSION['usuario'])+1;
-      $aviso = new Aviso('',$_SESSION['usuario'],$titulo,$detalle,$directorio.$_SESSION['usuario'].'-'.$indice.'.'.$tipo[1]);
+      $aviso = new Aviso('',$_SESSION['usuario'],$titulo,$detalle,$directorio.$_SESSION['usuario'].'-'.$indice.'.'.$tipo[1] , date("Y-m-d"));
       $avisoBusiness = new AvisosBusiness();
       $result = $avisoBusiness->insertarTBAvisos($aviso);
       if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 300000)){
@@ -57,7 +57,7 @@ if(isset($_POST['editarAviso'])){
 
   if(isset($titulo) && !empty($titulo) && isset($detalle) && !empty($detalle)){
       session_start();
-      $aviso = new Aviso($idNoticia,$_SESSION['usuario'],$titulo,$detalle,$ruta);
+      $aviso = new Aviso($idNoticia,$_SESSION['usuario'],$titulo,$detalle,$ruta,"");
       $avisoBusiness = new AvisosBusiness();
       $result = $avisoBusiness->actualizarAviso($aviso);
 

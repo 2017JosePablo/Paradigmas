@@ -71,6 +71,8 @@
         echo'<script> setAlerta("Se ha aprovado la Solicitud con exito");    </script>  ';
 			}else if($_GET['success'] == "updatedNoticia"){
         echo'<script> setAlerta("La noticia se ha actualizado con exito");    </script>  ';
+			}else if($_GET['success'] == "insertedAviso"){
+        echo'<script> setAlerta("La noticia se ha guardado con exito");    </script>  ';
 			}
 
 
