@@ -243,7 +243,9 @@ class FincaData extends Data{
             tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca, tbfincatipo.fincatiponombre,
             tbtipoactividad.tipoactividadnombre  FROM tbsocio
             INNER JOIN tbfinca ON  tbsocio.socioid = tbfinca.fincaid
-            INNER JOIN tbtipoactividad ON tbtipoactividad.tipoactividadid = tbsocio.tipoactividadid";
+            INNER JOIN tbtipoactividad ON tbtipoactividad.tipoactividadid = tbsocio.tipoactividadid
+            INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
+            tbsocio.estadosociodetalle =1 OR tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND tbsocio.estadosociodetalle =2";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
