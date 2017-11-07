@@ -8,7 +8,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Area Administrativa de Socios</title>
+	<title>Reportes ASOTURGA</title>
     <link rel="stylesheet" type="text/css" href="../css/diseno.css">
 		 <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
     <script src="../js/jquery.maskedinput.min.js" type="text/javascript"></script>
@@ -41,10 +41,22 @@
 					}
 				}
 		 </script>
+
+    <script>
+    function myFunction() {
+      document.getElementById('cabecera').style="display:none";
+      document.getElementById('llamado').style="display:none";
+      document.getElementById('listadoReportes').style="display:none";
+      window.print();
+    }
+    </script>
   </head>
     <body>
-      <h1>Gestion de reportes</h1>
-        <select>
+      <div id="cabecera">
+        <h1 >Gestion de reportes</h1>
+      </div>
+
+        <select id="listadoReportes">
             <option value="0">
               ---------REPORETES DE MOROSIDAD-------------
             </option>
@@ -131,19 +143,10 @@
 
   <div class="" id="reporteCanton"style="display:none" >
     <h1>Reporte de socio por Canton y distrito</h1>
-
     <?php
-
-  //  include_once '../data/reportesData.php';
     include_once '../business/reporteBusiness.php';
-  //  $socioReporte = new reportesData();
     $socioReporte = new ReporteBusiness();
-
-//    echo $socioReporte->hola();
-  //  $listadoCanton = $socioReporte->socioCantonDistrito();
-
-  $listado = $socioReporte->socioCantonDistrito();
-
+    $listado = $socioReporte->socioCantonDistrito();
     echo "<table>";
     echo "<tr class='cabeceraTabla' ><td>Cedula</td><td>Nombre</td><td>Primer apellido</td><td>Segundo Apellido</td> <td>Telefon</td><td>Canton</td><td>Distrito</td></tr>";
       foreach ($listado as $current){
@@ -157,30 +160,19 @@
         echo "<td>";
           echo $current->getPrimerApellido();
         echo "</td>";
-
         echo "<td>";
         echo $current->getSegundoApellido();
       echo "</td>";
-
-
       echo "<td>";
         echo $current->getTelMovil ();
       echo "</td>";
-
-
-
         echo "<td>";
           echo $current->getCanton();
         echo "</td>";
-
-
-
         echo "<td>";
           echo $current->getDistrito();
         echo "</td>";
-
         echo "</tr>";
-
       }
       echo "</table>";
 
@@ -191,10 +183,76 @@
 
     <div class="" id="reporteRaza" style="display:none">
       <h1>Reporte de socio por razas</h1>
+      <?php
+
+      include_once '../business/razaBusiness.php';
+      $socioReporte = new razaBusiness();
+      $listado = $socioReporte->socioTipoRaza();
+
+      echo "<table>";
+      echo "<tr class='cabeceraTabla' ><td>Cedula</td><td>Nombre</td><td>Primer apellido</td><td>Segundo Apellido</td> <td>Telefono</td><td>Raza</td></tr>";
+        foreach ($listado as $current){
+          echo "<tr>";
+          echo "<td>";
+            echo $current->getCedula();
+          echo "</td>";
+          echo "<td>";
+            echo $current->getNombre();
+          echo "</td>";
+          echo "<td>";
+            echo $current->getPrimerApellido();
+          echo "</td>";
+          echo "<td>";
+          echo $current->getSegundoApellido();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getTelMovil ();
+        echo "</td>";
+          echo "<td>";
+            echo $current->getProvincia();
+          echo "</td>";
+          echo "</tr>";
+        }
+        echo "</table>";
+      ?>
+
     </div>
 
   <div class="" id="reporteFinca" style="display:none">
     <h1>Reporte de fincas</h1>
+    <?php
+    include_once '../business/reporteBusiness.php';
+    $socioReporte = new ReporteBusiness();
+    //$listado = $socioReporte->socioTipoFinca();
+
+    $listado = $socioReporte->socioTipoFinca();
+    echo "<table>";
+    echo "<tr class='cabeceraTabla' ><td>Cedula</td><td>Nombre</td><td>Primer apellido</td><td>Segundo Apellido</td> <td>Telefon</td><td>Tipo de finca</td></tr>";
+      foreach ($listado as $current){
+        echo "<tr>";
+        echo "<td>";
+          echo $current->getCedula();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getNombre();
+        echo "</td>";
+        echo "<td>";
+          echo $current->getPrimerApellido();
+        echo "</td>";
+        echo "<td>";
+        echo $current->getSegundoApellido();
+      echo "</td>";
+      echo "<td>";
+        echo $current->getTelMovil ();
+      echo "</td>";
+        echo "<td>";
+          echo $current->getProvincia();
+        echo "</td>";
+        echo "</tr>";
+      }
+      echo "</table>";
+    ?>
+
   </div>
 
   <div class="" id="reporteCerca" style="display:none">
@@ -239,6 +297,13 @@
 
   <div class="" id="reporteHato"style="display:none">
     <h1>Reporte por hato consolidado</h1>
+
+    <?php
+    include_once '../business/reporteBusiness.php';
+    $socioReporte = new ReporteBusiness();
+    echo $socioReporte->hatoConsolidado();
+     ?>
+
   </div>
 
   <div class="" id="reporteExamen"style="display:none">
@@ -287,12 +352,17 @@
 
   <div class="" id="reporteBovinosDistrito"style="display:none">
     <h1>Reporte por bobinos por distrito</h1>
-  </div>
-
-
-		<hr>
-    <a href="../index.php">Regresar</a>
-
+      <?php
+      include_once '../business/reporteBusiness.php';
+      $socioReporte = new ReporteBusiness();
+      echo $socioReporte->cantBovinosxDistrito();
+       ?>
+</div>
+<div id="llamado">
+  <hr>
+  <a href="" onclick="myFunction()" style="color:red;font-size:20px;">Imprimir reporte</a>
+  <a href="../index.php">Regresar</a>
+</div>
 		<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="../js/generarReporte.js"></script>
 

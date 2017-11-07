@@ -84,6 +84,8 @@
      <hr>
 
      <a href="../">Regresar</a>
-
+     <?php
+       include_once "piePaginaView.php";
+      ?>
   </body>
 </html>

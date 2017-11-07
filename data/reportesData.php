@@ -43,7 +43,7 @@ class reportesData extends Data{
 
 
     public function socioTipoFinca(){
-        require '../domain/datosSocioReportes.php';
+        require_once '../domain/datosSocioReportes.php';
         $socioCantonDistrito= array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
@@ -56,7 +56,7 @@ class reportesData extends Data{
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($socioCantonDistrito, new DatosSocioLogin($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
+                array_push($socioCantonDistrito, new DatosSocioReportes($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
                     ,$row["sociocorreo"],$row["fincatiponombre"],"",""));
             }
         }else{
@@ -70,7 +70,7 @@ class reportesData extends Data{
 
 
     public function hatoConsolidado(){
-        $datos= "<table border = '1'><tr><td align = 'center'>Bovino</td>  <td>Cantidad</td></tr>";
+        $datos= "<table ><tr class='cabeceraTabla'><td align = 'center'>Bovino</td>  <td>Cantidad</td></tr>";
         $cantTotal=0;
         $columna= array("hatoternero","hatoternera","hatonovillo","hatonovilla","hatonovillaprenada","hatotoroservicio","hatotoroengorde","hatovacacria","hatovacaengorde");
 
@@ -94,7 +94,7 @@ class reportesData extends Data{
         }
 
         }
-        $datos=$datos."<tr><td>Cantidad Total</td><td>".$cantTotal."</td></tr></table> ";
+        $datos=$datos."<tr><td> <h1>Cantidad Total</h1></td><td><h2>".$cantTotal." </h2></td></tr></table> ";
         $conn->close();
 
         return $datos;
@@ -102,7 +102,7 @@ class reportesData extends Data{
     }
 
     public function cantBovinosxDistrito(){
-        $datos= "<table border = '1'><tr><td align = 'center'>Canton - Distrito</td>  <td>Cantidad de Bovinos</td></tr>";
+        $datos= "<table><tr class='cabeceraTabla'><td align = 'center'>Canton - Distrito</td>  <td>Cantidad de Bovinos</td></tr>";
         $cantTotal=0;
         $columna= array("hatoternero","hatoternera","hatonovillo","hatonovilla","hatonovillaprenada","hatotoroservicio","hatotoroengorde","hatovacacria","hatovacaengorde");
         $cantones= array(4,5,6);
@@ -135,10 +135,10 @@ class reportesData extends Data{
                         }
 
                     }
-                 //  if($cantTotal>0){
+                  if($cantTotal>0){
                     $datos=$datos."<tr><td>Jimenez - ".$dis4[$dis]." </td><td>".$cantTotal."</td></tr> ";
                     $cantTotal=0;
-                   //}
+                   }
 
                 }
 
@@ -159,10 +159,10 @@ class reportesData extends Data{
                         }
 
                     }
-                   // if($cantTotal>0){
+                    if($cantTotal>0){
                         $datos=$datos."<tr><td>Turrialba - ".$dis5[$dist]." </td><td>".$cantTotal."</td></tr> ";
                         $cantTotal=0;
-                    //}
+                    }
                 }
 
                 $x=6;
@@ -182,10 +182,10 @@ class reportesData extends Data{
                         }
 
                     }
-                    //if($cantTotal>0){
+                    if($cantTotal>0){
                         $datos=$datos."<tr><td>Alvarado - ".$dis6[$distrito]." </td><td>".$cantTotal."</td></tr> ";
                         $cantTotal=0;
-                    //}
+                    }
                 }
 
 

@@ -95,7 +95,9 @@
         <a href="../index.php">Regresar</a>
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../js/aprobarSocio.js"></script>
-
+        <?php
+          include_once "piePaginaView.php";
+         ?>
   </body>
 </html>
 <?php

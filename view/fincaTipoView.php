@@ -86,6 +86,9 @@ $tipoFinca = $temp->getAllTBTiposFincas();
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarTipoFinca.js"></script>
     <a href="../index.php">Regresar</a>
+    <?php
+    	include_once "piePaginaView.php";
+     ?>
 </body>
 </html>
 <?php

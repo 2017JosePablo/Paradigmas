@@ -9,29 +9,18 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('button').click(function() {
-
-
     	var cedula = $(this).val();
-
-
     if(cedula.length>0){
         var result = cedula.split('~');
-
-
         if(result[1] == 'Mod'){
           $("input:radio").removeAttr("checked");
-
             document.getElementById('notificacionSocio').innerHTML = ''
             document.getElementById("cedulaVieja").value = result[0];
             document.getElementById("agregarsocio").style.display = 'none';
             document.getElementById("modificarsocio").style.display = 'block';
-
             document.getElementById('cajaVerSocio').style.display = 'none';
             document.getElementById('editarUbic').style.display='none';
             document.getElementById('verDir').style.display='block';
-
-
-
             $.post('../business/fierroAction.php', {fierro:result[0]}, function(data){
               var fierroArray = JSON.parse(data);
               document.getElementById('rutaImagen').value =fierroArray['fierroruta'] ;
@@ -110,9 +99,6 @@ $(document).ready(function() {
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
 
             var array = JSON.parse(data);
-
-            alert(data);
-
             document.getElementById('cedula').value = array['sociocedula'];
             document.getElementById('nombre').value = array['socionombre'];
             document.getElementById('primerapellido').value = array['socioprimerapellido'];

@@ -79,7 +79,9 @@
      </form>
      <hr>
      <a href="../">Regresar</a>
-
+     <?php
+       include_once "piePaginaView.php";
+      ?>
   </body>
   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="../js/editarAvisos.js"></script>
