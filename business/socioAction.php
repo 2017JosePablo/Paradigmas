@@ -52,6 +52,10 @@
 
 */
 
+	echo $provincia."<br>";
+	echo $canton."<br>";
+	echo $distrito."<br>".$pueblo;
+
 		$sociodetalle = $_POST['socioestado'];
 
 		$recomendacion1 = $_POST['recomendacion1'];
@@ -194,14 +198,14 @@
 				}
 				echo "Socio->".$resultado0."<br>";
 				echo "Socio->".$resultado1."<br>";
-				echo "Socio->".$resultadodireccion."<br>";
+				echo "Socio DIRECCION->".$resultadodireccion."<br>";
 				echo "Socio->".$resultado3."<br>";
 				echo "Socio->".$resultado4."<br>";
 				echo "Socio->".$resultado5."<br>";
 				echo "Socio->".$resultado6."<br>";
 
 				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1 && $result7 == 1 && $resultadoFierro == 1) {
-					//header("location: ../index.php?success=insertedSocio");
+					header("location: ../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
 						//header("location: ../view/socioView.php?error=errorToRegister");
