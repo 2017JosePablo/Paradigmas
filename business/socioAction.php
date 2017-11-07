@@ -64,17 +64,13 @@
 
 		$date = new DateTime($_POST['fecha']);
 		$fechaIngreso =$date->format('Y-m-d');
-		$tipoactividad =$_POST['tipoactividad'];
 
 		$contrasena = $_POST['clavesocio'];
 
 
-		echo $tipoactividad;
+		$tipoactividad = 1;
 
 		$fierroCheck = $_POST['radioFierro'];
-
-
-
 
 		if (isset($contrasena) && !empty($contrasena) &&strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
 
@@ -91,7 +87,7 @@
 
 
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaIngreso,
-				$tipoactividad, 'user' , 5,$recomendacion1,$recomendacion2);
+				$tipoactividad, 1 , 5,$recomendacion1,$recomendacion2);
 
 				$resultado0 = $socioBusiness->insertarTBSocio($socio);
 				echo "resutador 0 : ".$resultado0."<br>";
@@ -140,7 +136,8 @@
 					    }
 					}else{
 					   //si existe la variable pero se pasa del tamaño permitido
-					   if($nombre_img == !NULL) echo "La imagen es demasiado grande ";
+						 $direccionFierro = 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwif9uCNuKvXAhUGRCYKHSFJBscQjRwIBw&url=http%3A%2F%2Fporcelanasbidasoaymontgatina.com%2Fproducto-etiqueta%2Flampara%2F&psig=AOvVaw0OvY2JVi7XFthW5Cx1qg-u&ust=1510108870518982';
+
 					}
 
 					require 'fierroBusiness.php';
@@ -208,7 +205,7 @@
 					header("location: ../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
-						//header("location: ../view/socioView.php?error=errorToRegister");
+						header("location: ../view/socioView.php?error=errorToRegister");
 					}else{
 						if($resultado1!=1){
 							header("location: ../view/socioView.php?error=insertedFinca");
