@@ -132,10 +132,10 @@
     <h1>Reporte de socio por Canton y distrito</h1>
 
     <?php
-    //include_once '../business/reporteBusiness.php';
-    //$socioReporte = new ReporteBusiness();
-  //  $listado = $socioReporte->ReporteBusiness();
-    /*
+    include_once '../business/socioBusiness.php';
+    $socioReporte = new ReporteBusiness();
+    $listado = $socioReporte->socioCantonDistrito();
+
     echo "<table>";
     echo "<tr class='cabeceraTabla' ><td>Cedula</td><td>Nombre</td><td>Primer apellido</td><td>Segundo Apellido</td> <td>Telefon</td><td>Canton</td><td>Distrito</td></tr>";
       foreach ($listado as $current){
@@ -167,7 +167,7 @@
 
         echo "</tr>";
       }
-      echo "</table>";*/
+      echo "</table>";
     ?>
 
 
