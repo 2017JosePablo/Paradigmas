@@ -264,13 +264,11 @@
 
          <p>Datos personales:</p>
 
-             <table>
+             <table >
                 <tr>
                     <td>
                         Cedula
                     </td>
-
-
                     <td>
                         Nombre
                     </td>
@@ -347,7 +345,7 @@
                 <div id="verDir" style="display: none;">
 
                     <table>
-                        <tr><td><br><p>Dirección del Socio</p></td></tr>
+                        <tr  ><td colspan=5><br><p>Dirección del Socio</p></td></tr>
 
                          <td>
                         Provincia : <input  type="text"  id = 'provE' name="provE" readonly >
@@ -380,10 +378,10 @@
                      <tr><td><br>Dirección del Socio <h4 class="informacionUsuario">La direccion de la finca se detalla en otro formulario.</h4> </td></tr>
                         <tr>
                         <td>
-                             <div class="form-group">
-                              <label class="col-md-4 control-label" for="listaProvincias">Provincia</label>
-                              <div class="col-md-4">
-                                <select id="listaProvincias" name="listaProvincias" class="form-control" onclick="provinciaSeleccionada()">
+                             <div >
+                              <label>Provincia</label>
+                              <div>
+                                <select id="listaProvincias" name="listaProvincias" onclick="provinciaSeleccionada()">
                                   <option value="-1">Seleccione Una Provincia</option>
                                   <option value="1">San Jose</option>
                                   <option value="2">Alajuela</option>
@@ -398,17 +396,17 @@
                         </td>
                         <td>
                             <!-- Select Canton -->
-                            <div class="form-group" >
-                              <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
-                              <div class="col-md-4" id="cajaCantones">
+                            <div >
+                              <label  for="listadeCantones">Canton</label>
+                              <div id="cajaCantones">
                               </div>
                             </div>
                         </td>
                         <td>
                             <!-- Select Distrito-->
-                            <div class="form-group" id="cajaDistrito" >
-                              <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
-                              <div class="col-md-4" id="listaDistrito" >
+                            <div  id="cajaDistrito" >
+                              <label  for="cajaDistrito">Distrito</label>
+                              <div id="listaDistrito" >
 
                               </div>
                             </div>
@@ -444,39 +442,33 @@
 </div>
 <div style="overflow-x:auto;">
              <br><br>
-             Estado del Socio:
-             <?php
-                $estados = $socioBusiness->obtenerSocioEstado();
-
-                    echo '<table>';
-                        foreach ($estados as $curren) {
-                            echo '<tr>';
-
-
-                            echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio'  name='socioestado' value='".$curren->getSocioEstadoId()."' checked></td>";
-
-                            echo '<td>'.$curren->getSocioEstadoDetalle().'</td>';
-
-
-                            echo '</tr>';
-                        }
-                    echo '</table>';
-            ?>
+          Estado del Socio:
+           <?php
+              $estados = $socioBusiness->obtenerSocioEstado();
+                  echo '<table>';
+                      foreach ($estados as $curren) {
+                          echo '<tr>';
+                          echo "<td> <input id='".$curren->getSocioEstadoId()."-estado'type='radio'  name='socioestado' value='".$curren->getSocioEstadoId()."' checked></td>";
+                          echo '<td>'.$curren->getSocioEstadoDetalle().'</td>';
+                          echo '</tr>';
+                      }
+                  echo '</table>';
+          ?>
 </div>
 
 
-
             <p>Fierro</p>
-            <input type='radio' id="1" name='radioFierro' onclick="verEspacios('cajaFierro','w')" checked='' value='1'> Si<br>
-            <input type="radio" id='2' name="radioFierro" onclick="ocultarEspacios('cajaFierro','w')" value="2">No
+            <input type='radio' id="1" name='radioFierro' onclick="verEspacios('cajaFierro','w')" value='1'> Si<br>
+            <input type="radio" id='2' name="radioFierro" onclick="ocultarEspacios('cajaFierro','w')" value="2" checked=''>No
 
             <br>
             <div id="cajaFierro">
 
             <label for="">Fierro</label>
             <input type="file" value="Seleccionar Fierro" name="imagen" id="imagen">
-            <img src="" alt="" id="fierroSalida">
+            <img src="" alt="" id="fierroSalida" >
             </div>
+
             <input type="hidden" name="" id="w">
 
             <br>
@@ -520,15 +512,15 @@
     <!--- <div id="cajaVerSocio" >-->
 		<div id="cajaVerSocio" style='display:none;' >
 
-    <p>Datos personales:</p>
+    <h2>
+      Datos personales
+    </h2>
 
              <table>
-                <tr>
+                <tr class="cabeceraTabla">
                     <td>
                         Cedula
                     </td>
-
-
                     <td>
                         Nombre
                     </td>
@@ -549,6 +541,10 @@
                     <td>
                         Correo
                     </td>
+                    <td>
+                      Fecha de solicitud
+                  </td>
+
                 </tr>
 
 
@@ -572,73 +568,107 @@
                     <td>
                         <input  type="text"  id = 'correo' readonly >
                     </td>
-
-                </tr>
-
-
-
-                 <tr>
                     <td>
-                        <br> Fecha de solicitud:
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input  type="text"  id = 'fechaS' readonly >
+                      <input  type="text"  id = 'fechaS' readonly >
                     </td>
                 </tr>
 
-                <tr><td><br><p>Datos de Dirección</p></td></tr>
-                <tr>
-                    <td>
-                        Provincia : <input  type="text"  id = 'prov' readonly >
 
+              </table>
+              <h2>
+                Datos de Dirección del Socio
+              </h2>
+              <table>
+                <tr class="cabeceraTabla">
+                    <td>
+                        Provincia
+                    </td>
+                    <td>
+                        Canton
                     </td>
 
                     <td>
-                        Canton : <input  type="text"  id = 'can' readonly >
-
+                        Distrito
                     </td>
-
-                    <td>
-                        Distrito : <input  type="text"  id = 'dis' readonly >
-                    </td>
-
-                    <td>
-                        Pueblo :<input  type="text"  id = 'pueb' readonly >
+                    <td colspan="2">
+                        Pueblo
                     </td>
 
             </tr>
 
-            <tr>
+            <tr >
                 <td>
-                    Tipo de Actividad : <input  type="text"  id = 'tipoActi' readonly >
+                     <input  type="text"  id = 'prov' readonly >
                 </td>
 
-            </tr>
-            <tr>
                 <td>
-                    Tipo Finca : <input  type="text"  id = 'tipoFinc' readonly >
+                  <input  type="text"  id = 'can' readonly >
+                </td>
+
+                <td>
+                    <input  type="text"  id = 'dis' readonly >
+                </td>
+
+                <td colspan="2">
+                    <input  type="text"  id = 'pueb' readonly  >
                 </td>
             </tr>
-            <tr>
+
+            <tr class="cabeceraTabla">
                 <td>
-                    Estado Socio : <input  type="text"  id = 'esta' readonly >
+                    Tipo de Actividad
+                </td>
+
+
+                <td>
+                    Tipo Finca
+                </td>
+
+                <td>
+                    Estado Socio
+                </td>
+
+                <td>
+                    Recomendacion 1
+                </td>
+
+                <td>
+                    recomendacion 2
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Recomendacion 1 : <input  type="text"  id = 'recomendacion1Input' readonly >
+          </tr>
+          <tr>
+              <td>
+                  <input  type="text"  id = 'tipoActi' readonly >
+              </td>
+
+
+              <td>
+                  <input  type="text"  id = 'tipoFinc' readonly >
+              </td>
+
+              <td>
+                  <input  type="text"  id = 'esta' readonly >
+              </td>
+
+              <td>
+                  <input  type="text"  id = 'recomendacion1Input' readonly >
+              </td>
+
+              <td>
+                   <input  type="text"  id = 'recomendacion2Input' readonly >
+              </td>
+          </tr>
+        </tr>
+            <tr class="cabeceraTabla" class="centro">
+                <td colspan="5">
+                    Fierro
                 </td>
             </tr>
+
             <tr>
-                <td>
-                    recomendacion 2 : <input  type="text"  id = 'recomendacion2Input' readonly >
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Fierro:<img id="fierro" src="" alt="">
+                <td colspan="5" class="centro">
+                    <img id="fierro" src="" alt="" width="300" height="300">
                 </td>
             </tr>
 
