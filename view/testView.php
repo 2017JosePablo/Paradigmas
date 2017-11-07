@@ -82,7 +82,7 @@
 
 	require '../data/reportesData.php';
 	$aviso= new reportesData();
-	$result4=$aviso->hatoConsolidado();
+	$result4=$aviso->cantBovinosxDistrito();
   	echo 'Cantidad Total: '.$result4;
 
 
