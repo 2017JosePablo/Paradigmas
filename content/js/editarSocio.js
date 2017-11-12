@@ -101,6 +101,7 @@ $(document).ready(function() {
             var array = JSON.parse(data);
             document.getElementById('cedula').value = array['sociocedula'];
             document.getElementById('nombre').value = array['socionombre'];
+            
             document.getElementById('primerapellido').value = array['socioprimerapellido'];
             document.getElementById('segundoapellido').value = array['sociosegundoapellido'];
             document.getElementById('telmovil').value = array['sociotelefono'];

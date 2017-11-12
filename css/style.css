@@ -1,0 +1,611 @@
+@charset "utf-8";
+/*
+Autor: Olivier Blanco.
+Fecha: 19/09/2014.
+Descripción: Hoja de estilos para UI general de sistema de control de lecherías...
+*/
+
+*{
+	margin:0;
+	padding:0;
+	font-family:Tahoma, Geneva, sans-serif;
+	transition:.2s;
+	-webkit-transition:.2s;
+	-moz-transition:.2s;
+	-o-transition:.2s;
+	-ms-transition:.2s;
+}
+
+body, #show_aside, .overlay, aside, aside nav ul li ul, #data{
+	transition:0 !important;
+	-webkit-transition:0 !important;
+	-moz-transition:0 !important;
+	-o-transition:0 !important;
+	-ms-transition:0 !important;
+}
+
+html{
+	height:100%;
+}
+
+#cuerpo{
+	background-color:#FFF;
+	display:block;
+	margin:0 auto;
+	max-width:900px;
+	background-color: #FFF;
+	padding: 20px 0;
+}
+
+body{
+	text-align:center;
+	background-image: url(../img/bg_grass_2.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	background-attachment:fixed;
+	background-color:#fff;
+	/*background-size:cover;*/
+}
+
+header{
+	display: inline-block;
+	width:100%;
+	max-width:900px;
+	background-color: #98B53A;
+	margin: 0;
+	color:#fff;
+	position:relative;
+	overflow:hidden;
+}
+
+header h1{
+	position: absolute;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.32);
+	width: 100%;
+	text-transform: uppercase;
+	font-size: 20px;
+	padding: 10px 0;
+	color: #fff;
+	text-shadow: 0px 1px 5px rgba(255, 255, 255, 0.73);
+}
+
+.trapecio {
+	width: 100px;
+	border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+	border-bottom: 25px solid rgba(255, 255, 255, 1);
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -90px;
+}
+
+#show_menu{
+	position: fixed;
+	left: 0;
+	top: 50%;
+	width: 40px;
+	height: 40px;
+	background-image: url(../img/menu.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 0;
+	cursor: pointer;
+	background-color: #98B53A;
+	outline: none;
+}
+
+#show_menu:hover{
+	background-color: #782B40;
+}
+
+#hide_menu{
+	width: 30px;
+	height: 30px;
+	margin-bottom: 10px;
+	border-radius: 100%;
+	border: 0;
+	background-color: rgb(196, 53, 53);
+	background-image:url(../img/delete.png);
+	background-position:center;
+	background-size:contain;
+	background-repeat:no-repeat;
+	outline:none;
+	cursor:pointer;
+}
+
+#hide_menu:hover{
+	background-color: #F00;
+}
+
+.menu_view{
+	display:none;
+}
+
+.overlay{
+	position:fixed;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,.7);
+	top:0;
+	left:0;
+	z-index:10;
+	display:none;
+}
+
+.error, .correcto{
+	display: block;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 10px;
+	border-bottom: 3px solid rgba(0,0,0,.2);
+	margin: 10px;
+}
+
+.error{
+	background-color: #DD2626;
+}
+
+.correcto{
+	background-color: #339900;
+}
+
+.alerta{
+	background-color: #339900;
+}
+
+ol{
+	margin:30px;
+	text-align:justify;
+}
+
+ol li{
+	line-height:25px;
+	font-size:13px;
+}
+
+
+aside{
+	display: inline-block;
+	max-width: 190px;
+	width: 100%;
+	vertical-align: top;
+	margin:0;
+	overflow:auto;
+}
+
+aside .container{
+	margin: 10px 0;
+}
+
+aside nav{}
+
+aside nav ul{
+	list-style:none;
+}
+
+aside nav ul li{}
+
+aside nav ul li a{
+	text-decoration: none;
+	display: block;
+	background-color: #98B53A;
+	color: #fff;
+	margin: 5px 2px;
+	padding: 10px;
+	border-radius: 4px;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.16);
+	cursor:pointer;
+}
+
+aside nav ul li a:first-child{
+	margin-top:0;
+}
+
+aside nav ul li a:hover, li a.current{
+	background-color: #782B40;
+}
+
+
+aside nav ul li ul{
+	display:none;
+}
+
+aside nav ul li ul li{
+
+}
+
+aside nav ul li ul li a{
+	background-color: rgba(51, 51, 51, 0.41);
+	color: #fff;
+	border-bottom: 0;
+	margin: 5px 10px;
+}
+
+
+
+section{
+	display: inline-block;
+	max-width: 645px;
+	width: 100%;
+	vertical-align: top;
+	margin: 10px 0;
+	margin-left: 10px;
+	margin-top: 0;
+	padding: 20px;
+	padding-top: 10px;
+	text-align: center;
+	box-shadow: -20px 0px 25px -32px #000;
+}
+
+section h1, section h2, section h3, section p{
+	text-align:justify;
+}
+
+section h1{
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+	font-weight: normal;
+	color: #fff;
+	background-color: #782B40;
+	border-radius: 1px;
+	padding: 5px 10px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.44);
+	box-shadow: 0px 6px 13px -9px #000;
+}
+
+section h2{
+	color: #782B40;
+	border-bottom: 3px double rgba(0, 0, 0, 0.17);
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	font-weight: normal;
+}
+
+section h3{
+	color: #782B40;
+	border-bottom: 1px solid;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	font-weight: normal;
+}
+
+section p{
+	margin: 20px auto;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+section a{
+	background-color: #98B53A;
+	color: #fff;
+	display: inline-block;
+	padding: 0px 7px;
+	border-bottom: 2px solid rgba(0,0,0,.3);
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 13px;
+}
+
+section a:hover{
+	background-color:#782B40;
+}
+
+
+form{
+	display:block;
+}
+
+form .column{
+	width: 40%;
+	display: inline-block;
+	vertical-align: top;
+	margin: 2%;
+
+
+}
+
+form label{
+	display: block;
+	font-size: 14px;
+	margin-top: 15px;
+	padding-bottom: 5px;
+	text-align: left;
+	color: rgba(0, 0, 0, 0.58);
+	font-weight: bold;
+}
+
+form input, form textarea, form select{
+	display:inline-block;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	padding: 7px;
+	border: 0;
+	border-bottom: 1px solid #98B53A;
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+form select option{
+	background-color:#782B40;
+	color:#fff;
+}
+
+form input:focus, form textarea:focus, form select:focus{
+	background-color: #782B40;
+	border-bottom-color: #782B40;
+	color: #fff;
+}
+
+a{
+	text-decoration: none;
+}
+ input[type=submit],  input[type=button]{
+	border-bottom: 2px solid rgba(0, 0, 0, 0.26);
+	margin: 20px 0;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #98B53A;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	cursor: pointer;
+	max-width:200px;
+}
+
+input[type=submit]:hover,  input[type=button]:hover{
+	background-color: #782B40;
+}
+
+
+
+
+form input[type=submit], form input[type=button]{
+	border-bottom: 2px solid rgba(0, 0, 0, 0.26);
+	margin: 20px 0;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #98B53A;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	cursor: pointer;
+	max-width:200px;
+}
+
+form input[type=submit]:hover, button, form input[type=button]:hover{
+	background-color: #782B40;
+}
+
+
+footer{
+	margin-bottom: 20px;
+	padding: 20px 0;
+	border-top: 3px solid #98B53A;
+	color: #969696;
+	font-size: 13px;
+	background-color: rgba(0, 0, 0, 0.72);
+	display: inline-block;
+	width: 100%;
+	max-width: 900px;
+}
+
+
+
+/* MENU INTERNO */
+
+.menu{
+	list-style: none;
+	border: 0;
+	padding: 20px;
+	margin: 20px 0;
+	border-radius: 5px;
+	background-color: rgba(152, 181, 58, 0.25);
+	box-shadow: 0px 10px 20px -14px #000;
+}
+
+.menu h1{
+	margin: -20px;
+	margin-bottom: 20px;
+	font-size: 16px;
+	text-align: center;
+}
+
+.menu li{
+	display: inline-block;
+}
+
+.menu li a{
+	display: block;
+	padding: 10px;
+	font-size: 15px;
+	margin: 5px 3px;
+	cursor:pointer;
+}
+
+.menu li a:hover{
+
+}
+
+
+/* TABLES */
+
+table{
+	padding: 5px;
+	border: 1px solid #ccc;
+	margin: 20px 0;
+	width: 100%;
+	box-shadow: 0px 3px 29px -11px #333;
+}
+
+table th{
+	background-color: #782B40;
+	color: #fff;
+	font-weight: normal;
+	font-size: 14px;
+	margin: 0;
+	padding: 5px;
+	border-bottom: 3px solid rgba(0,0,0,0.4);
+}
+
+table td{
+	background-color: #eee;
+	font-size: 13px;
+	padding: 5px;
+}
+
+table tr:hover td{
+	background-color:#C0C0C0;
+}
+
+/*Formato de div donde van los formularios de datos*/
+#divForm
+    {
+	margin:10px auto;
+	height:auto;
+	alignment-adjust:central;
+	padding:5px;
+	border: solid 5px #903;
+	width:auto;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:10px;
+	text-align:center;
+	display:inline-block;
+    }
+
+
+
+/* Flexslider */
+
+.flexslider {
+	margin: 0;
+	border: 0;
+	box-shadow: none;
+}
+
+.flex-control-nav {
+	bottom: 2px;
+	z-index: 1;
+}
+
+.flex-direction-nav a {
+	color: rgba(255, 255, 255, 0.8);
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+img{
+	max-width:100%;
+}
+
+
+
+/* RWD */
+
+@media screen and (min-width:900px){
+	.overlay{
+		display:none !important;
+	}
+}
+
+@media screen and (max-width:900px){
+
+	.menu_view{
+		display:block;
+	}
+
+	#hide_menu{
+		display: inline-block;
+	}
+
+	#cuerpo,section,header,footer{
+		max-width:none;
+		width:auto;
+		margin:20px;
+		display:block;
+	}
+
+	#cuerpo{
+		margin:0 20px;
+		padding-top: 5px;
+	}
+
+	header{
+		margin-bottom:0;
+	}
+
+	header h1{
+		position: relative;
+		font-size: 15px;
+		text-shadow: none;
+		background-color: transparent;
+		box-shadow: 0px 10px 24px -13px #000;
+	}
+
+	footer{
+		margin-top:0;
+	}
+
+	section{
+		border:0;
+		box-shadow:none;
+	}
+
+
+	button{
+		color: #fafafa;
+
+	}
+
+
+	#cuerpo{
+		background-color: rgba(255,255,255,.8);
+	}
+
+	aside{
+		position: fixed;
+		left: -100%;
+		z-index: 10;
+		height: 100%;
+		top: 0;
+		background-color: #FFF;
+		margin: 0;
+		padding: 0 10px;
+		background-image: url(../img/grass.png);
+		background-position: center bottom;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+
+	.trapecio{
+		display:none;
+	}
+
+	.flex-control-nav {
+		bottom: 10px;
+	}
+
+}
+
+@media screen and (max-width:600px){
+
+	form .column{
+		width: 100%;
+		display: block;
+		margin: 0;
+	}
+
+}
+
+
+@media screen and (max-width:450px){
+
+	.menu li{
+		display:block;
+	}
+
+}
