@@ -12,11 +12,11 @@ class PastoCorteBusiness {
   }
 
   function insertarPastoCorte($pastoCorte){
-    return $this->pastoCorteData->insertarPastoCorte($pastoCorte);
+    return $this->pastoCorteData->insertarTBPastoCorte($pastoCorte);
   }
 
-  function obtenerTodosPastoCorte(){
-    return $this->pastoCorteData->insertarPastoCorte($pastoCorte);
+  function mostrarPastosCorte(){
+    return $this->pastoCorteData->mostrarPastosCorte();
   }
 
 
