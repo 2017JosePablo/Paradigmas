@@ -50,7 +50,7 @@ class actaAprobacionData extends Data{
             if($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
 
-         array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"],$row["sociocorreo"],"","" ,"" ,"","","" ));
+         array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"],$row["sociocorreo"],"","" ,"" ,"","","","",""));
                 }
             }else{
                 echo "0 results";
