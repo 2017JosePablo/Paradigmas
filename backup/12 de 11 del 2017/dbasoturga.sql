@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2017 at 11:12 PM
+-- Generation Time: Nov 12, 2017 at 11:35 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -644,6 +644,12 @@ ALTER TABLE `tbraza`
   ADD PRIMARY KEY (`idraza`);
 
 --
+-- Indexes for table `tbsocio`
+--
+ALTER TABLE `tbsocio`
+  ADD PRIMARY KEY (`socioid`);
+
+--
 -- Indexes for table `tbsociodireccion`
 --
 ALTER TABLE `tbsociodireccion`
@@ -755,6 +761,11 @@ ALTER TABLE `tbpagoanualidad`
 --
 ALTER TABLE `tbraza`
   MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT for table `tbsocio`
+--
+ALTER TABLE `tbsocio`
+  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbsociodireccion`
 --
