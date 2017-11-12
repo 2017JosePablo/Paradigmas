@@ -426,6 +426,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
 
         return $result;
     }
+    
 
     public function obtenerTodostbsociodireccion() {
         $socioDireccion = array();
