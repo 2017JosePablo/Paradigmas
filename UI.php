@@ -63,7 +63,7 @@ class UI{
 		LA CUAL ESTA EN LA RAIZ DEL SERVIDOR FENIX-G.COM
 		*/
 		$server_folder = '';
-		$path = 'http://'.$_SERVER['HTTP_HOST'].dirname($server_folder."/paradigmas/content/").'/';
+		$path = 'http://'.$_SERVER['HTTP_HOST'].dirname($server_folder."/Paradigmas/content/").'/';
 
 		return $path;
 
