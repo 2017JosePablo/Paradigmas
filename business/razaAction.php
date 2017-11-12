@@ -4,7 +4,7 @@ require './razaBusiness.php';
 
 //Optener valores de un URLLLL
 if (isset($_GET['ideliminar'])){
- 
+
     $idRaza = $_GET['ideliminar'];
     $razaBusiness = new razaBusiness();
 
@@ -15,15 +15,15 @@ if (isset($_GET['ideliminar'])){
         } else {
             header("location: ../index.php?error=dbError");
         }
-    } 
-    
+    }
+
  if (isset($_POST['crearraza'])) {
 
-    if (isset($_POST['razanombre'])) {
-            
+    //if (isset($_POST['razanombre'])) {
+
         $razanombre = $_POST['razanombre'];
 
-        if (strlen($razanombre)) {
+        //if (strlen($razanombre)) {
 
                 $raza = new raza('', $razanombre);
 
@@ -37,22 +37,22 @@ if (isset($_GET['ideliminar'])){
                 } else {
                     header("location: ../index.php?error=inserted");
                     //header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
-                }        
-        } else {
-                header("location: ../index.php?error=inserted");
+                }
+      //  } else {
+          //      header("location: ../index.php?error=inserted");
         //    header("location: ../business/juntaAction.php?error=Campos");
-        }
-    }
+      //  }
+  //  }
     // Escucha el boton de Buscar una junta
 }else    if (isset($_POST['modificarRaza'])) {
 
-    if (isset($_POST['razanombreMod'])) {
+  //  if (isset($_POST['razanombreMod'])) {
 
-        $idraza = $_POST['idRaza'];    
+        $idraza = $_POST['idRaza'];
         $razanombre = $_POST['razanombreMod'];
 
 
-        if (strlen($razanombre)) {
+      //  if (strlen($razanombre)) {
 
                 $raza = new raza($idraza, $razanombre);
 
@@ -66,12 +66,12 @@ if (isset($_GET['ideliminar'])){
                 } else {
                     header("location: ../index.php?error=inserted");
                     //header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
-                }        
-        } else {
-                header("location: ../index.php?error=inserted");
+                }
+      //  } else {
+            //    header("location: ../index.php?error=inserted");
         //    header("location: ../business/juntaAction.php?error=Campos");
-        }
-    }
+      //  }
+  //  }
     // Escucha el boton de Buscar una junta
 }
 

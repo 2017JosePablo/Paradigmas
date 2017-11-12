@@ -14,7 +14,7 @@ if(isset($_POST['registrarAviso'])){
     session_start();
     $directorio ='../uploads/avisos/';
     $tipo = explode('/',$_FILES['imagen']['type']);
-    if(isset($titulo) && !empty($titulo) && isset($detalle) && !empty($detalle) && isset($nombre_img) && !empty($nombre_img)){
+  //  if(isset($titulo) && !empty($titulo) && isset($detalle) && !empty($detalle) && isset($nombre_img) && !empty($nombre_img)){
       //function Aviso($idAviso,$socioId, $tema,$detalle,$rutaFoto){
       $indice = $avisoBusiness->getIndiceImagen($_SESSION['usuario'])+1;
       $aviso = new Aviso('',$_SESSION['usuario'],$titulo,$detalle,$directorio.$_SESSION['usuario'].'-'.$indice.'.'.$tipo[1] , date("Y-m-d"));
@@ -42,9 +42,9 @@ if(isset($_POST['registrarAviso'])){
       }else{
           header('location: ../view/agregarNoticia.php?error=insertedAviso');
       }
-    }else{
-      header("location: ../view/agregarNoticia.php?error=emptyInput");
-    }
+  //  }else{
+    //  header("location: ../view/agregarNoticia.php?error=emptyInput");
+    //}
 }
 
 if(isset($_POST['editarAviso'])){

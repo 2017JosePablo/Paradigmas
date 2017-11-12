@@ -5,7 +5,7 @@
 		$monto = $_POST['montoAnualidad'];
 		$date = new DateTime($_POST['fechaAnualidad']);
 		$fecha= $date->format('Y-m-d');
-		if(isset($cedula) && !empty($cedula) && isset($fecha) && !empty($fecha) && isset($monto)){
+		//if(isset($cedula) && !empty($cedula) && isset($fecha) && !empty($fecha) && isset($monto)){
 			require '../domain/montoAnualidad.php';
 			require './anualidadBusiness.php';
 			$actividadBusiness = new AnualidadBusiness();
@@ -20,8 +20,8 @@
 			}else{
 				header ('location: ../view/anualidadView.php?error=insertedAnualidad');
 			}
-		}else{
-			header ('location: ../view/anualidadView.php?error=emptyInput');
-		}
+		//}else{
+			//header ('location: ../view/anualidadView.php?error=emptyInput');
+		//}
 	}
 ?>
