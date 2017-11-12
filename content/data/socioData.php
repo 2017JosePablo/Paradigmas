@@ -278,7 +278,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         $socio = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos  FROM tbsocio INNER JOIN tbtipoactividad ON
+        $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos,tbsocio.socioresponsable,tbsocio.sociobeneficiario  FROM tbsocio INNER JOIN tbtipoactividad ON
             tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
             INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
             tbsocio.estadosociodetalle = 2;";
@@ -287,7 +287,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                    ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,"",$row["socioestadodetalle"],$row["sociorecomendacionuno"],$row["sociorecomendaciondos"]));
+                    ,$row["sociocorreo"],$row["sociofechaingreso"] ,$row["tipoactividadnombre"] ,"",$row["socioestadodetalle"],$row["sociorecomendacionuno"],$row["sociorecomendaciondos"],$row["socioresponsable"],$row["sociobeneficiario"]));
             }
         }else{
             echo "0 results";
@@ -426,6 +426,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
 
         return $result;
     }
+
 
     public function obtenerTodostbsociodireccion() {
         $socioDireccion = array();

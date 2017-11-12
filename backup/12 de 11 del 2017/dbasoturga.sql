@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 12-11-2017 a las 22:30:37
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 7.1.7
+-- Host: localhost
+-- Generation Time: Nov 12, 2017 at 11:12 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `dbasoturga`
+-- Database: `dbasoturga`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbactaaprobacion`
+-- Table structure for table `tbactaaprobacion`
 --
 
 CREATE TABLE `tbactaaprobacion` (
@@ -38,7 +38,7 @@ CREATE TABLE `tbactaaprobacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbactaaprobacion`
+-- Dumping data for table `tbactaaprobacion`
 --
 
 INSERT INTO `tbactaaprobacion` (`actaaprobacionid`, `socioid`, `actaaprobacionsecion`, `actaaprobacionfecha`, `actaaprobacioncondicion`, `actaaprobacionmotivo`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `tbactaaprobacion` (`actaaprobacionid`, `socioid`, `actaaprobacionse
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbanualidad`
+-- Table structure for table `tbanualidad`
 --
 
 CREATE TABLE `tbanualidad` (
@@ -60,7 +60,7 @@ CREATE TABLE `tbanualidad` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbaviso`
+-- Table structure for table `tbaviso`
 --
 
 CREATE TABLE `tbaviso` (
@@ -75,7 +75,7 @@ CREATE TABLE `tbaviso` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbcolaborador`
+-- Table structure for table `tbcolaborador`
 --
 
 CREATE TABLE `tbcolaborador` (
@@ -91,7 +91,7 @@ CREATE TABLE `tbcolaborador` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbcomentarioaviso`
+-- Table structure for table `tbcomentarioaviso`
 --
 
 CREATE TABLE `tbcomentarioaviso` (
@@ -104,7 +104,7 @@ CREATE TABLE `tbcomentarioaviso` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbcvo`
+-- Table structure for table `tbcvo`
 --
 
 CREATE TABLE `tbcvo` (
@@ -117,7 +117,7 @@ CREATE TABLE `tbcvo` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbexamenbrusela`
+-- Table structure for table `tbexamenbrusela`
 --
 
 CREATE TABLE `tbexamenbrusela` (
@@ -130,7 +130,7 @@ CREATE TABLE `tbexamenbrusela` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbexamentuberculosis`
+-- Table structure for table `tbexamentuberculosis`
 --
 
 CREATE TABLE `tbexamentuberculosis` (
@@ -143,7 +143,7 @@ CREATE TABLE `tbexamentuberculosis` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbfierro`
+-- Table structure for table `tbfierro`
 --
 
 CREATE TABLE `tbfierro` (
@@ -153,29 +153,22 @@ CREATE TABLE `tbfierro` (
   `idsocio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tbfierro`
---
-
-INSERT INTO `tbfierro` (`fierroid`, `fierrotiene`, `fierroruta`, `idsocio`) VALUES
-(1, 1, '../uploads/fierros/1-2345678.jpeg', 1);
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbfinca`
+-- Table structure for table `tbfinca`
 --
 
 CREATE TABLE `tbfinca` (
   `fincaid` int(11) NOT NULL,
   `socioid` int(11) DEFAULT NULL,
-  `fincaarea` double DEFAULT NULL,
+  `fincaarea` int(11) DEFAULT NULL,
   `fincacantidadbobinos` varchar(45) DEFAULT NULL,
   `fincacerca` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbfinca`
+-- Dumping data for table `tbfinca`
 --
 
 INSERT INTO `tbfinca` (`fincaid`, `socioid`, `fincaarea`, `fincacantidadbobinos`, `fincacerca`) VALUES
@@ -184,7 +177,7 @@ INSERT INTO `tbfinca` (`fincaid`, `socioid`, `fincaarea`, `fincacantidadbobinos`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbfincacerca`
+-- Table structure for table `tbfincacerca`
 --
 
 CREATE TABLE `tbfincacerca` (
@@ -193,19 +186,18 @@ CREATE TABLE `tbfincacerca` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbfincacerca`
+-- Dumping data for table `tbfincacerca`
 --
 
 INSERT INTO `tbfincacerca` (`fincacercaid`, `fincacercatipo`) VALUES
-(1, 'Puas'),
-(2, 'Electrica'),
-(3, 'Mixta'),
-(5, 'Concreto');
+(1, 'Alambre de púas'),
+(2, 'Eléctrica'),
+(3, 'Mixta');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbfincadireccion`
+-- Table structure for table `tbfincadireccion`
 --
 
 CREATE TABLE `tbfincadireccion` (
@@ -218,16 +210,16 @@ CREATE TABLE `tbfincadireccion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbfincadireccion`
+-- Dumping data for table `tbfincadireccion`
 --
 
 INSERT INTO `tbfincadireccion` (`fincaid`, `fincaprovincia`, `fincacanton`, `fincadistrito`, `fincapueblo`, `fincaexacta`) VALUES
-(1, 0, 0, 0, '', '');
+(1, 3, 4, 1, '', '');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbfincatipo`
+-- Table structure for table `tbfincatipo`
 --
 
 CREATE TABLE `tbfincatipo` (
@@ -236,19 +228,19 @@ CREATE TABLE `tbfincatipo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbfincatipo`
+-- Dumping data for table `tbfincatipo`
 --
 
 INSERT INTO `tbfincatipo` (`fincatipoid`, `fincatiponombre`) VALUES
-(1, 'REPASTO'),
-(2, 'ESTAULADO\r\n'),
-(3, 'SEMIESTAULADO'),
-(4, 'SEMIESTAULADO CERCA');
+(1, 'Pastoreo\r\n'),
+(2, 'Estabulado\r\n'),
+(3, 'Semiestabulado\r\n'),
+(4, 'Suplementación en potrero\r\n');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbhato`
+-- Table structure for table `tbhato`
 --
 
 CREATE TABLE `tbhato` (
@@ -267,7 +259,7 @@ CREATE TABLE `tbhato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbhato`
+-- Dumping data for table `tbhato`
 --
 
 INSERT INTO `tbhato` (`hatoid`, `socioid`, `hatoraza`, `hatoternero`, `hatoternera`, `hatonovillo`, `hatonovilla`, `hatonovillaprenada`, `hatotoroservicio`, `hatotoroengorde`, `hatovacacria`, `hatovacaengorde`) VALUES
@@ -276,7 +268,7 @@ INSERT INTO `tbhato` (`hatoid`, `socioid`, `hatoraza`, `hatoternero`, `hatoterne
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbhatoactividad`
+-- Table structure for table `tbhatoactividad`
 --
 
 CREATE TABLE `tbhatoactividad` (
@@ -286,7 +278,7 @@ CREATE TABLE `tbhatoactividad` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbhatoactividad`
+-- Dumping data for table `tbhatoactividad`
 --
 
 INSERT INTO `tbhatoactividad` (`hatoactividadid`, `hatoactividadpersonaid`, `hatoactividadtipo`) VALUES
@@ -295,7 +287,7 @@ INSERT INTO `tbhatoactividad` (`hatoactividadid`, `hatoactividadpersonaid`, `hat
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbjunta`
+-- Table structure for table `tbjunta`
 --
 
 CREATE TABLE `tbjunta` (
@@ -312,7 +304,7 @@ CREATE TABLE `tbjunta` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tblogin`
+-- Table structure for table `tblogin`
 --
 
 CREATE TABLE `tblogin` (
@@ -324,7 +316,7 @@ CREATE TABLE `tblogin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tblogin`
+-- Dumping data for table `tblogin`
 --
 
 INSERT INTO `tblogin` (`idlogin`, `socioid`, `userlogin`, `passwordlogin`, `rollogin`) VALUES
@@ -333,7 +325,7 @@ INSERT INTO `tblogin` (`idlogin`, `socioid`, `userlogin`, `passwordlogin`, `roll
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbpagoanualidad`
+-- Table structure for table `tbpagoanualidad`
 --
 
 CREATE TABLE `tbpagoanualidad` (
@@ -348,7 +340,7 @@ CREATE TABLE `tbpagoanualidad` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbpastocorte`
+-- Table structure for table `tbpastocorte`
 --
 
 CREATE TABLE `tbpastocorte` (
@@ -356,10 +348,25 @@ CREATE TABLE `tbpastocorte` (
   `pastocortenombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbpastocorte`
+--
+
+INSERT INTO `tbpastocorte` (`idpastocorte`, `pastocortenombre`) VALUES
+(0, 'Elefante'),
+(0, 'Sorgo'),
+(0, 'King Grass'),
+(0, 'Gramalote'),
+(0, 'Maralfalfa'),
+(0, 'Imperial'),
+(0, 'Cuba 22'),
+(0, 'Taiwan'),
+(0, 'Lote 51');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbpastoforraje`
+-- Table structure for table `tbpastoforraje`
 --
 
 CREATE TABLE `tbpastoforraje` (
@@ -370,7 +377,7 @@ CREATE TABLE `tbpastoforraje` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbraza`
+-- Table structure for table `tbraza`
 --
 
 CREATE TABLE `tbraza` (
@@ -379,22 +386,52 @@ CREATE TABLE `tbraza` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbraza`
+-- Dumping data for table `tbraza`
 --
 
 INSERT INTO `tbraza` (`idraza`, `razanombre`) VALUES
-(1, 'Jersey'),
-(2, 'Holstein'),
-(3, 'Brahaman'),
-(4, 'Charolais'),
-(5, 'Angus'),
-(6, 'Otros'),
-(7, 'PALARGA');
+(1, 'Cebú con cruce europeo de carne'),
+(2, 'Angus\r\n'),
+(3, 'Hereford\r\n'),
+(4, 'Shorthorn\r\n'),
+(5, 'Red Poll\r\n'),
+(6, 'Charoláis\r\n'),
+(7, 'Gelbvieh\r\n'),
+(8, 'Maine\r\n'),
+(9, 'Simmental\r\n'),
+(10, 'Romagnola\r\n'),
+(11, 'Chianina\r\n'),
+(12, 'Limousine\r\n'),
+(13, 'Blonde d\'aquitaine\r\n'),
+(14, 'Pardo suizo\r\n'),
+(15, 'Inra 95\r\n'),
+(16, 'Cebú con cruce lechero\r\n'),
+(17, 'Guzerat\r\n'),
+(18, 'Brahaman\r\n'),
+(19, 'Gyr\r\n'),
+(20, 'Nelore\r\n'),
+(21, 'Sardo negro\r\n'),
+(22, 'Sahiwal\r\n'),
+(23, 'Girolando\r\n'),
+(24, 'Indubrasil\r\n'),
+(25, 'Cruces europeos lecheros\r\n'),
+(26, 'Santa Gertrudis\r\n'),
+(27, 'Simbrah\r\n'),
+(28, 'Charbray\r\n'),
+(29, 'Braford\r\n'),
+(30, 'Brangus\r\n'),
+(31, 'Beefmaster\r\n'),
+(32, 'Belga azul\r\n'),
+(33, 'Jersey\r\n'),
+(34, 'Ayshire\r\n'),
+(35, 'Holstein\r\n'),
+(36, 'Guernsey\r\n'),
+(37, 'Chumeca\r\n');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbsocio`
+-- Table structure for table `tbsocio`
 --
 
 CREATE TABLE `tbsocio` (
@@ -416,7 +453,7 @@ CREATE TABLE `tbsocio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbsocio`
+-- Dumping data for table `tbsocio`
 --
 
 INSERT INTO `tbsocio` (`socioid`, `sociocedula`, `socionombre`, `socioprimerapellido`, `sociosegundoapellido`, `sociotelefono`, `sociocorreo`, `tipoactividadid`, `fincatipoid`, `sociofechaingreso`, `estadosociodetalle`, `sociorecomendacionuno`, `sociorecomendaciondos`, `socioresponsable`, `sociobeneficiario`) VALUES
@@ -425,7 +462,7 @@ INSERT INTO `tbsocio` (`socioid`, `sociocedula`, `socionombre`, `socioprimerapel
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbsociodireccion`
+-- Table structure for table `tbsociodireccion`
 --
 
 CREATE TABLE `tbsociodireccion` (
@@ -437,7 +474,7 @@ CREATE TABLE `tbsociodireccion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbsociodireccion`
+-- Dumping data for table `tbsociodireccion`
 --
 
 INSERT INTO `tbsociodireccion` (`socioid`, `socioprovincia`, `sociocanton`, `sociodistrito`, `sociopueblo`) VALUES
@@ -446,7 +483,7 @@ INSERT INTO `tbsociodireccion` (`socioid`, `socioprovincia`, `sociocanton`, `soc
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbsocioestado`
+-- Table structure for table `tbsocioestado`
 --
 
 CREATE TABLE `tbsocioestado` (
@@ -455,20 +492,20 @@ CREATE TABLE `tbsocioestado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbsocioestado`
+-- Dumping data for table `tbsocioestado`
 --
 
 INSERT INTO `tbsocioestado` (`socioestadoid`, `socioestadodetalle`) VALUES
-(1, 'Moroso'),
-(2, 'Activo'),
-(3, 'Inactivo'),
-(4, 'Rechazado\r\n\r\n'),
-(5, 'En registro');
+(1, 'En registro\r\n'),
+(2, 'Activo\r\n'),
+(3, 'Inactivo\r\n'),
+(4, 'Moroso\r\n'),
+(5, 'Rechazado');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tbtipoactividad`
+-- Table structure for table `tbtipoactividad`
 --
 
 CREATE TABLE `tbtipoactividad` (
@@ -477,294 +514,259 @@ CREATE TABLE `tbtipoactividad` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `tbtipoactividad`
+-- Dumping data for table `tbtipoactividad`
 --
 
 INSERT INTO `tbtipoactividad` (`tipoactividadid`, `tipoactividadnombre`) VALUES
-(1, 'Carne'),
-(2, 'Leche'),
-(3, 'Desarrollo'),
-(5, 'Otro');
+(1, 'Lechería especializada'),
+(2, 'Lechería doble propósito'),
+(3, 'Cría'),
+(4, 'Engorde'),
+(5, 'Lechería especializada	dos ordeños');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `tbactaaprobacion`
+-- Indexes for table `tbactaaprobacion`
 --
 ALTER TABLE `tbactaaprobacion`
   ADD PRIMARY KEY (`actaaprobacionid`);
 
 --
--- Indices de la tabla `tbanualidad`
+-- Indexes for table `tbanualidad`
 --
 ALTER TABLE `tbanualidad`
   ADD PRIMARY KEY (`anualidadid`);
 
 --
--- Indices de la tabla `tbaviso`
+-- Indexes for table `tbaviso`
 --
 ALTER TABLE `tbaviso`
   ADD PRIMARY KEY (`idaviso`);
 
 --
--- Indices de la tabla `tbcolaborador`
+-- Indexes for table `tbcolaborador`
 --
 ALTER TABLE `tbcolaborador`
   ADD PRIMARY KEY (`colaboradorid`);
 
 --
--- Indices de la tabla `tbcomentarioaviso`
+-- Indexes for table `tbcomentarioaviso`
 --
 ALTER TABLE `tbcomentarioaviso`
   ADD PRIMARY KEY (`idcomentario`);
 
 --
--- Indices de la tabla `tbcvo`
+-- Indexes for table `tbcvo`
 --
 ALTER TABLE `tbcvo`
   ADD PRIMARY KEY (`cvoid`);
 
 --
--- Indices de la tabla `tbexamenbrusela`
+-- Indexes for table `tbexamenbrusela`
 --
 ALTER TABLE `tbexamenbrusela`
   ADD PRIMARY KEY (`examenbruselaid`);
 
 --
--- Indices de la tabla `tbexamentuberculosis`
+-- Indexes for table `tbexamentuberculosis`
 --
 ALTER TABLE `tbexamentuberculosis`
   ADD PRIMARY KEY (`examentuberculosisid`);
 
 --
--- Indices de la tabla `tbfierro`
+-- Indexes for table `tbfierro`
 --
 ALTER TABLE `tbfierro`
   ADD PRIMARY KEY (`fierroid`);
 
 --
--- Indices de la tabla `tbfinca`
+-- Indexes for table `tbfinca`
 --
 ALTER TABLE `tbfinca`
   ADD PRIMARY KEY (`fincaid`),
   ADD KEY `socioid` (`socioid`);
 
 --
--- Indices de la tabla `tbfincacerca`
+-- Indexes for table `tbfincacerca`
 --
 ALTER TABLE `tbfincacerca`
   ADD PRIMARY KEY (`fincacercaid`);
 
 --
--- Indices de la tabla `tbfincadireccion`
+-- Indexes for table `tbfincadireccion`
 --
 ALTER TABLE `tbfincadireccion`
   ADD PRIMARY KEY (`fincaid`);
 
 --
--- Indices de la tabla `tbfincatipo`
+-- Indexes for table `tbfincatipo`
 --
 ALTER TABLE `tbfincatipo`
   ADD PRIMARY KEY (`fincatipoid`);
 
 --
--- Indices de la tabla `tbhato`
+-- Indexes for table `tbhato`
 --
 ALTER TABLE `tbhato`
   ADD PRIMARY KEY (`hatoid`);
 
 --
--- Indices de la tabla `tbhatoactividad`
+-- Indexes for table `tbhatoactividad`
 --
 ALTER TABLE `tbhatoactividad`
   ADD PRIMARY KEY (`hatoactividadid`);
 
 --
--- Indices de la tabla `tbjunta`
+-- Indexes for table `tbjunta`
 --
 ALTER TABLE `tbjunta`
   ADD PRIMARY KEY (`idjunta`);
 
 --
--- Indices de la tabla `tblogin`
+-- Indexes for table `tblogin`
 --
 ALTER TABLE `tblogin`
   ADD PRIMARY KEY (`idlogin`);
 
 --
--- Indices de la tabla `tbpagoanualidad`
+-- Indexes for table `tbpagoanualidad`
 --
 ALTER TABLE `tbpagoanualidad`
   ADD PRIMARY KEY (`pagoanualidadid`);
 
 --
--- Indices de la tabla `tbpastocorte`
---
-ALTER TABLE `tbpastocorte`
-  ADD PRIMARY KEY (`idpastocorte`);
-
---
--- Indices de la tabla `tbpastoforraje`
---
-ALTER TABLE `tbpastoforraje`
-  ADD PRIMARY KEY (`idpastoforraje`);
-
---
--- Indices de la tabla `tbraza`
+-- Indexes for table `tbraza`
 --
 ALTER TABLE `tbraza`
   ADD PRIMARY KEY (`idraza`);
 
 --
--- Indices de la tabla `tbsocio`
---
-ALTER TABLE `tbsocio`
-  ADD PRIMARY KEY (`socioid`),
-  ADD KEY `tipoactividadid` (`tipoactividadid`),
-  ADD KEY `fincatipoid` (`fincatipoid`),
-  ADD KEY `estadosociodetalle` (`estadosociodetalle`);
-
---
--- Indices de la tabla `tbsociodireccion`
+-- Indexes for table `tbsociodireccion`
 --
 ALTER TABLE `tbsociodireccion`
   ADD PRIMARY KEY (`socioid`);
 
 --
--- Indices de la tabla `tbsocioestado`
+-- Indexes for table `tbsocioestado`
 --
 ALTER TABLE `tbsocioestado`
   ADD PRIMARY KEY (`socioestadoid`);
 
 --
--- Indices de la tabla `tbtipoactividad`
+-- Indexes for table `tbtipoactividad`
 --
 ALTER TABLE `tbtipoactividad`
   ADD PRIMARY KEY (`tipoactividadid`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `tbactaaprobacion`
+-- AUTO_INCREMENT for table `tbactaaprobacion`
 --
 ALTER TABLE `tbactaaprobacion`
   MODIFY `actaaprobacionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tbanualidad`
+-- AUTO_INCREMENT for table `tbanualidad`
 --
 ALTER TABLE `tbanualidad`
   MODIFY `anualidadid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbaviso`
+-- AUTO_INCREMENT for table `tbaviso`
 --
 ALTER TABLE `tbaviso`
   MODIFY `idaviso` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbcolaborador`
+-- AUTO_INCREMENT for table `tbcolaborador`
 --
 ALTER TABLE `tbcolaborador`
   MODIFY `colaboradorid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbcomentarioaviso`
+-- AUTO_INCREMENT for table `tbcomentarioaviso`
 --
 ALTER TABLE `tbcomentarioaviso`
   MODIFY `idcomentario` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbcvo`
+-- AUTO_INCREMENT for table `tbcvo`
 --
 ALTER TABLE `tbcvo`
   MODIFY `cvoid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbexamenbrusela`
+-- AUTO_INCREMENT for table `tbexamenbrusela`
 --
 ALTER TABLE `tbexamenbrusela`
   MODIFY `examenbruselaid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbexamentuberculosis`
+-- AUTO_INCREMENT for table `tbexamentuberculosis`
 --
 ALTER TABLE `tbexamentuberculosis`
   MODIFY `examentuberculosisid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbfierro`
+-- AUTO_INCREMENT for table `tbfierro`
 --
 ALTER TABLE `tbfierro`
-  MODIFY `fierroid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `fierroid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbfinca`
+-- AUTO_INCREMENT for table `tbfinca`
 --
 ALTER TABLE `tbfinca`
   MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tbfincacerca`
+-- AUTO_INCREMENT for table `tbfincacerca`
 --
 ALTER TABLE `tbfincacerca`
-  MODIFY `fincacercaid` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `fincacercaid` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de la tabla `tbfincadireccion`
+-- AUTO_INCREMENT for table `tbfincadireccion`
 --
 ALTER TABLE `tbfincadireccion`
   MODIFY `fincaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tbfincatipo`
+-- AUTO_INCREMENT for table `tbfincatipo`
 --
 ALTER TABLE `tbfincatipo`
   MODIFY `fincatipoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT de la tabla `tbhato`
+-- AUTO_INCREMENT for table `tbhato`
 --
 ALTER TABLE `tbhato`
   MODIFY `hatoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tbhatoactividad`
+-- AUTO_INCREMENT for table `tbhatoactividad`
 --
 ALTER TABLE `tbhatoactividad`
   MODIFY `hatoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tblogin`
+-- AUTO_INCREMENT for table `tblogin`
 --
 ALTER TABLE `tblogin`
   MODIFY `idlogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tbpagoanualidad`
+-- AUTO_INCREMENT for table `tbpagoanualidad`
 --
 ALTER TABLE `tbpagoanualidad`
   MODIFY `pagoanualidadid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `tbpastocorte`
---
-ALTER TABLE `tbpastocorte`
-  MODIFY `idpastocorte` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `tbpastoforraje`
---
-ALTER TABLE `tbpastoforraje`
-  MODIFY `idpastoforraje` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `tbraza`
+-- AUTO_INCREMENT for table `tbraza`
 --
 ALTER TABLE `tbraza`
-  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
--- AUTO_INCREMENT de la tabla `tbsocio`
---
-ALTER TABLE `tbsocio`
-  MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `tbsociodireccion`
+-- AUTO_INCREMENT for table `tbsociodireccion`
 --
 ALTER TABLE `tbsociodireccion`
   MODIFY `socioid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `tbsocioestado`
+-- AUTO_INCREMENT for table `tbsocioestado`
 --
 ALTER TABLE `tbsocioestado`
   MODIFY `socioestadoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de la tabla `tbtipoactividad`
+-- AUTO_INCREMENT for table `tbtipoactividad`
 --
 ALTER TABLE `tbtipoactividad`
   MODIFY `tipoactividadid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
