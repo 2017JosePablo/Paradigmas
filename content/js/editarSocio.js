@@ -21,6 +21,7 @@ $(document).ready(function() {
             document.getElementById('cajaVerSocio').style.display = 'none';
             document.getElementById('editarUbic').style.display='none';
             document.getElementById('verDir').style.display='block';
+
             $.post('../business/fierroAction.php', {fierro:result[0]}, function(data){
               var fierroArray = JSON.parse(data);
               document.getElementById('rutaImagen').value =fierroArray['fierroruta'] ;
@@ -101,7 +102,7 @@ $(document).ready(function() {
             var array = JSON.parse(data);
             document.getElementById('cedula').value = array['sociocedula'];
             document.getElementById('nombre').value = array['socionombre'];
-            
+
             document.getElementById('primerapellido').value = array['socioprimerapellido'];
             document.getElementById('segundoapellido').value = array['sociosegundoapellido'];
             document.getElementById('telmovil').value = array['sociotelefono'];

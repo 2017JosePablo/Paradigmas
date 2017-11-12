@@ -294,6 +294,8 @@
                     <td>
                         Correo
                     </td>
+
+
                 </tr>
 
 
@@ -329,6 +331,14 @@
                     <td id="claveMostrarLabel">
                         <br> Clave
                     </td>
+                    <td>
+                        Responsable
+                    </td>
+
+                    <td>
+                        Beneficiario
+                    </td>
+
                 </tr>
 
                 <tr>
@@ -338,6 +348,14 @@
 
                     <td id="claveMostrarInput">
                       <input type="text"   name="clavesocio"></td>
+                    </td>
+
+                    <td id="responsable">
+                      <input type="text"   name="responsable"></td>
+                    </td>
+
+                    <td id="beneficiario">
+                      <input type="text"   name="beneficiario"></td>
                     </td>
 
                 </tr>
@@ -512,7 +530,7 @@
                     <td>
                         Cedula
                     </td>
-                    <td>
+                    <td colspan="2">
                         Nombre
                     </td>
 
@@ -525,25 +543,15 @@
                     </td>
 
 
-                    <td>
-                        Telefono Movil
-                    </td>
 
-                    <td>
-                        Correo
-                    </td>
-                    <td>
-                      Fecha de solicitud
-                  </td>
-
-                </tr>
+                    </tr>
 
 
                 <tr>
                     <td>
                         <input type="text"  id="cedula" readonly>
                     </td>
-                    <td>
+                    <td colspan="2">
                         <input  type="text"  id="nombre"  readonly>
                     </td>
                     <td>
@@ -553,6 +561,27 @@
                         <input  type="text" id="segundoapellido"  readonly>
                     </td>
 
+                    </tr>
+                    <tr>
+                      <td>
+                          Telefono Movil
+                      </td>
+
+                      <td>
+                          Correo
+                      </td>
+                      <td>
+                        Fecha de solicitud
+                    </td>
+                    <td>
+                      Responsable
+                  </td>
+                  <td>
+                    Beneficiario
+                </td>
+
+                  </tr>
+
                     <td>
                         <input  type="text" id="telmovil" readonly>
                     </td>
@@ -561,6 +590,13 @@
                     </td>
                     <td>
                       <input  type="text"  id = 'fechaS' readonly >
+                    </td>
+
+                    <td>
+                        <input  type="text" id="responsable"  readonly>
+                    </td>
+                    <td>
+                        <input  type="text" id="beneficiario"  readonly>
                     </td>
                 </tr>
 
