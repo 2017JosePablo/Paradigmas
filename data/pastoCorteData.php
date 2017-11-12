@@ -47,6 +47,29 @@ class PastoCorteData extends Data{
         return $pastoCorte;         
     }
 
+  public function modificarPastoCorte($pastoCorte){
+      include_once '../domain/pastoCorte.php';
+      $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        if (!$conn) {
+            die("Connection failed: ".mysqli_connect_error());
+        }
+      $sql = "UPDATE tbpastocorte SET pastocortenombre = '".$pastoCorte->getNombre()."' WHERE idpastocorte = '".$pastoCorte->getId()."'";
+      $result = $conn->query($sql);
+      return $result;
+    }
+    
+
+    //Metodo para eliminar una cerca
+    public function eliminarPastoCorte($pastoCorteId){
+      $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        if (!$conn) {
+            die("Connection failed: ".mysqli_connect_error());
+        }
+      $sql = "DELETE FROM tbpastocorte  WHERE idpastocorte = '$pastoCorteId'";
+      $result = $conn->query($sql);
+      return $result;
+    }
+
 
 }
 
