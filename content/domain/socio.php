@@ -13,9 +13,11 @@ class Socio{
 	private $estadosociodetalle;
 	private $recomentacion1;
 	private $recomentacion2;
+	private $responasble;
+	private $beneficiario;
 
 
-	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle,$recomentacion1,$recomentacion2){
+	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle,$recomentacion1,$recomentacion2,$responsable,$beneficiario){
 
 
 		$this->socioId = $socioId;
@@ -26,6 +28,8 @@ class Socio{
 		$this->telMovil = $telMovil;
 		$this->recomentacion1=$recomentacion1;
 		$this->recomentacion2=$recomentacion2;
+		$this->responsable=$responsable;
+		$this->beneficiario=$beneficiario;
 
 
 		$this->correo = $correo;
@@ -164,6 +168,20 @@ class Socio{
 	public function getCorreo(){
 		return $this->correo;
 	}
+	public function setResponsable($responsable){
+		$this->responsable = $responsable;
+	}
+	public function getResponsable(){
+		return $this->responsable;
+	}
+
+	public function setBeneficiario($beneficiario){
+		$this->beneficiario = $beneficiario;
+	}
+	public function getBeneficiario(){
+		return $this->beneficiario;
+	}	
+
 }
 
 ?>
