@@ -97,7 +97,7 @@ class pagoAnualidadData extends Data{
 
 
                   array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                        ,$row["sociocorreo"],"","" ,"" ,"","","" ));
+                        ,$row["sociocorreo"],"","" ,"" ,"","","","","" ));
             }
         }else{
             echo "0 results";
@@ -123,7 +123,7 @@ class pagoAnualidadData extends Data{
 
 
                     array_push($socio, new socio($row["socioid"],$row["sociocedula"],$row["socionombre"],$row["socioprimerapellido"],$row["sociosegundoapellido"],$row["sociotelefono"]
-                        ,$row["sociocorreo"],"","" ,"" ,"","","" ));
+                        ,$row["sociocorreo"],"","" ,"" ,"","","","",""));
                 }
             }else{
                 echo "0 results";
