@@ -44,6 +44,9 @@
 		$canton = $_POST['listadoCantones'];
 		$distrito = $_POST['listadoDistritos'];
 		$pueblo = $_POST['sociopueblo'];
+		$responsable= $_POST['responsable'];
+		$beneficiario= $_POST['beneficiario'];
+
 		/*
 		$provincia =2;
 		$canton = 2;
@@ -72,7 +75,7 @@
 
 		$fierroCheck = $_POST['radioFierro'];
 
-		if (isset($contrasena) && !empty($contrasena) &&strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
+		// if (isset($contrasena) && !empty($contrasena) &&strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
 
 			require 'fincaBusiness.php';
 
@@ -87,7 +90,7 @@
 
 
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaIngreso,
-				$tipoactividad, 1 , 5,$recomendacion1,$recomendacion2);
+				$tipoactividad, 1 , 5,$recomendacion1,$recomendacion2,$responsable,$beneficiario);
 
 				$resultado0 = $socioBusiness->insertarTBSocio($socio);
 				echo "resutador 0 : ".$resultado0."<br>";
@@ -202,7 +205,7 @@
 				echo "Socio->".$resultado6."<br>";
 
 				if ($resultado0 ==1 && $resultado1 ==1 && $resultadodireccion == 1 && $resultado3==1&& $resultado4==1&& $resultado5==1&&$resultado6==1 && $result7 == 1 && $resultadoFierro == 1) {
-					header("location: ../index.php?success=insertedSocio");
+					header("location: ../../index.php?success=insertedSocio");
 				}else{
 					if($resultado0!=1){
 						header("location: ../view/socioView.php?error=errorToRegister");
@@ -242,9 +245,9 @@
 
 				}
 
-		}else{
-			header('location: ../view/socioView.php?error=empyInput');
-		}
+	//	}else{
+			//header('location: ../view/socioView.php?error=empyInput');
+		//}
 	}
 
 
@@ -262,6 +265,9 @@
 		$tipoactividad =$_POST['tipoactividad'];
 		$recomendacion1 = $_POST['recomendacion1'];
 		$recomendacion2 = $_POST['recomendacion2'];
+
+		$responsable= $_POST['responsable'];
+		$beneficiario= $_POST['beneficiario'];
 
 
 		if($_POST['ModUbi'] == 1){
@@ -316,15 +322,15 @@
 
 		$fechaingreso = $fecha[2] .'-'.$fecha[0].'-'.$fecha[1] ;
 
-		if (strlen($cedula2) &&strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)   &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {
+		//if (strlen($cedula2) &&strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)   &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {
 
 
 			$socioBusiness = new socioBusiness();
 			$socioid=$socioBusiness->getSocioId($cedula2);
-		//	echo "idSocio".$socioid;
+			//	echo "idSocio".$socioid;
 
 				$socio = new Socio($socioid,$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaingreso,
-					$tipoactividad, '1' , $sociodetalle,$recomendacion1, $recomendacion2);
+					$tipoactividad, '1' , $sociodetalle,$recomendacion1, $recomendacion2,$responsable,$beneficiario);
 
 				$resultado = $socioBusiness->actualizarTBSocio($socio);
 
@@ -334,7 +340,7 @@
 				$resultado2 = $socioBusiness-> actualizarTBSocioDireccion($socioDireccion);
 
 				if ($resultado ==1 && $resultado2 == 1 && $resultadoFierro == 1 ) {
-						header("location: ../index.php?success=updatedSocio");
+						header("location: ../../index.php?success=updatedSocio");
 				}else{
 
 				//	echo "Error al actualizar un socio: ".@$resultado;
@@ -342,10 +348,10 @@
 					header("location: ../view/socioView.php?error=erroractualizar");
 				}
 
-		}else{
+		//}else{
 		//	echo " Algunos campos no existen...";
 			//header("location: ../view/socioView.php?error=emptyFile");
-		}
+		//}
 
 	}
 
