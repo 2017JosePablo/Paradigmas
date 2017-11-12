@@ -375,6 +375,31 @@
 </div>
 <br><br>
 
+<div style="overflow-x:auto;">
+    <?php
+
+    $cont =1;
+    include '../business/pastoCorteBusiness.php';
+    $pastoCorte = new PastoCorteBusiness();
+    $corte = $pastoCorte->mostrarPastosCorte();
+    echo '<table > <tr>  <td align = "center" >Pasto corte</td> </tr><tr></tr>';
+
+    foreach ($corte as $current) {
+        echo '<tr>';
+        echo '<td> <input  name ="checkbox" value="'.$current.'"type="checkbox" id="'.$cont.'" >'.$current.'</td>';
+
+        echo '</tr>';
+
+        $cont++;
+    }
+        echo '</table>';
+  ?>
+
+
+</div>
+
+
+
 
 <div style="overflow-x:auto;">
     <?php
