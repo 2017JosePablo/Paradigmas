@@ -78,7 +78,7 @@
             <br><br>
             <hr>
             <input type="submit" name="cancelarAprobacion" value="Guardar Cambios">
-            <input type="reset" value="Limpiar campos">
+            <a><input type="reset" value="Limpiar campos"> </a>
             <a href="aprovacionSocioView.php"><input type="button" name="" value="Cancelar"></a>
 
         </div>
@@ -92,7 +92,7 @@
             <input type="submit" name="enviarAprobacion" value="Guardar Cambios">
             <input type="reset" value="Limpiar campos">
             <a href="aprovacionSocioView.php"><input type="button" name="" value="Cancelar"></a>
-          
+
         </div>
 
 

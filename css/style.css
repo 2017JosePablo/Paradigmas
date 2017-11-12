@@ -344,7 +344,8 @@ form input:focus, form textarea:focus, form select:focus{
 a{
 	text-decoration: none;
 }
- input[type=submit],  input[type=button]{
+
+ input[type=submit],  input[type=button],input[type=reset]{
 	border-bottom: 2px solid rgba(0, 0, 0, 0.26);
 	margin: 20px 0;
 	text-transform: uppercase;
@@ -357,7 +358,7 @@ a{
 	max-width:200px;
 }
 
-input[type=submit]:hover,  input[type=button]:hover{
+input[type=submit]:hover, input[type=reset]:hover ,input[type=button]:hover{
 	background-color: #782B40;
 }
 
