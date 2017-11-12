@@ -257,7 +257,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos,tbsocio.socioresponsable,tbsocio.sociobeneficiario  FROM tbsocio INNER JOIN tbtipoactividad ON
             tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
             INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
-            tbsocio.estadosociodetalle =1 OR tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND tbsocio.estadosociodetalle =2;";
+            tbsocio.estadosociodetalle =4 OR tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND tbsocio.estadosociodetalle =2;";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
