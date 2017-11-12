@@ -4,7 +4,7 @@ require './juntaBusiness.php';
 
 //Optener valores de un URLLLL
 if (isset($_GET['ideliminar'])){
- 
+
     $idJunta = $_GET['ideliminar'];
     $juntaBusiness = new JuntaBusiness();
     $resultado = $juntaBusiness->eliminarTBJunta($idJunta);
@@ -15,19 +15,19 @@ if (isset($_GET['ideliminar'])){
             header("location: ../view/juntaView.php?error=dbError");
         }
     } else if (isset($_GET['idactualizar'])){
-        
+
             return "DAN";
 
         }
-    
+
 
 
 //include './juntaBusiness.php';
 //Si se preciona el boton de Actualizar
 if (isset($_POST['actualizar'])) {
 //Validar si los campos existe
-    if (isset($_POST['idjunta']) && isset($_POST['presidentejunta']) && isset($_POST['vicepresidentejunta']) && isset($_POST['tesorerojunta']) && isset($_POST['secretariojunta'])
-            && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta']) && isset($_POST['vocal3junta'])) {
+  //  if (isset($_POST['idjunta']) && isset($_POST['presidentejunta']) && isset($_POST['vicepresidentejunta']) && isset($_POST['tesorerojunta']) && isset($_POST['secretariojunta'])
+          //  && isset($_POST['vocal1junta']) && isset($_POST['vocal2junta']) && isset($_POST['vocal3junta'])) {
         //capturar los datos que vienen de la interfaz
         $idjunta = $_POST['idjunta'];
         $presidentejunta = $_POST['presidentejunta'];
@@ -38,12 +38,12 @@ if (isset($_POST['actualizar'])) {
         $vocal2junta = $_POST['vocal2junta'];
         $vocal3junta = $_POST['vocal3junta'];
 
-     
+
             //funcion para saber la longitud del atributo
-        if (strlen($idjunta) > 0 && strlen($presidentejunta) > 0 && strlen($vicepresidentejunta) > 0 && strlen($tesorerojunta) > 0  && strlen($secretariojunta) > 0 && strlen($vocal1junta) > 0 
-                && strlen($vocal2junta) > 0 && strlen($vocal3junta) > 0) {
+      //  if (strlen($idjunta) > 0 && strlen($presidentejunta) > 0 && strlen($vicepresidentejunta) > 0 && strlen($tesorerojunta) > 0  && strlen($secretariojunta) > 0 && strlen($vocal1junta) > 0
+          //      && strlen($vocal2junta) > 0 && strlen($vocal3junta) > 0) {
             // funcion para saber si es un numero o no
-            if (!is_numeric($idjunta)) {
+          //  if (!is_numeric($idjunta)) {
                 //creo el objeto
                 $junta = new junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta, $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
                 //creo una instancia
@@ -56,15 +56,15 @@ if (isset($_POST['actualizar'])) {
                     //echo $idSickness." - ".$bullName;
                     header("location: ../view/juntaView.php?error=dbError");
                 }
-            } else {
-                header("location: ../view/juntaView.php?error=numberFormat");
-            }
-        } else {
-            header("location: ../view/juntaView.php?error=emptyField");
-        }
-    } else {
-        header("location: ../view/juntaView.php?error=error");
-    }
+          //  } else {
+            //    header("location: ../view/juntaView.php?error=numberFormat");
+          //  }
+        //} else {
+          //  header("location: ../view/juntaView.php?error=emptyField");
+      //  }
+    //} else {
+      //  header("location: ../view/juntaView.php?error=error");
+  //  }
 
 
     ///////////////////////METODO PARA ELIMINAR
@@ -78,7 +78,7 @@ if (isset($_POST['actualizar'])) {
 
     if (isset($_POST['idjunta']) && isset($_POST['listadoSocios']) && isset($_POST['listadoVicepresidente']) && isset($_POST['listadoTesorero'])
             && isset($_POST['listadoSecretario']) && isset($_POST['listadoV1']) && isset($_POST['listadoV2'])  && isset($_POST['listadoV3'])) {
-            
+
         $idjunta = $_POST['idjunta'];
         $presidentejunta = "";
         $vicepresidentejunta = "";
@@ -86,7 +86,7 @@ if (isset($_POST['actualizar'])) {
         $secretariojunta = "";
         $vocal1junta = "";
         $vocal2junta = "";
-        $vocal3junta = "";  
+        $vocal3junta = "";
 
          if(isset($_POST['sociocedulaP'])){
             $presidenteColaborardoCedula=$_POST['sociocedulaP'];
@@ -95,7 +95,7 @@ if (isset($_POST['actualizar'])) {
             $presidenteColaborardorSegundoApellido=$_POST['sociosegundoapellidoP'];
             $presidenteColaborardorTelMovil=$_POST['sociotelmovilP'];
             $presidenteColaborardorCorreo=$_POST['sociocorreoP'];
-         }     
+         }
 
 
 
@@ -160,11 +160,11 @@ if (isset($_POST['actualizar'])) {
 
     if(isset($presidenteColaborardoCedula)==true && empty($presidenteColaborardoCedula)==false && isset($presidenteColaborardorNombre)==true && empty($presidenteColaborardorNombre)==false && isset($presidenteColaborardorPrimerApellido)==true && empty($presidenteColaborardorPrimerApellido)==false && isset($presidenteColaborardorSegundoApellido)==true && empty($presidenteColaborardorSegundoApellido)==false && isset($presidenteColaborardorTelMovil)==true && empty($presidenteColaborardorTelMovil)==false && isset($presidenteColaborardorCorreo)==true && empty($presidenteColaborardorCorreo)==false){
 
-         
+
          $presidente= new Colaborador("",$presidenteColaborardoCedula,$presidenteColaborardorNombre,$presidenteColaborardorPrimerApellido,$presidenteColaborardorSegundoApellido,$presidenteColaborardorCorreo,$presidenteColaborardorTelMovil);
 
             $resultadoP = $juntaBusiness->insertarColaborador($presidente);
-            
+
             if ($resultadoP ==1) {
                 $presidentejunta=$presidenteColaborardoCedula;
                  header("location: ../index.php?success=insertedJunta");
@@ -185,9 +185,9 @@ if (isset($_POST['actualizar'])) {
 
             $resultadoV = $juntaBusiness->insertarColaborador($presidente);
 
-            if ($resultadoV ==1) { 
+            if ($resultadoV ==1) {
                 $vicepresidentejunta=$vicepresidenteColaborardoCedula;
-                echo "ColaboradorV insertardo"; 
+                echo "ColaboradorV insertardo";
             }else{
 
                 echo "Error al insertar un ColaboradorV: ".@$resultadoV;
@@ -201,11 +201,11 @@ if (isset($_POST['actualizar'])) {
 
 
     if(isset($tesoreroColaborardoCedula)==true && empty($tesoreroColaborardoCedula)==false && isset($tesoreroColaborardorNombre)==true && empty($tesoreroColaborardorNombre)==false && isset($tesoreroColaborardorPrimerApellido)==true && empty($tesoreroColaborardorPrimerApellido)==false && isset($tesoreroColaborardorSegundoApellido)==true && empty($tesoreroColaborardorSegundoApellido)==false && isset($tesoreroColaborardorTelMovil)==true && empty($tesoreroColaborardorTelMovil)==false && isset($tesoreroColaborardorCorreo)==true && empty($tesoreroColaborardorCorreo)==false){
-            
+
              $tesorero= new Colaborador("",$tesoreroColaborardoCedula,$tesoreroColaborardorNombre,$tesoreroColaborardorPrimerApellido,$tesoreroColaborardorSegundoApellido,$tesoreroColaborardorCorreo,$tesoreroColaborardorTelMovil);
 
             $resultadoT = $juntaBusiness->insertarColaborador($tesorero);
-    
+
 
             if ($resultadoT ==1) {
                 $tesorerojunta =$tesoreroColaborardoCedula;
@@ -228,7 +228,7 @@ if (isset($_POST['actualizar'])) {
            $secretario= new Colaborador("",$secretarioColaborardoCedula,$secretarioColaborardorNombre,$secretarioColaborardorPrimerApellido,$secretarioColaborardorSegundoApellido,$secretarioColaborardorCorreo,$secretarioColaborardorTelMovil);
 
             $resultadoS = $juntaBusiness->insertarColaborador($secretario);
-    
+
             if ($resultadoS ==1) {
                 $secretariojunta =$secretarioColaborardoCedula;
                 echo " ColaboradorS insertardo";
@@ -238,23 +238,23 @@ if (isset($_POST['actualizar'])) {
                 //header("location: ../view/socioView.php?error=errorinserted");
             }
 
-     
+
      }else{
-       $secretariojunta = $_POST['listadoSecretario']; 
+       $secretariojunta = $_POST['listadoSecretario'];
      }
 
 
      if(isset($v1ColaborardoCedula)==true && empty($v1ColaborardoCedula)==false && isset($v1ColaborardorNombre)==true && empty($v1ColaborardorNombre)==false && isset($v1ColaborardorPrimerApellido)==true && empty($v1ColaborardorPrimerApellido)==false && isset($v1ColaborardorSegundoApellido)==true && empty($v1ColaborardorSegundoApellido)==false && isset($v1ColaborardorTelMovil)==true && empty($v1ColaborardorTelMovil)==false && isset($v1ColaborardorCorreo)==true && empty($v1ColaborardorCorreo)==false){
 
 
-    
+
             $vocal1= new Colaborador("",$vocal1ColaborardoCedula,$vocal1ColaborardorNombre,$vocal1ColaborardorPrimerApellido,$vocal1ColaborardorSegundoApellido,$vocal1ColaborardorCorreo,$vocal1ColaborardorTelMovil);
 
             $resultadoV1 = $juntaBusiness->insertarColaborador($vocal1);
 
             if ($resultadoV1 ==1) {
                 $vocal1junta = $v1ColaborardoCedula;
-              echo "ColaboradorV1 insertado"; 
+              echo "ColaboradorV1 insertado";
             }else{
 
                 echo "Error al insertar un ColaboradorV1: ";
@@ -262,7 +262,7 @@ if (isset($_POST['actualizar'])) {
             }
 
 
-         
+
      }else{
          $vocal1junta = $_POST['listadoV1'];
 
@@ -276,18 +276,18 @@ if (isset($_POST['actualizar'])) {
             $vocal2= new Colaborador("",$vocal2ColaborardoCedula,$vocal2ColaborardorNombre,$vocal2ColaborardorPrimerApellido,$vocal2ColaborardorSegundoApellido,$vocal2ColaborardorCorreo,$vocal2ColaborardorTelMovil);
 
             $resultadoV2 = $juntaBusiness->insertarColaborador($vocal2);
-    
+
 
 
             if ($resultadoV2 ==1) {
                 $vocal2junta = $v2ColaborardoCedula;
-             echo "ColaboradorV2 insertardo";  
+             echo "ColaboradorV2 insertardo";
             }else{
 
                 echo "Error al insertar un ColaboradorV2: ";
                 //header("location: ../view/socioView.php?error=errorinserted");
             }
-        
+
 
      }else{
          $vocal2junta = $_POST['listadoV2'];
@@ -298,11 +298,11 @@ if (isset($_POST['actualizar'])) {
      if(isset($v3ColaborardoCedula)==true && empty($v3ColaborardoCedula)==false && isset($v3ColaborardorNombre)==true && empty($v3ColaborardorNombre)==false && isset($v3ColaborardorPrimerApellido)==true && empty($v3ColaborardorPrimerApellido)==false && isset($v3ColaborardorSegundoApellido)==true && empty($v3ColaborardorSegundoApellido)==false && isset($v3ColaborardorTelMovil)==true && empty($v3ColaborardorTelMovil)==false && isset($v3ColaborardorCorreo)==true && empty($v3ColaborardorCorreo)==false){
 
 
-        
+
             $vocal3= new Colaborador("",$vocal3ColaborardoCedula,$vocal3ColaborardorNombre,$vocal3ColaborardorPrimerApellido,$vocal3ColaborardorSegundoApellido,$vocal3ColaborardorCorreo,$vocal3ColaborardorTelMovil);
 
             $resultadoV3 = $juntaBusiness->insertarColaborador($vocal3);
-    
+
 
             if ($resultadoV3 ==1) {
                 $vocal3junta = $v3ColaborardoCedula;
@@ -313,20 +313,20 @@ if (isset($_POST['actualizar'])) {
                 //header("location: ../view/socioView.php?error=errorinserted");
             }
 
-        
+
 
 
      }else{
           $vocal3junta = $_POST['listadoV3'];
      }
-        
-    
 
 
 
 
-        if (strlen($idjunta) > 0 && strlen($presidentejunta) > 0 && strlen($vicepresidentejunta) > 0 
-                && strlen($tesorerojunta) > 0 && strlen($secretariojunta) > 0 
+
+
+        if (strlen($idjunta) > 0 && strlen($presidentejunta) > 0 && strlen($vicepresidentejunta) > 0
+                && strlen($tesorerojunta) > 0 && strlen($secretariojunta) > 0
                 && strlen($vocal1junta) > 0  && strlen($vocal2junta) > 0 && strlen($vocal3junta) > 0) {
                 $junta = new Junta($idjunta, $presidentejunta, $vicepresidentejunta, $tesorerojunta,
                 $secretariojunta, $vocal1junta, $vocal2junta, $vocal3junta);
@@ -340,14 +340,14 @@ if (isset($_POST['actualizar'])) {
                 } else {
                     header("location: ../view/juntaView.php?error=dbError: ");
                     //header("location: ../business/juntaAction.php?error=ErrorBaseDatos");
-                }        
+                }
         } else {
             header("location: ../view/juntaView.php?error=emptyField");
         //    header("location: ../business/juntaAction.php?error=Campos");
         }
-        
+
     }
     // Escucha el boton de Buscar una junta
-}   
+}
 
 ?>

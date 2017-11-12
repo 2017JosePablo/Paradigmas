@@ -9,7 +9,7 @@ if (isset($_POST['cancelarAprobacion'])) {
   $sesion = "Sin definir";
   $fecha = $_POST['fechaAprovacion'];
 
-  if(isset($motivo) && !empty($motivo)){
+  //if(isset($motivo) && !empty($motivo)){
     include_once './aprovacionBusiness.php';
     $aprovacion = new AprovacionBusiness();
 
@@ -21,7 +21,7 @@ if (isset($_POST['cancelarAprobacion'])) {
     }else{
       header ('location: ../view/aprovacionSocioView.php?error=errortoinserted');
     }
-  }
+//  }
   }elseif (isset($_POST['enviarAprobacion'])) {
     require_once 'socioBusiness.php';
     $socioid = $_POST['socioid'];
@@ -32,7 +32,7 @@ if (isset($_POST['cancelarAprobacion'])) {
 
     $sesion = "Sin definir";
     $fecha = $_POST['fechaAprovacion'];
-      if(isset($sesion) && !empty($sesion)){
+    //  if(isset($sesion) && !empty($sesion)){
         include_once './aprovacionBusiness.php';
         include '../domain/actaAprobacion.php';
 
@@ -56,6 +56,6 @@ if (isset($_POST['cancelarAprobacion'])) {
           }
 
         }
-      }
+    //  }
 }
 ?>

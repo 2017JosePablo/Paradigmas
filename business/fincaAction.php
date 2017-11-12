@@ -75,7 +75,7 @@
 	$cercas =$_POST['tiposCerca'];
 
 
-	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($fincatipo)){
+	//if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($fincatipo)){
 
 		require './fincaBusiness.php';
 		require './socioBusiness.php';
@@ -131,9 +131,9 @@
 
 		}
 
-	}else{
-		echo "Datos vacios...</br>";
-	}
+	//}else{
+	//	echo "Datos vacios...</br>";
+	//}
 }
 
 ?>
