@@ -164,6 +164,9 @@
     <button type="button" name="agregarAnualidad" onclick="agregarNuevaAnualidad()">Agregar Nueva Anualidad</button>
     <a href="../index.php">Regresar</a>
 
+    <?php
+      include_once "piePaginaView.php";
+     ?>
   </body>
   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="../js/anualidadJs.js"></script>

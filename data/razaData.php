@@ -49,7 +49,7 @@
 							die("Connection failed: ".mysqli_connect_error());
 					}
 
-					$sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido, tbsocio.sociosegundoapellido, tbsocio.sociotelefono , tbsocio.sociocorreo, tbhato.hatoraza FROM tbsocio INNER JOIN tbhato ON tbhato.socioid = tbsocio.socioid  ORDER BY tbhato.hatoraza ASC";
+					$sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido, tbsocio.sociosegundoapellido, tbsocio.sociotelefono , tbsocio.sociocorreo, tbhato.hatoraza FROM tbsocio INNER JOIN tbhato ON tbhato.socioid = tbsocio.socioid  ORDER BY tbsocio.socionombre ASC,tbhato.hatoraza ASC";
 					$result = $conn->query($sql);
 					if($result->num_rows > 0) {
 							while($row = $result->fetch_assoc()) {

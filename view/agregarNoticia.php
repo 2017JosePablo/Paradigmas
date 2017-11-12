@@ -32,6 +32,8 @@
       <hr>
       <a href="../">Regresar</a>
     </form>
-
+    <?php
+      include_once "piePaginaView.php";
+     ?>
   </body>
 </html>

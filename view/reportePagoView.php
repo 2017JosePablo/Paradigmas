@@ -105,7 +105,9 @@ echo '</table>';
    window.print();
  }
  </script>
-
+ <?php
+   include_once "piePaginaView.php";
+  ?>
 </html>
 <?php
     }else{header("Location: ../index.php?error=dontPermisse");}

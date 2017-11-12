@@ -6,7 +6,7 @@
 			Censo de ASOTURGA
 		</title>
 
-		<link rel="stylesheet" href="../css/diseno.css"> 
+		<link rel="stylesheet" href="../css/diseno.css">
 	</head>
 
 	<script type='text/javascript'>
@@ -273,5 +273,8 @@
 </form>
 <br> <br>
 <a href="../index.php">Regresar</a>
+<?php
+	include_once "piePaginaView.php";
+ ?>
 </body>
 </html>

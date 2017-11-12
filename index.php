@@ -114,5 +114,9 @@
     <li><a href="view/misAvisosView.php">Mis Avisos </a><br></li>
     <li><a href="view/agregarNoticia.php">Agregar un Aviso </a><br></li>
 
+
+<?php
+	include_once "view/piePaginaView.php";
+ ?>
 </body>
 </html>

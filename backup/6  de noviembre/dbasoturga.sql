@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2017 a las 03:42:38
+-- Tiempo de generación: 07-11-2017 a las 03:59:57
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -42,7 +42,7 @@ CREATE TABLE `tbactaaprobacion` (
 --
 
 INSERT INTO `tbactaaprobacion` (`actaaprobacionid`, `socioid`, `actaaprobacionsecion`, `actaaprobacionfecha`, `actaaprobacioncondicion`, `actaaprobacionmotivo`) VALUES
-(1, 1, 0, '0000-00-00', 'progreso', '');
+(1, 1, 0, '2017-11-06', 'Aceptado', 'Solicitud Aceptada.');
 
 -- --------------------------------------------------------
 
@@ -396,7 +396,7 @@ CREATE TABLE `tbsocio` (
 --
 
 INSERT INTO `tbsocio` (`socioid`, `sociocedula`, `socionombre`, `socioprimerapellido`, `sociosegundoapellido`, `sociotelefono`, `sociocorreo`, `tipoactividadid`, `fincatipoid`, `sociofechaingreso`, `estadosociodetalle`, `sociorecomendacionuno`, `sociorecomendaciondos`) VALUES
-(1, '1-2345678', 'ASOTURGA', 'ASOTURGA', 'ASOTURGA', '8888 88 88', 'asoturgaturri@gmail.com', 5, 0, '2017-11-06', 5, 'Sin Recomendacion', 'Sin Recomendacion');
+(1, '1-2345678', 'ASOTURGA', 'ASOTURGA', 'ASOTURGA', '8888 88 88', 'asoturgaturri@gmail.com', 5, 1, '2017-11-06', 2, 'Sin Recomendacion', 'Sin Recomendacion');
 
 -- --------------------------------------------------------
 
