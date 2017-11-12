@@ -21,7 +21,8 @@ class PastoForrajeData extends Data{
         return $result;
 
 	}
-    public function mostrarPastosForraje(){
+  
+  public function mostrarPastosForraje(){
        $pastoForraje= array();
        include_once '../domain/pastoForraje.php';
 
@@ -43,30 +44,31 @@ class PastoForrajeData extends Data{
         }
         $conn->close();
 
-        return $pastoForraje;         
-    }
+    return $pastoForraje;         
+  }
+
   public function modificarPastoForraje($pastoForraje){
-      include_once '../domain/pastoForraje.php';
-      $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        if (!$conn) {
-            die("Connection failed: ".mysqli_connect_error());
-        }
-      $sql = "UPDATE tbpastoforraje SET pastoforrajenombre = '".$pastoForraje->getNombre()."' WHERE idpastoforraje = '".$pastoForraje->getId()."'";
-      $result = $conn->query($sql);
-      return $result;
+    include_once '../domain/pastoForraje.php';
+    $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+    if (!$conn) {
+      die("Connection failed: ".mysqli_connect_error());
     }
+    $sql = "UPDATE tbpastoforraje SET pastoforrajenombre = '".$pastoForraje->getNombre()."' WHERE idpastoforraje = '".$pastoForraje->getId()."'";
+    $result = $conn->query($sql);
+    return $result;
+  }
     
 
     //Metodo para eliminar una cerca
-    public function eliminarPastoForraje($pastoForrajeId){
-      $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        if (!$conn) {
-            die("Connection failed: ".mysqli_connect_error());
-        }
-      $sql = "DELETE FROM tbpastoforraje  WHERE idpastoforraje = '$pastoForrajeId'";
-      $result = $conn->query($sql);
-      return $result;
-    }
+  public function eliminarPastoForraje($pastoForrajeId){
+    $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+      if (!$conn) {
+          die("Connection failed: ".mysqli_connect_error());
+      }
+    $sql = "DELETE FROM tbpastoforraje  WHERE idpastoforraje = '$pastoForrajeId'";
+    $result = $conn->query($sql);
+    return $result;
+  }
 
 }
 
