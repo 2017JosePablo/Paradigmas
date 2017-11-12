@@ -377,8 +377,6 @@
 
 <div style="overflow-x:auto;">
     <?php
-
-    $cont =1;
     include '../business/pastoCorteBusiness.php';
     $pastoCorte = new PastoCorteBusiness();
     $corte = $pastoCorte->mostrarPastosCorte();
@@ -386,11 +384,28 @@
 
     foreach ($corte as $current) {
         echo '<tr>';
-        echo '<td> <input  name ="checkbox" value="'.$current.'"type="checkbox" id="'.$cont.'" >'.$current.'</td>';
+        echo '<td> <input  name ="pastoCorte" value="'.$current->getId().'"type="checkbox" id="'.$current->getId().'" >'.$current->getNombre().'</td>';
 
         echo '</tr>';
+    }
+        echo '</table>';
+  ?>
 
-        $cont++;
+
+</div>
+
+<div style="overflow-x:auto;">
+    <?php
+    include '../business/pastoForrajeBusiness.php';
+    $pastoForraje = new PastoForrajeBusiness();
+    $forraje = $pastoForraje->mostrarPastosForraje();
+    echo '<table > <tr>  <td align = "center" >Pasto Forraje</td> </tr><tr></tr>';
+
+    foreach ($forraje as $current) {
+        echo '<tr>';
+        echo '<td> <input  name ="pastoForraje" value="'.$current->getId().'"type="checkbox" id="'.$current->getId().'" >'.$current->getNombre().'</td>';
+
+        echo '</tr>';
     }
         echo '</table>';
   ?>
