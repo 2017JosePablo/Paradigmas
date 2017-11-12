@@ -43,13 +43,13 @@
 
 		echo "Razas: ".$razas;
 
-		if (strlen($razas) > 0 ||strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($torosServicio) > 0 || strlen($torosEngorde) > 0 || strlen($vacasCria) > 0|| strlen($vacasEngorde) > 0 ) {
+		//if (strlen($razas) > 0 ||strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($torosServicio) > 0 || strlen($torosEngorde) > 0 || strlen($vacasCria) > 0|| strlen($vacasEngorde) > 0 ) {
 
 
 			/// consultA PARA sabeer si el valor digitado es valido
-				if (is_numeric($ternero) &&  $ternero >  0 || is_numeric($ternera) && $ternera > 0 ||
-					is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 ||
-					is_numeric($novillaprenada) && $novillaprenada > 0 || is_numeric($torosServicio)&& $torosEngorde > 0 || is_numeric($vacasCria)&& $vacasCria > 0 || is_numeric($torosServicio)&& $torosServicio > 0  || is_numeric($vacasEngorde) && $vacasEngorde > 0 ) {
+			//	if (is_numeric($ternero) &&  $ternero >  0 || is_numeric($ternera) && $ternera > 0 ||
+				//	is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 ||
+				//	is_numeric($novillaprenada) && $novillaprenada > 0 || is_numeric($torosServicio)&& $torosEngorde > 0 || is_numeric($vacasCria)&& $vacasCria > 0 || is_numeric($torosServicio)&& $torosServicio > 0  || is_numeric($vacasEngorde) && $vacasEngorde > 0 ) {
 
 					require './hatoBusiness.php';
 
@@ -72,13 +72,13 @@
 							header("location: ../view/censoView.php?error=error");
 					}
 
-				}else{
-					header("location: ../view/censoView.php?error=numberFormat");
-				}
+				//}else{
+					//header("location: ../view/censoView.php?error=numberFormat");
+				//}
 
-			}else{
-				header("location: ../view/censoView.php?error=emptyField");
-			}
+			//}else{
+			//	header("location: ../view/censoView.php?error=emptyField");
+			//}
 
 
 	}else	if (isset($_POST['registrarhato']) || isset($_POST['hatoMod'])) {
@@ -106,13 +106,13 @@
 
 
 
-		if (strlen($razas) > 0 ||strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($torosServicio) > 0 || strlen($torosEngorde) > 0 || strlen($vacasCria) > 0|| strlen($vacasEngorde) > 0 ) {
+		//if (strlen($razas) > 0 ||strlen($ternero) > 0 || strlen($ternera) > 0 ||strlen($novillo) > 0 || strlen($novilla) > 0 || strlen($novillaprenada) > 0 || strlen($torosServicio) > 0 || strlen($torosEngorde) > 0 || strlen($vacasCria) > 0|| strlen($vacasEngorde) > 0 ) {
 
 
 			/// consultA PARA sabeer si el valor digitado es valido
-				if (is_numeric($ternero) &&  $ternero >  0 || is_numeric($ternera) && $ternera > 0 ||
-					is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 ||
-					is_numeric($novillaprenada) && $novillaprenada > 0 || is_numeric($torosServicio)&& $torosEngorde > 0 || is_numeric($vacasCria)&& $vacasCria > 0 || is_numeric($torosServicio)&& $torosServicio > 0  || is_numeric($vacasEngorde) && $vacasEngorde > 0 ) {
+			//	if (is_numeric($ternero) &&  $ternero >  0 || is_numeric($ternera) && $ternera > 0 ||
+				//	is_numeric($novillo) && $novillo > 0 || is_numeric($novilla) && $novilla > 0 ||
+				//	is_numeric($novillaprenada) && $novillaprenada > 0 || is_numeric($torosServicio)&& $torosEngorde > 0 || is_numeric($vacasCria)&& $vacasCria > 0 || is_numeric($torosServicio)&& $torosServicio > 0  || is_numeric($vacasEngorde) && $vacasEngorde > 0 ) {
 
 
 
@@ -166,12 +166,12 @@
 						}
 					}
 
-				}else{
-					header("location: ../view/hatoView.php?error=numberFormat");
-				}
-			}else{
-				header("location: ../view/hatoView.php?error=emptyField");
-			}
+				//}else{
+					//header("location: ../view/hatoView.php?error=numberFormat");
+				//}
+			//}else{
+			//	header("location: ../view/hatoView.php?error=emptyField");
+			//}
 
 		}
 ?>

@@ -6,8 +6,8 @@
 		$fechaVencimientoAnterior = $_POST['fechaPagoAnterior'];
 		$fechaPago = $_POST['fechaPago'];
 
-		if(isset($socioId) && !empty($socioId) && isset($fechaVencimientoAnterior) && !empty($fechaVencimientoAnterior) &&
-			isset($fechaPago) && !empty($fechaPago)){
+		//if(isset($socioId) && !empty($socioId) && isset($fechaVencimientoAnterior) && !empty($fechaVencimientoAnterior) &&
+			//isset($fechaPago) && !empty($fechaPago)){
 
 			$date = new DateTime($fechaPago);
 			$fechaPago= $date->format('Y-m-d');
@@ -37,16 +37,16 @@
 			}else{
 				header("location: ../view/renovarAnualidadView.php?error=inserted");
 			}
-		}else{
-			header("location: ../view/renovarAnualidadView.php?error=datosVacios");
-		}
+		//}else{
+			//header("location: ../view/renovarAnualidadView.php?error=datosVacios");
+		//}
 	}
 
 	if(isset($_POST["primerAnualidad"])) {
 		$socioId = $_POST['socioId'];
 		$fechaPago = $_POST['fechaPago'];
 
-		if(isset($socioId) && !empty($socioId) && isset($fechaPago) && !empty($fechaPago)){
+		//if(isset($socioId) && !empty($socioId) && isset($fechaPago) && !empty($fechaPago)){
 
 			$date = new DateTime($fechaPago);
 			$fechaPago= $date->format('Y-m-d');
@@ -68,8 +68,8 @@
 			}else{
 				header("location: ../view/pagoPrimeroAnualidadView.php?error=inserted");
 			}
-		}else{
-			header("location: ../view/pagoPrimeroAnualidadView.php?error=datosVacios");
-		}
+		//}else{
+			//header("location: ../view/pagoPrimeroAnualidadView.php?error=datosVacios");
+		//}
 	}
 ?>

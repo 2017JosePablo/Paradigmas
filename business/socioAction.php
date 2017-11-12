@@ -72,7 +72,7 @@
 
 		$fierroCheck = $_POST['radioFierro'];
 
-		if (isset($contrasena) && !empty($contrasena) &&strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
+		//if (isset($contrasena) && !empty($contrasena) &&strlen($cedula) &&strlen($nombre)  &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)  &&strlen($sociodetalle)  ) {
 
 			require 'fincaBusiness.php';
 
@@ -242,9 +242,9 @@
 
 				}
 
-		}else{
-			header('location: ../view/socioView.php?error=empyInput');
-		}
+		//}else{
+			//header('location: ../view/socioView.php?error=empyInput');
+		//}
 	}
 
 
@@ -316,7 +316,7 @@
 
 		$fechaingreso = $fecha[2] .'-'.$fecha[0].'-'.$fecha[1] ;
 
-		if (strlen($cedula2) &&strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)   &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {
+		//if (strlen($cedula2) &&strlen($cedula) &&strlen($nombre) &&strlen($primerapellido) &&strlen($segundoapellido) &&strlen($telmovil) &&strlen($correo) &&strlen($provincia)  &&strlen($canton) &&strlen($distrito) &&strlen($pueblo)  &&strlen($correo) &&strlen($tipoactividad)   &&strlen($fechaingreso) &&strlen($sociodetalle)  ) {
 
 
 			$socioBusiness = new socioBusiness();
@@ -342,10 +342,10 @@
 					header("location: ../view/socioView.php?error=erroractualizar");
 				}
 
-		}else{
+		//}else{
 		//	echo " Algunos campos no existen...";
 			//header("location: ../view/socioView.php?error=emptyFile");
-		}
+		//}
 
 	}
 
