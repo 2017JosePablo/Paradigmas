@@ -17,6 +17,7 @@
 		public function insertarTBRaza($raza)
 		{
 			$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset('utf8');
 
 			$sql = "INSERT into tbraza(idraza, razanombre) values ('','".$raza->getNombreRaza()."');";
 			$resultado = $conn->query($sql);
@@ -27,6 +28,7 @@
 
 		public function modificarTBRaza($raza){
 			$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset('utf8');
 
 	        $sql = "UPDATE  tbraza SET razanombre = '".$raza->getNombreRaza()."' WHERE idraza = '".$raza->getIdRaza()."'; ";
 
@@ -45,6 +47,7 @@
 				$tipoRaza = $this->getTipoRazaNombre($contador);
 
 					$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+					$conn->set_charset('utf8');
 					if (!$conn) {
 							die("Connection failed: ".mysqli_connect_error());
 					}
@@ -73,6 +76,7 @@
 		public function getTipoRazaNombre($id){
     		$raza = "";
 	        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+					$conn->set_charset('utf8');
 	        $sql = "SELECT * FROM tbraza WHERE idraza = $id";
 	        $result = $conn->query($sql);
 	        if($result->num_rows > 0) {
@@ -88,6 +92,7 @@
 				public function obtenerTodoTBRaza(){
 		    		$raza = array();
 			        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+							$conn->set_charset('utf8');
 
 			        $sql = "SELECT * FROM tbraza ORDER BY tbraza.razanombre ASC ";
 			        $result = $conn->query($sql);
@@ -106,6 +111,7 @@
 		public function cantidadTodoTBRaza(){
 				$raza = 0;
 					$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+					$conn->set_charset('utf8');
 
 					$sql = "SELECT * FROM tbraza ";
 					$result = $conn->query($sql);
@@ -122,6 +128,7 @@
 		public function obtenerUnTBRaza($idraza){
     		$raza = "";
 	        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+					$conn->set_charset('utf8');
 
 	        $sql = "SELECT razanombre FROM tbraza WHERE idraza = '$idraza'";
 	        $result = $conn->query($sql);
@@ -140,6 +147,7 @@
 
 		public function eliminarTBRaza($idraza){
 	        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+					$conn->set_charset('utf8');  
 
 	        $sql = "DELETE FROM tbraza  WHERE idraza = '".$idraza."' ;";
 
