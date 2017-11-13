@@ -40,7 +40,7 @@ class PastoForrajeData extends Data{
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                array_push($pastoForraje , new pastoCorte($row["idpastoforraje"], $row["pastoforrajenombre"]));
+                array_push($pastoForraje , new PastoForraje($row["idpastoforraje"], $row["pastoforrajenombre"]));
             }
         }else{
             echo "0 results";
