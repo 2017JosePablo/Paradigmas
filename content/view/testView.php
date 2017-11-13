@@ -29,6 +29,7 @@
 		,"sociopueblo"=>"sociopueblo"
 		];
 
+
 		$tempo = json_encode($jason);
 
 
@@ -37,9 +38,7 @@
 
 		$data = new socioData();
 		$v = $data->obtenerUnTBSocio("504130763");
-
-		$result = json_decode($v);
-		echo "->>>".$result["idsocio"]."<><><";
+		echo "string".$v;
 
 
 
