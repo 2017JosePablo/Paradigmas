@@ -435,7 +435,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
 
 
         $sql = "UPDATE tbsocio SET sociocedula= '".$socio->getCedula()."',socionombre='".$socio->getNombre()."'  ,socioprimerapellido= '".$socio->getPrimerApellido()."' ,sociosegundoapellido='".$socio->getSegundoApellido()."',sociotelefono='".$socio->getTelMovil()."',sociocorreo='".$socio->getCorreo()."',tipoactividadid='".$socio->getTipoActividadId()."',fincatipoid  ='".$socio->getFincaTipo()."', sociofechaingreso= '".$socio->getFechaIngreso()."',estadosociodetalle='".$socio->getEstadoSocioDetalle()."',sociorecomendacionuno='".$socio->getRecomendacion1()."',
-        sociorecomendaciondos='".$socio->getRecomendacion2()."'  WHERE socioid= '".$socio->getSocioId()."';";
+        sociorecomendaciondos='".$socio->getRecomendacion2()."',socioresponsable='".$socio->getResponsable()."',sociobeneficiario='".$socio->getBeneficiario()."'  WHERE socioid= '".$socio->getSocioId()."';";
 
         $result = $conn->query($sql);
         if ($conn->query($sql) === TRUE) {
