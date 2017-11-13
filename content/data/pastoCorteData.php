@@ -18,8 +18,8 @@ class PastoCorteData extends Data{
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        $sql = "INSERT INTO tbpastoCorte (pastocortenombre)
-        VALUES ('" .$pastoCorte->getNombre . "');";
+        $sql = "INSERT INTO tbpastocorte (pastocortenombre)
+        VALUES ('".$pastoCorte->getNombre()."');";
 
         $result = $conn->query($sql);
         $conn->close();
@@ -66,7 +66,7 @@ class PastoCorteData extends Data{
     }
 
 
-    //Metodo para eliminar una cerca
+
     public function eliminarPastoCorte($pastoCorteId){
       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
        $conn->set_charset("utf8");

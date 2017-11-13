@@ -8,9 +8,8 @@ $(document).ready(function() {
 
     			document.getElementById('cajaReg').style = "display:none";
     			document.getElementById('cajaEdi').style = "display:block";
-    			document.getElementById('nombreForraje').value = result[1];
-          document.getElementById('idForraje').value = result[0];
-          alert(result[0]);
+    			document.getElementById('nombreCorte').value = result[1];
+          document.getElementById('idCorte').value = result[0];
 
     		}
     	}

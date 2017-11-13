@@ -39,17 +39,17 @@
 <div id="cuerpo">
 
 
-  <form method="post" enctype="multipart/form-data" action="../business/pastoForrajeAction.php">
+  <form method="post" enctype="multipart/form-data" action="../business/pastoCorteAction.php">
 
 	<div style="overflow-x:auto;">
 
-		<h1>Gestíon de Pasto Forraje </h1>
+		<h1>Gestíon de Pasto Corte </h1>
 	 <?php
 
-	  include '../business/pastoForrajeBusiness.php';
-    $pastoBusiness = new PastoForrajeBusiness();
+	  include '../business/pastoCorteBusiness.php';
+    $pastoBusiness = new PastoCorteBusiness();
 
-    $pastos = $pastoBusiness->mostrarPastosForraje();
+    $pastos = $pastoBusiness->mostrarPastosCorte();
     echo '<table ><tr class="cabeceraTabla">  <td>Nombre de Pasto</td><td colspan="2">Acciones</td> </tr>';
 
     foreach ($pastos as $current) {
@@ -66,21 +66,21 @@
 </div>
             <br>
 
-            <input onclick="ocultarDatos()" value="Nuevo Forraje" type="button">
+            <input onclick="ocultarDatos()" value="Nuevo Pasto Corte" type="button">
 
 
 
-            <input type="hidden" name="idForraje" id="idForraje" value="">
+            <input type="hidden" name="idCorte" id="idCorte" value="">
             <div id="cajaReg" style="display: none;">
-                <p>Agregar Forraje</p>
-                <label>Forraje: </label><input type="text"  onkeypress="return validarLetras(event)" name="forrajeNombre" id="forrajeNombre"/><br><br>
-                <input type="submit" name="crearForraje" id="crearForraje" value="Guardar Forraje">
+                <p>Agregar </p>
+                <label>Pasto Corte: </label><input type="text"  onkeypress="return validarLetras(event)" name="corteNombre" id="corteNombre"/><br><br>
+                <input type="submit" name="crearCorte" id="crearCorte" value="Guardar">
             </div>
 
             <div id="cajaEdi" style="display: none;">
-                <p>Editar Forraje</p>
-                <label>Forraje: </label><input type="text"  onkeypress="return validarLetras(event)" name="nombreForraje" id="nombreForraje"/><br><br>
-                <input name='editarForraje' value="Guardar Forraje" type="submit">
+                <p>Editar</p>
+                <label>Pasto Corte: </label><input type="text"  onkeypress="return validarLetras(event)" name="nombreCorte" id="nombreCorte"/><br><br>
+                <input name='editarCorte' value="Guardar" type="submit">
 
 
             </div>
@@ -96,7 +96,7 @@
 
 
     			<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    			<script src="../js/editarPastoForraje.js"></script>
+    			<script src="../js/editarPastoCorte.js"></script>
           <?php
           	include_once "piePaginaView.php";
            ?>
