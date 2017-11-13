@@ -212,7 +212,7 @@ class socioData {
         return json_encode($socio);
     }
 
- public function obtenerUnTBSocio($cedula) {
+    public function obtenerUnTBSocio($cedula) {
         $socio;
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
@@ -243,7 +243,7 @@ class socioData {
 
         return json_encode($socio);
     }
-    
+
 
 
     public function obtenerUnSoloTBSocio($cedula) {
