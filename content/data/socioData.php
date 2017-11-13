@@ -164,7 +164,7 @@ class socioData {
         return $result;
      }
 
-    public function obtenerUnTBSocio($cedula) {
+    public function obtenerUnTBSocio2($cedula) {
         $socio;
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
@@ -185,8 +185,24 @@ class socioData {
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                $socio = ["idsocio"=>$row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
-                    ,"sociocorreo"=>$row["sociocorreo"],"sociorecomendacionuno"=>$row["sociorecomendacionuno"],"sociorecomendaciondos"=>$row["sociorecomendaciondos"],"socioresponsable"=>$row["socioresponsable"],"sociobeneficiario"=>$row["sociobeneficiario"],"tipoactividadnombre"=>$row["tipoactividadnombre"],"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"],"socioprovincia"=>$row["socioprovincia"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
+                $socio = ["idsocio"=>$row["socioid"],
+                "sociocedula"=> $row["sociocedula"],
+                "socionombre"=>$row["socionombre"],
+                "socioprimerapellido"=>$row["socioprimerapellido"],
+                "sociosegundoapellido"=>$row["sociosegundoapellido"],
+                "sociotelefono"=>$row["sociotelefono"],
+                "sociocorreo"=>$row["sociocorreo"],
+                "sociorecomendacionuno"=>$row["sociorecomendacionuno"],
+                "sociorecomendaciondos"=>$row["sociorecomendaciondos"],
+                "socioresponsable"=>$row["socioresponsable"],
+                "sociobeneficiario"=>$row["sociobeneficiario"],
+                "tipoactividadnombre"=>$row["tipoactividadnombre"],
+                "sociofechaingreso"=>$row["sociofechaingreso"],
+                "socioestadodetalle"=>$row["socioestadodetalle"],
+                "socioprovincia"=>$row["socioprovincia"],
+                "sociocanton"=>$row["sociocanton"],
+                "sociodistrito"=>$row["sociodistrito"],
+                "sociopueblo"=>$row["sociopueblo"]];
             }
         }else{
             echo "0 results";
@@ -195,6 +211,39 @@ class socioData {
 
         return json_encode($socio);
     }
+
+ public function obtenerUnTBSocio($cedula) {
+        $socio;
+
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $sql = "
+        SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,
+        tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle ,
+        tbsociodireccion.socioprovincia, tbsociodireccion.sociocanton, tbsociodireccion.sociodistrito,
+        tbsociodireccion.sociopueblo
+
+        FROM tbsocio
+        INNER JOIN tbtipoactividad ON
+        tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
+        INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle
+        INNER JOIN  tbsociodireccion ON tbsociodireccion.socioid = tbsocio.socioid AND
+        tbsocio.sociocedula =  '$cedula';";
+
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+
+                $socio = ["idsocio"=>$row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
+                    ,"sociocorreo"=>$row["sociocorreo"],"sociorecomendacionuno"=>$row["sociorecomendacionuno"],"sociorecomendaciondos"=>$row["sociorecomendaciondos"],"tipoactividadnombre"=>$row["tipoactividadnombre"],"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"],"socioprovincia"=>$row["socioprovincia"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
+            }
+        }else{
+            echo "0 results";
+        }
+        $conn->close();
+
+        return json_encode($socio);
+    }
+    
 
 
     public function obtenerUnSoloTBSocio($cedula) {
@@ -257,7 +306,7 @@ AND  tbsocio.sociocedula = '".$cedula."' ;";
         $sql = "SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo, tbtipoactividad.tipoactividadnombre,tbsocio.sociofechaingreso ,tbsocioestado.socioestadodetalle,tbsocio.sociorecomendacionuno,tbsocio.sociorecomendaciondos,tbsocio.socioresponsable,tbsocio.sociobeneficiario  FROM tbsocio INNER JOIN tbtipoactividad ON
             tbsocio.tipoactividadid = tbtipoactividad.tipoactividadid
             INNER JOIN tbsocioestado ON tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND
-            tbsocio.estadosociodetalle =1 OR tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND tbsocio.estadosociodetalle =2;";
+            tbsocio.estadosociodetalle =4 OR tbsocioestado.socioestadoid = tbsocio.estadosociodetalle AND tbsocio.estadosociodetalle =2;";
 
         $result = $conn->query($sql);
         if($result->num_rows > 0) {

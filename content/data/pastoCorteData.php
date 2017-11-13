@@ -1,6 +1,7 @@
 <?php
+require_once 'data.php';
 class PastoCorteData extends Data{
-	require_once 'data.php';
+	
 	private $data;
 
 	function PastoCorteData(){
