@@ -15,7 +15,7 @@ class avisosData {
     public function insertarTBAvisos($aviso) {
 
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        // Check connection
+      $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -37,7 +37,7 @@ class avisosData {
 
 	public function actualizarAviso($aviso){
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        // Check connection
+        $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -51,7 +51,7 @@ class avisosData {
 		 $avisos = array();
         require '../domain/aviso.php';
 		 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-        // Check connection
+      $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -73,7 +73,7 @@ class avisosData {
 		 $avisos = array();
 				require '../domain/aviso.php';
 		 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-				// Check connection
+				$conn->set_charset("utf8");
 				if (!$conn) {
 						die("Connection failed: " . mysqli_connect_error());
 				}
@@ -95,7 +95,7 @@ class avisosData {
 	    public function insertarComentario($comentario) {
 
 	       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-	        // Check connection
+	       $conn->set_charset("utf8");
 	        if (!$conn) {
 	            die("Connection failed: " . mysqli_connect_error());
 	        }
@@ -118,7 +118,7 @@ class avisosData {
 		require_once '../domain/comentario.php';
 		 $comentario = array();
 		 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-				// Check connection
+				$conn->set_charset("utf8");
 				if (!$conn) {
 						die("Connection failed: " . mysqli_connect_error());
 				}
@@ -139,6 +139,7 @@ tbsocio ON tbsocio.socioid = tbcomentarioaviso.idresponsable AND tbcomentarioavi
 
 	public function getIndiceImagen($idsocio){
 		 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+		 $conn->set_charset("utf8");
 				if (!$conn) {
 						die("Connection failed: " . mysqli_connect_error());
 				}

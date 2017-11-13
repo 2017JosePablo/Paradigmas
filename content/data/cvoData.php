@@ -16,6 +16,7 @@ class cvoData extends Data{
     public function insertarCvo($cvo){
 			include_once '../domain/cvo.php';
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset("utf8");
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -31,6 +32,7 @@ class cvoData extends Data{
         include_once '../domain/cvo.php';
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				$conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -56,6 +58,7 @@ class cvoData extends Data{
     {
       include_once '../domain/cvo.php';
       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -68,6 +71,7 @@ class cvoData extends Data{
     {
 
       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
