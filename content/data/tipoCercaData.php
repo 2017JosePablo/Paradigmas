@@ -16,6 +16,7 @@ class cercaData extends Data{
 
     public function insertarTipoCerca($cercanombre){
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset('utf8');
 
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -32,6 +33,7 @@ class cercaData extends Data{
 
     public function  obtenerTipoCerca($fincacercaid){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				$conn->set_charset('utf8');
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -59,6 +61,7 @@ class cercaData extends Data{
         include_once '../domain/tipoCerca.php';
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				$conn->set_charset('utf8');
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -84,6 +87,7 @@ class cercaData extends Data{
     {
       include_once '../domain/tipoCerca.php';
       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset('utf8');
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -96,6 +100,7 @@ class cercaData extends Data{
     {
       include_once '../domain/tipoCerca.php';
       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset('utf8');  
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }

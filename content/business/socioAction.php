@@ -8,7 +8,7 @@
 	}
 	if(isset($_POST['versocio']) == true && empty($_POST['versocio'])== false){
 			require 'socioBusiness.php';
-			$socioBusiness = new socioData();
+			$socioBusiness = new socioBusiness();
 			$result = $socioBusiness->obtenerUnTBSocio($_POST['versocio']);
 			echo $result;
 	}
@@ -88,6 +88,7 @@
 			if($socioBusiness->verificarCedula($cedula)==0){
 			 	$fechaIngreso =$date->format('Y-m-d');
 
+//	function Socio($socioId,$cedula,$nombre,$primerApellido,$segundoApellido,$telMovil,$correo,$fechaIngreso,$tipoActividadId,$fincatipoId,$estadosociodetalle,$recomentacion1,$recomentacion2,$responsable,$beneficiario){
 
 				$socio = new Socio('',$cedula,$nombre,$primerapellido,$segundoapellido,$telmovil,$correo,$fechaIngreso,
 				$tipoactividad, 1 , 5,$recomendacion1,$recomendacion2,$responsable,$beneficiario);

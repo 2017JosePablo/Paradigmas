@@ -12,7 +12,8 @@ class tipoFincaData extends  Data {
     public function getAllTBTiposFincas() {
         $fincas = array();
         include '../domain/fincaTipo.php';
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset('utf8');  
         $sql = "SELECT * FROM tbfincatipo";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
