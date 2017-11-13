@@ -34,10 +34,12 @@
 
 
 		include '../data/socioData.php';
-		$data = new socioData();
 
-		$result = json_decode($tempo,true);
-		echo "->>>".$result["idsocio"];
+		$data = new socioData();
+		$v = $data->obtenerUnTBSocio("504130763");
+
+		$result = json_decode($v);
+		echo "->>>".$result["idsocio"]."<><><";
 
 
 
