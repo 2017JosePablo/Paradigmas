@@ -91,6 +91,7 @@ $(document).ready(function() {
             document.getElementById("modificarsocio").style.display = 'none';
 
             $.post('../business/fierroAction.php', {fierro:result[0]}, function(data){
+              alert(data);
               var fierroArray = JSON.parse(data);
               document.getElementById('fierro').src = fierroArray['fierroruta'];
 
@@ -98,7 +99,7 @@ $(document).ready(function() {
 
 
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
-
+            alert(data);
             var array = JSON.parse(data);
             document.getElementById('cedula').value = array['sociocedula'];
             document.getElementById('nombre').value = array['socionombre'];
