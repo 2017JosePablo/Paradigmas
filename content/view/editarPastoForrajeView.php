@@ -65,7 +65,7 @@
 </div>
             <br>
 
-            <input onclick="ocultarDatos()" value="Nueva Raza" type="button">
+            <input onclick="ocultarDatos()" value="Nuevo Forraje" type="button">
 
 
 
