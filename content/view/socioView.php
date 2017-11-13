@@ -351,11 +351,11 @@
                     </td>
 
                     <td id="responsable">
-                      <input type="text"   name="responsable"></td>
+                      <input type="text"   name="responsable" id="responsable2"></td>
                     </td>
 
                     <td id="beneficiario">
-                      <input type="text"   name="beneficiario"></td>
+                      <input type="text"   name="beneficiario" id="beneficiario2"></td>
                     </td>
 
                 </tr>
@@ -593,10 +593,10 @@
                     </td>
 
                     <td>
-                        <input  type="text" id="responsable"  readonly>
+                        <input  type="text" id="responsable1"  readonly>
                     </td>
                     <td>
-                        <input  type="text" id="beneficiario"  readonly>
+                        <input  type="text" id="beneficiario1"  readonly>
                     </td>
                 </tr>
 
