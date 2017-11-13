@@ -5,7 +5,7 @@ class PastoForrajeData extends Data{
 	private $data;
 
 	function PastoForrajeData(){
-		$data= new Data();
+		$this->data= new Data();
 	}
 
 	public function insertarTBPastoForraje($pastoForraje){
@@ -23,7 +23,7 @@ class PastoForrajeData extends Data{
         return $result;
 
 	}
-  
+
   public function mostrarPastosForraje(){
        $pastoForraje= array();
        include_once '../domain/pastoForraje.php';
@@ -47,7 +47,7 @@ class PastoForrajeData extends Data{
         }
         $conn->close();
 
-    return $pastoForraje;         
+    return $pastoForraje;
   }
 
   public function modificarPastoForraje($pastoForraje){
@@ -61,7 +61,7 @@ class PastoForrajeData extends Data{
     $result = $conn->query($sql);
     return $result;
   }
-    
+
 
     //Metodo para eliminar una cerca
   public function eliminarPastoForraje($pastoForrajeId){

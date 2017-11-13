@@ -1,5 +1,5 @@
 <?php
-	include '../data/fincaCercaData.php';
+
 
 
 	class fincaCercaBusiness
@@ -8,6 +8,7 @@
 
 		function fincaCercaBusiness()
 		{
+			require '../data/fincaCercaData.php';
 			$this->fincaCerca = new fincaCercaData();
 
 		}

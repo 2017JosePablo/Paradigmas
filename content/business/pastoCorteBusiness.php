@@ -8,6 +8,7 @@ class PastoCorteBusiness {
 
 
   function PastoCorteBusiness(){
+
     $this->pastoCorteData = new PastoCorteData();
   }
 
