@@ -1,9 +1,6 @@
 <?php
-	include '../data/fincaData.php';
+	require_once '../data/fincaData.php';
 
-	/**
-	*
-	*/
 	class fincaBusiness
 	{
 		private $fincaData;

@@ -1,11 +1,14 @@
 <?php
+
+//include 'data.php';
 require_once 'data.php';
+
 class PastoCorteData extends Data{
-	
+
 	private $data;
 
-	function PastoCorteData(){
-		$data= new Data();
+	public function PastoCorteData(){
+		$this->data= new Data();
 	}
 
 	public function insertarTBPastoCorte($pastoCorte){
@@ -25,14 +28,14 @@ class PastoCorteData extends Data{
 	}
 
     public function mostrarPastosCorte(){
+
        $pastoCorte= array();
        include_once '../domain/pastoCorte.php';
 
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-         $conn->set_charset("utf8");
-        if (!$conn) {
-            die("Connection failed: ".mysqli_connect_error());
-        }
+			 $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+		 	$conn->set_charset("utf8");
+
+
 
         $sql = "SELECT  * FROM tbpastocorte";
 
@@ -46,8 +49,8 @@ class PastoCorteData extends Data{
             echo "0 results";
         }
         $conn->close();
+				      return $pastoCorte;
 
-        return $pastoCorte;         
     }
 
   public function modificarPastoCorte($pastoCorte){
@@ -61,7 +64,7 @@ class PastoCorteData extends Data{
       $result = $conn->query($sql);
       return $result;
     }
-    
+
 
     //Metodo para eliminar una cerca
     public function eliminarPastoCorte($pastoCorteId){

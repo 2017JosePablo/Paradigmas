@@ -89,7 +89,7 @@ class fincaCercaData extends Data{
 	        if (!$conn) {
 	            die("Connection failed: ".mysqli_connect_error());
 	        }
-	        
+
 	        $sql = "SELECT  * FROM tbfincacerca";
 					$contador = 0;
 	        $result = $conn->query($sql);

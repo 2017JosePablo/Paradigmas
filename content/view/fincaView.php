@@ -124,8 +124,8 @@
 
             function ocultarCajaDireccion(){
               document.getElementById('verUbic').style='display:none';
-             // document.getElementById('editarUbic').style="display:block";
-              document.getElementById('datosDireccion').style='display:block';
+             // document.getElementById('editarUbic').style="display:none";
+              document.getElementById('datosDireccion').style='display:none';
               document.getElementById('editoUbicacion').value = 1;
 
             }
@@ -167,17 +167,17 @@
 <body>
 
 <div id="cuerpo">
+
+  <form id='frm'  method="post"  action="../business/fincaAction.php">
 <input type="hidden" id="provincia" name="fincarovincia" value="">
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
-
-<div style="overflow-x:auto;">
 
   <h1>Gestíon de Finca</h1>
   <h2>Informacion Socio</h2>
    <?php
 
-       include '../business/fincaBusiness.php';
+       require_once '../business/fincaBusiness.php';
       $fincaBusiness = new fincaBusiness();
 
       $fincas = $fincaBusiness->  obtenerTodosTBfinca();
@@ -188,18 +188,15 @@
           echo "<td>".$current->getNombre()."</td>";
           echo "<td>".$current->getPrimerApellido()."</td>";
           echo "<td>".$current->getSegundoApellido()."</td>";
-          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Ver'>Ver</button></td>";
-          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Mod'>Modificar</button></td>";
-          echo "<td> <button type='submit' id='modificarFinca' value='".$current->getCedula()."~Reg'>Registrar</button></td>";
+          echo "<td> <button type='button' id='modificarFinca' value='".$current->getCedula()."~Ver'>Ver</button></td>";
+          echo "<td> <button type='button' id='modificarFinca' value='".$current->getCedula()."~Mod'>Modificar</button></td>";
+          echo "<td> <button type='button' id='modificarFinca' value='".$current->getCedula()."~Reg'>Registrar</button></td>";
           echo "</tr>";
           }
           echo "</table>";
     ?>
-</div>
-<div  id="registrarFinca" style='display:none ;' >
 
-  <form id='frm'  method="post"  action="../business/fincaAction.php">
-
+<div  id="registrarFinca" style='display:none;'>
 
   <input type="hidden" name="cedula" id="cedula" value="">
 
@@ -215,12 +212,7 @@
    <input type="hidden"  name= "editoPueblo" id="editoPueblo" value="">
    <input type="hidden"  name= "editoOtros" id="editoOtros" value="">
 
-
-
-
   <p id='Socio' ></p>
-
-
     <p>Datos de la finca:</p>
             <table>
                 <tr>
@@ -249,8 +241,7 @@
             </table>
 
 
-
-                <div id="datosDireccion" style="display: none;">
+                <div id="datosDireccion" style="display:none;">
 
                 <table>
 
@@ -258,9 +249,9 @@
                       <tr>
 
                       <td>
-                           <div class="form-group">
+
                             <label class="col-md-4 control-label" for="listaProvincias">Provincia</label>
-                            <div class="col-md-4">
+
                               <select id="listaProvincias" name="listaProvincias" class="form-control" onclick="provinciaSeleccionada()">
                                 <option value="-1">Seleccione Una Provincia</option>
                                 <option value="1">San Jose</option>
@@ -271,16 +262,14 @@
                                 <option value="6">Puntarenas</option>
                                 <option value="7">Limon</option>
                               </select>
-                            </div>
-                          </div>
                       </td>
                       <td>
                           <!-- Select Canton -->
-                          <div class="form-group" >
+
                             <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
                             <div class="col-md-4" id="cajaCantones">
+
                             </div>
-                          </div>
                       </td>
                       <td>
                           <!-- Select Distrito-->
@@ -289,15 +278,16 @@
                             <div class="col-md-4" id="listaDistrito" >
 
                             </div>
+                            </div>
                          </td>
                         <td>Pueblo:<input type="text" id="fincapueblo"  name="fincapueblo"> </td>
                         <td>Otras Señas:<input type="text" id="fincaexacta"  name="fincaexacta"> </td>
 
                         </tr>
                     </table>
-                </div>
 
-                 <div id="verUbic" style="display: none">
+
+                 <div id="verUbic" style="display: block">
 
                     <table>
                        <tr><td><br><p>Dirección de la Finca</p></td></tr>
@@ -327,39 +317,21 @@
                         </tr>
                     </table>
 
-                </div>
-
-            <br><br>
             <p>Tipo de Finca</p>
-            <div style="overflow-x:auto;">
+
                 <?php
-
-
-                require '../data/tipoFincaData.php';
+                include_once '../data/tipoFincaData.php';
                 $temp = new tipoFincaData();
                 $tipoFinca = $temp->getAllTBTiposFincas();
-
-
                   echo '<table>';
                   foreach ($tipoFinca as $curren) {
-
-
                       echo '<tr>';
 
-                      echo "<td> <input id='".$curren->getId()."-tipo' type='radio' checked name='tipofinca' value='".$curren->getId()."'></td>";
-
-                      echo '<td>'.$curren->getFincaTipoActividad().'</td>';
-
-
+                      echo "<td>".$curren->getFincaTipoActividad()."<input id='".$curren->getId()."-tipo' type='radio' checked name='tipofinca' value='".$curren->getId()."'></td>";
                       echo '</tr>';
                   }
                   echo '</table>';
-
-
           ?>
-
-</div>
-<br><br>
 
 <p>CVO</p>
 
@@ -372,12 +344,11 @@
 <br><br>
 
 
-<div style="overflow-x:auto;">
     <?php
-
-    $cont =1;
     include '../business/fincaCercaBusiness.php';
     $fincaBusiness = new fincaCercaBusiness();
+    $cont =1;
+
     $cerca = $fincaBusiness->getTipoCerca();
     echo '<table > <tr>  <td align = "center" >Tipo de cerca</td> </tr><tr></tr>';
 
@@ -391,6 +362,41 @@
     }
         echo '</table>';
   ?>
+
+  <?php
+  require_once '../business/pastoCorteBusiness.php';
+  $pastoBussiness = new PastoCorteBusiness();
+
+  $cerca = $pastoBussiness->mostrarPastosCorte();
+//  echo "cerca: ".$cerca;
+
+  echo '<table > <tr>  <td align = "center" >Tipo de pasto de corta</td> </tr><tr></tr>';
+
+  foreach ($cerca as $current) {
+      echo '<tr>';
+      echo '<td> <input  name ="checkbox" value="'.$current->getId().'"type="checkbox" id="'.$cont.'" >'.$current->getNombre().'</td>';
+      echo '</tr>';
+  }
+      echo '</table>';
+
+  ?>
+
+  <?php
+  require_once '../business/pastoForrajeBusiness.php';
+  $pastoBussiness = new PastoForrajeBusiness();
+  $cerca = $pastoBussiness->mostrarPastosForraje();
+  echo '<table > <tr>  <td align = "center" >Tipo de pasto de forraje</td> </tr><tr></tr>';
+
+  foreach ($cerca as $current) {
+      echo '<tr>';
+      echo '<td> <input  name ="checkbox" value="'.$current->getId().'"type="checkbox" id="'.$cont.'" >'.$current->getNombre().'</td>';
+      echo '</tr>';
+  }
+      echo '</table>';
+
+  ?>
+
+
 
 
 </div>
@@ -406,11 +412,7 @@
             <div id="btnModificar">
               <button type='submit'  id="actualizar" name='actualizar' value='actualizar'>Modificar Finca</button>
             </div>
-
-    </form>
-
     </div>
-
 
     <div id="cajaFinca" style='display:none ;'>
 
@@ -519,20 +521,26 @@
             </table>
 
 
-    </div>
-    <hr>
-     <a href="../index.php">Regresar</a>
 
+          </div>
+        </div>
 
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="../js/editarFinca.js"></script>
-
+    <a href="../index.php">Regresar</a>
+         </form>
   </div>
+
+
+
     <?php
       include_once "piePaginaView.php";
      ?>
 </body>
 </html>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="../js/editarFinca.js"></script>
+
+
 <?php
     }else{header("Location: ../index.php?error=dontPermisse");}
   }else{
