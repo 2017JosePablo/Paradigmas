@@ -266,14 +266,14 @@
                       <td>
                           <!-- Select Canton -->
 
-                            <label class="col-md-4 control-label" for="listadeCantones">Canton</label>
+                            <label for="listadeCantones">Canton</label>
                             <div class="col-md-4" id="cajaCantones">
 
                             </div>
                       </td>
                       <td>
                           <!-- Select Distrito-->
-                          <div class="form-group" id="cajaDistrito" >
+                          <div id="cajaDistrito" >
                             <label class="col-md-4 control-label" for="cajaDistrito">Distrito</label>
                             <div class="col-md-4" id="listaDistrito" >
 
@@ -286,6 +286,7 @@
                         </tr>
                     </table>
 
+                  </div>
 
                  <div id="verUbic" style="display: block">
 
@@ -410,9 +411,10 @@
             </div>
 
             <div id="btnModificar">
-              <button type='submit'  id="actualizar" name='actualizar' value='actualizar'>Modificar Finca</button>
+              <input type='submit'  id="actualizar" name='actualizar' value='Modificar Finca'>
             </div>
     </div>
+
 
     <div id="cajaFinca" style='display:none ;'>
 
@@ -523,9 +525,11 @@
 
 
           </div>
-        </div>
 
-    <a href="../index.php">Regresar</a>
+    <a href="../index.php"><input type="button" name="" value="Regresar"></a>
+
+
+
          </form>
   </div>
 

@@ -19,21 +19,7 @@
 		require 'fincaBusiness.php';
 		$fincaBusiness = new fincaData();
 		$result = $fincaBusiness->obtenerDatosFincaVer($_POST['cedulafinca']);
-
-
-//		$myJSON = json_encode($result);
-
 		echo $result;
-
-
-
-/*
-		$resultadoEncode = json_encode($result);
-
-		//echo "cedulafinca: fincaaction =--->".$_POST['cedulafinca'];
-	//	echo "nombre: ".$resultadoEncode["socionombre"];
-//..echo $resultadoEncode;;
-		return json_encode($result);*/
 	}
 
 	if(isset($_POST['fincamodificar']) == true && empty($_POST['fincamodificar'])== false){
@@ -92,13 +78,13 @@
 
 	//if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($fincatipo)){
 
-		require './fincaBusiness.php';
+		require_once './fincaBusiness.php';
 		require './socioBusiness.php';
 		include '../domain/fincaDireccion.php';
 
 		require 'cvoBusiness.php';
 		require_once '../domain/cvo.php';
-
+		require_once '../domain/finca.php';
 		$socioBusiness= new socioBusiness();
 
 		$idSocio=$socioBusiness->getSocioId($fincaid);
@@ -123,7 +109,7 @@
 		$cvo = new Cvo('',$cvotiene,$cvofechavigencia,$idSocio);
 		$resultado4 = $cvoBusiness->insertarCvo($cvo);
 
-/*
+
 		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1 && $resultado4 == 1 ) {
 			header("location: ../../index.php?success=updateFinca");
 		}else{
@@ -146,10 +132,7 @@
 
 		}
 
-	/}else{
-		echo "Datos vacios...</br>";
-	}
-}*/
+
 }
 
 ?>
