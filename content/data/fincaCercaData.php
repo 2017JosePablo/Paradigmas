@@ -101,23 +101,23 @@ class fincaCercaData extends Data{
 	    }
 
 
-		 function getTipoCercaNombre($id){
-		        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-		        $conn->set_charset("utf8");
-		        if (!$conn) {
-		            die("Connection failed: ".mysqli_connect_error());
-		        }
-		        $sql = "SELECT  * FROM tbfincacerca WHERE fincacercaid = $id";
-		        $result = $conn->query($sql);
-		        if($result->num_rows > 0) {
-							  while($row = $result->fetch_assoc()) {
-		            	return $row["fincacercatipo"];
-								}
-		        }else{
-		            return  "0 results";
-		        }
-		        $conn->close();
-		    }
+function getTipoCercaNombre($id){
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
+        if (!$conn) {
+            die("Connection failed: ".mysqli_connect_error());
+        }
+        $sql = "SELECT  * FROM tbfincacerca WHERE fincacercaid = $id";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+					  while($row = $result->fetch_assoc()) {
+            	return $row["fincacercatipo"];
+            }
+        }else{
+            return  "0 results";
+        }
+        $conn->close();
+}
 
 }
 
