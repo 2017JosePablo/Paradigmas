@@ -2,7 +2,6 @@
 
 //include 'data.php';
 require_once 'data.php';
-include '../domain/finca.php';
 
 
 class FincaData extends Data{
