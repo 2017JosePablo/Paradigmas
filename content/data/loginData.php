@@ -14,6 +14,7 @@ class loginData {
     public function insertarTBLogin($login) {
 
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -37,6 +38,7 @@ class loginData {
 //Devuelve un mensaje
     public function validarLogin($user,$contraseña){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -58,6 +60,7 @@ class loginData {
     public function verificarLogin($usuario,$contraseña){
         $login;
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -83,6 +86,7 @@ class loginData {
     public function actualizarContrasena($usuario,$contrasenaVieja,$contrasenaNueva){
 
          $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+          $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -101,6 +105,7 @@ class loginData {
         $contrasenaSocios= array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());

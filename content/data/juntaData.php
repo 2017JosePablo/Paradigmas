@@ -13,6 +13,7 @@ class JuntaData extends Data {
 
     public function insertarTBJunta($junta) {
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -36,6 +37,7 @@ class JuntaData extends Data {
 
     public function actualizarTBJunta($junta) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -62,6 +64,7 @@ class JuntaData extends Data {
 
     public function eliminarTBJunta($idjunta) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -75,7 +78,8 @@ class JuntaData extends Data {
         //dos  parametros
         $junta = array();
 
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre()); 
+         $conn->set_charset("utf8"); 
         $sql = "SELECT * FROM tbjunta";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {

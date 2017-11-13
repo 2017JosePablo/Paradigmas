@@ -20,6 +20,7 @@ class fincaCercaData extends Data{
 				$tipocerca = $this->getTipoCercaNombre($contador);
 
 	        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+	        $conn->set_charset("utf8");
 	        if (!$conn) {
 	            die("Connection failed: ".mysqli_connect_error());
 	        }
@@ -55,6 +56,7 @@ class fincaCercaData extends Data{
 
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -80,12 +82,14 @@ class fincaCercaData extends Data{
 
 
 
-			 function getTotalFinca(){
+	function getTotalFinca(){
 
 	        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+	        $conn->set_charset("utf8");
 	        if (!$conn) {
 	            die("Connection failed: ".mysqli_connect_error());
 	        }
+	        
 	        $sql = "SELECT  * FROM tbfincacerca";
 					$contador = 0;
 	        $result = $conn->query($sql);
@@ -97,8 +101,9 @@ class fincaCercaData extends Data{
 	    }
 
 
-		    function getTipoCercaNombre($id){
+		 function getTipoCercaNombre($id){
 		        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+		        $conn->set_charset("utf8");
 		        if (!$conn) {
 		            die("Connection failed: ".mysqli_connect_error());
 		        }

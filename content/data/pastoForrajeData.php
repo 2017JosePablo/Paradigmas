@@ -10,6 +10,7 @@ class PastoForrajeData extends Data{
 
 	public function insertarTBPastoForraje($pastoForraje){
 		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+     $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -28,6 +29,7 @@ class PastoForrajeData extends Data{
        include_once '../domain/pastoForraje.php';
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -51,6 +53,7 @@ class PastoForrajeData extends Data{
   public function modificarPastoForraje($pastoForraje){
     include_once '../domain/pastoForraje.php';
     $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+     $conn->set_charset("utf8");
     if (!$conn) {
       die("Connection failed: ".mysqli_connect_error());
     }
@@ -63,6 +66,7 @@ class PastoForrajeData extends Data{
     //Metodo para eliminar una cerca
   public function eliminarPastoForraje($pastoForrajeId){
     $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+     $conn->set_charset("utf8");
       if (!$conn) {
           die("Connection failed: ".mysqli_connect_error());
       }

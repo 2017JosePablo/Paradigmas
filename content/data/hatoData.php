@@ -13,6 +13,7 @@ class hatoData extends Data{
      public function insertarTBHato($hato) {
 
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+       $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -42,6 +43,7 @@ class hatoData extends Data{
 	 public function actualizarTBHato($hato) {
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -75,7 +77,7 @@ class hatoData extends Data{
 
      public function eliminarTBHato($socioid) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-
+         $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -90,6 +92,7 @@ class hatoData extends Data{
         $hato = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         $sql = "SELECT * FROM tbhato";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
@@ -106,6 +109,7 @@ class hatoData extends Data{
 
 public function obtenerSocioHatoModificar($idsocio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         $hato="0 results";
         $sql = "SELECT * FROM tbhato WHERE socioid = $idsocio";
         $result = $conn->query($sql);
@@ -124,6 +128,7 @@ public function obtenerSocioHatoModificar($idsocio) {
 
   public function verificarSocioHato($idsocio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         $hato=FALSE;
         $sql = "SELECT * FROM tbhato WHERE socioid = $idsocio";
         $result = $conn->query($sql);
@@ -144,6 +149,7 @@ public function obtenerSocioHatoModificar($idsocio) {
 
     public function obtenerSocioHato($idsocio) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         $hato="0 results";
         $sql = "SELECT * FROM tbhato WHERE socioid = $idsocio";
         $result = $conn->query($sql);
@@ -164,6 +170,7 @@ public function obtenerSocioHatoModificar($idsocio) {
         $lista = explode(",",$listaRazas);
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
 
         $raza="";
 

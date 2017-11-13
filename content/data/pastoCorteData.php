@@ -10,6 +10,7 @@ class PastoCorteData extends Data{
 
 	public function insertarTBPastoCorte($pastoCorte){
 		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+     $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -28,6 +29,7 @@ class PastoCorteData extends Data{
        include_once '../domain/pastoCorte.php';
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -51,6 +53,7 @@ class PastoCorteData extends Data{
   public function modificarPastoCorte($pastoCorte){
       include_once '../domain/pastoCorte.php';
       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+       $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -63,6 +66,7 @@ class PastoCorteData extends Data{
     //Metodo para eliminar una cerca
     public function eliminarPastoCorte($pastoCorteId){
       $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+       $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }

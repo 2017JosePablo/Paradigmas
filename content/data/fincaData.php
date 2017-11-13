@@ -19,6 +19,7 @@ class FincaData extends Data{
 
 
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
 
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -46,7 +47,7 @@ class FincaData extends Data{
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
-				$conn->set_charset("utf8");
+		$conn->set_charset("utf8");
         $socioinformacion = "";
         $sql = "SELECT tbsocio.socionombre, tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido, tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
             tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca,
@@ -75,6 +76,7 @@ class FincaData extends Data{
 
     public function verificarFinca($cedula){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -103,6 +105,7 @@ class FincaData extends Data{
 
     public function  obtenerDatosFincaModificar($cedulasocio){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
@@ -136,6 +139,7 @@ class FincaData extends Data{
       public function insertarTBFincaDireccion($fincaDireccion){
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -163,6 +167,7 @@ class FincaData extends Data{
  	public function actualizarTBfinca($finca) {
 
 	    $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
 
 	    if (!$conn) {
 	        die("Connection failed: " . mysqli_connect_error());
@@ -183,6 +188,7 @@ class FincaData extends Data{
 
     public function actualizarTBFincaDireccion($fincaDireccion) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
         $sql = "UPDATE tbfincadireccion SET fincaprovincia= '".$fincaDireccion->getProvincia()."',fincacanton='".$fincaDireccion->getCanton()."',fincadistrito='".$fincaDireccion->getDistrito()."',fincapueblo='".$fincaDireccion->getPueblo()."',fincaexacta = '".$fincaDireccion->getDireccionExacta()."'  WHERE fincaid= '".$fincaDireccion->getSocioId()."'";
 
         $result = $conn->query($sql);
@@ -199,6 +205,7 @@ class FincaData extends Data{
 	public function eliminarTBfinca($idfinca) {
 
 		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
 
 		if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
@@ -214,6 +221,7 @@ class FincaData extends Data{
     //     require '../domain/finca.php';
          $finca;
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
             $sql = "SELECT * FROM tbfinca WHERE  socioid = $idsocio";
 
             $result = $conn->query($sql);
@@ -238,6 +246,7 @@ class FincaData extends Data{
         $fincas  = array();
         require '../domain/todoFinca.php';
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
             $sql = "
 						SELECT tbsocio.sociocedula, tbsocio.socionombre, tbsocio.socioprimerapellido,
             tbsocio.sociosegundoapellido,
@@ -269,6 +278,7 @@ class FincaData extends Data{
 
     public function actualizarTipoFinca($socioId,$tipo){
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
 
          $sql = "UPDATE tbsocio  SET   fincatipoid= '".$tipo."'  WHERE socioid = '".$socioId."' ; ";
         $result = $conn->query($sql);

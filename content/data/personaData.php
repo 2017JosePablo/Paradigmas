@@ -13,6 +13,7 @@ class personaData extends Data{
      public function insertarTBpersona($persona) {
 
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+        $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -34,6 +35,7 @@ class personaData extends Data{
 	}
 	 public function actualizarTBpersona($persona) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -58,6 +60,7 @@ class personaData extends Data{
      }
       public function eliminarTBpersona($idpersona) {
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -74,6 +77,7 @@ class personaData extends Data{
         $persona = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
         $sql = "SELECT * FROM tbpersona";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {

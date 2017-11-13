@@ -17,6 +17,7 @@ class pagoAnualidadData extends Data{
      public function insertarPagoAnualidad($pagoanualidad){
 
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+         $conn->set_charset("utf8");
 
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -40,6 +41,7 @@ class pagoAnualidadData extends Data{
     public function actualizarPagoAnualidad($pagoanualidad) {
         
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+         $conn->set_charset("utf8");
 
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -63,6 +65,7 @@ class pagoAnualidadData extends Data{
         require '../domain/anualidad.php';
         $socioAnualidad="";
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+         $conn->set_charset("utf8");
         $sql = "SELECT * FROM tbpagoanualidad WHERE socioid='".$socioid."'  ORDER BY tbpagoanualidad.pagoanualidadanterior DESC ";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
@@ -88,7 +91,8 @@ class pagoAnualidadData extends Data{
         include '../domain/socio.php';
 
         $socio = array();
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre()); 
+         $conn->set_charset("utf8"); 
          $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe';";
 
          $result = $conn->query($sql);
@@ -114,6 +118,7 @@ class pagoAnualidadData extends Data{
 
             $socio = array();
              $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+              $conn->set_charset("utf8");
 
              $sql="SELECT tbsocio.socioid, tbsocio.sociocedula, tbsocio.socionombre ,tbsocio.socioprimerapellido ,tbsocio.sociosegundoapellido,tbsocio.sociotelefono,tbsocio.sociocorreo FROM tbsocio INNER JOIN tbpagoanualidad ON tbsocio.socioid = tbpagoanualidad.socioid AND tbpagoanualidad.pagoanualidadidestado = 'debe' AND tbpagoanualidad.pagoanualidadproximo BETWEEN '".$fecha1."' AND '".$fecha2."'";
 
@@ -138,6 +143,7 @@ class pagoAnualidadData extends Data{
 
         public function calcularMorosos($fecha){
              $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+              $conn->set_charset("utf8");
              $sql="SELECT * FROM tbpagoanualidad WHERE tbpagoanualidad.pagoanualidadproximo<'".$fecha."' AND tbpagoanualidad.pagoanualidadidestado !='debe'";
               $result = $conn->query($sql);
              

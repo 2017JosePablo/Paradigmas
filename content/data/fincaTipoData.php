@@ -14,6 +14,7 @@ class fincaTipoData extends Data{
 	public function insertarTBfincaTipo($fincaTipo) {
 
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+       $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -30,6 +31,7 @@ class fincaTipoData extends Data{
     public function actualizarTBfincaTipo($fincaTipo) {
 
        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+       $conn->set_charset("utf8");
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
