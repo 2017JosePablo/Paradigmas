@@ -40,11 +40,13 @@ class FincaData extends Data{
 
 
     public function  obtenerDatosFincaVer($cedulasocio){
+
+
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
         if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }
-
+				$conn->set_charset("utf8");
         $socioinformacion = "";
         $sql = "SELECT tbsocio.socionombre, tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido, tbfincadireccion.fincaprovincia, tbfincadireccion.fincacanton, tbfincadireccion.fincadistrito, tbfincadireccion.fincapueblo,
             tbfincadireccion.fincaexacta , tbfinca.fincaarea, tbfinca.fincacantidadbobinos, tbfinca.fincacerca,
@@ -56,20 +58,19 @@ class FincaData extends Data{
             AND tbsocio.sociocedula = '".$cedulasocio."' ; ";
 
         $result = $conn->query($sql);
-        if($result->num_rows > 0) {
+      //  if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-
+			//				echo "nombre: ".$row["socionombre"];
                 $socioinformacion = ["socionombre"=>$row["socionombre"], "socioprimerapellido"=> $row["socioprimerapellido"],"sociosegundoapellido"=>$row["sociosegundoapellido"],
-
                 "fincaprovincia"=>$row["fincaprovincia"], "fincacanton"=>$row["fincacanton"],"fincadistrito"=>$row["fincadistrito"]
-                    ,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatipocerca"=>$row["fincacerca"],"fincatiponombre"=>$row["fincatiponombre"],"tipoactividadnombre"=>$row["tipoactividadnombre"]];
+							,"fincapueblo"=>$row["fincapueblo"],"fincaexacta"=>$row["fincaexacta"] , "fincaarea"=>$row["fincaarea"] ,"fincacantidadbobinos"=>$row["fincacantidadbobinos"],"fincatipocerca"=>$row["fincacerca"],"fincatiponombre"=>$row["fincatiponombre"],"tipoactividadnombre"=>$row["tipoactividadnombre"]];
             }
-        }else{
-            echo "0 results";
-        }
+      //  }else{
+        //    echo "0 results";
+        //}
         $conn->close();
-
         return json_encode($socioinformacion);
+			  //return $socioinformacion;
     }
 
     public function verificarFinca($cedula){

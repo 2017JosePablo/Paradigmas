@@ -19,7 +19,21 @@
 		require 'fincaBusiness.php';
 		$fincaBusiness = new fincaData();
 		$result = $fincaBusiness->obtenerDatosFincaVer($_POST['cedulafinca']);
+
+
+//		$myJSON = json_encode($result);
+
 		echo $result;
+
+
+
+/*
+		$resultadoEncode = json_encode($result);
+
+		//echo "cedulafinca: fincaaction =--->".$_POST['cedulafinca'];
+	//	echo "nombre: ".$resultadoEncode["socionombre"];
+//..echo $resultadoEncode;;
+		return json_encode($result);*/
 	}
 
 	if(isset($_POST['fincamodificar']) == true && empty($_POST['fincamodificar'])== false){
@@ -44,11 +58,12 @@
 	//echo $date->format('Y-m-d');
 	$cvofechavigencia= $date->format('Y-m-d');
 
-
-
 	$fincaid = $_POST['cedula'];
 	$fincaarea =$_POST['fincaarea'];
 	$cantidadbobinos =$_POST['cantidadbobinos'];
+
+	echo "Finca area ".$fincaarea."<br>";
+	echo "Cantidad de bobinos ".$cantidadbobinos."<br>";
 		//	En caso de que no editara la ubicacion
 	if ($_POST["editoUbicacion"] == 0) {
 		$listaProvincias =$_POST['listaProvincias'];
@@ -64,18 +79,18 @@
 			$fincapueblo =$_POST['editoPueblo'];
 			$fincaexacta =$_POST['editoOtros'];
 		}
-		echo "->".$fincaid."<br>";
-		echo"->".$listaProvincias."<br>";
-		echo"->".$listadoCanton ."<br>";
-		echo"->".$listadoDistrito."<br>";
-		echo"->".$fincapueblo."<br>";
-		echo"->".$fincaexacta."<br>";
+		echo "finca id->".$fincaid."<br>";
+		echo"provinciaSeleccionada->".$listaProvincias."<br>";
+		echo"canton seleccinoado->".$listadoCanton ."<br>";
+		echo"listado de distrito->".$listadoDistrito."<br>";
+		echo"pueblo->".$fincapueblo."<br>";
+		echo"finca exActa->".$fincaexacta."<br>";
 
 	$fincatipo =$_POST['tipofinca'];
 	$cercas =$_POST['tiposCerca'];
 
 
-	if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($fincatipo)){
+	//if(isset($cercas) && isset($fincaid) && isset($fincaarea) &&isset($cantidadbobinos)  &&isset($listaProvincias) &&isset($listadoDistrito) &&isset($listadoCanton) &&isset($fincapueblo) &&isset($fincaexacta)&&isset($fincatipo)){
 
 		require './fincaBusiness.php';
 		require './socioBusiness.php';
@@ -108,9 +123,9 @@
 		$cvo = new Cvo('',$cvotiene,$cvofechavigencia,$idSocio);
 		$resultado4 = $cvoBusiness->insertarCvo($cvo);
 
-
+/*
 		if ($resultado1 == 1 && $resultado2 == 1 && $resultado3 == 1 && $resultado4 == 1 ) {
-			header("location: ../index.php?success=updateFinca");
+			header("location: ../../index.php?success=updateFinca");
 		}else{
 			if($resultado2!=1){
 				header("location: ../view/fincaView.php?error=errorActualizarFinca");
@@ -131,9 +146,10 @@
 
 		}
 
-	}else{
+	/}else{
 		echo "Datos vacios...</br>";
 	}
+}*/
 }
 
 ?>

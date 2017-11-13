@@ -17,7 +17,7 @@ class actaAprobacionData extends Data{
      public function insertarActaAprobacionData($actaAprobacion){
 
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-
+			$conn->set_charset("utf8");
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -44,6 +44,7 @@ class actaAprobacionData extends Data{
          $socio = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				$conn->set_charset("utf8");
         $sql="SELECT * FROM tbsocio INNER JOIN tbactaaprobacion ON tbsocio.socioid=tbactaaprobacion.socioid AND tbactaaprobacion.actaaprobacioncondicion='progreso'";
 
             $result = $conn->query($sql);
@@ -64,7 +65,7 @@ class actaAprobacionData extends Data{
 
     public function actualizarActaAprobacionCondicion($acta){
          $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-
+				 $conn->set_charset("utf8");
            if (!$conn) {
             die("Connection failed: ".mysqli_connect_error());
         }

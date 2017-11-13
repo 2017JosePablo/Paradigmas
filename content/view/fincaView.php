@@ -12,7 +12,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Area Administrativa de Fincas</title>
   <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../css/diseno.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script>
 
@@ -168,9 +167,6 @@
 <body>
 
 <div id="cuerpo">
-
-
-
 <input type="hidden" id="provincia" name="fincarovincia" value="">
 <input type="hidden" id="canton" name="fincacanton" value="">
 <input type="hidden" id="distrito" name="fincadistrito" value="">
@@ -350,9 +346,9 @@
 
                       echo '<tr>';
 
-                      echo "<td>".$curren->getFincaTipoActividad()." <input id='".$curren->getId()."-tipo' type='radio' checked name='tipofinca' value='".$curren->getId()."'></td>";
+                      echo "<td> <input id='".$curren->getId()."-tipo' type='radio' checked name='tipofinca' value='".$curren->getId()."'></td>";
 
-                      //echo '<td>'.$curren->getFincaTipoActividad().'</td>';
+                      echo '<td>'.$curren->getFincaTipoActividad().'</td>';
 
 
                       echo '</tr>';
@@ -374,46 +370,6 @@
   <input type="date" name="fechaCVO" id="fechaCVO">
 </div>
 <br><br>
-
-<div style="overflow-x:auto;">
-    <?php
-    include '../business/pastoCorteBusiness.php';
-    $pastoCorte = new PastoCorteBusiness();
-    $corte = $pastoCorte->mostrarPastosCorte();
-    echo '<table > <tr>  <td align = "center" >Pasto corte</td> </tr><tr></tr>';
-
-    foreach ($corte as $current) {
-        echo '<tr>';
-        echo '<td> <input  name ="pastoCorte" value="'.$current->getId().'"type="checkbox" id="'.$current->getId().'" >'.$current->getNombre().'</td>';
-
-        echo '</tr>';
-    }
-        echo '</table>';
-  ?>
-
-
-</div>
-
-<div style="overflow-x:auto;">
-    <?php
-    include '../business/pastoForrajeBusiness.php';
-    $pastoForraje = new PastoForrajeBusiness();
-    $forraje = $pastoForraje->mostrarPastosForraje();
-    echo '<table > <tr>  <td align = "center" >Pasto Forraje</td> </tr><tr></tr>';
-
-    foreach ($forraje as $current) {
-        echo '<tr>';
-        echo '<td> <input  name ="pastoForraje" value="'.$current->getId().'"type="checkbox" id="'.$current->getId().'" >'.$current->getNombre().'</td>';
-
-        echo '</tr>';
-    }
-        echo '</table>';
-  ?>
-
-
-</div>
-
-
 
 
 <div style="overflow-x:auto;">
@@ -564,17 +520,16 @@
 
 
     </div>
+    <hr>
+     <a href="../index.php">Regresar</a>
 
-
-     <a href="../index.php"><input type="button" name="" value="Regresar"></a>
-
-
-   </div>
 
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="../js/editarFinca.js"></script>
+
+  </div>
     <?php
-      include_once "../../footer.php";
+      include_once "piePaginaView.php";
      ?>
 </body>
 </html>

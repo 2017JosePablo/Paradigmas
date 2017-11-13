@@ -21,7 +21,6 @@ $(document).ready(function() {
             document.getElementById('cajaVerSocio').style.display = 'none';
             document.getElementById('editarUbic').style.display='none';
             document.getElementById('verDir').style.display='block';
-
             $.post('../business/fierroAction.php', {fierro:result[0]}, function(data){
               var fierroArray = JSON.parse(data);
               document.getElementById('rutaImagen').value =fierroArray['fierroruta'] ;

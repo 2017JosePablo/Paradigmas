@@ -18,7 +18,7 @@ class anualidadData extends Data{
 
 
   		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-
+			$conn->set_charset("utf8");
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -38,7 +38,7 @@ class anualidadData extends Data{
     public function actualizarPagoAnualidad($anualidad) {
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-
+				$conn->set_charset("utf8");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -60,6 +60,7 @@ class anualidadData extends Data{
         $anualidad = array();
 
         $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				$conn->set_charset("utf8");
         $sql = "SELECT tbanualidad.anualidadid, tbsocio.socionombre, tbsocio.socioprimerapellido,tbsocio.sociosegundoapellido, tbanualidad.anualidadmonto, tbanualidad.anualidadfechaactualizacion  FROM tbanualidad INNER JOIN tbsocio ON tbsocio.socioid = tbanualidad.responsableid;";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
@@ -83,7 +84,7 @@ class anualidadData extends Data{
          $sql = "SELECT tbanualidad.anualidadmonto, tbanualidad.anualidadfechaactualizacion  FROM tbanualidad INNER JOIN tbpagoanualidad ON tbanualidad.anualidadfechaactualizacion >= tbpagoanualidad.pagoanualidadanterior AND tbanualidad.anualidadfechaactualizacion <= tbpagoanualidad.pagoanualidadproximo AND tbpagoanualidad.socioid = '".$socioId."'";
 
           $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-
+					$conn->set_charset("utf8");
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {

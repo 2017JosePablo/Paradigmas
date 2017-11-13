@@ -29,6 +29,8 @@ $(document).ready(function() {
                 if(data  == 1){
                     if(result[1]=='Ver'){
                         $.post('../business/fincaAction.php', {cedulafinca:result[0]}, function(data){
+
+                          alert(data);
                             var array = JSON.parse(data);
                             document.getElementById('registrarFinca').style="display:none";
                             document.getElementById("actualizar").style="display:none";

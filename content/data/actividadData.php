@@ -7,16 +7,16 @@ class actividadData extends Data{
 
 	 private $data;
 
-    function __construct(){ 
+    function __construct(){
 
         $this->data = new Data();
     }
 
 
     public function insertarTBActividad($tipoactividadnombre){
-    	
-  		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
 
+  		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset("utf8");
   		if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -33,6 +33,7 @@ class actividadData extends Data{
  	public function actualizarTBActividad($actividad) {
 
 	    $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+			$conn->set_charset("utf8");
 
 	    if (!$conn) {
 	        die("Connection failed: " . mysqli_connect_error());
@@ -54,7 +55,7 @@ class actividadData extends Data{
 	public function eliminarTBActividad($idActividad) {
 
 		$conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
-
+		$conn->set_charset("utf8");
 		if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 		}
@@ -70,7 +71,8 @@ class actividadData extends Data{
     public function obtenerTodosTBActividad() {
         $actividad = array();
 
-        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());  
+        $conn = new mysqli($this->data->getServidor(), $this->data->getUsuario(), $this->data->getContrasena(), $this->data->getDbNombre());
+				$conn->set_charset("utf8");
         $sql = "SELECT * FROM tbtipoactividad";
         $result = $conn->query($sql);
         if($result->num_rows > 0) {
@@ -82,7 +84,7 @@ class actividadData extends Data{
             echo "0 results";
         }
         $conn->close();
-        
+
         return $actividad;
     }
 

@@ -15,13 +15,20 @@
 
 		public function insertarFinca($finca)
 		{
-			return $this->fincaData ->insertarFinca($finca);
+			return $this->fincaData->insertarFinca($finca);
 		}
 
 		public function insertarTBFincaDireccion($fincadireccion)
 		{
-			return $this->fincaData ->insertarTBFincaDireccion($fincadireccion);
+			return $this->fincaData->insertarTBFincaDireccion($fincadireccion);
 		}
+		public function obtenerDatosFincaVer($fincadireccion)
+		{
+			return $this->fincaData->obtenerDatosFincaVer($fincadireccion);
+		}
+
+
+
 
 
 		public function obtenerTodosTBfinca()
