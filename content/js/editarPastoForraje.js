@@ -10,7 +10,6 @@ $(document).ready(function() {
     			document.getElementById('cajaEdi').style = "display:block";
     			document.getElementById('nombreForraje').value = result[1];
           document.getElementById('idForraje').value = result[0];
-          alert(result[0]);
 
     		}
     	}
