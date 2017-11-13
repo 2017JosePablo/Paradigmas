@@ -185,8 +185,24 @@ class socioData {
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 
-                $socio = ["idsocio"=>$row["socioid"], "sociocedula"=> $row["sociocedula"],"socionombre"=>$row["socionombre"], "socioprimerapellido"=>$row["socioprimerapellido"], "sociosegundoapellido"=>$row["sociosegundoapellido"],"sociotelefono"=>$row["sociotelefono"]
-                    ,"sociocorreo"=>$row["sociocorreo"],"sociorecomendacionuno"=>$row["sociorecomendacionuno"],"sociorecomendaciondos"=>$row["sociorecomendaciondos"],"socioresponsable"=>$row["socioresponsable"],"sociobeneficiario"=>$row["sociobeneficiario"],"tipoactividadnombre"=>$row["tipoactividadnombre"],"sociofechaingreso"=>$row["sociofechaingreso"] ,"socioestadodetalle"=>$row["socioestadodetalle"],"socioprovincia"=>$row["socioprovincia"] ,"sociocanton"=>$row["sociocanton"],"sociodistrito"=>$row["sociodistrito"],"sociopueblo"=>$row["sociopueblo"] ];
+                $socio = ["idsocio"=>$row["socioid"],
+                "sociocedula"=> $row["sociocedula"],
+                "socionombre"=>$row["socionombre"],
+                "socioprimerapellido"=>$row["socioprimerapellido"],
+                "sociosegundoapellido"=>$row["sociosegundoapellido"],
+                "sociotelefono"=>$row["sociotelefono"],
+                "sociocorreo"=>$row["sociocorreo"],
+                "sociorecomendacionuno"=>$row["sociorecomendacionuno"],
+                "sociorecomendaciondos"=>$row["sociorecomendaciondos"],
+                "socioresponsable"=>$row["socioresponsable"],
+                "sociobeneficiario"=>$row["sociobeneficiario"],
+                "tipoactividadnombre"=>$row["tipoactividadnombre"],
+                "sociofechaingreso"=>$row["sociofechaingreso"],
+                "socioestadodetalle"=>$row["socioestadodetalle"],
+                "socioprovincia"=>$row["socioprovincia"],
+                "sociocanton"=>$row["sociocanton"],
+                "sociodistrito"=>$row["sociodistrito"],
+                "sociopueblo"=>$row["sociopueblo"]];
             }
         }else{
             echo "0 results";
