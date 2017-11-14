@@ -277,7 +277,7 @@
 			$distrito = $_POST['disE'];
 			$pueblo = $_POST['pueE'];
 
-		}else if($_POST['ModUbi'] == 0){
+		}else{
 			$provincia = $_POST['listaProvincias'];
 			$canton = $_POST['listadoCantones'];
 			$distrito = $_POST['listadoDistritos'];

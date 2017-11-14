@@ -13,6 +13,7 @@ $(document).ready(function() {
     if(cedula.length>0){
         var result = cedula.split('~');
         if(result[1] == 'Mod'){
+
           $("input:radio").removeAttr("checked");
             document.getElementById('notificacionSocio').innerHTML = ''
             document.getElementById("cedulaVieja").value = result[0];
@@ -43,6 +44,12 @@ $(document).ready(function() {
             document.getElementById('sociosegundoapellido').value = array['sociosegundoapellido'];
             document.getElementById('sociotelmovil').value = array['sociotelefono'];
             document.getElementById('sociocorreo').value = array['sociocorreo'];
+
+
+
+
+
+
             var tipoactividadid = array['tipoactividadid'];
             var fincatipoid = array['fincatipoid'];
             var tipoEstado = array['estadosociodetalle'];
@@ -75,6 +82,9 @@ $(document).ready(function() {
             document.getElementById("recomendacion1").value = array['sociorecomendacionuno'];
             document.getElementById("recomendacion2").value = array['sociorecomendacionuno'];
 
+            document.getElementById('responsable2').value = array['socioresponsable'];
+            document.getElementById('beneficiario2').value = array['sociobeneficiario'];
+
         });
 
         }else if(result[1] == 'Ver'){
@@ -98,7 +108,7 @@ $(document).ready(function() {
 
 
             $.post('../business/socioAction.php', {versocio:result[0]}, function(data){
-            alert(data);
+
             var array = JSON.parse(data);
             document.getElementById('cedula').value = array['sociocedula'];
             document.getElementById('nombre').value = array['socionombre'];
@@ -107,6 +117,9 @@ $(document).ready(function() {
             document.getElementById('segundoapellido').value = array['sociosegundoapellido'];
             document.getElementById('telmovil').value = array['sociotelefono'];
             document.getElementById('correo').value = array['sociocorreo'];
+
+            document.getElementById('responsable1').value = array['socioresponsable'];
+            document.getElementById('beneficiario1').value = array['sociobeneficiario'];
 
             var fecha = array['sociofechaingreso'].split('-');
             var fechaSalida = fecha[2]+"/"+fecha[1]+"/"+fecha[0];

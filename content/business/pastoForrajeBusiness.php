@@ -15,6 +15,9 @@ class PastoForrajeBusiness{
   function mostrarPastosForraje(){
     return $this->pastoForrajeData->mostrarPastosForraje();
   }
+  function modificarPastoForraje($pasto){
+    return $this->pastoForrajeData->modificarPastoForraje($pasto);
+  }
 
 }
 
