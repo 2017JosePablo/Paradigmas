@@ -41,9 +41,11 @@ $path = $ui->get_path();
                     <ul>
                       <li><a href="content/view/actividadView.php">Actividad</a></li>
                       <li><a href="content/view/hatoView.php">Hato</a></li>
-                      <li><a href="content/view/pastoView.php">Pasto</a></li>
+                      <li><a href="content/view/editarPastoCorteView.php">Pasto de Corte</a></li>
+                      <li><a href="content/view/editarPastoForrajeView.php">Pasto Forraje</a></li>
                       <li><a href="content/view/razaView.php">Raza</a> </li>
                       <li><a href="content/view/fincaTipoView.php">Tipo Finca</a></li>
+
 
                    </ul>
                </ul>

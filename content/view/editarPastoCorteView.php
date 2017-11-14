@@ -87,8 +87,7 @@
 
 
 
-						<hr>
-						<a href="../index.php">Regresar</a>
+						<a href="../index.php"><input type="button" name="" value="Regresar"></a>
 
 
           </form>
