@@ -73,13 +73,13 @@
             <input type="hidden" name="idForraje" id="idForraje" value="">
             <div id="cajaReg" style="display: none;">
                 <p>Agregar Forraje</p>
-                <label>Forraje: </label><input type="text"  onkeypress="return validarLetras(event)" name="forrajeNombre" id="forrajeNombre"/><br><br>
+                <label>Forraje: </label><input type="text"   name="forrajeNombre" id="forrajeNombre"/><br><br>
                 <input type="submit" name="crearForraje" id="crearForraje" value="Guardar Forraje">
             </div>
 
             <div id="cajaEdi" style="display: none;">
                 <p>Editar Forraje</p>
-                <label>Forraje: </label><input type="text"  onkeypress="return validarLetras(event)" name="nombreForraje" id="nombreForraje"/><br><br>
+                <label>Forraje: </label><input type="text"   name="nombreForraje" id="nombreForraje"/><br><br>
                 <input name='editarForraje' value="Guardar Forraje" type="submit">
 
 

@@ -73,13 +73,13 @@
             <input type="hidden" name="idCorte" id="idCorte" value="">
             <div id="cajaReg" style="display: none;">
                 <p>Agregar </p>
-                <label>Pasto Corte: </label><input type="text"  onkeypress="return validarLetras(event)" name="corteNombre" id="corteNombre"/><br><br>
+                <label>Pasto Corte: </label><input type="text"  name="corteNombre" id="corteNombre"/><br><br>
                 <input type="submit" name="crearCorte" id="crearCorte" value="Guardar">
             </div>
 
             <div id="cajaEdi" style="display: none;">
                 <p>Editar</p>
-                <label>Pasto Corte: </label><input type="text"  onkeypress="return validarLetras(event)" name="nombreCorte" id="nombreCorte"/><br><br>
+                <label>Pasto Corte: </label><input type="text"  name="nombreCorte" id="nombreCorte"/><br><br>
                 <input name='editarCorte' value="Guardar" type="submit">
 
 
